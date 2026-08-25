@@ -1,0 +1,425 @@
+UNIVARIATE & BIVARIATE ANALYSIS
+UNIT 3
+Exploratory Data Analysis
+Exploratory Data Analysis (EDA) is the process of examining datasets to summarize their main characteristics, often using visual and statistical methods. Two fundamental approaches are Univariate Analysis and Bivariate Analysis.
+Univariate Analysis
+Definition:Analysis of a single variable to understand its distribution, central tendency, and spread.It answers questions like "What does this variable look like?"
+Purpose:To describe the data and find patterns (e.g., skewness, outliers).
+Techniques
+For Numerical Data:
+Descriptive statistics: Mean, Median, Mode, Variance, Standard Deviation, Range, Quartiles, IQR.
+Visualization: Histograms, Boxplots, Density plots.
+For Categorical Data:
+Frequency distribution, Proportions.
+Visualization: Bar charts, Pie charts, Count plots.
+Methods of Univariate Analysis
+4.1 For Numerical Variables
+(a) Measures of Central Tendency
+Mean (Arithmetic Average):
+Mean
+Median: Middle value when data is arranged in order.
+Mode: Most frequently occurring value.
+For Categorical Variables
+(a) Frequency Distribution
+Count of each category.
+(b) Relative Frequency
+Percentage distribution.
+(c) Graphical Methods
+Bar Chart
+Pie Chart
+Examples
+Numerical Example:Marks of 10 students:[45, 50, 55, 60, 65, 70, 75, 80, 85, 90]
+Mean = 67.5
+Median = 67.5
+Mode = None (all unique)
+Range = 45
+SD ≈ 15.14
+Histogram → Bell-shaped distribution
+Categorical Example:Blood group of 20 people:[A, B, A, O, AB, O, B, A, O, A, B, O, A, O, B, AB, A, O, A, B]
+Frequency: A=7, B=5, O=6, AB=2
+Pie chart shows proportions.
+Comparison of Measures
+Types of Distribution Plots
+Histogram
+Boxplot (Whisker Plot)
+KDE Plot (Kernel Density Estimation)
+Bar Chart
+Count Plot
+Pie Chart
+1. Histogram
+A histogram is a type of bar graph that shows the frequency distribution of a continuous variable by dividing the data into intervals (bins).
+Each bin covers a range of values.
+The height of each bar = number (or proportion) of data points in that interval.
+Key Features
+Represents continuous/numeric data.
+Shows shape of distribution: normal, skewed, uniform, bimodal, etc.
+Useful for detecting outliers or unusual patterns.
+Example
+Suppose we have exam scores of 10 students:[25, 30, 32, 35, 40, 42, 50, 55, 60, 62]
+If we create bins of size 10:
+20–30 → 2 students
+30–40 → 3 students
+40–50 → 2 students
+50–60 → 2 students
+60–70 → 1 student
+The histogram would have bars showing these frequencies.
+Program
+Histogram of Exam Scores (Matplotlib)
+Histogram of Exam Scores (Seaborn)
+Explanation
+plt.hist() → creates histogram with specified bins.
+sns.histplot() → seaborn version, supports extra features like KDE (smooth curve).
+bins=8 → divides data into 8 intervals.
+kde=True → adds a smooth probability density curve.
+Summary
+A histogram is a graphical representation of the distribution of continuous data, showing how often values fall within specific ranges (bins).
+2. Boxplot (Whisker Plot)
+A boxplot (or whisker plot) is a graphical representation of the distribution of data that shows:
+Spread (variability)
+Central value (median)
+Skewness (symmetry)
+Outliers (unusual values)
+It is based on the five-number summary of data.
+Five-Number Summary
+Minimum → Smallest value (excluding outliers)
+Q1 (First Quartile, 25%) → 25% of data lies below this point
+Median (Q2, 50%) → Middle value of the dataset
+Q3 (Third Quartile, 75%) → 75% of data lies below this point
+Maximum → Largest value (excluding outliers)
+Structure of Boxplot
+Box → spans from Q1 to Q3 (Interquartile Range = IQR = Q3 – Q1).
+Line inside box → Median (Q2).
+Whiskers → extend from the box to Minimum and Maximum (within 1.5 × IQR).
+Outliers → points beyond whiskers (plotted separately as dots).
+Example
+Suppose exam scores: [25, 30, 32, 35, 40, 42, 50, 55, 60, 62, 70, 75, 80, 82, 95]
+Q1 = 35
+Median = 55
+Q3 = 75
+IQR = 75 – 35 = 40
+Whiskers = Q1 – 1.5×IQR = -25 (adjusted to min=25), Q3 + 1.5×IQR = 135 (adjusted to max=95).
+Outliers → None in this case.
+Interpretation
+If median is near the center of the box → data is symmetric.
+If median closer to Q1 or Q3 → data is skewed.
+Long whisker → more spread on that side.
+Dots outside whiskers → outliers.
+Program
+Boxplot of Exam Scores (Matplotlib)
+Boxplot of Exam Scores (Seaborn)
+Explanation
+plt.boxplot() → creates a boxplot in Matplotlib.
+vert=True → vertical boxplot.
+patch_artist=True → fills the box with color.
+sns.boxplot() → simpler, prettier version in Seaborn.
+Outliers (if any) will appear as dots outside whiskers.
+Summary
+A boxplot is a compact way to visualize distribution, variability, skewness, and outliers using quartiles and whiskers.
+3. KDE Plot (Kernel Density Estimation)
+A KDE Plot is a smoothed version of a histogram that estimates the probability density function (PDF) of a continuous variable.
+Instead of sharp bars (like histogram), it shows a continuous smooth curve.
+Helps visualize where the data values are concentrated (peaks) and how they spread.
+How it Works?
+Places a small smooth curve (called kernel, usually Gaussian bell shape) on each data point.
+Adds up these curves to form a smooth overall distribution curve.
+Bandwidth parameter controls smoothness:
+Small bandwidth → too wiggly curve.
+Large bandwidth → too smooth, may hide details.
+Example
+Exam scores: [25, 30, 32, 35, 40, 42, 50, 55, 60, 62, 70, 75, 80, 82, 95]
+A histogram shows frequency bins.
+KDE plot shows a smooth curve peaking around 55–75 (where most students scored).
+Interpretation
+Peaks (modes) → regions with high concentration of data.
+Spread (width) → variability of data.
+Shape:
+Bell-shaped → normal distribution.
+Skewed → data concentrated on one side.
+Multiple peaks → possible subgroups.
+Program
+KDE Plot of Exam Scores
+Explanation
+sns.kdeplot() → creates a kernel density plot.
+fill=True → fills the area under the curve.
+color → sets curve color.
+linewidth=2 → makes the line thicker.
+This will give you a smooth curve showing how scores are distributed, instead of blocky histogram bars.
+Summary
+A KDE plot is a smooth curve that estimates the underlying distribution of a dataset, making it easier to see patterns compared to histograms.
+4. Bar Chart
+A Bar Chart is a graph that represents categorical data with rectangular bars.
+The length/height of each bar is proportional to the value (frequency or count) of that category.
+Bars can be vertical or horizontal.
+Key Points
+Used for categorical (discrete) data, not continuous.
+Each bar represents a category (e.g., fruits, subjects, products).
+Bars should have equal width and equal spacing.
+Bars do not touch each other (unlike histogram).
+Types of Bar Charts
+Vertical Bar Chart → bars go up.
+Horizontal Bar Chart → bars go sideways.
+Grouped Bar Chart → multiple bars for comparison within categories.
+Stacked Bar Chart → bars stacked to show sub-groups.
+Example
+If 5 students got the following marks:
+A bar chart will have subjects on the x-axis and marks on the y-axis, with bar heights showing marks.
+Program
+Bar Chart of Student Marks (Matplotlib)
+Bar Chart of Student Marks (Seaborn)
+Explanation
+Matplotlib
+plt.bar(x, y) → draws vertical bars.
+color and edgecolor customize appearance.
+Seaborn
+sns.barplot() → automatically makes a cleaner chart with optional statistical aggregation.
+palette sets color style.
+Summary
+A Bar Chart is a simple and effective way to compare categories using rectangular bars.
+5. Count Plot
+A Count Plot is a type of bar chart that shows the frequency (count) of observations for each category in a dataset.
+It is commonly used in Exploratory Data Analysis (EDA) to quickly see how many items fall into each category.
+Unlike a normal bar chart (where you provide counts), a count plot automatically counts the occurrences of each category.
+Key Points
+X-axis (or Y-axis): categories.
+Y-axis (or X-axis): counts (frequency of each category).
+Useful for categorical data (e.g., gender, product type, yes/no answers).
+Count plots are mainly available in Seaborn (sns.countplot), not directly in Matplotlib.
+Example
+Suppose we have data of student favorite subjects:
+["Math", "Science", "English", "Math", "English", "Math", "Science"]
+A Count Plot will show:
+Math → 3 students
+Science → 2 students
+English → 2 students
+Difference: Bar Plot vs Count Plot
+Program
+Count Plot of Favorite Subjects
+Explanation
+sns.countplot(x=favorite_subjects) → automatically counts how many times each subject appears.
+palette="Set2" → adds nice colors.
+edgecolor="black" → makes bars look cleaner.
+X-axis → categories (subjects).
+Y-axis → count (frequency).
+Summary
+A Count Plot is a quick way to visualize the number of occurrences of each category in categorical data.
+6. Pie Chart
+A Pie Chart is a circular statistical graphic that is divided into slices (sectors) to illustrate proportions of a whole.
+Each slice represents a category’s percentage contribution.
+The whole circle = 100% of the data.
+Key Points
+Used for categorical data.
+Shows relative proportions, not exact values.
+Best when you have few categories (2–6).
+Each slice size is proportional to:
+Example
+Suppose 100 students chose their favorite subject:
+In a pie chart:
+Math slice = 30% of the circle.
+Science slice = 25%.
+English = 20%.
+History = 15%.
+Telugu = 10%.
+Advantages & Disadvantages
+Advantages
+Easy to understand proportions.
+Visually appealing for presentations.
+Disadvantages
+Hard to compare exact values.
+Not suitable if there are too many categories.
+Bar/Count plots are often more precise.
+Program
+Pie Chart of Students' Favorite Subjects
+Explanation
+plt.pie(values, labels=categories) → draws the pie chart.
+autopct="%1.1f%%" → shows percentage values inside slices.
+startangle=90 → rotates chart for better readability.
+colors=[...] → optional custom colors.
+Summary
+A Pie Chart is a circle divided into slices, where each slice shows the proportion of a category relative to the total.
+Bivariate Analysis
+Definition:Analysis of the relationship between two variables at a time.It answers questions like "How are these two variables related?"
+Purpose:To detect associations, correlations, or dependencies between two variables.
+Techniques
+Numerical vs. Numerical:
+Correlation (Pearson, Spearman, Kendall).
+Scatter plots, Heatmaps.
+Regression line fitting.
+Categorical vs. Categorical:
+Cross-tabulation (contingency table).
+Chi-square test of independence.
+Stacked bar charts, Mosaic plots.
+Numerical vs. Categorical:
+Grouped statistics (mean per category).
+Boxplots, Violin plots.
+Common Techniques in Bivariate Analysis
+Scatter Plot → relationship between two numerical variables.
+Pair Plot → relationship among multiple numerical variables.
+Heatmap → correlation matrix visualization.
+Correlation Analysis → strength & direction of relationship (–1 to +1).
+Covariance Analysis → whether variables move together or not.
+Scatter Plot
+A Scatter Plot is a type of graph that shows the relationship between two numerical variables by displaying data points on a 2D coordinate system.
+Each point = one observation.
+X-axis → one variable.
+Y-axis → another variable.
+Purpose
+To see patterns, trends, or relationships between two variables.
+To detect correlation (positive, negative, or none).
+To identify outliers (points far away from the general pattern).
+Types of Relationships
+Positive Correlation → as X increases, Y increases. (e.g., study hours ↑, marks ↑)
+Negative Correlation → as X increases, Y decreases. (e.g., exercise ↑, body fat ↓)
+No Correlation → points are scattered randomly, no clear trend.
+Example
+Suppose we study 5 students:
+A scatter plot will show points rising upwards → strong positive relationship.
+Advantages & Disadvantages
+Advantages
+Simple way to visualize relationships.
+Shows correlation strength.
+Detects outliers.
+Disadvantages
+Only works for two variables at a time.
+Does not show exact correlation value (need correlation coefficient for that).
+Program
+Scatter Plot: Hours Studied vs Marks Scored (Matplotlib)
+Scatter Plot: Hours Studied vs Marks Scored (Seaborn)
+Explanation
+Matplotlib
+plt.scatter(x, y) → plots scatter plot.
+marker="o" → circle markers.
+plt.grid(True) → adds grid lines for clarity.
+Seaborn
+sns.scatterplot(x, y) → simpler & prettier scatter plot.
+s=100 → point size.
+2. Pair Plot
+A Pair Plot is a visualization that shows the pairwise relationships between multiple numerical variables in a dataset.
+It is available in Seaborn (sns.pairplot).
+Creates a matrix of plots:
+Scatter plots for every pair of variables.
+Histograms/KDE plots on the diagonal (to show distribution of each variable).
+Purpose
+To explore relationships between all variables at once.
+To check for correlation (positive/negative).
+To detect patterns, clusters, and outliers.
+Very useful for Exploratory Data Analysis (EDA).
+Example
+Suppose we have marks of students in Math, Science, and English.
+Pair plot will create:
+Math vs Science (scatter plot).
+Math vs English (scatter plot).
+Science vs English (scatter plot).
+Distribution of each subject along the diagonal.
+This helps us see which subjects have similar performance patterns.
+Advantages & Disadvantages
+Advantages
+Shows all pairwise relationships at once.
+Combines distribution + correlation information.
+Easy to use with just one function call.
+Disadvantages
+Becomes cluttered if dataset has too many variables.
+Only works well with numerical variables.
+Program
+Pair Plot of Students' Marks
+Explanation
+pd.DataFrame(data) converts your dictionary into a DataFrame (the format Seaborn expects).
+sns.pairplot(data) → automatically generates scatter plots for all variable pairs.
+diag_kind="kde" → KDE plots on diagonal (can also use "hist").
+palette="Set2" → applies nice colors.
+plt.suptitle() → adds title to the whole figure.
+3. Heatmap
+A Heatmap is a graphical representation of data where individual values in a matrix are represented as colors.
+It is often used to visualize relationships between variables or correlation matrices in data analysis.
+Darker or brighter colors indicate higher or lower values.
+Purpose
+To quickly see patterns, trends, and correlations in data.
+To easily spot high values, low values, and outliers.
+Commonly used in Bivariate Analysis to display correlations.
+How it Works?
+You usually create a 2D matrix (like a correlation matrix).
+Each cell’s color shows the magnitude of the value.
+Example:
+Correlation close to +1 → strong positive relation → dark green/blue.
+Correlation close to –1 → strong negative relation → dark red.
+Correlation near 0 → weak relation → lighter color.
+Example
+If we have students’ marks in Math, Science, and English, a heatmap of their correlation matrix will show:
+If Math & Science scores are strongly related.
+If English is independent of Math.
+Which subject pair has the strongest correlation.
+Advantages & Disadvantages
+Advantages
+Easy to understand visually.
+Quickly highlights strong/weak relationships.
+Good for large datasets.
+Disadvantages
+Only shows strength of relationships, not causation.
+Can be misleading if dataset is too small.
+Program
+Heatmap of Students' Marks Correlation
+Explanation
+df.corr() → calculates correlation between variables.
+sns.heatmap() → draws the heatmap.
+annot=True → shows correlation values inside cells.
+cmap="coolwarm" → color theme (blue = negative, red = positive).
+linewidths=0.5 → adds lines between cells for clarity.
+Summary
+A Heatmap is a color-coded matrix that shows how variables relate to each other, most commonly used to display a correlation matrix in bivariate analysis.
+Correlation
+Correlation is a statistical measure that shows the strength and direction of a relationship between two variables.
+It tells us whether an increase in one variable is associated with an increase or decrease in another variable.
+Correlation values range from –1 to +1.
+Types of Correlation
+Positive Correlation (+)
+When one variable increases, the other also increases.
+Example: Hours studied vs Marks obtained.
+Negative Correlation (–)
+When one variable increases, the other decreases.
+Example: Speed of a vehicle vs Time taken to reach destination.
+Zero Correlation (0)
+No relationship between variables.
+Example: Shoe size vs Intelligence.
+Correlation Coefficient (r)
+A numerical value (–1 ≤ r ≤ +1) that quantifies correlation.
+Formula (Pearson’s Correlation)
+Where:
+Cov(X,Y) = Covariance between X and Y.
+σX, σY = Standard deviations of X and Y.
+Uses in Data Analysis
+To check if two features are related.
+To remove redundant (highly correlated) variables.
+To identify important relationships before machine learning modeling.
+Program
+Correlation Matrix
+Correlation Heatmap of Students' Marks
+Scatter Plot: Math vs Science
+Explanation
+df.corr() → Computes correlation between columns.
+Heatmap → Visualizes correlations in color form.
+Scatter Plot → Shows pairwise relationship visually (linear/positive/negative).
+Covariance Analysis
+Covariance measures how two variables change together:
+Whether they increase/decrease together (positive relationship).
+Or whether one increases while the other decreases (negative relationship).
+It is the unstandardized version of correlation.
+Formula
+Interpretation
+Difference: Covariance vs Correlation
+Use in Data Analysis
+To see how two features move together.
+Foundation of Correlation analysis.
+Used in Portfolio optimization (Finance), where assets with negative covariance reduce risk.
+Program
+Cont…
+Covariance Matrix & Correlation Matrix
+Covariance Heatmap
+Correlation Heatmap
+Explanation
+df.cov() → Computes covariance matrix.
+df.corr() → Computes correlation matrix.
+Two heatmaps → Side-by-side visualization:
+Covariance values → depend on data scale (can be very large).
+Correlation values → standardized between –1 and +1.
+Summary
+Covariance tells us whether two variables move together (positive, negative, or unrelated).
+Correlation is the scaled version of covariance, which makes comparison easier since it is unit-free.

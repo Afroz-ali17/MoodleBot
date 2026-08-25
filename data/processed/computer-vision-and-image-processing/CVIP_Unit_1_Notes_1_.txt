@@ -1,0 +1,420 @@
+COMPUTER VISION AND IMAGE PROCESSING
+UNIT-I
+Introduction to Computer Vision and Image Processing
+V Phanishwara Hara Gopal
+Department of CSE (AI&ML)
+RGMCET
+2025-2026
+1 Overview of Computer Vision and Image Processing
+This concept introduces the foundational concepts in Computer Vision (CV) and Digital
+Image Processing (DIP)withhistoricalbackground, definitions, andarangeofreal-world
+applications. These domains are core components in the Artificial Intelligence and Machine
+Learning (AI&ML) stack for embedded and edge systems.
+2 Definitions and Scope
+2.1 Digital Image Processing (DIP)
+A digital image is a two-dimensional function:
+f(x,y) (1)
+where x and y denote spatial coordinates and f(x,y) represents the intensity (gray level) at
+that point.
+For a digital image:
+• x,y ∈ Z+ (discrete spatial positions)
+• f(x,y) ∈ {0,1,...,L−1} where L is the number of gray levels
+Digital Image Processing involves:
+• Image enhancement (contrast stretching, histogram equalization)
+• Noise removal (median, Gaussian filters)
+• Compression (JPEG, PNG)
+• Restoration and reconstruction
+Memory Requirement: The memory needed to store an image of size M × N with B
+bits per pixel is:
+M ×N ×B
+Storage (in bytes) = (2)
+Example: A 512×512 grayscale image (8 bits/pixel):
+512×512×8
+= 262144 bytes = 256 KB
+2.2 Computer Vision (CV)
+Computer Vision is the field concerned with enabling computers to interpret, process, and
+understand images and videos.
+Goal: Extract meaningful information (shapes, objects, actions, semantics) from raw
+visual data and infer properties about the real world.
+Three Levels of Processing
+1. Low-Level: Image-to-image transformations (e.g., noise reduction, contrast adjust-
+ment)
+2. Mid-Level: Image-to-features (e.g., edge detection, segmentation, object proposal)
+3. High-Level: Image-to-meaning (e.g., object recognition, scene understanding, activ-
+ity detection)
+2.3 Scope in AI & ML
+Computer Vision and Image Processing are integral to AI-based systems:
+• Preprocessing for CNNs and vision transformers
+• Feature extraction and dimensionality reduction
+• Data augmentation in training pipelines
+• Object detection and semantic segmentation
+3 Historical Development
+3.1 Digital Image Processing History
+• 1960s: Space exploration led to the first practical use of DIP (e.g., NASA’s Ranger 7
+mission, 1964).
+• 1970s: Image enhancement and filtering techniques were developed.
+• 1980s: Personal computers made image processing more accessible.
+• 1990s–2000s: Integration with signal processing and multimedia applications.
+3.2 Computer Vision Evolution
+• 1970s: Vision was part of symbolic AI. Early models based on geometry and algebra.
+• 1990s: Shift toward statistical learning methods (e.g., SVM, PCA, k-NN).
+• 2000s–2010s: Emergence of data-driven CV. ImageNet, HOG, and SIFT.
+• 2012 Onwards: Deep learning revolution. CNNs (e.g., AlexNet), R-CNN, YOLO,
+ResNet, Vision Transformers.
+3.3 Key Milestones
+• 1964: Ranger 7 sends first digital moon images.
+• 1982: Marr’s theory of early visual processing.
+• 1999: Viola–Jones face detection algorithm.
+• 2012: Deep convolutional networks outperform traditional methods.
+3.4 Applications
+3.4.1 Industrial Applications
+• Quality inspection in manufacturing
+• OCR in banking and postal services
+• Medical image analysis (CT, MRI, X-ray)
+• Biometric authentication (fingerprint, iris, face)
+3.4.2 Consumer Applications
+• Face detection in smartphones
+• Augmented reality (e.g., Snapchat filters, ARKit)
+• Automotive vision for ADAS (Advanced Driver-Assistance Systems)
+• Video stabilization and panorama stitching
+3.4.3 AI and Robotics Integration
+• Vision-based navigation in autonomous vehicles
+• SLAM (Simultaneous Localization and Mapping)
+• Drone object tracking and mapping
+• Human-robot interaction
+Computer Vision and Image Processing form the sensory front-end of AI systems. From
+interpretingsatellitedatatoenablingautonomousnavigation, thesetechnologiesareevolving
+rapidlyduetoadvancementsinneuralnetworks, GPUs, anddataavailability. Understanding
+their fundamentals is essential for AI/ML engineers and embedded system designers.
+4 Image Formation and Representation
+The process of capturing and representing visual data digitally is foundational to both image
+processing and computer vision. This concept introduces the principles of image formation,
+digital sampling, quantization, and color representation, preparing students for deeper un-
+derstanding of filters, feature extraction, and AI pipelines.
+5 Image Acquisition Methods
+5.1 Imaging Sensors
+An image sensor converts light (photons) into electrical signals. The most common types
+are:
+• CCD (Charge Coupled Device)
+• CMOS (Complementary Metal Oxide Semiconductor)
+These sensors consist of a 2D array of light-sensitive elements called photosites, which
+correspond to pixels in the final image.
+5.2 Camera Model
+A basic pinhole camera model projects a 3D world point P = (X,Y,Z) onto a 2D image
+plane using perspective projection:
+X Y
+x = f · , y = f · (3)
+Z Z
+where:
+• (x,y): image coordinates
+• f: focal length
+• Z: depth of the 3D point
+5.3 Digital Camera Pipeline
+1. Light passes through a lens
+2. Image is focused on sensor
+3. Analog signal converted to digital by ADC (Analog to Digital Converter)
+4. Image is demosaiced (for color)
+5. Noise reduction, white balance, gamma correction
+5.4 Other Acquisition Sources
+• Medical imaging: X-ray, MRI, CT
+• Radar and satellite imaging
+• Thermal/infrared cameras
+• LiDAR for 3D range imaging
+6 Sampling and Quantization
+6.1 Sampling
+Sampling refers to digitizing the continuous spatial domain into discrete grid points.
+Let f(x,y) be a continuous image. Sampling at intervals ∆x,∆y gives:
+f[m,n] = f(m∆x,n∆y)
+Nyquist Rate: To avoid aliasing, sampling frequency must be at least twice the highest
+frequency present in the image.
+f ≥ 2f
+s max
+6.2 Quantization
+Quantization is the process of mapping continuous intensity values to discrete levels.
+(cid:22) (cid:23)
+f(x,y)
+Q(f) =
+∆
+where ∆ is the quantization step size.
+Example: An 8-bit image uses 256 gray levels: {0,1,...,255}
+Quantization Error: Difference between the original and quantized value:
+e(x,y) = f(x,y)−Q(f(x,y))
+6.3 Resolution
+• Spatial Resolution: Number of pixels per unit area
+• Gray-Level Resolution: Number of distinct intensity values (e.g., 256 levels for
+8-bit)
+Memory Example: For a color image with size 640×480, 3 channels, 8-bit:
+640×480×3 = 921,600 bytes ≈ 900 KB
+7 Color Spaces and Models
+Color images contain 3 components. The most common representation is RGB.
+7.1 RGB (Red-Green-Blue)
+Each pixel is represented as:
+Pixel(x,y) = [R(x,y),G(x,y),B(x,y)]
+Common in displays and cameras.
+7.2 Grayscale Conversion
+Convert RGB to grayscale using a weighted sum:
+I(x,y) = 0.299R+0.587G+0.114B
+7.3 HSV (Hue-Saturation-Value)
+More intuitive for humans:
+• Hue: Color type (angle on color wheel)
+• Saturation: Intensity or purity of color
+• Value: Brightness
+Useful for color-based segmentation.
+7.4 YUV and YCbCr
+Used in video compression (e.g., MPEG, JPEG):
+• Y: Luma (brightness)
+• U,V: Chrominance (color information)
+Advantage: Allows subsampling of chroma channels for compression.
+7.5 CIE Color Models
+CIE XYZ and CIE Lab are perceptually uniform color models used in color calibration.
+7.6 Applications in AI & ML
+• CNNs expect normalized RGB or grayscale images
+• HSV is used in skin detection and object tracking
+• Quantization and sampling affect model robustness
+• Data augmentation pipelines simulate variations in sampling and color
+Understanding image formation, sampling, and color spaces is critical for developing
+vision systems. These operations define the nature and quality of the data that modern
+deep learning models rely on. Errors in acquisition or quantization can lead to significant
+downstream model failures or hallucinations.
+8 Fundamentals of Image Processing
+Image enhancement techniques improve the appearance or interpretability of an image. In
+this concept, we focus on point operations, which modify the intensity of each pixel inde-
+pendently, and histogram processing, which helps in global contrast enhancement.
+9 Point Operations
+Point operations work on individual pixel values without considering their neighbors.
+9.1 Brightness Adjustment
+Let f(x,y) be the input image and g(x,y) be the output image. Brightness adjustment is
+given by:
+g(x,y) = f(x,y)+β (4)
+• β > 0: increases brightness
+• β < 0: decreases brightness
+Pixel values must be clipped to remain in the valid range (e.g., 0 to 255 for 8-bit images).
+9.2 Contrast Adjustment
+Contrast is adjusted by scaling the dynamic range:
+g(x,y) = α·f(x,y) (5)
+• α > 1: higher contrast
+• 0 < α < 1: lower contrast
+Combining both:
+g(x,y) = α·f(x,y)+β (6)
+Example:
+α = 1.2, β = 30 ⇒ brighter and more contrasted image
+9.3 Negative Transformation
+To obtain the image negative:
+g(x,y) = L−1−f(x,y) (7)
+Where L is the number of gray levels (e.g., L = 256 for 8-bit).
+9.4 Logarithmic and Power-Law (Gamma) Transformations
+These are nonlinear mappings used to enhance dark or bright regions.
+Log Transformation:
+g(x,y) = c·log(1+f(x,y)) (8)
+Power-Law (Gamma) Transformation:
+g(x,y) = c·f(x,y)γ (9)
+• γ < 1: enhances darker regions
+• γ > 1: suppresses brighter regions
+These are used in gamma correction in displays and data normalization in CNNs.
+10 Histogram Processing
+A histogram is a graphical representation of the distribution of pixel intensities in an image.
+10.1 Histogram Definition
+Let r be the kth intensity level and n be the number of pixels with that intensity. Then
+k k
+the histogram is:
+h(r ) = n (10)
+k k
+The normalized histogram is:
+n
+k
+p(r ) = (11)
+k
+MN
+where M ×N is the image size.
+10.2 Histogram Equalization
+Histogram equalization aims to flatten the histogram and enhance contrast.
+Transformation Function: Let the cumulative distribution function (CDF) be:
+k
+(cid:88)
+s = T(r ) = p(r ) (12)
+k k j
+j=0
+Then the new intensity value is:
+g(x,y) = (L−1)·s (13)
+k
+where L is the number of gray levels (e.g., 256).
+Effect: - Enhances global contrast - Especially useful when the image has narrow dynamic
+range
+10.3 Histogram Matching (Specification)
+Used when a desired histogram shape is known.
+Let s = T(r) and z = G−1(s), where G is the desired histogram CDF. Then the trans-
+formation becomes:
+z = G−1(T(r)) (14)
+10.4 Local Histogram Equalization
+Instead of applying histogram equalization globally, it can be done on small neighborhoods
+to enhance local contrast. Used in adaptive enhancement and CLAHE (Contrast Limited
+Adaptive Histogram Equalization).
+10.5 Applications in AI & ML
+• Brightness/contrast normalization improves model generalization.
+• Histogram equalization is used in preprocessing pipelines to enhance low-light images.
+• Gamma correction aligns pixel distributions for neural network input layers.
+• CLAHE is often used in medical image preprocessing.
+Point operations such as brightness and contrast adjustment are simple but powerful
+techniquesinimagepreprocessing. Histogram-basedmethodsprovideglobalorlocalcontrast
+enhancement and are essential in preparing images for feature extraction, segmentation, and
+machine learning tasks.
+11 Spatial filtering techniques, Fourier Transform and
+Frequency Domain Processing
+Image filtering is essential for noise removal, edge detection, and feature extraction. Filters
+may operate in either the spatial domain or the frequency domain. This concept,
+it explains spatial filtering, the Discrete Fourier Transform (DFT), and frequency-based
+filtering, culminating in basic concepts of image restoration.
+12 Spatial Filtering Techniques
+In the spatial domain, filtering is applied directly to pixel values using a filter mask (kernel)
+in a process called convolution.
+12.1 Linear Spatial Filtering
+A linear spatial filter is applied as:
+a b
+(cid:88) (cid:88)
+g(x,y) = w(s,t)·f(x+s,y +t) (15)
+s=−at=−b
+where:
+• f(x,y): input image
+• w(s,t): filter mask of size m×n
+• g(x,y): output (filtered) image
+12.2 Smoothing (Low-Pass) Filters
+Used to reduce noise or blur images.
+Mean Filter (Box Filter):
+w(s,t) = (equal weights)
+mn
+Gaussian Filter:
+1 (cid:18) x2 +y2(cid:19)
+G(x,y) = exp −
+2πσ2 2σ2
+12.3 Sharpening (High-Pass) Filters
+Used to enhance edges and fine details.
+Laplacian Filter (second-order derivative):
+∂2f ∂2f
+∇2f = + (16)
+∂x2 ∂y2
+Discrete approximation:
+   
+0 −1 0 −1 −1 −1
+−1 4 −1 or −1 8 −1
+0 −1 0 −1 −1 −1
+Gradient Operators: Sobel operators approximate the first derivative:
+   
+−1 0 1 −1 −2 −1
+G x = −2 0 2, G y =  0 0 0 
+−1 0 1 1 2 1
+Edge magnitude:
+(cid:113)
+|∇f| = G2 +G2
+x y
+13 Fourier Transform and Frequency Domain
+13.1 2D Discrete Fourier Transform (DFT)
+The DFT transforms a spatial image into its frequency components:
+M−1N−1
+F(u,v) =
+(cid:88) (cid:88) f(x,y)·e−j2π(u Mx+v Ny)
+(17)
+x=0 y=0
+The inverse DFT is given by:
+M−1N−1
+f(x,y) =
+1 (cid:88) (cid:88) F(u,v)·ej2π(u Mx+v Ny)
+(18)
+MN
+u=0 v=0
+13.2 Properties of the DFT
+• Linearity
+• Shift and Modulation
+• Convolution Theorem:
+f(x,y)∗h(x,y) ↔ F(u,v)·H(u,v)
+• Symmetry for real-valued images
+13.3 Filtering in Frequency Domain
+Filtering is performed by multiplying the image’s DFT with a filter function:
+G(u,v) = H(u,v)·F(u,v) ⇒ g(x,y) = IDFT{G(u,v)}
+Common Filters:
+• Ideal Low-Pass Filter (ILPF):
+(cid:40)
+1, D(u,v) ≤ D
+H(u,v) =
+0, otherwise
+• Butterworth Low-Pass Filter:
+H(u,v) =
+(cid:16) (cid:17)2n
+1+ D(u,v)
+D0
+• Gaussian Low-Pass Filter:
+(cid:18) D2(u,v)(cid:19)
+H(u,v) = exp −
+2D2
+Where:
+(cid:112)
+D(u,v) = (u−M/2)2 +(v −N/2)2
+14 Image Restoration Concept
+Image restoration is the process of recovering an original image from a degraded version
+using mathematical models of the degradation.
+14.1 Degradation Model
+g(x,y) = h(x,y)∗f(x,y)+η(x,y)
+Where:
+• g(x,y): degraded image
+• f(x,y): original image
+• h(x,y): degradation function (e.g., blur kernel)
+• η(x,y): noise
+14.2 Inverse Filtering
+Assuming no noise:
+G(u,v)
+F(u,v) =
+H(u,v)
+14.3 Wiener Filtering (with noise consideration)
+H∗(u,v)
+F(u,v) = ·G(u,v)
+|H(u,v)|2 + Sη(u,v)
+S (u,v)
+f
+Where:
+• H∗: complex conjugate
+• S ,S : power spectra of noise and image
+η f
+14.4 Applications in AI & ML
+• Edge-preserving filters improve feature maps in CNNs.
+• Frequency filters are used in adversarial defense.
+• Fourier-based layers appear in FNet and frequency transformers.
+• Restoration filters are used in satellite and medical imaging.
+Spatial and frequency domain filtering are two fundamental paradigms in image pro-
+cessing. While spatial filters are intuitive and localized, frequency methods enable global
+filtering and restoration. Understanding both is essential for building robust computer vision
+systems and preprocessing data for AI/ML tasks.
+References
+[1] Gonzalez, R. C., & Woods, R. E. (2008). Digital Image Processing (3rd ed.). Pearson
+Prentice Hall, Stony Brook University.
+[2] Szeliski, R. (2010). Computer Vision: Algorithms and Applications. Springer.
+Topic Area Textbook Chapter Pages Key Concepts / Equations
+Definitions, scope, history Gonzalez & Ch. 1 pp. 1–29 Digital image model, pixel, stor-
+Woods age: Storage = MNB
+Vision applications Szeliski Ch. 1 pp. 3–20 Low/Mid/High-level CV tasks,
+(overview) application areas in CV and AI
+Image acquisition methods Szeliski Ch. 2 pp. 23–31 Pinhole camera model, perspec-
+tive projection, sensor types
+Sampling and quantization Gonzalez & Ch. 2 pp. 30–57 Sampling: f[m,n], Quantiza-
+(cid:106) (cid:107)
+Woods tion: Q(f) = f , Nyquist rate
+∆
+Color spaces and models Gonzalez & Ch. 6 pp. 394–417 RGB, HSV, YCbCr, CIE Lab,
+Woods Grayscale: I = 0.299R +
+0.587G+0.114B
+Point operations (bright- Gonzalez & Ch. 3 pp. 85–103 Brightness/contrast: g = αf+β,
+ness, contrast) Woods Log/Gamma transforms
+Histogram processing Gonzalez & Ch. 3 pp. 104–112 Histogram equalization: s =
+k
+(cid:80)
+Woods p(r ), Histogram matching
+j
+Spatial filtering techniques Gonzalez & Ch. 3 pp. 145–173 Smoothing (mean, Gaussian),
+Woods Sharpening (Sobel, Laplacian),
+convolution
+DFT and frequency do- Gonzalez & Ch. 4 pp. 191–236 2D DFT: F(u,v), filtering: LPF,
+main filtering Woods HPF, Ideal, Butterworth, Gaus-
+sian
+Image restoration (inverse, Gonzalez & Ch. 5 pp. 253–275 Degradation: g = f ∗h+η, In-
+Wiener filters) Woods verse and Wiener filtering
+Frequencydomainprocess- Szeliski Ch. 3 pp. 68–74 Fourier intuition in CV, fre-
+ing quency analysis in CNNs
+Table 1: Reference Summary with Page Numbers for Unit-1 Topics

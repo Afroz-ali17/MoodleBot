@@ -1,0 +1,391 @@
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+UNIT-V
+DICTIONARIES
+Objective:
+To familiarize concepts of dictionaries in Python programming.
+Outcome:
+Apply dictionaries in developing Python programs.
+Syllabus:
+Dictionaries-creating a Dictionary, adding an item, deleting items, sorting
+items, looping over a dictionary, basic dictionary operations, built in functions.
+Lab Programs:
+1. Write a program to count number of characters in the string and store them in
+dictionary.
+2. Write a program to sort keys of Dictionary.
+3. Write a program that prints maximum and minimum value in a dictionary.
+Learning Outcomes:
+At the end of the unit student will be able to
+1. Understand creating, accessing elements in dictionaries.
+2. Describe updating and deleting elements in dictionaries.
+3. Discuss various dictionaries operations.
+4. Implement programs using dictionaries.
+Learning Material:
+
+Dictionary:
+o It is a data structure in which we store values as a pair of key and value.
+o Each key is separated from its value by a colon (:), and consecutive items
+are separated by commas.
+o The entire items in a dictionary are enclosed in curly brackets ({}).
+Syntax:
+dictionary_name = {key_1: value_1, key_2: value_2, key_3: value_3}
+If there are many keys and values in dictionaries, then we can also
+write just one key-value pair on a line to make the code easier to read and
+understand. This is shown below.
+dictionary_name = {key_1: value_1, key_2: value_2, key_3: value_3 ,
+….}
+o Keys in the dictionary must be unique and be of any immutable data
+type (like Strings, numbers, or tuples), there is no strict requirement for
+uniqueness and type of values.
+o Values of a key can be of any type.
+o Dictionaries are not Sequences, rather they are mappings.
+o Mappings are collections of objects that are store objects by key instead
+of by relative position.
+Creating a Dictionary:
+o The Syntax to create an empty dictionary can be given as:
+Dictionary_variable= { }
+o The Syntax to create a dictionary with key-value pair is:
+Department Of Information Technology AY: 2018-19 GEC Page 2
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Dictionary_variable= {key1:val1, key2:val2……}
+o A dictionary can be also created by specifying key-value pairs separated
+by a colon in curly brackets as shown below.
+o Note that one key value pair is separated from the other using a comma.
+Example:
+d= {'roll_no':'18/001','Name:':'Arav','Course':'B.tech'}
+print(d)
+Output: {'Name:': 'Arav', 'Course': 'B.tech', 'roll_no': '18/001'}
+Accessing Values:
+
+In Dictionary, through key accessing values,
+
+Example:
+d={'Name': 'Arav', 'Course': 'B.tech', 'roll_no': '18/001'}
+print('d[Name]:',d['Name'])
+print('d[course]:',d['Course'])
+print('d[roll_no]:',d['roll_no'])
+output:
+d[Name]: Arav
+d[course]: B.tech
+d[roll_no]: 18/001
+
+Adding and Modifying an Item in a Dictionary:
+
+To add a new entry or a key-value pair in a dictionary, just specify the key-
+value pair as you had done for the existing pairs.
+Syntax: dictionary_ variable[key ]= val
+Example:
+1. Program to add a new item in the dictionary
+d={'Name': 'Arav', 'Course': 'B.tech', 'roll_no': '18/001'}
+d['marks']=99 #new entry
+print('d[Name]:',d['Name'])
+print('d[course]:',d['Course'])
+print('d[roll_no]:',d['roll_no'])
+print('d[marks]:',d['marks'])
+Output:
+d[Name]: Arav
+d[course]: B.tech
+d[roll_no]: 18/001
+d[marks]: 99
+Modifying an Entry:
+
+To modify an entry, just overwrite the existing value as shown in the following
+example:
+Department Of Information Technology AY: 2018-19 GEC Page 3
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+1. program to modify an item in the dictionary
+d={'Name': 'Arav', 'Course': 'B.tech', 'roll_no': '18/001'}
+d['marks']=99 #new entry
+print('d[Name]:',d['Name'])
+print('d[course]:',d['Course'])
+print('d[roll_no]:',d['roll_no'])
+print('d[marks]:',d['marks'])
+d[‘Course’]=’BCA’ #Updated entry
+print('d[course]:',d['Course'])
+Output:
+d[Name]: Arav
+d[course]: B.tech
+d[roll_no]: 18/001
+d[marks]: 99
+d[course]: BCA
+
+Deleting Items :
+
+You can delete one or more items using the del keyword.
+
+To delete or remove all the items in just one statement, use the clear ()
+function.
+
+Finally, to remove an entire dictionary from the memory, we can gain use
+the del statement as del Dict_name.
+
+The syntax to use the del statement can be given as,
+del dictionary_variable[key]
+Example:
+1. Program to demonstrate the use of del statement and clear() function
+Department Of Information Technology AY: 2018-19 GEC Page 4
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+Keys must have unique values.
+
+Not even a single key can be duplicated in a dictionary. If you try to add a
+duplicate key, then the last assignment is retained.
+
+In a dictionary, keys should be strictly of a type that is immutable. This means
+that a key can be of strings, numbers, or tuple type but it cannot be a list
+which is mutable.
+
+In case you try to make your key of mutable type, then a Type error will be
+granted.
+
+Tuples can be used as keys only if they contain immutable objects like strings,
+numbers, or other tuples.
+
+If a tuple used as key contains any mutable object either directly or indirectly,
+then an error is generated.
+
+The in keyword can be used to check whether a single key is present in the
+dictionary.
+
+Sorting Items in a Dictionary:
+
+The keys() method of dictionary returns a list of all the keys used in the
+dictionary in a arbitrary order.
+
+The sorted() function is used to sort the keys as shown below:
+Example:
+1. Program to sort keys of a dictionary
+d={'roll_no':653,'name':'python','course':'b.tech'}
+print(sorted(d.keys()))
+output:
+['course', 'name', 'roll_no']
+
+Looping Over a Dictionary:
+You can loop over a dictionary to access only values, only keys,and both
+using the for loop as shown the code given below:
+1. Program to access
+d={'roll_no':653,'name':'python','course':'b.tech'}
+print("KEYS:",end=' ')
+for key in d:
+print(key,end=' ')
+print("\n VALUES:",end=' ')
+for val in d.values():
+print(val,end=' ')
+Department Of Information Technology AY: 2018-19 GEC Page 5
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+print("\n Dictionary:",end=' ')
+for key,val in d.items():
+print(key,val,end=';')
+output:
+KEYS: course name roll_no
+VALUES: b.tech python 653
+Dictionary: course b.tech;name python;roll_no 653;
+
+Built-in Dictionary Functions and Methods:
+
+Nested Dictionaries :
+Department Of Information Technology AY: 2018-19 GEC Page 6
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Dictionary with in another dictionary is called Nested dictionary.
+Example:
+students={'cse1':{'c':90,'ds':89,'python':98},
+'cse2':{'c':90,'ds':99,'python':98},
+'cse3':{'c':99,'ds':99,'python':98}}
+for key,value in students.items():
+print(key,value)
+Output:
+cse3 {'python': 98, 'c': 99, 'ds': 99}
+cse2 {'python': 98, 'c': 90, 'ds': 99}
+cse1 {'python': 98, 'c': 90, 'ds': 89}
+Difference between a List and a Dictionary:
+
+First, a list is an ordered set of items. But, a dictionary is a data structure that
+is used for matching one item (key) with another (value).
+
+Second, in lists, you can use indexing to access a particular item. But, these
+indexes should be a number. In dictionaries, you can use any type (immutable)
+of value as an index. For example, when we write Dict['Name'], Name acts as
+an index but it is not a number but a string.
+
+Third, lists are used to look up a value whereas a dictionary is used to take
+one value and look up another value. For this reason, dictionary is also known
+as a lookup table.
+Department Of Information Technology AY: 2018-19 GEC Page 7
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+Fourth, the key-value pair may not be displayed in the order in which it was
+specified while defining the dictionary. This is because Python uses complex
+algorithms (called hashing) to provide fast access to the items stored in the
+dictionary. This also makes dictionary preferable to use over a list of tuples.
+
+String Formatting with Dictionaries:
+Python also allows you to use string formatting feature with dictionaries. So
+you can use %s, %d, %f, etc. to represent string, integer, floating point number, or
+any other data.
+Example:
+Program that uses string formatting feature to print the key-value pairs stored
+in the dictionary.
+d={"cse":98,"ece":99,"eee":90}
+for key,value in d.items():
+print("%s branch:%d"%(key,value))
+output:
+ece branch:99
+cse branch:98
+eee branch:90
+Lab Programs:
+5a.Write a program to count the number of characters in the string and store
+them in dictionary
+n=int(input("Enter the number"))
+i=0;
+dict1={}
+while(i<n):
+str1=input("Enter the string")
+length=len(str1)
+dict1[str1]=length
+i=i+1;
+print('Entered dictionary elements are')
+print(dict1)
+Output
+Enter the number2
+Enter the stringhari
+Enter the stringchennai
+Entered dictionary elements are
+{'hari': 4, 'chennai': 7}
+5b.Write a program to sort keys in a Dictionary
+Dict1={'Course':'B.Tech','Rollno':'565','Address':'GDV'}
+Department Of Information Technology AY: 2018-19 GEC Page 8
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+for key in sorted(Dict1):
+print("%s%s"%(key,Dict1[key]))
+Output
+AddressGDV
+CourseB.Tech
+Rollno565
+5c.Write a Program that prints maximum and minimum value in a dictionary
+Dict1={'Course':'B.Tech','Rollno':'565','Address':'GDV'}
+print('Minimum value is ',min(Dict1.values()))
+print('Maximum value is',max(Dict1.values()))
+Output
+>>>
+Minimum value is 565
+Maximum value is GDV
+Assignment-Cum-Tutorial Questions
+SECTION A: Objective Questions
+1) Which of these about a dictionary is false?
+a) The values of a dictionary can be accessed using keys
+b) The keys of a dictionary can be accessed using values
+c) Dictionaries aren’t ordered
+d) Dictionaries are mutable
+2) Which of the following statements create a dictionary?
+a) d = {}
+b) d = {“john”:40, “peter”:45}
+c) d = {40:”john”, 45:”peter”}
+d) All of the mentioned
+3) Which of the following is not a declaration of the dictionary?
+a) {1: ‘A’, 2: ‘B’}
+b) dict ([[1,”A”],[2,”B”]])
+c) {1,”A”,2,”B”}
+d) { }
+4) What is the output of the following code?
+A = {1:"A",2:"B",3:"C"}
+for i,j in a.items():
+print(i,j,end=" ")
+a) 1 A 2 B 3 C b) 1 2 3 c) A B C d) 1:”A” 2:”B” 3:”C”
+5) Which of the following isn’t true about dictionary keys?
+a) More than one key isn’t allowed
+b) Keys must be immutable
+Department Of Information Technology AY: 2018-19 GEC Page 9
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+c) Keys must be integers
+d) When duplicate keys encountered, the last assignment wins
+6) Suppose d = {“john”:40, “peter”:45}, to delete the entry for “john” what
+command do we use
+a) d.delete(“john”:40) b) d.delete(“john”)
+c) del d[“john”]. d) del d(“john”:40)
+7) Suppose d = {“john”:40, “peter”:45}, what happens when we try to retrieve a
+value using the expression d[“susan”]?
+a) Since “susan” is not a value in the dictionary, Python raises a
+KeyError exception
+b) It is executed fine and no exception is raised, and it returns None
+c) Since “susan” is not a key in the dictionary, Python raises a KeyError
+exception
+d) Since “susan” is not a key in the set, Python raises a syntax error
+8) What gets printed?
+foo = {1:'1', 2:'2', 3:'3'}
+del foo[1]
+foo[1] = '10'
+del foo[2]
+print(len(foo))
+a) 1 b) 2 c) 3 d) 4 e) An Exception is thrown
+9) If Dict = {1:2, 3:4, 4:11, 5:6, 7:8}, then print(Dict(Dict[3])) will print ?
+a) 2 b) 8 c) 11 d) 6
+10) Which Data type does not support indexing?
+a) List b) Tuple c) Dictionary d) Set
+11) Which function is used to delete all entries in the dictionary __________?
+12) Which methods will return all the keys and Values in a Dictionary ______?
+13) What are the Data types supported for Key in Dictionary Data type ______?
+14) Fill in the blanks to create a Dictionary.
+Dict = dict(1 ___ “abc” __ 2__”hai”)
+Dict1=__1:”abc”,2:”hai”__
+15) Find the output of the below program?
+D={"India":"Delhi", "Nepal":"Kathmandu", "USA":"DC"}
+del D["Nepal"]
+for key,val in D.items():
+print(key)
+Department Of Information Technology AY: 2018-19 GEC Page 10
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+SECTION B: Subjective Questions
+1) Explain the importance of Dictionary data type in python?(Nov-2018)
+2) List-out various operations can be performed on Dictionary Data type?
+(Nov-2018)
+3) List-out the Built-in functions and methods of Dictionary Data type in python?
+(Nov-2018)
+4) Write a Python program to check if all dictionaries in a list are empty or not.
+(Nov-2018)
+5) How to delete items from a dictionary? Explain with an example.(April-2008)
+6) Write a Python script to sort (ascending and descending) a dictionary by value.
+7) Write a Python script to generate and print a dictionary that contains a number
+(between 1 and n) in the form (x, x*x).
+Sample:
+Dictionary (n = 5):
+Expected Output: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+8) Write a Python script to print a dictionary where the keys are numbers between
+1 and 15 (both included) and the values are square of keys.
+Sample Dictionary:
+{1: 1, 2: 5, 3: 9, 4: 15, 5: 25, 6: 36, 7: 49, 80: 64, 9: 80, 90: 100, 11: 121,
+12: 144, 13: 169, 14: 200, 105: 225}
+9) Write a Python program to map two lists into a dictionary.
+10) Write a python program to check if all dictionaries in a list are empty or not?
+11) Write a Python program to combine two dictionary adding values for common
+keys.
+d1 = {'a': 100, 'b': 200, 'c':300}
+d2 = {'a': 300, 'b': 200,’d’:400}
+Sample output: {'a': 400, 'b': 400,’d’: 400, 'c': 300}
+12) Write a Python program to create and display all combinations of letters,
+selecting each letter from a different key in a dictionary
+Sample data: {'1':['a','b'], '2':['c','d']}
+Expected Output:
+ac
+ad
+bc
+bd
+13) Write a Python program to get the top three items in a shop.
+Sample data: {'item1': 45.50, 'item2':35, 'item3': 41.30, 'item4':55, 'item5':
+24}
+Expected Output:
+item4: 55
+Department Of Information Technology AY: 2018-19 GEC Page 11
+PYTHON PROGRAMMING UNIT-V
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+item1: 45.5
+item3: 41.3
+Department Of Information Technology AY: 2018-19 GEC Page 12

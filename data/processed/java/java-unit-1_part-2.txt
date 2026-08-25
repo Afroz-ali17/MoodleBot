@@ -1,0 +1,611 @@
+Introduction: Data Types in Java
+Data Types in Java
+Data types in Java are divided into 2 categories:
+1.Primitive Data Types
+2.Non-Primitive Data Types
+Introduction, Data Types in Java
+Type Description Size Example Literals Range of values
+boolean true or false 8 bits true, false true, false
+byte twos-complement integer 8 bits (none) -128 to 127
+characters representation of
+‘a’, ‘\u0041’, ‘\101’, ‘\\’, ‘\’,
+char Unicode character 16 bits ASCII values
+‘\n’, ‘β’
+0 to 255
+short twos-complement integer 16 bits (none) -32,768 to 32,767
+-2,147,483,648
+int twos-complement intger 32 bits -2,-1,0,1,2 to
+2,147,483,647
+-9,223,372,036,854,775,808
+long twos-complement integer 64 bits -2L,-1L,0L,1L,2L to
+9,223,372,036,854,775,807
+1.23e100f , -1.23e-100f , .3f
+float IEEE 754 floating point 32 bits upto 7 decimal digits
+,3.14F
+1.23456e300d , -123456e-
+double IEEE 754 floating point 64 bits upto 16 decimal digits
+300d , 1e1d
+1. Boolean Data Type
+Boolean data type represents only one bit of information either true or false which is intended to represent the two truth
+values of logic and Boolean algebra, but the size of the boolean data type is virtual machine-dependent. Values of type
+boolean are not converted implicitly or explicitly (with casts) to any other type. But the programmer can easily write
+conversion code.
+Syntax:
+boolean booleanVar;
+Size: Virtual machine dependent
+2. Byte Data Type
+The byte data type is an 8-bit signed two’s complement integer. The byte data type is useful for saving memory in large
+arrays.
+Syntax:
+byte byteVar;
+Size: 1 byte (8 bits)
+3. Short Data Type
+The short data type is a 16-bit signed two’s complement integer. Similar to byte, use a short to save memory in large
+arrays, in situations where the memory savings actually matters.
+Syntax:
+short shortVar;
+Size: 2 bytes (16 bits)
+4. Integer Data Type
+It is a 32-bit signed two’s complement integer.
+Syntax:
+int intVar;
+Size: 4 bytes ( 32 bits )
+Remember: In Java SE 8 and later, we can use the int data type to represent an unsigned 32-bit integer, which has
+a value in the range [0, 232-1]. Use the Integer class to use the int data type as an unsigned integer.
+5. Long Data Type
+The range of a long is quite large. The long data type is a 64-bit two’s complement integer and is useful for those
+occasions where an int type is not large enough to hold the desired value. The size of the Long Datatype is 8 bytes
+(64 bits).
+Syntax:
+long longVar;
+Remember: In Java SE 8 and later, you can use the long data type to represent an unsigned 64-bit long, which has
+a minimum value of 0 and a maximum value of 264-1.
+6. Float Data Type
+The float data type is a single-precision 32-bit IEEE 754 floating-point. Use a float (instead of double) if you need to
+save memory in large arrays of floating-point numbers. The size of the float data type is 4 bytes (32 bits).
+Syntax:
+float floatVar;
+7. Double Data Type
+The double data type is a double-precision 64-bit IEEE 754 floating-point. For decimal values, this
+data type is generally the default choice. The size of the double data type is 8 bytes or 64 bits.
+Syntax:
+double doubleVar;
+8. Char Data Type
+The char data type is a single 16-bit Unicode character with the size of 2 bytes (16 bits).
+Syntax:
+char charVar;
+// Java Program to Demonstrate Primitive Data
+Type
+class DatatypeExmple
+{
+public static void main(String args[])
+{
+char a = 'G';
+int i = 89;
+byte b = 4;
+short s = 56;
+double d = 4.355453532;
+float f = 4.7333434f;
+long l = 12121;
+System.out.println("char: " + a);
+System.out.println("integer: " + i);
+System.out.println("byte: " + b);
+System.out.println("short: " + s);
+System.out.println("float: " + f);
+System.out.println("double: " + d);
+System.out.println("long: " + l);
+}
+}
+Array
+An array holds elements of the same type. It is an object in Java, and the array
+name (used for declaration) is a reference value that carries the base address of
+the continuous location of elements of an array.
+Example:
+int Array_Name =new int[7];
+Class
+• A class is a user-defined data type from which objects are created.
+• It describes the set of properties or methods common to all objects of the same type.
+• It contains fields and methods that represent the behaviour of an object.
+• A class gets invoked by the creation of the respective object.
+Interface
+An interface is declared like a class.
+The key difference is that the interface contains abstract methods by default; they have
+nobody.
+Example:
+interface printable
+{
+void print();
+}
+class A1 implements printable
+public void print()
+{
+System.out.println("Hello");
+}
+public static void main(String args[]) {
+A1 obj = new A1();
+obj.print();
+}
+}
+String
+• The String data type stores a sequence or array of characters.
+• A string is a non-primitive data type, but it is predefined in Java.
+• String literals are enclosed in double quotes.
+class Main
+{
+public static void main(String args [] )
+{
+// create strings
+String S1 = "Java String Data type";
+// print strings
+System.out.println(S1);
+}
+}
+Enum
+• An enum, similar to a class, has attributes and methods.
+• Unlike classes, enum constants are public, static, and final (unchangeable – cannot be
+overridden).
+• Developers cannot use an enum to create objects, and it cannot extend other classes.
+• But, the enum can implement interfaces.
+//declaration of an enum
+enum Level {
+LOW,
+MEDIUM,
+HIGH
+}
+Java Variables
+A variable is a container which holds the value while the Java program is executed. A variable is assigned with a
+data type.
+Variable is a name of memory location. There are three types of variables in java: local, instance and static.
+Variable
+A variable is the name of a reserved area allocated in memory. In other words, it is a name of the memory location.
+It is a combination of "vary + able" which means its value can be changed.
+variables in java
+int data=50;//Here data is variable
+Types of Variables
+There are three types of variables in Java:
+ local variable
+ instance variable
+ static variable
+1) Local Variable
+A variable declared inside the body of the method is called
+local variable. You can use this variable only within that
+method and the other methods in the class aren't even
+aware that the variable exists.
+A local variable cannot be defined with "static" keyword.
+2) Instance Variable
+A variable declared inside the class but outside the body of
+the method, is called an instance variable. It is not declared
+as static.
+It is called an instance variable because its value is
+instance-specific and is not shared among instances.
+3) Static variable
+A variable that is declared as static is called a static variable.
+It cannot be local. You can create a single copy of the static
+variable and share it among all the instances of the class.
+Memory allocation for static variables happens only once
+when the class is loaded in the memory.
+Example to understand the types of
+variables in java
+Example of instance variables
+public class A
+{
+public class Simple
+static int m=100;//static variable
+{
+public static void main(String[] args)
+void method()
+{
+{
+int a=10;
+int n=90;//local variable
+int b=10;
+}
+int c=a+b;
+System.out.println(c);
+}
+public static void main(String args[])
+}
+{
+int data=50;//instance variable
+}
+}//end of class
+The Scope of Variables in Java
+Each variable has a scope that specifies how long it will be seen and used in a programme. Java code
+must be efficient and error-free, which requires an understanding of variable scope.
+There are four scopes for variables in Java: local, instance, class, and method parameters.
+Examining each of these scopes in more detail will be helpful.
+Local Variables:
+• Local variables are those that are declared inside of a method, constructor, or code block.
+Only the precise block in which they are defined is accessible.
+• The local variable exits the block's scope after it has been used, and its memory is freed.
+• Temporary data is stored in local variables, which are frequently initialised in the block
+where they are declared.
+• The Java compiler throws an error if a local variable is not initialised before being used.
+• The range of local variables is the smallest of all the different variable types.
+Example:
+public SumExample
+{
+public static void main(String args[])
+{
+public void calculateSum()
+{
+int a = 5; // local variable
+int b = 10; // local variable
+int sum = a + b;
+System.out.println("The sum is: " + sum);
+} // a, b, and sum go out of scope here
+}
+}
+Output:
+The sum is: 15
+Instance Variables:
+ Within a class, but outside of any methods, constructors, or blocks, instance
+variables are declared.
+ They are accessible to all methods and blocks in the class and are a part of an
+instance of the class.
+ If an instance variable is not explicitly initialised, its default values are false for
+boolean types, null for object references, and 0 for numeric kinds.
+ Until the class instance is destroyed, these variables' values are retained.
+Example:
+public class Circle
+{
+public static void main(String args[])
+{
+double radius; // instance variable
+public double calculateArea()
+{
+return Math.PI * radius * radius;
+}
+}
+}
+Class Variables (Static Variables):
+In a class but outside of any method, constructor, or block, the static keyword is used to
+declare class variables, also referred to as static variables.
+They relate to the class as a whole, not to any particular instance of the class.
+Class variables can be accessed by using the class name and are shared by all instances of
+the class. Like instance variables, they have default values, and they keep those values
+until the programme ends.
+Example:
+public class Bank {
+static double interestRate; // class variable
+// ...
+}
+Type Casting in Java
+In Java, type casting is a method or process that converts a data type into another data type in
+both ways manually and automatically.
+The automatic conversion is done by the compiler and manual conversion performed by the
+programmer.
+Type casting
+Convert a value from one data type to another data type is known as type casting.
+Types of Type Casting
+There are two types of type casting:
+ 1)Widening Type Casting 2)Narrowing Type Casting
+Widening Type Casting
+Converting a lower data type into a higher one is called widening type casting. It is also known
+as implicit conversion or casting down. It is done automatically. It is safe because there is no
+chance to lose data. It takes place when:
+•Both data types must be compatible with each other.
+•The target type must be larger than the source type.
+AD
+byte -> short -> char -> int -> long -> float -> double
+public class WideningTypeCastingExample
+{
+public static void main(String[] args)
+{
+int x = 7;
+//automatically converts the integer type into long type
+long y = x;
+//automatically converts the long type into float type
+float z = y;
+System.out.println("Before conversion, int value "+x);
+System.out.println("After conversion, long value "+y);
+System.out.println("After conversion, float value "+z);
+}
+}
+Output
+Before conversion, the value is: 7 After conversion, the long value is:
+7 After conversion, the float value is: 7.0
+Narrowing Type Casting
+ Converting a higher data type into a lower one is called narrowing type
+casting.
+ It is also known as explicit conversion or casting up.
+ It is done manually by the programmer.
+ If we do not perform casting then the compiler reports a compile-time error.
+double -> float -> long -> int -> char -> short -> byte
+public class NarrowingTypeCastingExample
+{
+public static void main(String args[])
+{
+double d = 166.66;
+//converting double data type into long data type
+long l = (long)d;
+//converting long data type into int data type
+int i = (int)l;
+System.out.println("Before conversion: "+d);
+//fractional part lost
+System.out.println("After conversion into long type: "+l);
+//fractional part lost
+System.out.println("After conversion into int type: "+i);
+}
+}
+Output:
+Before conversion: 166.66
+After conversion into long type: 166
+After conversion into int type: 166
+Java Variable Example: Widening Java Variable Example: Overflow
+public class Simple{ class Simple{
+public static void main(String[] args){ public static void main(String[] args){
+int a=10; //Overflow
+float f=a; int a=130;
+System.out.println(a); byte b=(byte)a;
+System.out.println(f); System.out.println(a);
+}} System.out.println(b);
+Output: }}
+10 Output:
+10.0 130
+-126
+Java Variable Example: Narrowing (Typecasting) Java Variable Example: Adding Lower Type
+public class Simple{ class Simple
+public static void main(String[] args){ {
+float f=10.5f; public static void main(String[] args){
+//int a=f;//Compile time error byte a=10;
+int a=(int)f; byte b=10;
+System.out.println(f); //byte c=a+b;//Compile Time Error: because a+b=20 will be int
+System.out.println(a); byte c=(byte)(a+b);
+}} System.out.println(c);
+Output: }}
+10.5 Output:
+10 20
+Literal Constants, Symbolic Constants
+Literals in Java
+Literal: Any constant value which can be assigned to the variable is called literal/constant.
+In simple words, Literals in Java is a synthetic representation of boolean, numeric, character, or string data.
+// Here 100 is a constant/literal.
+int x = 100;
+Types of Literals in Java
+There are the majorly four types of literals in Java:
+Integer Literal
+Character Literal
+Boolean Literal
+String Literal
+Integral literals
+For Integral data types (byte, short, int, long), we can specify literals in 4 ways:-
+Decimal literals (Base 10): In this form, the allowed digits are 0-9.
+int x = 101;
+Octal literals (Base 8): In this form, the allowed digits are 0-7.
+// The octal number should be prefix with 0.
+int x = 0146;
+Hexa-decimal literals (Base 16): In this form, the allowed digits are 0-9, and characters are a-f.
+// The hexa-decimal number should be prefix with 0X or 0x.
+int x = 0X123Face;
+Integer Literals
+Integer literals are sequences of digits. There are three types of integer literals:
+Decimal Integer: These are the set of numbers that consist of digits from 0 to 9. It may have a positive (+) or negative (-)
+Note that between numbers commas and non-digit characters are not permitted. For example, 5678, +657, -89, etc.
+int decVal = 26;
+Octal Integer: It is a combination of number have digits from 0 to 7 with a leading 0. For example, 045, 026,
+int octVal = 067;
+Hexa-Decimal: The sequence of digits preceded by 0x or 0X is considered as hexadecimal integers. It may also include a
+character from a to f or A to F that represents numbers from 10 to 15, respectively. For example, 0xd, 0xf,
+int hexVal = 0x1a;
+Binary Integer: Base 2, whose digits consists of the numbers 0 and 1 (you can create binary literals in Java SE 7 and
+later). Prefix 0b represents the Binary system. For example, 0b11010.
+int binVal = 0b11010;
+Real Literals
+The numbers that contain fractional parts are known as real literals. We can also represent real literals in exponent
+form. For example, 879.90, 99E-3, etc.
+Character Literals
+A character literal is expressed as a character or an escape sequence, enclosed in a single quote ('') mark. It
+is always a type of char. For example, 'a', '%', '\u000d', etc.
+String Literals
+String literal is a sequence of characters that is enclosed between double quotes ("") marks. It may be
+alphabet, numbers, special characters, blank space, etc. For example, "Jack", "12345", "\n", etc.
+Floating Point Literals
+The vales that contain decimal are floating literals. In Java, float and double primitive types fall into
+floating-point literals. Keep in mind while dealing with floating-point literals.
+Floating-point literals for float type end with F or f. For example, 6f, 8.354F, etc. It is a 32-bit float literal.
+Floating-point literals for double type end with D or d. It is optional to write D or d. For example, 6d,
+8.354D, etc. It is a 64-bit double literal.
+It can also be represented in the form of the exponent.
+Floating:
+float length = 155.4f;
+Decimal:
+double interest = 99658.445;
+Decimal in Exponent form:
+double val= 1.234e2;
+Boolean Literals Class Literals
+Boolean literals are the value that is Class literal formed by taking a
+either true or false. It may also have type name and appending .class
+values 0 and 1. For example, true, 0, etc. extension. For example,
+boolean isEven = true; Scanner.class.
+Null Literals It refers to the object (of type
+Null literal is often used in programs as a Class) that represents the type
+marker to indicate that reference type itself.
+object is unavailable. The value null may class classType = Scanner.class;
+be assigned to any variable, except
+Invalid Literals
+variables of primitive types.
+There is some invalid declaration of literals.
+String stuName = null;
+float g = 6_.674f;
+Student age = null;
+float g = 6._674F;
+long phoneNumber = 99_00_99_00_99_L;
+int x = 77_;
+int y = 0_x76;
+int z = 0X_12;
+int z = 0X12_;
+Symbolic Constants
+In Java, a symbolic constant is a named constant value defined once and used throughout
+a program. Symbolic constants are declared using the final keyword.
+Which indicates that the value cannot be changed once it is initialized.
+The naming convention for symbolic constants is to use all capital letters with
+underscores separating words.
+Syntax of Symbolic Constants
+final data_type CONSTANT_NAME = value;
+final: The final keyword indicates that the value of the constant cannot be changed once it is initialized.
+data_type: The data type of the constant such as int, double, boolean, or String.
+CONSTANT_NAME: The name of the constant which should be written in all capital letters with underscores
+separating words.
+value: The initial value of the constant must be of the same data type as the constant.
+Initializing a symbolic constant:
+final double PI = 3.14159;
+// Java Program to print an Array
+import java.io.*;
+public class Example {
+public static final int MAX_SIZE = 10;
+public static void main(String[] args)
+{
+int[] array = new int[MAX_SIZE];
+for (int i = 0; i < MAX_SIZE; i++) {
+array[i] = i * 2;
+}
+System.out.print("Array: ");
+for (int i = 0; i < MAX_SIZE; i++) {
+System.out.print(array[i] + " ");
+}
+System.out.println();
+}
+}
+Output
+Array: 0 2 4 6 8 10 12 14 16 18
+Formatted Output with printf() Method
+At times we want the output of a program to be printed in a given specific format. In the C
+programming language this is possible using the printf( ) function.
+There are two methods that can be used to format the output in Java:
+•Using the printf( ) Method
+•Using the format( ) Method
+Formatting output using System.out.printf( ) Method
+public class FormattedOutput1 Output:
+{
+public static void main( String args[ ] ) Printing the String value : RGM ENGINEERING COLLEGE
+{ Printing the integer value : x = 512
+// printing the string value on the console Printing the decimal value : 5.254124
+String str = " RGM ENGINEERING COLLEGE " ; Formatting the output to specific width : n = 5.2541
+System.out.printf( " \n Printing the String value : %s \n ", str ) ; Formatted the output with precision : PI = 5.25
+Formatted to right margin : n = 5.2541
+// printing the integer value on the console
+int x = 512 ;
+System.out.printf( " \n Printing the integer value : x = %d \n ", x ) ;
+// printing the decimal value on the console
+float f = 5.25412368f ;
+System.out.printf( " \n Printing the decimal value : %f \n ", f ) ;
+// this formatting is used to specify the width un to which the digits can extend
+System.out.printf( " \n Formatting the output to specific width : n = %.4f \n ", f ) ;
+// this formatting will print it up to 2 decimal places
+System.out.printf( " \n Formatted the output with precision : PI = %.2f \n ", f ) ;
+// here number is formatted from right margin and occupies a width of 20 characters
+System.out.printf( " \n Formatted to right margin : n = %20.4f \n ", f ) ;
+}
+}
+Java Format Specifiers Output:
+import java.text.DecimalFormat ;
+public class FormattedOutput2
+The number is : 123.456700
+{
+Without fraction part the number is : 123
+public static void main( String args[ ] )
+Formatted number with the specified precision is = 123.46
+{
+Appending the zeroes to the right of the number =
+double x = 123.4567 ;
+123.456700
+System.out.printf( " \n The number is : %f \n ", x ) ;
+Appending the zeroes to the left of the number = 00123.46
+// printing only the numeric part of the floating number
+Your Formatted Income in Dollars : $550,000.79
+DecimalFormat ft = new DecimalFormat( " #### " ) ;
+System.out.println( " \n Without fraction part the number is : " + ft.format( x ) ) ;
+// printing the number only upto 2 decimal places
+ft = new DecimalFormat( " #.## " ) ;
+System.out.println( " \n Formatted number with the specified precision is = " + ft.format( x ) ) ;
+ft = new DecimalFormat( " #.000000 " ) ;
+System.out.println( " \n Appending the zeroes to the right of the number = " + ft.format( x ) ) ;
+// automatically appends zero to the leftmost of decimal number instead of #, we use digit 0
+ft = new DecimalFormat( " 00000.00 " ) ;
+System.out.println( " \n Appending the zeroes to the left of the number = "+ ft.format( x ) ) ;
+// formatting money in dollars
+double income = 550000.789 ;
+ft = new DecimalFormat( " $###,###.## " ) ;
+System.out.println( " \n Your Formatted Income in Dollars : " + ft.format( income ) ) ;
+}
+}
+Static Variables and Methods
+// Java program to demonstrate execution of static blocks and
+variables
+When a variable is declared as
+static, then a single copy of the variable is created
+class Test {
+and shared among all objects at the class level.
+// static variable
+Static variables are, essentially, global variables.
+static int a = m1();
+All instances of the class share the same static
+// static block
+variable.
+static
+{
+Important points for static variables:
+System.out.println(&quot;Inside static block&quot;);
+•We can create static variables at class-level only.
+}
+See here
+// static method
+•static block and static variables are executed in
+static int m1()
+order they are present in a program.
+{
+•Static variable can call by directly with the help of
+System.out.println(&quot;from m1&quot;);
+class only, we do not need to create object for the
+return 20;
+class in this.
+}
+// static method(main !!)
+Output
+public static void main(String[] args)
+from m1
+{
+Inside static block
+System.out.println(&quot;Value of a : &quot; + a);
+Value of a : 20
+System.out.println(&quot;from main&quot;);
+from main
+}
+}
+FINAL KEYWORD IN JAVA
+The final method in Java is used as a non-access modifier applicable only to a variable, a method, or a
+class. It is used to restrict a user in Java.
+The following are different contexts where the final is used:
+• Variable
+• Method
+• Class
+Characteristics of final keyword in Java:
+In Java, the final keyword is used to indicate that a variable, method, or class cannot be modified or
+extended.
+Final variables: When a variable is declared as final, its value cannot be changed once it has been
+initialized. This is useful for declaring constants or other values that should not be modified.
+Final methods: When a method is declared as final, it cannot be overridden by a subclass. This is
+useful for methods that are part of a class’s public API and should not be modified by subclasses.
+Final classes: When a class is declared as final, it cannot be extended by a subclass. This is useful for
+classes that are intended to be used as is and should not be modified or extended.
+• Overall, the final keyword is a useful tool for improving code quality and ensuring that certain aspects of a program
+cannot be modified or extended.
+• By declaring variables, methods, and classes as final, developers can write more secure, robust, and maintainable
+code.
+Java Final Variable
+When a variable is declared with the final keyword, its value can’t be changed, essentially, a constant. This also means
+that you must initialize a final variable.
+It is good practice to represent final variables in all uppercase, using underscore to separate words.
+Example:
+public class ConstantExample {
+public static void main(String[] args) {
+// Define a constant variable PI
+final double PI = 3.14159;
+// Print the value of PI
+System.out.println("Value of PI: " + PI);
+}
+}
+Output
+Value of PI: 3.14159
+Output: Value of PI: 3.14159

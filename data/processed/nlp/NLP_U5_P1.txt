@@ -1,0 +1,448 @@
+Survey: Introduction, Problems of Machine Translation, Is MT Possible?, Brief History, Possible Approaches, Current Status. Anusaraka or Language Accessor: Background, Cutting the Gordian Knot, The Problem, Structure of Anusaraka System, User Interface, Linguistic Area, Giving up Agreement in Anusaraka Output, Language Bridges.
+UNIT – V
+Part-A
+Machine Translation
+Introduction Machine Translation Survey
+Machine translation is the process of using artificial intelligence to automatically translate text from one language to another without human involvement.
+Modern machine translation goes beyond simple word-to-word translation to communicate the full meaning of the original language text in the target language.
+It analyzes all text elements and recognizes how the words influence one another.
+Benefits of machine translation
+Human translators use machine translation services to translate faster and more efficiently.
+We give some benefits of machine translation below:
+Automated translation assistance
+Speed and volume
+Large language selection
+Cost-effective translation
+1. Automated translation assistance
+Machine translation provides a good starting point for professional human translators.
+Many translation management systems integrate one or more machine translation models into their workflow.
+They have settings to run translations automatically, then send them to human translators for post-editing.
+2. Speed and volume
+Machine translation works very fast, translating millions of words almost instantaneously.
+It can translate large amounts of data, such as real-time chat or large-scale legal cases.
+It can also process documents in a foreign language, search for relevant terms, and remember those terms for future applications.
+3. Large language selection
+Many major machine translation providers offer support for 50-100+ languages.
+Translations also happen simultaneously for multiple languages, which is useful for global product rollouts and documentation updates.
+4. Cost-effective translation
+Machine translation increases productivity and the ability to deliver translations faster, reducing the time to market.
+There is less human involvement in the process as machine translation provides basic but valuable translations, reducing both the cost and time of delivery.
+For example, in high-volume projects, you can integrate machine translation with your content management systems to automatically tag and organize the content before translating it to different languages.
+Problems of Machine Translation
+Machines can understand and translate human speech better than ever before. However, bots from Google to Amazon still struggle to understand your words, handle humor or do anything much beyond give you an approximation of what was originally said.
+When it comes to translating files, machines can do a lot in place of human intervention—but they’re not the ideal solution for translation.
+Machine translation can be quicker and more budget-friendly than using a certified human translation service, but the trade-off is an increase in errors and other problems.
+Problems of Machine Translation
+Here are nine problems of machine translation that will have you thinking twice before employing them
+The accuracy suffers
+You lose context
+You lose time
+They limit file formats
+They can’t think
+You lose money
+It’s not an expert
+It can get wordy
+It’s not creative
+1. The accuracy suffers
+A machine translator doesn’t go back to check its work. There’s no pause-and-repeat function to allow a machine to go over a phrase more than once, then accurately transcribe it.
+Machine translations are most effective when used to get a general idea of a passage or piece of content.
+However, when it comes to word-for-word accuracy from one language to another, a machine won’t deliver a high percentage of accurate translation.
+You need a human touch to review and edit a translation for the best possible level of accuracy.
+2. You lose context
+Machines are very literal. They can’t understand how a mistranslated word or phrase could change the meaning of a passage in different contexts.
+A human eye and ear on your translation can save you from an embarrassing error. A machine will miss nuances or contexts that make a passage accurate and relevant.
+From puns to sarcasm, machines miss those nuances while a human translator can listen to a phrase and understand how to translate it in a way that makes sense culturally in the target language.
+3. You lose time
+You might find a quicker (almost instant) turnaround time on a machine translation, but you’ll likely have to spend valuable time reviewing and correcting errors.
+Consider a quick, yet inaccurate translation plus the additional time you’ll spend fixing it. Now compare that to the time for a certified human translator to translate your piece, check for errors, and guarantee their final work.
+It might take slightly longer to get your final translation, but the accuracy is worth it. If you allow enough time to meet your deadline, human translation always wins.
+4. They limit file formats
+Machine translators are finicky. They might have limits to the types of file formats they can read, which limits your options when choosing an engine to use. There may also be significant limits on file size, narrowing the field even further.
+If you recorded audio or typed your document in an unaccepted format, you’re stuck without a translator. Choosing a human translator often gives you more options to use your file, no matter the format or size.
+While human translators may have preferred file formats, outright file rejection is less likely, and providing what they need means that your project will get done faster.
+5. They can’t think
+Machines can’t think, and they don’t ask questions. They use programming to interpret words and find the closest equivalent in another language for the translation.
+Some languages don’t have an exact equivalent in a different language. Machines either translate to a similar (but inaccurate) word, or you’ll find blatant gaps in the translations.
+When you work with a professional human translator, they understand language barriers. If a word or phrase has no exact translated meaning, they’ll recommend a suitable equivalent translated phrase to maintain the integrity of your document across languages.
+6. You lose money
+“But some machine translations are free!”
+You get what you pay for. Trying to save a buck on a “free” translation service can cost you more money to edit the translation. Whether you do it yourself or pay someone to edit, you’re not getting anything for free.
+Time is valuable. Your staff has better things to do than edit a free machine translation full of errors. It’s a better investment of time and budget dollars to work with a certified human translator from the start.
+7. It’s not an expert
+A machine is not an expert in any language or specific industry jargon. Again, an machine translation service is a program. It’s only as accurate as the person that developed the software and the material that it’s fed.
+Certified translators are experts in their languages, and often, complex industries. Find a translator that specializes in the parent language and the end-result language. You’ll save yourself from potentially offensive or dangerous errors in the final results.
+8. It can get wordy
+Why keep it in five words when you can say it in fifteen words in a different language? If you notice your document is much longer than the original, your machine translator probably added more words than necessary to find a “close enough” translation.
+When paying by the word for a machine translation service, beware of paying for words you don’t need and a confusing document. Concise is always better than convoluted.
+9. It’s not creative
+When translating marketing materials or creatively-driven pieces, a machine translation program regularly gets lost in translation.
+Creative content often uses words in unique contexts. You’ll also find made-up words for creative, dramatic, or humorous effects. Machines won’t catch those subtleties in language or context.
+Is Machine Translation Possible?
+Using a human translator will help to market to multiple audiences with varying languages while taking creative flair into account.
+However, Machine Translation is also possible and is already being used effectively in several areas.
+1. Internal Communication
+For a company operating in different countries across the world, communication can be difficult to manage.
+Language skills vary among employees, and some may not understand the company’s official language.
+Machine Translation helps to lower or eliminate the language barrier in communication.
+Individuals can quickly obtain a translation of the text and understand the core message.
+It can be used to translate presentations, company bulletins, and other communication materials.
+2. External Communication
+Companies use Machine Translation to communicate efficiently with external stakeholders and customers.
+For instance, important documents can be translated into different languages for global partners and customers.
+If an online store operates in many countries, Machine Translation can translate product reviews so that customers can read them in their own language.
+3. Data Analysis
+Some Machine Translation systems can process millions of user-generated comments and deliver highly accurate results in a short time.
+Organizations can translate large volumes of social media content or customer feedback written in multiple languages for analytical purposes.
+With Machine Translation, brands can interact with customers across the world, regardless of language.
+For example, they can:
+Accurately translate customer requests.
+Increase the scale of live chat and automate service emails.
+Improve customer experience without hiring more employees.
+4. Online Customer Service
+5. Legal Research
+Machine Translation is also used in the legal domain for preparing legal documents in different languages.
+It makes large amounts of content available for legal analysis that would otherwise be difficult to process.
+Summary
+Machine Translation is possible and practical in many fields such as communication, data analysis, customer service, and legal research.
+It helps to overcome language barriers and enables global interaction efficiently.
+Brief History
+The idea of using computers to translate human languages automatically first appeared in the early 1950s.
+However, at that time, the complexity of translation was much higher than early estimates made by computer scientists.
+Machine translation required enormous data processing power and storage, which were beyond the capabilities of early computers.
+Cont…
+In the early 2000s, computer software, data, and hardware became capable of performing basic machine translation.
+Early developers used statistical databases of languages to train computers to translate text.
+This required a lot of manual effort and time, since each additional language meant starting the development process all over again.
+Cont…
+Since then, machine translation has greatly improved in speed and accuracy.
+Advancements in computer hardware, large-scale data availability, and machine learning algorithms have made it possible to translate between many languages.
+As a result, several different machine translation strategies — such as rule-based, statistical, neural, and hybrid approaches — have emerged over time.
+Summary
+Machine Translation began in the 1950s.
+Progress was slow due to limited computing power.
+In the 2000s, statistical methods made MT practical.
+Continuous improvements in AI, data, and neural networks have made today’s systems fast and accurate.
+Possible Approaches
+In machine translation, the original text or language is called the source language, and the language into which it is to be translated is called the target language.
+Machine translation works by following a two-step process:
+Decode the meaning of the source language text.
+Encode that meaning into the target language.
+Cont…
+There are several approaches that have been developed to implement this process.
+Rule-Based Machine Translation (RBMT)
+Statistical Machine Translation (SMT)
+Syntax-Based Machine Translation
+Neural Machine Translation (NMT)
+Hybrid Machine Translation
+1. Rule-Based Machine Translation (RBMT)
+In this approach, language experts create built-in linguistic rules and bilingual dictionaries for specific domains or industries.The system uses these rules and dictionaries to perform translation.
+Process:
+The translation software parses the input text and creates a transitional representation of the sentence.
+It then converts this representation into the target language using grammar rules and dictionaries.
+Pros & Cons
+Pros:
+Can be customized for a particular industry or topic.
+Produces predictable and consistent translations.
+Cons:
+Performs poorly when the source text has errors or contains unknown words not present in the dictionary.
+Improving translation quality requires manual updates of the dictionaries and rules.
+2. Statistical Machine Translation (SMT)
+This method does not depend on linguistic rules.
+Instead, it uses machine learning techniques to learn from large collections of human-translated texts (called parallel corpora).
+The system identifies statistical patterns in the data.
+When asked to translate new text, it makes intelligent guesses based on the statistical likelihood that a word or phrase in the source language corresponds to a particular word or phrase in the target language.
+Pros & Cons
+Pros:
+Learns automatically from large datasets.
+Can handle flexible language patterns.
+Cons:
+Requires massive bilingual corpora for each language pair.
+Quality decreases if data is insufficient.
+3. Syntax-Based Machine Translation
+This is a sub-category of Statistical Machine Translation that incorporates grammatical rules (syntax).
+It analyzes sentences using syntactic structures to improve translation accuracy.
+Pros & Cons
+Pros:
+Considers sentence structure, improving grammatical correctness.
+Cons:
+Needs large training data and complex processing.
+4. Neural Machine Translation (NMT)
+Neural Machine Translation uses artificial intelligence and neural networks to learn languages and improve over time.
+It often combines with statistical methods for better performance.
+A neural network is a system of interconnected nodes inspired by the human brain.
+Each node transforms input data slightly until a final translated output is produced.
+Unlike other models, NMT considers the entire sentence as context, rather than translating word by word or phrase by phrase.
+Advantages over other methods
+Produces more fluent and natural translations.
+Can generalize better to unseen sentences.
+Learns continuously with more data.
+5. Hybrid Machine Translation
+Hybrid systems combine two or more translation approaches (for example, rule-based + statistical).Each subsystem contributes to the final translation output.
+Pros & Cons
+Pros:
+Overcomes the weaknesses of a single approach.
+Produces higher-quality and more robust translations.
+Cons:
+More complex to design and maintain.
+Summary
+Current Status of Machine Translation
+Neural Machine Translation (NMT) is now universally accepted as the most accurate, versatile, and fluent approach to machine translation.
+Since its invention in the mid-2010s, NMT has become the most advanced machine translation technology available.
+It performs better than Statistical Machine Translation (SMT) in terms of:
+Fluency – producing smoother, more natural sentences.
+Generalization – adapting to different topics and sentence patterns.
+As a result, Neural Machine Translation is considered the current standard in modern translation systems.
+Factors Affecting Performance
+The performance and quality of a machine translator depend on several factors:
+Machine Translation Engine / Technology
+Language Pair
+Available Training Data
+Type of Text for Translation
+1. Machine Translation Engine / Technology
+The specific model or algorithm used (rule-based, statistical, or neural) greatly influences accuracy.
+2. Language Pair
+Translation quality varies depending on how closely related the two languages are.
+For example, English–French translation is easier than English–Japanese.
+3. Available Training Data
+The amount and quality of bilingual or parallel data used to train the system directly impact performance.
+4. Type of Text for Translation
+Different text domains (technical, literary, conversational, etc.) affect translation difficulty and accuracy.
+Continuous Improvement
+As the software performs more translations for a particular language or domain, it becomes:
+More accurate – through continuous learning from feedback.
+Faster – as the model becomes more optimized.
+Easier to expand – new languages can be added efficiently.
+Summary
+Neural Machine Translation is the most advanced and dominant approach today.
+It provides better fluency, adaptability, and quality than earlier methods.
+Translation accuracy depends on factors such as technology, language pair, training data, and text type.
+With continuous use and learning, NMT systems keep improving over time.
+Anusaraka or Language Accessor
+Anusaaraka is a computer software system which renders text from one Indian language into another language.
+It acts as a kind of machine translation system.
+The output is not always grammatically perfect, but it is comprehensible to the reader.
+It is known as a Language Accessor cum Machine Translation system, which works on the idea of sharing the load between the computer and the user to produce results that are good enough for understanding.
+Cont…
+The system ensures:
+Faithful representation of the source text,
+No loss of information during translation, and
+Graceful degradation in case of failure.
+It provides layered output, allowing access to all stages of translation, making the process transparent to the user.
+Difference from Conventional Machine Translation
+Anusaaraka differs from traditional MT systems in two ways:
+It provides a 100 % faithful layer of output so that a user with little training can access the meaning of the original text accurately.
+The system allows the user to contribute and improve its quality by providing feedback or adding linguistic rules.
+Background
+Anusaaraka combines the Apertium architecture (an open-source MT framework) with a forward-chaining expert system.
+This combination allows the use of both deep parsers and shallow parsers to analyse the source language text.
+It makes use of existing open-source language resources such as parsers, taggers and chunkers, instead of developing everything from scratch.
+The language data and linguistic rules are kept separate from the core program, enabling linguists to modify or experiment easily.
+Cont…
+Users can also act as contributors by adding new Word Sense Disambiguation (WSD) rules for ambiguous words through a web interface.
+The expert system uses forward chaining to infer new language facts from the existing data.
+This helps in solving the complex behaviour of languages during translation.
+The system builds a large electronic knowledge base and converts human linguistic expertise into computer-processable knowledge.
+Challenges
+Anusaaraka faces certain difficulties:
+Requirement of a large parallel corpus for training.
+Error correction is complex.
+Quality improvement beyond a limit is difficult.
+Achieving 100 % correct translation is not possible.
+Language conveys information at several levels—morphological, syntactic, pragmatic and cultural—which are difficult for machines to capture completely.
+Determining the correct sense of a word remains a major challenge.
+Cutting the Gordian Knot
+The Anusaaraka approach is sometimes described as “cutting the Gordian knot.”
+In this context, the “knot” refers to the difficulty of fully automatic high-quality machine translation — a problem that has challenged researchers for decades.
+Traditional machine translation systems aim to produce fully natural, fluent, and accurate translations in the target language automatically.
+However, this goal is extremely complex because natural languages are ambiguous, context-dependent, and culturally rich.
+The Anusaaraka Approach
+Instead of trying to achieve complete automation, Anusaaraka cuts the knot by taking a simpler, practical route:
+The system does not aim to produce a perfect translation.
+Instead, it produces a faithful representation of the source text that the reader can easily understand with minimal training.
+Thus, it shares the load between the computer and the human reader.
+In other words, the machine handles the language transfer, while the human provides the final interpretation of the meaning.
+Essence of the Idea
+By adopting this philosophy, Anusaaraka avoids the unrealistic expectation of perfect machine translation and instead focuses on:
+Faithfulness rather than fluency,
+Transparency rather than perfection, and
+Practical usability rather than theoretical completeness.
+This pragmatic approach — allowing the system to produce a faithful, partially-processed output that humans can finish interpreting.
+Summary
+The “Gordian knot” = the long-standing challenge of perfect automatic translation.
+Anusaaraka “cuts” it by avoiding full automation and instead sharing the work between man and machine.
+Focuses on faithfulness and comprehension rather than grammatical perfection.
+The Problem
+The main problem that Anusaaraka tries to address is the difficulty of fully automatic, high-quality machine translation between natural languages.
+Languages differ not only in their grammar and vocabulary, but also in the way they represent meaning.
+Because of this, there is no direct one-to-one correspondence between sentences of two languages.
+Explanation
+When a text is translated from one language to another, several issues arise:
+Structural Differences
+Lexical Ambiguity
+Idioms and Phrases
+World Knowledge and Pragmatics
+1. Structural Differences
+Each language has its own word order and syntactic rules.
+For example, in English the structure is Subject – Verb – Object (SVO),
+while in many Indian languages it is Subject – Object – Verb (SOV).
+A simple word-by-word substitution therefore produces sentences that are grammatically incorrect or hard to understand.
+2. Lexical Ambiguity
+A single word in one language can have multiple meanings in another.
+Selecting the right meaning requires contextual understanding, which is difficult for a machine.
+3. Idioms and Phrases
+Many expressions have cultural or figurative meanings that cannot be translated literally.
+Machines cannot easily interpret these subtle differences.
+4. World Knowledge and Pragmatics
+Human translators use background knowledge and common sense to interpret text correctly.
+Machines lack this ability, making it hard for them to produce natural and context-appropriate translations.
+Resulting Challenge
+Because of all these issues, developing a fully automatic, perfect machine translation system is extremely difficult.
+The Anusaaraka system attempts to overcome this problem by dividing the translation process between the machine and the human reader —the machine performs the language conversion, while the human provides final interpretation and understanding.
+Summary
+The problem is the inherent complexity of language translation.
+There is no one-to-one mapping between source and target languages.
+Ambiguity, structural differences, idioms, and cultural context make translation difficult.
+Anusaaraka addresses this by sharing the task between human and machine.
+Structure of Anusaraka System
+A source language sentence is first processed by the morphological analyzer (morph).
+It checks each word in the dictionary of indeclinables and returns its grammatical features.
+If a word can be derived from a root and paradigm, morph returns its features; otherwise, it is sent to the sandhi package to split compound words for reanalysis.
+Block Schematic of Anusaraka
+Cont…
+The output of morph goes to the local word grouper, which groups function words with content words using local cues like postpositions or auxiliary verbs.
+This identifies vibhakti of nouns and TAM (tense–aspect–modality) of verbs.
+At present, sentential analysis is not done since it needs large linguistic data.
+Because Indian languages are similar, using vibhakti gives about 80 % correct output with 20 % effort.
+Cont…
+Next, the mapping block uses noun vibhakti, TAM, and bilingual dictionaries to find suitable roots and vibhaktis in the target language, forming local word groups.
+These groups are sent to the local word splitter (LWS) and then to the morphological synthesizer (GEN).
+LWS splits groups into roots and features, and GEN generates final words in the target language.
+User Interface
+The Anusaaraka output is usually not exactly the target language, but it is close to it.
+For example, in the Kannada–Hindi Anusaaraka, the output looks like a dialect of Hindi that lacks grammatical agreements.
+This dialect can be called a kind of Dakshini (southern) Hindi.
+Some additional notations may also appear in the output.
+Therefore, the user requires some training to understand and get used to reading the Anusaaraka output language.
+Different Interfaces for Anusaraka
+Role of the Interface
+The main role of the Anusaaraka interface is to make it easier for the reader to understand the output.
+It should:
+Keep track of what concepts have been introduced to the user, and
+Provide online help whenever the user faces difficulty while reading.
+Types of Interfaces
+Depending on the design and capability, the interface can function as:
+Ordinary User Interface
+Intelligent User Interface
+HAMT (Human-Aided Machine Translation)
+Fully Automatic Machine Translation
+Summary
+The Anusaaraka interface helps users read and interpret the output correctly.
+The output language is a simplified or mixed dialect close to Hindi.
+Users need basic training to understand it.
+The interface can vary from simple to intelligent, depending on the translation setup.
+Linguistic Area
+The reason the Anusaaraka approach works well for Indian languages, even without a full-fledged parser, is because the source and target languages are structurally similar.
+At the mapping level, it is possible to find the roots, TAMs (Tense–Aspect–Modality), and noun vibhaktis in Hindi from an equivalent Kannada text without too many mismatches.
+Cont…
+Based on experience, it has been observed that — apart from agreement — there are only three major syntactic differences between South Indian languages and Hindi.
+All of these differences can be bridged successfully.
+These three differences are described specifically for the Kannada–Hindi Anusaaraka system.
+However, before explaining them, the textbook first discusses agreement, since it is the main grammatical feature that varies among Indian languages.
+Summary
+Indian languages are linguistically close, which makes Anusaaraka translation practical.
+At the mapping level, roots, TAMs, and vibhaktis align well between Hindi and Kannada.
+Only three major differences exist, all of which can be managed.
+The next topic (Giving up Agreement) discusses one of these key differences in detail.
+Giving up Agreement in Anusaaraka Output
+In Hindi, the agreement rule can be stated as follows:
+The gender, number, and person (gnp) of the verb agrees with the gnp of the karta (subject) if it has φ vibhakti;
+otherwise, the verb agrees with the gnp of the karma (object) if it has φ vibhakti;
+and if neither of these conditions apply, the verb takes the masculine, singular, third-person form.
+Cont…
+When the input Kannada sentence has an ambiguity in identifying the karta (or karma, whichever is relevant for agreement), and if the gnp of the two candidate kartas (or karmas) differ, then ambiguity appears in the gnp of the verb.
+Similarly, possessive modifiers of nouns also depend on knowing the gnp of the related noun, and in many cases, this is not easy to compute or may even be unavailable.
+Cont…
+Kannada has three genders — masculine, feminine, and neuter — while Hindi has only two — masculine and feminine.
+Thus, some information loss occurs when translating from Kannada to Hindi.
+To reduce this loss, additional notation may be added to mark the neuter gender.
+Example
+In Hindi, for karma–kartā prayoga, separate verb forms are generally used.
+In Kannada, often a single verb stem is used for both.
+So, it may appear that Kannada does not distinguish between “daravaajaa khulaa” and “daravaajaa kholaa.”
+However, in practice, the verb’s gender marking helps make this distinction:
+In the first case, the verb is neuter,
+In the second case, it is non-neuter.
+Examples
+Finally, the loss of agreement is not very disturbing to Hindi speakers, because they are already familiar with different non-native varieties of Hindi used in television, radio, and films.
+Summary
+Agreement in Hindi depends on the karta or karma having φ vibhakti.
+Ambiguity arises when karta or karma identification is unclear.
+Kannada has three genders, Hindi has two, causing information loss.
+Extra notation may be added to preserve neuter information.
+Hindi readers can still understand the Anusaaraka output easily.
+Language Bridges
+Apart from agreement, there are only three major syntactic differences between Hindi and Kannada.
+All these differences can be handled by enriching Hindi with a few additional functional particles or suffixes.
+These can be viewed as lexical gaps or function word gaps between the two languages.
+The three main constructions used as language bridges are:
+“ki” construction
+“jo” construction
+“ne” construction
+1. “ki” Construction
+In Hindi, embedded sentences are placed after the main verb, unlike in Kannada.
+Example:
+(7.1) H: raama ne kahaa kii mohana kala aayegaa.
+E: Rama said that Mohana will come tomorrow.
+Kannada equivalent:
+K: *raama heLiidanu eneMdare naan maneg hoguttene.
+!H: raam kahaa kii meiM ghara ko jaaungaa.
+(Ram said that he will go home.)
+This Kannada sentence sounds odd because of word order.
+Cont…
+By using “eisaa” instead of “ki”, the problem is avoided:
+(7.2)
+K: mohana naale baruvanu eMdu raama heLidanu.
+H: mohana kala aayegaa eisaa raama ne kahaa.
+E: Mohana will come tomorrow, Rama said.
+“eisaa” is a correct but less common Hindi construction.
+In the Anusaaraka dialect, this becomes the normal form used.
+2. “jo” Construction
+Kannada has many adjectival participial phrases or clauses that show tense and aspect, but do not specify karaka relations (like who did what).
+Examples:
+(7.3) K: raama tiMda camacavannu toLe.
+@H: raam khaayaa thaa cammca dho Daalo.
+(7.4) K: raama tayaarisida camacavannu toLe.
+@H: raam banaayaa thaa cammca dho Daalo.
+The relation between “eat” and “spoon” (instrument or object) is not directly shown in Kannada; it is understood from world knowledge.
+Cont…
+Hindi, however, has only two participial forms:
+(7.5) H: khaayaa huaa phala – eaten fruit
+(7.6) H: khataa huaa laDaka – eating boy
+These show perfective and continuous aspects but include karaka information.
+Hindi is poorer than Kannada in tense/aspect/modality, but richer in expressing karaka relations — which makes direct mapping difficult.
+To handle this, Anusaaraka uses another Hindi structure — the “jo” construction — which allows both tense and karaka information.
+Examples
+(7.7a) raama ne jisa cammca se khaayaa thaa usako dho Daalo.
+(Wash the spoon with which Ram has eaten.)
+(7.7b) raama ne khaayaa thaa jisa cammca se use dho Daalo.
+(7.7c) raama ne khaayaa thaa jisaa use cammca ko dho Daalo.
+To match Kannada meanings, a notation can be used:
+(7.8’) raama ne khaayaa thaa jo_* vaha cammca ko dho Daalo.
+(7.8”) raama ne khaayaa thaa jouna vaha cammca ko dho Daalo.
+Here, the vibhakti markers (se, ko, etc.) are replaced by ‘_’ or ‘jouna’ to create a colloquial style Hindi.
+3. “ne” Construction
+The “ne” construction is specific to western Indian languages like Hindi.
+In the present or past perfective aspect, “ne” is used with the karta (subject):
+(7.9) H: raama ne phala khaayaa.
+(Ram ate the fruit.)
+In case of yaa-gayaa TAM, “ne” is not used:
+(7.9’) H: raama phala kha gaya.
+Hence, a new TAM “yaa” (without “ne”) can be postulated — having the same meaning as “yaa” but without the “ne” construction — to express the Kannada sentence more faithfully:
+raama phala khaayaa.
+Summary
+Language Bridges solve syntactic gaps between Hindi and Kannada.
+Three constructions are used:
+“ki / eisaa” – handles embedded clauses.
+“jo” – handles adjectival participles (tense + karaka).
+“ne” – adjusts subject marking in perfective sentences.
+These make translation between the two languages smoother and faithful.

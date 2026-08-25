@@ -1,0 +1,113 @@
+Unit-2
+Introduction to relational model
+The relational data model was first introduced by Ted Codd of IBM Research in 1970
+The relational model represents the database as a collection of relations
+The relational model represents how data is stored in Relational Databases
+The relational model represents data as tables called relations, which are made of rows (tuples) and columns (attributes)
+Consider a relation STUDENT with attributes ROLL_NO, NAME, ADDRESS, PHONE, and AGE shown in the table.
+Continues….
+Important Terminologies:
+Attribute: Attributes are the properties that define an entity. e.g.; ROLL_NO, NAME, ADDRESS
+Relation Schema: A relation schema defines the structure of the relation and represents the name of the relation with its attributes. e.g.; STUDENT (ROLL_NO, NAME, ADDRESS, PHONE, and AGE) is the relation schema for STUDENT. If a schema has more than 1 relation, it is called Relational Schema.
+Continues….
+Tuple: Each row in the relation is known as a tuple. The above relation contains 4 tuples, one of which is shown as:
+Degree: The number of attributes in the relation is known as the degree of the relation. The STUDENT relation defined above has degree 5.
+Cardinality: The number of tuples in a relation is known as cardinality. The STUDENT relation defined above has cardinality 4.
+Continues….
+Column: The column represents the set of values for a particular attribute. The column ROLL_NO is extracted from the relation STUDENT.
+NULL Values: The value which is not known or unavailable is called a NULL value. It is represented by blank space. e.g.; PHONE of STUDENT having ROLL_NO 4 is NULL.
+Continues…
+Relation Key: These are basically the keys that are used to identify the rows uniquely or also help in identifying tables. These are of the following types.
+Ex: Primary Key, Foreign Key
+Concepts of domain
+A domain is the set of valid values that an attribute can have.
+Table Example:
+Here, the domain of CourseID is {1, 2, 3, ...} and CourseName is {Computer Science, Mathematics, Physics, ...}.
+Real-Time Example:In an e-commerce system, the domain for "payment methods" can be {Credit Card, PayPal, UPI}.
+Attribute
+An attribute is a column in a table that represents a specific property of an entity.
+Table Example:In the Student table, ROLL_NO, Name, Address, Phone and Age are attributes.
+Real-Time Example:In a bank, attributes of an account holder might include Account Number, Name, and Balance.
+Tuple and Relation
+A tuple is a single row in a table that represents a single record.
+A relation is the table itself.
+Real-Time Example:In a flight booking system, a tuple could be (FL123, John Doe, Economy Class) representing a passenger's flight details.
+Importance of null values
+Null values represent missing, unknown, or inapplicable data. They allow flexibility in cases where some information is unavailable.
+Real-Time Example:In a job application database, the Resignation Date column might be NULL for employees who haven’t resigned yet.
+Constraints and Their Importance
+Constraints are rules that ensure data integrity and validity in a database
+Types of Constraints:
+Domain Constraint: Restricts values in a column to specific types or ranges (e.g., Age > 0).
+Key Constraint: Ensures uniqueness of rows (e.g., Primary Key).
+Integrity Constraint: Maintains valid relationships (e.g., Foreign Key).
+Relational Algebra
+Relational Algebra is a procedural query language used to query the relational database
+It provides a formal foundation for relational database operations and allows users to specify what they want to retrieve without detailing how to retrieve it
+Relational Algebra operations are performed on relations (tables) and produce new relations as a result. These operations are broadly classified into:
+1. Basic Operations:
+Selection (σ): Filters rows based on a condition.
+Projection (π): Selects specific columns.
+Union (∪): Combines tuples from two relations, removing duplicates.
+Set Difference (−): Finds tuples in one relation but not in the other.
+Cartesian Product (×): Combines every tuple of the first relation with every tuple of the second.
+Rename (ρ): Renames a relation or its attributes.
+2. Derived Operations:
+Intersection (∩): Finds tuples that are common in both relations.
+Join: Combines tuples from two relations based on a condition.
+Natural Join: A common join that matches tuples with the same attribute values.
+Division: Finds tuples in one relation that are associated with all tuples in another relation.
+Select Student_Name from FRENCH Union SelectStudent_Name from GERMAN
+Data types
+Data types define the type of data that can be stored in a column of a database table
+They ensure consistency, efficiency, and accuracy when working with data in a relational database
+Choosing the correct data type is critical for database performance, storage efficiency, and data integrity
+Categories of Data Types:
+Numeric Data Types:
+Used to store numbers.
+Examples:
+INTEGER (INT): Whole numbers (e.g., 1, 42, -7).
+DECIMAL/NUMERIC: Fixed-point numbers for precision (e.g., 123.45).
+FLOAT/REAL/DOUBLE: Approximate floating-point numbers (e.g., 3.14159).
+TINYINT, SMALLINT, BIGINT: Integers of varying sizes.
+Character/String Data Types:
+Used to store text or strings.
+Examples:
+CHAR(n): Fixed-length string of n characters.
+VARCHAR(n): Variable-length string up to n characters.
+TEXT: Large amount of text data.
+Date and Time Data Types:
+Used to store dates, times, and timestamps.
+Examples:
+DATE: Date (e.g., 2025-01-10).
+TIME: Time of day (e.g., 14:30:00).
+DATETIME/TIMESTAMP: Both date and time (e.g., 2025-01-10 14:30:00).
+Binary Data Types:
+Used to store binary data such as images or files.
+Examples:
+BLOB: Binary large objects for multimedia.
+BINARY(n), VARBINARY(n): Fixed or variable-length binary data.
+Boolean Data Type:
+Used to store true/false values.
+Examples:
+BOOLEAN: Stores TRUE or FALSE values.
+BASIC SQL: Simple Database schema
+A database schema defines the logical structure of a database. It specifies how data is organized in tables, their columns, and the relationships between them
+In SQL, creating a database schema involves defining tables, columns, data types, constraints, and relationships
+Key Elements of a Database Schema
+Tables:
+The primary structure for storing data.
+Contains rows (records) and columns (attributes).
+Columns:
+Attributes of the table, defined with specific data types (e.g., INTEGER, VARCHAR).
+Data Types:
+Specify the type of data a column can hold (e.g., INT, DATE).
+Constraints:
+Define rules to maintain data integrity:
+Primary Key: Ensures uniqueness of a column (or a combination of columns).
+Foreign Key: Establishes a relationship between tables.
+Not Null: Ensures a column cannot have NULL values.
+Unique: Ensures all values in a column are distinct.
+Check: Validates data based on a condition.
+Relationships:
+Defines how tables are connected (e.g., one-to-one, one-to-many, many-to-many).

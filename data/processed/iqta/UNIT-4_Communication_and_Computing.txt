@@ -1,0 +1,184 @@
+Unit 4: Quantum Communication and
+Computing – Theoretical Perspective
+Dr. N. RAVI
+Professor & HOD
+Department of Physics,
+RGMCET, Nandyal.
+Classical Information vs Quantum Information
+Classical Information
+Definite States: Information is carried by systems with a clearly defined, definite state, such as a bit being either 0 or 1.
+Copyable: Classical information can be easily replicated and copied without altering the original.
+Measurement: Measuring classical information does not change its state.
+Quantum Information
+Superposition: Information is encoded in quantum systems, such as qubits, which can exist in multiple states simultaneously, like a combination of both 0 and 1.
+Entanglement: Quantum systems can become entangled, where their outcomes are linked, creating nonlocal correlations impossible in the classical world.
+Measurement Collapse: When a quantum system is measured, its superposition collapses into a single, definite state, and this process alters the quantum information.
+No-Cloning Theorem: Quantum information cannot be perfectly copied or cloned, a fundamental contrast to classical information.
+Basics of Quantum Communication: What is quantum communication?
+The field of quantum communication is the study of encoding and transmitting information between distant quantum systems.
+This relatively new field takes advantage of the peculiar properties of quantum physics, such as superposition, teleportation, and entanglement, which have no classical equivalents.
+Much like classical communication, quantum communication will rely on light to encode information, which enables fast, low-error communication.
+Quantum communication involves encoding information in quantum states, typically of photons (light particles), and transmitting these states over a distance. It employs quantum mechanics for secure information transfer, using phenomena like entanglement and superposition to detect eavesdropping and ensure data integrity potentially across global distances
+Working Mechanism of Quantum Communication
+Quantum communication harnesses the principles of quantum mechanics to transmit information in a fundamentally different way than traditional methods.
+The working mechanism of Quantum Communication includes:
+Photon preparation: A sender initially selects photons in specific quantum states. Each photon can represent a bit of information (0 or 1) depending on its polarization or phase.
+Quantum state selection: The quantum states are chosen from a set of non-orthogonal states, meaning they cannot be perfectly distinguished from one another. This is essential for the security of the protocol.
+Photon Transmission: The sender then sends these photons to a receiver through a communication channel, which could be an optical fibre or through free space.
+Detection: The receiver uses a quantum detector to measure the photons. Due to the quantum properties of the photons, any eavesdropping attempt by a third party will inevitably disturb their quantum state, introducing detectable errors.
+Key sifting: The Receiver communicates with the Sender over a public channel to discuss which photons were correctly detected without revealing their actual states. They discard any bits where the receiver’s measurements do not match the sender's preparation.
+Error correction and Privacy amplification: The resulting sifted key is then subjected to classical post-processing. This includes error correction (to fix any mistakes due to technical imperfections) and privacy amplification (to reduce any partial information an eavesdropper might have).
+What is Quantum Key Distribution (QKD)?
+Quantum Key Distribution (QKD), A protected communication technique for sharing encryption keys. It exchanges cryptographic keys in a way that is verifiable and ensures security by using characteristics of quantum physics. Using QKD, two parties may generate and exchange a key for encrypting and decrypting communications. To be more precise, QKD is the process of sharing the key between participants.
+Purpose of Quantum Key Distribution (QKD)
+To moderate the threat posed by the rapid advancements in Quantum Computing to the security of data being conveyed by many vital sectors across existing communication networks Quantum Key Distribution is needed.
+The technique might help several small and medium-sized businesses and start-ups in the quantum information space.
+It will make it possible for security services to design a proper quantum communication network with a backbone made of domestic technology.
+The way data is transported by photons is primarily responsible for the encryption's unbreakability.
+A photon is impossible to replicate exactly, and each measurement effort will cause it to fluctuate. This implies that whoever tries to intercept the data will be caught.
+How Does It Work?
+At its core, QKD uses two quantum principles:
+Heisenberg’s Uncertainty Principle:Quantum cryptography takes advantage of this by using the polarization of photons on different bases as the conjugate properties.
+Superposition: A photon can exist in multiple polarization states (“up” vs. “sideways”) until measured.
+No-Cloning Theorem: You cannot perfectly copy an unknown quantum state.
+QKD and its architecture
+QKD is a key sharing mechanism implemented in quantum cryptography to generate a perfectly random key that is shared between two nodes (traditionally called Alice and Bob). It is based on the principles of quantum mechanics, that is, Heisenberg’s uncertainty principle and no-cloning principle, to guarantee secure key distribution.
+The generation of shared secret keys through QKD involves several steps as follows:
+Alice (application sender) and Bob (application receiver) are connected through a classical channel that is pre-authenticated. It can be any IP/Ethernet link.
+Alice sends the quantum information, called qubits, over the quantum channel. Depending upon the QKD protocol used Alice can use the quantum properties of light, such as polarisation, phase, or time of-arrival.
+Bob performs quantum measurements on the received qubits as per the QKD protocol used. There are always some losses in the quantum channel.
+Alice and Bob share some information over the classical channel to arrive at a common secret key. Eavesdropping on the classical channel does not affect the secrecy of the key.
+The raw key undergoes a sifting process in which Alice and Bob discard incompatible qubits based on the protocol used.
+Alice and Bob check the quantum bit error rate (QBER) to check for eavesdropping (by an adversary, commonly called Eve) on the quantum channel. If QBER is less than a defined threshold, the key is further processed. Otherwise, the communication is aborted.
+Due to imperfections in the source, detector, and transmission media, the sifted keys may have some errors that are corrected using error correction algorithms.
+Finally, the keys undergo a privacy amplification process. The keys are compressed by suitable factors to conceal any information that may have gone to Eve during the key generation process.
+The generated keys are stored along with key-ID and delivered to the application on request.
+Keys generated in the QKD system can be mathematically proved to be secure and it is not based on any assumption.
+BB84 protocol up to this point
+BB84 protocol when Eve interferes with some photons
+Benifits of Quantum Key Distribution (QKD)
+QKD system may be utilised for more secure key management of several military cryptography systems in an integrated Cypher Policy Committee (CPC) framework in India.
+Security services will be able to create a suitable quantum communication network with a homegrown technological backbone thanks to it.
+The technique might help a number of small and medium-sized businesses and start-ups in the quantum information space.
+It is anticipated to define standards and develop rules pertaining to crypto technology.
+Types of Quantum Key Distribution (QKD)
+Below are two types of Quantum Key Distribution
+Entanglement-based protocols: Protocols based on entanglement centre on quantum states, where two items are coupled to generate a single quantum state. According to the idea of entanglement, measuring one entity therefore influences the other. The other parties involved will be aware if an eavesdropper gains access to a previously trusted node and makes any modifications.
+Prepare-and-measure protocols: The goal of prepare-and-measure procedures is to measure unidentified quantum states. They may be used to identify possible data interceptions as well as instances of eavesdropping.
+The following are examples of QKD protocols:
+BB84.(Alice can transmit a random secret key to Bob by sending a string of photons with the private key encoded in their polarization.)
+Silberhorn.(the use of picosecond time-bin states of photons for quantum communication)
+Decoy state.(It involves sending a mix of "signal" and "decoy" pulses with different photon number distributions (intensities)).
+KMB09.(use high-dimensional (HDQKD) photon states).
+E91.(uses quantum entanglement to enable two parties to securely generate a shared cryptographic key).
+What is the role of quantum entanglement in quantum communication?
+Quantum entanglement is a foundational resource in quantum communication, enabling secure, efficient, and novel ways to transmit information that are impossible with classical systems. Entanglement allows for protocols like quantum key distribution, teleportation, and dense coding, and is essential for building scalable quantum networks.
+Key Roles of Entanglement in Quantum Communication
+1. Enabling Secure and Efficient Protocols
+Quantum Key Distribution (QKD): Entanglement ensures that any eavesdropping attempt disturbs the system, making QKD fundamentally secure. Protocols like E91 and advanced decoy-state methods rely on entanglement to guarantee security and efficiency.
+Quantum Teleportation and Dense Coding: Entanglement allows the transfer of quantum states (teleportation) and the transmission of more information than classically possible (dense coding).
+2. Enhancing Communication Capacity and Reducing Complexity
+Capacity Boost: Entanglement can increase the amount of information transmitted per quantum bit and reduce the communication required for certain tasks, outperforming classical approaches.
+Communication Complexity: In distributed computing, entanglement can substitute for some communication, reducing the number of bits that need to be exchanged.
+3. Building Scalable and Robust Quantum Networks
+Entanglement Distribution: Entanglement is distributed across network nodes to enable multi-user communication, quantum repeaters, and long-distance secure links.
+Entanglement Purification: Techniques are used to improve entanglement quality over noisy channels, which is crucial for reliable long-distance communication
+What is Quantum Internet?
+Quantum Internet is a futuristic version of today’s internet where information is transmitted using Qubits instead of classical bits. It uses principles of Quantum mechanics to ensure super-fast and ultra-secure communication.
+Why the Name Quantum Internet
+The Quantum Internet uses Quantum particles (like photons) instead of classical bits to transmit information.It’s called “Quantum” Internet because it is based on Quantum mechanics, which allows strange but powerful features like:
+Entanglement: Two particles share a state even when far apart.
+Superposition: A particle can be in multiple states at once.
+No-cloning: You cannot copy a Quantum state exactly.
+So, instead of sending 0s and 1s, the Quantum internet sends Qubits, which can be both 0 and 1 at the same time—allowing new types of communication like Quantum teleportation and unbreakable encryption.
+How Does Quantum Internet works
+In the Quantum internet, information is encoded in Quantum bits, or Qubits, which can exist in multiple states at once thanks to a property called superposition. This allows the Quantum internet to transmit and process information in ways that are impossible with the classical internet. One of the key components of the Quantum internet is Quantum entanglement, a phenomenon in which two Qubits become linked in such a way that the state of one qubit instantly affects the state of the other, no matter the distance between them. This allows for secure communication channels that are immune to eavesdropping, making the Quantum internet ideal for sensitive data transmission.
+Enabling Global Quantum Internet
+The ultimate goal of quantum networking is to establish a global quantum internet, a network of interconnected quantum devices that communicate securely and efficiently across the globe. Such an internet would revolutionize communication by enabling new applications that are currently unattainable with classical networks.
+For instance, a global quantum internet could support quantum cloud computing, allowing users to access quantum processors remotely for complex calculations. Additionally, it could advance scientific research by facilitating secure data sharing and real-time collaboration among researchers worldwide.
+Global development and key projects
+International efforts are underway to build the foundational infrastructure for a global quantum network, with several projects leading the way.
+China's Micius satellite: In 2016, China launched the Micius satellite, which has demonstrated quantum key distribution over 1,200 kilometers and enabled the first intercontinental quantum encrypted virtual conference between China and Austria.
+European Quantum Communication Infrastructure (EuroQCI): This initiative aims to deploy a secure quantum communication network across the European Union by integrating terrestrial and space-based quantum technologies.
+The U.S. National Quantum Initiative Act: This program provides funding to accelerate quantum development, including research into quantum networking technologies.
+IQNET: A collaboration between Caltech, AT&T, and other institutions, the Intelligent Quantum Networks and Technologies (IQNET) group has demonstrated quantum teleportation over 44 kilometers of fiber.
+Introduction to Quantum Computing:
+Quantum computing is a multidisciplinary field comprising aspects of computer science, physics, and mathematics that utilizes quantum mechanics to solve complex problems faster than on classical computers.
+The field of quantum computing includes a range of disciplines, including quantum hardware and quantum algorithms.
+Quantum computers are able to solve certain types of problems faster than classical computers by taking advantage of quantum mechanical effects, such as superposition and quantum interference.
+Some applications where quantum computers can provide such a speed boost include machine learning (ML), optimization, and simulation of physical systems.
+Four key principles of quantum mechanics
+To understand quantum computing, it is important to understand four key quantum mechanics principles:
+Superposition
+Entanglement
+Decoherence
+Interference
+Applications of Quantum Parallelism
+Quantum parallelism powers many of the most famous quantum algorithms, including:
+Shor's Algorithm: Factorizes large numbers exponentially faster than classical methods
+Grover's Algorithm: Searches unsorted databases in √N time
+Quantum Fourier Transform: Core to various quantum protocols, using parallelism for efficient computation
+These algorithms rely on quantum parallelism to explore massive solution spaces efficiently.
+The Future of Quantum Parallelism
+As quantum hardware advances and algorithms become more refined, quantum parallelism will be increasingly harnessed to solve real-world problems in:
+Cryptography
+Drug discovery
+Optimization
+Machine learning
+The Pauli gates
+The Pauli gates are based on the better-known Pauli matrices (aka Pauli spin matrices) which are incredibly useful for calculating changes to the spin of a single electron. Since electron spin is the favored property to use for a qubit in today’s quantum gates, Pauli matrices and gates are right up our alley. In any event, there’s essentially one Pauli gate/matrix for each axis in space (X, Y and Z).
+The Pauli X-gate
+The Pauli X-gate is a dream come true for those that fear matrix math. No imaginary numbers. No minus signs. And a simple operation: negation. This is only natural, because the Pauli X-gate corresponds to a classical NOT gate. For this reason, the X-gate is often called the quantum NOT gate as well.
+The Pauli Y and Z-gates
+Of the three Pauli gates, the Pauli Y-gate is the fancy one. It looks a lot like the X-gate, but with an i (yep, the insane square root of -1) in place of the regular 1, and a negative sign in the upper right. Here’s what Y looks like:
+/ 0 -i \
+\ i 0 /
+The Pauli Z-gate is far easier to follow. It looks kind of like a mirror image of the X-gate above, but with a negative sign thrown into the mix. Here’s what Z looks like:
+/ 1 0 \
+\ 0 -1 /
+The Y-gate and the Z-gate also change the spin of our qubit electron.
+The Hadamard gate
+While the Pauli gates are a lot like classic logic gates in some respects, the Hadamard gate, or H-gate, is a bona fide quantum beast. It shows up everywhere in quantum computing, and for good reason. The Hadamard gate has the characteristically quantum capacity to transform a definite quantum state, such as spin-up, into a murky one, such as a superposition of both spin-up and spin-down at the same time.
+Once you send a spin-up or spin-down electron through an H-gate, it will become like a penny standing on its end, with precisely 50/50 odds that it will end up heads (spin-up) or tails (spin-down) when toppled and measured. This H-gate is extremely useful for performing the first computation in any quantum program because it transforms pre-set, or initialized, qubits back into their natural fluid state in order to leverage their full quantum powers.
+Other quantum gates
+There are a number of other quantum gates you’re bound to run into. Many of them operate on several qubits at a time, leading to 4x4 or even 8x8 matrices with complex-numbered elements.
+The main gates that you will want to be familiar are the ones we covered shown in the graph below:
+Challenges: Quantum decoherence.
+1. Loss of Quantum Information
+Qubits rely on quantum superposition and entanglement to perform computations that classical bits cannot. Decoherence destroys these delicate states by entangling them with the environment, turning a quantum state into a classical one. This loss of coherence translates directly into loss of quantum information, making the output of a quantum computation unreliable or meaningless.
+2. Limits on Computation Time and Fidelity
+Every quantum system has a characteristic coherence time—the time over which quantum information can be reliably maintained. The shorter the coherence time, the more likely errors will occur during computations. For quantum computers to outperform classical machines, they must maintain coherence long enough to complete calculations and execute quantum algorithms.
+Once decoherence begins, the system's state starts to degrade, leading to loss of fidelity in computations.
+This creates a race against time: quantum algorithms must complete before decoherence sets in, often in microseconds to milliseconds. This is especially crucial for algorithms that offer exponential speedups, such as Shor's algorithm for factoring or Grover's search algorithm. If decoherence sets in too early, the quantum advantage is lost.
+The larger the system or the more complex the computation, the harder it becomes to stay within this fragile window.
+1. Error Correction:  Quantum computers are extremely sensitive to noise and errors caused by interactions with their environment. This can cause errors to accumulate and degrade the quality of computation.
+2. Scalability: Scaling up quantum computers to hundreds or thousands of qubits while maintaining high levels of coherence and low error rates remains a major challenge.
+3. Hardware Development: There are many different qubit technologies, each with its own strengths and weaknesses, and developing a scalable, fault-tolerant qubit technology is a major focus of research.
+4. Software Development: Quantum algorithms and software development tools are still in their infancy, and there is a need for new programming languages, compilers, and optimization tools that can effectively utilize the power of quantum computers.
+5. Classical Computers Interfaces: Developing efficient and reliable methods for transferring data between classical and quantum computers is essential for practical applications.
+6. Standards and Protocols: Developing standards and protocols for hardware, software, and communication interfaces will be essential for ensuring compatibility and interoperability between different quantum computing platforms.
+Future directions in quantum decoherence research
+Forecasting Developments in Quantum Computing
+The future of quantum decoherence research holds immense promise for advancing quantum computing. As researchers continue to explore new materials, qubit designs, and error correction techniques, the potential for breakthroughs in decoherence management increases. These developments are likely to enhance the stability and scalability of quantum systems, paving the way for more practical and widespread applications.
+Potential Breakthroughs and Implications
+Potential breakthroughs in quantum decoherence could revolutionize industries and research fields. For example, the discovery of materials with naturally long coherence times could lead to the development of more efficient quantum computers. Such advancements would have far-reaching implications, enabling faster and more accurate computations across various domains, from cryptography to climate modeling.
+Emerging Trends and Evolving Landscape
+Emerging trends in quantum technology indicate a growing focus on integrating quantum systems with classical computing infrastructure. This hybrid approach aims to leverage the strengths of both classical and quantum computing, offering more robust solutions to complex problems. The evolving landscape of quantum technology presents opportunities for innovation and collaboration, positioning quantum decoherence research as a critical area of focus for future advancements.
+Challenges: Quantum Error Correction
+High Resource Requirements: Quantum error correction calls for a great deal of redundancy, often relying on hundreds of physical qubits to encode a single logical qubit. Since current hardware struggles to provide enough stable qubits, this overhead makes scaling quantum systems challenging. The need for extensive error correction layers also complicates quantum computing, limiting the practicality of early quantum devices. Developing efficient codes that reduce redundancy without compromising error protection is a major challenge.
+Qubit Fragility: Qubits are highly sensitive to environmental factors like temperature, electromagnetic interference, and mechanical vibrations. This increases the likelihood of errors during computation and even while performing error correction. Maintaining the delicate quantum state calls for advanced isolation methods and near-perfect control over the system. Dealing with this challenge involves improving qubit stability to minimize the impact of noise and decoherence.
+‍Error Propagation During Correction: While QEC aims to fix errors, the correction process itself can introduce new ones if the operations aren’t accurate. Faulty gates, inaccurate measurements, or timing delays during error detection can create errors instead of fixing them. Building hardware and software systems that can carry out error correction accurately without adding noise is a key challenge for reliable quantum computing.
+Complex Implementation: QEC involves complex algorithms, such as stabilizer or surface codes, which require entanglement, precise measurements, and feedback mechanisms. These call for highly sophisticated quantum control systems, which are tricky to design and apply. On top of that, making sure that error correction works hand-in-hand with quantum computations requires advancements in both hardware and algorithm development.
+Scalability of Fault-Tolerant Systems: Achieving fault-tolerant quantum systems—where errors are corrected without interrupting computations—is challenging to say the least.
+Real-world importance of Decoherence and QEC
+The development of practical, large-scale quantum computers depends on building systems where QEC can keep error rates low enough to enable long, complex calculations.
+Reliable quantum computing: Error correction is the key to building a "fault-tolerant" quantum computer that can perform useful computations without being undone by noise. Recent breakthroughs, such as Google's 2024 demonstration of exponentially suppressed error rates using surface codes, prove that fault tolerance is an achievable goal.
+Advanced algorithms: Many promising quantum algorithms, such as Shor's for factoring large numbers, require an extremely low error rate. Effective QEC will make the execution of these algorithms possible, enabling breakthroughs in fields like cryptography, drug discovery, and materials science.
+Real-time applications: Rapid and reliable QEC is essential for implementing practical applications. It involves a feedback loop where measurement data is processed by classical decoders in near real-time, allowing errors to be corrected faster than they can accumulate and spread through the system.
+Continued innovation: QEC drives ongoing hardware and software innovation. This includes developing more resilient qubit architectures (such as topological qubits) and improving qubit stability through better materials, advanced cooling, and shielding techniques.
+The Role of Quantum Error Correction in Future Quantum Computing
+For quantum computers to become practical, future chip designs will need to incorporate efficient Quantum Error Correction (QEC) methods.
+This involves optimizing both qubit hardware and error-correction algorithms, potentially using hybrid quantum-classical systems.
+As quantum hardware advances, QEC will be key to achieving fault tolerance and scalability, advancing quantum computing toward commercialization.
+QEC will also be central to the commercialization and practical deployment of quantum computers. As quantum systems become more reliable and fault-tolerant, they will move from experimental setups to real-world applications in industries such as healthcare, finance, and materials science.
+Emerging technologies like quantum machine learning will introduce new challenges for QEC. As quantum machine learning algorithms evolve, they will require faster, more efficient error correction methods to handle increasingly complex computing, pushing the limits of current quantum hardware.

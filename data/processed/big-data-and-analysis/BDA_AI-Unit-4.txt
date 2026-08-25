@@ -1,0 +1,476 @@
+UNIT-4
+BDA & AI APPLICATIONS
+AI Applications on Big Data
+V PHANISHWARA HARA GOPAL,
+ASSISTANT PROFESSOR,
+DEPARTMENT OF CSE (AI&ML),
+RGM COLLEGE OF ENGINEERING & TECHNOLOGY (AUTONOMOUS).
+Introduction to Maintenance Strategies
+• Reactive Maintenance: "Fix it when it breaks." High downtime, high
+cost, potential safety hazards.
+• Preventative Maintenance: Scheduled maintenance based on time or
+usage (e.g., changing oil every 5,000 miles). Often results in replacing
+perfectly good parts.
+• Predictive Maintenance (PdM): Using data to predict exactly when a
+machine will fail so maintenance can be performed just in time.
+• The AI Advantage: AI finds subtle, complex patterns in multi-
+dimensional sensor data that human operators and simple threshold
+alarms cannot detect.
+The Architecture of Predictive Maintenance
+• Tier 1: Edge Devices & Sensors.
+• Tier 2: Ingestion & Stream Processing. (Using tools like Apache Kafka
+and Spark Streaming).
+• Tier 3: The Data Lake. Historical storage of normal vs. failure states.
+• Tier 4: The AI Engine. ML models continuously scoring real-time data
+against historical baselines.
+Data Collection – The "Vibration" Challenge
+• What Data is Collected? Vibration (accelerometers), acoustics,
+temperature, pressure, and oil analysis.
+• The Volume Problem: A single vibration sensor sampling at 10kHz
+generates massive amounts of data in hours.
+• Feature Extraction: Instead of sending raw sine waves to the cloud,
+edge devices often perform a Fast Fourier Transform (FFT) to convert
+time-domain data into frequency-domain data.
+Machine Learning Models for PdM
+• Anomaly Detection (Unsupervised): Using algorithms like Isolation
+Forests or Autoencoders to establish a "Normal Operation Baseline."
+Anything outside this is flagged.
+• Remaining Useful Life (RUL) Prediction (Regression): Using historical
+run-to-failure data to predict exactly how many days/hours a
+component has left.
+• Failure Mode Classification (Supervised): Predicting which specific
+part is failing (e.g., "Inner Bearing Race Defect" vs. "Misalignment").
+Evaluating Predictive Maintenance Models
+• Cost-Sensitive Metrics: Standard accuracy is not enough. The cost of
+a False Positive (unnecessary maintenance check) is usually much
+lower than the cost of a False Negative (catastrophic machine failure).
+• Recall: The model must be tuned to prioritize Recall (identifying all
+potential failures) over Precision.
+• Alert Fatigue: If the model triggers too many False Positives,
+maintenance crews will start ignoring the dashboard.
+The Anatomy of Healthcare Big Data
+• Unstructured Dominance: Over 80% of healthcare data is
+unstructured (Medical Imaging like X-rays/MRIs, Clinical Notes,
+Genomic sequences).
+• The DICOM Standard: Medical images are not JPEGs. They use the
+DICOM (Digital Imaging and Communications in Medicine) format,
+which contains heavy metadata (patient info, scanner calibration)
+embedded with high-resolution pixel arrays.
+• The Big Data Challenge: A single 3D MRI scan can be several
+gigabytes. Training a model on 100,000 scans requires massive
+distributed storage (HDFS/Cloud) and GPU clusters.
+Deep Learning Architectures for Diagnostics
+• Convolutional Neural Networks (CNNs): The traditional workhorse
+for medical vision. Architectures like ResNet or DenseNet excel at
+learning hierarchical spatial features (edges -> textures -> complex
+anatomical structures).
+• Vision Transformers (ViT): The modern evolution. Instead of
+convolutions, ViTs treat an image as a sequence of "patches" and use
+self-attention mechanisms to understand global context across the
+entire scan.
+• The Compute Trade-off: ViTs often achieve superior diagnostic
+accuracy but require significantly more computational power and
+data to train from scratch compared to CNNs.
+The Data Scarcity Problem & Transfer Learning
+• The Problem: Deep learning requires millions of labeled images.
+Medical datasets are small because acquiring expert annotations
+(from doctors) is expensive and heavily regulated.
+• The Solution: Transfer Learning. Taking a model pre-trained on a
+massive dataset and "fine-tuning" its final layers on a smaller, specific
+medical dataset.
+• Domain-Specific Pre-training: While general datasets (like ImageNet,
+containing dogs and cars) are useful, using medical-specific pre-
+trained weights, such as models trained on the RadImageNet dataset,
+yields vastly superior feature extraction for radiological scans.
+Case Study: Automated Grading of Knee Osteoarthritis (KOA)
+• The Clinical Task: Doctors use the Kellgren-Lawrence (KL)
+grading system (Grades 0 to 4) to assess the severity of Knee
+Osteoarthritis based on X-rays.
+• The AI Pipeline:
+• Preprocessing: Balancing the dataset (as severe Grade 4 cases are
+rarer than healthy Grade 0 cases) using data augmentation.
+• Feature Extraction: Passing the X-ray tensors through a hybrid
+pipeline (e.g., combining ResNet feature maps with Vision
+Transformer attention).
+• Classification: Outputting a precise KL Grade, shifting the diagnosis
+from a subjective human opinion to an objective mathematical
+probability.
+Explainable AI (XAI) in Medicine
+• The "Black Box" Problem: A doctor cannot legally or ethically
+prescribe surgery just because "the computer said so." They need to
+know why.
+• Attention Maps & Grad-CAM: Gradient-weighted Class Activation
+Mapping (Grad-CAM) is used to generate visual heatmaps over the
+original X-ray.
+• Interpretability: The heatmap highlights the exact pixels (e.g., the
+specific narrowing of the knee joint space or the presence of
+osteophytes) that caused the model to output a specific diagnostic
+grade.
+Debugging the Human Source Code - Genomics
+• Genomics is about analyzing the 'source code.‘
+• Every human being is running on a base-4 operating
+system written in an alphabet of just four letters: A, C, T,
+and G. Your DNA is a string that is 3.2 billion characters
+long.
+• Twenty years ago, sequencing one human genome took
+13 years and cost $3 billion. Today, Next-Generation
+Sequencing (NGS) machines can do it in hours for a few
+hundred dollars.
+• AI, specifically distributed computing and deep learning,
+steps in to find the 'bugs' in our code that lead to
+disease.
+Genomics as a Big Data Challenge
+• The Scale of the Alphabet: A single human genome contains ~3.2
+billion base pairs. Raw sequence data for one person can exceed
+100GB.
+• The "p > n" Problem (Curse of Dimensionality): In genomic datasets,
+you often have 20,000+ features (genes, p) but only a few hundred
+observations (patients, n). This makes traditional machine learning
+highly prone to overfitting.
+• Variety & Veracity: Genomic data is incredibly noisy. Sequencing
+machines make read errors, requiring probabilistic models to
+determine the true sequence.
+The Computational Pipeline
+• Step 1: Base Calling. Converting the raw optical signals from the
+sequencing machine into A, C, T, G text strings. Deep Learning (RNNs)
+is now heavily used here to improve accuracy.
+• Step 2: Sequence Alignment. Taking millions of short DNA "reads"
+(like shredded pieces of a book) and mapping them against a
+reference human genome to reconstruct the full sequence.
+• Step 3: Variant Calling. Identifying where the patient's DNA differs
+from the reference genome (Single Nucleotide Polymorphisms or
+SNPs).
+Deep Learning for Sequence Analysis
+• Predicting Gene Expression: Instead of just reading the code, AI
+predicts what the code does.
+• 1D Convolutional Neural Networks (1D-CNNs): While 2D-CNNs find
+spatial patterns in X-rays, 1D-CNNs slide over the DNA string to find
+specific "motifs" or patterns that indicate regulatory regions (like
+promoters or enhancers).
+• Recurrent Neural Networks (RNNs) / Transformers: Used to model
+the sequential dependencies in DNA, understanding how a mutation
+at position 100 might affect a gene at position 5,000.
+Distributed Genomics with Apache Spark
+• The Framework: Hail is an open-source, scalable framework built
+entirely on Apache Spark, designed specifically for genomic data
+analysis.
+• Why Spark? Genomic matrix tables (Patients vs. Millions of genetic
+variants) are too massive for Pandas or R. Spark partitions this matrix
+across a cluster.
+• Use Case: Performing Genome-Wide Association Studies (GWAS) to
+find the statistical correlation between specific genetic variants and a
+disease (like Alzheimer's) across populations of 500,000+ people.
+Pharmacogenomics (Precision Medicine)
+• The Goal: Moving away from "one-size-fits-all" drug prescriptions.
+• The AI Application: Training classification models that take a patient's
+genetic profile as input and output the probability of an adverse drug
+reaction or the predicted efficacy of a specific chemotherapy.
+• Impact: Maximizing treatment success while minimizing toxic side
+effects by matching the molecular signature of the tumor with the
+exact chemical compound that targets it.
+Patient Monitoring - The ICU at Home
+• A patient is hooked up to monitors tracking ECG
+(electrocardiogram), SpO2 (blood oxygen),
+respiratory rate, and blood pressure continuously.
+• Wearable sensors stream a patient's vitals 24/7
+over Wi-Fi.
+• We use Recurrent Neural Networks (RNNs) and
+Spark Streaming to not just react to a threshold, but
+to predict an adverse event, like sepsis or cardiac
+arrest hours before the patient even feels
+symptoms.
+Time-Series Data in Healthcare
+• Continuous Streaming: Wearables (like smartwatches, bio-patches)
+generate continuous, high-frequency time-series data. An ECG sensor
+might sample at 250 Hz (250 data points per second).
+• The "Noise" Problem: Human movement generates massive artifacts.
+If a patient brushes their teeth, the accelerometer and ECG data
+become incredibly noisy.
+• Temporal Dependencies: In time-series data, the sequence matters. A
+heart rate of 110 is normal during exercise; a heart rate of 110 while
+sleeping, preceded by a drop in oxygen, is a critical emergency.
+Deep Learning for Sequence Modeling
+• Recurrent Neural Networks (RNNs): Networks designed with loops,
+allowing information to persist. They are the standard for sequential
+data.
+• LSTMs (Long Short-Term Memory): A specialized RNN that solves the
+"vanishing gradient" problem, allowing the model to remember
+important physiological events from minutes or hours ago (e.g., a
+previous skipped heartbeat).
+• 1D-CNNs: Just as 2D-CNNs find spatial features in images, 1D-CNNs
+can slide across a time-series wave (like an ECG) to find localized
+anomalies (like an inverted T-wave).
+The Edge-to-Cloud Architecture (Healthcare IoT)
+• Tier 1: The Edge (Sensors): Microcontrollers collect vitals. Basic noise
+filtering (Low-pass/High-pass filters) is done here to save bandwidth.
+• Tier 2: The Gateway (Smartphone): The wearable sends data via Bluetooth
+to a phone, which acts as the MQTT or Kafka producer, securely streaming
+it to the cloud.
+• Tier 3: Stream Processing (Spark/Flink): Ingests the data, aligns
+timestamps across different sensors (e.g., syncing the ECG stream with the
+SpO2 stream), and handles missing packets.
+• Tier 4: The AI Inference Engine: The LSTM model scores the live stream,
+outputting a "Risk Probability Score" updated every second.
+Addressing Alarm Fatigue (The False Positive)
+• The Clinical Danger: If a monitor beeps 100 times a day for no reason,
+nurses will eventually mute it or ignore it, potentially missing the 101st
+beep, which is a real cardiac event.
+• Multivariate Anomaly Detection: Instead of triggering an alarm because
+one variable crossed a threshold, the AI looks at the correlation between
+multiple variables.
+• Contextual AI: The model uses accelerometer data to determine context. If
+heart rate spikes but the accelerometer shows the patient is running, the
+AI suppresses the alarm. If heart rate spikes and the accelerometer shows
+the patient is lying completely still, the AI escalates the alarm to a doctor.
+Case Study: Sepsis Prediction
+• The Disease: Sepsis is a life-threatening response to infection. Every
+hour of delayed treatment increases mortality by 8%.
+• The Data: A multivariate time-series of heart rate, blood pressure,
+temperature, and white blood cell count.
+• The AI Triumph: Deep Learning models running on ICU data streams
+can now predict the onset of sepsis up to 12 hours before clinical
+recognition by human doctors, allowing for early antibiotic
+intervention.
+The Scale of Financial Data
+• Volume: Global networks process upwards of 5,000 to 20,000
+transactions per second globally (e.g., VisaNet).
+• Variety: Transactions come from physical POS (Point of Sale), online
+gateways, ATMs, and mobile apps.
+• Veracity: Fraudsters actively try to mimic legitimate behavior. The
+data is intentionally deceitful.
+• Fraud represents less than 0.1% of all transactions. This is a massive
+class-imbalance problem.
+Real-Time Fraud Architecture
+• Ingestion (Kafka): High-throughput streams capture the raw JSON
+transaction payload from the merchant gateway.
+• In-Memory NoSQL (Redis/Cassandra): The system instantly fetches
+the user's "Profile" (average spend, frequent locations) in under 5ms.
+A relational DB is too slow here.
+• Stream Processing (Spark Streaming): Enriches the incoming Kafka
+stream with the NoSQL profile data.
+• AI Scoring (MLlib/XGBoost): Evaluates the enriched data, generating
+a "Fraud Probability Score" (e.g., 0.92) in under 15ms
+Supervised vs. Unsupervised ML for Fraud
+• Supervised Learning (Classification): Algorithms: Random Forests,
+Gradient Boosting (XGBoost), Neural Networks.
+• Pros: Highly accurate on known fraud patterns.
+• Cons: Useless against "Zero-Day" fraud (new attack vectors the model has
+never seen).
+• Unsupervised Learning (Anomaly Detection):Algorithms: Isolation
+Forests, K-Means Clustering, Autoencoders.
+• Pros: Detects completely new, unseen behaviors (e.g., a sudden spike in
+crypto purchases from a conservative account).
+• Cons: Higher False Positive rate.
+Graph Analytics for Anti-Money Laundering (AML)
+• The AML Problem: Fraud isn't always a stolen card. It’s often
+organized crime moving money through complex webs of accounts
+("Smurfing").
+• Why SQL Fails: Finding circular money movement in SQL requires
+recursive JOINs, which are computationally devastating and take
+hours to run.
+• Graph Databases (e.g., Neo4j): Store data as Nodes (Accounts) and
+Edges (Transactions).
+• Graph Machine Learning: Algorithms like PageRank or Connected
+Components can instantly detect a "Ring" of 50 accounts passing the
+same $10,000 to each other.
+Evaluation – The Cost of a False Positive
+• Accuracy is a Lie: If a dataset has 99.9% legit transactions and 0.1%
+fraud, a model that simply predicts "Legit" every single time is 99.9%
+accurate. It is also 100% useless.
+• Precision vs. Recall Trade-off: High Recall: Catch every fraudster, but
+decline a lot of innocent customers (High False Positives).
+• High Precision: Only block transactions you are 100% sure are fraud, but let
+some bad guys slip through (High False Negatives).
+• The Business Metric: Financial institutions tune models based on
+"Customer Friction" tolerance vs. "Chargeback Risk."
+Retail and E-commerce Analytics
+• E-commerce changes the laws of physics.
+• When you open Amazon, Flipkart, or Netflix, you are not visiting a
+static store. The 'store' you see was computationally assembled
+specifically for you in the last 100 milliseconds.
+• If 100 million people log in at the same time, the server renders 100
+million different, personalized stores.
+Clickstream Analysis
+• The "Invisible" Data: A user might buy 2 items a month, but they
+generate thousands of data points daily (hovering over an image,
+pausing on a review, adding to a cart and abandoning it). This is the
+clickstream.
+• The Big Data Pipeline: Relational databases cannot handle millions of
+concurrent clickstream events.
+• The Architecture:
+• Web browser triggers JavaScript events.
+• Events are sent to Apache Kafka (Ingestion).
+• Spark Streaming processes the data (calculating session length, bounce rates).
+• Data is stored in a NoSQL database (e.g., Cassandra) for real-time
+dashboarding.
+Recommendation Systems
+• Content-Based Filtering: Recommends items similar to those the user
+liked in the past, based on item metadata (e.g., "If you bought a sci-fi
+book, here is another sci-fi book").
+• Collaborative Filtering: The powerhouse of Big Data. It recommends
+items based on the behavior of similar users. (e.g., "Users who
+bought what you bought also bought this").
+• Hybrid Systems: The industry standard. Combines both approaches to
+solve the "Cold Start Problem" (what to recommend to a brand new
+user with no history).
+Matrix Factorization & Spark ALS
+• The User-Item Matrix: Imagine a massive spreadsheet where rows
+are millions of users, columns are millions of products, and the cells
+contain ratings. It is incredibly sparse (most cells are empty because
+you haven't bought most things).
+• Matrix Factorization: The math of breaking down this massive matrix
+into two smaller, dense matrices (User Features and Item Features) to
+predict the missing values.
+• Alternating Least Squares (ALS): The algorithm natively built into
+Spark MLlib. It is highly parallelizable, allowing a cluster to calculate
+recommendations for millions of users simultaneously.
+Market Basket Analysis
+• The Goal: Finding relationships between items. The classic example:
+“People who buy diapers often buy beer on Fridays.”
+• The Metrics:
+• Support: How often do these items appear together in all transactions?
+• Confidence: If they buy item A, how likely are they to buy item B?
+• Lift: Does buying item A increase the likelihood of buying item B compared to
+random chance?
+• The Algorithms: Apriori (good for small data) and FP-Growth
+(Frequent Pattern Growth - optimized for Big Data and supported in
+Spark MLlib because it avoids scanning the database multiple times).
+Customer Segmentation & Churn Prediction
+• RFM Analysis: Segmenting customers based on Recency (how
+recently they bought), Frequency (how often), and Monetary Value
+(how much they spent).
+• K-Means Clustering: Taking the RFM data and using unsupervised
+learning to group customers into "Whales" (high spenders),
+"Loyalists," and "At-Risk" segments.
+• Churn Prediction: Using Classification algorithms (Logistic Regression,
+Random Forest) to predict the probability that a customer will stop
+using the service in the next 30 days, allowing the marketing team to
+send a proactive discount code.
+Smart City – A Massive Computer
+• The CCTV cameras, smart meters, and induction loops in the asphalt
+are the sensory inputs—the APIs. The 5G and fiber optic networks are
+the system bus.
+• But right now, this massive computer is running blindly.
+• The traffic lights operate on dumb, static timers.
+• The power grid generates electricity without knowing exactly who needs it,
+leading to massive waste.
+• If a pipe bursts underground, we only know about it because water floods the
+street.
+• That is Reactive Maintenance on a municipal scale.
+The Scale of Urban IoT Data
+• Volume & Velocity: A city of 1 million people might have 500,000
+smart meters sending power readings every 15 minutes, plus
+thousands of traffic cameras streaming 1080p video at 30 FPS.
+• Variety: The data is a messy mix of unstructured video (CCTV),
+structured time-series data (smart meters), and geospatial
+coordinates (GPS from public transit).
+• The Bandwidth Bottleneck: It is physically and financially impossible
+to stream 10,000 HD video feeds to a centralized AWS or Google
+Cloud server for real-time processing. The network would collapse.
+Edge, Fog, and Cloud Computing Architecture
+• Edge Computing: Pushing the AI directly onto the sensor. For
+example, a smart camera running a lightweight model (like YOLO-tiny)
+that only sends a text payload: {"intersection": 4, "car_count": 12}
+instead of sending the whole video.
+• Fog Computing: Intermediate processing nodes (like a local
+neighborhood server) that aggregate data from multiple Edge devices
+to make localized decisions (e.g., syncing a corridor of 5 traffic lights).
+• Cloud Computing: The centralized data lake where historical data is
+stored to train massive, city-wide predictive models over months or
+years.
+Smart Traffic Management (Computer Vision)
+• The Problem with Timers: Static traffic lights cause "Phantom Traffic
+Jams," where cars wait at a red light while the cross-street is
+completely empty.
+• Object Detection Models: Using CNNs like YOLO (You Only Look
+Once) to accurately detect and count cars, buses, bicycles, and
+pedestrians in real-time.
+• Reinforcement Learning (RL): Training an AI agent using Q-Learning.
+The agent is rewarded for maximizing the "throughput" of cars and
+minimizing wait times, allowing the traffic grid to dynamically adapt
+to rush hour or accidents.
+Smart Grids and Predictive Energy Consumption
+• The Energy Matching Problem: Electricity is difficult to store at a city
+scale. Power plants must generate exactly what the city consumes at
+any given millisecond.
+• Time-Series Forecasting: Using LSTM (Long Short-Term Memory)
+networks or ARIMA models to predict power demand based on
+historical usage, weather forecasts, and special events.
+• Anomaly Detection: Identifying sudden, unexplained drops in
+pressure in smart water pipes or voltage anomalies in power
+substations, alerting repair crews before a total blackout or flood
+occurs.
+Privacy, Security, and Federated Learning
+• The Surveillance Risk: A city covered in smart cameras and
+microphones is a massive privacy liability.
+• Data Anonymization: ML pipelines must automatically blur faces and
+license plates at the Edge before any video leaves the local device.
+• Federated Learning: Training ML models across multiple
+decentralized edge devices without ever exchanging the raw, sensitive
+user data. The local devices only share the "model weight updates"
+with the central server.
+Static vs. Streaming Evaluation
+• Static Evaluation (Hold-out Test Set): Data is shuffled and split. The
+assumption is that the training data and the test data are drawn from
+the exact same statistical distribution (i.i.d. - Independent and
+Identically Distributed).
+• Streaming Evaluation: Data arrives in a continuous, infinite sequence.
+The statistical distribution of the data at time t might be entirely
+different from time t-1000.
+• The "Ground Truth" Latency: In a static test, you immediately know if
+the model was right or wrong. In streaming (e.g., predicting if a
+customer will churn in 30 days), you have to wait 30 days to get the
+label to evaluate the prediction you made today.
+The Enemy of Streaming AI – ‘Drift’
+• Covariate Shift (Data Drift): The distribution of the input features (X)
+changes, but the relationship to the target (Y) remains the same.
+(e.g., A temperature sensor starts degrading and reads 2°C hotter, but
+the machine is actually fine).
+• Prior Probability Shift (Label Drift): The distribution of the target
+variable (Y) changes. (e.g., A sudden spike in actual credit card fraud
+during a holiday weekend).
+• Concept Drift: The fundamental relationship between X and Y
+changes. (e.g., The 2020 pandemic changing what a "normal"
+transaction looks like).
+Prequential Evaluation
+• The Problem with Cross-Validation: k-fold cross-validation destroys
+the temporal order of data. You cannot train a model on Friday's data
+to predict Thursday's events.
+• The Prequential Method: The gold standard for streaming ML.
+• A new data instance x arrives.
+t
+• The model predicts 𝑦 (Testing Phase).
+𝑡
+• The true label y arrives (shortly after).
+t
+• The error is calculated, and the model uses (x , y ) to update its weights
+t t
+(Training Phase).
+• Benefit: Every single data point is used for both testing and training,
+maintaining strict chronological order.
+Time-Decaying Metrics (Fading Factors)
+• The Problem with Cumulative Accuracy: If a model has been running
+for a year and processed 10 million events, a sudden drop in accuracy
+today will barely affect the "Total Lifetime Accuracy." The metric hides
+the current failure.
+• Fading Factor (α): We apply an exponential moving average to our
+evaluation metrics (like Accuracy or F1-Score), where 0 < α < 1.
+• Formula: Metric_current = α · (Current_Error) + (1 - α) ·
+Metric_previous
+• Result: The evaluation metric "forgets" the distant past and is highly
+sensitive to recent performance degradation.
+Safe Deployment
+• How do you replace a drifting model without breaking the system?
+• Shadow Deployment: The new model (Model ) receives the live Kafka
+B
+stream and makes predictions, but those predictions are discarded.
+We simply log them and compare them to the live model (Model ) to
+A
+evaluate Model 's real-world viability.
+B
+• Canary Deployment: Model is deployed to the live stream, but only
+B
+5% of the traffic is routed to it. If Model performs well (evaluated in
+B
+real-time), the router slowly shifts traffic to 10%, 50%, and eventually
+100%.

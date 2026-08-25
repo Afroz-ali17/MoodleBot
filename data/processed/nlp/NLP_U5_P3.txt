@@ -1,0 +1,212 @@
+Introduction, Approaches to Summarization, Evaluation, How to Build a Summarizer, Competitions and Datasets.
+UNIT – V
+Part-C
+Multilingual Automatic Summarization
+Introduction
+Multilingual Automatic Summarization is a subfield of Natural Language Processing (NLP) that focuses on generating summaries from texts written in multiple languages.
+It aims to produce concise, meaningful summaries that capture the essential information from the original documents, regardless of the language in which the input text is written.
+Automatic summarization can be applied to:
+Single-language documents, or
+Multilingual collections, where input data comes from different languages.
+Need for Multilingual Summarization
+The internet and digital resources contain information in many languages.
+Users often require summaries of documents that are not in their native language.
+Manual summarization for each language is time-consuming and inconsistent.
+Hence, automatic systems are needed to generate summaries efficiently across languages.
+Goals of Multilingual Summarization
+To reduce information overload by condensing large multilingual texts.
+To provide quick access to the most relevant content in any language.
+To enable cross-lingual understanding — where summaries may be presented in a different language than the source text.
+To assist multilingual users and global organizations in accessing and comparing information in multiple languages.
+Applications
+News and media analysis (summarizing multilingual articles on the same event).
+Government, diplomacy, and business reports that appear in several languages.
+Multilingual document retrieval and machine translation pipelines.
+Social media and online content summarization across languages.
+Challenges
+Language diversity (grammar, syntax, and morphology vary across languages).
+Translation quality affects summary accuracy.
+Lack of parallel data and linguistic resources for many languages.
+Maintaining coherence and meaning while reducing text size.
+Summary
+Multilingual Automatic Summarization in NLP deals with creating compact, language-independent summaries from multilingual sources.
+It helps users quickly understand important information from documents written in various languages, overcoming linguistic and cultural barriers.
+Approaches to Summarization
+Automatic summarization methods can be broadly categorized into Extractive, Abstractive, Hybrid, Graph-based, and Learning-based approaches.
+Each method differs in how it identifies, selects, or generates the important content from the original text.
+1. Extractive Summarization
+This approach selects key sentences, phrases, or segments directly from the original document.
+It does not generate new sentences — instead, it extracts existing content based on importance.
+Selection is done using statistical or linguistic features, such as:
+Word frequency
+Sentence position
+Cue phrases
+Title similarity
+The selected sentences are then combined to form the final summary.
+Example: Selecting the top 3–4 most important sentences from a news article.
+2. Abstractive Summarization
+This approach aims to generate new sentences that convey the core meaning of the document.
+It uses Natural Language Generation (NLG) techniques and deep linguistic processing.
+The system first understands the input text and then paraphrases it in shorter form.
+Steps include:
+Semantic representation of the text.
+Sentence compression and rephrasing.
+Generation of coherent summary sentences.
+Example: Writing a short summary that expresses the same meaning as the full article, using different words and structure.
+3. Hybrid Approach
+Combines the strengths of both extractive and abstractive methods.
+The system first performs extractive summarization to identify key sentences and then applies abstractive generation techniques to rephrase or compress them.
+Produces summaries that are informative, coherent, and concise.
+Advantage: Maintains both accuracy (from extraction) and fluency (from abstraction).
+4. Graph-Based Approach
+Represents the document as a graph, where nodes are sentences or concepts and edges represent relationships or similarities.
+Algorithms like TextRank or LexRank are applied to determine sentence importance based on connectivity within the graph.
+Highly connected (central) sentences are chosen for the summary.
+Benefit: Captures relationships between sentences and improves relevance.
+5. Learning-Based Approach
+Uses machine learning or deep learning models to identify and rank important content automatically.
+The system is trained using annotated datasets containing pairs of documents and human-written summaries.
+Models such as Neural Networks, Transformer-based models (e.g., BERT, GPT), and Sequence-to-Sequence models are used.
+These systems can adapt to multilingual or domain-specific summarization tasks.
+Summary
+Evaluation
+Evaluation in automatic summarization is the process of assessing the quality and effectiveness of a generated summary.
+The goal is to determine how well the summary captures the important information from the source text and whether it is coherent, relevant, and concise.
+Evaluation can be done using manual or automatic methods.
+1. Manual Evaluation
+In manual (human) evaluation, summaries are judged by human evaluators based on various qualitative criteria.
+Common criteria include:
+Coherence: Logical flow and readability of the summary.
+Relevance: Coverage of important points from the source.
+Fluency: Grammatical correctness and naturalness of language.
+Consistency: Accuracy in preserving meaning and facts.
+Redundancy: Avoiding repeated information.
+Advantages & Disadvantages
+Advantages:
+Provides reliable, human-level understanding of summary quality.
+Captures semantic and contextual accuracy.
+Disadvantages:
+Time-consuming and costly for large datasets.
+Subjective — depends on evaluator judgment.
+2. Automatic Evaluation
+In automatic evaluation, predefined metrics are used to compare the generated summary with one or more reference (human-written) summaries.
+These metrics measure overlap, similarity, and information coverage.
+Common automatic evaluation metrics include:
+ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+BLEU (Bilingual Evaluation Understudy)
+METEOR
+A. ROUGE (Recall-Oriented Understudy for Gisting Evaluation)
+The most widely used metric for summarization.
+Measures n-gram overlap between the system summary and reference summaries.
+Variants:
+ROUGE-N: Overlap of n-grams (e.g., ROUGE-1 for unigrams, ROUGE-2 for bigrams).
+ROUGE-L: Longest Common Subsequence (LCS) based measure.
+ROUGE-SU: Skip-bigram and unigram co-occurrence.
+Higher ROUGE scores indicate better similarity to human summaries.
+B. BLEU (Bilingual Evaluation Understudy)
+Originally designed for machine translation, but also used in summarization.
+Measures precision — how much of the generated summary overlaps with reference summaries.
+Suitable for multilingual summarization tasks.
+C. METEOR
+Considers synonyms, stemming, and paraphrases when comparing system and reference summaries.
+Provides a more semantic-level evaluation than ROUGE.
+Evaluation Methodology
+Typically, multiple human-written summaries are created as reference summaries.
+The system-generated summary is compared automatically using the above metrics.
+Results are then analyzed to determine which model or approach performs best.
+Summary
+Evaluation in summarization can be:
+Manual: Human assessment based on coherence, relevance, and fluency.
+Automatic: Using metrics like ROUGE, BLEU, and METEOR to compare with reference summaries.
+Both approaches together help ensure that the summarization system produces accurate, meaningful, and human-like summaries.
+How to Build a Summarizer?
+Building an automatic summarizer involves several essential components that work together to analyze, extract, and generate a summary from one or more input documents.
+A summarizer can be described using three main parts:
+Ingredients
+Devices
+Instructions
+1. Ingredients
+These are the basic components or resources required to build a summarizer.
+They include:
+Text Data: The source documents that need to be summarized.
+Pre-processing Tools: Used for tokenization, stopword removal, stemming, and normalization to clean and prepare the text.
+Feature Selection Mechanism: Identifies important keywords, phrases, or sentences using statistical or linguistic features.
+Knowledge Resources: Such as WordNet, ontologies, or linguistic databases to help understand meaning and relationships between words.
+Language Models or Algorithms: Used to extract or generate summary content — e.g., extractive, abstractive, or hybrid models.
+2. Devices
+These are the techniques, algorithms, or models used in the summarization process.
+The main devices include:
+Statistical Methods: Use word frequency, sentence position, or TF-IDF scores to rank sentence importance.
+Graph-Based Methods: Represent the text as a graph where sentences are nodes, and similarities are edges (e.g., TextRank, LexRank).
+Machine Learning Methods: Use supervised or unsupervised learning to predict which sentences should be included in the summary.
+Deep Learning Models: Use neural networks such as Seq2Seq, Transformers, or BERT-based architectures for abstractive summarization.
+3. Instructions
+These are the steps or stages followed to generate a summary:
+Input Collection: Collect the input documents (monolingual or multilingual).
+Pre-processing: Clean the text — perform tokenization, stopword removal, stemming, and normalization.
+Feature Extraction: Identify key terms, phrases, or sentences based on statistical or semantic features.
+Summary Generation:
+In extractive summarization, select the most important sentences directly.
+In abstractive summarization, generate new sentences representing the core ideas.
+Post-processing: Refine the output for coherence, grammatical correctness, and readability.
+Evaluation: Assess the quality of the generated summary using manual or automatic evaluation methods (e.g., ROUGE, BLEU).
+Summary
+To build a summarizer, you need:
+The right ingredients (data, tools, resources),
+Proper devices (methods or algorithms), and
+Clear instructions (processing steps).
+Together, these components enable the system to produce a coherent, relevant, and concise summary automatically.
+Competitions and Datasets
+To promote research and development in automatic and multilingual summarization, several international competitions and benchmark datasets have been established.
+These platforms help researchers evaluate, compare, and improve summarization systems on standard datasets under controlled conditions.
+1. Competitions
+DUC (Document Understanding Conference)
+TAC (Text Analysis Conference)
+MultiLing Workshop
+A. DUC (Document Understanding Conference)
+One of the earliest and most influential competitions for summarization.
+Organized by NIST (National Institute of Standards and Technology).
+Focused on document summarization tasks such as:
+Single-document and multi-document summarization.
+Generic and query-focused summaries.
+Served as a foundation for later summarization benchmarks like TAC.
+B. TAC (Text Analysis Conference)
+Successor to DUC, also organized by NIST.
+Expanded evaluation to multi-document, update, and guided summarization.
+Encouraged research in cross-lingual and multilingual summarization tasks.
+Provides standard evaluation procedures and reference summaries.
+C. MultiLing Workshop
+An international evaluation series focusing on multilingual summarization.
+Tasks include:
+Single-document and multi-document summarization across many languages.
+Cross-lingual summarization, where summaries are produced in a language different from the source.
+Encourages systems that handle low-resource languages.
+2. Datasets
+Gigaword Corpus
+CNN/Daily Mail Dataset
+XSum (Extreme Summarization)
+WikiHow and Newsroom
+MultiLing Corpus
+A. Gigaword Corpus
+A large collection of news articles in multiple languages (e.g., English, Chinese).
+Commonly used for training and testing summarization systems, especially headline generation tasks.
+B. CNN/Daily Mail Dataset
+Contains news stories and human-written summaries.
+Widely used for abstractive summarization model training and evaluation.
+C. XSum (Extreme Summarization)
+A dataset focused on single-sentence abstractive summaries.
+Each article is paired with a very short summary capturing the core idea.
+D. WikiHow and Newsroom
+Datasets derived from Wikipedia and online news content.
+Used for evaluating extractive and abstractive summarization systems.
+E. MultiLing Corpus
+Specifically created for multilingual summarization tasks.
+Contains parallel documents in multiple languages with corresponding human-written summaries.
+Used in MultiLing workshops to test multilingual and cross-lingual summarizers.
+Purpose of Competitions and Datasets
+Provide standardized benchmarks for fair comparison of systems.
+Encourage innovation in multi- and cross-lingual summarization.
+Support the development of systems that work across diverse languages and domains.
+Summary
+Competitions such as DUC, TAC, and MultiLing, along with datasets like Gigaword, CNN/Daily Mail, and MultiLing Corpus, play a vital role in advancing automatic and multilingual summarization research.
+They establish common platforms for evaluation, collaboration, and improvement in summarization technology.

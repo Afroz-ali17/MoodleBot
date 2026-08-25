@@ -1,0 +1,421 @@
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+UNIT-II
+Decision Control and Looping Statements
+Syllabus: Conditional and un-conditional branching, iterative statements, nesting of
+decision Control Statements and loops.
+Programs: Write a python program to
+1. Test whether a given number is even or odd.
+2. Print out the decimal equivalents of ½, 1/3 ,1/4........1/10,using for a loop.
+3. Print a count down from the given number to zero using a while loop.
+4. Find the sum of all the primes below hundred.
+5. Find the factorial of a given number.
+Learning Outcomes:
+At the end of the unit student will be able to
+ understand the conditional and unconditional Statement.
+ describe conditional and unconditional Statements, Decision Control
+Statements .
+ adapt and combine standard algorithms to solve a given problem using
+decision control and looping statements.
+ implement programs using python control Structure
+Learning Material
+Control Statements:
+ A control statement is a statement that determines the control flow of a set of
+instructions, i.e., it decides the sequence in which the instructions in a program
+are to be executed.
+ Types of Control Statements —
+ Selection/Conditional Control: To execute only a selected set of statements.
+ Iterative Control: To execute a set of statements repeatedly.
+ Un-conditional Control:
+1. Selection /Conditional Branching Statements:
+ Python language supports different types of conditional branching statements
+which are as follows:
+ if Statement
+ if-else Statement
+ Nested if statement
+ if-elif-else statement.
+Department Of Information Technology AY: 2018-19 GEC Page 2
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+1.1 if Statement:
+ An if statement is a selection control statement which is based on the value of
+a given Boolean Expression.
+Syntax:
+if test_expression:
+statement 1
+.....
+statement n
+statement x
+ if structure may include 1 or n statements enclosed within if block.
+ First, test expression is evaluated. If the test expression is true, the statement
+of if block (statement 1 to n) are executed, otherwise these statements will be
+skipped and the execution will jump to statement x.
+Flow chart:
+Example:
+1.2 if else Statement:
+ The if .... else statement executes a group of statements when a test expression
+is true; otherwise, it will execute another group of statements.
+Syntax:
+Department Of Information Technology AY: 2018-19 GEC Page 3
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+if (test expression):
+statement_block 1
+else:
+statement_block 2
+statement x
+ If the condition is true, then it will execute statement block 1 and if the
+condition is false then it will execute statement block 2.
+Flowchart:
+Example: Write a program to determine whether a person is eligible to vote:
+1.3 Nested if Statements :
+ A statement that contains other statements is called a compound statement.
+ To perform more complex checks, if statements can be nested, that is, can be
+placed one inside the other.
+ In such a case, the inner if statement is the statement part of the outer one.
+ Nested if statements are used to check if more than one conditions are
+satisfied.
+ if statements can be nested resulting in multi-way selection.
+Example: Program that prompts the user to enter a number and then print the
+interval
+Department Of Information Technology AY: 2018-19 GEC Page 4
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+1.4 if-elif-else Statement :
+ Python supports if-elif-else statements to test additional conditions apart from
+the initial test expression.
+ The if-elif-else construct works in the same way as a usual if-else statement.
+ If-elif-else construct is also known as nested-if construct.
+ A series of if and elif statements have a final else block, which is executed if
+none of the if or elif expressions is True.
+Syntax:
+if (test expression 1):
+statement block1
+elif (test expression 2):
+statement block2
+. . . . . . . . . . . . . . ..
+elif( test expression N):
+statement block N
+else:
+statement block X
+Flowchart:
+Department Of Information Technology AY: 2018-19 GEC Page 5
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Program: To test whether a number entered by the user is negative, positive, or
+zero
+2. Looping Statements/Iterative Structure:
+ Iterative statements are decision control statements that are used to repeat the
+execution of a list of statements.
+ Python supports 2 types of iterative statements-while loop and for loop.
+2.1 while Loop :
+ The While loop provides a mechanism to repeat one or more statements while a
+particular condition is TRUE.
+Syntax:
+Statement x
+while (condition):
+Statement block
+Statement y
+ In while loop, the condition is tested before any of the statements in the
+statement block is executed.
+ If the condition is TRUE, only then the statements will be executed otherwise if
+the condition is False, the control will jump to statement y, that is the
+immediate statement outside the while loop block.
+Flowchart:
+Example: Program to print first 10 numbers using a while loop
+Department Of Information Technology AY: 2018-19 GEC Page 6
+PPYYTTHHOONN PPRROOGGRRAAMMMMIINNGG UNIT-II
+((SSmmtt..CChh..SSuugguunnaa LLaatthhaa,, SSrrii..TT..BBaallaajjii))
+i=0
+wwhhiillee((ii<<==1100))::
+pprriinntt((ii,, eenndd==”” ““))
+i=i+1
+Output: 00 11 22 33 44 55 66 77 88 99 1100
+2.2 for Loop:
+ For lloooopp pprroovviiddeess aa mmeecchhaanniissmm ttoo rreeppeeaatt aa ttaasskk uunnttiill aa ppaarrttiiccuullaarr ccoonnddiittiioonn iiss
+TTTrrruuueee... IIIttt iiisss uuusssuuuaaallllllyyy kkknnnooowwwnnn aaasss aaa dddeeettteeerrrmmmiiinnnaaattteee ooorrr dddeeefffiiinnniiittteee lllooooooppp bbbeeecccaaauuussseee ttthhheee
+ppprrrooogggrrraaammmmmmeeerrr kkknnnooowwwsss eeexxxaaaccctttlllyyy hhhooowww mmmaaannnyyy tttiiimmmeeesss ttthhheee lllooooooppp wwwiiillllll rrreeepppeeeaaattt...
+ The for.........iiinnn ssstttaaattteeemmmeeennnttt iiisss aaa llloooooopppiiinnnggg ssstttaaattteeemmmeeennnttt uuussseeeddd iiinnn PPPyyyttthhhooonnn tttooo iiittteeerrraaattteee ooovvveeer a
+sequence of objects.
+Syntax:
+for lloooopp__ccoonnttrrooll__vvaarr in sequence:
+ssttaatteemmeenntt bblloocckk
+Flowchart:
+22..22..11 ffoorr LLoooopp aanndd rraannggee(()) FFuunnccttiioonn :
+o TThhee rraannggee(( )) ffuunnccttiioonn iiss aa bbuuiilltt-iinn ffuunnccttiioonn iinn PPyytthhoonn tthhaatt iiss uusseedd ttoo iitteerraattee
+oovveerr aa sseeqquueennccee ooff nnuummbbeerrss..
+Syntax:
+rraannggee((bbeegg,, eenndd,, [[sstteepp]]))
+DDeeppaarrttmmeenntt OOff IInnffoorrmmaattiioonn TTeecchhnnoollooggyy AY: 2018-19 GEC Page 7
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+o The range( ) produces a sequence of numbers starting with beg (inclusive)
+and ending with one less than the number end.
+o The step argument is option (that is why it is placed in brackets). By default,
+every number in the range is incremented by 1 but we can specify a
+different increment using step. It can be both negative and positive, but not
+zero.
+Example: Program to print first n numbers using the range() in a for loop
+o If range( ) function is given a single argument, it produces an object with
+values from 0 to argument-1. For example: range(10) is equal to writing
+range(0, 10).
+o If range( ) is called with two arguments, it produces values from the first to
+the second. For example, range(0, 10) gives 0-9.
+o If range( ) has three arguments then the third argument specifies the
+interval of the sequence produced. In this case, the third argument must be
+an integer. For example, range(1, 20, 3) gives 1, 4, 7, 10, 13, 16, 19.
+Example:
+1. Program that accepts an integer (n) and computes the value of n+nn+nnn.
+(Eg. If n=5, find 5+55+555).
+n = int(input("Enter a number: "))
+str_n = str(n)
+sum = n
+sum_str = str(n)
+for i in range(1, 3):
+sum_str = sum_str + str_n
+Department Of Information Technology AY: 2018-19 GEC Page 8
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+sum = sum + int(sum_str)
+print(sum)
+2. Program that accepts a word from the user and reverse it
+s = input("Enter a word: ")
+str = ""
+for i in s:
+str = i + str
+print("Reverse of", s, "is:", str)
+2.3 Nested Loops :
+ Python allows its users to have nested loops, that is, loops that can be placed
+inside other loops.
+ Although this feature will work with any loop like while loop as well as for loop.
+ A for loop can be used to control the number of times a particular set of
+statements will be executed.
+ Another outer loop could be used to control the number of times that a whole
+loop is repeated.
+ Loops should be properly indented to identify which statements are contained
+within each for statement.
+Example:
+1. Program to print the following pattern
+2. Program to display multiplication tables from 1 to 10
+Department Of Information Technology AY: 2018-19 GEC Page 9
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+for i in range(1, 11):
+for j in range(1, 11):
+print(i, '*', j, '=', i*j)
+2.4 Condition-controlled and Counter-controlled Loops :
+2.5 The Break Statement:
+ The break statement is used to terminate the execution of the nearest
+enclosing loop in which it appears.
+ The break statement is widely used with for loop and while loop.
+ When compiler encounters a break statement, the control passes to the
+statement that follows the loop in which the break statement appears.
+Syntax:
+break
+Example: Program to demonstrate the break statement
+Department Of Information Technology AY: 2018-19 GEC Page 10
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+ Above code is meant to print first 10 numbers using a while loop, but it will
+actually print only numbers from 0 to 4. As soon as i becomes equal to 5, the
+break statement is executed and the control jumps to the following while loop.
+ Hence, the break statement is used to exit a loop from any point with in its
+body, by passing its normal termination expression. Below, Figure shows the
+transfer of control when the break statement is encountered.
+2.6 The Continue Statement:
+ Like the break statement, the continue statement can only appear in the body
+of a loop.
+ When the compiler encounters a continue statement then the rest of the
+statements in the loop are skipped and the control is unconditionally
+transferred to the loop-continuation portion of the nearest enclosing loop.
+Syntax:
+Continue
+Example: Program to demonstrate continue statement
+ Note that the code is meant to print numbers from 0 to 10.But as soon as i
+becomes equal to 5, the continue statement is encountered, so rest of the
+statements in the loop are skipped. In the output, 5 is missing as continue
+caused early increment of i and skipping of statement that printed the value of
+i on screen.
+ Below figure illustrates the use of continue statement in loops.
+Department Of Information Technology AY: 2018-19 GEC Page 11
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+ It can be concluded that the continue statement is somewhat the opposite of
+the break statement. It forces the next iteration of the loop to take place,
+skipping any code in between itself and the test condition of the loop.
+ The continue statement is usually used to restart a statement sequence when
+an error occurs.
+2.7 The Pass Statement:
+ Pass statement is used when a statement is required syntactically but no
+command or code has to be executed.
+ It specified a null operation or simply No Operation (NOP) statement. Nothing
+happens when the pass statement is executed.
+ The difference between a comment and pass statement is that while the
+interpreter ignores a comment entirely, pass is not ignored.
+ Comment is not executed but pass statement is executed but nothing happens.
+ Pass is a null statement.
+Example:
+1. Program to demonstrate pass statement
+2.8 Difference between break, continue and pass
+ The break statement terminates the execution of the nearest enclosing loop in
+which it appears.
+ The continue statement skips the rest of the statements in the loop transfer
+the control un-conditionally to the loop-continuation portion of the nearest
+enclosing loop.
+ The pass statement is a do-nothing statement in a loop. It is just added to
+make the loop syntactically correct. i.e, a pass statement is written as we can
+not have an empty body of the loop.
+2.9 The Else Statement Used With Loops:
+ In Python you can have the else statement associated with a loop statements.
+Department Of Information Technology AY: 2018-19 GEC Page 12
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+ If the else statement is used with a for loop, the else statement is executed
+when the loop has completed iterating.
+ But when used with the while loop, the else statement is executed when the
+condition becomes false.
+Examples:
+3. Programs:
+3. 1 Write a python program to Test whether a given number is even or odd.
+num = int(input("Enter a number: "))
+if (num % 2==0):
+print(num, "is an even number.")
+else:
+print(num, "is an odd number.")
+Output:
+Enter a number: 5
+5 is an odd number.
+3. 2 Write a python program to Print out the decimal equivalents of 1/1, 1/2, 1/3,
+1/4........1/10 using for loop.
+i=1
+for i in range(1,11):
+value=1.0/i
+print("1/", i, "=", value)
+Output:
+1/ 1 = 1.0
+1/ 2 = 0.5
+1/ 3 = 0.333333333333
+1/ 4 = 0.25
+1/ 5 = 0.2
+1/ 6 = 0.166666666667
+1/ 7 = 0.142857142857
+1/ 8 = 0.125
+1/ 9 = 0.111111111111
+Department Of Information Technology AY: 2018-19 GEC Page 13
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+1/ 10 = 0.1
+3. 3. Write a python program to Print a count down from the given number to zero
+using a while loop.
+num=int(input("Enter a number: "))
+print("count down from ", num, "to 0 :")
+while (num >= 0):
+print(num)
+num = num - 1
+Output:
+Enter a number: 6
+count down from 6 to 0:
+3.4. Write a python program to Find the sum of all the primes below hundred.
+sum=0
+for j in range(1,100):
+for i in range(2,j):
+if (j% i) == 0:
+break
+else:
+sum=sum+j #where j is a prime number
+print("Sum of prime numbers up to 100 is", sum)
+Output:
+Sum of prime numbers up to 100 is 1061
+3. 5. Write a python program to find the factorial of a given number.
+num=int(input("Enter a number: "))
+fact=1
+while (num>0):
+fact=fact*num
+num=num-1
+print("Factorial of", num, "is",fact)
+Department Of Information Technology AY: 2018-19 GEC Page 14
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Output:
+Enter a number: 6
+Factorial of 6 is 720
+Assignment-Cum-Tutorial Questions
+SECTION A: Objective Questions
+1. Python uses ____________ to form a block of code.
+2. Which part of if statement should be indented [ ]
+a) The first statement b) All the statements
+c) Statements within the if block d)None of these
+3. Which of the following is placed after the if condition [ ]
+a) ; b) . c) : d) ,
+4. elif and else blocks are optional [True/False]
+5. How many lines will be printed by this code?
+while False:
+print(“hello”) [ ]
+a) 1 b) 0 c) 10 d) countless
+6. __________ is a built-in function that is used to over a sequence of numbers.
+7. Which statement is used to stop the current iteration of the loop and continue
+with the next one? [ ]
+a) pass b) break c)continue d)jump
+8. Which statement is used to terminate the execution of the nearest enclosing loop
+in which it appears? [ ]
+a) pass b)break c)continue d)jump
+9. Which statements indicates a NOP [ ]
+a) pass b)break c)continue d)jump
+10. It is possible to use ‘else suite’ along with loops. [True/False]
+11. x=100 [ ]
+y=200
+______ x>y _____
+print (“in if”)
+______
+print (“in else”)
+a) if , else b) if ; else c)if : else : d) if | else
+Department Of Information Technology AY: 2018-19 GEC Page 15
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+12. How many numbers will be printed? [ ]
+i=5
+while i>=0:
+print(i)
+i=i-1
+a) 5 b) 6 c) 4 d)0
+13. What is the output of the following code? [ ]
+i = 1
+while true:
+if i%3 == 0:
+break
+print(i)
+i + = 1
+a) 1 2 b) 1 2 3 c) error d) none of the mentioned
+14. What is the output of the following code? [ ]
+for i in range(2.0):
+print(i)
+a) 0.0 1.0 b) 0 1
+c) error d) none of the mentioned
+15. What is the output of the following code? [ ]
+for i in range(10):
+if i == 5:
+break
+else:
+print(i)
+else:
+print("here")
+a) 0 1 2 3 4 here b) 0 1 2 3 4 5 here c) 0 1 2 3 4 d) 1 2 3 4 5
+Department Of Information Technology AY: 2018-19 GEC Page 16
+PYTHON PROGRAMMING UNIT-II
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+SECTION B: SUBJECTIVE QUESTIONS
+1. Explain Conditional Statements in Python with examples.
+2. Write syntax and logical flow for if-elif-else.
+3. Explain the significance of for loop with else using an example.
+4. Differentiate between counter-controlled loops and sentinel-controlled loops.
+5. Write the differences between iteration and recursion.
+6. Explain the utility of break and continue statements with the help of an
+example.
+7. What is pass statement in python?
+8. Explain with an example, how continue statement is used in python.
+9. Write a program to display multiplication tables from 1 to 10.
+10. Write a Python program that accepts a word from the user and reverse it
+11. Write a Python program that accepts an integer (n) and computes the value of
+n+nn+nnn. (Eg. If n=5, find 5+55+555).
+12. Write a program to find the factorial of a given number.
+Department Of Information Technology AY: 2018-19 GEC Page 17

@@ -1,0 +1,345 @@
+Data Visualizations
+Unit 4
+Matplotlib
+Matplotlib is a fundamental Python library for creating a wide variety of static, animated, and interactive visualizations.
+Matplotlib is a low level graph plotting library in python that serves as a visualization utility.
+Installation: C:\Users\Your Name>pip install matplotlib
+importance of Matplotlib
+It is the base library for plotting in Python.
+Gives full control over every element in a graph (axes, colors, labels, legends, etc.).
+Can create all types of plots: line, bar, histogram, scatter, pie, and even 3D plots.
+Works smoothly with NumPy and Pandas
+Common Plot Types
+Matplotlib can create a wide variety of plots to suit different needs:
+Line Plots: Ideal for showing trends over time or continuous data. Use plt.plot().
+Scatter Plots: Great for showing the relationship between two variables. Use plt.scatter().
+Bar Charts: Used to compare quantities across different categories. Use plt.bar() or plt.barh() for horizontal bars.
+Histograms: Display the distribution of a single variable. Use plt.hist().Pie Charts: Show proportions of a whole. Use plt.pie().
+Seaborn
+Seaborn is a powerful Python library designed for creating attractive and informative statistical graphics. It is built on top of Matplotlib and closely integrated with the data structures provided by Pandas, offering a high-level interface for generating a wide variety of statistical plots with ease.
+Importance of Seaborn
+Built on top of Matplotlib to make plotting easier.
+Produces attractive and professional-looking plots by default.
+Specially designed for statistical plots (boxplot, violin plot, heatmap, pairplot, etc.).
+Works directly with Pandas DataFrames, saving time in coding.
+Common Visualizations with Seaborn
+Seaborn is particularly good at a few key types of visualizations. Here are some examples:
+Relational Plots: Show the relationship between two variables.
+Scatter Plots: Visualize the relationship between two continuous variables.
+Line Plots: Show how a variable changes over time or another continuous variable.
+Categorical Plots: Plot data with categorical variables.
+Bar Plots: Show the central tendency of a numerical variable for different categories.
+Count Plots: Display the number of observations in each category.
+Box Plots: Summarize the distribution of a continuous variable for different categories.
+cont
+Distribution Plots
+Purpose: Show the spread, shape, and pattern of a single variable.
+Histogram → frequency of values.
+KDE Plot → smooth curve showing probability density.
+Useful for understanding if data is normal, skewed, or has multiple peaks.
+Matrix Plots
+Purpose: Show data arranged in grid/matrix form.
+Heatmap → color-coded matrix, often used for correlation analysis.
+Useful for understanding relationships or intensity values across variables.
+summary
+Matplotlib = “manual and flexible”: You control every detail. Good for general-purpose plots.
+Seaborn = “automatic and aesthetic”: Focused on data exploration and statistical visualization.
+Customizing Plots in Data Visualization
+Customizing plots in Exploratory Data Analysis (EDA) is crucial for making your visualizations clear, informative, and visually appealing. Using titles, legends, labels, and themes turns a basic chart into an insightful piece of communication.
+When creating visualizations, customization is essential to improve clarity, readability, and aesthetics. The main elements that can be customized are:
+titles,
+axis labels,
+legends
+themes.
+Essential Plot Customization Components
+Here is a breakdown of the key elements you should customize, typically using libraries like Matplotlib or Seaborn in Python:
+Title
+The title describes the overall purpose of the plot.
+A good title provides context and helps the reader understand the data quickly.
+A title is the most critical element for conveying the main purpose or finding of your plot.
+Cont
+Plot Title: Summarizes the entire visualization.
+It should be concise and descriptive, often highlighting the key insight
+(e.g., "Sales Decline in Q4" instead of just "Quarterly Sales").
+Example (Matplotlib): plt.title('Distribution of House Prices (USD)')
+Legend Title: Clarifies what the different colors, shapes, or line styles in the legend represent.Example (Seaborn): Can often be set by the column name used for the hue or style parameter.
+Labels
+Labels on the X-axis and Y-axis explain what each axis represents.
+They should include the unit of measurement wherever applicable.
+Labels provide context for the variables being plotted, ensuring the audience knows what they are looking at.
+Customization options:
+Font size and color
+Scientific/Mathematical notation (using LaTeX-style formatting)
+Orientation (horizontal, vertical, angled)
+Cont
+Axis Labels (X and Y): Clearly indicate the variable and its unit of measurement for both the horizontal (x) and vertical (y) axes.
+Example (Matplotlib): plt.xlabel('Age (Years)'), plt.ylabel('Count (Frequency)')
+Data Labels (Annotations): Labels placed directly on data points (e.g., on top of a bar in a bar chart or next to an outlier). They are excellent for highlighting specific values or trends.
+Example (Matplotlib): plt.annotate('Peak Value', xy=(4, 30), xytext=(3, 35))
+legend
+A legend is essential when your plot displays multiple data series (lines, colors, markers) or groups, helping the audience differentiate between them.
+The legend identifies different categories, lines, or bars in the plot.
+It is especially important when multiple datasets are displayed together.
+Customization options:
+Location (top, bottom, left, right, or best-fit position)
+Title of the legend
+Font size and style
+Background (transparent, shaded, or with a border)
+Cont
+Identification: The legend maps a visual element (color, line style) to its corresponding data series or category name. You must assign a label to each series when plotting.
+Example (Matplotlib): plt.plot(x, y1, label='Series A'), then plt.legend()
+Customization: You can adjust the legend's position (e.g., 'upper right', 'lower center') to prevent it from obscuring the data, change its font size, add a border, or set the number of columns (ncol).
+Example (Matplotlib): plt.legend(loc='best', frameon=False, fontsize='small')
+Themes and Styles
+Themes are predefined sets of aesthetic customizations that affect the non-data ink of the plot, such as background color, grid lines, text size, and font. Applying a theme helps achieve a professional and consistent look quickly.
+Themes define the overall look and feel of a plot.
+They control elements like background color, gridlines, and font styles.
+Customization options:
+Light or dark backgrounds
+Grid visibility (on/off, dotted, dashed)
+Predefined styles
+Cont
+Matplotlib Styles: Matplotlib offers various built-in styles you can use with plt.style.use().
+Popular options include:
+'ggplot' (mimics R's ggplot2 style)
+'fivethirtyeight' (mimics the style of the data journalism site FiveThirtyEight)
+'dark_background‘
+Cont
+Seaborn Themes: Seaborn, which is built on Matplotlib, provides its own attractive themes that are often preferred for statistical plots. You can set a Seaborn theme with:
+sns.set_theme() or sns.set_style().
+'darkgrid' (default, dark gray background with white grid)
+'whitegrid' (white background with gray grid)
+'ticks' (minimalist, only axes and ticks)
+Customization is Important in EDA
+Summary of Customizations
+Advanced visuals
+Violin Plots
+Definition:
+The Violin Plot is an advanced replacement for the Box Plot. It combines the statistical summary of a box plot with the richness of a kernel density estimate (KDE) plot.
+Combines a box plot and a kernel density plot.
+Shows summary statistics (median, quartiles) and data distribution shape.
+Use Cases:
+Comparing distributions of exam scores across classes
+Salary distributions across roles
+Cont.…
+Cont.
+Cont.
+Violin Plot (sns.violinplot)
+Strip Plots
+Strip Plot (sns.stripplot)
+The Strip Plot is essentially a one-dimensional scatter plot where one axis is categorical. It shows every single data point.
+A categorical scatter plot showing individual data points for each category.
+Characteristics:
+Points plotted along one categorical axis and one numerical axis
+Shows all observations
+Can use jittering to reduce overlap
+Use Cases:
+Visualizing test scores of students
+Displaying individual sales amounts by region
+Cont…
+Cont
+Cont.
+Swarm Plots
+Swarm Plot (sns.swarmplot)
+The Swarm Plot is an improvement on the Strip Plot, also showing every data point, but with a clever twist to avoid overlap.
+Similar to strip plots, but points are adjusted to avoid overlap.
+Preserves the exact values of all data points.
+Characteristics:
+Points “swarm” along the categorical axis
+Often combined with box or violin plots for added context
+Use Cases:
+Small-to-medium datasets where point overlap is an issue
+Visualizing distributions along with categories
+Cont.
+Cont
+Cont
+Key Differences in Categorical Distribution Plots
+Multivariate Visualization
+Definition
+Multivariate visualization involves plotting three or more variables in a single visual to explore relationships, patterns, or correlations between multiple variables simultaneously.
+Purpose
+To understand relationships between multiple features.
+To detect patterns, trends, or clusters in complex datasets.
+To aid in exploratory data analysis (EDA) and feature selection.
+Cont
+Multivariate Visualization shows the relationships between three or more variables, and Subplots are essential tools for managing the complexity of these higher-dimensional views.
+Importance:
+In real-world datasets, we rarely deal with only one or two variables.For example:
+A student dataset: marks, attendance, study hours, and grade.
+A car dataset: mileage, engine size, weight, price.
+A medical dataset: age, blood pressure, cholesterol, heart rate.
+To understand how these variables influence each other, we use multivariate visualization.
+Common Techniques
+Scatter plots with color/size encoding
+x-axis: one variable
+y-axis: second variable
+color or size: third variable
+Pair plots / Scatterplot matrices
+Shows pairwise relationships between multiple variables.
+Useful for quick correlation checks.
+Heatmaps
+Visualize correlations or intensity between multiple variables.
+Bubble charts
+Similar to scatter plots but use bubble size for additional variable.
+3D plots
+x, y, z axes represent three variables simultaneously.
+Cont.
+Advantages &Disadvantages
+Advantages
+Captures complex relationships in a single visual.
+Helps detect trends, outliers, and correlations.
+Disadvantages
+Can become cluttered if too many variables are included.
+Harder to interpret than univariate or bivariate plots.
+Subplots in Data Visualization
+A subplot is a smaller plot placed within a larger figure. Multiple subplots allow you to visualize several charts together for comparison.
+Purpose
+Compare different variables, categories, or datasets side by side.
+Organize multiple visuals in a single figure.
+Makes reports or dashboards more compact and readable.
+Cont
+Subplots are multiple plots displayed within a single figure (window).They are useful when you want to:
+Compare relationships among multiple variable pairs.
+Keep plots visually organized and consistent in scale.
+In Python, subplots are created using:
+fig, axes = plt.subplots(rows, cols, figsize=(width, height))
+rows → number of rows of plots
+cols → number of columns of plots
+axes → an array of subplot objects you can draw on
+Cont.
+Advantages
+Combines multiple charts for easy comparison.
+Saves space in reports or dashboards.
+Allows exploration of multivariate relationships visually.
+Disadvantages
+Too many subplots can make the figure cluttered and hard to read.
+Requires careful scaling and sizing for readability.
+Example: Subplots for Multivariate Visualization
+Let’s use the Iris dataset — it has 4 numerical variables:
+sepal_length
+sepal_width
+petal_length
+petal_width
+We’ll visualize different feature relationships using subplots.
+Python code :slide 1
+import seaborn as sns
+import matplotlib.pyplot as plt
+# Load dataset
+iris = sns.load_dataset("iris")
+# Create subplots - 2 rows, 2 columns
+fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+fig.suptitle("Multivariate Visualization using Subplots", fontsize=16)
+# Plot different combinations of features
+sns.scatterplot(x='sepal_length', y='sepal_width', hue='species', data=iris, ax=axes[0,0])
+axes[0,0].set_title('Sepal Length vs Sepal Width')
+Python code :slide 2
+sns.scatterplot(x='petal_length', y='petal_width', hue='species', data=iris, ax=axes[0,1])
+axes[0,1].set_title('Petal Length vs Petal Width')
+sns.scatterplot(x='sepal_length', y='petal_length', hue='species', data=iris, ax=axes[1,0])
+axes[1,0].set_title('Sepal Length vs Petal Length')
+sns.scatterplot(x='sepal_width', y='petal_width', hue='species', data=iris, ax=axes[1,1])
+axes[1,1].set_title('Sepal Width vs Petal Width')
+plt.tight_layout()
+plt.show()
+Output
+Explanation:
+We used 4 subplots to show relationships between different feature pairs.
+The color (hue) represents the species category, allowing multivariate comparison (two numerical + one categorical variable).
+This is a multivariate view since multiple variables are analyzed together.
+Heatmap: Another Multivariate Tool
+Heatmap is often used with subplots to visualize relationships across all numeric features in one go.
+Python code:
+# Correlation matrix
+corr = iris.drop('species', axis=1).corr()
+plt.figure(figsize=(8,6))
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title("Heatmap showing Correlation between Features")
+plt.show()
+Explanation:
+Each cell shows how strongly two variables are related.
+Positive correlation (close to +1): variables increase together.
+Negative correlation (close to -1): one increases while the other decreases.
+Output
+Summary: Subplots in Multivariate Visualization
+Plotly
+Plotly is a high-level Python library used for creating interactive and dynamic visualizations.
+Unlike static plotting libraries like Matplotlib or Seaborn, Plotly allows users to zoom, pan, hover, and filter data in real-time.
+It is widely used in data analysis, dashboards, and web applications.
+Plotly is an open-source Python library designed for creating interactive and publication-quality visualizations. It integrates well with Pandas, NumPy, and Jupyter Notebooks, making it suitable for data exploration and dashboard creation.
+It can also be used with Dash, a Plotly framework for creating interactive web-based dashboards without requiring JavaScript.
+Cont
+Plotly supports a wide range of visualizations, including:
+Scatter plots
+Line charts
+Histograms
+Box plots
+Heatmaps
+Bubble charts
+3D visualizations
+Geographical and choropleth maps
+Cont
+Exploratory Data Analysis (EDA) involves visualizing data to:
+Understand patterns
+Detect outliers
+Identify relationships between variables
+Interactive visualizations allow users to:
+Zoom in/out on data points
+Hover to see tooltips
+Filter or select data dynamically
+This is much more powerful than static plots (like Matplotlib or Seaborn) because it helps to interactively explore the dataset.
+Features of Plotly
+Interactivity:
+Plots are interactive by default. Users can hover over data points, zoom into areas of interest, and select or filter subsets of data.
+Multiple Chart Types:
+Supports scatter plots, line charts, bar charts, histograms, box plots, violin plots, heatmaps, 3D plots, and maps.
+Web and Dashboard Ready:
+Visualizations can be rendered directly in web browsers.
+Integrates seamlessly with Dash, Streamlit, and other web frameworks.
+Cont.
+Customizability:
+Users can customize colors, labels, titles, tooltips, themes, and more.
+Supports annotation, multiple axes, and subplots.
+Integration with DataFrames:
+Works directly with Pandas DataFrames, making it easy to visualize structured data.
+Common Plotly Charts
+Scatter Plot:Used to examine the relationship between two numerical variables. Plotly allows adding hover information and coloring by category for deeper insights.
+Histogram:Displays the frequency distribution of a variable and helps identify data skewness and spread.
+Box Plot:Summarizes data distribution through quartiles and highlights outliers effectively.
+Heatmap:Represents correlations between multiple variables, making it easy to spot strong relationships.
+Pair Plot (Scatter Matrix):Provides an overview of relationships between all numerical features in a dataset.
+Advantages of Using Plotly for EDA
+Example Dataset
+We’ll use the Iris dataset for demonstration.
+Example 1:Interactive Scatter Plot with output
+fig = px.scatter(df,
+x='sepal length (cm)',
+y='sepal width (cm)',
+color='species',
+size='petal length (cm)',
+hover_data=['petal width (cm)'],
+title='Interactive Scatter Plot - Iris Dataset')
+fig.show()
+Ex2:Pair Plot (Scatter Matrix) with output
+fig = px.scatter_matrix(df,
+dimensions=iris.feature_names,
+color='species',
+title='Scatter Matrix for Iris Features')
+fig.show()
+Ex3:Interactive Box Plot with output
+fig = px.box(df,
+x='species',
+y='petal length (cm)',
+color='species',
+title='Box Plot of Petal Length by Species')
+fig.show()
+Ex4 Heatmap (Correlation Matrix)
+import numpy as np
+corr = df.drop(columns='species').corr()
+fig = px.imshow(corr,
+text_auto=True,
+color_continuous_scale='RdBu_r',
+title='Feature Correlation Heatmap')
+fig.show()
+Summary: Why Use Plotly for EDA
+Conclusion
+Plotly provides an effective and interactive way to perform visual analysis during EDA. Its ability to combine ease of use, aesthetic quality, and interactivity makes it a valuable tool for data scientists and analysts. By enabling users to explore datasets dynamically, Plotly enhances the process of discovering insights, identifying patterns, and supporting data-driven decisions.

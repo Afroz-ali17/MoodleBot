@@ -1,0 +1,332 @@
+UNIT – V
+Exception Handling, Debugging, Deployment and
+Monitoring
+Deployment and Monitoring of RPA Systems
+A study from PEGA, based on a survey of more than 500 decision-makers from global
+businesses, revealed that 67% believed RPA (Robotic Process Automation) was more
+effective than they initially thought, while only 8% found it less effective. However, ramping
+up and maintaining RPA effectiveness proved challenging. About 50% of respondents cited
+bot deployment as the hardest task, with only 39% of deployments completed on schedule.
+The average time from start to deployment was around 18 months. Furthermore, once
+deployed, bots often broke down, as reported by 87% of respondents. Another major issue
+was bot maintenance, with most initiatives lasting only about 1.8 years, requiring continuous
+investment to ensure proper functioning. The survey also indicated that bots added more
+complexity to the IT infrastructure.
+Although RPA aims for automation, it should not be perceived as a launch-and-forget system.
+In the future, as RPA integrates with AI, it may become more autonomous. Currently,
+however, human intervention remains necessary. According to Sanjay Srivastava, Chief
+Digital Officer at Genpact, RPA’s popularity stems from its affordability, integration ease, and
+automation of repetitive tasks. For many companies starting digital transformation, RPA
+serves as the natural first step. Despite this, several organizations face challenges in achieving
+enterprise-wide benefits, and some early adopters have had to restart or redesign their
+automation journeys.
+Supporting this view, a Deloitte survey involving 424 companies found that 53% had initiated
+RPA projects, but only 3% had successfully scaled beyond 50 bots. These findings highlight
+that deploying and scaling RPA effectively across an organization demands strategic
+planning, proper governance, and continuous monitoring to ensure long-term success.
+Testing of RPA Systems
+Software testing is a vital part of any RPA deployment. An example from Washington State in
+2002 illustrates its importance. A software system used to calculate prisoner release dates had
+a bug that granted early release credits incorrectly, leading to prisoners being released an
+average of 49 days early—and in some cases, over 600 days early. The issue went unnoticed
+until 2015, resulting in more than 3,200 wrongful releases. This incident emphasizes the need
+for meticulous testing to prevent critical system failures.
+In bot development, even minor process changes can cause significant issues. Testing should
+not be handled solely by developers or technical staff. Instead, professionals with
+backgrounds in software quality assurance and experience in test automation tools such as
+Selenium, Eggplant, WebTest, Mercury QTP, or Watir should conduct it.
+The main testing approaches include:
+1. Black Box Testing: The tester does not know the internal structure of the bot. They
+input test data and observe if the outputs are accurate.
+2. White Box Testing: The tester examines the internal design and code to identify
+security flaws, inefficiencies, or logical errors.
+3. Grey Box Testing: A combination of both black box and white box testing
+approaches for comprehensive evaluation.
+Testing methods can be either manual or automated. Manual testing involves exploring
+multiple scenarios, reviewing logs, and analyzing database entries. Although time-
+consuming, it allows creativity and intuition in discovering issues. Automated testing, on the
+other hand, uses scripts with various input values to test the system quickly and repeatedly,
+offering speed and consistency but with certain limitations. Therefore, a combination of both
+manual and automated testing is generally the most effective approach.
+Before testing, a detailed review of the process being automated is essential. Testers should
+carefully examine documents like the Process Definition Document (PDD) and the Solution
+Design Document (SDD). If these documents lack clarity, they must be revised to ensure
+accurate testing. Additionally, test data—often maintained in Excel sheets—must be
+comprehensive and reflect real-world use cases.
+RPA platforms also include debugging tools to support testing. Furthermore, third-party
+developers have created additional testing systems; for example, Stefan Krsmanovic
+developed a unit testing framework for UiPath to facilitate more efficient and structured
+testing processes.
+Going into Production
+Once the testing phase is successfully completed, the next stage in the RPA lifecycle is
+deployment or moving into production. The best practice is to begin with a narrow use case
+to minimize risks and allow for controlled evaluation. For example, the bot may initially be
+deployed on a single desktop or within a limited operational scope. After monitoring its
+performance and making necessary adjustments, the deployment can be gradually expanded
+within the department. Over time, based on the stability and effectiveness of the automation,
+the implementation can be scaled up to an enterprise-wide level.
+According to Asheesh Mehra, cofounder and CEO of AntWorks, during deployment it is
+essential to create a comprehensive process map that clearly defines the specific tasks to be
+automated. Those responsible for deployment must determine the exact roles and
+responsibilities of the bots within the overall process. Additionally, it is important to maintain
+transparency with the affected team members, keeping them informed and confident about
+the automation changes taking place.
+An iterative approach is also recommended, where the deployment process is repeatedly
+tested and refined to ensure compatibility with the existing infrastructure and software
+systems. This helps in identifying potential issues early and maintaining system stability.
+Another critical element of the deployment phase is the fallback plan. Since no automation
+system is flawless from the beginning, there is always a possibility of errors or system
+failures during the early stages of production. A fallback plan ensures that operations can
+continue smoothly even if the bot encounters problems. It allows for immediate corrective
+actions and minimizes disruptions in business processes.
+Finally, it is advisable to centralize the deployment process through a Center of Excellence
+(CoE). The CoE serves as the central body responsible for standardizing RPA practices,
+monitoring performance, ensuring compliance, and sharing best practices across the
+organization. By centralizing deployment under the CoE, organizations can achieve better
+governance, consistency, and efficiency in their RPA operations.
+Monitoring in RPA Implementation
+Once a bot goes live, continuous monitoring becomes a crucial aspect of Robotic Process
+Automation (RPA) management. Most RPA orchestration systems provide dashboards that
+help track bot performance, but organizations should also establish their own unique metrics
+and Key Performance Indicators (KPIs) to ensure comprehensive monitoring.
+According to Mehra, monitoring an RPA implementation should involve measuring outcomes
+against predefined success criteria. This helps determine whether the deployment met the
+expected goals or fell short. Bots must be configured to handle changes efficiently, and their
+impact should be continuously monitored. Monitoring should also extend to evaluating
+broader efficiencies and compliance requirements. It is essential to assess whether employee
+efficiency has improved and to analyze how well the bots comply with organizational and
+regulatory standards.
+An important component of monitoring is developing a Business Continuity Plan (BCP).
+This document outlines the types of monitoring to be performed, the goals to be achieved,
+and the actions to be taken if issues arise. The Center of Excellence (CoE) can draft and
+enforce this plan to ensure consistent and effective monitoring practices.
+Regular periodic meetings should be conducted to review bot performance. These meetings
+help determine whether the bots are performing as expected, if any modifications are
+required, or if a particular bot should be terminated due to inefficiency or redundancy.
+For advanced analytics, organizations can utilize log file analysis. Log files can be stored in
+platforms such as Elasticsearch, allowing data to be visualized through tools like Kibana for
+location-based analysis. Additionally, machine learning (ML) modules can be integrated to
+gain deeper insights and predictive capabilities from the bot’s operational data.
+Effective monitoring not only ensures smooth bot operation but also supports optimization,
+compliance, and overall process improvement within an RPA environment.
+Security in RPA Implementation
+Cybersecurity has become a significant concern in Robotic Process Automation (RPA). Many
+RPA implementations are deployed quickly to achieve efficiency, often without proper
+collaboration with the IT department. However, neglecting IT involvement can be a major
+mistake, as RPA systems are highly vulnerable to cyberattacks. Bots typically have access to
+multiple applications, databases, and networks across departments and geographies, often
+with more privileges than a regular user.
+Involving the Human Resources (HR) department is also important for managing enterprise
+IDs used by bots to access systems. This prevents unauthorized access to sensitive areas such
+as payroll and health insurance. According to Kevin Ross, Sr., a system engineer at
+CyberArk, RPA software interacts directly with critical business systems like ERP and CRM,
+requiring privileged access to perform tasks such as moving or copying data. However,
+privileged access without adequate security measures can lead to severe risks.
+As RPA demand increases, the number of privileged account credentials hard-coded into
+scripts or stored insecurely also grows. These credentials are often shared and reused without
+regular updates, making them vulnerable to cybercriminals or administrators with
+unauthorized access. Unlike human credentials that must be changed regularly, bot
+credentials often remain unchanged and unmanaged, creating serious security risks. A survey
+by EY revealed that 74% of security professionals are concerned about insider cybersecurity
+threats.
+If a hacker gains access to a bot, they could retrieve sensitive data or carry out malicious
+activities, such as denial-of-service attacks, which can disrupt essential operations like
+invoice or payroll processing. Therefore, IT involvement is essential during the early stages
+of RPA planning.
+Some key best practices to ensure RPA security include:
+1. Protection of Credentials: Securely store and manage bot credentials to prevent
+unauthorized access.
+2. Application Access: Continuously monitor bot activities and consider potential risks
+if the bot falls under malicious control.
+3. Governance: Establish a clear framework for security covering bot design, data
+usage, and defining roles and responsibilities.
+4. Audit Trail: Ensure the RPA platform provides detailed logs for conducting
+investigations and assessments.
+5. RPA Security Standards: Use RPA systems that meet third-party verified security
+requirements. Avoid using free versions in production as their security may be
+inadequate.
+6. Rotation of Credentials: Regularly change access privileges to minimize the impact
+if a hacker gains access.
+CyberArk provides tools for secure credential rotation and integration with major RPA
+platforms such as UiPath, Automation Anywhere, Blue Prism, and others. It also supports
+audit trails and compliance alignment across on-premise, cloud, and hybrid environments.
+Despite its risks, RPA can also enhance security by reducing human intervention, which
+minimizes fraud, provided that credential security is maintained. Additionally, RPA systems
+can be configured to automatically install security patches, ensuring agile and proactive
+protection.
+Companies like Voya Financial apply strict enterprise-level security to their RPA
+implementations. According to Jeff Machols, VP of the Continuous Improvement Center,
+Voya enforces code peer reviews, change control processes, and separation of capabilities
+among bots to maintain governance. They also restrict citizen developers to prevent
+unauthorized automation creation.
+Overall, maintaining strong security mechanisms, IT collaboration, and governance is
+essential to safeguard RPA implementations from potential cyber threats.
+Scaling
+Scaling is considered the ultimate goal or the “holy grail” of Robotic Process Automation
+(RPA), as it represents the stage where automation becomes truly transformative for an
+organization. However, achieving large-scale implementation has proven to be highly
+challenging due to several interrelated factors.
+Planning: Proper planning is the foundation for successful RPA scaling. It requires detailed
+objectives, documentation, and clarity at every step of the process. Without effective
+planning, organizations may face chaos and confusion when managing numerous bots across
+different departments. To avoid this, many companies hire consultants or use process mining
+software to analyze workflows and identify automation opportunities. Some RPA platforms
+even provide built-in process discovery tools that assist in this phase.
+ROI (Return on Investment): Focusing too narrowly on high ROI can hinder scaling. For
+example, if a company automates only processes with a 100% ROI over two years, it may
+end up automating very few tasks, thus limiting the overall impact of RPA. On the other
+hand, automating a larger set of processes with an average ROI of around 20% across various
+departments can yield a much greater organizational benefit. This broader approach is known
+as the “portfolio effect.” However, for this to be effective, there must be a strong emphasis on
+change management to ensure smooth adoption and alignment within the organization.
+Center of Excellence (CoE): Establishing a CoE is crucial for scaling RPA. It ensures
+discipline, governance, and standardization across the automation lifecycle. The CoE is
+responsible for creating standard operating procedures (SOPs), collecting best practices, and
+promoting continuous learning. Additionally, the CoE plays a key role in monitoring
+performance, ensuring compliance, and driving continuous improvement through structured
+management of RPA initiatives.
+Involvement of IT: While RPA is user-friendly and can initially function without IT
+involvement, scaling the system successfully requires IT participation. The IT department is
+essential in building a robust technological foundation through the use of cloud infrastructure
+or advanced containerization tools like Kubernetes. IT teams also manage updates, patches,
+integrations, and credential security, which are all vital for maintaining a stable and scalable
+RPA environment.
+Executive Buy-In: Scaling RPA is not merely a technical task but a strategic initiative that
+demands executive support. Leadership commitment ensures the allocation of necessary
+resources and helps drive organizational momentum. Executives must also share a unified
+vision for RPA’s role in business transformation.
+Empowerment and Enablement: The CoE cannot handle all aspects of scaling alone. It
+must provide leadership and guidance while enabling all individuals involved in RPA
+deployment to contribute effectively. This requires proper training, technical support, and
+continuous communication across teams.
+Global and Cultural Challenges: When scaling RPA across multiple countries,
+organizations must consider regional differences such as cultural norms, regulatory
+requirements, data privacy laws, infrastructure readiness, and local work policies. Addressing
+these variations carefully ensures smooth implementation across diverse environments.
+Overall, scaling RPA is a continuous, full-time strategic effort that requires proper planning,
+governance through a CoE, strong IT collaboration, executive backing, and adaptation to
+global standards to achieve widespread, long-lasting impact.
+1. Exception Handling in UiPath
+Exception handling in UiPath is a mechanism to manage runtime errors that occur during
+workflow execution. It ensures the automation continues to run smoothly without crashing
+unexpectedly.
+Definition:
+Exception handling refers to identifying, catching, and resolving errors that occur during
+process execution in UiPath workflows.
+Types of Exceptions in UiPath:
+1. System Exception: Occurs due to issues in system components (e.g., file not found,
+selector not found).
+2. Application Exception: Happens when an application behaves unexpectedly (e.g.,
+Excel fails to open).
+3. Business Rule Exception: Triggered when business logic or validation fails (e.g.,
+wrong input data).
+Activities for Exception Handling:
+• Try Catch Activity: The most commonly used activity for handling exceptions.
+o Try Block: Contains the main set of activities that may cause errors.
+o Catch Block: Executes when an exception occurs. Can handle different
+exception types like System.Exception or BusinessRuleException.
+o Finally Block: Executes after Try and Catch, regardless of error occurrence
+(used for cleanup tasks).
+• Throw Activity: Used to manually raise an exception.
+• Rethrow Activity: Used to propagate an exception after partial handling.
+• Terminate Workflow Activity: Stops the workflow execution immediately when a
+critical error occurs.
+Best Practices:
+• Use specific exception types in Catch blocks.
+• Add meaningful messages in exceptions for easy debugging.
+• Combine logging with Try-Catch for better traceability.
+• Avoid overusing Try-Catch as it can hide genuine problems.
+2. Common Exceptions and Ways to Handle Them in UiPath
+During automation, UiPath may encounter several types of exceptions. Proper handling
+prevents workflow failure and improves reliability.
+Common UiPath Exceptions:
+1. SelectorNotFoundException:
+o Occurs when a UI element cannot be located.
+o Handling: Use dynamic selectors, proper delays, and Element Exists activity.
+2. FileNotFoundException:
+o Triggered when a specified file path is missing.
+o Handling: Use Path Exists or File Exists activities before file operations.
+3. NullReferenceException:
+o Occurs when the variable has no assigned value.
+o Handling: Check for null values using If conditions.
+4. TimeoutException:
+o When a UI element takes too long to appear.
+o Handling: Adjust timeout properties and add Retry Scope activity.
+5. BusinessRuleException:
+o Raised when business logic fails (e.g., invalid data format).
+o Handling: Use Throw activity with custom messages and handle in Catch
+block.
+6. DirectoryNotFoundException:
+o When a specified directory path doesn’t exist.
+o Handling: Verify directory paths before using them.
+7. ExcelException:
+o Errors during Excel operations.
+o Handling: Use proper Excel scope and close background Excel instances.
+General Handling Methods:
+• Use Try-Catch to isolate faulty parts of the process.
+• Apply Retry Scope for transient errors.
+• Use global exception handler for overall process error control.
+• Maintain detailed logs using Log Message and Write Line.
+3. Debugging Techniques in UiPath
+Debugging helps identify, trace, and fix issues in automation workflows. UiPath provides
+several built-in tools for debugging.
+Definition:
+Debugging in UiPath is the process of locating and correcting errors or logical mistakes in
+workflows before deployment.
+Debugging Features in UiPath:
+1. Breakpoints:
+o Used to pause execution at a specific activity.
+o Allows inspection of variables and program flow.
+2. Step Into:
+o Executes each activity one by one, including inside invoked workflows.
+3. Step Over:
+o Executes one activity at a time but skips details of invoked workflows.
+4. Step Out:
+o Runs the remaining activities in the current workflow and returns to the
+parent.
+5. Slow Step:
+o Executes workflow activities in slow motion for better observation.
+6. Immediate Panel:
+o Allows execution of expressions during debugging to check variable values.
+7. Locals Panel:
+o Displays all variables and arguments with their current values.
+8. Output Panel:
+o Shows log messages and exceptions generated during execution.
+Best Practices:
+• Use meaningful log messages at key steps.
+• Enable ‘Highlight Elements’ to track UI interactions.
+• Run the workflow in Debug Mode before full execution.
+• Handle exceptions to prevent abrupt termination during debugging.
+4. Collecting Crash Dumps and Error Reporting in UiPath
+Crash dumps and error reporting help diagnose and analyze issues after workflow failure.
+Crash Dumps:
+A crash dump is a snapshot of the UiPath process memory at the moment it fails. It helps
+developers analyze the cause of the crash.
+How to Collect Crash Dumps:
+1. Automatic Collection:
+o UiPath automatically generates crash dump files (.dmp) in the system’s
+temporary folder when a workflow crashes.
+2. Manual Collection:
+o Use Windows Task Manager → Right-click UiPath.Executor.exe → Select
+Create Dump File.
+3. Custom Logging:
+o Add Log Message or Write Line activities throughout workflows to capture
+execution flow.
+Error Reporting in UiPath:
+UiPath provides options for reporting and tracking errors to maintain workflow reliability.
+Methods:
+1. Log Files:
+o Stored locally or in Orchestrator for later analysis.
+o Include error messages, stack traces, and timestamps.
+2. Orchestrator Logs:
+o Centralized logs for all robots.
+o Used to monitor workflow performance and identify recurring issues.
+3. Global Exception Handler:
+o A built-in feature to handle all unhandled exceptions globally.
+o Can log, retry, or terminate workflow based on configuration.
+4. Email Notification:
+o Send automated emails to alert developers about critical errors.
+Best Practices:
+• Regularly analyze Orchestrator logs for exceptions.
+• Use consistent naming conventions for log entries.
+• Maintain version control and test workflows before deployment.

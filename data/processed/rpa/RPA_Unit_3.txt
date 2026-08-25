@@ -1,0 +1,996 @@
+ROBOTIC PROCESS AUTOMATION
+UNIT-3
+(RPA Vendor Evaluation & Center of Excellence (CoE))
+RPA Vendor Evaluation
+The Right Factors to Consider
+When it comes to Robotic Process Automation (RPA), one of the biggest challenges organizations face is the
+selection of the right vendor. The market itself is still in the early phases and continues to evolve rapidly,
+particularly with the integration of emerging technologies like Artificial Intelligence (AI). This evolving
+nature of the industry makes vendor evaluation an essential step.
+The Size of the Market
+Currently, there are over 70 software vendors offering RPA solutions. The high number of players is due to
+several reasons:
+• The unclear and fuzzy definition of RPA, which allows different interpretations and varied offerings.
+• The surge in funding and investments in the RPA industry, which has encouraged many entrepreneurs
+to establish new start-ups.
+• The relative ease of building RPA software, especially for basic functionalities like screen scraping,
+has lowered the barrier to entry for vendors.
+Why Evaluation Is Challenging
+Given the profusion of vendors, conducting a comprehensive evaluation of all providers is unpractical and
+unrealistic. The sheer variety of tools, features, and capabilities makes it impossible to review each one in
+depth.
+The Practical Approach
+Instead of attempting to analyze every vendor, organizations need to develop a short list of potential vendors.
+This short list should be based on how well the offerings fit the specific requirements of the organization. The
+aim is to filter out irrelevant players and focus on those vendors that align closely with business goals, process
+needs, and scalability requirements.
+What This Chapter Covers
+This chapter focuses on providing guidance on the key factors involved in making the right selection of an
+RPA vendor. By understanding these factors, decision-makers can narrow down their choices effectively and
+ensure the selected vendor is capable of supporting both current automation needs and future growth
+opportunities.
+___________________________________________________________________________
+Check Out Third Parties
+Using Analyst Organizations for Guidance
+When creating a short list of RPA vendors, a practical starting point is to refer to surveys and research
+conducted by leading analyst organizations such as Forrester and Gartner. These organizations have the
+resources, expertise, and credibility to perform deep, comprehensive evaluations of RPA software, making
+their findings a valuable foundation for vendor selection.
+Leveraging Gartner Peer Insights
+According to Thomas Phelps, CIO at Laserfiche, Gartner Peer Insights is an especially useful resource. This
+platform offers validated user-sourced reviews, providing insights from a wide range of stakeholders
+including CIO-level executives, enterprise architects, and other professionals. Peer Insights contains
+detailed evaluations on critical aspects such as overall customer satisfaction, vendor evaluation and
+negotiation processes, implementation experiences, technical support quality, and other key areas. This
+ensures decision-makers gain practical perspectives from real-world users rather than relying solely on
+vendor marketing.
+Exploring Software Review Sites
+Beyond analyst firms, software review sites are another strong source of information. These platforms
+typically provide their own analyses, ratings, and user-generated comments. While some of the content can
+be biased or skewed, they still help identify main themes and common experiences across different users.
+Recommended Sources
+Several notable platforms provide valuable third-party insights into RPA vendors:
+• G2.com (www.g2.com/categories/robotic-process-automation-rpa)
+Launched in 2012, G2 has accumulated 843,500+ reviews overall. In its RPA section, the top-rated
+vendors include UiPath, Automation Anywhere, WinAutomation by Softomotive, and Blue Prism.
+• Gartner (www.gartner.com/reviews/market/robotic-process-automation-software)
+Gartner’s review section lists UiPath, Automation Anywhere, Blue Prism, and TruBot as the top-
+rated vendors.
+• TrustRadius (www.trustradius.com/robotic-process-automation-rpa)
+Since its launch in 2014, TrustRadius has gathered 211,000+ reviews. Its rankings highlight UiPath,
+Automation Anywhere, Blue Prism, and WorkFusion as the leading RPA software vendors.
+• HFS Research (www.horsesforsources.com)
+HFS Research holds a special position in the RPA ecosystem as it was the first firm to recognize RPA
+as an emerging technology category in 2012. The organization provides high-quality research, much
+of which is freely accessible.
+Transition to Vendor Selection Criteria
+With these third-party resources in mind, businesses can better refine their short list of vendors. The rest of
+the chapter focuses on identifying the key criteria for making the final RPA vendor selection, ensuring that
+organizations base their decision on structured, reliable evaluation factors.
+_________________________________________________________________________________________
+Minimum Capabilities
+Misuse of the RPA Label
+With the growing fervent interest in RPA, many software companies have begun to label themselves as RPA
+providers, even when their offerings have little or no real connection to true RPA functionalities. This
+practice is not new in the software industry but can lead to terrible results for customers who invest in tools
+that fail to meet the expected standards.
+Core RPA Functions to Look For
+To avoid falling into this trap, it is essential to verify that any potential software vendor provides the minimum
+core RPA capabilities. At the very least, this includes:
+• Creation and deployment of bots to carry out automation tasks.
+• Screen scraping functionality, which forms a key part of traditional RPA.
+• Built-in integrations for common applications, ensuring that bots can interact seamlessly with widely
+used business systems.
+• A robust management console for bots that enables tracking, orchestration, and analytics to monitor
+and optimize performance.
+• Mechanisms for handling business exceptions, where human intervention becomes necessary when a
+bot fails or encounters a scenario it cannot process.
+Proof of Concept (POC) as a First Stage
+The first stage of the evaluation process should include running a Proof of Concept (POC). Since most RPA
+vendors provide trial periods, organizations should use this opportunity to launch a small project. This
+practical test helps assess the features, capabilities, and limitations of the software before making a larger
+commitment.
+POC vs. Pilot Program
+It is important not to confuse a POC with a pilot program, as the two serve different purposes:
+• A POC usually occurs in the early stages within a development environment. It is designed to test
+feasibility and explore whether the tool meets the required basic needs.
+• A pilot program, on the other hand, is applied to a real-world application intended for production
+use. It comes after the POC stage and serves as a bridge toward full-scale deployment.
+_________________________________________________________________________________________
+Who Is the User?
+The Importance of Considering the End User
+At first glance, the question of who the user is might seem overly simplistic. However, in reality, this factor is
+often overlooked during the decision-making process for purchasing RPA software. Ignoring the needs of the
+end user can create a serious risk of poor adoption, where the system fails to gain traction within the
+organization.
+Selecting the Right Tool for the Right Audience
+According to Niraj Patel, Managing Director of Artificial Intelligence at DMI, the choice of RPA software
+must align with the intended audience. For example:
+• Front-end RPA: This type connects consumers directly to bots. Here, organizations must select
+conversational technologies. Additionally, for front-end scenarios, it may be beneficial to designate
+call center agents as bot owners, enabling them to measure, monitor, and optimize bot
+performance.
+• Back-end RPA: This type is more system-oriented and deals with core operations. It should be
+managed by technical personnel who can evaluate the quality of work performed by the bots.
+The Role of Non-Technical End Users
+In most cases, the end users of RPA software are not technical personnel. Instead, they are typically
+administrative staff or business professionals. This means the software must be user-friendly, intuitive, and
+accessible to those without advanced IT skills.
+Active Business Participation vs. Traditional IT Ownership
+As David Lee, Senior Research Analyst of Applications – Data and Analytics at Info-Tech Research Group,
+highlights, there is a critical difference between RPA vendor evaluation and traditional enterprise software
+evaluation, such as ERP systems. In ERP selection, IT teams typically take the lead in testing and
+recommending solutions. However, in RPA:
+• Business users must play an active role in vendor evaluation.
+• IT cannot be the sole tester of bot creation; instead, business teams must build and test bots
+themselves, since they are the ones who truly understand the processes to be automated.
+• Too often, businesses mistakenly treat RPA as a purely technical solution, handing it off to IT and
+expecting them to return with a final recommendation. This approach fails, because RPA’s success
+depends on direct business user engagement in the evaluation and implementation stages.
+___________________________________________________________________________
+Funding
+Venture Funding Trends
+In the first half of 2019, venture funding in the United States remained extremely strong, reaching $62 billion
+in investments for start-ups. If this pace were to continue, it would result in an all-time record for the year.
+Similarly, foreign markets demonstrated strength, generating approximately $104 billion in funding.
+Concentration of Investments
+Despite these large figures, the reality is that funding markets concentrate on a relatively small number of
+deals. This is because the investment amounts per deal have grown significantly. As a result, even if a
+category like RPA is red hot and highly attractive, not every vendor will be able to secure sufficient
+funding.
+Implications for Vendor Evaluation
+When evaluating an RPA vendor, funding strength is a critical factor to consider. Several key questions arise:
+• Does the vendor have enough resources to invest in research and development (R&D)? Without
+this, the company may fall behind in innovation and fail to deliver advanced features.
+• Will the vendor be able to build and maintain the necessary infrastructure and support systems?
+Strong funding is essential for scalability and long-term stability.
+• Can a small start-up compete in the talent market? With large, well-funded players dominating,
+smaller vendors may struggle to attract and retain top talent in engineering, AI, and automation.
+• Does the vendor have the financial capability to pursue acquisitions? In a competitive space like
+RPA, mergers and acquisitions are common strategies to expand capabilities, strengthen market share,
+and stay competitive.
+____________________________________________________________________________
+Ecosystem
+Limitations of RPA Vendors
+Even the largest RPA players in the market lack the resources to create a true end-to-end solution on their
+own. This means that, in most cases, customers will inevitably require additional software to address gaps
+within the RPA system. In fact, some of these gaps can be quite significant, making external support and
+complementary tools necessary.
+Importance of a Thriving Ecosystem
+Because of these limitations, it is essential to select an RPA platform that offers a robust and thriving
+ecosystem of partners and integrations. A strong ecosystem ensures that organizations can access the
+necessary complementary technologies and accelerate the process of filling in missing capabilities.
+The Role of a Bot Store
+One of the most important indicators of a healthy ecosystem is the presence of a bot store, which functions like
+an app store for automation bots and components. A bot store provides ready-made bots that can be
+downloaded and deployed quickly, significantly reducing the need for custom development.
+Benefits of a Bot Store
+The availability of pre-built bots and reusable components leads to:
+• Reduced development time, as organizations do not need to build everything from scratch.
+• Improved performance, since bots from the ecosystem are often optimized and tested.
+• Cost savings, as organizations benefit from faster automation cycles. For instance, Automation
+Anywhere has reported that its Bot Store has delivered cost savings of 50% to 70% through
+accelerated process automation.
+_________________________________________________________________________
+Costs
+The Central Role of Costs in RPA Selection
+When organizations evaluate RPA platforms, costs are usually the most top-of-mind factor. However,
+placing too much focus on cost alone can lead to the selection of the wrong platform, which could severely
+hamper the success of the project. While RPA vendor pricing is highly competitive, the main consideration
+should always be whether the software can effectively solve the organization’s problems.
+Hidden Minefields in RPA Costs
+Despite competitive pricing, RPA adoption can involve notable financial pitfalls:
+• Some platforms require significant consulting costs during setup, sometimes two to three times
+higher than the software costs.
+• For large enterprises, consulting expenses can easily reach multimillion-dollar figures.
+• While these investments are not necessarily wasted—especially when reengineering is required—the
+service providers must clearly communicate expectations upfront to avoid surprises.
+Factors to Consider in Software Costs
+1. Scale and ROI
+o Many RPA projects begin on a small scale and are not yet widespread across organizations.
+o Businesses must analyze the cost of scaling the technology and determine whether the ROI will
+justify expansion.
+o This requires modeling large deployment scenarios, factoring in not just software costs but also
+consulting, hardware, and server requirements, which often escalate as the project scales.
+o Evaluations will reveal significant cost discrepancies among vendors. Higher costs, however,
+should not always be seen as a deal-breaker, since they may be leveraged during negotiations
+for volume discounts or multi-year agreements.
+2. Nonhuman RPA Access Costs
+o An emerging cost challenge involves new pricing metrics introduced by some vendors.
+o According to Thomas Phelps, vendors may charge for nonhuman access or transactions
+performed by the system to compensate for declining revenues from user-based
+subscriptions.
+o This hidden pricing model could increase long-term costs unexpectedly if not addressed during
+negotiations.
+How Pricing Models Typically Work
+Although pricing varies across vendors, the general structure usually includes:
+• Annual payments for the studio/bot designer and the orchestration system, often exceeding $20,000
+per year.
+• The main cost driver is the bots themselves, with most vendors charging on a per-bot basis.
+o Attended bots: Approximately $1,000 to $2,000 each per year.
+o Unattended bots: Much higher, typically $5,000 to $10,000 each per year.
+Complexity of Per-Bot Pricing
+The per-bot pricing model is far from straightforward because bots differ widely across software platforms.
+This makes true comparisons difficult. Organizations should therefore ask detailed questions to understand
+what they are really paying for. This line of inquiry can also provide an opportunity to negotiate lower prices,
+especially if rival vendors offer stronger or cheaper features.
+Alternative Pricing Models
+While the per-bot model dominates the RPA market, some vendors—particularly those closer to the business
+process management (BPM) market—may use other models, such as:
+• Input-based pricing, which charges based on the number of full-time equivalent (FTE) employees or
+time and materials.
+• An output-based model, which charges based on the volume of transactions processed.
+Still, despite these alternatives, the per-bot pricing model remains the primary approach across most of the
+RPA industry.
+____________________________________________________________________________
+Training and Education in RPA Evaluation
+Taking Courses as a Measure of Usability
+One effective way to evaluate any RPA system is by participating in the training courses offered by the vendor.
+These courses help determine whether the software is easy to use and whether it provides the essential features
+required for automation tasks. By going through such structured training, organizations and individuals can
+gauge the level of complexity, user-friendliness, and practical applicability of the platform.
+Free Downloads and Community Editions
+Many RPA vendors also offer free downloads of their software or provide community editions. These options
+are highly valuable for organizations and individuals as they allow hands-on experimentation without initial
+investment. Testing through these editions helps in understanding the system’s capabilities, adaptability, and
+performance before committing to large-scale adoption.
+Importance of Online Forums and Community Support
+Evaluating an RPA system also involves exploring its online forums and community engagement. It is
+important to check whether there is a thriving, active community around the software. If there is consistent
+participation, it indicates that users are actively engaged, sharing solutions, and helping each other. On the other
+hand, if the forums have little to no recent activity, or if the majority of posts are filled with complaints about
+the software, this is a red flag. A vibrant and supportive community adds significant value as it becomes a
+source of troubleshooting, learning, and innovation.
+__________________________________________________________________________
+Support
+When selecting an RPA vendor, one of the most critical factors to evaluate is the level and quality of support
+they provide. A reliable RPA vendor should offer comprehensive self-service options such as videos, forums,
+courses, white papers, documentation, and blogs. These resources ensure that users can independently resolve
+common challenges, learn at their own pace, and continuously improve their RPA knowledge. Beyond self-
+service, the vendor’s technical support capabilities must also be assessed. Important considerations include
+whether the support team can be contacted 24/7 and the responsiveness of their issue resolution. Additionally,
+the Service-Level Agreement (SLA) plays a crucial role. The SLA is a formal contract that clearly defines the
+level of service, response times, and commitments the vendor guarantees, giving businesses clarity and
+assurance regarding the reliability of their automation platform.
+_________________________________________________________________________________________
+Best-of-Breed vs. End-to-End
+Another major consideration in RPA adoption is the choice between best-of-breed and end-to-end solutions.
+An end-to-end solution may seem attractive because it typically requires less training and is often more cost-
+effective in implementation. However, the downside is that certain features may be weak or subpar, as even
+leading global technology companies struggle to deliver platforms without gaps or deficiencies. In contrast,
+best-of-breed solutions focus on excelling in specialized functions but may require integration with other tools
+to achieve full coverage. In the RPA space, achieving a true end-to-end solution is often unrealistic,
+especially for large global enterprises with complex and diverse automation needs. Many such organizations
+often use multiple RPA platforms simultaneously to address their requirements. To overcome limitations, it
+is advisable to prioritize platforms with a robust ecosystem of partners and integrations. Such ecosystems
+allow businesses to extend RPA capabilities through complementary technologies like Optical Character
+Recognition (OCR), Machine Learning (ML), and Natural Language Processing (NLP), ensuring that the
+automation framework is both versatile and scalable.
+_________________________________________________________________________________________
+Thought Leadership and Vision in RPA Vendor Selection
+Importance of Vision Alignment
+When selecting an RPA vendor, it is crucial to evaluate the company’s thought leadership and vision. Although
+these aspects may seem intangible or nebulous, they play a significant role in determining long-term success. If
+the vendor’s vision aligns closely with your organization’s goals and strategic direction, the results can be
+highly impactful, fostering stronger collaboration and sustainable outcomes.
+Ways to Assess Vendor Vision
+To gain insights into a vendor’s vision, one can explore multiple communication channels maintained by the
+company. Examining their Twitter page, blog posts, and YouTube channel is a good starting point. Company
+conference videos, in particular, can provide a deeper understanding of how the vendor sees the future of
+automation and the value they place on innovation. Through this exploration, organizations can determine
+whether the vendor’s roadmap is clear, practical, and supportive of customer needs.
+Challenges in Evaluating Vision
+During this evaluation, it is not uncommon to find that some vendors lack clarity in their vision. In certain
+cases, the vision may appear muddled or inconsistent, raising concerns about the company’s ability to deliver
+long-term results. Even more concerning, some vendors may engage in overhyping their capabilities, presenting
+an unrealistic image of what their platform can achieve.
+Warning Signs of Hype
+If an RPA vendor claims that its software can handle virtually every task, at a low cost, with minimal effort,
+this should be seen as a red flag. Such promises often indicate a focus on generating public relations buzz and
+driving sales rather than providing practical, reliable solutions. Buyers must remain cautious of these too-good-
+to-be-true offers, as genuine RPA implementation always involves complexity and careful planning.
+Reality of RPA Adoption
+As emphasized by Arvind Jagannath, Director of Product Management at AI Foundry, RPA should not be
+viewed as a magical solution capable of instantly handling all repetitive employee tasks. Instead, RPA
+deployment requires tweaking, testing, and gradual adjustments, particularly in the early stages, before error
+rates begin to diminish. Moreover, organizations must be prepared for an upfront time investment to properly
+learn and get acquainted with the RPA tools. Only with this foundation can automation start to deliver
+consistent and meaningful results.
+________________________________________________________________________________________
+Industry Expertise in RPA Vendor Selection
+The Reality vs. The Claims
+While many RPA vendors promote their platforms as being suitable for all industries, the reality is usually quite
+different. In practice, most vendors tend to specialize or have deeper strengths in certain verticals. This means
+that their tools, functionalities, and case studies are more effective in specific domains rather than being equally
+strong across all industries.
+Concentration in Vertical Markets
+It is common to find that RPA vendors concentrate their expertise in areas such as banking, insurance,
+healthcare, manufacturing, retail, or telecom. For example, one vendor may excel in compliance-heavy sectors
+like finance and healthcare, while another may be more experienced in supply chain automation or customer
+service processes.
+Importance of Research
+Because of these variations, it is crucial to do thorough research before finalizing an RPA vendor. You need to
+identify whether the vendor has demonstrated success in your specific industry, whether through case studies,
+testimonials, or published success metrics. This will help reduce risks and ensure that the platform is not just
+theoretically capable, but practically proven in your vertical.
+Why Industry Expertise Matters
+Choosing a vendor with relevant industry expertise ensures faster deployment, smoother adaptation to your
+processes, and less need for customizations. It also means the vendor is more likely to understand industry
+regulations, compliance needs, and common operational pain points.
+_________________________________________________________________________________________
+Security, Monitoring, and Deployment in RPA Systems
+Security Risks in RPA
+RPA software, while highly valuable, comes with potential security risks that cannot be ignored. Since bots
+often interact with sensitive systems, databases, and applications, improper implementation can expose
+organizations to threats such as unauthorized access, data leaks, or compliance violations.
+Importance of IT Involvement
+To minimize these risks, it is essential to bring the IT team into the RPA process at an early stage. Their
+expertise in system security, access control, and compliance ensures that the RPA deployment aligns with
+organizational security standards and industry regulations. Early IT involvement not only prevents problems but
+also builds a more resilient and secure automation framework.
+Need for Strong Monitoring
+Bots, by nature, can be brittle because they depend on specific user interfaces, screen layouts, and workflows.
+Even small changes in an application can cause a bot to fail. Hence, a strong monitoring mechanism is critical.
+A robust RPA system must provide real-time monitoring tools to detect issues quickly, track performance, and
+raise alerts when failures occur, ensuring smooth business continuity.
+Deployment Considerations
+Another key factor is deployment. Organizations must decide whether the RPA software will be deployed
+through an on-premise setup or hosted on the cloud. An on-premise setup provides more control and may be
+suitable for industries with strict compliance requirements. Cloud hosting, on the other hand, offers scalability,
+flexibility, and easier maintenance, making it attractive for businesses looking for faster implementation and
+lower infrastructure costs.
+_________________________________________________________________________________________
+What Type of RPA?
+Evaluating the Nature of Processes
+When selecting RPA software, one of the most important considerations is the type of processes you intend to
+automate. You must ask critical questions such as whether the processes require direct human intervention or
+whether they can operate entirely in the background without manual involvement. These questions help
+determine the appropriate type of automation that aligns with your organizational needs.
+Attended vs. Unattended Automation
+If the processes involve human interaction, then attended automation may be the right choice. Attended bots
+work alongside humans, assisting them with tasks and improving efficiency during live operations. On the other
+hand, if the processes are repetitive, rule-based, and can be executed without human involvement, then
+unattended automation is more suitable. Unattended bots run independently, usually on servers or virtual
+environments, and can complete tasks without user input.
+Combination of Both Types
+It is also quite common for organizations to require both attended and unattended automation, depending on
+their workflow complexities. For example, some processes may begin with attended bots to assist employees
+but later shift to unattended bots for back-end operations. Recognizing the need for both types ensures that
+automation is applied flexibly and effectively.
+Importance of Early Decision-Making
+The key point is to make this distinction early in the RPA implementation process. Understanding whether you
+need attended bots, unattended bots, or a combination of both allows you to choose the right RPA software.
+This early clarity avoids mismatches between organizational needs and tool capabilities, ensuring a smoother
+and more successful automation journey.
+________________________________________________________________________________________
+The Design
+Steve Jobs’ Perspective on Design
+A major factor behind Steve Jobs’ extraordinary success was his relentless obsession with design. He famously
+remarked, “Design is a funny word. Some people think design means how it looks. But of course, if you dig
+deeper, it’s really how it works.” This statement highlights a crucial distinction—design is not merely about
+visual appeal, but fundamentally about functionality and usability.
+Relevance to RPA Solutions
+This principle directly applies when selecting an RPA solution. Every vendor will naturally claim that their
+software is intuitive, simple to use, and almost magical in its design. However, the reality often tells a different
+story. Once tested, many solutions fail to live up to their promises, reflecting the broader issue that much
+enterprise software still falls short in terms of effective design.
+Evaluating Workflow, UI, and UX
+Therefore, it is essential to dedicate time to carefully evaluate the workflow, user interface (UI), and user
+experience (UX) of the RPA tool under consideration. The design must be practical, functional, and aligned
+with the actual needs of the employees who will interact with it.
+Learning Curve and Skill Requirements
+A critical question is whether the software is something workers can learn quickly and adopt without difficulty.
+If the learning curve is steep, productivity gains may be undermined. Another important consideration is the
+level of technical expertise required. Some RPA platforms may still demand coding skills, while others
+emphasize no-code or low-code environments to ensure broader accessibility.
+Core Consideration
+Ultimately, the design of an RPA solution should go beyond surface-level claims of ease-of-use. It must
+combine aesthetic simplicity with true functionality, enabling employees to integrate it seamlessly into their
+workflows without unnecessary complexity.
+_________________________________________________________________________________________
+Next-Generation Technologies in RPA
+Lack of Transparency in Product Roadmaps
+When dealing with RPA companies, one important reality is that they generally do not provide customers with
+a detailed product roadmap. This reluctance arises from two main factors. First, there are competitive reasons,
+since revealing too much about upcoming features could give rival companies an edge. Second, RPA
+companies do not want to commit themselves to strict timelines or deadlines. If delays happen continually,
+customers may lose faith, stop listening to promises, and eventually shift to competitors.
+Focus Areas for RPA Companies
+Despite the absence of transparent roadmaps, there are still certain areas that RPA companies must focus on in
+order to remain relevant and provide long-term value. Perhaps the most crucial area is the integration of
+Artificial Intelligence (AI) and Machine Learning (ML) into RPA platforms. These technologies
+significantly expand the capabilities of automation beyond simple repetitive tasks.
+Current Limitations of RPA Bots
+As it stands, RPA bots are best suited for processes involving highly repeatable and structured data. This
+works well for rule-based tasks but limits their scope. However, in real-world enterprises, more than 80% of
+enterprise content is unstructured, which poses a challenge for traditional bots.
+AI and ML as Enablers of Smarter Automation
+According to Bill Galusha, who leads Product Strategy for RPA and Content Intelligence at ABBYY, enterprise
+digital transformation requires AI to complement bots. AI technologies make bots smarter by enabling them to
+transform unstructured documents into structured content. This reduces friction in processes and allows
+organizations to extract greater business value.
+Use Cases for AI-Enhanced RPA
+Use cases that involve customer touchpoints are prime candidates for AI-augmented RPA. Examples include
+onboarding customers, filing insurance claims, processing loan or credit requests, and other scenarios where
+large volumes of unstructured data exist. By incorporating AI, these processes become more seamless, accurate,
+and efficient.
+The Concept of Skills for Digital Workers
+Another emerging idea is the concept of “skills” for bots or digital workers. A skill represents an add-on
+capability that enhances the training and understanding of a bot, enabling it to handle more advanced content-
+processing tasks. For instance, a bot could be given a skill for interpreting invoices, contracts, or emails.
+Growing Marketplace for Digital Skills
+As marketplaces for digital skills expand, enterprises will have access to hundreds of specialized skills that can
+be integrated easily into existing bots. This trend will increasingly make digital bots smarter, more versatile,
+and more effective at handling real-world business processes.
+________________________________________________________________________________________
+Center of Excellence (CoE)
+Introduction to Adobe’s Challenge
+In 2011, Adobe was facing a difficult situation as its growth had stalled, and the future prospects of the
+company seemed uncertain. The CEO, Shantanu Narayen, recognized the urgent need for bold actions to put
+the company back on track. His strategy included two major shifts: a transition of the business model toward
+subscriptions and the cloud, and a stronger push to foster innovation within the organization. A notable step in
+this direction was the Sneaks program, through which employees could submit new ideas, and Adobe would
+allocate resources to commercialize selected ones.
+Need for Automation and Efficiency
+Besides subscriptions, cloud adoption, and innovation, Adobe identified another crucial pillar for
+transformation: streamlining operations through automation. With more than 21,000 employees across the
+globe, manual and repetitive processes were slowing down efficiency. To address this, Adobe launched its
+Robotic Process Automation (RPA) implementation in 2018, although the process came with several
+challenges due to the scale and complexity of the company.
+Setting Up the CoE
+To overcome these challenges, Adobe established a Center of Excellence (CoE) for RPA. This centralized
+structure provided guidance, best practices, and governance for the company’s automation journey. In a blog
+post for The Enterprisers Project, Adobe’s Senior Vice President and Chief Information Officer, Cynthia
+Stoddard, highlighted the importance of this approach. She stated that Adobe was still in the growth phase of
+RPA implementation and continued to discover new applications for it. Importantly, she emphasized that any
+CIO or IT leadership team must insist on setting up a CoE as part of an RPA program, pointing out that
+Adobe would not have achieved such significant results so quickly without one.
+Initial Focus on Finance Department
+The CoE first concentrated its efforts on the finance department, an area with a high volume of repetitive and
+rules-based processes. The outcomes were impressive and measurable:
+• 79% reduction in hours spent on creating purchase orders for hardware.
+• The RPA system automated 82% of the tasks related to wire transfer requests.
+• 82% reduction in manual hours dedicated to contract creation.
+Results and Strategic Importance
+These results demonstrated clear efficiency gains, cost savings, and productivity improvements. The RPA
+initiative under the guidance of the CoE became a strategic priority for Adobe, proving that automation, when
+properly managed, can transform core business functions and free employees to focus on higher-value tasks.
+Transition to Best Practices
+After seeing standout results, Adobe’s experience highlights how a Center of Excellence is not optional but
+essential for scaling RPA. The CoE provides governance, shared expertise, and strategic alignment, enabling
+large organizations like Adobe to realize the full potential of automation. This chapter therefore focuses on
+examining the role of the CoE and the best practices companies should adopt when assembling an RPA team.
+_________________________________________________________________________________________
+Center of Excellence (CoE) in RPA
+A Center of Excellence (CoE) is a critical concept in ensuring the success and sustainability of Robotic Process
+Automation (RPA) within an organization. It represents a formalized structure for embedding RPA deeply into
+the organization’s operations and for redistributing accumulated knowledge, resources, and expertise across
+future deployments.
+Definition of CoE
+According to UiPath, a CoE is “essentially the way to embed RPA deeply and effectively into the organization,
+and to redistribute accumulated knowledge and resources across future deployments.” This means that a CoE is
+not just a group of people but rather a system of governance, leadership, and guidance that ensures RPA
+adoption remains scalable, structured, and effective.
+Variations in CoE Structures
+There is no single model for a CoE. Its structure can vary depending on the size, requirements, and complexity
+of the organization. For instance:
+• It could be a small team of two or three members responsible for overseeing RPA adoption.
+• It could be a larger and more formal team with multiple specialists, project managers, and technical
+experts.
+• An organization might even establish separate CoEs for different departments or divisions, each
+catering to its specific automation needs.
+Focus on the “E” in CoE
+The most important element of a CoE lies in the “E” which stands for Excellence. Excellence involves ensuring
+that RPA is implemented with precision, focus, and maximum impact. A blog post from Automation Anywhere
+emphasizes that businesses require focus and alignment for successful RPA implementation. A CoE provides
+this by offering:
+• Leadership to guide strategy and adoption
+• Best practices to ensure consistency and standardization
+• Research and innovation for new opportunities
+• Focus on efficiency to improve business performance
+Reasons for Implementing a CoE
+There are multiple motivations behind setting up a CoE in RPA. These include:
+• Ensuring compliance with regulations
+• Achieving cost reduction through automation
+• Improving service levels for customers and stakeholders
+• Driving revenue growth through efficiency
+• Minimizing errors by reducing manual intervention
+A CoE helps organizations prioritize effectively. For example, while there may be 200 automation ideas in the
+pipeline, the CoE ensures that focus is directed toward implementing a few high-value automation initiatives
+first. This approach prevents scattered efforts and maximizes ROI.
+Monitoring and Metrics through CoE
+As an indication of the growing importance of CoEs, Automation Anywhere has developed its own CoE
+dashboard. Accessible via a mobile app, this dashboard allows businesses to view critical metrics of their RPA
+system, such as ROI, time savings, and other performance indicators. This real-time visibility ensures
+accountability and helps demonstrate the tangible value of automation initiatives to stakeholders.
+Ownership and Operation of CoE
+A CoE can be structured in different ways in terms of ownership:
+• It can be fully managed internally by the company that is implementing RPA, ensuring full control and
+alignment with organizational goals.
+• Alternatively, it can be outsourced to a consulting firm, especially when external expertise is required.
+However, even in this case, members from the client company usually participate to maintain
+collaboration and alignment with business objectives.
+This flexibility allows organizations to adopt a CoE model that best suits their capabilities, resources, and
+strategic goals.
+________________________________________________________________________________________
+Why Have a CoE (Center of Excellence) in RPA?
+Drawbacks of Having a CoE
+There are very few drawbacks when creating a CoE. The most reasonable limitation is that if an organization is
+only testing RPA technology on a small scale, then there may not be a need to establish a formal CoE. A CoE
+becomes relevant and essential when the organization is serious about long-term RPA adoption and scaling.
+Commitment and Seriousness of the Organization
+If a company is committed to making RPA technology work for the long haul, then establishing a CoE should
+be an integral part of the process. A CoE is a clear sign that the organization is serious about automation. It
+reflects a willingness to invest both time and money into the initiative. Employees also take notice of this
+commitment, which helps in smoother training and adoption. This commitment is further highlighted if some or
+all members of the CoE are working full-time on RPA.
+Advantages of Having a CoE
+1. Holistic 360-Degree View – A CoE provides a complete, end-to-end view of the RPA project. This
+avoids the challenges of silos and prevents the existence of multiple RPA systems within the same
+organization. As a result, implementation becomes faster, bots are created more effectively, and
+monitoring becomes more thorough.
+2. Cost Savings and Control – If the CoE is self-run, it can lower costs compared to outsourcing or
+relying on external vendors. Beyond cost, it gives the organization more control over RPA initiatives,
+creating better opportunities to experiment, innovate, and refine processes.
+3. Scalability Support – Early RPA projects often see success, but scaling technology across the
+enterprise is where challenges appear. A CoE helps overcome this barrier by focusing concentrated
+effort on the RPA system, making scaling more structured and achievable.
+4. Organizational Buy-in – The CoE encourages involvement from different levels of the organization,
+including the C-suite. For example, Adobe’s RPA success was partly due to collaboration between the
+CIO and CFO. Equally important is the involvement of frontline employees who use the technology
+daily, ensuring adoption is effective and practical.
+Expert Insights on the Role of CoE
+According to Agustin Huerta, VP of Technology, AI, and Process Automation Studios at Globant,
+implementing a CoE for automation is crucial to sustain long-term RPA success. He highlights that a proper
+CoE serves as the guardian of technical standards and enforces a single methodology for automation. This
+ensures the technology works effectively across the organization. Furthermore, the CoE acts as a gatekeeper for
+deciding which processes should be automated. This ensures that only processes with proper return on
+investment (ROI) are pursued. Additionally, the CoE governs the new digital workforce, ensuring structure,
+consistency, and value.
+________________________________________________________________________________________
+Forming the Team for RPA Center of Excellence (CoE)
+Timing of CoE Formation
+The establishment of a Center of Excellence (CoE) generally takes place four to six months after the start of an
+RPA project. This timeline is considered practical because it allows the organization to gather valuable
+learnings during the early phase, such as through proof-of-concept experiments. However, even during this
+initial period, it is advisable to start planning for the CoE by identifying potential members and clarifying the
+goals. This preparation ensures a smoother transition once the CoE is formally launched.
+Need for Broad Organizational Representation
+A CoE should represent a broad spectrum of the organization that is impacted by RPA implementation.
+Successful automation requires collaboration between business process experts, technology teams, and
+automation professionals. This balance helps ensure that both the process management and the technical aspects
+of automation are addressed effectively.
+Role of External Experts and SMEs
+Often, firms engage external experts to support the CoE team, particularly to provide insights into how RPA
+works in practice. Subject Matter Experts (SMEs) collaborate with automation and process management teams
+to identify and prioritize effective automation strategies. These SMEs bring essential domain knowledge that
+complements technical automation expertise.
+Involvement of the IT Team
+It is critical that the technology or IT team is part of the CoE from the very beginning. Although IT
+professionals may not be deeply familiar with process-based work, they are crucial in managing and supporting
+the automation technology. Their involvement ensures that the platform is configured in alignment with unique
+requirements such as security, compliance, and auditing. Early IT engagement also helps them gain a deeper
+understanding of the RPA platform, which eventually allows IT teams to adopt digital workers for automating
+their own internal processes. This collaboration helps integrate the digital workforce seamlessly into the core
+operations of the organization.
+UiPath’s Approach to CoE Roles
+UiPath provides a detailed model for setting up a CoE, involving an extensive list of roles. However, when
+starting out, it is recommended to begin with a smaller set of roles and gradually expand as the project matures.
+Still, examining UiPath’s model is valuable to understand the potential scope of CoE responsibilities.
+Key Roles within the CoE
+• RPA Sponsor: An executive from the business side who provides overall support and sponsorship for
+the RPA initiative. This role ensures alignment between RPA activities and the strategic goals of the
+business.
+• RPA Champion: An evangelist responsible for generating enthusiasm and excitement for the RPA
+project. The champion engages employees through initiatives like videos, workshops, and blog posts to
+spread awareness and foster acceptance.
+• RPA Change Manager: Similar to the champion, this role focuses on securing buy-in from
+stakeholders. A major responsibility includes creating and executing a communication plan to keep all
+stakeholders informed and supportive of the project.
+• RPA Service Support: This role serves as the first line of support for the RPA project. It involves
+handling initial issues, troubleshooting, and providing assistance to ensure smooth functioning.
+• RPA Infrastructure Engineer: A highly technical role responsible for server installation, monitoring,
+and architecture design of the RPA implementation. This requires deep expertise in network protocols,
+administration, security, cloud systems, server layouts, database technologies, and virtualization
+platforms like VMware, Citrix, or Hyper-V.
+Main Roles Seen in Industry Job Postings
+While many roles contribute to a CoE, job postings often emphasize a few core positions as most critical. These
+include:
+• Business Analyst: Focused on understanding business processes and identifying automation
+opportunities.
+• Developer: Responsible for building and coding the RPA bots.
+• Solution Architect: Designs the overall RPA solution, ensuring scalability, efficiency, and integration
+with existing systems.
+• RPA Supervisor: Manages and monitors the performance of bots, ensuring that they function
+effectively in production environments.
+This structure highlights the balance between business understanding, technical expertise, solution design, and
+operational management in a successful RPA CoE.
+________________________________________________________________________________________
+Business Analyst in RPA Implementation
+Role and Importance
+The Business Analyst plays a critical role in bridging the gap between the company’s SMEs (subject matter
+experts), RPA supervisors, and the developers. This position requires balancing the requirements of revenue
+and cost goals with technical feasibility, making it both challenging and vital. A business analyst must possess a
+combination of business knowledge, process planning skills, and technological understanding, along with a
+deep familiarity with the RPA platform.
+Core Responsibilities
+A Business Analyst undertakes multiple responsibilities that ensure the smooth design, implementation, and
+maintenance of RPA projects. These include:
+1. Documentation Preparation
+The analyst develops detailed documents that clearly outline the goals of the project and what needs to be
+accomplished. A key deliverable is the Process Design Document (PDD), usually prepared with the help of
+RPA developers, which defines the process flow and automation requirements.
+2. Process Improvement Analysis
+The Business Analyst actively examines the company’s existing processes and identifies areas for
+improvement. This leads to the creation of an Opportunity Assessment Document, which highlights which
+processes are best suited for automation and how they can enhance efficiency.
+3. Technical Awareness
+Although not a developer, the analyst is expected to have a high-level understanding of technologies, such as
+programming languages and artificial intelligence. This knowledge helps in better collaboration with
+developers and in evaluating solutions.
+4. Evaluation of RPA Tools
+The role also involves experience in comparing and assessing different RPA solutions, ensuring the chosen
+platform aligns with the organization’s needs in terms of cost, scalability, and performance.
+5. IT Collaboration
+The Business Analyst works closely with IT teams to address issues of integration, security, and governance,
+ensuring that RPA implementations fit seamlessly into the organization’s existing technology infrastructure.
+6. Test Case Development
+Another key responsibility is to design test cases to verify whether the RPA implementation meets the intended
+project goals. This ensures that bots function as expected and provide the desired outcomes.
+7. Contribution to CoE Formation
+The Business Analyst plays a part in helping to establish the Center of Excellence (CoE), contributing
+knowledge, documentation, and strategic alignment to the overall RPA framework within the organization.
+8. Bot Monitoring and Maintenance
+Post-deployment, the analyst assists in monitoring and maintaining bots, ensuring they continue to deliver
+expected results and adapting them as business requirements evolve.
+9. Additional Role as Project Manager
+Depending on the size of the RPA team, the Business Analyst may also assume the role of project manager,
+overseeing the entire RPA lifecycle from planning to execution and monitoring.
+________________________________________________________________________________________
+Role of the RPA Developer
+Core Responsibility of the Developer
+The primary responsibility of an RPA developer is to design, build, and deploy bots. However, this role goes
+far beyond simple bot creation, requiring a wide range of technical, analytical, and collaborative tasks that
+ensure automation is effective, scalable, and aligned with business goals.
+Key Responsibilities of the Developer
+The developer plays a multi-faceted role within the RPA team:
+• Identification of Automation Opportunities: The developer works closely with other stakeholders to
+analyze business processes and identify areas where automation can bring efficiency. This may involve
+applying process improvement methodologies such as Lean Six Sigma.
+• Process and Technical Documentation: The developer is tasked with preparing Process Definition
+Documents (PDDs) and Technical Definition Documents (TDDs), ensuring all automation
+requirements are well-documented. This requires consistent collaboration with analysts and team
+members.
+• Code Reviews and Quality Assurance: Developers conduct code reviews to validate that bots are
+functioning as expected, meeting business needs, and adhering to company policies and guidelines.
+• Bot Monitoring and Maintenance: After deployment, developers are responsible for monitoring,
+maintaining, and troubleshooting bots to ensure smooth operations in production.
+• Reusability and Efficiency: A key responsibility is to focus on reusing existing bots, components,
+and code, which speeds up development and reduces redundancy.
+• Documentation and Training: Developers also prepare clear, easy-to-understand documentation
+and training materials to support knowledge transfer and scalability.
+Educational and Professional Background
+• Typically, developers hold a technical degree in fields such as Computer Science, Engineering,
+Mathematics/Statistics, or Management Information Systems.
+• An RPA certification from a vendor platform is considered essential, as most leading vendors offer
+specialized training programs.
+Additional Technical Skills and Knowledge
+Beyond RPA expertise, developers benefit from having additional technical capabilities, including:
+• Programming and Scripting Languages: Proficiency in JavaScript, HTML, C#, Java, or .NET.
+• Agile Development Techniques: Familiarity with agile methodologies for rapid and iterative bot
+development.
+• Databases: Knowledge of SQL and NoSQL systems for handling structured and unstructured data.
+• Enterprise Applications: Experience with large-scale platforms such as Salesforce.com, Oracle, and
+SAP.
+• Advanced Technologies: For sophisticated implementations, developers should also have exposure to
+Artificial Intelligence (AI), enabling integration of intelligent automation capabilities.
+Compensation Insights
+Due to the high demand for technical RPA talent, developer compensation is generally lucrative. According to
+ZipRecruiter.com, the average annual salary of an RPA developer is approximately $109,135.
+To optimize costs, companies may also hire freelance developers, where rates typically range from $70 to $150
+per hour, depending on skill level and expertise.
+________________________________________________________________________________________
+RPA Solution Architect
+Role Distinction from Developer
+While both the RPA Developer and RPA Solution Architect share strong technical expertise, their
+responsibilities differ in scope and stage of involvement. An RPA Developer focuses on building and
+maintaining bots, whereas an RPA Solution Architect primarily works in the early stages of the project,
+concentrating on designing the core foundation of the RPA technology framework. The architect is tasked
+with selecting the right tools and technologies aligned with the strategic goals of the organization.
+Key Responsibilities
+The responsibilities of an RPA Solution Architect extend beyond development and involve setting up the
+technical and structural blueprint of automation projects. The major activities include:
+• Creating a Scalable Infrastructure: Ensuring the RPA setup is designed in such a way that it can
+expand and grow as automation adoption increases across the organization.
+• Evaluating Next-Generation Technologies: Exploring advanced technologies such as Artificial
+Intelligence (AI) and identifying how they can be integrated with RPA to enhance capabilities.
+• Developing Models and Prototypes: Building proof-of-concepts (POCs), frameworks, and models
+that validate feasibility before full-scale implementation.
+• Analyzing Security Risks: Assessing and addressing security vulnerabilities to ensure data integrity,
+compliance, and safe automation practices.
+• Establishing Testing Procedures: Designing and defining robust testing frameworks to guarantee
+that automated processes function correctly and align with organizational standards.
+Collaboration and Documentation
+An RPA Solution Architect must work closely with cross-functional teams and departments, facilitating
+collaboration between business units, developers, and IT operations. This role also requires thorough
+documentation of procedures, frameworks, and design models to ensure clarity and continuity throughout
+the automation journey.
+_______________________________________________________________________________________
+RPA Supervisor
+Overview of the Role
+The RPA Supervisor is the key point person who manages the entire RPA system. This individual is primarily
+responsible for ensuring the overall performance and efficiency of the RPA environment while also keeping a
+close eye on the budget. Although this role does not involve direct RPA development, it requires a solid
+understanding of RPA technology and its practical use cases. In addition, strong project management
+experience is vital. Importantly, this background does not necessarily need to come from RPA itself; experience
+in managing other software implementations such as Customer Relationship Management (CRM) systems or
+Enterprise Resource Planning (ERP) systems is equally valuable.
+Core Responsibilities
+The RPA Supervisor is entrusted with several responsibilities to ensure smooth operations. First, the role
+involves overseeing the system’s performance and ensuring it aligns with the organizational goals. Budget
+management is another crucial aspect, where the supervisor balances financial efficiency with system
+effectiveness.
+Key Skillsets and Capabilities
+• Understanding of Customer Requirements: The supervisor must have a clear understanding of the
+customer’s business requirements to ensure the RPA system delivers value.
+• Compliance and Security Collaboration: A critical skill is the ability to work closely with compliance
+and security teams to ensure the automation process adheres to governance standards and regulatory
+requirements.
+• Strong Communication Skills: Effective communication is necessary for coordinating between teams,
+reporting progress, and addressing issues.
+• Project Delivery Track Record: A successful RPA supervisor should demonstrate a history of
+delivering projects effectively, on time, and within scope.
+• Clear-Cut Planning Abilities: The role requires the ability to design precise and actionable plans of
+action that guide the team in achieving automation goals.
+• Ongoing Reporting and Updates: Continuous monitoring of RPA systems must be complemented by
+regular reporting and updates to stakeholders, ensuring transparency and alignment.
+• Controls and Guardrails for Monitoring: The supervisor must also implement necessary controls,
+guardrails, and monitoring systems to manage exceptions and ensure reliability.
+Collaborative Requirements
+Beyond technical understanding, the RPA Supervisor must collaborate with various departments, ensuring
+cross-functional harmony. This role ensures that the RPA system is not just technically sound but also
+strategically aligned with the organization’s broader business objectives.
+________________________________________________________________________________________
+What Should a CoE Do?
+Misconceptions About CoEs
+The term “Center of Excellence” (CoE) can sometimes create confusion. To some, it may sound like just
+another name for a committee, which can give the impression of inactivity or bureaucracy. As humorist Fred
+Allen once said: “A committee is a group of people who individually can do nothing, but who, as a group, can
+meet and decide that nothing can be done.” Unfortunately, this critique has applied to certain CoEs, where
+performance has been inconsistent and the group ends up being a nonfactor. However, successful cases, such as
+Adobe’s CoE, highlight that the difference lies in establishing a clear mission and executing it effectively.
+Operating Models for CoE Functions
+Infosys Consulting offers a practical framework for what a CoE should do, dividing it into two stages: the
+automation CoE (setup phase) and the scalable automation execution engine (recurring phase).
+Stage One: Automation CoE (Setup Phase)
+• Automation Strategy: This involves defining the vision and roadmap of the RPA project. The CoE
+must assess the business case, identify which functions to automate first, establish ROI targets, and set
+qualitative goals such as innovation and customer service improvements.
+• Technology Strategy: More than simply selecting an RPA platform, this includes considering
+complementary technologies such as OCR, NLP, and AI. The strategy must also ensure scalability and a
+solid long-term foundation for automation.
+• Governance: A robust compliance framework with clearly defined roles and responsibilities must be
+implemented. Governance is often overlooked, and when neglected, it can cause significant failures in
+RPA execution.
+• People Enablement: Beyond technical skills, successful RPA implementation requires strong project
+management and change management. Training and upskilling must be addressed here.
+• Operating Model: This focuses on how the RPA function is structured within the organization,
+primarily on the business side.
+• Bot Development and Support: Standards and methodologies must be established for automation
+development. The CoE should also look into strategies for reusing bots (for example, leveraging a bot
+store) and maintaining them over time.
+Stage Two: Scalable Automation Execution Engine (Recurring Activities)
+Once the RPA system is in place, the CoE transitions into managing ongoing execution:
+• Demand Management: Identifying, prioritizing, and approving new automation opportunities.
+• Bot Development: Designing, building, testing, and deploying bots into production.
+• Bot Support: Continuous monitoring, exception handling, and ensuring uptime and efficiency.
+• Organizational Change Management: Driving adoption across the organization by embedding RPA
+into day-to-day operations, aligning culture, and overcoming resistance.
+Models for Deploying a CoE
+Infosys also outlines three ways of structuring a CoE within an organization:
+• Centralized Model: In this approach, the CoE manages all RPA duties. It works well for highly
+centralized organizations, in early implementation stages, or where automation opportunities are still
+limited. Advantages include easier knowledge sharing, standardized best practices, and lower costs.
+However, for larger organizations, it may become harder to manage and less flexible.
+• Decentralized Model: Here, multiple CoEs operate across different departments. This is beneficial
+when departments have unique requirements, allowing for greater ROI through tailored automation.
+However, the risks include the creation of silos, duplication of work, and higher costs.
+• Federated Model: This hybrid approach centralizes the automation CoE but decentralizes the scalable
+automation execution engine across the organization. It is designed to capture the benefits of both
+centralized and decentralized models, though it is complex to implement and requires careful
+coordination.
+________________________________________________________________________________________
+COMMUNICATION IN RPA IMPLEMENTATION AND CoE CONTEXT
+Fear and Misunderstanding Around Automation
+When RPA is introduced into an organization, the terms “automation” and “AI” often trigger fear and
+uncertainty among employees. Workers may worry about job losses or suspect that they are essentially training
+bots to replace themselves. This kind of anxiety is natural and if not managed properly, it can result in
+resistance, low morale, and even open opposition to the RPA initiative.
+Lessons from The Office Example
+The comedy show The Office demonstrates a good analogy here. In the first season, employees feared
+downsizing, but their boss, Michael Scott, avoided discussing the issue. Instead, he made a poor comparison to
+a doctor not telling a patient they had cancer. While exaggerated for humor, the message highlights a common
+real-life leadership mistake: avoiding sensitive topics only makes things worse. Similarly, avoiding
+conversations about RPA’s impact will only heighten rumors, insecurities, and mistrust among employees.
+The Imperative of Transparency
+Transparency must be a core principle in communication during RPA adoption. Employees can usually sense
+when they are being misled or when information is hidden. Therefore, leaders should:
+• Share the goals of the RPA project openly with all impacted employees.
+• Clearly disclose if one of the objectives involves reducing headcount. While uncomfortable, honesty
+builds credibility and prevents distrust.
+• Balance this by also communicating the benefits of RPA, such as reducing tedious manual tasks, giving
+employees more time to focus on valuable and strategic work, and enabling higher productivity.
+Repetition and Reinforcement of Messaging
+Communication cannot be a one-time announcement. The messaging about RPA’s purpose and benefits should
+be repeated consistently across multiple channels. Leaders can use:
+• Videos, blogs, and educational materials to explain the project.
+• Guest speakers from companies that have successfully implemented RPA, or short testimonial videos
+from such companies, to provide real-world success examples.
+Balancing Enthusiasm with Realism
+While it is important to highlight the benefits, communication must also remain realistic. Overpromising will
+only lead to disappointment when expectations are not met. The safe approach is to follow the old adage:
+“Underpromise and overdeliver.” This way, employees are more likely to view the project positively as it
+progresses.
+Accessibility of Management
+Management must remain approachable and open to questions at all times. Employees should feel they can
+raise concerns, seek clarifications, and get honest responses. This accessibility reinforces trust and confidence
+in leadership. As Meg Whitman, former CEO of Hewlett-Packard and eBay, once stated: “Stop the emails and
+start talking to your teams. Just letting people know that you’re conscious of the challenges, aware of the issues
+and actively dealing with them matters.” This emphasizes that improving communication is not about tools or
+corporate initiatives alone—it depends on individual leadership action and continuous dialogue.
+Continuous Communication as a Process
+Ultimately, communication in the context of RPA and the CoE is not a one-time activity but a continuous
+process. It requires transparency, accessibility, repeated reinforcement, balanced optimism, and the personal
+involvement of leadership to truly manage the fears, expectations, and engagement of employees.
+________________________________________________________________________________________
+CHANGE MANAGEMENT IN THE CONTEXT OF RPA
+Case Example of J. C. Penney and Lessons Learned
+In June 2011, J. C. Penney appointed Ron Johnson, a highly acclaimed executive from Apple and Target, as
+CEO. Initially, investor optimism sent the stock soaring, and Johnson himself invested $50 million in company
+stock. He promised to reimagine the department store model, but his radical redesigns, pricing overhauls, and
+shift to younger demographics alienated the loyal customer base. Sales plummeted, employees became
+demoralized, and productivity dropped. This case illustrates a classic failure of change management—too
+much change, implemented too quickly, without accounting for cultural and customer realities. The lesson is
+clear: people do not easily accept radical transformation, and without careful change management, even
+brilliant strategies can collapse.
+Importance of Change Management in RPA
+Just as in retail, RPA implementations face resistance. Employees often fear losing jobs, being replaced by bots,
+or being forced to move to different roles. Additionally, many organizations run on legacy systems, sometimes
+even mainframes, which creates technical and cultural friction. Without strong change management, RPA
+projects risk failure. In fact, inadequate change management is often one of the leading causes of RPA
+implementation breakdowns.
+John Kotter’s Eight-Step Process for Change Management
+Management consultant John Kotter’s framework, based on research from over 100 organizations, provides a
+structured eight-step approach to leading change:
+Step 1 – Create a Sense of Urgency
+Change requires momentum, and this begins with urgency. Leaders must present a compelling story, analogy,
+or case to motivate action, avoiding jargon and excessive data. The goal is to win both hearts and minds. A
+strong example is Mark Zuckerberg in 2012, who personally led Facebook’s pivot to mobile, demonstrating
+urgency and commitment by living on his phone and stressing the existential nature of the transition.
+Step 2 – Build a Guiding Coalition
+Change must be powered by influential figures across the organization—not only executives but also those with
+credibility, expertise, leadership skills, and strong reputations. This coalition creates momentum that legitimizes
+the project.
+Step 3 – Form a Change Vision
+Every transformation needs a destination. The vision should be clear, realistic, attainable, flexible, and
+inspiring. Kotter suggests a litmus test: if the vision cannot be explained in under five minutes in a way that
+sparks understanding and interest, it is not yet effective.
+Step 4 – Communicating the Vision
+A common pitfall is to create a vision and then under-communicate it. Great leaders repeat the vision
+constantly—sometimes to the point it feels excessive. Kotter recommends amplifying the message by a factor
+of ten, since employees absorb new ideas slowly. Patience and persistence are critical.
+Step 5 – Empower Broad-Based Action
+To drive change, leaders must remove barriers and recognize employee efforts, even when outcomes fall short.
+Experimentation must be encouraged, and failures accepted, as long as the vision remains the guiding force.
+Obstacles can include compensation structures, rigid titles, or psychological barriers. Leaders must actively
+dismantle these blockers.
+Step 6 – Generate Short-Term Wins
+Large-scale transformation takes years, and waiting too long for visible success risks demoralizing the
+organization. Short-term wins keep momentum alive, build credibility, and energize the workforce to stay
+committed.
+Step 7 – Consolidate Gains and Produce More Change
+Short-term wins should not signal completion. Leaders must frame them as milestones in a longer journey,
+reinforcing long-term goals and pushing forward to avoid stagnation.
+Step 8 – Anchor New Approaches in the Culture
+Sustaining change is the most difficult challenge. The goal is to embed change into organizational culture so
+that employees naturally say, “This is how we do things here.” To achieve this, communication must highlight
+clear examples of improvements from the change, and sufficient time must be given for new managers and
+employees to adopt the approach.
+Kotter’s Model in Practice
+While Kotter’s process is rigorous and proven, it is also difficult to execute. It demands leadership persistence,
+patience, and deep cultural alignment. Nevertheless, organizations that follow it often achieve lasting success.
+Additional Considerations for RPA Change Management
+Gauge the Sentiment
+Leaders must actively measure whether employees are embracing change. Tools such as periodic surveys (e.g.,
+via SurveyMonkey) can provide insights into organizational sentiment and highlight areas of resistance that
+need attention.
+Gamification
+To make RPA adoption engaging, organizations can introduce game-like elements. For example, awarding
+scores to projects, creating contests, or offering prizes for the most creative bots. Gamification transforms the
+adoption journey into an interactive and motivating experience.
+Strategy Alignment
+Even the best change management frameworks will fail if the underlying strategy is flawed. The J. C. Penney
+case reinforces this point: change itself is not enough—strategic direction matters. Before implementing RPA,
+organizations must carefully analyze whether automation aligns with their goals, readiness, and culture.
+Rushing into RPA because it is trendy can be disastrous. Even with the right strategy, leaders must resist the
+temptation to move too fast, instead allowing adequate time to educate employees and build trust in the
+transition.
+_______________________________________________________________________________________
+CoE Case Study: Intuit
+Background of Intuit
+Intuit is a leading software company that develops some of the world’s best-selling products, including Mint,
+TurboTax, and QuickBooks. The company has a strong financial standing, generating $6 billion in revenues
+and $1.5 billion in operating income.
+RPA Pilot Program
+In 2018, Intuit launched a pilot program for RPA with the use of UiPath. The initial focus was on the finance
+department, which employed 450 full-time employees. Out of this, approximately 150 to 200 employees
+were directly or indirectly involved in the RPA initiative.
+Key RPA Outcomes
+The pilot program yielded significant results, as summarized in Table 6-1:
+• Chargebacks Offsets Bot: A bot verified that chargebacks were in the correct system.
+o Hours Saved: 745
+o Turnaround Time: Reduced from 1 day to on demand
+• Manual Invoice Mail Merge Bot: A bot conducted a mail merge, attaching individual invoices to
+corresponding database records.
+o Hours Saved: 702
+o Turnaround Time: Reduced from 1 day to on demand
+• Sales Tax Exemption Bot: A bot released orders with proper tax exemption received from database
+records.
+o Hours Saved: 715
+o Turnaround Time: Reduced from 4 days to on demand
+• Credit Limit and Order Placement Bot: A bot set customer credit limits and released quotes, ensuring
+correct order placements on credit.
+o Hours Saved: 580
+o Turnaround Time: Reduced from 1 day to on demand
+• End-User Retail Returns Bot: A bot disabled licenses for returned products and processed suspend
+orders in Intuit’s system.
+o Hours Saved: 450
+o Turnaround Time: Reduced from 10 days to on demand
+Leadership and Vision
+The RPA effort was led by Mark Flournoy (VP Corporate Controller and Chief Accounting Officer) and
+Maaly Mohamed (Finance Automation CoE Leader). From the beginning, their vision was not just
+automation but digital transformation. Their primary goal was to free employees’ time to focus on
+innovation.
+Flournoy emphasized the cultural aspect of digital transformation, stating:
+“Digital transformation is as much a mindset and cultural shift as it is a business and technical shift. This
+includes applying this mindset to our operating model, and finding ways to efficiently scale our team and
+capabilities, whether this is through partnerships or new ways of operating, like RPA.”
+Early Success Factors
+The success of the initiative was strongly influenced by:
+• Cooperation with technology teams from Day 1 – building a strong infrastructure.
+• Strong executive sponsorship – ensuring buy-in at the leadership level.
+CoE Guiding Principles
+Flournoy and Mohamed set forth clear guiding principles for the CoE, which included:
+• Driving digital transformation strategy for both short- and long-term, in partnership with technology
+teams.
+• Offering a variety of automation options, with RPA as one option among others.
+• Promoting process simplification before automation, avoiding automation of broken processes.
+• Minimizing tech debt, ensuring solutions are reusable and not obsolete.
+• Following the standard software development life cycle methodology.
+• Maintaining information security and controls to Intuit’s standards, as human error poses the
+greatest risk.
+Training and Skill Development
+Intuit invested in skill-building for employees:
+• Initially, two employees were certified on UiPath.
+• Following this, 25 more employees signed up for certification, showing the scalability of training.
+CoE Structure
+According to Mohamed, the CoE was organized into a small but effective team of four:
+• CoE Leader: Responsible for program management, strategy, execution, change management, and
+team leadership.
+• RPA Analyst: Responsible for roadmap and backlog management, business process assessment,
+prioritizing opportunities, reporting, and tracking ROI.
+• Two RPA Developers: Responsible for automation building, process design, development, testing,
+deployment, ongoing support, monitoring, and enhancements.
+Unique Bot Onboarding Approach
+One of the most innovative aspects of Intuit’s RPA strategy was how it onboarded bots like human
+employees.
+• The CoE submits a request for a bot.
+• A Digital Worker account is provisioned in HR and Identity Management Systems, enabling bots to
+request credentials programmatically.
+• Once bots are created and provisioned into Intuit Financial Systems, their credentials are stored
+securely and updated after every login.
+• When a process is no longer needed, the bot is de-provisioned and reassigned with a new set of
+credentials, following the same process.
+• This system leverages existing human access management controls, ensuring consistency, security,
+and accountability.
+________________________________________________________________________________________

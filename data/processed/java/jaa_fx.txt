@@ -1,0 +1,257 @@
+Introduc(cid:415)on to JAVA FX
+JavaFX stands for special effects in the Java language.
+Internet applications are made richer with different plugins with the
+help of JavaFX. This is an alternative to the ways for building a website
+or any other applications. We can say JavaFX is a declarative and
+statically typed scripting language.
+The way to import features provided by JavaFX we can import them like the
+example provided below:
+Code:
+import javafx.applica(cid:415)on.Applica(cid:415)on;
+import javafx.scene.layout.VBox;
+Need of JAVA FX:
+JavaFX came into the market for the development of rich internet
+applica(cid:415)ons primarily. These applica(cid:415)ons give similar features as offered by
+desktop applica(cid:415)ons but with a be(cid:425)er visual experience.
+These applica(cid:415)ons add to the user experience as it modifies the normal
+web applica(cid:415)on into more engaging, well animated and interac(cid:415)ve. These
+applica(cid:415)ons do not require separate so(cid:332)ware to run on; this feature makes such
+applica(cid:415)ons lightweight and easily usable. You may have to add so(cid:332)ware like
+Ac(cid:415)veX, Flash, etc., to experience these applica(cid:415)ons’ visual effects. It can be
+called as server-dependent as all the data manipula(cid:415)ons to it are done via server.
+How JAVA FX works:
+ JavaFX will include the library : javafx.applica(cid:415)on.Applica(cid:415)on in the
+star(cid:415)ng. This way, we will derive the basic func(cid:415)ons of javaFX.
+ It provides mul(cid:415)ple func(cid:415)ons and libraries to control the GUI the way the
+user wants. We can add event handler func(cid:415)onali(cid:415)es, and on the
+par(cid:415)cular event, we can trigger the anima(cid:415)on.
+ All these features are provided in the library; we need to include the
+library and u(cid:415)lize the func(cid:415)onality already invented.
+Some of the important packages provided as part of the JavaFX library are listed
+below:
+1. geometry: this feature provides 2D objects to be used in applica(cid:415)ons.
+2. css: This contains classes to have CSS like styling.
+3. event: This contains classes to handle events
+4. anima(cid:415)on: This contains anima(cid:415)on linked classes and objects such as fill,
+shade with the transi(cid:415)on (cid:415)me.
+Features of JAVA FX:
+1. It is wri(cid:425)en in JAVA. This rich technology comes under Java toolkit version
+8 or above.
+2. This technology supports CSS styling.
+3. We can have a 2D/3D graphics object added to our applica(cid:415)ons.
+4. It supports image, media format (mp3, aiff) and video (flv).
+JAVA FX scene builder:
+JavaFX Scene Builder is a visual layout tool that lets users quickly
+design JavaFX applica(cid:415)on user interfaces, without coding. Users can drag and
+drop UI components to a work area, modify their proper(cid:415)es, apply style sheets,
+and the FXML code for the layout that they are crea(cid:415)ng is automa(cid:415)cally
+generated in the background.
+UI Layout Tool
+Scene Builder allows you to easily layout JavaFX UI controls, charts, shapes, and
+containers, so that you can quickly prototype user interfaces. Anima(cid:415)ons and
+effects can be applied seamlessly for more sophis(cid:415)cated UIs.
+FXML Visual Editor
+Scene Builder generates FXML, an XML-based markup language that enables
+users to define an applica(cid:415)on’s user interface, separately from the applica(cid:415)on
+logic. You can also open and edit exis(cid:415)ng FXML files authored by other users.
+Integrated Developer Workflow
+Scene Builder can be used in combina(cid:415)on with any Java IDE, but is more (cid:415)ghtly
+integrated with NetBeans IDE. You can bind the UI to the source code that will
+handle the events and ac(cid:415)ons taken on each element through a simple process,
+run your applica(cid:415)on in NetBeans, and any changes to FXML in NetBeans will also
+reflect in your Scene Builder project.
+Preview Your Work
+At any (cid:415)me during the crea(cid:415)on of your project, you can preview what the user
+interface will really look like when deployed, unencumbered by the tool’s menus
+and pale(cid:425)es.
+Cross Pla(cid:414)orm, Self Contained
+Scene Builder is wri(cid:425)en as a JavaFX applica(cid:415)on, supported on Windows, Mac OS
+X and Linux. It is the perfect example of a full-fledge JavaFX desktop applica(cid:415)on.
+Scene Builder is packaged as a self contained applica(cid:415)on, which means it comes
+bundled with its own private copy of the JRE.
+CSS Support
+You can apply the look and feel of your choice to your GUI layout by using style
+sheets. It’s as easy as selec(cid:415)ng a GUI component, and poin(cid:415)ng to the CSS file of
+your choice from the Proper(cid:415)es Panel. The CSS analyzer allows you to
+understand how specific CSS rules can affect aspects of a JavaFX component.
+JavaFX Application Structure
+In general, a JavaFX application will have three major components
+namely Stage, Scene and Nodes as shown in the following diagram.
+Stage
+A stage (a window) contains all the objects of a JavaFX application. It is
+represented by Stage class of the package javafx.stage. The primary stage is
+created by the platform itself. The created stage object is passed as an argument
+to the start() method of the Application class (explained in the next section).
+A stage has two parameters determining its position namely Width and Height.
+It is divided as Content Area and Decorations (Title Bar and Borders).
+You have to call the show() method to display the contents of a stage.
+Scene
+A scene represents the physical contents of a JavaFX application. It contains all
+the contents of a scene graph. The class Scene of the
+package javafx.scene represents the scene object. At an instance, the scene
+object is added to only one stage.
+You can create a scene by instantiating the Scene Class. You can opt for the size
+of the scene by passing its dimensions (height and width) along with the root
+node to its constructor.
+NODES:
+The Node Class of the package javafx.scene represents a node in JavaFX,
+this class is the super class of all the nodes.
+A node is of three types −
+ Root Node − The first Scene Graph is known as the Root node.
+ Branch Node/Parent Node − The node with child nodes are known as
+branch/parent nodes. The abstract class named Parent of the
+package javafx.scene is the base class of all the parent nodes, and those
+parent nodes will be of the following types −
+o
+Group − A group node is a collec(cid:415)ve node that contains a list of
+children nodes. Whenever the group node is rendered, all its child
+nodes are rendered in order. Any transformation, effect state
+applied on the group will be applied to all the child nodes.
+o
+Region − It is the base class of all the JavaFX Node based UI
+Controls, such as Chart, Pane and Control.
+o
+WebView − This node manages the web engine and displays its
+contents.
+ Leaf Node − The node without child nodes is known as the leaf node. For
+example, Rectangle, Ellipse, Box, ImageView, MediaView are examples of
+leaf nodes.
+Displaying text and image:
+The javafx.scene.image.Image class is used to load an image into a JavaFX
+applica(cid:415)on. This supports BMP, GIF, JPEG, and, PNG formats.
+JavaFX provides a class named javafx.scene.image.ImageView is a node that is
+used to display, the loaded image.
+import java.io.FileInputStream;
+import java.io.IOExcep(cid:415)on;
+import java.io.InputStream;
+import javafx.applica(cid:415)on.Applica(cid:415)on;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+public class ImageViewExample extends Applica(cid:415)on {
+public void start(Stage stage) throws IOExcep(cid:415)on {
+//crea(cid:415)ng the image object
+InputStream stream = new FileInputStream("D:\images\elephant.jpg");
+Image image = new Image(stream);
+//Crea(cid:415)ng the image view
+ImageView imageView = new ImageView();
+//Se(cid:427)ng image to the image view
+imageView.setImage(image);
+//Se(cid:427)ng the image view parameters
+imageView.setX(10);
+imageView.setY(10);
+imageView.setFitWidth(575);
+imageView.setPreserveRa(cid:415)o(true);
+//Se(cid:427)ng the Scene object
+Group root = new Group(imageView);
+Scene scene = new Scene(root, 595, 370);
+stage.setTitle("Displaying Image");
+stage.setScene(scene);
+stage.show();
+}
+public sta(cid:415)c void main(String args[]) {
+launch(args);
+}
+}
+Output:
+JavaFX Text Node
+The text node in JavaFX is represented by the class named Text, which belongs
+to the package javafx.scene.text.
+Crea(cid:415)ng a Text Node
+Since the class Text of the package javafx.scene.text represents the text node in
+JavaFX, you can create a text by instan(cid:415)a(cid:415)ng this class as follows −
+Text text = new Text();
+The class Text contains a property named text of string type, which represents
+the text that is to be created.
+A(cid:332)er instan(cid:415)a(cid:415)ng the Text class, you need to set value to this property using
+the setText() method as shown below.
+String text = "Hello how are you"
+Text.setText(text);
+You can also set the posi(cid:415)on (origin) of the text by specifying the values to the
+proper(cid:415)es x and y using their respec(cid:415)ve se(cid:425)er methods
+namely setX() and setY() as shown in the following code block −
+text.setX(50);
+text.setY(50);
+Example
+The following program is an example demonstra(cid:415)ng how to create a text node
+in JavaFX. Save this code in a file with name TextExample.java.
+import javafx.applica(cid:415)on.Applica(cid:415)on;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.text.Text;
+public class TextExample extends Applica(cid:415)on {
+@Override
+public void start(Stage stage) {
+//Crea(cid:415)ng a Text object
+Text text = new Text();
+//Se(cid:427)ng the text to be added.
+text.setText("Hello how are you");
+//se(cid:427)ng the posi(cid:415)on of the text
+text.setX(50);
+text.setY(50);
+//Crea(cid:415)ng a Group object
+Group root = new Group(text);
+//Crea(cid:415)ng a scene object
+Scene scene = new Scene(root, 600, 300);
+//Se(cid:427)ng (cid:415)tle to the Stage
+stage.setTitle("Sample Applica(cid:415)on");
+//Adding scene to the stage
+stage.setScene(scene);
+//Displaying the contents of the stage
+stage.show();
+}
+public sta(cid:415)c void main(String args[]){
+launch(args);
+}
+}
+OUTPUT:
+JAVA FX event handling:
+For example, clicking on a button, moving the mouse, entering a character
+through keyboard, selecting an item from list, scrolling the page are the activities
+that causes an event to happen.
+Types of Events
+The events can be broadly classified into the following two categories −
+ Foreground Events − Those events which require the direct interac(cid:415)on of
+a user. They are generated as consequences of a person interacting with
+the graphical components in a Graphical User Interface. For example,
+clicking on a button, moving the mouse, entering a character through
+keyboard, selecting an item from list, scrolling the page, etc.
+ Background Events − Those events that don't require the interac(cid:415)on of
+end-user are known as background events. The operating system
+interruptions, hardware or software failure, timer expiry, operation
+completion are the example of background events.
+ Mouse Event − This is an input event that occurs when a mouse is clicked.
+It is represented by the class named MouseEvent. It includes actions like
+mouse clicked, mouse pressed, mouse released, mouse moved, mouse
+entered target, mouse exited target, etc.
+ Key Event − This is an input event that indicates the key stroke occurred
+on a node. It is represented by the class named KeyEvent. This event
+includes actions like key pressed, key released and key typed.
+ Drag Event − This is an input event which occurs when the mouse is
+dragged. It is represented by the class named DragEvent. It includes
+actions like drag entered, drag dropped, drag entered target, drag exited
+target, drag over, etc.
+ Window Event − This is an event related to window showing/hiding
+actions. It is represented by the class named WindowEvent. It includes
+actions like window hiding, window shown, window hidden, window
+showing, etc.
+Event Handling is the mechanism that controls the event and decides what
+should happen, if an event occurs. This mechanism has the code which is
+known as an event handler that is executed when an event occurs.
+JavaFX provides handlers and filters to handle events. In JavaFX every
+event has −
+ Target − The node on which an event occurred. A target can be a
+window, scene, and a node.
+ Source − The source from which the event is generated will be the
+source of the event. In the above scenario, mouse is the source of
+the event.
+ Type − Type of the occurred event; in case of mouse event – mouse
+pressed, mouse released are the type of events.
+Assume that we have an application which has a Circle, Stop and Play
+Buttons inserted using a group object as follows −
+If you click on the play button, the source will be the mouse, the target
+node will be the play button and the type of the event generated is the
+mouse click.

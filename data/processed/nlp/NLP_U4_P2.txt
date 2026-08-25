@@ -1,0 +1,300 @@
+Language Modelling - Introduction, n-Gram Models, Language model Evaluation, Parameter Estimation, Language Model Adaption, Types of Language Models, Language-Specific Modelling Problems, Multilingual and Cross lingual Language Modelling.
+UNIT – IV
+Part-B
+Introduction
+The Models that assign probabilities to sequences of words are called language models (LMs).
+The simplest language model that assigns probabilities to sentences and sequences of words is the n-gram model.
+Cont…
+An n-gram is a sequence of N words: For example “Please turn your homework” can be written as:
+A 1-gram (unigram) is a single word sequence of words like “please”, “turn”, “your”, “homework”.
+A 2-gram (bigram) is a two-word sequence of words like “please turn”, “turn your”, or “your homework”.
+A 3-gram (trigram) is a three-word sequence of words like “please turn your”, or “turn your homework”.
+We can use n-gram models to estimate the probability of the last word of an n-gram given the previous words, and also to assign probabilities to entire word sequences.
+The n-gram models are much simpler than state-of-the art neural language models based on the RNNs and transformers.
+Probabilistic Language Models
+Probabilistic language models can be used to assign a probability to a sentence in many NLP tasks.
+Machine Translation:
+P(high winds tonight) > P(large winds tonight)
+Spell Correction:
+Thek office is about ten minutes from here
+P(The Office is) > P(Then office is)
+Speech Recognition:
+P(I saw a van) >> P(eyes awe of an)
+Summarization, question-answering, …
+Probabilistic Language Models
+Chain Rule of Probability
+Chain Rule of Probability and Conditional Probabilities
+Computing Conditional Probabilities
+N-Grams
+N-GramsComputing probabilities of word sequences
+N-GramsComputing probabilities of word sequences (Sentences)
+N-gram Models
+N-Grams and Markov Models
+Estimating N-Gram Probabilities
+Estimating n-gram probabilities is called maximum likelihood estimation (or MLE).
+We get the MLE estimate for the parameters of an n-gram model by getting counts from a corpus, and normalizing the counts so that they lie between 0 and 1.
+Estimating bigram probabilities
+Evaluating Language Models
+Language model evaluation in Natural Language Processing (NLP) is a crucial step to assess the performance and quality of a language model.
+Evaluating language models helps researchers and developers understand how well a model performs on various tasks and benchmark it against other models or baselines.
+Here are some common evaluation techniques used in NLP:
+Perplexity
+Accuracy
+F1 Score
+BLEU (Bilingual Evaluation Understudy) Score
+ROUGE (Recall-Oriented Understudy for Gisting Evaluation) Score
+Human Evaluation
+1. Perplexity
+Perplexity is a widely used metric for evaluating language models.
+It measures how well a language model predicts a given text corpus.
+Lower perplexity indicates better performance.
+Perplexity is calculated using the probabilities assigned by the model to each word in a test set.
+2. Accuracy
+Accuracy is a common evaluation metric for tasks like sentiment analysis, text classification, or named entity recognition.
+It measures the proportion of correctly predicted instances compared to the total number of instances in a test set.
+Accuracy is usually calculated by comparing the predicted labels or outputs of the model with the ground truth labels.
+3. F1 Score
+F1 score is a widely used metric for evaluating models in tasks like named entity recognition, part-of-speech tagging, and information extraction.
+It balances precision (the proportion of correctly predicted positive instances) and recall (the proportion of actual positive instances correctly predicted).
+F1 score is the harmonic mean of precision and recall and provides a single measure of model performance.
+4. BLEU Score
+BLEU (Bilingual Evaluation Understudy) is a metric commonly used in machine translation to evaluate the quality of generated translations.
+It measures the overlap between the model's predicted translations and reference translations. BLEU score ranges from 0 to 1, with higher scores indicating better translation quality.
+5. ROUGE Score
+ROUGE (Recall-Oriented Understudy for Gisting Evaluation) is a family of metrics used to evaluate text summarization systems.
+ROUGE measures the overlap between the model's generated summaries and reference summaries.
+Different variants of ROUGE, such as ROUGE-N (measuring n-gram overlap) and ROUGE-L (measuring longest common subsequence), are used to evaluate different aspects of summarization quality.
+6. Human Evaluation
+In addition to automated metrics, human evaluation is often conducted to assess the quality of language models.
+Human evaluators provide judgments on various aspects of model outputs, such as fluency, coherence, grammaticality, relevance, and overall quality.
+Human evaluation provides valuable insights that may not be captured by automated metrics.
+Parameter Estimation
+Parameter estimation in natural language processing (NLP) refers to the process of estimating the values of model parameters based on observed data.
+In NLP, parameter estimation is crucial for various tasks, such as language modeling, machine translation, sentiment analysis, and part-of-speech tagging, among others.
+Types of Parameter Estimations
+Maximum-Likelihood Estimation and Smoothing (MLE)
+Bayesian Parameter Estimation
+1. Maximum-Likelihood Estimation and Smoothing (MLE)
+Example
+Example
+The Problem with MLE → Need for Smoothing
+Smoothing Techniques
+Example
+Smoothing Techniques (Cont…)
+Bayesian Parameter Estimation (MAP Estimation)
+MAP (Maximum a Posteriori) Estimate
+Example (same data)
+Summary
+MLE learns purely from data — accurate if data are huge.
+Smoothing fixes the problem of zero probabilities by redistributing probability mass.
+Bayesian Estimation does the same, but formally — using prior knowledge and observed evidence.
+Language Model Adaptation
+A Language Model (LM) is trained on a corpus of text that represents a particular domain — for example, news articles, scientific papers, or conversations.However, when the model is applied to a different domain (e.g., from news → medical), its performance often drops because word usage, style, and probabilities differ.
+Language Model Adaptation means modifying an existing LM so that it better fits a new domain, task, or user context — without retraining it from scratch.
+Why Adaptation Is Needed
+General steps involved in language model adaptation
+Dataset Collection
+Dataset Preprocessing
+Model Architecture
+Task-Specific Labels
+Fine-tuning
+Hyperparameter Tuning
+Evaluation and Iteration
+1. Dataset Collection
+Gather a dataset that is specific to the target task or domain you want to adapt the language model to.
+This dataset should be representative of the target task and should include text samples that the language model is likely to encounter during inference.
+2. Dataset Preprocessing
+Preprocess the collected dataset by cleaning the text, removing irrelevant information, and ensuring the dataset is in a format that can be used for training.
+3. Model Architecture
+Decide on the specific architecture you want to use for adaptation.
+This can be the same architecture as the pre-trained language model or a modified version depending on the task requirements.
+4. Task-Specific Labels
+If your target task involves supervised learning, you will need to annotate or label your dataset with the appropriate task-specific labels.
+This step is crucial for tasks like sentiment analysis, named entity recognition, or machine translation.
+5. Fine-tuning
+Initialize the pre-trained language model with the weights learned during pre-training, and then fine-tune it on your target dataset.
+During fine-tuning, the model learns task-specific patterns and representations.
+The process typically involves minimizing a task-specific loss function using techniques such as backpropagation and gradient descent.
+6. Hyperparameter Tuning
+Experiment with different hyperparameters such as learning rate, batch size, and regularization techniques to optimize the performance of the adapted model.
+This step helps to find the best set of hyperparameters that work well for the specific task.
+7. Evaluation and Iteration
+Evaluate the performance of the adapted language model on a validation set or using other evaluation metrics specific to your task.
+Iterate on the fine-tuning process by making changes to the architecture, hyperparameters, or dataset, if necessary, to further improve performance.
+Types of Language Models
+1. Statistical (n-gram) Language Models
+Advantages & Disadvantages
+Advantages:
+Simple and effective for small corpora.
+Easy to estimate using counts.
+Works well in speech recognition and early NLP systems.
+Disadvantages:
+Data sparsity problem (many unseen word sequences).
+Needs large storage for big n.
+Cannot capture long-range dependencies.
+2. Class-Based Language Models
+Advantages & Disadvantages
+Advantages:
+Reduces data sparsity.
+Generalizes better with small data.
+Disadvantages:
+Depends on quality of word clustering.
+May lose fine-grained lexical distinctions.
+3. Cache-Based (Adaptive) Language Models
+4. Structured (Syntactic) Language Models
+Advantages & Disadvantages
+Advantages:
+Captures long-range dependencies (subject–verb agreement).
+More linguistically interpretable.
+Disadvantages:
+Computationally expensive.
+Needs syntactically annotated data (treebanks).
+5. Neural Language Models (NNLMs)
+Advantages & Disadvantages
+Advantages:
+Capture long-range context.
+Share statistical strength across similar words via embeddings.
+State-of-the-art performance.
+Disadvantages:
+Computationally intensive.
+Require large training data.
+6. Subword / Character-Based Language Models
+7. Multilingual and Cross-Lingual Models
+Hybrid or Ensemble Language Models
+Summary
+A Language Model can be built using statistical, neural, or hybrid approaches.The choice depends on the data size, domain, computational resources, and application (speech, translation, text generation, etc.).
+Modern NLP systems mostly use neural or transformer-based models, but n-gram and hybrid models still play crucial roles in domain adaptation and real-time applications.
+Language-Specific Modelling Problems
+Language models are not “one-size-fits-all.”Each natural language has its own structure — word order, morphology, writing system, and grammar — which affects how language models (LMs) must be designed and trained.
+This topic explores the challenges and adjustments required to model different languages effectively.
+What Are Language-Specific Modelling Problems?
+Language-specific modelling problems refer to the issues that arise when building or applying language models to languages other than English, due to unique linguistic properties.
+Most early LMs were built for English (an analytic, space-delimited, subject-verb-object language).
+But many world languages differ in morphology, word segmentation, and syntax, which cause several technical difficulties.
+Key Problems in Language-Specific Modelling
+Morphological Richness
+Word Segmentation
+Free Word Order
+Agreement and Inflection
+Ambiguity and Polysemy
+Code-Switching and Mixed Languages
+Script and Orthography Variations
+(a) Morphological Richness
+Definition: Languages like Hindi, Telugu, Tamil, Turkish, and Finnish form many different word forms from the same root by adding suffixes, prefixes, or infixes.
+Example:
+In English: run, runs, running → 3 forms
+In Turkish: a single root can produce hundreds of forms.
+(a) Morphological Richness
+Problem:
+Vocabulary size explodes.
+Sparse data — many forms seen only once.
+Standard n-gram models struggle because they depend on word frequency.
+Solution Approaches:
+Use morpheme-based or subword-based models (e.g., Byte Pair Encoding, WordPiece).
+Apply stemming or lemmatization before training.
+Factored language models (use multiple factors like root, POS, suffix).
+(b) Word Segmentation
+Some languages do not clearly mark word boundaries (no spaces between words). E.g., Chinese, Japanese, Thai.
+Example (Chinese):
+“我喜欢自然语言处理” → literally “I like natural language processing,” but has no spaces between words.
+Problem:
+LMs cannot identify word units — need explicit segmentation or character-level modelling.
+Solutions:
+Use word segmentation algorithms (e.g., Jieba for Chinese).
+Train character-based or subword models to bypass segmentation issues.
+(c) Free Word Order
+Languages like Hindi, Telugu, Russian, and Japanese allow flexible word order because grammatical meaning comes from inflection rather than position.
+Example (Hindi):
+“राम ने सीता को फल दिया” (Ram gave fruit to Sita) can be rearranged without changing meaning.
+Cont…
+Problem:
+n-gram models rely on fixed word order → high perplexity and poor generalization.
+Solutions:
+Use syntactic or dependency-based LMs that model relations, not positions.
+Neural architectures (RNNs, Transformers) that capture long-range dependencies are more effective.
+(d) Agreement and Inflection
+Many languages require agreement between words (gender, number, case, person, etc.).
+E.g., in Spanish:
+“El niño bonito” (The pretty boy) — both niño and bonito are masculine singular.
+Problem:
+LMs must capture multiword dependencies to generate grammatically consistent output.
+Solutions:
+Use morphology-aware embeddings (include gender/number tags).
+Factored neural models — multiple input streams for lemma, POS, morphology.
+(e) Ambiguity and Polysemy
+Some languages are highly ambiguous, especially when function words are omitted (e.g., pronoun drop in Japanese).
+Problem:
+Harder for models to infer correct meaning or next word.
+Solutions:
+Incorporate contextual embeddings (BERT, mBERT, XLM-R).
+Use larger context windows and semantic constraints.
+(f) Code-Switching and Mixed Languages
+In multilingual societies (like India), speakers mix two or more languages in one sentence.
+e.g., “I am going kal subah.”
+Problem:
+LMs trained on a single language can’t handle mixed input.
+Solutions:
+Train code-mixed corpora.
+Use multilingual LMs that share embeddings across languages.
+Add language identification (LID) before modelling.
+(g) Script and Orthography Variations
+Languages such as Hindi and Marathi use Devanagari, Tamil uses its own script, and some (like Serbian) use multiple scripts (Cyrillic & Latin).
+Problem:
+Need correct Unicode handling.
+Tokenization and normalization differ across scripts.
+Solutions:
+Apply script normalization before tokenization.
+Use Unicode-aware tokenizers.
+Multiscript embeddings or transliteration.
+Solutions & Adaptations Summary
+Solutions & Adaptations Summary
+Role of Neural and Multilingual Models
+Modern Transformer-based LMs (BERT, GPT, XLM-R) mitigate many language-specific issues:
+Use subword tokenization (BPE) → handles morphology and rare words.
+Self-attention captures long-range dependencies → handles free word order.
+Multilingual pretraining (e.g., mBERT, XLM-R) → supports 100+ languages.
+Fine-tuning on domain-specific or code-mixed data adapts to local usage.
+Evaluation Challenges
+Perplexity scores vary widely across languages because of vocabulary size differences.
+Fair comparison requires consistent tokenization and corpus size.
+For morphologically rich languages, use morpheme-level perplexity instead of word-level.
+Summary of Key Takeaways
+Summary
+Language-Specific Modelling Problems arise from linguistic diversity.
+Effective language modelling must consider morphology, syntax, word boundaries, scripts, and multilingual effects.
+Combining linguistic knowledge with data-driven neural models leads to robust, multilingual, and culturally inclusive NLP systems.
+Multilingual and Crosslingual Language Modelling
+Multilingual Language Modeling and Cross-Lingual Language Modeling are related concepts in Natural Language Processing (NLP) that deal with processing and understanding multiple human languages.
+While the terms are sometimes used interchangeably, they often have a subtle but important distinction in their focus and capabilities.
+Multilingual Language Modeling
+A Multilingual Language Model is a single model trained to understand, generate, and process text from multiple languages simultaneously. The core idea is to consolidate linguistic knowledge from various languages into a unified system.
+OR
+Multilingual Language Models (MLMs) are single models that are trained simultaneously on data from multiple languages (e.g., English, Spanish, French, Chinese, etc.).
+Goal
+To enable the model to handle, process, and generate text in all the languages it was trained on.
+This means the model maintains the ability to perform tasks (like text generation or sentiment analysis) within each of the supported languages.
+How it works?
+These models often use a shared vocabulary and a single set of parameters (the weights of the neural network) across all languages.
+The model learns common linguistic patterns and structures that exist across different languages, creating a unified representation space.
+Output/Task
+The model can accept an input in language A and produce an output in language A, or accept language B and output language B.
+The interaction generally stays within a single language at a time.
+Example Models
+mBERT (Multilingual BERT)
+XLM-R (Cross-lingual RoBERTa)
+Cross-Lingual Language Modeling
+Cross-Lingual Language Modeling is a concept related to MLM where the model's primary goal is to perform a task in one language (the target language) by leveraging knowledge gained from training data in a different language (the source language).
+OR
+Cross-Lingual Language Models (XLMs) primarily focus on the ability to transfer knowledge and capabilities from a high-resource language (one with plenty of training data, like English) to a low-resource language (one with limited data, like a less common dialect).
+Goal
+To perform a task in one language (the target language) after being trained or fine-tuned predominantly in a different language (the source language).
+This is often referred to as Zero-Shot Cross-Lingual Transfer, where the model performs a task on an unseen language without any or very little training data for that specific task in the new language.
+How it works?
+The model leverages the shared representations learned during multilingual pre-training.
+Since the internal representation space is shared, the task-specific knowledge learned for the high-resource language can be applied to the low-resource language.
+Output/Task
+The key focus is often on tasks that require relating concepts across languages, such as Machine Translation (source language A to target language B) or using a sentiment analysis model trained on English to analyze Spanish text.
+Example
+Training a question-answering system entirely on English data and then using the exact same model to answer questions posed in French.
+Key Difference Summary
+In practice, nearly all modern "cross-lingual" models (like XLM-R) are initially trained in a multilingual setting, which gives them the shared representation space necessary for the subsequent cross-lingual transfer capabilities.

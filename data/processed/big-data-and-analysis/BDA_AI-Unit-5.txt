@@ -1,0 +1,232 @@
+UNIT-5
+BDA & AI APPLICATIONS
+Advanced Topics and Case Studies
+V PHANISHWARA HARA GOPAL,
+ASSISTANT PROFESSOR,
+DEPARTMENT OF CSE (AI&ML),
+RGM COLLEGE OF ENGINEERING & TECHNOLOGY (AUTONOMOUS).
+Deep Learning on Big Data using TensorFlow on Spark
+• Deep Learning requires massive datasets to be accurate.
+• Standard TensorFlow runs on a single machine (or single GPU cluster).
+• Limitation: Memory constraints (Out of Memory errors) and
+impossibly long training times (weeks/months).
+The Solution – Best of Both Worlds
+• Apache Spark: Handles Data Ingestion, Cleaning, and Feature
+Engineering across a cluster.
+• TensorFlow: Handles complex tensor mathematics and model
+optimization.
+• The Goal: Bring the deep learning code directly to the data, rather
+than moving the data to the code.
+TensorFlowOnSpark (TFoS) Architecture
+• Developed and open-sourced by Yahoo.
+• Bypasses the need to save Spark data to disk before feeding to
+TensorFlow.
+• Uses Spark's RDDs/DataFrames to stream data directly into
+TensorFlow memory in real-time.
+The Distributed Training Workflow
+• Step 1: Spark loads raw data (HDFS/S3).
+• Step 2: Spark cleans data, handles missing values, and creates vector
+formats.
+• Step 3: Spark launches a TensorFlow cluster alongside its own
+workers.
+• Step 4: TF workers compute gradients in parallel and update a central
+Parameter Server.
+Modern Alternatives (Horovod)
+• While TFoS is foundational, Horovod (by Uber) is the modern industry
+standard.
+• Uses Ring-AllReduce architecture instead of a central parameter
+server.
+• Requires minimal code changes to scale a standard TF script to
+hundreds of GPUs.
+Explainable AI (XAI) in Big Data Environments
+• The "Black Box" Dilemma
+• The Tradeoff: As AI models become more complex and accurate, they
+become less interpretable.
+• The Risk: Hidden biases, spurious correlations, and catastrophic edge-
+case failures.
+• The Barrier: Lack of user trust prevents AI adoption in high-stakes
+fields.
+What is Explainable AI (XAI)?
+• Global Explanations: Understanding the overall behavior and rules of
+the entire model.
+• Local Explanations: Understanding why the model made one specific
+decision for one specific data point.
+• Goal: Ensure AI is fair, unbiased, and aligned with human values.
+Key XAI Techniques: SHAP and LIME
+• SHAP (SHapley Additive exPlanations): Based on game theory;
+calculates the exact mathematical contribution of every feature to the
+final prediction.
+• LIME (Local Interpretable Model-agnostic Explanations): Tweaks the
+input data slightly to see how the prediction changes, creating a
+simple map of the decision.
+The Big Data Challenge for XAI
+• XAI algorithms are incredibly computationally expensive.
+• Calculating exact SHAP values for massive datasets is an NP-hard
+problem.
+• Running XAI sequentially on a single node is impossible for Big Data.
+Scaling XAI with Apache Spark
+• Distributed Explainability: Using Spark UDFs (User Defined Functions)
+to run SHAP/LIME across a cluster.
+• Sampling Strategies: Explaining a statistically significant sample of the
+Big Data instead of every single row.
+• Libraries: Integrating tools like shap with PySpark DataFrames.
+Ethical Issues and Data Governance in Big Data AI
+• The Core Ethical Dilemmas in Big Data: Privacy, Bias, and Consent.
+• Privacy vs. Utility: The tension between extracting valuable insights
+and protecting individual anonymity.
+• Algorithmic Bias: Machine Learning amplifies historical human
+prejudices.
+• Informed Consent: Do users actually understand what they are
+agreeing to in 50-page Terms of Service agreements?
+Case Studies in Algorithmic Bias
+• The Recruiting AI: Trained on 10 years of historical resumes (mostly
+male); the AI learned to penalize female candidates.
+• Predictive Policing: Historical arrest data leads algorithms to over-
+police minority neighborhoods, creating a self-fulfilling feedback loop.
+• The Lesson: "Garbage In, Garbage Out" applies to ethics, not just data
+quality.
+The Myth of Anonymization
+• Removing Personally Identifiable Information (PII) like Names and
+SSNs is not enough.
+• The Netflix Prize Leak: Anonymous movie ratings were cross-
+referenced with public IMDb reviews to identify specific users and
+their private viewing habits.
+• The Solution: Advanced techniques like Differential Privacy and k-
+anonymity.
+What is Data Governance?
+• It is not just IT; it is a business strategy.
+• Data Stewardship: Assigning clear
+owners who are responsible for specific
+datasets.
+• Data Lineage: Tracking data from its
+origin, through all transformations, to its
+final AI model.
+• Master Data Management (MDM):
+Ensuring a single, accurate version of the
+truth across the enterprise.
+Regulatory Frameworks (GDPR, CCPA, DPDP)
+• GDPR (Europe): The gold standard. Introduces massive fines, the
+"Right to be Forgotten," and strict consent rules.
+• CCPA (California): Focuses heavily on the right to opt-out of data
+sales.
+• DPDP Act (India): India's Digital Personal Data Protection Act,
+focusing on data minimization and purpose limitation.
+Technical Implementation in Big Data
+• Apache Ranger: Centralized security framework to manage access
+control (who can read/write what) across the Hadoop ecosystem.
+• Apache Atlas: Data governance and metadata framework to track
+data lineage and catalog assets.
+• Audit Logs: Immutable records of exactly which user or AI algorithm
+touched a piece of sensitive data.
+Edge Computing and AI for Low Latency Applications
+• The "Round-Trip" Latency Problem
+• Network Latency: The physical time it takes data to travel.
+• Bandwidth Choke: Transmitting Terabytes of raw 4K video/sensor
+data is impossible over mobile networks.
+• Connectivity: What happens if the network goes down?
+What is Edge AI?
+• Training vs. Inference: We do not train
+models on the Edge.
+• The Workflow: Train massive models on
+Cloud Big Data ->Freeze the model ->
+Deploy to the Edge.
+• Goal: Sub-millisecond decision making
+entirely on local hardware.
+How do we fit Big Data AI on tiny devices?
+• Edge devices (cameras, sensors) have low RAM, weak CPUs, and run
+on batteries.
+• Model Quantization: Reducing the precision of the math (e.g.,
+changing 32-bit decimals to 8-bit integers) to save memory.
+• Model Pruning: Deleting artificial neurons that don't contribute much
+to the final answer.
+Specialized Edge Hardware
+• Standard CPUs are not designed for AI matrix math.
+• NPUs (Neural Processing Units): Chips specifically designed to run AI
+inference at ultra-low power.
+• The "System on a Chip" (SoC): Bringing the camera, memory, and AI
+brain onto a single board.
+The Edge-to-Cloud Big Data Pipeline
+• The Edge does not replace the Cloud; it acts as a smart filter.
+• Edge AI processes 99% of "normal" data locally and deletes it.
+• It only sends anomalies, metadata, or extremely valuable data back to
+the Big Data Cloud for long-term storage and retraining.
+Case Study 1: AI-Powered Big Data in Healthcare
+• The Healthcare Data Ecosystem (The 4 V's in Action)
+• Volume: Petabytes of historical patient records.
+• Velocity: Real-time streaming vitals from ICU monitors and wearables.
+• Variety: Unstructured text (clinical notes), 3D images (MRI/CT), and
+time-series data.
+• Veracity: The critical need for accurate, clean, and life-saving data.
+Deep Dive 1 – Predictive Analytics in the ICU
+• The Problem: Conditions like Sepsis kill rapidly if not caught early.
+• The Big Data Solution: Streaming real-time ICU vitals through an
+Apache Kafka/Spark pipeline.
+• The AI Model: Recurrent Neural Networks (RNNs) analyzing time-
+series data to spot invisible physiological trends.
+Deep Dive 2 – Medical Imaging & Diagnostics
+• The Bottleneck: Radiologists suffer from high burnout and visual
+fatigue.
+• The Technology: Distributed Deep Learning (CNNs/Vision
+Transformers) trained on millions of historical scans.
+• The Workflow: AI acts as a "Tireless Triage," instantly flagging the
+highest-risk scans for human review.
+Genomics and Precision Medicine
+• The Scale: Sequencing a single human genome generates ~100GB of
+raw data.
+• Population Mining: Finding hidden correlations between specific
+genetic mutations and disease risks across millions of patients.
+• The Outcome: Moving from "One Size Fits All" treatments to
+personalized, genetically targeted therapies.
+Roadblocks: Data Silos and Interoperability
+• Data Silos: Hospitals use different, proprietary software systems that
+cannot talk to each other.
+• Interoperability: The struggle to standardize medical data formats
+(e.g., FHIR standards).
+• The Impact: Fragmented patient histories lead to less accurate AI
+models.
+Governance and Ethics in Medicine
+• Privacy: Strict adherence to HIPAA/GDPR; medical data is the most
+sensitive data on earth.
+• Bias: Ensuring AI models are trained on diverse populations, not just
+wealthy urban demographics.
+• Explainability: Doctors must be able to trust and verify why the AI
+recommended a specific surgery (Ties into XAI).
+Case Study 2: Big Data AI Solution in Smart Manufacturing
+• Data Sources: PLCs (Programmable Logic Controllers), vibration
+sensors, acoustic sensors, and thermal cameras.
+• The Protocol Challenge: Converting diverse industrial protocols
+(Modbus, OPC-UA) into Big Data formats (JSON/Avro).
+• Ingestion: Using Apache Kafka to handle high-frequency sensor
+streams (thousands of events per second).
+Deep Dive 1 – Predictive Maintenance (PdM)
+• The Logic: Analyzing time-series data to identify "Signatures of
+Failure.“
+• Algorithm: Using LSTMs (Long Short-Term Memory) or GRUs to find
+patterns in vibration and temperature.
+• Impact: Shifting from "Fixing when broken" to "Fixing just before
+breaking," saving millions in lost production time.
+Deep Dive 2 – Computer Vision for Quality 4.0
+• The Challenge: Human inspectors can only see 80-90% of defects and
+suffer from fatigue.
+• The Technology: Deep Learning (CNNs) deployed at the Edge for sub-
+millisecond inspection.
+• The Workflow: Every single part is photographed; the AI compares it
+against a "Perfect Part" model in real-time.
+The "Digital Twin" Concept
+• A virtual representation of a physical asset updated with real-time Big
+Data.
+• Simulation: Testing "What If" scenarios in the digital world before
+changing the physical machine.
+• Integration: Syncing Spark streaming data with 3D CAD models.
+Edge-to-Cloud Architecture for Industry
+• Edge: Critical for safety (E-stops, high-speed sorting).
+• Cloud: Critical for training models across multiple global factories.
+• Latency Requirements: Decisions must be made in <10ms for high-
+speed robotics.
+Economic and Operational Impact
+• Energy Optimization: AI identifies power-hungry machines and
+optimizes their duty cycles.
+• Supply Chain Integration: The factory automatically orders its own
+spare parts when the AI predicts a failure.
+• The Workforce: Shifting human roles from "Manual Labor" to "AI
+Oversight and Maintenance."

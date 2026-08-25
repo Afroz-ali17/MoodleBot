@@ -1,0 +1,290 @@
+Unit 2: Theoretical Structure of Quantum Information Systems
+Dr. N. RAVI
+Professor & HOD
+Department of Physics,
+RGMCET, Nandyal.
+The Qubit
+A qubit — short for quantum bit — is the quantum‑mechanical generalization of a bit. It obeys the same idea of being a basic unit of information but follows very different physical rules.
+Quantum Bit (Qubit): A weighted blend of 0 and 1 at the same time (called superposition)
+Physical examples: Spin‑up/spin‑down of an electron, polarized photon paths, current circulating clockwise/counter‑clockwise in a superconducting loop
+Role in computing: Utilizes superposition and entanglement to solve certain problems far faster than classical bits
+What are Bits?
+In computing technology, a bit is the smallest unit of information measurement. It is also called a classical bit. Basically, Bit is the acronym for Binary Digit. Therefore, a bit is nothing but a binary 0 or a binary 1.
+Bits are used to express information in all digital computing systems. Multiple bits can be grouped together to form larger units of information.
+For example, 8-bits are grouped together to form a Byte. In computers and other digital systems, bits are used to specify two states of an electronic device, i.e. On and Off. Bits are used in all modern digital computers and electronic devices.
+What are Quantum Bits?
+Quantum Bit is the smallest unit of information measurement in quantum computing. It is also called Qubit. Unlike, classical bits, a quantum bit can have multiple states at the same time. This property of Qubits is known as superposition.
+Qubits may be pictured in 3D using the Bloch sphere representation. The Bloch sphere gives a way of describing a single-qubit quantum state (which is a two-dimensional complex vector) as a three-dimensional real-valued vector. This is important because it allows us to visualise single-qubit states and thereby develop reasoning that can be invaluable in understanding multi-qubit states.
+In other words, a quantum bit can have a combination of 0 and 1 simultaneously, making quantum computers to process data much faster than classical computers. Another important and unique characteristic of quantum bit is entanglement, which means two quantum bits can be correlated with each other so that the state of one quantum bit is dependent on the state of another quantum bit.
+The entanglement property of quantum bit enables to develop the new algorithms to solve complex problems easily by using quantum computing. It is most important to known about quantum bits that quantum bits are implemented based on quantum systems like atoms, ions, etc.
+BITS
+The device computes by manipulating those bits with the help of logical gates (AND, OR, NOT).
+A classical computer has a memory made up of bits where each bit hold either a 1 or 0.
+QUANTUM BITS
+The device computes by manipulating those bits with the help of quantum logic gates.
+A qubits (quantum bits) can hold a 1, a 0 or crucially a superposition of these (1 and 0).
+Information is stored in bits, which take the discrete values 0 and 1.
+For example, if storing one number takes 64 bits, then storing N numbers takes N times 64 bits.
+Bits are slow.
+Its circuit behaviour based on classical physics.
+Information is stored in quantum bits, or qubits. A qubit can be in states labelled |0⟩ and |1⟩, but it can also be in a superposition of these states, a|0⟩ + b|1⟩, where a and b are complex numbers. If we think of the state of a qubit as a vector, then superposition of states is just vector addition.
+For example, for every extra qubit you get, you can store twice as many numbers. For example, with 3 qubits, you get coefficients for |000⟩, |001⟩, |010⟩, |011⟩, |100⟩, |101⟩, |110⟩ and |111⟩.
+Qubits are faster.
+Its circuit behaviour based on quantum mechanics.
+The Power of a Qubit
+The power of a qubit comes from two uniquely quantum effects:
+Superposition
+Until you measure it, a qubit exists in a continuous mixture of |0⟩ and |1⟩.
+Mathematically we write |ψ⟩ = α|0⟩ + β|1⟩, where α and β are complex numbers whose squared magnitudes add to 1.
+Entanglement
+Two or more qubits can be prepared so that measuring one instantly determines the state of the other, no matter the distance between them. Entanglement stores relationships that classical bits cannot reproduce without massive overhead.
+Information Capacity: Exponential vs Linear
+Classical scaling.
+With n classical bits you represent exactly one of the 2ⁿ possible patterns at a time (e.g., 8 bits → a single value from 0 to 255).
+Quantum scaling.
+With n qubits you hold a quantum superposition of all 2ⁿ patterns at once. The entire system is described by 2ⁿ complex amplitudes. For small n this seems trivial, but as n grows, classical memory requirements explode:
+Bits/Qubits
+Classical storage needed to list all amplitudes
+1 gigabyte
+1 terabyte
+1 petabyte
+More bytes than atoms in the observable universe
+A quantum computer manipulates those amplitudes directly, using interference to amplify right answers and cancel wrong ones. A classical machine would have to track each amplitude separately — impossible past a few dozen qubits.
+1. Qubit as a Quantum Two-Level System
+A qubit is the quantum analogy of a classical bit, but instead of being in state 0 or 1, it can be in a superposition of both: ∣ψ⟩=α∣0⟩+β∣1⟩
+where α and β are complex numbers (probability amplitudes) with ∣α∣2+∣β∣2=1.
+Conceptual understanding QUBIT using spin and polarization
+Types of Qubits: The Quantum Diversity
+Qubits manifest in various physical forms, each harnessing distinct properties and mechanisms to encode and manipulate quantum information. Some of the most prominent types of qubits are:
+Superconducting Qubits
+When cooled to a low temperature, some materials allow an electrical current to flow with no resistance. These are called superconductors. Electrical circuits designed based on superconductors can behave like qubits.
+Superconducting qubits comprise tiny circuits fabricated from superconducting materials, such as niobium. These qubits exploit the quantized energy levels of superconducting circuits to encode and process quantum information, making them a leading candidate for building scalable quantum processors.
+Trapped Ion Qubits
+One can use the energy levels of electrons in neutral atoms or ions as qubits. In their natural state, these electrons occupy the lowest possible energy levels. Using lasers, they can be “excited” to a higher energy level. Qubit values can be assigned based on their energy state.
+Individual ions are typically of elements like ytterbium or calcium. Manipulating the internal states of these ions (through laser-induced transitions) enables precise control over quantum information, offering exceptional coherence times and fidelity crucial for quantum computations.
+Spin Qubits
+Most quantum particles behave like little magnets. This property is called spin. The spin orientation is always pointing either fully up or fully down but never in between. Using the spin states of up and down, a spin qubit is built.
+Spin qubits capitalise on the intrinsic angular momentum (spin) of particles, such as electrons or atomic nuclei, as the basis for encoding quantum information. In semiconductor quantum dots or defect centres within crystals, the spin states of these particles serve as qubit carriers, governed by external magnetic and electric fields.
+Photon Qubits
+Photonic qubits exploit the quantum properties of photons, the fundamental particles of light, to encode and process information. Through techniques like linear optics and nonlinear processes, photons can be entangled and manipulated, laying the groundwork for applications in quantum communication and quantum cryptography.
+Photon qubits can be Polarisation Qubit, Path Qubit, or Time Qubit.
+Topological Qubits
+Theoretical in nature, topological qubits rely on exotic states of matter, such as topological superconductors or Majorana fermions, to encode and protect quantum information from decoherence—a pervasive challenge in quantum computing. While still in the nascent stages of exploration, topological qubits hold promise for realising fault-tolerant quantum computation.
+Superconducting quantum computing (SQC), one of the several approaches to realizing a quantum computer, relies on superconducting electronic circuits to implement a quantum processor.
+Superconductivity is a phenomenon characterized by the total disappearance of electrical resistance in certain materials called superconductors when they are cooled below a “critical” or “transition” temperature Tc. The critical temperature varies from one superconductor to the next, but is in most cases below 20 K (−253°C).
+The solid can be seen as a rigid lattice of positively charged ions submerged in a pool of floating electrons. According to their “BCS theory,” at near 0 K temperatures electrons become bound remotely into “BCS pairs” or “Cooper pairs” through interactions with the positively charged ionic lattice. Excitations of the crystal lattice that act as quasi-particles are termed phonons. This condensation of electrons into Cooper pairs is a part of the mechanism that causes the metal’s phase transition from the normal to the superconducting state.
+In simplified, classical terms, as an electron passes through the lattice, it attracts the positive ions, triggering a slight distortion of the lattice. This movement creates an electrically positive region in the lattice which, in turn, attracts another passing electron.
+Cooper pairs circulate inside the superconducting solid without any resistance. Their electrons are entangled in the lowest energy state.
+1. Superconducting qubits
+The elementary particles are divided into fermions (matter and antimatter particles) and bosons (“force particles” that mediate interactions among fermions).
+Generally, the fermions have a half-odd-integer spin quantum number, while the bosons have integer spins. As a result, the bosons have symmetric and the fermions antisymmetric wave functions.
+The electron, with its spin values of ±½, is a fermion.
+Cooper pairs always have a total spin of zero in conventional superconductors, which means they behave like bosons.
+Cooper pairs are weakly bound and can be easily split up by thermal energy, which increases and speeds up the vibrations of the ionic lattice.
+Decoherence produces “noise,” resulting in information loss. In order to preserve coherence, interactions between individual electrons and between electrons and phonons must lend themselves to tight control.
+Since Cooper pairs resist decoupling unless exposed to a certain amount of energy, superconducting qubits make it relatively easy to extend quantum coherence.
+Brian D. Josephson, refers to the quantum tunneling of Cooper pairs across a very thin insulating barrier inserted into the superconducting material. A Josephson junction is constructed by sandwiching the insulator (such as aluminum oxide) between two superconducting layers. The insulator being just a few nanometers thick, the Cooper pairs tunnel through it and couple the respective superconducting wavefunctions on either side of the insulating barrier.
+Almost all circuits for superconducting qubits today consist of Josephson junctions.
+The Josephson junction can be used to vary the coupling between different components of the circuits, making superconductive circuits essentially lossless at frequencies well below the superconducting gap.
+The Key Role of the Josephson Junction in Qubits
+Linear vs. Non-linear Circuits:
+A typical superconducting circuit made of a capacitor and an inductor (an LC circuit) is a linear harmonic oscillator.
+When this system is quantized, the energy levels are evenly spaced.
+This is a problem for a qubit because a qubit needs two distinct energy states (∣0⟩ and ∣1⟩) that can manipulate without affecting higher energy levels.
+With evenly spaced energy levels, any microwave pulse used to excite the qubit from ∣0⟩ to ∣1⟩ would also have the same frequency to excite it from ∣1⟩ to ∣2⟩, making it impossible to control just the two-level system.
+The Josephson junction (JJ), however, acts as a non-linear inductor. Its inductance is not constant but depends on the supercurrent flowing through it.
+Creating a Two-Level System (Anharmonicity):
+By incorporating a Josephson junction into a superconducting circuit, the circuit's overall potential energy landscape is no longer a perfect parabola (like a harmonic oscillator) but has a non-linear, "anharmonic" shape.
+This non-linearity causes the spacing between the energy levels to be uneven.
+The energy difference between the ground state (∣0⟩) and the first excited state (∣1⟩) is different from the energy difference between the first and second excited states (∣1⟩ and ∣2⟩).
+Because the frequencies are different, you can selectively target and manipulate the transition between the ∣0⟩ and ∣1⟩ states with a specific microwave frequency, without accidentally exciting the system to higher energy levels.
+This allows the circuit to behave as a stable, controllable two-level quantum system—a qubit.
+Types of Superconducting Qubits
+The Charge Qubit
+The charge qubit, also known as a Cooper pair box (CPB), was one of the first developed superconducting qubits. Designed with a Josephson junction in the circuit, this qubit consists of a small superconducting island (black dot with node flux φ); the “island” denotes a specific superconducting area connected to the circuit in a manner that facilitates the manipulation of the number of Cooper pairs in the area.
+The external voltage Vg controls the number of Cooper pairs flowing into and out of the island. Consequently, a certain number of Cooper pairs are trapped inside the island. The number of Cooper pairs trapped will be determined by quantum fluctuations, which, causing an oscillation, will manifest themselves in the form of energy levels used to represent the qubit.
+The Phase Qubit
+A phase qubit consists of a larger, current-biased Josephson junction than in charge qubits. It is operated in the zero-voltage state with a non-zero current bias. For greater non-linearity, the biased current should be close to the critical current Ic of the junction because the Josephson junction will allow currents up to Ic to pass through without any voltage.
+In electronics, biasing refers to the initial operating conditions needed for a particular circuit to function in the right manner; the circuit needs a consistent flow of current or voltage. So when we say that a phase qubit is “current-biased”, it means that it is operated in the zero-voltage state, but with “non-zero” current bias. This has a significant implication: compared to the other two types of superconducting qubits, the “tunability” (tuning the phase of the qubit by changing the frequencies) of the current-biased JJ is the chief advantage of the phase qubit. However, the phase qubit is also vulnerable to fluctuations in current, which may affect its performance.
+The Flux Qubit
+First proposed by Terry P. Orlando et al. at MIT in 1999, flux qubits are loops of superconducting material interrupted by Josephson junctions. The loops are controlled by an external magnetic flux Φext and the bias current Ib. The state of a flux qubit, corresponding to the direction in which the superconducting current passes through the loop, is measured by a SQUID (superconducting quantum interference device), a highly sensitive magnetometer that measures the direction of the current in the qubit and, consequently, its basis state (0 or 1).
+Superconducting qubits are compatible with existing microfabrication technologies, such as cryostats, cabling, amplifiers, and sensors. Superconducting circuitry allows for multi-qubit coupling by means of inductance or capacitance. They enjoy fast gate times (fast operation times in logical quantum gates).
+The principal drawback of superconducting qubits is their low coherence time (<300 μs). The difficulty of achieving quantum coherence increases in proportion with the number of qubits. As the qubit count increases, assessing the fidelity of quantum operations across the chip also becomes proportionally harder.
+Examples of Companies Developing Superconducting Qubits:
+IBM: IBM has been a pioneer in superconducting quantum computing, developing and operating quantum computers with hundreds of qubits.
+Google: Google has also made significant strides in superconducting qubit technology, demonstrating quantum supremacy (a computational milestone).
+Intel: Intel is actively researching and developing superconducting qubit technology.
+IQM: IQM is a Finnish company developing superconducting quantum computers.
+Oxford Quantum Circuits (OQC): OQC is a UK-based company known for its Coaxmon qubit architecture.
+2. Trapped Ions
+The qubits are ions trapped by electric fields and manipulated with lasers. Trapped ions have relatively long coherence times, which means that the qubits are long-lived. Moreover, they can easily interact with their neighbors. Scalability is a challenge, but there are innovative ways to get around them. They are one of the leading physical implementations of qubits and have been central to many experimental advances in quantum computing.
+Heat up Calcium to 800°C to form a vapor.
+Later, bombard the electrons to strip out the outer electron.
+Then, these ions are trapped with an electrical field in ultra-high vacuum.
+Laser-cool these ions to the motional ground state and use this state as the |0⟩. These ions are now close to stationary.
+Their states, as well as their motion, can be controlled with high precision using lasers, microwave or radio-frequency fields, which form the foundations of the quantum gates.
+After stripping an electron from a Calcium atom, there is only one electron left in the valence shell and the ground state is 4S.
+The ion structure will resemble a hydrogen atom (with one electron) which has relatively simple energy levels. Such a simple structure allows us to use fewer lasers to cool the ions down to the ground state and manipulate them without doubt. As mentioned before, we pick 4S as |0⟩.
+3D and 4P are the nearest excited states respectively and are separated from 4S by optical energy (emitted or absorbed a photon).
+This diagram also demonstrates the lifetime of the excited states and where it may de-excite to.
+For instance, the excited 3D (5/2) state of the Calcium ion has a lifetime τ of 1.2 seconds, while the lifetime of the 4P state is only about 7 ns. Therefore, 3D (5/2) is a good candidate for |1⟩ with coherence time appropriate enough to complete the target quantum operations.
+3. Spin Qubits
+Spin qubits exploit the intrinsic angular momentum, or spin, of electrons (or other particles).
+An electron's spin can be either "spin-up" or "spin-down" (or in a superposition of both), which are used to represent the 0 and 1 states of a qubit.
+Spin qubits are often implemented in semiconductor materials like silicon or gallium arsenide.
+Quantum dots: are frequently used: these are nanoscale semiconductor structures that can trap a single electron, effectively confining it and allowing control over its spin.
+Donor spin qubits: are another approach, using the valence electrons of individual atoms (donors) implanted in the semiconductor material.
+Silicon-based spin qubits: are particularly attractive because silicon is compatible with existing semiconductor technology and can be isotopically purified to reduce noise.
+Advantages of Spin Qubits:
+Potential for scalability:
+Quantum dots can be fabricated using existing semiconductor manufacturing techniques, making them potentially scalable for large-scale quantum computers.
+Compatibility with existing technology:
+Silicon-based spin qubits can leverage existing semiconductor infrastructure, potentially leading to faster development and integration.
+Long coherence times:
+Under the right conditions, spin qubits can maintain their superposition state for a relatively long time, allowing for more complex computations.
+Challenges:
+Decoherence:
+Interactions with the environment can cause a qubit to lose its superposition state and collapse into a definite state, which is a major challenge in quantum computing.
+Controlling multiple qubits:
+Scaling up to a large number of qubits is a significant challenge, requiring precise control of individual qubits and their interactions.
+Readout fidelity:
+Accurately reading the state of a qubit can be difficult, and errors in readout can limit the performance of quantum computations.
+4. Photonic qubits
+Photonics qubits are units of quantum information encoded in the quantum states of light, specifically using photons and properties such as polarization, path, time-bin, or frequency to represent information. Photonic qubits have emerged as a promising platform for quantum computing and other applications due to their potential for long-distance quantum communication and high-fidelity quantum gates.
+In photonic systems, qubits are typically generated using spontaneous parametric down-conversion (SPDC) or spontaneous four-wave mixing (SFWM) processes. These nonlinear optical processes create entangled photon pairs, which can be used to encode quantum information. The resulting photons can then be manipulated and processed using various optical elements, such as beam splitters, phase shifters, and polarizing filters.
+1. Encoding Quantum Information:
+Polarization:
+Photons can be polarized, meaning their electromagnetic waves oscillate in a specific direction. Horizontal and vertical polarization can be used to represent the 0 and 1 states of a qubit.
+Path Encoding:
+A photon can be directed to take different paths, and these paths can be used to encode the qubit states. For example, a photon traveling through one path could represent 0, while a photon traveling through another path represents 1.
+Time-Bin Encoding:
+The time at which a photon arrives at a detector can also be used to encode qubit states. A photon arriving at an earlier time could be 0, while a photon arriving later could be 1.
+Frequency: Different frequencies of light can represent different qubit states.
+Advantages of photonic qubits:
+Room-temperature operation: Photons can be manipulated at room temperature and within optical fibers and circuits, reducing cooling demands.
+Long coherence times: Photons weakly interact with their environment, preventing rapid decoherence and allowing quantum states to be preserved over long distances.
+High-speed transmission: Photons naturally travel at the speed of light, enabling fast and long-distance quantum communication and networking.
+Scalability and integration: Leveraging mature photonic and optical technologies, photonic qubits can be integrated into compact photonic circuits, aiding scalability.
+Challenges and limitations:
+Efficient single-photon sources: It is difficult to produce single, indistinguishable photons on demand for large-scale operations.
+Two-qubit gates: Implementing deterministic two-qubit gates for universal quantum computation is a significant technical hurdle.
+Photon loss: Minimizing photon loss in fibers and optics is essential for reliable quantum operations.
+Measurement: Photonic qubits are measured using single-photon detectors, often requiring elaborate optical setups
+The role of lasers in generating qubits
+Laser cooling for atomic qubits
+Laser cooling is a pivotal technique in the preparation of cold atom-based qubits. It involves using the radiation pressure of light to slow down and cool atoms to temperatures close to absolute zero. This is essential for reducing thermal motion, thereby increasing the coherence times of qubits and improving their stability and control.
+The Doppler cooling method is the most common laser cooling technique. Here, lasers tuned slightly below an atomic transition frequency cause atoms moving towards the laser to absorb photons, which slows them down. Subsequent spontaneous emission of photons occurs in random directions, resulting in a net reduction of the atom’s kinetic energy.
+Laser trapping and cooling for trapped ions qubits
+Trapped ions are a promising technology for quantum computing, serving as a foundation for creating atom qubits. In this approach, individual ions are confined or trapped being suspended in free space using electromagnetic fields in a vacuum chamber. Lasers for trapping therefore need to have extremely narrow linewidths (kHz) and ultra low noise in order to be able to hold the atoms and ions completely still.
+Photonic qubits can reduce the number of physical qubits required for a given quantum algorithm, thereby reducing the complexity of the quantum circuit. The integration of photonic qubits with other quantum systems is also an active area of research, with recent experiments demonstrating the coupling of superconducting qubits to optical photons. This enables the transfer of quantum information between these two systems and paves the way for the creation of hybrid quantum architectures.
+5. Topological Qubits
+Topological qubits are a novel type of qubit that leverages the principles of topology to achieve robustness against decoherence. Topology is a branch of mathematics that studies the properties of shapes and spaces that are preserved under continuous deformations. In the context of quantum computing, topological qubits encode information in a non-local manner, making them inherently more robust against local perturbations.
+The concept of topological qubits is based on the existence of exotic quasiparticles known as anyons, which arise in certain topological systems. Anyons are neither bosons nor fermions but exhibit non-Abelian statistics, meaning that the order in which they are exchanged affects the state of the system. This property is crucial for the fault-tolerant quantum computing that topological qubits promise.
+The operation of topological qubits relies on advanced materials and phenomena, including topological insulators, superconductors, and Majorana fermions. Understanding these principles is crucial for appreciating how topological qubits achieve their remarkable properties.
+The Attraction of Topological Qubits: Advantages and Applications
+Fault Tolerance: Topological qubits achieve fault tolerance through the non-local encoding of quantum information. By storing information in the topological state of the system, rather than in local properties, topological qubits become less susceptible to local errors. The threading of anyons, such as Majorana fermions, further enhances this fault tolerance by enabling quantum operations that are inherently robust against disconcertion.
+Exotic Braiding Operations: The braiding of anyons allows for manipulating and processing quantum information in a unique way, potentially leading to novel quantum algorithms.
+Diverse Implementations: Research suggests that topological qubits can be realized using various materials like Majorana zero modes in superconductors or manipulating spins in certain magnetic materials.
+Quantum coherence and decoherence – intuitive explanation
+Quantum coherence
+Coherence occurs when two wave has the constant phase difference and both interfere coherently with each other it expects the situation where the objects wave function splits into two separate waves which produces interference. The loss of coherence is what we call decoherence.
+Quantum coherence refers to the ability of a quantum system to exist in multiple states simultaneously, resulting in a superposition of states. This property is a direct consequence of the wave-like nature of quantum mechanics and is essential for quantum information processing. In atomic systems, quantum coherence is manifested as a well-defined phase relationship between the different energy levels.
+Coherence is essential for quantum computing because quantum algorithms rely on the ability to manipulate and maintain superposition and entanglement, which are both examples of quantum coherence. In a quantum computer, information is represented by qubits, which can exist in superpositions of 0 and 1. However, quantum coherence is fragile and can be easily disrupted by environmental factors, such as heat, radiation, or electromagnetic fields. These factors can cause the quantum state to decohere or lose its coherence, resulting in errors and making it difficult or impossible to perform useful computations. Therefore, maintaining coherence is critical for quantum computing.
+The following diagram illustrates the role of quantum coherence in quantum information processing:
+Entanglement
+Quantum Teleportation
+Superdense Coding
+Quantum Computing
+Quantum Coherence
+Some of the techniques that are commonly used to maintain coherence in quantum systems include:
+Decoherence suppression: This involves minimizing the effects of external disturbances on the quantum system. One way to achieve this is to operate the system at low temperatures, where thermal fluctuations are reduced. Another approach is to shield the system from electromagnetic fields and other noise sources.
+Quantum error correction: This involves using quantum error correction codes to protect quantum information from the effects of decoherence. These codes encode the quantum information so errors can be detected and corrected without disturbing the quantum state.
+Dynamical decoupling: This involves periodically applying pulses to the system to neutralize the effects of decoherence. It is possible to maintain coherence over extended periods by carefully timing these pulses.
+Continuous monitoring and feedback: This involves continuously monitoring the system’s state and applying feedback to correct errors or deviations from the desired state. This approach can be particularly effective for systems prone to decoherence due to environmental interactions.
+Quantum Decoherence
+A process in which information is stored by the quantum computer to be lost because of interaction of environment with the qubits called decoherence. Decoherence eliminates quantum behavior of the particle. Factors causing decoherence includes vibrations, electromagnetic waves, temperature fluctuations, interactions with the outside environment, act of measuring a qubit, etc. When there's no phase relation between two non-identical states, decoherence occurs and as a result It will suppress the interference. Decoherence is irreversible and at the same time unavoidable.
+Causes of Decoherence in Quantum Computing
+The dominant causes depend on the type of qubit platform being used (e.g., neutral atoms, superconducting circuits, trapped ions, or photonics), but common sources include:
+Quantum Noise: Fluctuations in magnetic and electric fields can couple with qubit states, causing dephasing or energy relaxation. Even cosmic rays and background radiation can affect sensitive qubit systems.
+Thermal Fluctuations: At non-zero temperatures, thermal noise can introduce random excitations that disrupt coherent evolution, especially in platforms that operate at cryogenic temperatures or are thermally sensitive.
+Charge and Flux Noise: In superconducting qubits, noise caused by defects in materials or circuit interfaces can lead to decoherence. This noise arises primarily from impurities or trapped charges within insulating layers, as well as variations in magnetic flux due to microscopic defects or impurities.
+Spontaneous Emission: For qubits implemented via trapped ions or neutral atoms, spontaneous photon emission or scattering from optical trapping fields can collapse superposition states.
+Crosstalk and Imperfect Isolation: Coupling between nearby qubits or between control lines and qubit states can lead to unintentional entanglement with uncontrolled degrees of freedom.
+Impact of Quantum Mechanics Decoherence on Quantum Technologies
+Limited Coherence Time: Qubits must perform computations within a limited window before decoherence sets in. This significantly limits the depth and complexity of quantum circuits that can be run.
+Error Rates and Gate Fidelity: Decoherence contributes directly to gate error rates, reducing the fidelity of single- and multi-qubit operations. Error rates greater than 0.5% typically pose challenges for surface-code architectures for executing accurate quantum algorithms at a large scale.
+Quantum Communication and Sensing: In quantum communication systems, decoherence limits the distance over which entanglement can be preserved. In sensing applications, decoherence sets the fundamental limits on measurement precision.
+Quantum-to-Classical Transition: Decoherence plays a central role in the emergence of classicality from quantum systems, determining how and when quantum systems lose their distinct behavior and appear classical.
+Techniques for Mitigating Quantum Decoherence
+Quantum Error Correction (QEC): QEC protocols are devised to mitigate the effects of decoherence. Surface codes encode logical qubits into entangled states of multiple physical qubits, allowing for the detection and correction of errors. Syndrome extraction mitigates decoherence by periodically measuring ancilla qubits after entanglement to reveal error information, allowing a quantum system to detect and correct faults in real time without collapsing the encoded logical qubit.
+Dynamical Decoupling: This involves applying carefully timed sequences of control pulses to average out environmental interactions, extending coherence times without modifying hardware.
+Qubit Isolation and Shielding: Engineering approaches to minimize coupling with the environment, such as vacuum chambers, cryogenic operation, and electromagnetic shielding, help reduce noise.
+Material Engineering: Improvements in fabrication processes and material selection can minimize defects and reduce sources of decoherence such as TLS and surface roughness.
+Error-Aware Compilation: Quantum compilers can optimize circuit layouts based on known noise profiles, routing operations away from noisy qubits and adjusting scheduling to reduce exposure to decoherence.
+Qubit Design Innovations: New modalities, such as topological qubits, are being explored for their intrinsic resistance to decoherence through non-local encoding of quantum information.
+Theoretical concepts: Hilbert spaces, quantum states, operators
+In quantum computing, a Hilbert space is a mathematical framework used to describe the state of a quantum system.
+Vector Space: A Hilbert space is a complete vector space, meaning that it contains all possible linear combinations of its vectors.
+Inner Product: Hilbert spaces have an inner product (or scalar product) that allows us to calculate probabilities and expectation values.
+Quantum States: Quantum states are represented as vectors in a Hilbert space, often denoted as |ψ⟩ (ket notation).
+Linearity: Hilbert spaces are linear, meaning that the superposition principle applies: a linear combination of quantum states is also a valid quantum state.
+Hilbert Space
+A Hilbert space is a vector space that has an inner product, which allows for the definition of concepts like length (norm) and angle.
+Vector Space
+This means add quantum states together and multiply them by complex numbers.
+This is the mathematical foundation of the superposition principle.
+Example: If |ψ> is a vector (state) and |φ> is another vector (state), then (a|ψ> + b|φ>) is also a valid vector (state) in the same Hilbert space, where a and b are complex numbers.
+Physical Meaning: This is exactly what happens in the famous double-slit experiment. The electron's state is a superposition of the "go through slit A" state and the "go through slit B" state.
+Inner Product
+An inner product is a rule that takes two vectors and outputs a (complex) number, denoted <φ|ψ>. This is the
+famous Bra-Ket notation, where |ψ> is a "ket" (vector) and <φ| is a "bra" (a dual vector/covector).
+The inner product defines:
+Probability Amplitude: The inner product <φ|ψ> between a state |ψ> and a basis state |φ> gives the probability
+amplitude for the system in state |ψ> to be found in state |φ> upon measurement.
+Probability: The probability is the squared magnitude of this amplitude: | <φ|ψ> |².
+Orthogonality: If <φ|ψ> = 0, the states are orthogonal. This is crucial: orthogonal states are perfectly distinguishable. If a system is in state |ψ>, there is a zero probability of measuring it to be in an orthogonal state |φ>.
+A Hilbert space can have an infinite number of dimensions.
+A qubit (a quantum bit) has a 2-dimensional Hilbert space. Its basis vectors are usually |0> and |1>.
+The state of a particle moving on a line has an infinite-dimensional Hilbert space. The basis vectors could be all possible precise position states |x>, or all possible precise momentum states |p>.
+Quantum states
+A quantum state is a vector in a Hilbert space often a unit vector.
+The state vector, often denoted using Dirac's bra-ket notation as ∣ψ⟩, contains all the information about a quantum system.
+Unlike a classical state, which is a definite point in phase space, a quantum state can be a superposition of multiple basis states.
+This means the system can exist in a combination of different possibilities simultaneously until a measurement is made.
+The basis vectors are all possible tensor products of the individual basis vectors:
+∣00⟩,∣01⟩,∣10⟩,∣11⟩
+In general, for n qubits, the Hilbert space is C2n, and its dimension grows exponentially with the number of qubits.
+This exponential growth is why quantum computers can process certain problems much faster than classical computers.
+Operators
+An operator in quantum mechanics is a linear transformation that acts on a state vector to produce another state vector.
+They represent physical observables, which are the quantities that can be measured, like position, momentum, or energy.
+The action of an operator Â on a state |ψ〉 is written as:
+Â |ψ〉 = |φ〉
+where |φ〉 is the new state vector.
+For an observable to be physically meaningful, the corresponding operator must be Hermitian (or self-adjoint), which ensures that the eigenvalues (the possible measurement outcomes) are real numbers.
+When you measure an observable, the system's state vector "collapses" into an eigenvector of the corresponding operator, and the measurement result is the associated eigenvalue.
+Operators that act on qubit states are matrices.
+The role of entanglement and non-locality in systems
+Entanglement
+Definition: Quantum entanglement describes a phenomenon where two or more particles become intrinsically linked, their quantum states remaining correlated even when separated by large distances. This means the state of each particle cannot be described independently of the others.
+Entanglement signifies correlations between measurement outcomes that cannot be explained by classical physics or local hidden variables, meaning the state of one entangled particle instantly influences the state of the other, regardless of distance.
+Non-locality
+Definition: Nonlocality occurs due to the phenomenon of entanglement, whereby particles that interact with each other become permanently correlated, or dependent on each other’s states and properties, to the extent that they effectively lose their individuality and, in many ways, behave as a single entity. The two concepts of nonlocality and entanglement go very much hand in hand, and, peculiar though they may be, they are facts of quantum systems which have been repeatedly demonstrated in laboratory experiments.
+Implications for local realism: Bell's theorem, confirmed by experiments, demonstrates that the predictions of quantum mechanics are incompatible with local practicality, implying that quantum systems exhibit non-local correlations.
+Relationship with Entanglement: Non-locality arises directly from entanglement. Entangled states can violate Bell inequalities, providing evidence of non-local correlations that cannot be explained by local hidden variable theories. However, it is important to note that non-locality is more general than entanglement. There are cases of non-local correlations that don't fit the standard definition of entanglement.
+For example, if a pair of electrons are created together, one will have clockwise spin and the other will have anticlockwise spin. However, under quantum theory, a superposition is also possible, so that the two electrons can be considered to simultaneously have spins of clockwise-anticlockwise and anticlockwise-clockwise respectively. If the pair are then separated by any distance (without observing and thereby decohering them) and then later checked, the second particle can be seen to instantaneously take the opposite spin to the first, so that the pair maintains its zero total spin, no matter how far apart they may be, and in total violation of the speed of light law.
+Randomness in Quantum Systems
+Quantum mechanics introduces the concept of inherent randomness at the most fundamental level of reality. The outcomes of certain quantum events are inherently unpredictable, even with complete knowledge of the system.
+Indeterminism:
+This view challenges determinism, suggesting that some events are not causally determined but rather occur randomly.
+Determinism and Quantum Mechanics
+Quantum mechanics does not wholly reject determinism but rather redefines it. The deterministic evolution of a quantum system is described by the Schrödinger equation, but the actual measurement outcomes are probabilistic. Philosophers have debated whether determinism can still be said to hold at the global level, with some interpretations (like the many-worlds interpretation) claiming global determinism through branching universes, whereas the Copenhagen interpretation embraces fundamental indeterminacy. Stephen Hawking referred to the quantum world as a domain of “determined probabilities”—not fixed events, but laws that govern the likelihood of outcomes.
+The Role of the Observer
+The Central Paradox (Schrödinger's Cat): Erwin Schrödinger devised his famous thought experiment to highlight the insignificance of applying quantum rules to everyday objects. A cat in a box is both alive and dead (in a superposition) until someone opens the box to look. This forces the question: When does the wavefunction collapse, and what causes it?
+Different interpretations answer this question in radically different ways, each with massive philosophical implications:
+The Copenhagen Interpretation (Bohr, Heisenberg)
+The Role of the Observer: The act of measurement by a classical observer is fundamental. There is no single reality before measurement, only a haze of potentialities. The observer is not passive; they participate in bringing a specific reality into existence.
+Implication: Anti-Realism. The Copenhagen view is often associated with instrumentalism: quantum mechanics is not a description of reality as it is, but merely a tool for predicting the outcomes of observations. It denies that unobserved objects have definite properties. This supports heavily towards a form of idealism, where consciousness plays a privileged role in constituting reality.
+The Many-Worlds Interpretation (Everett)
+No Special Role for the Observer: There is no such thing as wavefunction collapse. The observer and the system become entangled. Every possible outcome of a quantum event actually occurs, but in a different, non-communicating branch of the universe. When you measure an electron, the universe splits: in one branch you see spin-up, in another an identical "you" sees spin-down.
+Implication: Radical Realism and Pluralism. This interpretation removes the observer's special status—measurement is just a physical interaction like any other. However, it implies a truly vast multiverse where all possibilities are realized. This is a hyper-realist view (the wavefunction is real and never collapses) but at the cost of an extravagant ontology (countless unseen universes).

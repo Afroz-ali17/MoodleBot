@@ -1,0 +1,248 @@
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Academic Year : 2024-25
+Year / Semester : II/II
+Section : CSE&BS, CSE(AI & ML)
+Regulations : R23
+Faculty Name : Dr. Y. Raja Obula Reddy
+Department : Mathematics
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+UNIT -2
+Transportation Model & Assignment Model
+Introduction to Transportation problem:
+Transportation problem is a special class of liner programming problem. It deals with the
+transportation of a commodity from n sources to n destinations. the data of the
+transportation model includes:
+1) Level of supply at each source and the amount of demand at each destination.
+2) The unit transportation cost of commodity from each source to each destination.
+Transportation or distribution methods of solving linear programming problems
+aim at minimizing costs of sending goods from dispatch stations to receiving ends.
+Generally, specific quantities of goods are shipped from several dispatch stations to
+number of receiving centers. Linear programming approach in such situations tends to find
+how many goods may be transported from which dispatch station to which receiving end
+in order to make the shipment most economical. Transportation technique in such
+problems gives a feasible solution which is improved in a number of subsequent steps till
+the optimum (best) feasible solution is arrived at.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Terminology used in Transportation problem:
+Origin: It is the location from which shipments are dispatched.
+Destination: It is the location to which shipments are transported.
+Unit transportation cost: It is the cost of transporting one unit of the consignment from an
+origin to a destination.
+Feasible Solution: A set of non-negative values 𝑥 ,𝑖 = 1,2, … 𝑚, ;𝑗 = 1,2, …. 𝑛 that satisfies
+𝑖𝑗
+the constraints is called a feasible solution to the transportation problem.
+Basic Feasible Solution: A feasible solution that contains no more than (m+n-1) non-negative
+allocations is called a basic feasible solution to the transportation problem.
+Optimal Solution: A feasible solution is said to be optimal if it minimizes the total
+transportation cost or maximizes total revenue.
+Degenerate Basic Feasible Solution: A feasible solution that contains less than (m+n-1) non-
+negative allocations is called a degenerate basic feasible solution of the transportation problem.
+Non- Degenerate Basic Feasible Solution: A feasible solution to a (m x n) transportation
+problem that contains exactly (m+n-1) allocations in independent positions.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Transportation Method
+Transportation model is the problem of determining the minimum cost for allocating a
+product from several supply sources to several destinations.
+A simplified version of the simplex method talked about in case of Linear Programming can
+be used in solving such problems and this simplified version is often known as the
+Transportation algorithm. At times this is also known as the Transportation method.
+For example, a cold drink manufacturing company has, say four plants located in four
+different cities and the total production of these four plants is absorbed by four shops located
+in four different cities and if we are to determine a Transportation schedule that minimizes
+the total cost of transporting cold drinks from different plant locations to various shops, then
+it is a case of Transportation problem.
+Nature of Transportation model:
+1. Human factor affects the system behavior.
+2. Objectives are many, and not well-defined.
+3. Many elements, Transportation and non- Transportation, are involved in complex
+manner.
+4. The system performance changes dynamically over time with the changes in the socio-
+economic system.
+5. The solution, if found, are local, not universal.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Defining Transportation model
+Given m sources and n destinations, the supply at source i is a and the demand at
+i
+destination j is b .
+j
+The cost of shipping one unit of goods from source i to destination j is C .
+ij
+The goal is to minimize the total transportation cost while satisfying all the supply and
+demand restrictions.
+Method for finding Initial Basic Feasible Solution
+The methods for obtaining an initial basic feasible solution to a transportation problem can
+be summarized as follows:
+1. North-West Corner Rule
+2. Lowest cost entry method
+3. Vogel’s Approximation Method.
+Method 1:
+North-west corner rule
+Step 1 :
+The first assignment is made in the cell occupying the upper left-hand (north-west) corner
+of the transportation table. The maximum possible amount is allocated there. That is X =
+min (a ). This value of is X is then entered in the cell (1, 1) of the Transportation table.
+1, b1 11
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Step 2:
+1. If b > a move vertically downwards to the second row and make the second
+1 1
+allocation of amount X = min (a .b –x ) in the cell (2, 1).
+21 2 1 1
+2. If b < a move horizontally right-side to the second column and make the second
+1 1
+allocation of amount X = min (a –x , b ) in the cell (1, 2).
+22 1 11 2
+3. If b = a , there is a tie for the second allocation. One can make the second allocation
+1 1
+of magnitude X = min (a –a , b ) in the cell (1,2) or X = min (a .b –b ) in the cell
+12 1 1 2 21 2 1 1
+(2,1).
+Step 3 :
+Starts from the new north-west corner of the transportation table and repeat steps 1 and 2
+until all the requirements are satisfied.
+Advantage of north-west corner method
+1. This method is very effective as it provide step by step solution.
+2. It is very simple to obtain optimum solution through this method.
+Disadvantage of north-west corner method
+1. This method does not take into consider the important factor i.e cost which is sought to
+be minimized.
+2. North West corner method take more time in obtaining optimal solution.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Pro:1. Solve the following T.P using NWCM.
+Supply
+WARE Houses
+𝑊 𝑊 𝑊 S
+1 2 3
+𝑃 7 6 9 20
+PLANTS
+𝑃 5 7 3 28
+𝑃 4 5 8 17
+Demand D 21 25 19
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Total Transportation Cost = (7)(20)+(5)(1)+(7)(25)+(3)(2)+(8)(17)
+= 140+5+175+6+136
+= 462 .
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Method 2:
+Least cost method or matrix minimum method or lowest cost entry method:
+Step 1: Identify the cell with smallest cost and allocate X = min ( a , b )
+IJ i j
+Case (i): if min ( a , b ) = a , then put X = a cross out the ith row and decrease b by a ,
+i j i ij i j i
+go to step (2).
+Case (ii) : if min ( a , b ) = b , then put X = b cross out the jth row and decrease a by b ,
+i j j ij j i j
+go to step (2)
+Case (iii): if min ( a , b ) = a = b , then put X = a = b cross out the ith row or jth column
+i j i j ij i j
+but not both . Go to step (2).
+Step 2: Repeat step (1) for the resulting reduced transportation table until all the requirements
+are satisfied.
+Method 3:
+Vogel’s approximation method or unit cost penalty method:
+Step 1: Find the difference (penalty) between the smallest and next smallest cost in each row
+(column) and write them in brackets against the corresponding row (column).
+Step 2: Identify the row or column with largest penalty. If a tie occurs, break the tie
+arbitrarily, choose the cell with smallest cost in that selected row or column and allocated as
+much as possible to this cell and cross out the satisfied row or column and go to step 3.
+Step 3: Again compute the column and row penalties for the related transportation table and
+then go to step (2). Repeat the procedure until all the requirements are satisfied.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Assignment Model
+An assignment problem is one that involves the assignment of n different facilities to n
+different tasks. For instance, we have three men available and three jobs to be done. Each man
+is capable of doing any job but due to either individual quality, it takes them different anoi8nts
+of time to do each job. The problem is how to assign the men to jobs in such a way so as to
+minimize the total time spent on the jobs. This is an example of assignment problem. This
+problem can be structured in the transportation frame-work with the men being the supply
+sources, the jobs the destinations, and costs the time is takes man i to perform j jobs.
+Defining Assignment model:
+Given n resources (or facilities) and activities (or jobs) and effectiveness (in terms of cost,
+profit, time..etc.) of each resource (facility) for each activity (job), the problem lies in assigning
+each resource to one and only one activity (job) so that the given measure of effectiveness is
+optimized.
+The data matrix for this problem is shown in table :
+J J J ……………J Supply
+1 2 3 n
+W
+1 -
+W - C C C ……… …..C
+2 11 12 13 1n
+C C C …………..C
+21 22 23 2n
+C C C …………C
+W n1 n2 n3 nn
+n –
+Demand - - - -
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Hungarian Method:
+Step 1: Subtract from each row the lowest cost in the row.
+Step 2 : From this new cost matrix subtract from each column the lowest cost in the
+column.
+Step 3: Draw the minimum number of horizontal and vertical lines necessary to cover all
+zeros at least one. If the minimum number of lines is ‘n’ in a nxn matrix, then we have an
+optimal solution for the given assignment problem corresponding to a set of independent
+zero’s.
+i.e., a set of zero’s such that no two zero’s in the set occurs in the same row of column.
+Step 4 : if the minimum number of line in a nxn matrix is less than ‘n’, then select the
+smallest number that doesn’t have line through it.
+Step 5: subtract this number from all elements that have no lines through them and add it
+to all elements that have two lines (intersecting) through them. Try for a solution among
+the news set of zero’s applying the step 3 again. if one cannot be found, repeat this step
+and continue using step 3 and step 4 above until a solution is found.
+Step 6: Given the optimal solution make the job assignments as indicated by the zero’s
+elements. This is done as follows:
+i) Locate a row which contains only one ‘zero’ element. Assign the job corresponding to
+this element to its corresponding person. Cross out zero’s if any, in the column
+corresponding to the element which is indicative of fact that the particular job and person
+are no more available.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+ii) Repeat ( i) for each of such row which contain only the zero. Similarly, perform the same
+operation in respect of each column containing only one ‘zero’ element, crossing out the
+zero’s, if any, in the row in which the element lies.
+iii) If there is now row or column with only a single ‘zero’ element left, then select a
+row/column arbitrarily and choose one of the jobs (or person) and make the assignment. Now
+cross the remaining zeros in the column and row in respect of which the assignment is made.
+iv) Repeat steps (i) and (iii) until all assignments are made.
+v) Determine the total cost with reference to the original cost table.
+Application of Assignment model
+1) Natural applications :
+a. Match jobs to machines
+b. Match personnel to tasks
+c. Match PU students to writing seminars.
+2) Non-obvious applications :
+a. Vehicle routing
+b. Signal processing
+c. Virtual output queuing
+d. Multiple object tracking
+e. Approximate string matching
+f. Enhance accuracy of solving linear systems of equations.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Difference between Assignment and Transportation model:
+Transportation problem Assignment problem
+The matrix of the problem must be a square matrix or convert it
+The problem may have rectangular matrix or square matrix. to square matrix
+The rows and columns may have any number of allocations The rows and columns must have one to one allocation. Because
+depending on the rim conditions of this property, the matrix must be a square matrix.
+The basic feasible solution is obtained by north-west corner The basic feasible solution is obtained by Hungarian method.
+method or matrix minimum method or VAM
+The optimality test is given by Stepping stone method or Optimality test is given by drawing minimum number of
+MODI method horizontal and vertical lines to cover all the zeros in the matrix.
+The basic feasible solution must have (m+n-1) allocation Every column and row must have at least one zero. And one
+machine is assigned to one job and vice versa.
+In transportation problem, the problem deals with one Here row represents jobs or machines and columns represent
+commodity being moved from various origins to various machines or jobs.
+destinations.

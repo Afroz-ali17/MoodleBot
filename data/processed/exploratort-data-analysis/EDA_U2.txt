@@ -1,0 +1,521 @@
+Handling Missing Data (mean, median, drop, interpolation), Dealing with Duplicates, Outliers, and Anomalies, Encoding Categorical Variables (Label, One-hot), Data Transformation: Scaling, Normalization, Binning, Data Types Conversion and Data Type Casting.
+UNIT – II
+Data Wrangling and Preprocessing
+Data Wrangling and Preprocessing: Handling Missing Data
+Missing data is very common in real-world datasets, and handling it correctly is crucial because it can significantly impact analysis and model performance.
+In Python, we usually handle missing data using Pandas.
+1. Checking for Missing Data
+import pandas as pd
+import numpy as np
+# Example dataset
+data={'Name':['Amit','Neha','Ravi','Anita','Vikram'],
+'Age':[25,np.nan,30,28,np.nan],
+'Salary':[50000,54000,np.nan,62000,58000]}
+df = pd.DataFrame(data)
+print(df)
+print("\nMissing values count:")
+print(df.isnull().sum())
+1. Checking for Missing Data
+Output:
+2. Methods for Handling Missing Data
+Dropping Missing Values
+Filling with Mean
+Filling with Median
+Interpolation
+(a) Dropping Missing Values
+dropna() → drops rows with missing values by default.
+dropna(axis=1) → drops entire columns if they have missing values.
+dropna(how='all') → removes rows only if all values are missing.
+dropna(subset=['col']) → removes rows only if the specified column(s) have missing values.
+(b) Filling with Mean
+df.copy() → Creates a copy so original data isn’t changed.
+fillna(df['Age'].mean()) → replaces NaN in Age with the mean of the Age column.
+inplace=True → updates the column directly instead of creating a new one.
+(c) Filling with Median
+Median is less sensitive to outliers than mean, making it better for skewed data.
+We calculate median separately for each numeric column.
+Then we use fillna() to replace the missing values.
+(d) Interpolation
+Estimates missing values based on existing patterns in the data, often using linear or polynomial interpolation.
+Linear Interpolation Formula:
+If a value is missing between two known points (x0,y0) and (x1,y1):
+Where:
+y is the interpolated value
+x is the position of the missing value
+When to use:
+Data is ordered or time-series
+Changes are gradual
+You want to preserve trends
+(d) Interpolation
+25, NaN, 30, 28, NaN
+(d) Interpolation
+(d) Interpolation
+Polynomial Interpolation:
+(d) Interpolation
+(d) Interpolation
+Comparing Approaches to Handle Missing Data
+Original Data → shows dataset with missing values.
+Drop → removes rows with NaN values.
+Mean Imputation → replaces NaN with the average.
+Median Imputation → replaces NaN with the middle value.
+Interpolation → estimates missing values using trends in the data.
+Dealing with Duplicates in Pandas
+Creating a Dataset with Duplicates
+Detecting Duplicates
+Removing Duplicates
+Removing Duplicates Based on Specific Columns
+1. Creating a Dataset with Duplicates
+2. Detecting Duplicates
+3. Removing Duplicates
+4. Removing Duplicates Based on Specific Columns
+Outliers
+Imagine your class marks for a test are:45, 47, 48, 46, 49, 50, 47, 100
+Most students scored around 45–50, but one student scored 100.
+That 100 is an outlier — it’s far away from the rest.
+Key idea:
+An outlier is like a student in a group photo who is standing far away from everyone else — still part of the group, but in a very unusual position.
+Outliers
+An outlier is a data point that lies far away from most other values in a dataset.
+Example: Suppose you have exam scores:
+45, 47, 49, 50, 51, 100
+Most scores are around 45–51.
+The score 100 is very far from the others → it’s an outlier.
+Outliers are individual unusual values compared to the rest of the data.
+Why Do We Care?
+In Statistics: Outliers can mess up averages.
+In Machine Learning: They can confuse models, making predictions worse.
+In Real Life: Sometimes outliers are the most important thing (e.g., fraud detection, rare diseases).
+How to Spot Outliers?
+We have 3 main approaches:
+Visual Method — Boxplot
+Statistical Method 1 — Z-Score
+Statistical Method 2 — IQR (Interquartile Range)
+1. Visual Method — Boxplot
+Draw a box around the middle 50% of data.
+Lines (“whiskers”) extend to nearby values.
+Any points beyond whiskers are outliers.
+Program
+Output:
+2. Statistical Method 1 — Z-Score
+Step-by-step:
+Find the mean (average) of the data.
+Find the standard deviation (how spread out the data is).
+For each value:
+Check how many standard deviations it is away from the mean.
+If that distance (Z-score) is more than 3 → mark as outlier.
+Why 3?
+In normal data, 99.7% of values lie within ±3 standard deviations.
+Formula breakdown
+Program
+Output
+C. Statistical Method 2 — IQR (Interquartile Range)
+Step-by-step:
+Sort the data.
+Find:
+Q1 = value at 25% position
+Q3 = value at 75% position
+IQR = Q3 - Q1 (middle spread of data)
+Find limits:
+Lower limit = Q1 - 1.5 × IQR
+Upper limit = Q3 + 1.5 × IQR
+Anything outside limits = outlier.
+Program
+Output
+Anomalies
+An anomaly is a data point or a group of data points that do not fit the normal pattern or behavior of the dataset.
+Example:
+In credit card transactions, most purchases are around ₹500–₹2000.
+Suddenly, one transaction is ₹1,00,000.
+That’s an anomaly — and it may indicate fraud.
+Anomalies are not always random; they can indicate important rare events (like fraud, network attack, or system failure).
+Difference Between Outliers and Anomalies
+Types of Anomalies
+Point Anomaly – A single data point is unusual.
+Example: One bank transaction for ₹2,00,000 when all others are < ₹5,000.
+Contextual Anomaly – Unusual in a certain context.
+Example: 30°C in December in Europe is unusual, but normal in India.
+Collective Anomaly – A sequence or group of points is unusual together.
+Example: Sudden high network traffic over 10 minutes.
+How to Detect Anomalies?
+We have two main approaches:
+Statistical Methods
+Machine Learning Methods
+Statistical Methods
+Z-Score Method (Discussed in Outliers)
+Interquartile Range (IQR) Method (Discussed in Outliers)
+Moving Average & Standard Deviation (Time Series Data)
+3. Moving Average & Standard Deviation
+In time-series data, compare each point to the recent average. If it’s far off, it’s an anomaly.
+Formula:
+For a rolling window of size w:
+Program
+Output:
+Anomalies:
+Machine Learning Methods
+Work well for large, complex datasets
+Isolation Forest – Randomly partitions data to find rare points.
+DBSCAN – Clustering-based method.
+Autoencoders – Neural networks that detect patterns and spot deviations.
+LOF (Local Outlier Factor) – Finds points in low-density regions.
+Isolation Forest
+Works on the principle that anomalies are easier to isolate than normal points.
+Builds multiple random decision trees.
+Points that require fewer splits to isolate are likely anomalies.
+Use case: Good for high-dimensional data.
+Isolation Forest
+DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
+Groups closely packed points into clusters.
+Points in low-density regions (far from others) are labeled as noise (anomalies).
+Needs two parameters:
+eps (distance threshold)
+min_samples (minimum points in a cluster)
+Program
+from sklearn.cluster import DBSCAN
+import pandas as pd
+import numpy as np
+# Data
+data = np.array([[10, 20], [11, 21], [12, 19], [10, 22], [50, 60], [12, 21], [11, 20]])
+# Apply DBSCAN
+db = DBSCAN(eps=3, min_samples=2)
+labels = db.fit_predict(data)
+# -1 means anomaly
+df = pd.DataFrame(data, columns=['feature1', 'feature2'])
+df['Anomaly'] = labels
+print(df)
+Autoencoders
+Neural networks trained to reconstruct input data.
+Anomalies → higher reconstruction error.
+Architecture: Encoder → Bottleneck → Decoder.
+Program
+import pandas as pd
+import numpy as np
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Dense
+from sklearn.preprocessing import MinMaxScaler
+# Data
+data = np.array([[10, 20], [11, 21], [12, 19], [10, 22], [50, 60], [12, 21], [11, 20]])
+scaler = MinMaxScaler()
+data_scaled = scaler.fit_transform(data)
+# Autoencoder architecture
+input_dim = data_scaled.shape[1]
+input_layer = Input(shape=(input_dim,))
+encoded = Dense(2, activation='relu')(input_layer)
+decoded = Dense(input_dim, activation='sigmoid')(encoded)
+autoencoder = Model(input_layer, decoded)
+autoencoder.compile(optimizer='adam', loss='mse')
+autoencoder.fit(data_scaled, data_scaled, epochs=50, batch_size=2, verbose=0)
+# Reconstruction errors
+reconstructions = autoencoder.predict(data_scaled)
+mse = np.mean(np.power(data_scaled - reconstructions, 2), axis=1)
+# Threshold (mean + 2*std)
+threshold = np.mean(mse) + 2*np.std(mse)
+anomalies = mse > threshold
+df = pd.DataFrame(data, columns=['feature1', 'feature2'])
+df['Anomaly'] = anomalies
+print(df)
+LOF (Local Outlier Factor)
+Measures the local density deviation of a point compared to neighbors.
+Points with much lower density than neighbors are anomalies.
+Program
+from sklearn.neighbors import LocalOutlierFactor
+import pandas as pd
+# Data
+data = pd.DataFrame({
+'feature1': [10, 11, 12, 10, 11, 50, 12, 11],
+'feature2': [20, 21, 19, 22, 20, 60, 21, 20]
+})
+# Apply LOF
+lof = LocalOutlierFactor(n_neighbors=3, contamination=0.1)
+pred = lof.fit_predict(data)
+# -1 means anomaly
+data['Anomaly'] = pred
+print(data)
+Encoding Categorical Variables (Label, One-hot)
+In most datasets, some columns have categories instead of numbers, e.g.:
+Machine Learning algorithms (like Linear Regression, Random Forests, Neural Networks) can’t work directly with text — they need numerical input.
+So we convert categories into numbers using Encoding Techniques.
+Main Encoding Types
+Label Encoding
+One-Hot Encoding
+Label Encoding
+Assigns an integer to each unique category.
+Example:Male → 0, Female → 1
+When to use:
+Works well with ordinal data (categories have an order, e.g., Low < Medium < High).
+Should be avoided for nominal data (no order) in most models that assume numerical order, like Linear Regression.
+Program
+from sklearn.preprocessing import LabelEncoder
+import pandas as pd
+# Sample data
+df = pd.DataFrame({
+'Gender': ['Male', 'Female', 'Female', 'Male', 'Male']
+})
+# Label Encoding
+encoder = LabelEncoder()
+df['Gender_encoded'] = encoder.fit_transform(df['Gender'])
+print(df)
+Output
+One-Hot Encoding
+Creates binary columns for each category.
+Example:
+Male → [1, 0], Female → [0, 1]
+When to use:
+For nominal (unordered) categorical variables.
+Prevents algorithms from thinking there is an order in categories.
+Program
+import pandas as pd
+# Sample data
+df = pd.DataFrame({
+'Gender': ['Male', 'Female', 'Female', 'Male', 'Male']
+})
+# One-Hot Encoding
+df_encoded = pd.get_dummies(df, columns=['Gender'])
+print(df_encoded)
+Output
+Comparison Table
+Data Transformation
+Data Transformation means changing the form, scale, structure, or type of data so it becomes:
+More suitable for analysis or machine learning
+Consistent in scale, units, or format
+Easier to interpret or visualize
+Why it’s important?
+Raw data often:
+Has different scales (e.g., "age" in years vs. "income" in lakhs)
+Is not in the required format (e.g., date as a string)
+Contains outliers that can skew results
+Needs categorical grouping for better analysis
+Data transformation fixes these issues by converting the data into a form that models and algorithms can understand better.
+Scaling
+Scaling is a data transformation technique where we change the range of numerical features so they are on a similar scale.
+It does not change the shape of the distribution (unless the method is non-linear).
+It does not remove outliers (unless using robust scaling).
+It simply changes the magnitude of numbers.
+Why Scaling is Needed?
+When we analyze or model data, different features often have different scales.
+Example:
+Here, Salary dominates because its values are much larger in magnitude.
+Why Scaling is Needed?
+This creates problems for many algorithms.
+KNN, K-Means, SVM → depend on distance
+Gradient Descent–based models (Logistic Regression, Neural Networks) → converge faster if features are scaled
+PCA → sensitive to variance caused by large values
+Common Scaling Methods
+Min–Max Scaling (Normalization)
+Standardization (Z-score Scaling)
+Robust Scaling
+MaxAbs Scaling
+1. Min–Max Scaling (Normalization)
+Min–Max Scaling (also called Normalization) is a data transformation technique that rescales values into a fixed range, usually [0, 1].
+It adjusts the minimum value to 0 and the maximum value to 1, and rescales everything else proportionally.
+Formula
+Example
+Suppose we have student marks:
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Keeps original data distribution shape (just rescales).
+Useful when features need to be in a bounded range.
+Works well for neural networks (sigmoid, tanh functions).
+Disadvantages:
+Sensitive to outliers → one extreme value can shrink the scaling of others.
+Data outside the min–max range during prediction can give unexpected results.
+2. Standardization (Z-score Scaling)
+Standardization transforms features so that they have:
+Mean = 0
+Standard Deviation = 1
+This process shifts the data around zero and rescales based on variability.
+Formula
+Example
+Suppose exam scores are : [50,60,70,80,90]
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Works well even if values are not bounded.
+Useful for algorithms assuming normal distribution (SVM, Logistic Regression, Linear Regression).
+Less sensitive to extreme range differences compared to Min–Max.
+Disadvantages:
+Still affected by outliers (though less than Min–Max).
+Does not bound values between [0,1] (values can be negative, >1, etc.).
+3. Robust Scaling
+Robust Scaling is a transformation method that scales features using the median and the interquartile range (IQR) instead of mean and standard deviation.
+This makes it robust to outliers because the median and IQR are less sensitive to extreme values.
+Formula
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Resistant to outliers → extreme values don’t dominate scaling.
+Good for datasets with heavy-tailed distributions.
+Disadvantages:
+Does not bound values within a fixed range ([0,1]).
+If the dataset is normally distributed without outliers, Standardization or Min–Max may be better.
+4. MaxAbs Scaling
+MaxAbs Scaling scales each feature by dividing by its maximum absolute value.
+This transformation scales values into the range [−1,1] while preserving sparsity (very useful for sparse data like text vectors, TF-IDF, etc.).
+Formula
+Example
+Suppose we have : [−100,−50,0,50,100]
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Keeps sparsity of data (important for high-dimensional data like text features).
+Values always lie between -1 and 1.
+Simple and computationally cheap.
+Disadvantages:
+Sensitive to outliers — if one very large value exists, all other values shrink too much.
+Works only if data is already centered around 0.
+Normalization
+Normalization is the process of rescaling data into a fixed range, typically [0, 1] (or sometimes [-1, 1]).
+It ensures that all features contribute equally to analysis or modeling, especially when their scales differ a lot.
+Types of Normalization
+Min–Max Normalization
+Decimal Scaling Normalization
+Z-score Normalization
+Unit Vector Normalization
+1. Min–Max Normalization
+Min–Max Normalization is a linear transformation that rescales values from their original range to a fixed new range, usually [0,1] or sometimes [-1,1].
+Formula
+Example
+Dataset: [20, 50, 70, 100]
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Very simple and intuitive.
+Preserves the original distribution of data (linear scaling)
+Useful for algorithms that require data in a bounded range
+Disadvantages:
+Very sensitive to outliers
+If new data comes outside [xmin, xmax], normalization breaks
+2. Decimal Scaling Normalization
+Decimal scaling normalizes values by shifting the decimal point of the data until all values fall within a range of [-1, 1].
+It uses powers of 10 to scale the data.
+Formula
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Very simple to compute
+Keeps the data within [−1,1][-1, 1][−1,1]
+Disadvantages:
+Rarely used in modern ML because it does not consider data distribution
+Not robust to outliers
+Loses precision for very large numbers
+Z-score Normalization
+Z-score normalization transforms the data into a distribution with:
+Mean = 0
+Standard Deviation = 1
+It measures how many standard deviations a value is away from the mean.
+Formula
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Works well when features have different scales
+Preserves the effect of outliers (they appear as high positive/negative z-scores)
+Good for algorithms assuming normal distribution (e.g., Logistic Regression, LDA, PCA)
+Disadvantages:
+Sensitive to outliers (since mean & std. dev. are influenced by extreme values)
+Not bounded (values can be very high or very low)
+Unit Vector Normalization
+Unit vector normalization rescales a vector (row of features) so that its magnitude (length) becomes 1.
+It ensures all data points lie on the unit hypersphere in feature space.
+Formula
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Useful when direction of data matters more than magnitude
+Keeps data on same scale without distorting distribution
+Essential in text mining (TF-IDF), cosine similarity, clustering
+Disadvantages:
+If magnitude information is important, it gets lost
+Sensitive to zero vectors (cannot normalize them)
+Binning
+Binning is a data transformation technique where continuous values are grouped into a smaller number of “bins” (intervals or categories).
+Helps reduce the effect of minor observation errors (noise).
+Makes data easier to interpret.
+Used in histograms, discretization, and feature engineering.
+Types of Binning
+Equal-Width Binning
+Equal-Frequency Binning
+Custom Binning
+1. Equal-Width Binning
+In Equal-Width Binning, the entire range of data is divided into intervals of the same size (width).
+Each bin has an equal width, but the number of data points in each bin may vary.
+Formula
+Steps
+Find minimum and maximum values in the dataset.
+Decide the number of bins (k).
+Compute bin width using formula.
+Create bins as equal-sized intervals.
+Assign each data point to the corresponding bin.
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Very simple to compute and implement
+Easy to interpret, especially for continuous numeric data
+Disadvantages:
+Data may be unevenly distributed among bins
+Sensitive to outliers (a single extreme value can stretch bin widths)
+2. Equal-Frequency Binning (Quantile Binning)
+In Equal-Frequency Binning, the dataset is divided into bins such that each bin contains (almost) the same number of data points, regardless of the bin width.
+Unlike Equal-Width Binning, here bin sizes (interval ranges) may vary.
+Steps
+Sort the data.
+Decide the number of bins (k).
+Divide the data into k groups, each with approximately n/k data points, where n = number of data points.
+Assign each group to a bin.
+Example
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Each bin has balanced data points (good for skewed distributions)
+Useful for quantile-based statistics (like quartiles, percentiles)
+Disadvantages:
+Bin widths are uneven, making interpretation harder
+If many duplicate values exist, exact balancing may not be possible
+3. Custom Binning
+In Custom Binning, bins are created based on domain knowledge, business rules, or specific requirements, rather than fixed width or equal frequency.
+Here, the bin boundaries are chosen manually (not automatically calculated).
+Steps
+Understand the nature of the data and its application context.
+Decide meaningful cut-off points (e.g., age groups, income brackets, exam grades).
+Create bins using those boundaries.
+Assign data points to their respective bins.
+Example: Age Groups
+Data = [5, 12, 17, 25, 36, 45, 60, 75]
+Custom Bins:
+0–12 → Child
+13–19 → Teen
+20–35 → Young Adult
+36–59 → Adult
+60+ → Senior
+Result:
+[5] → Child
+[12, 17] → Teen
+[25] → Young Adult
+[36, 45] → Adult
+[60, 75] → Senior
+Program
+Output:
+Advantages & Disadvantages
+Advantages:
+Very flexible – allows bins that make sense for the problem domain
+Easier to interpret results (e.g., "Teen", "Adult", "Senior")
+Useful for categorical analysis (e.g., credit score groups, salary bands)
+Disadvantages:
+Requires domain expertise (not fully automated)
+May introduce bias if bins are chosen poorly
+Not always generalizable across different datasets
+Data Types Conversion

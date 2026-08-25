@@ -1,0 +1,143 @@
+ADVANCED DATA STRUCTURES & ALGORITHM ANALYSIS
+UNIT V
+UNIT-V:
+NP-Hard and NP-Complete problems: Basic Concepts, Non Deterministic algorithms, the
+classes of NP Hard and NP Complete, Cook’s Theorem.
+NP-Hard and NP-complete problems:
+There are two types (groups) of problems:
+1. Problems that can be solved by a polynomial time algorithm
+Eg:
+• Binary Search O(log n)
+• Linear Search O(n)
+• Sorting O(n log n) or O(n2)
+2. Problems whose best-known algorithms are non-polynomial.
+Eg:
+• Travelling salesperson problem O(n22n)
+• Knapsack problem O(2n/2)
+There are two classes of problems:
+1. NP-complete
+2. NP-hard
+A problem that is NP-complete has the property that it can be solved in polynomial time
+if and only if all other NP-complete problems can also be solved in polynomial time.
+If an NP-hard problem can be solved in polynomial time, then all NP-complete problems
+can be solved in polynomial time.
+All NP-complete problems are NP-hard, but some NP-hard problems are not known to be
+NP-complete.
+Nondeterministic Algorithms:
+Deterministic algorithms: Algorithms that have the property that the result of every
+operation is unique are called Deterministic algorithms.
+Non-deterministic algorithms: Algorithms that have the property that the results of
+operations are not unique but are limited to specific sets of possibilities are called Non-
+deterministic algorithms.
+To specify non-deterministic algorithms, we use the following functions:
+• Choice(S): It arbitrarily chooses one of the elements of set S.
+• Failure(): It signals an unsuccessful completion.
+• Success(): It signals a successful completion.
+The assignment statement x := Choice(l,n) results in x being assigned any one of the
+integers in the range[1, n]. There is no rule specifying how this choice is to be made. The
+Failure() and Success() signals are used to define a computation of the algorithm. These
+statements cannot be used to effect a return. Whenever there is a set of choices that leads
+to a successful completion, then one such set of choices is always made and the algorithm
+terminates successfully.
+A non-deterministic algorithm terminates unsuccessfully if and only if there exists no set
+of choices leading to a success signal. The computing times for Choice, Success, and
+Failure are taken to be O(1).
+Non-deterministic search algorithm:
+Consider the problem of searching for an element x in a given set of elements A[1,n], n ≥
+1.We are required to determine an index j such that A[j] = x or j = 0 if x is not in A.
+j := Choice(l,n);
+if A[j] = x then {write(j); Success();}
+write (0); Failure();
+Non-deterministic Sorting algorithm:
+Let A[i], 1≤ i ≤ n, be an unsorted array of positive integers. The nondeterministic
+algorithm NSort(A, n) sorts the numbers into non-decreasing order and then outputs
+them in this order. An auxiliary array B[1 : n] is used for convenience.
+Decision problem: Any problem for which the answer is either zero or one is called a
+decision problem. An algorithm for a decision problem is termed a decision algorithm.
+Optimization Problem: Any problem that involves the identification of an optimal
+(either minimum or maximum) value of a given cost function is known as an optimization
+problem. An optimization algorithm is used to solve an optimization problem.
+NP-hard and NP-complete classes:
+In measuring the complexity of an algorithm, we use the input length as the parameter.
+An algorithm A is of polynomial complexity if there exists a polynomial p() such that the
+computing time of A is O(p(n)) for every input of size n.
+P is the set of all decision problems solvable by deterministic algorithms in polynomial
+time. NP is the set of all decision problems solvable by non-deterministic algorithms in
+polynomial time.
+Since deterministic algorithms are just a special case of nondeterministic ones, we
+conclude that P ⊆ NP.
+Whether P = NP or P ≠ NP, This is the famous unsolved problem in computer science.
+Commonly believed relationship between P and NP:
+Commonly believed relationship between P and NP, NP-complete and NP-hard problems:
+Satisfiability:
+Let x1, x2, … denote Boolean variables. Let x’ denote the negation of x. A literal is either
+i i
+a variable or its negation. A formula in the propositional calculus is an expression that
+can be constructed using literals and the operations and and or.
+Eg: (x ∧ x ) V (x ∧ x ’)
+1 2 3 4
+(x V x ’) ∧ (x V x ’)
+3 4 1 2
+A formula is in conjunctive normal form (CNF) if and only if it is represented as ∧
+k C, where C are clauses each represented asV l . The l are literals. It is in disjunctive
+i=1 i i ij ij
+normal form (DNF) if and only if it is represented as V k C and each clause C is
+i=1 i i
+represented as ∧l . Thus (x ∧ x ) V (x ∧ x ’) is in DNF whereas (x V x ’) ∧ (x V x ’) is in
+ij 1 2 3 4 3 4 1 2
+CNF. The satisfiability problem is to determine whether a formula is true for some
+assignment of truth values to the variables. CNF-satisfiability is the satisfiability problem
+for CNF formulas.
+It is easy to obtain a polynomial time nondeterministic algorithm that terminates
+successfully if and only if a given propositional formula E(x1, x2, …xn) is satisfiable. Such
+an algorithm could proceed by simply choosing (non-deterministically) one of the 2n
+possible assignments of truth values to (x1, x2, …xn) and verifying that E(x1, x2, …xn) is
+true for that assignment.
+Algorithm Eval does this. The nondeterministic time required by the algorithm is O(n)to
+choose the value of (x1, x2, …xn) plus the time needed to deterministically evaluate E for
+that assignment. This time is proportional to the length of E.
+Cook’s Theorem:
+Satisfiability is in P if and only if P = NP.
+We know that satisfiability is in NP. Hence if P = NP, then satisfiability is in P. It remains
+to be shown that if satisfiability is in P, then P = NP.
+To do this, we show how to obtain from any polynomial time nondeterministic decision
+algorithm A and input I a formula Q(A,I) such that Q is satisfiable iff A has a successful
+termination with input I.
+If the length of I is n and the time complexity of A is p(n) for some polynomial p(), then
+the length of Q is O(p3(n)logn=) O(p4(n)). The time needed to construct Q is also
+O(p3(n)logn). A deterministic algorithm Z to determine the outcome of A on any input I
+can be easily obtained.
+Algorithm Z simply computes Q and then uses a deterministic algorithm for the
+satisfiability problem to determine whether Q is satisfiable.
+If O(q(m))is the time needed to determine whether a formula of length m is satisfiable,
+then the complexity of Z is O(p3(n) log n + q(p3(n) logn)). If satisfiability is in P, then
+q(m)is a polynomial function of m and the complexity of Z becomes O(r(n)) for some
+polynomial r(). Hence, if satisfiability is in P, then for every non-deterministic algorithm
+A in NP we can obtain a deterministic Z in P.
+So, the above construction shows that if satisfiability is in P, then P = NP.
+Deterministic sum of subsets algorithm:
+This is deterministic algorithm for sum of subsets decision problem. The algorithm uses
+(m+1)-bit word S. The ith bit in S is zero if and only if no subset of integers A[j], 1 ≤ j ≤ n,
+sums to i. Bit 0 of S is always 1, and the bits are numbered 0,1,2,…,m right to left. The
+function Shift shifts the bits in S to the left by A[i] bits. The total number of steps for this
+algorithm is O(n). However each step moves m+1 bits of data and would take O(m) time
+on a conventional computer. Assuming one unit of time is needed for each basic operation
+for a fixed word size, the complexity is O(nm) and not O(n).
+Non-deterministic Knapsack algorithm:
+DKP is a nondeterministic polynomial time algorithm for the knapsack decision problem.
+The for loop of lines 4 to 8 assigns 0/1 values to x[i], 1 ≤ i ≤ n. It also computes the total
+weight and profit corresponding to this choice of x[]. Line 9 checks to see whether this
+assignment is feasible and whether the resulting profit is at least r.
+A successful termination is possible iff the answer to the decision problem is yes. The
+time complexity is O(n).
+Max Clique:
+A maximal complete subgraph of a graph G=(V, E) is a clique. The size of the clique is the
+number of vertices in it.
+A graph is called complete if all its vertices are connected to all the other vertices in the
+graph. A maximal complete subgraph of a graph is called a clique.
+By “maximal” we mean that this subgraph is contained within no other subgraph that is
+also complete.
+The Max clique problem is an optimization problem that has to determine the size of a
+largest clique in G. The corresponding decision problem is to determine whether G has a
+clique of size at least k for some given k.
+Non deterministic clique pseudo code:

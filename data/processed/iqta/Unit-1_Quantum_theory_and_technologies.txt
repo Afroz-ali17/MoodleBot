@@ -1,0 +1,490 @@
+Introduction to Quantum Technologies and Applications
+In physics, “quantum” refers to the smallest discrete
+unit, especially energy or other physical properties.
+The concept comes from quantum theory, which
+describes how particles and energy behave at the
+smallest scales (atomic and subatomic levels).
+More specifically:
+•The word quantum comes from Latin, meaning “how
+much” or “amount.”
+•In quantum physics (or quantum mechanics), it
+describes how certain physical properties—like energy,
+momentum, or angular momentum—can only take on
+specific, discrete values rather than any value
+continuously.
+•For example, the energy of electrons in an atom is
+quantized, meaning electrons can only exist at certain
+energy levels, not in between.
+•This idea contrasts with classical physics, where
+properties like energy are treated as continuous.
+Unit 1: Introduction to Quantum Theory
+and Technologies
+The Quantum Revolution: A Paradigm
+Shift in Physics
+The early 20th century marked a profound shift in our understanding of the universe,
+transitioning from the deterministic, continuous world of classical physics to the
+probabilistic, discrete realm of quantum mechanics. This presentation explores the
+fundamental principles that underpin this revolution and its far-reaching implications
+for science, technology, and society.
+The Limitations of Classical Physics
+Classical physics, epitomized by Newton's laws and Maxwell's equations, successfully described macroscopic phenomena like planetary motion and
+electromagnetic waves. However, it faltered when attempting to explain observations at the atomic and subatomic levels, leading to a series of experimental
+puzzles that classical theories could not resolve.
+Black-Body Radiation: The Photoelectric Effect: Light's Particle Atomic Stability and Spectra:
+Ultraviolet Catastrophe Nature Quantized Orbits
+Classical physics predicted that a perfect black Classical wave theory couldn't explain why Classical physics predicted electrons would
+body would emit an infinite amount of energy electrons are emitted only above a threshold spiral into the nucleus, making atoms unstable,
+at short wavelengths, contradicting frequency, regardless of intensity. and couldn't explain discrete spectral lines.
+experimental observations. Albert Einstein, in 1905, proposed that light Niels Bohr, in 1913, proposed that electrons
+Max Planck, in 1900, proposed that energy is consists of discrete energy packets called exist in stable, discrete energy levels, jumping
+emitted and absorbed in discrete packets called photons, where a single photon interacts with a between them by absorbing or emitting
+"quanta" (E=hu), successfully explaining the single electron,explaining this effect. specific photons, thus explaining stability and
+observed spectrum. quantized spectra.
+These groundbreaking insights, initially met with skepticism, laid the foundation for quantum mechanics, demonstrating that energy, momentum, and other physical
+quantities are quantized at the microscopic level.
+• Wave-particle duality: Quantum physics reveals that particles, such as
+electrons and photons, can exhibit both wave-like and particle-like behavior.
+This concept is known as wave-particle duality.
+• For example, in the famous double-slit experiment, electrons passing through
+two closely spaced slits create an interference pattern on a screen, similar to
+waves. However, when detected individually, electrons behave as particles,
+appearing as localized spots on the screen.
+• De Broglie Wavelength: Louis de Broglie proposed that any particle with
+momentum (p) has an associated wavelength (λ): λ=h/p , where h is Planck's
+constant. This formula links the wave nature (λ) to the particle nature (p).
+• Implication: This duality means that at the quantum level, there is no clear
+distinction between waves and particles; they are two complementary aspects
+of the same reality.
+• Superposition: Superposition is a fundamental principle of quantum
+mechanics that states that a quantum system can exist in multiple states
+simultaneously.
+• For instance, an electron can be in a superposition of spinning both clockwise
+and counterclockwise at the same time. This concept is crucial for
+understanding quantum phenomena like interference and entanglement.
+Fundamental Principles Explained Conceptually
+Superposition
+How it works(the double-slit experiment)
+When particles like electrons or photons are sent one at a time through two slits, they act like waves and
+produce an interference pattern on a screen behind the slits. This suggests that each particle
+simultaneously passed through both slits and interfered with itself, behaving as if it were in a
+superpositionof "went throughthe left slit" and "went throughthe rightslit".
+The role of Schrödinger'sequation
+The core idea presented is that the linearity of the Schrödinger Equation is the fundamental reason for the
+phenomenon of superposition in quantum mechanics. This means if individual quantum states are valid
+solutions to the equation, their combinations are also valid solutions, leading to the creation of a
+superposition.
+The link to quantum computing
+Due to this, a quantum computer can store and process an enormous amount of information, unlike a
+classical computer, which can only be in one state at a time (1 or 0). However, quantum computers are
+still in the early stages of development, and it will be some time before they can completely perform all
+the functions of a classical computer, but they do have several specific uses and are capable of
+Example: Schrödinger's Cat: It describes a
+performing certain specialized functions.
+cat in a sealed box, linked to a random
+Superposition stating that a quantum system can exist in multiple states simultaneously until a quantum event (like the decay of a radioactive
+measurement is made. Aclassical coin, when flipped, exists in one definite state (either heads or tails) at atom). Until the box is opened and observed,
+any given time. However, a quantum coin, before being observed, can exist in a superposition of both the cat is theoretically in a superposition of
+states simultaneously – both heads and tails at once. Mathematically, if a system can be in state ψ or both alive and dead states
+state ψ , it can also be in a linear combination of these states: Ψ=c ψ + c ψ , where c and c are simultaneously.This highlights the idea that
+2 1 1 2 2 1 2
+complex coefficients. The probability of finding the system in state ψ upon measurement is ∣c ∣2, and in quantum systems can exist in multiple states
+1 1
+state ψ is ∣c ∣2. at once until measured.
+2 2
+Fundamental PrinciplesExplained Conceptually
+Entanglement
+Entanglement occurs when a group of particles (e.g., electrons, photons) interact or are generated in a
+way that their quantum states become interdependent, even when they are separated by vast distances.
+Thisphenomenon isone of the key distinctionsbetween quantummechanics and classical physics.
+Example: Imagine you have two coins. In classical physics, if you flip them, each coin has a definite
+state (heads or tails). With entangled particles, it's different. Before measurement, each particle exists in
+a superposition of possible states (e.g., both "spin up" and "spin down" simultaneously). When you
+measure the state of one entangled particle, its superposition collapses to a definite state, and
+instantaneously, the entangled partner's state also collapses into a correlated definite state, no matter
+how far apart theyare.
+How it works
+ Entanglement arises when particles are generated, interact, or share proximity in a way that creates
+an inseparable, unified quantum state.
+ Imagine two entangled photons with random polarizations. If you measure one photon and find it to
+be vertically polarized, you instantly know the other photon will also be vertically polarized,
+regardless of how far apart they are.
+ This instantaneous correlation suggests a connection beyond classical understanding.
+ Experiments have repeatedly shown that these correlations cannot be explained by "local hidden
+variable theories," which suggest pre-determined properties within particles.
+Key characteristics
+•Non-separability: The entangled system must be described by a single quantum state (a "joint state"), not as individual particle states.
+•Strong correlations: Measurements on entangled particles are perfectly correlated or anti-correlateddepending on the entanglement type,
+exceeding classical correlation limits.
+•Decoherence: This phenomenon is fragile, and any interaction with the environment can cause the entangled particles to lose their link, collapsing
+the unified state.
+•Non-locality (debated): While not definitively proven as faster-than-light communication, the instantaneous nature of entanglement appears to
+challenge the principle of locality, which states that influences can only travel at or below the speed of light.
+2. Mathematical Description (Simplified)
+The simplest example is a pair of entangledqubits (quantum bits, such as spin-½ particles or polarized photons).
+Bell State (Maximally Entangled Pair)
+One common entangled state is the singlet state of two spin-½ particles:
+𝛹 − = | ↑↓ −| ↓↑〉)
+If Alice measures Particle A and finds it in ∣↑⟩, then Bob will alwaysfind Particle B in ∣↓⟩ (and vice versa).
+The outcome is random (50%∣↑↓⟩, 50% ∣↓↑⟩), but the results are perfectly correlated.
+Creating entangled particles
+• Parametric down-conversion (PDC): A common method involves shining a high-energy photon through a special crystal, splitting
+it into two lower-energy entangled photons.
+• Other methods: Entanglement can also be generated through cooling particles, nuclear decay, splitting single photons, or even
+entanglement transaction, where two previously un-entangled particles become entangled through interaction with another entangled
+pair.
+Significance and applications
+• Quantum Information Science: Entanglement is a critical resource for quantum computing, cryptography, and communication.
+• Quantum Computing: Entanglement allows quantum computers to perform computations that are impossible for classical
+computers, as qubits (quantum bits) can exist in multiple states simultaneously.
+• Quantum Cryptography: The properties of entanglement ensure that any spying attempt disturbs the entangled state, revealing the
+presence of a third party, thus enhancing security.
+• Quantum Teleportation: Entanglement can be used to transfer the quantum state of one particle to another distant particle.
+• Quantum Metrology and Sensing: Entanglement can boost the sensitivity of measurements in various fields, like spectroscopy and
+medical imaging.
+Uncertainty Principle
+Formulated by Werner Heisenberg, the Uncertainty Principle states that there are fundamental limits to the
+precision with which certain pairs of complementary properties of a particle, such as position (x) and
+momentum (p), can be known simultaneously. The more precisely you measure one, the less preciselyyou can
+know the other.
+Mathematically, for position and momentum: ΔxΔp≥2ℏ , where Δx is the uncertainty in position, Δp is the
+uncertaintyin momentum, andℏ (h-bar) isthe reduced Planck constant (h/2π).
+Implication: It's not a limitation of our measuring instruments but an intrinsic property of nature at the
+quantum level. Particles do not have a definite position and momentum simultaneously; their "existence" is
+inherentlyprobabilistic.Thismeans thatquantumevents are not entirelydeterministic in the classical sense.
+Wave-Particle Duality
+Wave-particle duality is the concept that all matter and energy exhibit properties of both waves and particles.
+Light, which was classically understood as a wave, shows particle-like behavior (photons) in phenomena like
+the photoelectric effect. Conversely, particles like electrons, classically understood as discrete entities, exhibit
+wave-like behavior,as demonstrated by electron diffraction experiments.
+• Entanglement:
+• Classical Mechanics: Two objects can have independent states regardless of their separation.
+• Quantum Mechanics: Entanglement involves two or more particles becoming correlated in such a way that
+the state of one particle instantly influences the state of the other, no matter the distance between them.
+• Wave-Particle Duality:
+• Classical Mechanics: Particles are strictly treated as particles with definite positions and velocities.
+• Quantum Mechanics: Particles, such as electrons and photons, exhibit both wave-like and particle-
+like properties. This duality is a central concept in quantum mechanics.
+• Superposition and Entanglement:
+• Classical Mechanics: Objects have well-defined states, and the superposition of states is not a
+characteristic of classical systems.
+• Quantum Mechanics:
+• Superposition: Quantum systems can exist in multiple states simultaneously, a phenomenon
+known as superposition.
+• Entanglement: Particles can become entangled, meaning the state of one particle is directly
+related to the state of another, regardless of the distance between them.
+Classical vs. Quantum Mechanics: A Theoretical Comparison
+The table below highlights the fundamental differences between classical physics, which describes the
+macroscopic world, and quantum mechanics, which governs the microscopic realm.
+Feature/Concept Classical Mechanics Quantum Mechanics
+Nature of Reality Deterministicand objective; particles have definite properties. Probabilisticand observer-dependent; properties uncertain until measured.
+Physical Quantities Continuousvalues; measurable with arbitrary precision. Quantized values (discreteenergy levels); values are often operators.
+Motion Described by trajectories; precise prediction of future states. Described by wavefunctions; only probabilities of future states predicted.
+Observation Does not affect the system being observed. Measurement fundamentally alters the system (wave function collapse).
+h1
+Causality Strict cause and effect. Probabilistic causality; intrinsic randomness.
+Superposition Not applicable. Fundamental principle; systems exist in multiple statessimultaneously.
+Entanglement Not applicable. Fundamental principle; non-local correlations.
+Uncertainty Can be reduced to zero with perfect measurement. Intrinsic and fundamental; limits simultaneous accuracy.
+Dominant Scale Macroscopic world (planets, everyday objects). Microscopic world (atoms, subatomic particles).
+Slide 12
+h1 The "collapse of the wavefunction" (or "reduction of the state vector") refers to the abrupt,
+non-deterministic process where, upon measurement, the system suddenly "chooses" one of
+these possible states, and all other possibilities vanish. The outcome of the measurement is
+then that single, definite state
+hphysics@rgmcet.edu.in, 2025-07-19T04:57:19.114
+Quantum States and Measurement: The Nature of Observation
+In quantum mechanics, the state of a system is described by a mathematical entity called a
+wave function (ψ), which contains all the probabilistic information about a particle. The
+Born rule states that the square of the magnitude of the wave function (|ψ|2 ) gives the
+probability density of finding the particle in a particular state or location.
+The Measurement Problem
+• Superposition before Measurement: Before observation, a quantum system exists in
+a superposition of multiple possible states. For example, an electron's spin might be in
+a superposition of "spin-up" and "spin-down."
+• Wave Function Collapse: Upon measurement, the wave function instantaneously
+"collapses" from a superposition into a single, definite state. The system is then found
+in only one of its previously superposed states, chosen randomly according to the
+probabilities encoded in the wave function.
+• Probabilistic Outcomes: Even with identical quantum systems and measurements,
+individual outcomes can differ. The wave function only predicts the probability of
+each possible outcome, highlighting the characteristic randomness fundamental to
+quantum mechanics.
+• Observer Problem: The role of the "observer" or "measuring device" in causing this
+collapseis a central and debated aspect of quantum mechanics. What exactly
+constitutes a "measurement" and when the collapse occurs are open questions.
+• Non-deterministic: Unlike classical mechanics, where future states are precisely
+predictable, quantum mechanics is fundamentally probabilistic. We can only predict
+the probability of different outcomes.
+In quantum mechanics, the act of observing a system is not a passive process; instead, it actively influences the reality being observed, forcing the system
+into a definite state. This challenges the classical idea that an objective reality exists independently of any observer and their interaction with it.
+Overview of Key Quantum Systems
+Quantum mechanics provides the fundamental framework for understanding the behavior of
+matter and energy at the microscopic level. Here are some of the most important quantum
+systems:
+Electrons Photons Atoms
+Fundamental negatively charged particles The quantum packets (quanta) of light and all Composed of a nucleus (protons and
+orbiting atomic nuclei. They possess an other forms of electromagnetic radiation. neutrons) surrounded by electrons. Quantum
+intrinsic angular momentum called "spin." Photons are massless, travel at the speed of mechanics explains their stability,
+Electrons in atoms occupy discrete energy light, and carry energy (E=hu) and characteristic spectral lines (due to electrons
+levels, governed by the Pauli Exclusion momentum. They are the force carriers of the transitioning between discrete energy levels).
+Principle (no two electrons can occupy the electromagnetic force and display both wave- The quantum mechanical description of
+exact same quantum state), which is crucial like and particle-like behaviors. Essential for atoms is the foundation of chemistry and
+for understanding chemical bonding and quantum optics and laser technology. materials science.
+conductivity. They also exhibit wave-like
+properties, like diffraction.
+Beyond these, quantum mechanics applies to a vast range of systems, including protons, neutrons, quarks, bosons, fermions, and even
+engineered nanoscale systems like quantum dots, demonstrating its universal relevance.
+The Concept of Quantization: Discrete Energy Levels
+Quantizationis a fundamental principle in quantum mechanics stating that certain physical
+quantities can only take on discrete, specific values, rather than a continuous range. This is a
+Stark contrast to classical physics and a foundation stone of the quantum world.
+Key Aspects of Quantization
+• Discrete Energy Levels:The most prominent example is the energy levels of electrons in
+atoms. Electrons are not free to orbit at any radius or have any arbitrary energy; they are
+restricted to specific, allowed energy levels. Transitions between these levels involve the
+emission or absorption of photons with energies precisely equal to the energy difference.
+• Planck's Constant (h): Max Planck first introduced this concept to explain black-body
+radiation, proposing that energy is exchanged in discrete packets proportional to frequency,
+with h ( 6.626 10-34{ Js}) as the constant of proportionality.
+• Angular Momentum and Spin: In quantum mechanics, the angular momentum of
+particles(like electrons in orbitals or with intrinsic spin) is also quantized, taking on
+integer or half-integer multiples of \hbar(reduced Planck's constant).
+Consequences of Quantization
+• Atomic Stability:Quantization prevents electrons from continuously losing
+energy and spiraling into the nucleus, ensuring that atoms are stable.
+• Spectroscopy:It explains why atoms and molecules absorb and emit light only at
+specific wavelengths, leading to unique spectral "fingerprints" used for
+identification in fields ranging from chemistry to astrophysics.
+• Band Theory of Solids:The quantization of electron energies in solids gives rise
+to energy bands, which fundamentally explains the electrical conductivity of
+materials (conductors, semiconductors, insulators).
+Quantization is not merely a theoretical construct; it is a fundamental property of nature at the microscopic scale that underpins the
+stability and behavior of all matter, shaping the very fabric of our universe.
+Discrete Energy Levels
+Why Quantum? Strategic, Scientific, and Technological Significance
+Quantum mechanics, initially a theoretical framework, has evolved into a field with immense strategic, scientific, and
+technological significance, driving a new era of innovation and global competition
+.
+Scientific Significance
+• Deeper Understanding:Quantum mechanics is our
+most fundamental theory for microscopic reality,
+providing profound insights into the universe.
+Strategic Significance
+• New Discoveries: Essential for particle physics,
+condensed matter, quantum chemistry, and cosmology,
+pushing scientific boundaries.
+• National Security: Quantum computing poses a
+• Beyond Classical Limits:Allows exploration of
+threat to current encryption, necessitating post-
+phenomena impossible with classical physics,
+quantum cryptography. Quantum communication
+expanding human knowledge.
+offers intrinsically secure channels.
+• Global Leadership:Nations are investing heavily to
+Technological Significance
+gain a strategic advantage and reshape global power
+dynamics in a quantum future.
+• Quantum Technologies:Leveraging superposition,
+• Economic Competitiveness: New industries, entanglement, and uncertainty for capabilities far
+markets, and jobs will emerge, creating significant beyond classical machines.
+economic growth for leading nations.
+• Precision & Sensitivity: Extreme sensitivity of
+quantum systems enables unprecedented
+measurement precision.
+• Transformative Potential:Promises to
+revolutionize drug discovery, materials science, AI,
+finance, and logistics.
+A Snapshot of Quantum Technologies
+Quantum Computing Quantum Communication Quantum Sensing
+Uses "qubits" (0, 1, or superposition) and entanglement for exponential Transmits information using quantum properties, offering inherently Exploits extreme sensitivity of quantum systems for unprecedented
+computational power. Applications include drug discovery, materials secure communication. Quantum Key Distribution (QKD) leverages the precision in measurements. Applications include highly sensitive
+science, cryptography, financial modeling, and AI. "no-cloning theorem" to detect eavesdropping. Applications include medical imaging, ultra-precise navigation, geological exploration, and
+ultra-secure communications and a future quantum internet. next-generation atomic clocks.
+A Snapshot of Quantum Technologies: Computing, Communication, and Sensing
+Quantumtechnologiesleverage quantummechanical phenomenalike superposition,entanglement,andthe uncertaintyprincipletoachieve tasks that are impossible or highly
+inefficientwithclassicaltechnologies.
+QuantumComputing
+Concept: Quantum computers use "qubits" instead of classical bits. Unlike a classical bit, which can be either 0 or 1, a qubit can be 0, 1, or a superposition of both
+
+simultaneously.Whenmultiplequbitsareentangled,theircomputational power grows exponentially.
+How it works (briefly): Quantum gates manipulate the superposition and entanglement of qubits to perform computations. Algorithms like Shor's algorithm (for
+
+factoring large numbers- factor in polynomial time, specifically O((log N)³))and Grover's algorithm (for searching databases- finding a specific item within an unsorted
+databaseorlistof(N)elements)demonstratethepotential speedup over classical computers forspecificproblems.
+PotentialApplications:
+
+DrugDiscoveryandMaterialsScience:Simulatingcomplexmolecularinteractionsanddesigningnewmaterialswithdesiredproperties.
+o
+Cryptography:Breakingcurrentencryptionstandards(e.g.,RSA)anddevelopingnew,quantum-resistant cryptographicmethods.
+o
+FinancialModeling:Optimizingcomplexfinancialmodelsandriskassessment.
+o
+ArtificialIntelligence:Enhancingmachinelearningalgorithmsandsolvingcomplexoptimizationproblems.
+o
+LogisticsandOptimization:Solvinghighlycomplexroutingandschedulingproblems.
+o
+QuantumCommunication
+Concept:Quantumcommunication utilizesquantum properties of particles (like photons) to transmit information inaninherentlysecuremanner.
+
+Key Technology: Quantum Key Distribution (QKD): This technique uses quantum phenomena (e.g., the no-cloning theorem, which states that an unknown quantum
+
+state cannot be perfectly copied) to generate and distribute cryptographic keys securely. Any attempt by an eavesdropper to intercept the key will inevitably disturb the
+quantumstate,alertingthelegitimateparties.
+PotentialApplications:
+
+SecureCommunications:Ensuringultra-securecommunicationforgovernments,military,andfinancialinstitutions.
+o
+QuantumInternet:Establishingaglobalnetworkwherequantuminformationcanbetransmittedbetweenquantumcomputers,enabling
+o
+distributedquantumcomputingandenhancedsensing.
+QuantumSensing
+Concept: Quantum sensors exploit the extreme sensitivity of quantum systems to external perturbations (e.g., magnetic fields, electric fields, gravity,
+
+temperature)toachieveunprecedentedprecisioninmeasurements.
+Howitworks:Thesesensorsoftenuseentangledparticlesorsystemsinsuperposition,whereeven tiny changes in the environment cause measurable changesin
+
+their quantum states.
+PotentialApplications:
+
+MedicalImaging:HighlysensitiveMRIandMEG(magnetoencephalography)forbrainimaging.
+o
+Navigation:Ultra-precisegyroscopesandaccelerometersfornavigationsystemsthatareindependentofGPSsignals.
+o
+(Gyroscopes are devices that sense orientation and angular velocity, meaning they detect changes in direction and rotational speed. They are used in a
+wide range of applications, from navigation systems in vehicles and aircraft to motion control in consumer electronics like smartphones and gaming
+devices).
+GeologyandResourceExploration:Detectingminutevariationsingravityormagneticfieldsforoilandgasexploration,orsubterraneanmapping.
+o
+Timekeeping: Atomic clocks, the most accurate timekeeping devices, rely on quantum transitions. Next-generation quantum clocks will be even more
+o
+precise.
+FundamentalPhysicsResearch:Testingfundamentaltheoriesofphysicsandsearchingfordarkmatterandgravitationalwaves.
+o
+National and Global Quantum Missions
+Recognizing the transformative potential, many nations have launched ambitious quantum missions to accelerate research, development, and commercialization.
+India's National Quantum Mission (NQM)
+Launch:April 2023, \₹6,003.65 crore(2023-2031).
+Objectives: Develop quantum computing (50-1000 physical qubits), secure quantum communication (2000 km network), sensing, and
+materials. Promote indigenous development, skilled manpower, and global collaboration.
+KeyObjectives:
+
+Develop Quantum Technologies: Focus on quantum computing, quantum
+o
+communication,quantumsensingandmetrology, andquantummaterials.
+Indigenous Development: Promote indigenous development of quantum
+o
+hardwareandsoftware.
+Skilled Manpower: Create a strong talent pool in quantum science and
+o
+technology.
+International Collaboration: Foster collaborations with leading
+o
+internationalquantuminitiatives.
+Applications: Drive the development of quantum applications in various
+o
+sectorslikehealthcare,defence,finance,andenergy.
+Structure: The mission is envisioned to be implemented through four thematic
+
+hubsintopacademicandR&Dinstitutions.
+These global missions underscore the critical importance of quantum technologies in shaping the future of science, industry, andsociety,
+driving a new era of technological advancement and geopolitical competition
+.
+Quantum Ladakh: Pioneering India’s Quantum Communication Frontier
+Overview:
+"Quantum Ladakh"refers to a landmark initiative identifying Hanle, home to the Indian
+Astronomical Observatory (IAO)in Ladakh, as India's most suitable site for ground-based
+quantum communication with satellites. Spearheaded by the Raman Research Institute (RRI),
+this research is foundational to India’s National Quantum Mission (2023–2031), with
+implications for secure global communication systems.
+Why Hanle?:
+Hanle outperformed other Indian observatory locations (Mount Abu and ARIES Nainital) in
+atmospheric modeling, signal loss simulation, and practical feasibility due to:
+•High Altitude (~4,500(cid:3031)m / 14,760(cid:3031)ft): Offers a thinner atmosphere, reducing interference.
+•Cold, Arid Climate:Winter temperatures dip to –25(cid:3031)°C to –30(cid:3031)°C, with extremely low
+humidity—ideal for reducing atmospheric water vapor.
+•Stable Atmosphere: Low oxygen and minimal turbulence minimize signal scattering,
+maintaining quantum signal fidelity.
+The four T-Hubshave been established across leading
+Strategic Importance: institutions in India:
+1. Quantum Key Distribution (QKD) 1. Indian Institute of Science (IISc) Bengaluru
+• Facilitates ultra-secure communication. 2. Indian Institute of Technology (IIT), Madras in
+• Any eavesdropping attempt disturbs the quantum state—making breaches detectable. association with the Centre for Development of
+2. National Quantum Mission Telematics, New Delhi
+• ₹6,000 crore (2023–31) government initiative to advance India’s quantum technologies. 3. Indian Institute of Technology (IIT), Bombay
+• Hanle will serve as the primary ground station for ISRO's QKD satellite programs. 4. Indian Institute of Technology (IIT), Delhi.
+3. Global Implications
+• Hanle’s atmospheric profile could serve as a model for selecting similar sites globally.
+• Supports ambitions for a worldwide quantum-secure communication network
+National and Global Quantum Missions
+EU Quantum Technologies Flagship
+Launch:2018, \text{\textpertenmi}1billion initiative over 10 years.
+Goals:Accelerate development from labs to industry, foster a competitive quantum ecosystem in
+Europe. Focus on computing, simulation, communication, and sensing/metrology across member
+states.
+Goals:
+
+To accelerate the development and deployment of quantum
+o
+technologiesin Europe.
+To bring upa competitive quantumindustryand research community.
+o
+To establish Europe as a world-leading region for quantum
+o
+excellence.
+Areas of Focus: Quantum computing, quantum simulation, quantum
+
+communication, quantum sensing and metrology. It involves academic
+research, industrycollaboration,andstartups.
+These global missions underscore the critical importance of quantum technologies in shaping the future of science,
+industry, and society, driving a new era of technological advancement and geopolitical competition
+.
+National and Global Quantum Missions
+USA National Quantum Initiative (NQI) Act
+Launch: 2018, initially authorized \$1.2billion over five years.
+Goals: Coordinated multi-agency approach to QIS research (computing, communication, sensing).
+Establish QIS research centers, develop workforce, and foster partnerships to maintain US leadership.
+USA(UnitedStatesofAmerica)
+National Quantum Initiative (NQI) Act: Signed into law in 2018, the NQI Act
+
+provided a coordinated multi-agency approach to quantum information science (QIS)
+research and development across various federal agencies (e.g., NSF, NIST, DOE,
+DoD).Itauthorizedover$1.2billioninfundingoverfiveyears.
+Goals:
+
+ToestablishandoperateQISresearchcenters.
+o
+To support basic and applied research in quantum computing, communication,
+o
+and sensing.
+Todevelopaquantum-ready workforce.
+o
+Tofosterpartnershipsbetweengovernment,industry,andacademia.
+o
+Recent Developments: The NQI continues to be a focal point, with ongoing
+
+investmentsandtheestablishmentofnewquantuminstitutesandpartnerships.
+National and Global Quantum Missions
+China's Quantum Program
+Investment: Significant and sustained, arguably the largest globally, a strategic national priority.
+Initiatives: National Laboratory for Quantum Information Sciences (Hefei), extensive quantum communication networks
+(including "Micius" satellite). Strong emphasis across computing, communication, and metrology.
+KeyInitiatives:
+
+National Laboratory for Quantum Information Sciences: Amajor
+o
+quantum research facility in Hefei, estimated to cost billions of
+dollars.
+Quantum Communication Network: China has built and setup
+o
+extensive quantum communication networks, including the world's
+first quantum-enabled satellite,Micius.
+Focus on All Areas: Strong emphasis on quantum computing,
+o
+communication, and metrology, with significant government funding
+and top-tierresearch institutions.
+Overall Strategy: China aims to be a global leader in quantum
+
+technologies by 2030, driven by both scientific ambition and national
+security considerations.
+These national and global missions underscore the critical importance of
+quantumtechnologiesin shapingthe future ofscience, industry,andsociety.

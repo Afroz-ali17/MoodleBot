@@ -1,0 +1,89 @@
+UNIT – V
+Exception Handling, Debugging, Deployment and
+Monitoring
+Exception Handling in UiPath
+Exception handling in UiPath ensures automation reliability by managing unexpected errors
+during workflow execution. It prevents abrupt termination and enables graceful recovery.
+1. Types of Exceptions:
+• System Exceptions: Occur due to infrastructure issues like file not found, selector not
+found, etc.
+• Business Rule Exceptions: Triggered when business logic fails, e.g., invalid data
+format.
+2. Exception Handling Activities:
+• Try Catch: Encapsulates risky operations. If an error occurs, control shifts to Catch
+block.
+• Throw: Manually raises an exception using Throw activity.
+• Rethrow: Re-raises the caught exception after partial handling.
+• Retry Scope: Repeats an activity until a condition is met or retry limit is reached.
+• ContinueOnError: Property that allows workflow to continue even if an activity
+fails.
+3. Best Practices:
+• Use specific exception types like System.Exception or BusinessRuleException.
+• Log custom error messages for traceability.
+• Combine Try Catch with logging and alerts for unattended automation.
+Common Exceptions and Ways to Handle Them in UiPath
+Understanding frequent exceptions helps in designing robust workflows.
+1. Common Exceptions:
+• SelectorNotFoundException: UI element not found due to dynamic selectors.
+• NullReferenceException: Accessing a null object or variable.
+• TimeoutException: Activity exceeds defined timeout.
+• FileNotFoundException: Missing file path or incorrect directory.
+• BusinessRuleException: Violations of business logic.
+2. Handling Techniques:
+• Use Try Catch blocks to isolate error-prone activities.
+• Apply Retry Scope for transient issues like network delays.
+• Implement Throw for custom business rule violations.
+• Use ContinueOnError for non-critical failures.
+• Validate inputs and use default values to avoid null references.
+3. Preventive Measures:
+• Dynamic selectors with wildcards to avoid selector issues.
+• Input validation before processing.
+• Logging and alerts for proactive monitoring.
+Debugging Techniques in UiPath
+Debugging helps identify and fix issues during development and testing.
+1. Debugging Modes:
+• Debug File: Runs the workflow with debugging tools enabled.
+• Step Into / Step Over / Step Out: Controls execution flow for detailed inspection.
+2. Tools and Features:
+• Breakpoints: Pause execution at specific activities.
+• Log Message: Insert logs to trace variable values and flow.
+• Highlight Elements: Visually confirms UI element interaction.
+• Slow Step: Slows execution to observe each activity.
+3. Best Practices:
+• Use descriptive log messages.
+• Enable verbose logging for detailed trace.
+• Test workflows in isolated environments.
+• Use Output Panel and Locals Panel to inspect variables.
+Collecting Crash Dumps in UiPath
+Crash dumps help diagnose unexpected failures in UiPath processes.
+1. What is a Crash Dump?
+• A snapshot of the application’s memory at the time of crash.
+• Useful for analyzing root causes of fatal errors.
+2. How to Collect:
+• Enable crash dump collection via Windows Error Reporting.
+• Use tools like ProcDump to capture dumps on exceptions.
+• Configure UiPath Diagnostic Tool to collect logs and dumps.
+3. Usage:
+• Send dumps to UiPath support for analysis.
+• Use in-house debugging tools to inspect memory and stack traces.
+• Combine with event viewer logs for complete diagnosis.
+4. Best Practices:
+• Collect dumps for unattended bot crashes.
+• Maintain version control and environment details.
+• Use dumps alongside logs for faster resolution.
+Error Reporting in UiPath
+Error reporting ensures visibility into automation failures for timely resolution.
+1. Reporting Mechanisms:
+• Logs: Stored in Orchestrator or local machine. Includes Info, Warning, Error levels.
+• Email Alerts: Triggered on critical failures using SMTP activities.
+• Screenshots: Captured during exceptions for visual context.
+• Custom Reports: Generated using Excel or PDF activities.
+2. Orchestrator Integration:
+• Centralized logging and monitoring.
+• Alerts and job status tracking.
+• Retry and reschedule failed jobs.
+3. Best Practices:
+• Use structured logging with timestamps and activity names.
+• Include exception messages and stack traces.
+• Automate report generation for daily summaries.
+• Monitor unattended bots via Orchestrator dashboards.

@@ -1,0 +1,110 @@
+UNIT IV
+Purpose of Normalization or schema refinement
+Normalization
+Normalization is the process of organizing data in a database to reduce
+Redundancy (duplicate data) and
+Improve data integrity
+It involves dividing large tables into smaller tables and defining relationships between them.
+It is a Systematic approach of decomposing tables to eliminate data redundancy and undesignable Anomalies like
+Insertion
+Update and
+Deletion
+Purpose of Normalization
+The purpose of normalization is:
+Avoid Data Redundancy – Reducing repeated data to save storage.
+Improve Data Integrity – Ensuring data remains accurate and consistent.
+Simplify Data Modification – Making insert, update, and delete operations efficient.
+Avoid Anomalies – Preventing insertion, update, and deletion anomalies.
+Better Data Organization – Making the database more structured and understandable.
+Example
+Unnormalized Table (Before Normalization)
+A table storing student enrollment data:
+Problems in this table:
+Redundancy: Alice's details are repeated.
+Update Anomaly: If Dr. John’s phone number changes, we must update multiple rows.
+Insertion Anomaly: If we want to add a new instructor without assigning them a student, we can't.
+Normalized Tables (After Normalization)
+Continues…
+Benefits after Normalization:✔ No data redundancy.✔ Easy updates and modifications.✔ Improved data integrity
+Redundancy:
+Row level
+Column level
+Continues…
+1. Data Redundancy
+Definition:Data redundancy occurs when the same piece of data is stored multiple times unnecessarily.
+Example from Student Table:
+The student James (StudRegistration: 205) is enrolled in two different courses (CourseID: 6204 & 6247) and his details (StudName, Address, and Course) are repeated twice.
+Real-life Example:
+If a hospital stores a patient’s address in multiple tables (appointments, billing, and medical records), any change in address must be updated in all places, leading to redundancy.
+Continues….
+2. Insertion Anomaly
+Definition:An insertion anomaly occurs when we are unable to insert data because some mandatory fields are missing.
+Example from Student Table:
+Suppose a new course "Physics" is introduced, but no student has enrolled yet. If the CourseID must be linked to a student in this table, we cannot insert the new course without adding a student.
+Real-life Example:
+In an employee database, if we cannot add a department unless there is at least one employee assigned to it, this is an insertion anomaly.
+Continues…
+3. Update Anomaly
+Definition:An update anomaly happens when updating data in one place requires multiple changes elsewhere.
+Example from Student Table:
+If James moves to New York, we need to update his address in multiple rows (wherever his details appear). If we miss updating one, it leads to inconsistent data.
+Real-life Example:
+If a company changes its office phone number, and this number is stored in multiple locations (HR, IT, and Finance departments), updating it in one place but missing others causes inconsistency.
+Continues…
+4. Deletion Anomaly
+Definition:A deletion anomaly occurs when deleting some data unintentionally removes other useful data.
+Example from Student Table:
+If we remove Trent Bolt (StudRegistration: 224) from the table, we will also lose the record of the Mathematics course he was taking. If he was the only student in that course, there would be no record of Mathematics at all.
+Real-life Example:
+If a company removes the last employee working in a department, and the database design links departments only to employees, the department data itself might get deleted, losing important information.
+Concept of Functional Dependency
+Functional Dependency
+Functional Dependency (FD) is a relationship between attributes in a table where one attribute uniquely determines another
+Normal forms based on functional dependency Lossless join and dependency preserving decomposition
+functional dependency Lossless join and dependency preserving decomposition
+Lossless Join Decomposition
+When we decompose a table into multiple tables, we ensure that when we join them back, we do not lose any data
+Continues…
+When we join these two tables, we can still get the original table back, meaning the decomposition is lossless
+Dependency Preserving Decomposition
+If we decompose a table into multiple tables, we must ensure that all functional dependencies from the original table can still be enforced without needing to join the tables
+For example, if a table has dependencies:
+Student_ID → Name
+Course → Instructor
+When we break the table into two, we still preserve these dependencies in separate tables:
+Student (Student_ID → Name)
+Course (Course → Instructor)
+Thus, we ensure that no important dependencies are lost
+First Normal Form (1NF)
+A table is in 1NF if:✔All columns have atomic (indivisible) values.✔Each row is unique
+Second Normal Form (2NF)
+A table is in 2NF if:✔It is in 1NF.✔No partial dependency exists (A non-key column should not depend on part of a composite primary key).
+Third Normal Form (3NF)
+A table is in 3NF if:✔It is in 2NF.✔No transitive dependency exists (Non-key attributes should not depend on other non-key attributes).
+Concept of Surrogate Key
+A surrogate key is a unique system-generated key (like an auto-increment number) used as a primary key when there is no suitable natural key in a table. It has no business meaning and exists only to uniquely identify records.
+Boyce-Codd Normal Form (BCNF)
+A table is in BCNF if:✔It is in 3NF.✔Every determinant is a super key.
+Multi-Valued Dependency (MVD)
+Multi-Valued Dependency (MVD) occurs when one attribute in a table determines multiple values of another attribute, independently of a third attribute.
+It is a special type of dependency that extends the idea of functional dependency.
+Notation:
+If X →→ Y, it means that Y is multi-valued and depends on X, but Y is independent of other attributes in the table.
+Multi-Valued Dependency (MVD)
+However, the courses and activities are independent of each other.
+Multi-Valued Dependency:
+Student_ID →→ Course (Student_ID determines multiple courses)
+Student_ID →→ Activity (Student_ID determines multiple activities)
+Since Course and Activity are independent, this is an example of Multi-Valued Dependency (MVD).
+Fourth Normal Form (4NF)
+A table is in 4NF if:✔ It is in BCNF.✔ It has no multi-valued dependencies (MVDs) (where two independent sets of data depend on a single column)
+Fifth Normal Form (5NF) (Project-Join Normal Form)
+Fifth Normal Form (5NF), also known as Project-Join Normal Form (PJNF), is applied to eliminate join dependencies in a table. A table is in 5NF if it is in 4NF and cannot be further broken down into smaller tables without losing data. This helps in reducing redundancy and ensuring data integrity.
+Key Concept of 5NF:
+Deals with join dependencies (JD)
+Ensures that data is stored in the most efficient way
+Eliminates redundancy caused by multi-valued dependencies
+Prevents unnecessary data duplication
+Fifth Normal Form (5NF) (Project-Join Normal Form)
+Fifth Normal Form (5NF) (Project-Join Normal Form)
+If a student enrolls in a new course, we update only in Student-Course Table

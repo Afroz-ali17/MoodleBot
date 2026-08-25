@@ -1,0 +1,2513 @@
+Rajeev Gandhi Memorial College of Engineering and Technology
+Autonomous
+B.TECH. - COMPUTER SCIENCE & ENGINEERING
+II Year I Semester Object Oriented Programming through Java
+Course Objectives: The learning objectives of this course are to:
+• identify Java language components and how they work together in applications
+• Learn the fundamentals of object-oriented programming in Java, including defining classes, invoking methods,
+using class libraries.
+• learn how to extend Java classes with inheritance and dynamic binding and how to use exception handling in
+Java applications
+• understand how to design applications with threads in Java
+• understand how to use Java APIs for program development
+Course Outcomes: After completion of the course, students will be able to
+1. Analyze problems, design solutions using OOP principles, and implement them efficiently in Java. (L4)
+2. Design and implement classes to model real-world entities, with a focus on attributes, behaviours, and
+relationships between objects (L4)
+3. Demonstrate an understanding of inheritance hierarchies and polymorphic behaviour, including method
+overriding and dynamic method dispatch. (L3)
+4. Apply Competence in handling exceptions and errors to write robust and fault tolerant code. (L3)
+5. Perform file input/output operations, including reading from and writing to files using Java I/O classes, graphical
+user interface (GUI) programming using JavaFX. (L3)
+UNIT I Object Oriented Programming: Basic concepts, Principles, Program Structure in Java: Introduction, Writing
+Simple Java Programs, Elements or Tokens in Java Programs, Java Statements, Command Line Arguments, User
+Input to Programs, Escape Sequences Comments, Programming Style. Data Types, Variables, and Operators
+:Introduction, Data Types in Java, Declaration of Variables, Data Types, Type Casting, Scope of Variable Identifier,
+Literal Constants, Symbolic Constants, Formatted Output with printf() Method, Static Variables and Methods,
+Attribute Final, Introduction to Operators, Precedence and Associativity of Operators, Assignment Operator ( = ),
+Basic Arithmetic Operators, Increment (++) and Decrement (- -) Operators, Ternary Operator, Relational
+Operators, Boolean Logical Operators, Bitwise Logical Operators. Control Statements: Introduction, if Expression,
+Nested if Expressions, if–else Expressions, Ternary Operator?:, Switch Statement, Iteration Statements, while
+Expression, do–while Loop, for Loop, Nested for Loop, For–Each for Loop, Break Statement, Continue Statement.
+UNIT II Classes and Objects: Introduction, Class Declaration and Modifiers, Class Members, Declaration of Class
+Objects, Assigning One Object to Another, Access Control for Class Members, Accessing Private Members of Class,
+Constructor Methods for Class, Overloaded Constructor Methods, Nested Classes, Final Class and Methods,
+Passing Arguments by Value and by Reference, Keyword this.
+Methods: Introduction, Defining Methods, Overloaded Methods, Overloaded Constructor Methods, Class Objects
+as Parameters in Methods, Access Control, Recursive Methods, Nesting of Methods, Overriding Methods,
+Attributes Final and Static.
+UNIT III Arrays: Introduction, Declaration and Initialization of Arrays, Storage of Array in Computer Memory,
+Accessing Elements of Arrays, Operations on Array Elements, Assigning Array to Another Array, Dynamic Change
+of Array Size, Sorting of Arrays, Search for Values in Arrays, Class Arrays, Two-dimensional Arrays, Arrays of
+Varying Lengths, Three-dimensional Arrays, Arrays as Vectors. Inheritance: Introduction, Process of Inheritance,
+Types of Inheritances, Universal Super Class-Object Class, Inhibiting Inheritance of Class Using Final, Access
+Control and Inheritance, Multilevel Inheritance, Application of Keyword Super, Constructor Method and
+Inheritance, Method Overriding, Dynamic Method Dispatch, Abstract Classes, Interfaces and Inheritance.
+Interfaces: Introduction, Declaration of Interface, Implementation of Interface, Multiple Interfaces, Nested
+Interfaces, Inheritance of Interfaces, Default Methods in Interfaces, Static Methods in Interface, Functional
+Interfaces, Annotations.
+UNIT IV Packages and Java Library: Introduction, Defining Package, Importing Packages and Classes into Programs,
+Path and Class Path, Access Control, Packages in Java SE, Java.lang Package and its Classes, Class Object,
+Enumeration, class Math, Wrapper Classes, Auto-boxing and Auto-unboxing, Java util Classes and Interfaces,
+Formatter Class, Random Class, Time Package, Class Instant (java.time.Instant), Formatting for Date/Time in Java,
+Temporal Adjusters Class, Temporal Adjusters Class.
+Exception Handling: Introduction, Hierarchy of Standard Exception Classes, Keywords throws and throw, try,
+catch, and finally Blocks, Multiple Catch Clauses, Class Throwable, Unchecked Exceptions, Checked Exceptions.
+Java I/O and File: Java I/O API, standard I/O streams, types, Byte streams, Character streams, Scanner class, Files
+in Java(Text Book 2)
+UNIT V String Handling in Java: Introduction, Interface Char Sequence, Class String, Methods for Extracting
+Characters from Strings, Comparison, Modifying, Searching; Class String Buffer. Multithreaded Programming:
+Introduction, Need for Multiple Threads Multithreaded Programming for Multi-core Processor, Thread Class,
+Main Thread-Creation of New Threads, Thread States, Thread Priority-Synchronization, Deadlock and Race
+Situations, Inter-thread Communication - Suspending, Resuming, and Stopping of Threads. Java Database
+Connectivity: Introduction, JDBC Architecture, Installing MySQL and MySQL Connector/J, JDBC Environment
+Setup, Establishing JDBC Database Connections, ResultSet Interface Java FX GUI: Java FX Scene Builder, Java FX
+App Window Structure, displaying text and image, event handling, laying out nodes in scene graph, mouse events
+(Text Book 3)
+Text Books: 1) JAVA one step ahead, Anitha Seth, B.L.Juneja, Oxford. 2) Joy with JAVA, Fundamentals of Object
+Oriented Programming, Debasis Samanta, Monalisa Sarma, Cambridge, 2023. 3) JAVA for Programmers, Paul
+Deitel, Harvey Deitel, 4th Edition, Pearson.
+References Books: 1) The complete Reference Java, 11th edition, Herbert Schildt, TMH 2) Introduction to Java
+programming, 7th Edition, Y Daniel Liang, Pearson
+UNIT-I
+UNIT I Object Oriented Programming: Basic concepts, Principles, Program Structure in Java: Introduction, Writing
+Simple Java Programs, Elements or Tokens in Java Programs, Java Statements, Command Line Arguments, User
+Input to Programs, Escape Sequences Comments, Programming Style. Data Types, Variables, and Operators
+:Introduction, Data Types in Java, Declaration of Variables, Data Types, Type Casting, Scope of Variable Identifier,
+Literal Constants, Symbolic Constants, Formatted Output with printf() Method, Static Variables and Methods,
+Attribute Final, Introduction to Operators, Precedence and Associativity of Operators, Assignment Operator ( = ),
+Basic Arithmetic Operators, Increment (++) and Decrement (- -) Operators, Ternary Operator, Relational
+Operators, Boolean Logical Operators, Bitwise Logical Operators. Control Statements: Introduction, if Expression,
+Nested if Expressions, if–else Expressions, Ternary Operator?:, Switch Statement, Iteration Statements, while
+Expression, do–while Loop, for Loop, Nested for Loop, For–Each for Loop, Break Statement, Continue Statement.
+The Creation of Java
+Java was originally developed to develop a language for digital devices such as set-top boxes and consumer
+electronic devices such as microwave ovens and remote controls. Java was developed by James Gosling, Patrick
+Naughton, Mike Sheridan at Sun Microsystems Inc. in 1991. It took 18 months to develop the first working version.
+The initial name was Oak but it was renamed to Java in 1995.
+Primary Motivation(s) for Java creation:
+1. The primary motivation was the need for a platform-independent (architectureneutral/portable) language that
+could be used to create software to be embedded in various consumer electronic devices, such as microwave ovens
+and remote controls.
+2. The second important factor is the World Wide Web / Internet.
+a) Java is used to develop web based programs / Internet programming.
+b) The Internet consists of a diverse, distributed universe populated with various types of computers, operating
+systems, and CPUs.
+Platform Independence or Architecture Neutral or Portable: (Write Once, Run Anywhere)
+a) Java is a Platform Independent language. Java sometimes called as “Write Once, Run Anywhere (WORA)”
+language.
+b) Java achieves platform independence through bytecode and JVM.
+Q1. EXPLAIN ABOUT OBJECTIVES OF OOPS?
+Traditional Procedural-Oriented languages
+Traditional procedural-oriented programming languages (such as C, Fortran, Cobol and Pascal) suffer some
+notable drawbacks in creating reusable software components:
+1. The procedural-oriented programs are made up of functions. Functions are less reusable. It is very difficult
+to copy a function from one program and reuse in another program because the function is likely to
+reference the global variables and other functions
+2. The procedural languages are not suitable of high-level abstraction for solving real life problems. For
+example, C programs uses constructs such as if-else, for-loop, array, method, pointer, which are low-level
+and hard to abstract real problems.
+3. The traditional procedural-languages separate the data structures (variables) and algorithms (functions).
+Object Oriented Programming
+Java is a truly object oriented programming language. Everything in Java is an object. An object is a real world entity
+which has a state and exhibits a behaviour. A class is a template that describes the states and behaviour of an object.
+So, an object is simply an instance of a class. The state of an object is maintained by the data members and
+behaviour is defined by the methods. Please note that the functions in languages like C / C++ are denoted
+as methods in Java.
+Object Oriented Programming Approach
+This approach emphasizes more on data rather than methods. Data doesn't flow freely around the system and are
+closely coupled to the methods which operate on them. A program to solve a problem is decomposed into entities
+known as objects and then data and methods are associated with those objects. A system is designed as a
+combination of objects which consists of related data and methods which manipulate those data. A complex
+system is easily maintainable and extendible if this approach is followed.
+In a procedural programming language, problem is viewed as a sequence of tasks and a number of functions are
+written to accomplish those tasks. Functions are the primary focus and data is secondary. In simple words,
+emphasis is more on the algorithm to solve a problem rather than the data on which algorithms operate.
+Object-Oriented Programming Languages
+Object-oriented programming (OOP) languages are designed to overcome these problems.
+1. The basic unit of OOP is a class, which encapsulates both the static properties and dynamic operations within
+a "box", and specifies the public interface for using these boxes. Since classes are well-encapsulated, it is
+easier to reuse these classes. In other words, OOP combines the data structures and algorithms of a software
+entity inside the same box.
+2. OOP languages permit higher level of abstraction for solving real-life problems. The traditional procedural
+language (such as C and Pascal) forces you to think in terms of the structure of the computer (e.g. memory
+bits and bytes, array, decision, loop) rather than thinking in terms of the problem you are trying to solve. The
+OOP languages (such as Java, C++ and C#) let you think in the problem space, and use software objects to
+represent and abstract entities of the problem space to solve the problem.
+Q2. EXPLAIN BENEFITS AND APPLICATIONS OF OOPS?
+Benefits of OOP
+The procedural-oriented languages focus on procedures, with function as the basic unit. You need to first figure out
+all the functions and then think about how to represent data.
+The object-oriented languages focus on components that the user perceives, with objects as the basic unit. You
+figure out all the objects by putting all the data and operations that describe the user's interaction with the data.
+Object-Oriented technology has many benefits:
+• Ease in software design as you could think in the problem space rather than the machine's bits and bytes. You
+are dealing with high-level concepts and abstractions. Ease in design leads to more productive software
+development.
+• Ease in software maintenance: object-oriented software are easier to understand, therefore easier to test,
+debug, and maintain.
+• Reusable software: you don't need to keep re-inventing the wheels and re-write the same functions for
+different situations. The fastest and safest way of developing a new application is to reuse existing codes - fully
+tested and proven codes.
+Applications of OOPS:
+If there is complexity in software development, objecet-oriented programming is the best paradigm to solve
+the problem. The following areas make the use of OOP:
+1. Image Processing 9. Distributed Computing and Applications
+2. Pattern Recognition 10. Component based Applications
+3. Computer Assisted Concurrent Engineering 11. Business Process Reengineering
+4. Computer Aided Design and Manufacturing 12. Enterprise resource planning
+5. Computer Aided Teaching 13. Data security and management
+6. Intelligent Systems 14. Mobile Computing
+7. Database Management Systems 15. Data Warehouse and Data Mining
+8. Web based Applications 16. Parallel Computing
+Q3. EXPLAIN THE BASIC CONCEPTS OF OOPS?
+Basic Concepts of Oriented Programming ( OOP )
+Objects: Object means a real word entity such as pen, chair, table etc. Any entity that has state and behavior is
+known as an object. Object can be defined as an instance of a class. An object contains an address and takes up
+some space in memory. Objects can communicate without knowing details of each other's data or code, the only
+necessary thing is that the type of message accepted and type of response returned by the objects.
+An object has three characteristics:
+state: represents data (value) of an object.
+behavior: represents the behavior (functionality) of an object such as deposit, withdraw etc.
+identity: Object identity is typically implemented via a unique ID. The value of the ID is not visible to the external
+user. But, it is used internally by the JVM to identify each object uniquely.
+Objects are the basic entities or building blocks of a system designed using OOP approach. Each object consist of
+some data and the methods which operates on those data. For e.g, in an Employee Management System , there
+could be an object named employee. This object can have data like emp_id , emp_salary, serve_periodand methods
+like computeBonus ( ) , increment ( ) which operates on the object data.
+Classes are user defined data types which defines the structure of an object. An object is a variable of typeclass.
+Collection of objects is called class. It is a logical entity. A class can also be defined as a blueprint from which you can
+create an individual object. A class consists of Data members and methods. The primary purpose of a class is to hold
+data/information. The member functions determine the behavior of the class, i.e. provide a definition for supporting
+various operations on data held in the form of an object.Class doesn’t store any space. For e.g, english could be an
+object of class language.
+Data Encapsulation is the wrapping up of data and methods into a single unit called class. Encapsulation binds the
+data to the methods which operate on them. Encapsulation in java is a process of wrapping code and data together
+into a single unit, for example capsule i.e. mixed of several medicines. A java class is the example of encapsulation.
+Data Abstraction : Abstraction is a process of hiding the implementation details and showing only functionality to the
+user. For example: phone call, we don't know the internal processing. In java, we use abstract class and interface to
+achieve abstraction.
+Abstraction is an act of hiding all the internal details and representing only the essential features of a system. In a
+class, the data members and the some of the methods which manipulate the data are abstracted and only some
+methods are exposed to objects of other classes. Abstraction separates implementation and interface. Data members
+and methods which focus on implementation of some algorithms are abstracted and the methods which are exposed
+forms the interface through which objects of other classes communicate with the object of this class.
+Inheritance : Inheritance can be defined as the procedure or mechanism of acquiring all the properties and behavior
+of one class to another, i.e., acquiring the properties and behavior of child class from the parent class. When one object
+acquires all the properties and behaviours of another object, it is known as inheritance. It provides code reusability
+and establishes relationships between different classes. A class which inherits the properties is known as Child
+Class(sub-class or derived class) whereas a class whose properties are inherited is known as Parent class(super-class
+or base class).
+Types of inheritance in java:
+single, multilevel and hierarchical inheritance. Multiple and hybrid inheritance is supported through interface only.
+Inheritance provides the concept of code reusability in OOP. While creating a new class, instead of defining completely
+new data members and functions, we can inherit those members (if they exist) from an existing class. The existing
+class is known as base class and the new class which inherits from base class is known as derived class. With this
+feature, we can add new functionalities to an existing class without modifying it.
+Polymorphism is the ability of a message to be processed in more than one way. An operation may exhibit different
+behaviours in different instances depending on the types of data. For e.g, suppose we have an utility to draw a shape.
+Now, polymorphism provides the ability to draw a particular shape ( rectangle, square, triangle,
+etc. ) depending on the context. In Java, polymorphism is achieved using method overloading and method
+overriding which we will discuss later in the tutorial.
+When one task is performed by different ways i.e. known as polymorphism. For example: to convince the customer
+differently, to draw something e.g. shape or rectangle etc.
+Polymorphism is classified into two ways:
+Method Overloading(Compile time Polymorphism)
+Method Overloading is a feature that allows a class to have two or more methods having the same name but
+the arguments passed to the methods are different. Compile time polymorphism refers to a process in which
+a call to an overloaded method is resolved at compile time rather than at run time.
+Method Overriding(Run time Polymorphism)
+If subclass (child class) has the same method as declared in the parent class, it is known as method overriding in java.In
+other words, If subclass provides the specific implementation of the method that has been provided by one of its
+parent class, it is known as method overriding.
+Introduction to Java programming
+Q4. EXPLAIN THE FEATURES OF JAVA
+JAVA was developed by Sun Microsystems Inc in 1991, later acquired by Oracle Corporation. It was conceived
+by James Gosling and Patrick Naughton. It is a simple programming language. Writing, compiling and
+debugging a program is easy in java. It helps to create modular programs and reusable code.
+Main Features of JAVA
+Java is a platform independent language
+To understand the meaning of platform independent, we must need to understand the meaning of
+platform first. A platform is a pre-existing environment in which a program runs, obeying its constraints,
+and making use of its facilities.
+Lets back to the point. During compilation, the compiler converts java program to its byte code. This byte
+code can run on any platform such as Windows, Linux, Mac/OS etc. Which means a program that is
+compiled on windows can run on Linux and vice-versa. This is why java is known as platform independent
+language.
+Java is an Object Oriented language
+Object oriented programming is a way of organizing programs as collection of objects, each of which
+represents an instance of a class.
+4 main concepts of Object Oriented programming are:
+1. Abstraction
+2. Encapsulation
+3. Inheritance
+4. Polymorphism
+Simple
+Java is considered as one of simple language because it does not have complex features like Operator
+overloading, Multiple inheritance, pointers and Explicit memory allocation.
+Robust Language
+Two main problems that cause program failures are memory management mistakes and mishandled
+runtime errors. Java handles both of them efficiently.
+1) Memory management mistakes can be overcome by garbage collection. Garbage collection is automatic
+de-allocation of objects which are no longer needed.
+2) Mishandled runtime errors are resolved by Exception Handling procedures.
+Secure
+It provides a virtual firewall between the application and the computer. Java codes are confined within Java
+Runtime Environment (JRE) thus it does not grant unauthorized access on the system resources.
+Java is distributed
+Using java programming language we can create distributed applications. RMI(Remote Method Invocation)
+and EJB(Enterprise Java Beans) are used for creating distributed applications in java. In simple words: The
+java programs can be distributed on more than one systems that are connected to each other using internet
+connection. Objects on one JVM (java virtual machine) can execute procedures on a remote JVM.
+Multithreading
+Java supports multithreading. It enables a program to perform several tasks simultaneously.
+Portable
+As discussed above, java code that is written on one machine can run on another machine. The platform
+independent byte code can be carried to any platform for execution that makes java code portable.
+Q6. EXPLAIN ABOUT STRUCTURE OF JAVA WITH AN EXAMPLE ?
+Structure of Java
+Compilation and Execution of First Java Program
+To create a java code an editor such as notepad, text pad or an IDE like eclipse can be used.
+Sample Java Code:
+public class FirstJavaProgram {
+public static void main(String[] args){
+System.out.println("This is my first program in java");
+}//End of main
+}//End of FirstJavaProgram Class
+Output: This is my first program in java
+• In the above program the class FirstJavaProgram has public access and hence declared public.
+• ‘class’ is the keyword used to create a class.
+• For running stand-alone programs ‘main’ method is needed which has a signature similar to the one
+defined in the above program.
+• ‘Main’ method takes an array of strings as an argument. The name of the array can be anything.
+• To display the output, pass the string as an argument to the method System.out.println.
+Steps for compilation and Execution
+Step1: Save the source file as WelcomeApp.java.
+Step2: Open command prompt and navigate to the directory where you have stored the file.
+Step 3: To compile, type javac FirstJavaProgram.java and press Enter.
+Step 4: On successful compilation, you will see the command prompt and FirstJavaProgram.class file in the
+same folder where WelcomeApp.java is stored. This is the byte code of the program.
+Step 5: To execute, type java FirstJavaProgram. Do not type the extension while executing.
+Step 6: See the output “This is my first program in java” displayed on the console.
+Common programming Errors in Java
+The following are the general programming errors and the solution for them while running on windows
+machine.
+1) ‘javac’ is not recognized as an internal or external command, operable program or batch file – This
+means that the operating system cannot find the compiler – javac. In order to resolve this the PATH variable
+has to be set.
+2) Exception in thread “main”java.lang.NoClassDefFoundError: FirstJavaProgram – This error means that
+java cannot find your compiled byte code, WelcomeApp.class. If the class file is present in directory other
+than the directory where java file is stored, then the CLASSPATH must be set pointing to the directory that
+contains compiled class files.
+Q7. WRITE A SHORT NOTES ON JVM
+Java Tutorial – JVM (Java virtual Machine)
+1) Class loader accepts class files
+2) Compilation creates class files
+3) The interim memory is required during execution
+4) It consists of heaps, stacks and registers to store data
+5) JRE has native methods and libraries
+6) JVM runs two main threads
+a) demon b) Non-demon threads
+Demon Threads
+It has been Run by JVM for itself. Used for garbage collection. JVM decides on a thread for being a demon
+thread
+Non-demon threads
+main() is the initial and non-demon thread. Other implemented threads are also non-demon threads. The
+JVM is active till any non-demon thread is active.
+Execution on JVM
+1) JVM executes Java byte codes
+2) Other programming language codes if converted to adequate Java byte code can be executed on JVM
+3) JVM is different for different platforms and can also act as a platform itself
+4) JVM supports automatic error handling by intercepting the errors which can be controlled
+5) This feature is useful in platform independency and multi user ability of Java.
+Compilation
+1) The compiler requires to know the TYPE of every CLASS used in the program source code
+2) This is done by setting a default user environment variable CLASSPATH
+3) The Javac (Java Compiler) reads the program and converts it into byte code files called as class files
+Java Source code
+1) It essentially consists of a main() method
+2) This method is public and thus can be called by any object
+3) This method is also static and so can be called without instantiating the object of the class
+4) It does not return any value
+5) The controlling class of every Java application usually contain a main method
+6) This can be avoided to allow the class to be tested in a stand-alone mode.
+7) Other methods can subsequently be called in main()
+Q8. EXPLAIN AN OVERVIEW OF JAVA PROGRAMMING?
+Overview of Java Programming
+/*This is a sample java program Save this file as Welcome.java*/
+class Welcome
+{
+// A java program will start from here.
+public static void main(String args[])
+{
+System.out.println(" Welcome to Java-Samples!!! "); } }
+Let us closely examine each part of the program.
+/*This is a sample java program
+Save this file as Welcome.java*/
+This is called comment. This is for us to enter the comments about the program for our own
+convenience. The contents of a comment will be ignored by the compiler. Actually java supports three
+styles of comments. The above one is called multi-line comment which may contain several lines. This
+type of comment must begin with /* and end with */.
+The next line of the code in a program is
+class Welcome
+{
+The word class is a keyword to define a new class and Welcome is a name of the class. The class
+definition must begins with opening curly brace ({) and ends with closing curly brace (}). The rest of the
+things defined inside these braces are called member of the class. And note that all the program
+activities are defined inside the class.
+// A java program will start from here.
+This is another type of comment. This is called single line comment starts with // and ends with end of
+the line. Generally we use it for brief comments.
+The next line of the code in a program is
+public static void main(String args[])
+This line begins with main method as like functions or subroutines in other languages. The program
+will start execute by calling this main method. Let us see briefly about the other attributes declared in
+main method. However we are going to discuss in detail about this in later chapters.
+The keyword public is an access specifier. The keyword static is a kind of modifier. The keyword void
+means that the method main() does not return any value. As we had seen before all the java program
+will start execute by calling the main method. If we want to pass any information to a method will be
+received by the variables declared within the parenthesis is called parameters. In a main() method there
+is only one parameter ,String args[] . args[] is a name of the parameter that is an array of the objects of
+data type String. String store sequences of characters and args will receive the command line
+arguments.
+All the method in java must be start with opening curly brace ({) and ends with closing curly brace (}).
+The next line of the program is
+System.out.println(" Welcome to Java-Samples!!! ");
+Understanding of each keyword used here will be difficult now, so just take it as this System.out.println
+helps to display the output in the command line. All statements in java must end with semicolon. And
+remember that java is case sensitive. So we should be very careful about cases while coding the
+program. Otherwise it will lead to the serious problems.
+Elements or Tokens in Java Programs
+What are Tokens?
+Tokens are the basic building blocks of any code script. These include the keywords, operators,
+constants or other unique syntactic stuff specific to the language. The java compiler identifies
+these tokens based on delimiters and converts them into bytecode.
+Delimiters
+Most languages consider spaces, tabs, new lines, carriage returns and new feed-character as a
+delimiter. These delimiters are not part of the token but help identify tokens.
+Bytecode
+It is the object code that an interpreter converts into machine code that computers understand.
+These are compact numeric codes, references and constants that encode the result of compiler
+parsing.
+Tokens are the smallest unit of the Java program. The compiler breaks down the lines of code into
+tokens. Let's see an example to understand tokens.
+// program to understand java tokens
+class HelloToken {
+public static void main(String[] args) {
+System.out.println("Hello Ram!!");
+}
+}
+In the above program, “class, HelloToken, {, static, void, main, (, String, args, [, ], ), System, .,
+out, println” etc. are tokens.
+Types of Java Tokens
+There are five types of java tokens: keywords, identifiers, literals, operators and separators. The
+classification is based on their work type; some are used to define names, and others for
+arithmetic operations.
+1. Keywords
+2. Identifiers
+3. Literals
+4. Special Symbols
+5. Operators
+Keywords
+Keywords are reserved words in programming languages. These are used to indicate predefined
+terms and actions in a program. As a result, these words are not allowed to be used as names of
+variables or objects. It is case-sensitive and always written in lowercase. Java has the following
+keywords:
+abstract assert boolean break byte
+case catch char class continue
+default do double else enum
+extends final finally float for
+if implements import instanceof int
+interface long native new null
+package private protected public return
+abstract assert boolean break byte
+short static strictfp super switch
+synchronised this throw throws transient
+try void volatile while const/goto*
+Indentifiers
+A method name, class name, variable name, or label is an identifier in Java. The user typically
+defines these. The identifier names cannot be the same as any reserved keyword. Let's see an
+example to understand identifiers:
+public class Test
+{
+public static void main(String[] args)
+{
+int num = 10;
+}
+}
+Identifiers present in the above program are:
+Test: The name of the class.
+main: The name of a method.
+String: A predefined class name.
+args: A variable name.
+num: A variable name.
+There are rules for naming identifiers.
+• The characters allowed are [A-Z], [a-z], [0-9], _ and $.
+• Identifiers are case-sensitive. That is, “ninja” is not the same as “NINJA”.
+• Identifier names should not start with a digit. For example, “007IamNinja” is an invalid identifier.
+• Whitespace is not allowed inside an identifier.
+• Keywords can’t be used as an identifier.
+Literals
+Literals represent fixed values in a source code. These are similar to standard variables with the
+difference that these are constant. These can be classified as an integer literal, a string literal, a
+boolean etc. The user defines these mainly to define constants.
+Syntax to define literals:
+final data_type variable_name;
+There are five types of literals in Java:
+• Integer
+• Floating Point
+• Boolean
+• Character
+• String
+Type Example
+int 22
+double 25.08
+boolean TRUE
+Type Example
+char N
+string “Coding Ninjas”
+Operators
+As the name suggests, operators perform operations between different entities. Whenever the
+compiler sees an operator, it tokenizes it and proceeds further. Java has other operators based on
+their functionality. In total, there are eight types of operators in Java.
+Let's see these operators along with their examples.
+Operator Examples
+Arithmetic +.-.*,/,%
+Assignment =.+=,-=,*=,/=
+Unary ++,--,≠
+Logical &&,||
+Relational ==,≠,≥,≤
+Ternary condition?stat1:stat2
+Bitwise &,|,~,^
+Shift >>,<<,>>>
+Separators
+These are the special symbols used to separate java tokens. These are sometimes called
+punctuators. The separators have special meaning and thus should not be used for anything else.
+• Brackets []: These are used to define arrays and represent single and multi-dimension subscripts.
+• Braces {}: These mark the start and end of multi-line code blocks.
+• Parenthesis (): Used for function calls and parameters.
+• Comma (,): These separate statements. For example, separate parameters.
+• Semicolon ( : ): It invokes the initialization list.
+• Asterisk (*): This is used to generate pointer variables.
+• Assignment operator (=): It assigns values to variables. For example, a=10, here we are giving value
+10 to variable 'a'.
+Comments
+In java there are multiple types of comments available in java :
+1. Single-line comments: These are the comments that are denoted by // and are used to comment a
+single line of code.
+2. Multi-line comment: These comments start with /* and end with */. When a user wants to comment
+on multiple lines in the code, these comments are used for it.
+3. Java doc comments: These comments are denoted by "/**" and "*/". To provide documentation of
+Java code, these comments are used. Also, the Java doc tool is used to process these comments and
+generate HTML documents.
+Separators
+Separators help to define the structure of the class. These are used to separate different parts of
+the codes. There are various separators that are used in Java. The most commonly used
+separator is a semicolon(;).
+Other separators include comma, parentheses, brackets, colon, and many more.
+Java Command Line Arguments
+Command Line Argument
+The java command-line argument is an argument i.e. passed at the time of running the java program.
+The arguments passed from the console can be received in the java program and it can be used as an
+input.
+So, it provides a convenient way to check the behavior of the program for the different values. You
+can pass N (1,2,3 and so on) numbers of arguments from the command prompt.
+Simple example of command-line argument in java
+In this example, we are receiving only one argument and printing it. To run this java program, you
+must pass at least one argument from the command prompt.
+class CommandLineExample
+{
+public static void main(String args
+System.out.println("Your first argument is: "+args[0]);
+}
+}
+compile by > javac CommandLineExample.java
+run by > java CommandLineExample hai
+Output: Your first argument is: hai
+Example of command-line argument that prints all the values
+In this example, we are printing all the arguments passed from the command-line. For this purpose,
+we have traversed the array using for loop.
+class A
+{
+public static void main(String args[])
+{
+for(int i=0;i<args.length;i++)
+System.out.println(args[i]);
+}
+}
+compile by > javac A.java
+run by > java A hai jaiswal 1 3 abc
+Output: hai
+jaiswal
+abc
+USER INPUT TO PROGRAMS
+Java Scanner Class
+Java Scanner class allows the user to take input from the console. It belongs to java.util package. It is used
+to read the input of primitive types like int, double, long, short, float, and byte. It is the easiest way to read
+input in Java program.
+Syntax : Scanner sc=new Scanner(System.in);
+The above statement creates a constructor of the Scanner class having System.in as an argument. It means it
+is going to read from the standard input stream of the program. The java.util package should be import while
+using Scanner class.
+It also converts the Bytes (from the input stream) into characters using the platform's default charset.
+Methods of Java Scanner Class
+Java Scanner class provides the following methods to read different primitives types:
+Method Description
+int nextInt() It is used to scan the next token of the input as an integer.
+float nextFloat() It is used to scan the next token of the input as a float.
+double nextDouble() It is used to scan the next token of the input as a double.
+byte nextByte() It is used to scan the next token of the input as a byte.
+String nextLine() Advances this scanner past the current line.
+boolean nextBoolean() It is used to scan the next token of the input into a boolean value.
+Ex-1:
+import java.util.*;
+class UserInputDemo
+{
+public static void main(String[] args)
+{
+Scanner sc= new Scanner(System.in); //System.in is a standard input stream
+System.out.print("Enter first number- ");
+int a= sc.nextInt();
+System.out.print("Enter second number- ");
+int b= sc.nextInt();
+System.out.print("Enter third number- ");
+int c= sc.nextInt();
+int d=a+b+c;
+System.out.println("Total= " +d);
+}
+}
+Output:
+Example of String Input from user
+Let's see another example, in which we have taken string input.
+import java.util.*;
+class UserInputDemo1
+{
+public static void main(String[] args)
+{
+Scanner sc= new Scanner(System.in); //System.in is a standard input stream
+System.out.print("Enter a string: ");
+String str= sc.nextLine(); //reads string
+System.out.print("You have entered: "+str);
+}
+}
+Output:
+Escape Sequences Comments
+A character with a backslash (\) just before it is an escape sequence or escape
+character. We use escape characters to perform some specific task. The total number
+of escape sequences or escape characters in Java is 8. Each escape character is a
+valid character literal. The list of Java escape sequences:
+// Java code to store escape sequences
+// as character literals
+class StoreCharacterLiterals
+{
+// the method to print the escape
+// sequences
+static void escapeSequences()
+{
+// declaration of Character
+// literals
+char tab = '\t', backspace = '\b', newline = '\n',
+formFeed = '\f', carriageReturn = '\r',
+singleQuote = '\'', doubleQuote = '\"',
+backSlash = '\\';
+// printing the horizontal tab
+System.out.println("This" + tab + " is an "
++ "implementation of tab");
+// implementing the backspace
+System.out.println("This" + backspace + " is an " + "implementation " + "of backspace");
+// implementing the newline
+System.out.println("This" + newline + " is an "
++ "implementation of newline");
+// implementing the formfeed
+System.out.println("This" + formFeed + " is an"
++ " implementation of " + "formfeed");
+// implementing the carriage return
+System.out.println("This" + carriageReturn
++ " is an implementation "
++ "of Carriage Return");
+// printing the single quote
+System.out.println("This" + singleQuote
++ " is an implementation"
++ " of single quote");
+// printing the double quote
+System.out.println("This" + doubleQuote
++ " is an implementation "
++ "of double quote");
+// printing the backslash
+System.out.println("This" + backSlash
++ " is an implementation "
++ " of backslash");
+}
+// Driver Code
+public static void main(String[] args)
+{
+// creating an object of the class
+StoreCharacterLiterals ob = new StoreCharacterLiterals();
+// calling the escapeSequences() method
+ob.escapeSequences();
+}
+}
+Programming Style:
+Programming style refers to the technique used in writing the source code for a computer program.
+Most programming styles are designed to help programmers quickly read and understands the
+program as well as avoid making errors. (Older programming styles also focused on conserving
+screen space.) A good coding style can overcome the many deficiencies of a first programming
+language, while poor style can defeat the intent of an excellent language.
+The goal of good programming style is to provide understandable, straightforward, elegant code.
+The programming style used in a various program may be derived from the coding standards or
+code conventions of a company or other computing organization, as well as the preferences of the
+actual programmer.
+1. Clarity and simplicity of Expression: The programs should be designed in such a manner so
+that the objectives of the program is clear.
+2. Naming: In a program, you are required to name the module, processes, and variable, and so on.
+Care should be taken that the naming style should not be cryptic and non-representative.
+For Example: a = 3.14 * r * r
+area of circle = 3.14 * radius * radius;
+3. Control Constructs: It is desirable that as much as a possible single entry and single exit
+constructs used.
+4. Information hiding: The information secure in the data structures should be hidden from the
+rest of the system where possible. Information hiding can decrease the coupling between modules
+and make the system more maintainable.
+5. Nesting: Deep nesting of loops and conditions greatly harm the static and dynamic behavior of
+a program. It also becomes difficult to understand the program logic, so it is desirable to avoid deep
+nesting.
+6. User-defined types: Make heavy use of user-defined data types like enum, class, structure, and
+union. These data types make your program code easy to write and easy to understand.
+7. Module size: The module size should be uniform. The size of the module should not be too big
+or too small. If the module size is too large, it is not generally functionally cohesive. If the module
+size is too small, it leads to unnecessary overheads.
+8. Module Interface: A module with a complex interface should be carefully examined.
+9. Side-effects: When a module is invoked, it sometimes has a side effect of modifying the program
+state. Such side-effect should be avoided where as possible.
+General advice on how to make your program more readable and less error-prone:
+• every class should be in a separate file;
+• use meaningful names for the variables and for the file names;
+• use comments;
+o comments should explain what a piece of code intends to do; in particular, every
+method -- even a simple one -- should, as a minimum, have comments explaining
+what exactly it does, and what is the meaning of all its parameters
+o comments should not duplicate the text of the program; for example, "initialize the
+variables" is a good comment, but a comment "assign the value 0 to the variable x"
+after a line x = 0; does not add any additional meaning to the code;
+• always use {} for blocks corresponding to "if", "while", and "for" statements, even if the
+corresponding block consists of only one statement;
+• use indentation;
+o every time you have a method within a class, a group of statements within an if-
+else construction or a loop -- anything with {} -- indent this group of statements;
+o do not indent too much, since then you will run out of space; Java recommends 4
+spaces; our textbook often uses 3; 2 spaces is also OK;
+o try not to use Tab because Tab may look different on different screens and
+different editors -- especially if you sometimes use Tab and sometimes, simply add
+a few blank spaces;
+• avoid long lines since they're not handled well by many terminals.
+Java Data Types
+Java is statically typed and also a strongly typed language because, in Java, each type of data (such
+as integer, character, hexadecimal, packed decimal, and so forth) is predefined as part of the
+programming language and all constants or variables defined for a given program must be described
+with one of the Java data types.
+Data Types in Java
+Data types in Java are of different sizes and values that can be stored in the variable that is made as
+per convenience and circumstances to cover up all test cases. Java has two categories in which data
+types are segregated
+1. Primitive Data Type: such as boolean, char, int, short, byte, long, float, and double
+2. Non-Primitive Data Type or Object Data type: such as String, Array, etc.
+Primitive Data Types in Java
+Primitive data are only single values and have no special capabilities. There are 8 primitive data
+types. They are depicted below in tabular format below as follows:
+Type Description Default Size Example Literals Range of values
+boolean true or false false 1 bit true, false true, false
+byte twos- 0 8 bits (none) -128 to 127
+complement
+integer
+char Unicode \u0000 16 bits ‘a’, ‘\u0041’, characters representation
+character ‘\101’, ‘\\’, of ASCII values
+‘\’, ‘\n’, ‘β’ 0 to 255
+short twos- 0 16 bits (none) -32,768 to 32,767
+complement
+integer
+int twos- 0 32 bits -2,-1,0,1,2 -2,147,483,648
+complement to
+intger 2,147,483,647
+long twos- 0 64 bits -2L,- -
+complement 1L,0L,1L,2L 9,223,372,036,854,775,808
+integer to
+9,223,372,036,854,775,807
+float IEEE 754 0.0 32 bits 1.23e100f , - upto 7 decimal digits
+floating 1.23e-100f
+point , .3f ,3.14F
+double IEEE 754 0.0 64 bits 1.23456e300d upto 16 decimal digits
+floating , -
+point 123456e-
+300d ,
+1e1d
+1. Boolean Data Type
+Boolean data type represents only one bit of information either true or false which is intended to
+represent the two truth values of logic and Boolean algebra, but the size of the boolean data type
+is virtual machine-dependent. Values of type boolean are not converted implicitly or explicitly
+(with casts) to any other type. But the programmer can easily write conversion code.
+Syntax: boolean booleanVar;
+Size: Virtual machine dependent
+2. Byte Data Type
+The byte data type is an 8-bit signed two’s complement integer. The byte data type is useful for
+saving memory in large arrays.
+Syntax: byte byteVar;
+Size: 1 byte (8 bits)
+3. Short Data Type
+The short data type is a 16-bit signed two’s complement integer. Similar to byte, use a short to save
+memory in large arrays, in situations where the memory savings actually matters.
+Syntax: short shortVar;
+Size: 2 bytes (16 bits)
+4. Integer Data Type
+It is a 32-bit signed two’s complement integer.
+Syntax: int intVar;
+Size: 4 bytes ( 32 bits )
+Remember: In Java SE 8 and later, we can use the int data type to represent an unsigned 32-bit
+integer, which has a value in the range [0, 232-1]. Use the Integer class to use the int data type as
+an unsigned integer.
+5. Long Data Type
+The range of a long is quite large. The long data type is a 64-bit two’s complement integer and is
+useful for those occasions where an int type is not large enough to hold the desired value. The size
+of the Long Datatype is 8 bytes (64 bits).
+Syntax: long longVar;
+Remember: In Java SE 8 and later, you can use the long data type to represent an unsigned 64-bit
+long, which has a minimum value of 0 and a maximum value of 264-1. The Long class also contains
+methods like comparing Unsigned, divide Unsigned, etc to support arithmetic operations for
+unsigned long.
+6. Float Data Type
+The float data type is a single-precision 32-bit IEEE 754 floating-point. Use a float (instead of
+double) if you need to save memory in large arrays of floating-point numbers. The size of the float
+data type is 4 bytes (32 bits).
+Syntax:float floatVar;
+7. Double Data Type
+The double data type is a double-precision 64-bit IEEE 754 floating-point. For decimal values, this
+data type is generally the default choice. The size of the double data type is 8 bytes or 64 bits.
+Syntax:double doubleVar;
+Note: Both float and double data types were designed especially for scientific calculations, where
+approximation errors are acceptable. If accuracy is the most prior concern then, it is recommended
+not to use these data types and use BigDecimal class instead.
+It is recommended to go through rounding off errors in java.
+8. Char Data Type
+The char data type is a single 16-bit Unicode character with the size of 2 bytes (16 bits).
+Syntax:
+char charVar;
+Why is the Size of char 2 bytes in Java?
+So, other languages like C/C++ use only ASCII characters, and to represent all ASCII characters 8
+bits is enough. But Java uses the Unicode system not the ASCII code System and to represent the
+Unicode system 8 bits is not enough to represent all characters so Java uses 2 bytes for
+characters. Unicode defines a fully international character set that can represent most of the world’s
+written languages. It is a unification of dozens of character sets, such as Latin, Greek, Cyrillic,
+Katakana, Arabic, and many more.
+// Java Program to Demonstrate Char Primitive Data Type
+// Class
+class Cpdt {
+// Main driver method
+public static void main(String args[])
+{
+// Creating and initializing custom character
+char a = 'G';
+// Integer data type is generally
+// used for numeric values
+int i = 89;
+// use byte and short
+// if memory is a constraint
+byte b = 4;
+// this will give error as number is
+// larger than byte range
+// byte b1 = 7888888955;
+short s = 56;
+// this will give error as number is
+// larger than short range
+// short s1 = 87878787878;
+// by default fraction value
+// is double in java
+double d = 4.355453532;
+// for float use 'f' as suffix as standard
+float f = 4.7333434f;
+// need to hold big range of numbers then we need
+// this data type
+long l = 12121;
+System.out.println("char: " + a);
+System.out.println("integer: " + i);
+System.out.println("byte: " + b);
+System.out.println("short: " + s);
+System.out.println("float: " + f);
+System.out.println("double: " + d);
+System.out.println("long: " + l);
+}
+}
+Output
+char: C
+integer: 89
+byte: 4
+short: 56
+float: 4.7333436
+double: 4.355453532
+long: 12121
+Non-Primitive Data Type or Reference Data Types
+The Reference Data Types will contain a memory address of variable values because
+the reference types won’t store the variable value directly in memory. They are strings,
+objects, arrays, etc.
+1. Strings
+Strings are defined as an array of characters. The difference between a character array and a string in Java
+is, that the string is designed to hold a sequence of characters in a single variable whereas, a character
+array is a collection of separate char-type entities. Unlike C/C++, Java strings are not terminated with a
+null character.
+Syntax: Declaring a string
+<String_Type> <string_variable> = “<sequence_of_string>”;
+Example:
+// Declare String without using new operator
+String s = "GeeksforGeeks";
+// Declare String using new operator
+String s1 = new String("GeeksforGeeks");
+2. Class
+A class is a user-defined blueprint or prototype from which objects are created. It represents the set of
+properties or methods that are common to all objects of one type. In general, class declarations can include
+these components, in order:
+1. Modifiers: A class can be public or has default access. Refer to access specifiers for classes or interfaces
+in Java
+2. Class name: The name should begin with an initial letter (capitalized by convention).
+3. Superclass(if any): The name of the class’s parent (superclass), if any, preceded by the keyword
+extends. A class can only extend (subclass) one parent.
+4. Interfaces(if any): A comma-separated list of interfaces implemented by the class, if any, preceded by
+the keyword implements. A class can implement more than one interface.
+5. Body: The class body is surrounded by braces, { }.
+3. Object
+An Object is a basic unit of Object-Oriented Programming and represents real-life entities. A typical Java
+program creates many objects, which as you know, interact by invoking methods. An object consists of :
+1. State: It is represented by the attributes of an object. It also reflects the properties of an object.
+2. Behavior: It is represented by the methods of an object. It also reflects the response of an object to
+other objects.
+3. Identity: It gives a unique name to an object and enables one object to interact with other objects.
+4. Interface
+Like a class, an interface can have methods and variables, but the methods declared in an interface are by
+default abstract (only method signature, no body).
+• Interfaces specify what a class must do and not how. It is the blueprint of the class.
+• An Interface is about capabilities like a Player may be an interface and any class implementing Player
+must be able to (or must implement) move(). So it specifies a set of methods that the class has to
+implement.
+• If a class implements an interface and does not provide method bodies for all functions specified in the
+interface, then the class must be declared abstract.
+• A Java library example is Comparator Interface. If a class implements this interface, then it can be used
+to sort a collection.
+5. Array
+An Array is a group of like-typed variables that are referred to by a common name. Arrays in Java work
+differently than they do in C/C++. The following are some important points about Java arrays.
+• In Java, all arrays are dynamically allocated. (discussed below)
+• Since arrays are objects in Java, we can find their length using member length. This is different from
+C/C++ where we find length using size.
+• A Java array variable can also be declared like other variables with [] after the data type.
+• The variables in the array are ordered and each has an index beginning with 0.
+• Java array can also be used as a static field, a local variable, or a method parameter.
+• The size of an array must be specified by an int value and not long or short.
+• The direct superclass of an array type is Object.
+• Every array type implements the interfaces Cloneable and java.io.Serializable.
+JAVA VARIABLES
+A variable is a location in memory (storage area) to hold data.
+To indicate the storage area, each variable should be given a unique name (identifier). Learn more
+about Java identifiers.
+Create Variables in Java
+Here's how we create a variable in Java,
+int speedLimit = 80;
+Here, speedLimit is a variable of int data type and we have assigned value 80 to it.
+The int data type suggests that the variable can only hold integers. To learn more, visit Java data types.
+In the example, we have assigned value to the variable during declaration. However, it's not mandatory.
+You can declare variables and assign variables separately. For example,
+int speedLimit;
+speedLimit = 80;
+Note: Java is a statically-typed language. It means that all variables must be declared before they can be
+used.
+Change values of variables
+The value of a variable can be changed in the program, hence the name variable. For example,
+int speedLimit = 80;
+... .. ...
+speedLimit = 90;
+Here, initially, the value of speedLimit is 80. Later, we changed it to 90.
+However, we cannot change the data type of a variable in Java within the same scope.
+Rules for Naming Variables in Java
+Java programming language has its own set of rules and conventions for naming variables. Here's what you
+need to know:
+• Java is case sensitive. Hence, age and AGE are two different variables. For example,
+• int age = 24;
+• int AGE = 25;
+• System.out.println(age); // prints 24
+System.out.println(AGE); // prints 25
+• Variables must start with either a letter or an underscore, _ or a dollar, $ sign. For example,
+• int age; // valid name and good practice
+• int _age; // valid but bad practice
+int $age; // valid but bad practice
+• Variable names cannot start with numbers. For example,
+int 1age; // invalid variables
+• Variable names can't use whitespace. For example,
+int my age; // invalid variables
+Here, is we need to use variable names having more than one word, use all lowercase letters for
+the first word and capitalize the first letter of each subsequent word. For example, myAge.
+• When creating variables, choose a name that makes sense. For
+example, score, number, level makes more sense than variable names such as s, n, and l.
+• If you choose one-word variable names, use all lowercase letters. For example, it's better to
+use speed rather than SPEED, or sPEED.
+There are 4 types of variables in Java programming language:
+• Instance Variables (Non-Static Fields)
+• Class Variables (Static Fields)
+• Local Variables
+• Parameters
+SCOPE OF VARIABLES IN JAVA
+A variable's scope is the place in your program where it can be referenced. Variable scope is specified
+using the 'scope' keyword in the variable declaration. A variable that can be accessed in 'any' scope
+can be accessed absolutely anywhere in your program. A variable that can be accessed only in a
+specific scope can only be accessed in that scope. The scope may be a function, a block, a method,
+a class, or outside of all methods, blocks and classes.
+Scope of a variable is the part of the program where the variable is accessible. Like C/C++, in Java, all
+identifiers are lexically (or statically) scoped, i.e.scope of a variable can determined at compile time and
+independent of function call stack.
+Java programs are organized in the form of classes. Every class is part of some package. Java scope rules
+can be covered under following categories.
+Member Variables (Class Level Scope)
+These variables must be declared inside class (outside any function). They can be directly accessed
+anywhere in class. Let’s take a look at an example:
+public class Test
+{
+// All variables defined directly inside a class
+// are member variables
+int a;
+private String b;
+void method1() { ... }
+int method2() { ....}
+char c;
+}
+• We can declare class variables anywhere in class, but outside methods.
+• Access specified of member variables doesn’t affect scope of them within a class.
+• Member variables can be accessed outside a class with following rules
+Modifier Package Subclass World
+public Yes Yes Yes
+protected Yes Yes No
+Default (no
+modifier) Yes No No
+private No No No
+Local Variables (Method Level Scope)
+Variables declared inside a method have method level scope and can’t be accessed outside the method.
+public class Test
+{
+void method1()
+{
+// Local variable (Method level scope)
+int x;
+}
+}
+Note : Local variables don’t exist after method’s execution is over.
+Here’s another example of method scope, except this time the variable got passed in as a parameter to
+the method:
+class Test
+{
+private int x;
+public void setX(int x)
+{
+this.x = x;
+}
+}
+The above code uses this keyword to differentiate between the local and class variables.
+As an exercise, predict the output of following Java program.
+public class Test
+{
+static int x = 11;
+private int y = 33;
+public void method1(int x)
+{
+Test t = new Test();
+this.x = 22;
+y = 44;
+System.out.println("Test.x: " + Test.x);
+System.out.println("t.x: " + t.x);
+System.out.println("t.y: " + t.y);
+System.out.println("y: " + y);
+}
+public static void main(String args[])
+{
+Test t = new Test();
+t.method1(5);
+}
+}
+Output:
+Test.x: 22
+t.x: 22
+t.y: 33
+y: 44
+Loop Variables (Block Scope)
+A variable declared inside pair of brackets “{” and “}” in a method has scope within the brackets only.
+public class Test
+{
+public static void main(String args[])
+{
+{
+// The variable x has scope within
+// brackets
+int x = 10;
+System.out.println(x);
+}
+// Uncommenting below line would produce
+// error since variable x is out of scope.
+// System.out.println(x);
+}
+}
+Output:
+As another example, consider following program with a for loop.
+class Test
+{
+public static void main(String args[])
+{
+for (int x = 0; x < 4; x++)
+{
+System.out.println(x);
+}
+// Will produce error
+System.out.println(x);
+}
+}
+Output:
+11: error: cannot find symbol
+System.out.println(x);
+The right way of doing above is,
+// Above program after correcting the error
+class Test
+{
+public static void main(String args[])
+{
+int x;
+for (x = 0; x < 4; x++)
+{
+System.out.println(x);
+}
+System.out.println(x);
+}
+}
+Output:
+class Test
+{
+public static void main(String args[])
+{
+int a = 5;
+for (int a = 0; a < 5; a++)
+{
+System.out.println(a);
+}
+}
+}
+Output :
+6: error: variable a is already defined in method go(int)
+for (int a = 0; a < 5; a++)
+^
+1 error
+Note:- In C++, it will run. But in java it is an error because in java, the name of the variable of inner and
+outer loop must be different.
+A similar program in C++ works. See this.
+As an exercise, predict the output of the following Java program.
+class Test
+{
+public static void main(String args[])
+{
+{
+int x = 5;
+{
+int x = 10;
+System.out.println(x);
+}
+}
+}
+}
+class Test {
+public static void main(String args[])
+{
+for (int i = 1; i <= 10; i++) {
+System.out.println(i);
+}
+int i = 20;
+System.out.println(i);
+}
+}
+Output :
+Some Important Points about Variable scope in Java:
+• In general, a set of curly brackets { } defines a scope.
+• In Java we can usually access a variable as long as it was defined within the same set of brackets as
+the code we are writing or within any curly brackets inside of the curly brackets where the variable
+was defined.
+• Any variable defined in a class outside of any method can be used by all member methods.
+• When a method has the same local variable as a member, “this” keyword can be used to reference
+the current class variable.
+• For a variable to be read after the termination of a loop, It must be declared before the body of the
+loop.
+Type Casting in Java
+In Java, type casting is a method or process that converts a data type into another data type in both ways
+manually and automatically.
+The automatic conversion is done by the compiler and manual conversion performed by the programmer.
+Type casting
+Convert a value from one data type to another data type is known as type casting.
+Types of Type Casting
+There are two types of type casting:
+➢ 1)Widening Type Casting 2)Narrowing Type Casting
+WIDENING TYPE CASTING
+Converting a lower data type into a higher one is called widening type casting. It is also known as implicit
+conversion or casting down. It is done automatically. It is safe because there is no chance to lose data. It
+takes place when:
+• Both data types must be compatible with each other.
+• The target type must be larger than the source type.
+byte -> short -> char -> int -> long -> float -> double
+public class WideningTypeCastingExample
+{
+public static void main(String[] args)
+{
+int x = 7;
+//automatically converts the integer type into long type
+long y = x;
+//automatically converts the long type into float type
+float z = y;
+System.out.println("Before conversion, int value "+x);
+System.out.println("After conversion, long value "+y);
+System.out.println("After conversion, float value "+z);
+}
+}
+Output
+Before conversion, the value is: 7 After conversion, the long value is: 7 After conversion, the float value is:
+7.0
+NARROWING TYPE CASTING
+▪ Converting a higher data type into a lower one is called narrowing type casting.
+▪ It is also known as explicit conversion or casting up.
+▪ It is done manually by the programmer.
+▪ If we do not perform casting then the compiler reports a compile-time error.
+double -> float -> long -> int -> char -> short -> byte
+public class NarrowingTypeCastingExample
+{
+public static void main(String args[])
+{
+double d = 166.66;
+//converting double data type into long data type
+long l = (long)d;
+//converting long data type into int data type
+int i = (int)l;
+System.out.println("Before conversion: "+d);
+//fractional part lost
+System.out.println("After conversion into long type: "+l);
+//fractional part lost
+System.out.println("After conversion into int type: "+i);
+}
+}
+Output:
+Before conversion: 166.66
+After conversion into long type: 166
+After conversion into int type: 166
+JAVA LITERALS
+Literals are data used for representing fixed values. They can be used directly in the code. For example,
+int a = 1;
+float b = 2.5;
+char c = 'F';
+Here, 1 , 2.5 , and 'F' are literals.
+Here are different types of literals in Java.
+1. Boolean Literals
+In Java, boolean literals are used to initialize boolean data types. They can store two values: true and false.
+For example,
+boolean flag1 = false;
+boolean flag2 = true;
+Here, false and true are two boolean literals.
+2. Integer Literals
+An integer literal is a numeric value(associated with numbers) without any fractional or exponential part.
+There are 4 types of integer literals in Java:
+1. binary (base 2)
+2. decimal (base 10)
+3. octal (base 8)
+4. hexadecimal (base 16)
+For example:
+// binary
+int binaryNumber = 0b10010;
+// octal
+int octalNumber = 027;
+// decimal
+int decNumber = 34;
+// hexadecimal
+int hexNumber = 0x2F; // 0x represents hexadecimal
+// binary
+int binNumber = 0b10010; // 0b represents binary
+In Java, binary starts with 0b, octal starts with 0, and hexadecimal starts with 0x.
+Note: Integer literals are used to initialize variables of integer types like byte, short, int, and long.
+3. Floating-point Literals
+A floating-point literal is a numeric literal that has either a fractional form or an exponential form. For
+example,
+class Main {
+public static void main(String[] args) {
+double myDouble = 3.4;
+float myFloat = 3.4F;
+// 3.445*10^2
+double myDoubleScientific = 3.445e2;
+System.out.println(myDouble); // prints 3.4
+System.out.println(myFloat); // prints 3.4
+System.out.println(myDoubleScientific); // prints 344.5
+}
+}
+Run Code
+Note: The floating-point literals are used to initialize float and double type variables.
+4. Character Literals
+Character literals are unicode character enclosed inside single quotes. For example,
+char letter = 'a';
+Here, a is the character literal.
+We can also use escape sequences as character literals. For example, \b (backspace), \t (tab), \n (new line),
+etc.
+5. String literals
+A string literal is a sequence of characters enclosed inside double-quotes. For example,
+String str1 = "Java Programming";
+String str2 = "Programiz";
+Here, Java Programming and Programiz are two string literals.
+Integer Literals
+Integer literals are sequences of digits. There are three types of integer literals:
+Decimal Integer: These are the set of numbers that consist of digits from 0 to 9. It may have a positive (+)
+or negative (-) Note that between numbers commas and non-digit characters are not permitted. For
+example, 5678, +657, -89, etc.
+int decVal = 26;
+Octal Integer: It is a combination of number have digits from 0 to 7 with a leading 0. For example, 045,
+026,
+int octVal = 067;
+Hexa-Decimal: The sequence of digits preceded by 0x or 0X is considered as hexadecimal integers. It may
+also include a character from a to f or A to F that represents numbers from 10 to 15, respectively. For
+example, 0xd, 0xf,
+int hexVal = 0x1a;
+Binary Integer: Base 2, whose digits consists of the numbers 0 and 1 (you can create binary literals in Java
+SE 7 and later). Prefix 0b represents the Binary system. For example, 0b11010.
+int binVal = 0b11010;
+Real Literals
+The numbers that contain fractional parts are known as real literals. We can also represent real literals in
+exponent form. For example, 879.90, 99E-3, etc.
+Character Literals
+A character literal is expressed as a character or an escape sequence, enclosed in a single quote ('') mark.
+It is always a type of char. For example, 'a', '%', '\u000d', etc.
+String Literals
+String literal is a sequence of characters that is enclosed between double quotes ("") marks. It may be
+alphabet, numbers, special characters, blank space, etc. For example, "Jack", "12345", "\n", etc.
+Floating Point Literals
+The vales that contain decimal are floating literals. In Java, float and double primitive types fall into
+floating-point literals. Keep in mind while dealing with floating-point literals.
+Floating-point literals for float type end with F or f. For example, 6f, 8.354F, etc. It is a 32-bit float literal.
+Floating-point literals for double type end with D or d. It is optional to write D or d. For example, 6d,
+8.354D, etc. It is a 64-bit double literal.
+It can also be represented in the form of the exponent.
+Floating:
+float length = 155.4f;
+Decimal:
+double interest = 99658.445;
+Decimal in Exponent form:
+double val= 1.234e2;
+Boolean Literals
+Boolean literals are the value that is either true or false. It may also have values 0 and 1. For example,
+true, 0, etc.
+boolean isEven = true;
+Null Literals
+Null literal is often used in programs as a marker to indicate that reference type object is unavailable.
+The value null may be assigned to any variable, except variables of primitive types.
+String stuName = null;
+Student age = null;
+Class Literals
+Class literal formed by taking a type name and appending .class extension. For example, Scanner.class.
+It refers to the object (of type Class) that represents the type itself.
+class classType = Scanner.class;
+// Java Program to print an Array
+import java.io.*;
+public class Example {
+public static final int MAX_SIZE = 10;
+public static void main(String[] args)
+{
+int[] array = new int[MAX_SIZE];
+for (int i = 0; i < MAX_SIZE; i++) {
+array[i] = i * 2;
+}
+System.out.print("Array: ");
+for (int i = 0; i < MAX_SIZE; i++) {
+System.out.print(array[i] + " ");
+}
+System.out.println();
+}
+}
+Output
+Array: 0 2 4 6 8 10 12 14 16 18
+FORMATTED OUTPUT WITH PRINTF() METHOD
+At times we want the output of a program to be printed in a given specific format. In the C programming
+language this is possible using the printf( ) function.
+There are two methods that can be used to format the output in Java:
+• Using the printf( ) Method
+• Using the format( ) Method
+USING THE PRINTF( ) METHOD
+public class FormattedOutput1
+{
+public static void main( String args[ ] )
+{
+// printing the string value on the console
+String str = " RGM ENGINEERING COLLEGE " ;
+System.out.printf( " \n Printing the String value : %s \n ", str ) ;
+// printing the integer value on the console
+int x = 512 ;
+System.out.printf( " \n Printing the integer value : x = %d \n ", x ) ;
+// printing the decimal value on the console
+float f = 5.25412368f ;
+System.out.printf( " \n Printing the decimal value : %f \n ", f ) ;
+// this formatting is used to specify the width un to which the digits can extend
+System.out.printf( " \n Formatting the output to specific width : n = %.4f \n ", f ) ;
+// this formatting will print it up to 2 decimal places
+System.out.printf( " \n Formatted the output with precision : PI = %.2f \n ", f ) ;
+// here number is formatted from right margin and occupies a width of 20 characters
+System.out.printf( " \n Formatted to right margin : n = %20.4f \n ", f ) ;
+}
+}
+Output:
+Printing the String value : RGM ENGINEERING COLLEGE
+Printing the integer value : x = 512
+Printing the decimal value : 5.254124
+Formatting the output to specific width : n = 5.2541
+Formatted the output with precision : PI = 5.25
+Formatted to right margin : n = 5.2541
+USING THE FORMAT( ) METHOD
+import java.text.DecimalFormat ;
+public class FormattedOutput2
+{
+public static void main( String args[ ] )
+{
+double x = 123.4567 ;
+System.out.printf( " \n The number is : %f \n ", x ) ;
+// printing only the numeric part of the floating number
+DecimalFormat ft = new DecimalFormat( " #### " ) ;
+System.out.println( " \n Without fraction part the number is : " + ft.format( x ) ) ;
+// printing the number only upto 2 decimal places
+ft = new DecimalFormat( " #.## " ) ;
+System.out.println( " \n Formatted number with the specified precision is = " + ft.format( x ) ) ;
+ft = new DecimalFormat( " #.000000 " ) ;
+System.out.println( " \n Appending the zeroes to the right of the number = " + ft.format( x ) ) ;
+// automatically appends zero to the leftmost of decimal number instead of #, we use digit 0
+ft = new DecimalFormat( " 00000.00 " ) ;
+System.out.println( " \n Appending the zeroes to the left of the number = "+ ft.format( x ) ) ;
+// formatting money in dollars
+double income = 550000.789 ;
+ft = new DecimalFormat( " $###,###.## " ) ;
+System.out.println( " \n Your Formatted Income in Dollars : " + ft.format( income ) ) ;
+}
+}
+Output:
+The number is : 123.456700
+Without fraction part the number is : 123
+Formatted number with the specified precision is = 123.46
+Appending the zeroes to the right of the number = 123.456700
+Appending the zeroes to the left of the number = 00123.46
+Your Formatted Income in Dollars : $550,000.79
+STATIC VARIABLES AND METHODS
+• When a variable is declared as static, then a single copy of the variable is created and shared
+among all objects at the class level.
+• Static variables are, essentially, global variables.
+• All instances of the class share the same static variable.
+Important points for static variables:
+• We can create static variables at class-level only. See here
+• static block and static variables are executed in order they are present in a program.
+• Static variable can call by directly with the help of class only, we do not need to create object for
+the class in this.
+// Java program to demonstrate execution of static blocks and variables
+class Test {
+// static variable
+static int a = m1();
+// static block
+static
+{
+System.out.println(&quot;Inside static block&quot;);
+}
+// static method
+static int m1()
+{
+System.out.println(&quot;from m1&quot;);
+return 20;
+}
+// static method(main !!)
+public static void main(String[] args)
+{
+System.out.println(&quot;Value of a : &quot; + a);
+System.out.println(&quot;from main&quot;);
+}
+}
+Output
+from m1
+Inside static block
+Value of a : 20
+from main
+FINAL KEYWORD IN JAVA
+The final method in Java is used as a non-access modifier applicable only to a variable, a method, or a class. It is
+used to restrict a user in Java.
+The following are different contexts where the final is used:
+• Variable
+• Method
+• Class
+Characteristics of final keyword in Java:
+In Java, the final keyword is used to indicate that a variable, method, or class cannot be modified or extended.
+Final variables: When a variable is declared as final, its value cannot be changed once it has been initialized. This is
+useful for declaring constants or other values that should not be modified.
+Final methods: When a method is declared as final, it cannot be overridden by a subclass. This is useful for methods
+that are part of a class’s public API and should not be modified by subclasses.
+Final classes: When a class is declared as final, it cannot be extended by a subclass. This is useful for classes that are
+intended to be used as is and should not be modified or extended.
+• Overall, the final keyword is a useful tool for improving code quality and ensuring that certain aspects of a
+program cannot be modified or extended.
+• By declaring variables, methods, and classes as final, developers can write more secure, robust, and
+maintainable code.
+Java Final Variable
+When a variable is declared with the final keyword, its value can’t be changed, essentially, a constant. This also
+means that you must initialize a final variable.
+It is good practice to represent final variables in all uppercase, using underscore to separate words.
+Example:
+public class ConstantExample {
+public static void main(String[] args) {
+// Define a constant variable PI
+final double PI = 3.14159;
+// Print the value of PI
+System.out.println("Value of PI: " + PI);
+}
+}
+Output
+Value of PI: 3.14159
+Output: Value of PI: 3.14159
+OPERATORS IN JAVA:
+Java Arithmetic Operators with Examples
+Operators constitute the basic building block to any programming language. Java too provides many types
+of operators which can be used according to the need to perform various calculations and functions, be it
+logical, arithmetic, relational, etc. They are classified based on the functionality they provide. Here are a few
+types:
+1. Arithmetic Operators
+2. Unary Operators
+3. Assignment Operator
+4. Relational Operators
+5. Logical Operators
+6. Ternary Operator
+7. Bitwise Operators
+8. Shift Operators
+This article explains all that one needs to know regarding Arithmetic Operators.
+Arithmetic Operators
+These operators involve the mathematical operators that can be used to perform various simple or advanced
+arithmetic operations on the primitive data types referred to as the operands. These operators consist of
+various unary and binary operators that can be applied on a single or two operands. Let’s look at the various
+operators that Java has to provide under the arithmetic operators.
+Now let’s look at each one of the arithmetic operators in Java:
+1. Addition(+): This operator is a binary operator and is used to add two operands.
+Syntax:
+num1 + num2
+Example:
+num1 = 10, num2 = 20
+sum = num1 + num2 = 30
+Java
+// Java code to illustrate Addition operator
+import java.io.*;
+class Addition {
+public static void main(String[] args)
+{
+// initializing variables
+int num1 = 10, num2 = 20, sum = 0;
+// Displaying num1 and num2
+System.out.println("num1 = " + num1);
+System.out.println("num2 = " + num2);
+// adding num1 and num2
+sum = num1 + num2;
+System.out.println("The sum = " + sum);
+}
+}
+Output
+num1 = 10
+num2 = 20
+The sum = 30
+2. Subtraction(-): This operator is a binary operator and is used to subtract two operands.
+Syntax:
+num1 - num2
+Example:
+num1 = 20, num2 = 10
+sub = num1 - num2 = 10
+Java
+// Java code to illustrate Subtraction operator
+import java.io.*;
+class Subtraction {
+public static void main(String[] args)
+{
+// initializing variables
+int num1 = 20, num2 = 10, sub = 0;
+// Displaying num1 and num2
+System.out.println("num1 = " + num1);
+System.out.println("num2 = " + num2);
+// subtracting num1 and num2
+sub = num1 - num2;
+System.out.println("Subtraction = " + sub);
+}
+}
+Output
+num1 = 20
+num2 = 10
+Subtraction = 10
+3. Multiplication(*): This operator is a binary operator and is used to multiply two operands.
+Syntax:
+num1 * num2
+Example:
+num1 = 20, num2 = 10
+mult = num1 * num2 = 200
+Java
+// Java code to illustrate Multiplication operator
+import java.io.*;
+class Multiplication {
+public static void main(String[] args)
+{
+// initializing variables
+int num1 = 20, num2 = 10, mult = 0;
+// Displaying num1 and num2
+System.out.println("num1 = " + num1);
+System.out.println("num2 = " + num2);
+// Multiplying num1 and num2
+mult = num1 * num2;
+System.out.println("Multiplication = " + mult);
+}
+}
+Output
+num1 = 20
+num2 = 10
+Multiplication = 200
+4. Division(/): This is a binary operator that is used to divide the first operand(dividend) by the second
+operand(divisor) and give the quotient as a result.
+Syntax:
+num1 / num2
+Example:
+num1 = 20, num2 = 10
+div = num1 / num2 = 2
+Java
+// Java code to illustrate Division operator
+import java.io.*;
+class Division {
+public static void main(String[] args)
+{
+// initializing variables
+int num1 = 20, num2 = 10, div = 0;
+// Displaying num1 and num2
+System.out.println("num1 = " + num1);
+System.out.println("num2 = " + num2);
+// Dividing num1 and num2
+div = num1 / num2;
+System.out.println("Division = " + div);
+}
+}
+Output
+num1 = 20
+num2 = 10
+Division = 2
+5. Modulus(%): This is a binary operator that is used to return the remainder when the first
+operand(dividend) is divided by the second operand(divisor).
+Syntax:
+num1 % num2
+Example:
+num1 = 5, num2 = 2
+mod = num1 % num2 = 1
+Java
+// Java code to illustrate Modulus operator
+import java.io.*;
+class Modulus {
+public static void main(String[] args)
+{
+// initializing variables
+int num1 = 5, num2 = 2, mod = 0;
+// Displaying num1 and num2
+System.out.println("num1 = " + num1);
+System.out.println("num2 = " + num2);
+// Remaindering num1 and num2
+mod = num1 % num2;
+System.out.println("Remainder = " + mod);
+}
+}
+Output
+num1 = 5
+num2 = 2
+Remainder = 1
+Here is an example program in Java that implements all basic arithmetic operators for user input:
+Java
+import java.util.Scanner;
+public class ArithmeticOperators {
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+System.out.print("Enter the first number: ");
+double num1 = sc.nextDouble();
+System.out.print("Enter the second number: ");
+double num2 = sc.nextDouble();
+double sum = num1 + num2;
+double difference = num1 - num2;
+double product = num1 * num2;
+double quotient = num1 / num2;
+System.out.println("The sum of the two numbers is: " + sum);
+System.out.println("The difference of the two numbers is: " + difference);
+System.out.println("The product of the two numbers is: " + product);
+System.out.println("The quotient of the two numbers is: " + quotient);
+}
+}
+Input
+Enter the first number: 20
+Enter the second number: 10
+Output
+The sum of the two numbers is: 30.0
+The difference of the two numbers is: 10.0
+The product of the two numbers is: 200.0
+The quotient of the two numbers is: 2.0
+Explanation
+• The program implements basic arithmetic operations using user input in Java. The program uses
+the Scanner class from the java.util package to read user input from the console. The following steps
+describe how the program works in detail:
+• Import the java.util.Scanner class: The program starts by importing the Scanner class, which is used
+to read input from the console.
+• Create a Scanner object: Next, a Scanner object sc is created and associated with the standard input
+stream System.in.
+• Read the first number from the user: The program prompts the user to enter the first number and
+uses the nextDouble() method of the Scanner class to read the input. The input is stored in the num1
+variable of type double.
+• Read the second number from the user: The program prompts the user to enter the second number
+and uses the nextDouble() method of the Scanner class to read the input. The input is stored in the
+num2 variable of type double.
+• Perform arithmetic operations: The program performs the four basic arithmetic operations
+(addition, subtraction, multiplication, and division) using the num1 and num2 variables and stores
+the results in separate variables sum, difference, product, and quotient.
+• Print the results: The program prints out the results of the arithmetic operations using the println
+method of the System.out object.
+• This program demonstrates how to implement basic arithmetic operations using user input in
+Java. The Scanner class makes it easy to read user input from the console, and the basic arithmetic
+operations are performed using standard mathematical operators in Java.
+Unary Operators in Java
+Java unary operators are the types that need only one operand to perform any operation like increment,
+decrement, negation, etc. It consists of various arithmetic, logical and other operators that operate on a
+single operand. Let’s look at the various unary operators in detail and see how they operate.
+Operator 1: Unary minus(-)
+This operator can be used to convert a positive value to a negative one.
+Syntax:
+-(operand)
+Illustration:
+a = -10
+Example:
+// Java Program to Illustrate Unary - Operator
+// Importing required classes
+import java.io.*;
+// Main class
+class GFG {
+// Main driver method
+public static void main(String[] args)
+{
+// Declaring a custom variable
+int n1 = 20;
+// Printing the above variable
+System.out.println("Number = " + n1);
+// Performing unary operation
+n1 = -n1;
+// Printing the above result number
+// after unary operation
+System.out.println("Result = " + n1);
+}
+}
+Output
+Number = 20
+Result = -20
+Operator 2: ‘NOT’ Operator(!)
+This is used to convert true to false or vice versa. Basically, it reverses the logical state of an operand.
+Syntax:
+!(operand)
+Illustration:
+cond = !true;
+// cond < false
+Example:
+// Java Program to Illustrate Unary NOT Operator
+// Importing required classes
+import java.io.*;
+// Main class
+class GFG {
+// Main driver method
+public static void main(String[] args)
+{
+// Initializing variables
+boolean cond = true;
+int a = 10, b = 1;
+// Displaying values stored in above variables
+System.out.println("Cond is: " + cond);
+System.out.println("Var1 = " + a);
+System.out.println("Var2 = " + b);
+// Displaying values stored in above variables
+// after applying unary NOT operator
+System.out.println("Now cond is: " + !cond);
+System.out.println("!(a < b) = " + !(a < b));
+System.out.println("!(a > b) = " + !(a > b));
+}
+}
+Output:
+Cond is: true
+Var1 = 10
+Var2 = 1
+Now cond is: false
+!(a < b) = true
+!(a > b) = false
+Operator 3: Increment(++)
+It is used to increment the value of an integer. It can be used in two separate ways:
+3.1 : Post-increment operator
+When placed after the variable name, the value of the operand is incremented but the previous
+value is retained temporarily until the execution of this statement and it gets updated before the
+execution of the next statement.
+Syntax:
+num++
+Illustration:
+num = 5
+num++ = 6
+3.2 : Pre-increment operator
+When placed before the variable name, the operand’s value is incremented instantly.
+Syntax:
+++num
+Illustration:
+num = 5
+++num = 6
+Operator 4: Decrement(–)
+It is used to decrement the value of an integer. It can be used in two separate ways:
+4.1 : Post-decrement operator
+When placed after the variable name, the value of the operand is decremented but the previous
+values is retained temporarily until the execution of this statement and it gets updated before the
+execution of the next statement.
+Syntax:
+num--
+Illustration:
+num = 5
+num-- = 5 // Value will be decremented before execution of next statement.
+4.2 : Pre-decrement operator
+When placed before the variable name, the operand’s value is decremented instantly.
+Syntax:
+--num
+Illustration:
+num = 5
+--num = 5 //output is 5, value is decremented before execution of next
+statement
+Operator 5: Bitwise Complement(~)
+This unary operator returns the one’s complement representation of the input value or operand,
+i.e, with all bits inverted, which means it makes every 0 to 1, and every 1 to 0.
+Syntax:
+~(operand)
+Illustration:
+a = 5 [0101 in Binary]
+result = ~5
+This performs a bitwise complement of 5
+~0101 = 1010 = 10 (in decimal)
+Then the compiler will give 2’s complementof that number.
+2’s complement of 10 will be -6.
+result = -6
+Example:
+/ Java program to Illustrate Unary
+// Bitwise Complement Operator
+// Importing required classes
+import java.io.*;
+// Main class
+class GFG {
+// Main driver method
+public static void main(String[] args)
+{
+// Declaring a variable
+int n1 = 6, n2 = -2;
+// Printing numbers on console
+System.out.println("First Number = " + n1);
+System.out.println("Second Number = " + n2);
+// Printing numbers on console after
+// performing bitwise complement
+System.out.println(
+n1 + "'s bitwise complement = " + ~n1);
+System.out.println(
+n2 + "'s bitwise complement = " + ~n2);
+}
+}
+Output:
+First Number = 6
+Second Number = -2
+6's bitwise complement = -7
+-2's bitwise complement = 1
+Example program in Java that implements all basic unary operators for user input:
+import java.util.Scanner;
+public class UnaryOperators {
+public static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+// fro user inputs here is the code.
+// System.out.print("Enter a number: ");
+// int num = sc.nextInt();
+int num = 10;
+int result = +num;
+System.out.println(
+"The value of result after unary plus is: " + result);
+result = -num;
+System.out.println(
+"The value of result after unary minus is: " + result);
+result = ++num;
+System.out.println("The value of result after pre-increment is: "
++ result);
+result = num++;
+System.out.println( "The value of result after post-increment is: "
++ result);
+result = --num;
+System.out.println(
+"The value of result after pre-decrement is: " + result);
+result = num--;
+System.out.println(
+"The value of result after post-decrement is: " + result);
+}
+}
+Output
+The value of result after unary plus is: 10
+The value of result after unary minus is: -10
+The value of result after pre-increment is: 11
+The value of result after post-increment is: 11
+The value of result after pre-decrement is: 11
+The value of result after post-decrement is: 11
+Example program in Java that implements all basic unary operators for user input:
+import java.util.Scanner;
+public class UnaryOperators {
+public static void main(String[] args)
+{
+Scanner sc = new Scanner(System.in);
+// fro user inputs here is the code.
+// System.out.print("Enter a number: ");
+// int num = sc.nextInt();
+int num = 10;
+int result = +num;
+System.out.println(
+"The value of result after unary plus is: "
++ result);
+result = -num;
+System.out.println(
+"The value of result after unary minus is: "
++ result);
+result = ++num;
+System.out.println(
+"The value of result after pre-increment is: "
++ result);
+result = num++;
+System.out.println(
+"The value of result after post-increment is: "
++ result);
+result = --num;
+System.out.println(
+"The value of result after pre-decrement is: "
++ result);
+result = num--;
+System.out.println(
+"The value of result after post-decrement is: "
++ result);
+}
+}
+Output
+The value of result after unary plus is: 10
+The value of result after unary minus is: -10
+The value of result after pre-increment is: 11
+The value of result after post-increment is: 11
+The value of result after pre-decrement is: 11
+The value of result after post-decrement is: 11
+Java Relational Operators are a bunch of binary operators used to check for relations
+between two operands, including equality, greater than, less than, etc. They return a
+boolean result after the comparison and are extensively used in looping statements as well
+as conditional if-else statements and so on. The general format of representing relational
+operator is:
+program that implements all relational operators in Java for user input:
+import java.util.Scanner;
+public class RelationalOperators {
+public static void main(String[] args) {
+Scanner scan = new Scanner(System.in);
+//System.out.println("Enter first number: ");
+// int num1 = scan.nextInt();
+// System.out.println("Enter second number: ");
+// int num2 = scan.nextInt();
+int num1 =1;
+int num2 = 2;
+System.out.println("num1 > num2 is " + (num1 > num2));
+System.out.println("num1 < num2 is " + (num1 < num2));
+System.out.println("num1 >= num2 is " + (num1 >= num2));
+System.out.println("num1 <= num2 is " + (num1 <= num2));
+System.out.println("num1 == num2 is " + (num1 == num2));
+System.out.println("num1 != num2 is " + (num1 != num2));
+}
+}
+Output
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+num1 > num2 is false
+num1 < num2 is true
+num1 >= num2 is false
+num1 <= num2 is true
+num1 == num2 is false
+num1 != num2 is true
+LOGICAL OPERATORS
+Logical operators are used to perform logical “AND”, “OR” and “NOT” operations, i.e. the
+function similar to AND gate and OR gate in digital electronics. They are used to combine
+two or more conditions/constraints or to complement the evaluation of the original condition
+under particular consideration. One thing to keep in mind is, while using AND operator, the
+second condition is not evaluated if the first one is false. Whereas while using OR operator,
+the second condition is not evaluated if the first one is true, i.e. the AND and OR operators
+have a short-circuiting effect. Used extensively to test for several conditions for making a
+decision.
+1. AND Operator ( && ) – if( a && b ) [if true execute else don’t]
+2. OR Operator ( || ) – if( a || b) [if one of them is true to execute else don’t]
+3. NOT Operator ( ! ) – !(a<b) [returns false if a is smaller than b]
+ublic class LogicalOperators {
+public static void main(String[] args) {
+boolean a = true;
+boolean b = false;
+System.out.println("a: " + a);
+System.out.println("b: " + b);
+System.out.println("a && b: " + (a && b));
+System.out.println("a || b: " + (a || b));
+System.out.println("!a: " + !a);
+System.out.println("!b: " + !b);
+}
+}
+Output
+a: true
+b: false
+a && b: false
+a || b: true
+!a: false
+!b: true
+Ternary Operator in Java
+Java ternary operator is the only conditional operator that takes three operands. It’s a
+one-liner replacement for the if-then-else statement and is used a lot in Java
+programming. We can use the ternary operator in place of if-else conditions or even
+switch conditions using nested ternary operators. Although it follows the same algorithm
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+as of if-else statement, the conditional operator takes less space and helps to write the if-
+else statements in the shortest way possible.
+Syntax:
+variable = Expression1 ? Expression2: Expression3
+If operates similarly to that of the if-else statement as in Exression2 is executed
+if Expression1 is true else Expression3 is executed.
+if(Expression1)
+{
+variable = Expression2;
+}
+else
+{
+variable = Expression3;
+}
+Example:
+num1 = 10;
+num2 = 20;
+res=(num1>num2) ? (num1+num2):(num1-num2)
+Since num1<num2,
+the second operation is performed
+res = num1-num2 = -10
+/ Java code to illustrate ternary operator
+import java.io.*;
+class Ternary {
+public static void main(String[] args)
+{
+// variable declaration
+int n1 = 5, n2 = 10, res;
+System.out.println("First num: " + n1);
+System.out.println("Second num: " + n2);
+// Performing ternary operation
+res = (n1 > n2) ? (n1 + n2) : (n1 - n2);
+// Print the largest number
+System.out.println("Result = " + res);
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+Bitwise Operators
+Bitwise operators are used to performing the manipulation of individual bits of a number. They can be used
+with any integral type (char, short, int, etc.). They are used when performing update and query operations
+of the Binary indexed trees.
+Now let’s look at each one of the bitwise operators in Java:
+1. Bitwise OR (|)
+This operator is a binary operator, denoted by ‘|’. It returns bit by bit OR of input values, i.e., if either of the
+bits is 1, it gives 1, else it shows 0.
+Example:
+a = 5 = 0101 (In Binary)
+b = 7 = 0111 (In Binary)
+Bitwise OR Operation of 5 and 7
+0101
+| 0111
+_ _ __
+0111 = 7 (In decimal)
+2. Bitwise AND (&)
+This operator is a binary operator, denoted by ‘&.’ It returns bit by bit AND of input values, i.e., if both bits
+are 1, it gives 1, else it shows 0.
+Example:
+a = 5 = 0101 (In Binary)
+b = 7 = 0111 (In Binary)
+Bitwise AND Operation of 5 and 7
+0101
+& 0111
+_ _ __
+0101 = 5 (In decimal)
+3. Bitwise XOR (^)
+This operator is a binary operator, denoted by ‘^.’ It returns bit by bit XOR of input values, i.e., if
+corresponding bits are different, it gives 1, else it shows 0.
+Example:
+a = 5 = 0101 (In Binary)
+b = 7 = 0111 (In Binary)
+Bitwise XOR Operation of 5 and 7
+0101
+^ 0111
+_ _ __
+0010 = 2 (In decimal)
+4. Bitwise Complement (~)
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+This operator is a unary operator, denoted by ‘~.’ It returns the one’s complement representation of the
+input value, i.e., with all bits inverted, which means it makes every 0 to 1, and every 1 to 0.
+Example:
+a = 5 = 0101 (In Binary)
+Bitwise Complement Operation of 5
+~ 0101
+_ _ __
+1010 = 10 (In decimal)
+Note: Compiler will give 2’s complement of that number, i.e., 2’s complement of 10 will be
+-6.
+// Java program to illustrate
+// bitwise operators
+public class operators {
+public static void main(String[] args)
+{
+// Initial values
+int a = 5;
+int b = 7;
+// bitwise and
+// 0101 & 0111=0101 = 5
+System.out.println("a&b = " + (a & b));
+// bitwise or
+// 0101 | 0111=0111 = 7
+System.out.println("a|b = " + (a | b));
+// bitwise xor
+// 0101 ^ 0111=0010 = 2
+System.out.println("a^b = " + (a ^ b));
+// bitwise not
+// ~00000000 00000000 00000000 00000101=11111111 11111111 11111111
+11111010
+// will give 2's complement (32 bit) of 5 = -6
+System.out.println("~a = " + ~a);
+// can also be combined with
+// assignment operator to provide shorthand
+// assignment
+// a=a&b
+a &= b;
+System.out.println("a= " + a);
+}
+}
+Output
+a&b = 5
+a|b = 7
+a^b = 2
+~a = -6
+a= 5
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+SHIFT OPERATORS:
+By shifting the bits of its first operand right or left, a shift operator performs bit
+manipulation on data. The shift operators available in the Java programming language
+are listed below. The shift operator is a java operator that is used to shift bit patterns right
+or left.
+Types of Shift Operators in Java:
+Name of
+Sign Description
+operator
+Signed Left The left shift operator moves all bits by a given number of bits
+<<
+Shift to the left.
+Signed Right The right shift operator moves all bits by a given number of
+>>
+Shift bits to the right.
+Unsigned It is the same as the signed right shift, but the vacant leftmost
+>>>
+Right Shift position is filled with 0 instead of the sign bit.
+/ / Left Shifting a byte value
+class GFG {
+public static void main(String[] args)
+{
+byte a = 64, b;
+int i;
+i = a << 2;
+b = (byte)(a << 2);
+System.out.println("Original value of a: " + a);
+System.out.println("i and b: " + i + " " + b);
+}
+}
+// Java program to demonstrate
+// the Signed right shift operator
+import java.io.*;
+class GFG
+{
+public static void main (String[] args) {
+{
+int number = 8;
+// 2 bit signed right shift
+int Ans = number >> 2;
+System.out.println(Ans);
+}
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+Q13. EXPLAIN VARIOUS DECISION MAKING AND BRANCHING
+STATEMENTS IN JAVA WITH AN EXAMPLE?
+Decision Making and Branching Statements in Java
+►if statement
+►if ... else statement
+►switch statement
+►Nesting of Decision statements
+Using decision statements, we can make our programs execute certain statements depending
+on some conditions..
+' if ' statement
+It consist of a boolean expression and we execute the set of statements in the ' if ' block
+depending on the value (True/False) of the boolean expression. Following program
+demonstrates the use of ' if ' statement :
+public class IfStatement {
+public static void main(String args[]) {
+int num = 67;
+System.out.println("Number is " + num);
+// check the condition
+if ( num < 100 ) { // if block starts here
+// condition is true, so print the following
+System.out.println("No. is less than 100 ");
+} // if block ends here
+}}
+' if ... else ' statement
+This statement is used when there are multiple conditions depending on which different
+statements are to be executed. See the following program to understand the use of ' if ... else
+' construct :
+public class Greater {
+public static void main(String args[]) {
+int x = 7, y = 5;
+if ( x > y ) { // if block starts
+// condition is true, so print the following
+System.out.println("The greater number is " + x);
+} // if block ends
+else { // else block starts
+System.out.println("The greater number is " + y);
+} // else block ends
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+Following program shows a chain of if ... else statements :
+/*
+* This program assigns grade to students depending on marks obtained
+* Marks Obtained Grade
+* >= 90 A
+* >= 80 and < 90 B
+* >= 70 and < 80 C
+* >= 60 and < 70 D
+* >= 50 and < 60 E
+* < 50 F
+*/
+public class Grade {
+public static void main(String args[]) {
+int marks = 72; // you can this value and run the program
+char grade = 'N'; // No grade assigned yet
+// Assign the grade depending on marks
+if ( marks >= 90 ) {
+grade = 'A';
+}
+else if ( marks >=80 && marks < 90 ) {
+grade = 'B';
+}
+else if ( marks >=70 && marks < 80 ) {
+grade = 'C';
+}
+else if ( marks >=60 && marks < 70 ) {
+grade = 'D';
+}
+else if ( marks >=50 && marks < 60 ) {
+grade = 'E';
+}
+else {
+grade = 'F'; // Failed
+}
+System.out.println("Grade assigned is " + grade);
+}
+}
+' switch ' statement
+switch statement is used when a condition or a variable has to be tested for equality against
+multiple values. Following program illustrates the use of switch construct :
+/*
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+* This program gives to students depending on their grades
+* Grade Comments
+* A Outstanding
+* B Excellent
+* C Very Good
+* D Average
+* E Below Average
+* F Fail
+*/
+public class GradeComment {
+public static void main(String args[]) {
+char grade = 'D'; // grade can be changed and run
+// Print comment depending on grade
+switch (grade) { // switch block starts here
+case 'A' : System.out.println("Outstanding");
+break; // break out of switch block
+case 'B' : System.out.println("Excellent");
+break;
+case 'C' : System.out.println("Very Good");
+break;
+case 'D' : System.out.println("Average");
+break;
+case 'E' : System.out.println("Below Average");
+break;
+case 'F' : System.out.println("Fail");
+break;
+default : System.out.println("Invalid Grade");
+break;
+}
+}
+}
+Nesting of Decision statements
+We can use a decision statement inside the block of another decision statement. This is
+known as nesting. See the following program to understand nesting :
+Conditional operator:
+The ? : operator in Java
+The value of a variable often depends on whether a particular boolean expression is or is not
+true and on nothing else. For instance one common operation is setting the value of a
+variable to the maximum of two quantities. In Java you might write
+if (a > b) {
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+max = a;
+}
+else {
+max = b;
+}
+Setting a single variable to one of two states based on a single condition is such a common
+use of if-else that a shortcut has been devised for it, the conditional operator, ?:. Using
+the conditional operator you can rewrite the above example in a single line like this:
+max = (a > b) ? a : b;
+(a > b) ? a : b; is an expression which returns one of two values, a or b. The
+condition, (a > b), is tested. If it is true the first value, a, is returned. If it is false, the
+second value, b, is returned. Whichever value is returned is dependent on the conditional
+test, a > b. The condition can be any expression which returns a boolean value.
+Q14. EXPLAN VARIOUS LOOPING STATEMENTS IN JAVA WITH AN EXAMPLE?
+Looping Statements in Java
+►for loop
+►while loop
+►do ... while loop
+►Nested loops
+►break and continue statements
+Loop control statements are used to execute a statement or a group of statements multiple
+times. Suppose you want to print a number 10 times. Instead of using 10
+System.out.println( )statements, we can simply loop over a singleSystem.out.println(
+) statement 10 times. Let's see the looping constructs supported by Java.
+' for ' Loop
+It executes a block of statements repeatedly until the specified condition returns false.
+Syntax of for loop:
+for (initialization; condition; increment/decrement) {
+statement(s) //block of statements
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+Consider the following code snippet :
+for ( int i = 1; i <= 10; i++ ) {
+System.out.println ( " i = " + i );
+}
+i = 0; is the initialization statement.
+i <= 10; is the condition statement.
+i++; is the increment statement.
+The initialization ( i = 0; ) statement is executed once.
+Then, the condition ( i < 10; ) statement is checked. If it evaluates to True, body of the loop
+is executed. If it evaluates to False, loop is terminated and the statement after the loop body
+is executed.
+After all the statements in loop body are executed, control jumps to the increment statement
+and the condition statement is evaluated again.
+Mind the semicolon (;) after initialization and condition in the above syntax.
+Initialization expression executes only once during the beginning of loop
+Condition(Boolean Expression) gets evaluated each time the loop iterates. Loop executes the
+block of statement repeatedly until this condition returns false.
+Increment/Decrement It executes after each iteration of loop.
+for loop is known as entry controlled loop since the condition check is done at beginning of
+the loop. Following program illustrates the use of for loop :
+/*
+* This program prints the multiplication table of a number
+* using for loop
+*/
+public class MulTableForLoop {
+public static void main(String args[]) {
+int num = 7;
+// following loop executes 10 times
+for ( int i = 1; i <= 10; i++ ) {
+int value = num * i;
+System.out.println(num + " * " + i + " = " + value);
+}
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+' while ' loop
+Syntax of the while loop is :
+while ( condition ) {
+statement 1;
+statement 2;
+.
+.
+statement n;
+}
+Initialization statement is declared just before the while statement.
+Increment / Decrement statement is present inside the body of while loop.
+while loop is also known as entry controlled loop. It is possible that the body of the while loop
+is not executed even once. Following program illustrates the use of while loop :
+/*
+* This program prints the multiplication table of a number
+* using while loop
+*/
+public class MulTableWhileLoop {
+public static void main(String args[]) {
+int num = 11;
+int i = 1; // loop variable initialization
+while ( i <= 10 ) { // condition
+int value = num * i;
+System.out.println(num + " * " + i + " = " + value);
+i++;
+}
+}
+}
+' do ... while ' loop
+Syntax of the do ... while while loop is :
+do {
+statement 1;
+statement 2;
+.
+.
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+statement n;
+} while ( condition );
+' do ... while ' loop is known as exit controlled loop since the condition check is done at the
+end of the loop. Following program illustrates the use of do ... while loop :
+* This program prints the multiplication table of a number
+* using while loop
+*/
+public class MulTableDoWhileLoop {
+public static void main(String args[]) {
+int num = 9;
+int i = 1; // loop variable initialization
+do {
+int value = num * i;
+System.out.println(num + " * " + i + " = " + value);
+i++;
+} while ( i <= 10 ); // condition check for exit
+}
+}
+Nested Loops
+We can use a loop inside the body of another loop. This is known as nesting of loops.
+Following program illustrates the use of nested loops:
+/*
+* This program prints the multiplication tables of multiple
+* consecutive numbers using loop nesting
+*/
+public class MulTablesNesting {
+public static void main(String args[]) {
+int curr_no = 5; // start building mul table from 5
+int num_tables = 3; // No. of tables to build is 3 ( 5 - 7 )
+for ( int i = 0; i < num_tables; i++ ) { // outer loop builds three tables
+for ( int j = 1; j <= 5; j++ ) { //inner loop builds table for each no
+int value = curr_no * j;
+System.out.println(curr_no + " * " + j + " = " + value);
+}
+curr_no++; // increment curr_no for next table
+System.out.println(); //add an extra newline char between two tables
+}
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+' break ' and ' continue ' statement
+' break ' statement is used to terminate the loop immediately without going for further
+conditional check. In case of nested loop, the innermost loop is terminated and the execution
+starts from the next line of the program after the inner loop. We have already seen
+that break is used to break out of switch case construct.
+' continue ' statement doesn't terminate the loop but goes to the beginning of the loop for
+next iteration skipping rest of the loop body.
+Following program illustrates the use of break statement :
+/*
+* Program to demonstrate the behaviour of break statement
+*/
+public class BreakDemo {
+public static void main(String args[]) {
+for ( int i = 0; i < 10; i++ ) {
+if ( i == 7 ) {
+// program terminates here
+break;
+}
+System.out.print( i + " ");
+}
+}
+}
+The for loop is supposed to have 10 iterations printing 0 1 2 3 4 5 6 7 8 9 but
+the break statement causes termination of the loop once i becomes 7. So the output will be 0
+1 2 3 4 5 6 .
+Following program illustrates the use of continue statement :
+* Program to demonstrate the behaviour of continue statement
+* This program prints odd numbers only from 0 to 9
+*/
+public class ContinueDemo {
+public static void main(String args[]) {
+for ( int i = 0; i < 10; i++ ) {
+if ( i % 2 == 0 ) { // check for even number
+// 'i' is even, goto the beginning of the loop
+// skip the print statement
+continue;
+}
+System.out.print( i + " ");
+}
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+Output of the above program is 1 3 5 7 9 . The print statement is skipped using
+the continue statement when we see an even number.
+Q11. DEFINE TYPECASTING. HOW TYPECASTING CAN BE DONE IN JAVA ?
+Typecasting
+Sometimes it is required to explicitly convert a variable from one data type to another. This
+concept is known as typecasting. Following program will make it clear.
+/* * This program demonstrates typecasting */
+public class Typecast {
+public static void main(String args[]) {
+int a = 7, b = 3;
+float x, y, z;
+x = a / b; /* x = 2.0 */
+y = (float)a / b; /* variable 'a' is typecasted [ y = 2.333333 ] */
+z = (float)(a / b); /* (a / b) is typecasted [ z = 2.0 ] */
+System.out.println("x = " + x + "\ny = " + y + "\nz = " + z);
+} }
+In the above program, both a and b are integers. Now, ( a / b ) = ( 7 / 3 )= 2 . Now, since x is
+a float type variable, so x stores 2.000000 . In case of y , variable a is converted to float and
+thus the expression is evaluated as
+y = (float)a / b = ( 7.000000 / 3 ) = 2.333333. In case of z, the value of ( a / b ) is converted
+to float and the expression is evaluated as y = (float) ( a / b ) = float ( 7 / 3 ) = float ( 2 ) =
+2.000000.
+Automatic Type Conversion
+In Java, we can mix variables and constants of different data types in an expression. During
+evaluation, operands of lower type is automatically converted to higher type. For e.g, If an
+expression consists of byte, int and float operands, the result is always promoted to float.
+Q9. WHAT ARE COMMAND LINE ARGUMENTS. HOW COMMAND LINE ARGUMENTS ARE DONE IN JAVA ?
+Command-Line Arguments
+A Java application can accept any number of arguments from the command line. This allows
+the user to specify configuration information when the application is launched.
+The user enters command-line arguments when invoking the application and specifies them
+after the name of the class to be run. For example, suppose a Java application
+called Sort sorts lines in a file. To sort the data in a file named friends.txt, a user would
+enter:
+java Sort friends.txt
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+When an application is launched, the runtime system passes the command-line arguments to
+the application's main method via an array of Strings. In the previous example, the
+command-line arguments passed to the Sort application in an array that contains a
+single String: "friends.txt".
+Echoing Command-Line Arguments
+The Echo example displays each of its command-line arguments on a line by itself:
+public class Echo {
+public static void main (String[] args) {
+for (String s: args) {
+System.out.println(s);
+} } }
+The following example shows how a user might run Echo. User input is in italics.
+java Echo Drink Hot Java
+Drink
+Hot
+Java
+Note that the application displays each word — Drink, Hot, and Java — on a line by itself.
+This is because the space character separates command-line arguments. To have Drink, Hot,
+and Java interpreted as a single argument, the user would join them by enclosing them within
+quotation marks.
+java Echo "Drink Hot Java"
+Parsing Numeric Command-Line Arguments
+If an application needs to support a numeric command-line argument, it must convert
+a String argument that represents a number, such as "34", to a numeric value. Here is a code
+snippet that converts a command-line argument to an int:
+int firstArg;
+if (args.length > 0) {
+try {
+firstArg = Integer.parseInt(args[0]);
+} catch (NumberFormatException e) {
+System.err.println("Argument" + args[0] + " must be an integer.");
+System.exit(1);
+}
+}
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL
+*******
+Prepared By: Dr O. Sampath. Assoc. Professor - Dept. of CSE RGMCET:: NANDYAL

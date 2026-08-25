@@ -1,0 +1,520 @@
+Unit – VI
+Open Source RPA & Future of RPA
+What Is Open Source Software?
+Introduction:
+Open Source Software refers to software whose source code is made freely available for anyone to use, modify, and
+distribute. This concept promotes collaboration, transparency, and innovation in software development.
+Origin and Background:
+The idea of open source software can be traced back to the 1970s and 1980s, when programmers in universities and
+research labs shared code freely. One of the key figures behind this movement was Richard Stallman, who worked at
+the MIT Artificial Intelligence Laboratory.
+Richard Stallman and the Free Software Movement:
+Richard Stallman became concerned about the restrictions copyrights imposed on programmers. In response, he
+launched the Free Software Movement in the early 1980s. His goal was to create a completely free operating system
+similar to Unix, which was then controlled by AT&T. He named it GNU, which stands for “GNU’s Not Unix.”
+Philosophy Behind Free Software:
+Stallman’s approach was not just about giving software away for free. It was about granting freedom to use, study,
+modify, and share the software. Anyone could improve or sell the software as long as they allowed others the same
+rights to use and modify it. This collaborative approach led to faster innovation than traditional software development.
+Rise of Linux and Acceleration of Open Source:
+In the early 1990s, Linus Torvalds, a Finnish programmer, developed the Linux kernel, which was missing in GNU.
+The combination of GNU tools and the Linux kernel created a complete operating system known as GNU/Linux.
+Linux became widely used, especially for web servers, and inspired the growth of companies like Red Hat.
+Transition from “Free Software” to “Open Source Software:”
+By the late 1990s, the term “free software” created confusion for businesses, as it sounded like “no cost.” To make it
+more acceptable in the corporate world, developers introduced the term “Open Source Software” in 1998. The new
+term emphasized open collaboration and transparency rather than just being “free.”
+The Business Model of Open Source
+Introduction:
+The concept of open source software may seem counterintuitive because the software is made freely available to
+everyone. However, many companies have successfully built profitable businesses using open source models. These
+companies generate significant revenues and even reach billion-dollar valuations by strategically combining free and
+paid components.
+Different Use Cases of Open Source:
+Open source software can be applied in different business contexts. Some companies use it to expand market reach,
+while others use it to build enterprise-level software platforms. The main idea is that by providing free access to the
+software, companies can increase adoption, build a large user base, and later monetize it through additional services,
+features, or platforms.
+Example 1: Google and Android
+When Google developed its mobile operating system, it adopted the open source model and created Android. Initially,
+analysts questioned how a free operating system could generate profit. However, Google realized that making Android
+freely available would encourage widespread use among smartphone manufacturers such as Samsung, creating a
+massive global user base.
+This large user base allowed Google to earn substantial revenue through:
+1. Advertising income generated from the millions of Android devices connected to Google services.
+2. Fees from the Google Play Store, where app developers pay to distribute applications and Google
+earns commissions on sales.
+According to a lawsuit from Oracle, as of 2015, Android had generated $31 billion in revenues and
+$22 billion in profits, proving that open source software could be highly profitable when tied to a
+strong ecosystem.
+Example 2: Elastic – Enterprise Software through Open Source
+Another successful open source business model is Elastic, founded by Shay Banon. In 2004, Banon initially created a
+search engine for recipes called Compass, which later evolved into Elasticsearch, an open source search and analytics
+engine. The software gained massive popularity due to its open availability and usefulness across many applications.
+In 2012, Banon collaborated with Steven Schuurman, Uri Boness, and Simon Willnauer to establish Elastic, the
+company behind Elasticsearch. They later expanded their product ecosystem with:
+• Logstash: A data ingestion tool for collecting and sending logs.
+• Kibana: A visualization tool for representing search and analytics results.
+These tools collectively formed the Elastic Stack (ELK Stack), which became widely adopted in the
+software industry.
+Elastic’s Monetization Strategy:
+Elastic follows a hybrid business model, combining open source and proprietary software.
+• The open source version attracts a large number of users and organizations.
+• The proprietary features and enterprise versions generate revenue from businesses that require
+advanced capabilities.
+• Additional income comes from support services and cloud hosting solutions.
+This strategy balances community growth with sustainable commercial success. Elastic’s approach
+proved highly effective — by October 2018, when Elastic went public, it recorded $89.7 million in
+revenue for the fiscal first quarter of 2020, showing a 58% year-over-year increase and achieving a
+market capitalization of about $6.3 billion.
+Key Insights of the Open Source Business Model:
+1. Free software drives widespread adoption.
+2. Revenue is generated through complementary services such as advertising, hosting, support, or
+premium features.
+3. Community contribution and transparency enhance software quality and innovation.
+4. Hybrid strategies combining free and paid components ensure sustainability.
+The Pros and Cons of Open Source Software
+Introduction:
+Open source software offers both significant advantages and notable drawbacks. It allows users to freely access,
+modify, and distribute software, promoting flexibility and innovation. However, it also poses challenges in control,
+usability, and long-term reliability.
+Advantages of Open Source Software:
+1. Free Availability: The biggest advantage of open source software is that it is free. Companies can
+test and evaluate it without financial risk to see if it suits their requirements.
+2. Innovation: Open source projects often have active developer communities that continuously
+improve the software. In many cases, open source versions surpass commercial alternatives in
+performance and features.
+3. Customization: Since the source code is accessible, organizations can modify the software to meet
+their specific needs, leading to more effective and tailored implementations.
+Disadvantages of Open Source Software:
+1. Control Issues: Open source software evolves rapidly, which can make it difficult for enterprises
+that prefer a clear roadmap and predictable updates. To manage this, some companies like Elastic
+maintain governance structures to control final changes in the code base.
+2. Code Base Confusion: Some open source projects maintain two separate code bases—one for
+community developers and another for the company. This can create confusion, divergence, and
+inconsistent support for customers.
+3. User Interface (UI) Challenges: Developers usually focus on technology rather than design, so
+open source software may lack a user-friendly interface. For instance, while Linux is powerful and
+efficient, it has limited adoption among general consumers compared to Windows or macOS, which
+emphasize design and usability.
+4. Durability Concerns: Open source projects often start with strong enthusiasm but may lose
+momentum over time as newer alternatives appear. This uncertainty poses a risk for corporate users
+who depend on long-term stability and community support.
+5. Skill Requirements: Implementing and maintaining open source software requires technical
+expertise for setup, configuration, hosting, and ongoing maintenance. Hence, organizations need
+skilled IT staff.
+6. Lack of Vendor Backing: Unlike commercial vendors, open source projects rarely offer warranties,
+service guarantees, or legal protection. This absence of formal support can be a major concern for
+enterprise customers.
+OpenRPA
+OpenRPA is an open-source Robotic Process Automation (RPA) platform developed by Allan Zimmermann. During
+the late 1990s, Zimmermann worked as a systems architect in the ISP department at Denmark’s largest telco, TDC,
+where he helped deploy technologies like Exchange, NetApp, IIS, Streaming, and Lotus Notes for automation and
+provisioning. Later, he gained experience in developing provisioning systems and providing high-end consulting
+services.
+In 2017, Zimmermann started receiving requests related to RPA projects. To explore this field, he began by testing the
+Kryon Systems solution. At that time, he was already developing a workflow engine that combined human workflows
+with IT and IoT. When major RPA vendors showed interest only in implementation partnerships, he decided to create
+his own RPA engine, which became OpenRPA.
+OpenRPA includes all the core functions expected from an RPA system, such as a designer to create bots, a debugger,
+and orchestration capabilities. It is built on open-source technologies like MongoDB and NodeRED, which support
+the handling of large volumes of data. This makes OpenRPA particularly effective for applications in IoT (Internet of
+Things) environments.
+A key feature of OpenRPA is its ability to save projects locally, which is beneficial for systems not connected to the
+Internet or those requiring high levels of privacy. The platform supports auditing and traceability, and provides on-
+the-fly AES 265-bit encryption, enabling compliance with international data protection standards such as GDPR
+(General Data Protection Regulation) and HIPAA (Health Insurance Portability and Accountability Act).
+OpenRPA also offers integration with over 2,000 IT systems, facilitating better communication between bots. It
+supports on-premise deployment as well as deployment on various cloud platforms, including Azure, AWS, IBM,
+and Alibaba. According to Zimmermann, the major distinction of OpenRPA is its approach to non-RPA integration
+in the backend, unlike other RPA tools that rely on additional plugins or add-ons.
+When Zimmermann began this project, there were no open-source RPA solutions based on a workflow designer, and
+only one existing tool had a backend, which was merely a scheduling engine. OpenRPA was therefore developed as a
+comprehensive platform capable of automating every aspect of a business process, covering IT systems, human
+tasks, and connected devices. By integrating RPA, workflows, AI, and IoT into one secure and open platform,
+OpenRPA aims to enhance automation efficiency and create a positive impact on businesses and people’s lives.
+UI.Vision
+In 2001, Ann Do and Mathias Roth founded iOpus, a company that developed an application called iMacros, which
+was a macro recorder tool for web browser forms. The tool gained massive popularity with over one million active
+daily users. The founders later sold iOpus in 2012 to Ipswitch. In 2016, Do and Roth launched a new start-up named
+a9t9, which led to the creation of UI.Vision, a platform designed to simplify automation using visual methods.
+According to Mathias Roth, the idea for visual RPA came from the growing complexity and frustration of dealing with
+various browser internals such as Internet Explorer, Firefox, and Chrome while developing iMacros. The goal was to
+create a system that allowed users to automate their daily tasks easily without getting involved in the technical
+complexities of browsers.
+UI.Vision is primarily based on the latest innovations in computer vision. It follows a visual approach to automation,
+operating in the same way a human does—by observing the screen visually. This allows UI.Vision to work with any
+kind of application, including web and desktop applications, across multiple operating systems like Mac, Linux,
+and Windows. Roth described this visual method as “the most powerful approach to automation.”
+For non-visual tasks, Roth recommends using established scripting languages such as PowerShell or Python, rather
+than creating a new scripting system. UI.Vision provides a command-line API that allows seamless integration with
+these scripting languages. This means users can call UI.Vision from within a script and the RPA software can return
+data back to the scripting environment, allowing for flexible automation workflows.
+UI.Vision supports a wide range of use cases, including Citrix automations, which are often challenging, and
+automation via remote access tools like TeamViewer, AnyDesk, or RDP. It is also suitable for automating modern
+and complex web applications, such as Gmail and Facebook, which are difficult to handle using traditional
+Selenium-style automation due to their complex structures and dynamic elements.
+In terms of the business model, UI.Vision RPA software is available for free as UI.Vision RPA Core, while the
+company a9t9 offers paid add-ons under the UI.Vision RPA XModules system that provide additional premium
+features. The platform is designed with a strong focus on security. Roth emphasized that all Internet access is
+restricted to the open-source core, while the closed-source add-on packages operate locally and never send data
+externally or “call home.” This design makes UI.Vision a secure and reliable RPA solution for users across different
+environments and industries.
+Robocorp
+Antti Karjalainen, the founder of Robocorp, possesses a strong background well-suited for the RPA (Robotic Process
+Automation) industry. He holds two master’s degrees in Information/Service Management and Automation
+Technology/Industrial Management. After completing his studies, he worked in software automation and led the
+RPA segment of the Robot Framework open-source initiative. His experiences convinced him that the open-source
+model was the best approach for developing scalable automation solutions.
+In January 2019, Karjalainen established Robocorp in Finland to build a comprehensive RPA platform from the
+ground up. He initially worked from his garage, demonstrating the startup’s humble beginnings. However, to achieve
+global scalability, he recognized the need for significant financial backing. According to Karjalainen, “Funding is
+critical to create a global ecosystem. Our vision was to make something like GitHub for automation. Instead of sharing
+code, Robocorp would allow for the sharing of processes.”
+To bring this vision to life, Karjalainen first secured $500,000 in angel funding. Later, in November 2019, Robocorp
+raised $5.6 million in a venture capital round led by Benchmark, with participation from Slow Ventures, firstminute
+Capital, Bret Taylor (President and Chief Product Officer of Salesforce), and Rob Bearden (CEO of Docker).
+Benchmark partner Peter Fenton, a notable Silicon Valley investor behind companies like Elastic, Twitter, and Yelp,
+joined Robocorp’s board of directors, further strengthening its leadership and credibility.
+Robocorp focuses on a developer-centric approach, making open source its foundation for fostering innovation and
+accessibility. Karjalainen explained that traditional RPA systems are often expensive, where a bot must typically
+replace about half a year’s worth of an employee’s hours to be cost-effective. In contrast, Robocorp’s open-source
+model aims to make automation affordable and widely adoptable, introducing the concept of “robosourcing”—the
+idea of using robots to perform business tasks efficiently across organizations of all sizes.
+The core of the Robocorp framework is built on the Robot Framework, an established open-source automation
+platform. In addition, Robocorp is developing a cloud platform to manage orchestration, security, and access
+control. These capabilities are designed to be offered under a Software-as-a-Service (SaaS) model, making
+deployment and management more accessible for businesses.
+In June 2019, Robocorp launched a private beta program involving ten companies across diverse industries,
+including consulting, integration, finance, and logistics. The goal was to refine the software and study its impact on
+real-world operations. The results were highly encouraging — one banking client reported saving 1,369 years of
+customer waiting time within a single month of implementing Robocorp’s automation solutions.
+Robocorp planned to make its software publicly available in the first half of 2020, aiming to revolutionize RPA
+through open source, cloud integration, and a developer-first ecosystem that democratizes automation for businesses
+worldwide.
+Orchestra
+Adam Marcus, a computer scientist and entrepreneur, strongly believes in combining human intelligence with the
+power of computers and software. His primary focus was on how human insight could be effectively embedded within
+automated systems. During his time at the Massachusetts Institute of Technology (MIT), in the Computer Science
+and Artificial Intelligence Laboratory (CSAIL), he explored this idea extensively for his dissertation. His research
+later culminated in a book titled “Crowdsourced Data Management: Industry and Academic Perspectives.”
+Marcus was not just an academic; he was also a practical innovator. To apply his ideas, he co-founded a start-up called
+Locu, which utilized machine learning and human participation to collect and manage data about restaurant
+pricing. The platform automated the process of determining what every restaurant charges for food, combining
+artificial intelligence with crowdsourced human input for accuracy and efficiency. The success of this hybrid approach
+led to Locu being acquired by GoDaddy for $70 million in 2013.
+Building on this experience, Marcus realized the potential for creating automation software that could enhance worker
+productivity by integrating humans directly into the automation loop. This concept became the foundation for
+Orchestra, which he launched in 2015. Orchestra is an open-source platform designed to enable seamless
+collaboration between humans and machines through structured workflows and intelligent process management.
+The platform includes several key components and features that enhance its effectiveness:
+1. Workflows:
+This is the core component of Orchestra. It provides features for reviewing tasks, managing
+projects, and distributing work between human users and automated systems. Workflows ensure
+that both people and machines contribute efficiently to completing complex processes.
+2. StaffBot:
+StaffBot is designed to streamline the staffing process. It automates the assignment of team
+members to specific projects or tasks quickly and effectively, eliminating unnecessary manual
+coordination and administrative steps.
+3. SanityBot:
+SanityBot acts as a project monitoring tool, ensuring that all workflows are on track. It operates
+through Slack channels, automatically checking progress updates and helping teams maintain
+consistency and accountability throughout a project’s lifecycle.
+4. Time Tracking:
+Orchestra includes an in-built time tracking system that estimates the duration required for each
+task or project. This helps in analyzing productivity, improving project planning, and optimizing the
+allocation of resources.
+By combining automation with human oversight and collaboration, Orchestra represents a new generation of open-
+source platforms aimed at enhancing workplace efficiency. It allows organizations to integrate human intelligence,
+machine learning, and process automation in a single framework, making it a significant contribution to modern
+workflow management and intelligent automation.
+Future of RPA: Consolidation and IPOs
+The Robotic Process Automation (RPA) market is witnessing rapid growth with more than 70 vendors currently
+competing in the industry. Due to the high interest from venture capitalists and the increasing number of players, the
+market is expected to experience significant consolidation in the coming years. Many RPA companies will find it
+challenging to differentiate themselves and attract potential customers, leading to mergers and acquisitions.
+Major RPA players like UiPath, Automation Anywhere, and Blue Prism have already started acquiring smaller
+companies, and this trend is expected to accelerate. The purpose of these acquisitions is to expand the RPA
+technology stack, enter new industries, and increase their customer base. According to Dr. Gero Decker, CEO of
+Signavio, RPA vendors must diversify beyond their core products and niche technologies to strengthen their position in
+the market. He emphasizes that automation vendors should focus on broadening the scope of automation use cases,
+enhancing ease of implementation, and automating beyond redundant tasks to maintain competitiveness.
+Another major trend in the future of RPA will be the Initial Public Offerings (IPOs) of major RPA vendors.
+Currently, Blue Prism is the only pure-play public RPA company. However, in the coming years, Automation
+Anywhere and UiPath are expected to go public. The objective behind IPOs is not just to raise capital—since RPA
+companies already have strong funding—but to gain prestige, liquidity, and transparency.
+Prestige is achieved as only companies with strong revenues, a large customer base, and a clear path to profitability
+can become public. It also increases media and analyst attention, enhancing the company’s reputation. Liquidity is
+another advantage, as employees who accepted equity in place of higher salaries can convert their shares into cash
+once the company is listed. Transparency plays a crucial role because public companies are legally required to
+disclose key financial and operational information, enabling better industry evaluation and building trust with
+customers and investors.
+Hence, the future of RPA will likely be shaped by market consolidation through mergers and acquisitions, along
+with public offerings by leading vendors, both of which will contribute to the maturity, stability, and credibility of
+the RPA industry.
+Microsoft
+Historically, Microsoft has often been a follower in adopting new technologies. This was evident with its entry into
+graphical user interface (GUI)-based operating systems and Internet browsers. Initially, its versions took several
+iterations to become competitive, but once perfected, as seen with Windows 3.0, the results were remarkable and
+helped the company dominate the market.
+Despite being a late entrant in some areas, Microsoft has always possessed several strong advantages such as immense
+financial resources, a trusted global brand, a vast ecosystem of partners, and a massive customer base. These
+strengths have consistently enabled it to catch up quickly and establish leadership positions in emerging technologies.
+Regarding Robotic Process Automation (RPA), Microsoft has now made it a strategic priority. At its Ignite
+Conference in November 2019, Microsoft officially announced its entry into the RPA market. It built its RPA solution
+by leveraging its existing Power Platform, which already supported Business Intelligence (BI), low-code
+development, and workflow management. This platform was enhanced to create Power Automate, Microsoft’s RPA
+product.
+Power Automate integrates with Selenium, an open-source tool used to record and automate web-based applications.
+The platform includes over 275 prebuilt connectors to various apps and services, enabling easy integration across
+systems. It also features Artificial Intelligence (AI) capabilities and provides native integration with other
+Microsoft products such as Office 365, Dynamics 365, and Azure.
+Although some coding knowledge is required to use Power Automate, it mainly operates through a high-level, drag-
+and-drop interface, making it accessible to non-technical users. Additionally, Microsoft has ensured that automation
+workflows can be connected seamlessly with Microsoft Teams, allowing users to create alerts and triggers directly
+within the collaboration platform.
+Power Automate is considered a strong and promising RPA solution, but it currently lacks certain enterprise-grade
+features such as comprehensive identity management. However, these capabilities are expected to be integrated in
+the coming years as Microsoft continues to refine the product. Given Microsoft’s vast technical expertise, financial
+capacity, and innovation-driven culture, it is well positioned to advance rapidly in the RPA domain and become a
+key competitor in the automation industry.
+Attended Automation
+RPA technology has primarily focused on unattended automation, where bots operate independently without human
+intervention. This approach has been easier to implement since it removes the complexity of human involvement.
+However, attended automation is now emerging as a powerful approach that combines human intelligence with the
+efficiency of bots to achieve better results.
+In attended automation, an employee works alongside a bot, using the bot’s speed, accuracy, and intelligence while
+applying their own skills and judgment to solve complex problems. This collaboration creates a strong synergy
+between humans and machines, enhancing productivity and improving decision-making.
+Recent advancements in integration and Artificial Intelligence (AI) have significantly improved attended
+automation technology. According to Francis Carden, Vice President of Digital Automation and Robotics at PEGA,
+businesses are beginning to focus more on attended automation. He emphasizes that combining bots and humans can
+produce optimal outcomes quickly and effectively. In industries like call centers and large front or back offices,
+attended RPA can be deployed rapidly, delivering faster return on investment (ROI) and enabling employees to
+handle routine tasks efficiently.
+Similarly, Barry Cooper, Enterprise Group President at NICE, highlights that organizations are realizing the value of
+attended automation in improving employee performance and workload management. By providing each
+employee with a personal robotic assistant, attended bots can guide them in real time, automate repetitive tasks, and
+allow employees to focus on higher-value work that requires creativity and problem-solving. This not only increases
+efficiency but also improves employee satisfaction and customer service quality.
+A strong example of this trend is Automation Anywhere’s acquisition of Klevops, a Paris-based start-up. The
+company introduced Attended Automation 2.0, which enables managers to orchestrate workflows between teams of
+employees and bots. This approach enhances employee productivity and provides a better customer experience.
+Moreover, it ensures centralized governance, security, and analytics, maintaining the high standards Automation
+Anywhere is known for.
+Attended automation is expected to gain significant traction, especially in industries dependent on contact centers,
+such as banking and telecommunications, where human interaction is vital but can be augmented through
+automation for improved efficiency and service delivery.
+Vertical-Specific Companies
+Most RPA vendors design solutions that can be used across multiple industries, but many of them still specialize in
+certain domains. As RPA technology matures, there is an increasing trend toward vertical-specific companies, which
+focus on developing automation solutions tailored to the needs of a particular industry. This approach allows for more
+specialized and effective automation, as each industry has unique use cases and challenges that require customized
+solutions.
+A prime example of this trend is Olive, a company focused specifically on the healthcare industry. The founder and
+CEO, Sean Lane, has a unique background as an intelligence officer in the U.S. Air Force, where he worked at the
+National Security Agency (NSA) and gained valuable experience in handling large-scale engineering challenges.
+After completing five tours of duty in Afghanistan and Iraq, he returned to the U.S. and became deeply concerned
+about the opioid addiction crisis. Determined to make a difference, he applied his expertise in data analysis to address
+inefficiencies in the healthcare sector.
+Upon studying the healthcare system, Lane discovered that enterprise systems were highly proprietary, meaning they
+couldn’t easily communicate with each other. These systems were also complex, unintuitive, and often required hiring
+consultants or outsourcing firms to add new functionalities. This made it difficult to implement modern technologies
+like Artificial Intelligence (AI).
+Seeing this gap, Lane founded Olive with the goal of creating an AI-powered digital workforce. Instead of replacing
+existing software systems, Olive automates repetitive and error-prone workflows, mimicking the manual tasks
+performed by human employees—only much faster and more accurately. Lane’s vision is to reduce healthcare
+costs by a trillion dollars while enhancing the human experience.
+The name “Olive” represents a digital employee who works confidentially and efficiently. Olive assists with tasks
+such as collections, coding, and credential management, and understands the complex language of healthcare,
+including Electronic Health Records (EHRs), patient accounting systems, and third-party portals.
+Olive is designed to be proactive and adaptive. For example, if a system error occurs, Olive automatically fixes it. If
+a payer portal changes, she updates her workflow accordingly. She can even analyze data to discover cost-saving
+opportunities and notify her manager. Each Olive is connected within a networked digital workforce, allowing
+hospitals to learn collectively and avoid solving the same problems repeatedly. Lane refers to this as creating a “true
+internet of healthcare.”
+The healthcare industry is an ideal target for RPA, as nearly $1 trillion in U.S. healthcare spending is administrative.
+Employees spend significant time on mundane, repetitive tasks, such as data entry and document management,
+which leads to burnout, boredom, and high turnover rates. Lane envisions that even eliminating 1% of this
+administrative burden could fund more research, new treatments, and medical breakthroughs, demonstrating the
+transformative potential of vertical-specific RPA solutions like Olive.
+Hype Factor
+In 1995, Gartner analyst Jackie Fenn introduced the concept of the “Hype Cycle,” a framework that explains how
+emerging technologies evolve through predictable stages of public attention and maturity. The model consists of five
+main phases that illustrate the journey of a technology from innovation to mainstream adoption.
+The first phase is the Technology Trigger, where a new and transformative technology emerges and captures the
+attention of the media, entrepreneurs, and venture capitalists. At this stage, there are usually a few prototypes or proof-
+of-concept models, but the technology’s commercial viability is still uncertain.
+The second phase is the Peak of Inflated Expectations, where the technology gains momentum and public
+excitement reaches its highest point. Social media and large investments accelerate this enthusiasm, often leading to
+unrealistic claims and phrases like “game changer” and “inflection point.”
+The third phase is the Trough of Disillusionment, where excitement fades as some companies fail or struggle to meet
+expectations. Investors lose confidence, stock prices fall, and customers realize that the new technology is not
+delivering the promised ROI.
+The fourth phase is the Slope of Enlightenment, where the technology becomes more refined and its applications
+better understood. Although the media attention decreases, the technology’s practical impact increases, and more
+sustainable progress begins to take shape.
+The fifth and final phase is the Plateau of Productivity, where the technology becomes mainstream, standards are
+established, and its use becomes a normal part of business operations.
+Although the Hype Cycle is not a perfect framework and Gartner itself has made incorrect predictions in the past, it
+remains a valuable tool for understanding technological trends. It helps companies adopt a long-term perspective
+and avoid investing too early in technologies with uncertain commercial value. According to Gartner, if too many
+questions remain about a technology’s viability, it is better to wait until tangible value has been demonstrated.
+When it comes to Robotic Process Automation (RPA), determining its exact position on the Hype Cycle is
+challenging. RPA has existed for over two decades, but its rapid acceleration began only in the last six or seven years.
+Based on current trends, RPA appears to be beyond the Peak of Inflated Expectations and entering the early phase
+of the Trough of Disillusionment.
+There is still strong media attention and abundant funding, but also increasing recognition of RPA’s challenges—
+particularly in scaling implementations and integrating with AI technologies. Some major companies are
+experiencing growing pains, as seen when UiPath laid off around 300 to 400 employees, or about 11% of its
+workforce, in late October.
+This does not indicate that UiPath or the RPA industry is in trouble. UiPath remains strong in its product offerings,
+customer base, and financial health. However, the focus in the industry is shifting from rapid expansion to
+sustainable growth and profitability. Following the downfall of companies like WeWork, investors and executives
+are now emphasizing efficiency and balanced growth. As UiPath CEO Daniel Dines noted, organizations must
+“balance growth with efficiency” to ensure long-term stability and success.
+Artificial Intelligence (AI)
+Artificial Intelligence (AI) is considered one of the most important drivers for Robotic Process Automation
+(RPA). According to research by PwC, AI is expected to contribute about $15.7 trillion to global GDP by
+2030, which exceeds the combined output of China and India. The report states that “AI touches almost
+every aspect of our lives, and it’s only just getting started.”
+Despite its potential, AI today remains limited and narrow. For example, AI assistants like Alexa or Siri can
+handle simple commands but are still far from engaging in full, free-form conversations. Therefore, when
+combining AI and RPA, businesses should focus on clear-cut and practical use cases. PwC’s report
+suggests focusing on solving “boring” problems—functions like finance, HR, tax, and compliance—rather
+than large-scale implementations. In 2020, only 4% of companies planned to scale AI across their
+organizations, while 44% of executives saw AI as a way to improve efficiency and 42% viewed it as a
+tool for productivity.
+Before initiating new AI projects or purchasing new software, companies should evaluate their existing
+systems, as many enterprise platforms like Oracle, Salesforce, and Microsoft already include built-in AI
+capabilities. Testing these features can enhance automation and help organizations understand how to
+integrate AI effectively.
+Many RPA vendors are also incorporating AI features, often referred to as Intelligent Automation (IA).
+However, businesses should take time to operationalize AI within their workflows, identifying which types
+of AI are relevant and manageable. According to Ryan Duguid, Chief Evangelist at Nintex, “AI, especially
+machine learning, has a big role to play in making sense of all the data that will be generated,” since tracking
+every click and keystroke produces massive volumes of data.
+Several interesting use cases combine AI and RPA effectively:
+1. Corporate E-mail Inboxes: RPA can detect new emails with attachments and route them to AI tools
+that use OCR and NLP to extract key information such as invoice numbers, payment terms, and
+contractual details, which can then be sent to CRM or ERP systems.
+2. Contract Management: RPA automates routine contract tasks, while AI uses NLP to understand
+and normalize varied legal language, enabling automatic alerts for renewals or credits.
+3. Invoice Automation: AI applies NLP and machine learning to extract and structure data from
+differently formatted invoices, allowing RPA to handle input, validation, and reconciliation.
+4. Financial Document Analysis: RPA collects data from structured sources, while AI tools with OCR
+and NLP extract and convert data from unstructured PDFs into structured formats for further
+automation.
+5. Insurance Claims: AI can process unstructured data like images or medical scans, while RPA
+automates structured claim data entry and validation.
+Finally, with technologies such as Natural Language Generation (NLG), RPA and AI can automatically
+produce written reports from structured datasets. According to Sharon Daniels, CEO of Arria, integrating
+NLG enables instant creation of expert-level reports in natural language, extending the reach and impact of
+automation in organizations.
+Software-as-a-Service (SaaS) and Open Source
+RPA software is currently deployed mostly on-premise, but a significant transition toward a Software-as-a-
+Service (SaaS) model is expected in the near future. A cloud-native platform will make upgrades,
+maintenance, and data access much easier, which will be especially critical for the integration of Artificial
+Intelligence (AI) applications.
+According to Antti Karjalainen, founder and CEO of Robocorp, “When the software robot becomes a
+commodity, we will start to see the next wave of adoption in RPA.” He explained that small and medium-
+sized businesses (SMBs) will increasingly adopt business process automation but may lack the technical
+expertise to implement it independently. This will create opportunities for a new kind of service provider
+called Robotics-as-a-Service (RaaS) operators. These operators can help SMEs by automating their
+business routines and maintaining their software robots. RaaS providers may specialize in certain industries,
+such as car dealerships or real estate, or they can offer general automation services in their local regions.
+Another major change will be seen in the business model. As RPA implementation scales, the traditional
+per-bot licensing fees can become expensive and limit widespread adoption. Therefore, customers will
+prefer subscription-based pricing models. Leading companies such as SAP, Intellibot, and Nintex have
+already introduced lower-priced subscription strategies to gain a competitive edge in the increasingly
+crowded RPA market.
+At the same time, organizations are showing growing interest in the open source approach to manage costs
+and encourage innovation. Open source software offers additional advantages, such as building a strong
+developer ecosystem that continuously enhances and innovates the platform. Although the current open
+source RPA landscape is still fragmented and adoption levels are relatively small, this trend is expected to
+evolve rapidly as open source becomes more prominent across industries.
+Karjalainen further stated that traditional RPA systems have not encouraged participation from the developer
+community because the high cost of entry has limited both market share and profitability. However, as
+RPA becomes more open-source driven, developer interest will rise. This will give birth to a new
+specialization known as the “RPA developer,” who will focus on creating innovative automation tools and
+solutions.
+Phil Simpson, Product Marketing Manager for Process Automation at Red Hat, emphasized that open
+source is essential for the future of RPA. He said, “Open source is a central pillar of modern cloud stacks,
+and if RPA is to have a role in hybrid cloud infrastructure, it must be open source as well.” Although current
+open source RPA projects are not yet as comprehensive as proprietary solutions—especially regarding
+enterprise-grade support—the industry is steadily moving toward a more open and flexible model. This
+progression is expected to bring parity between open source and proprietary RPA systems, ultimately
+giving customers greater flexibility and choice in automation technologies.
+Chatbots
+Chatbots are systems that use Natural Language Processing (NLP) to communicate with people. Although
+both chatbots and Robotic Process Automation (RPA) involve software bots, they have distinct functions.
+Chatbots are designed to interact and converse with users, while RPA focuses on automating repetitive and
+rule-based business processes. In the consumer world, chatbots such as Siri and Cortana are widely used,
+while in businesses, they are increasingly adopted for customer service and support functions.
+The market for chatbots is growing rapidly. According to Reports and Data, global spending on chatbot
+technology is projected to increase from $1.17 billion in 2018 to $10.8 billion by 2026, with a compound
+annual growth rate (CAGR) of 30.9%. Major factors driving this growth include the widespread use of
+social media platforms and smartphones. Moreover, Juniper Research predicts that chatbot-driven cost
+savings will rise from $209 million in 2019 to $7.3 billion by 2023, showing their potential to significantly
+impact business efficiency and profitability.
+Chatbots can also integrate effectively with RPA systems. Internally, chatbots can act as virtual assistants,
+helping employees access information and insights quickly. Externally, they can automate customer
+interaction processes, enhancing responsiveness and reducing manual workload.
+A practical example of chatbot and RPA integration can be seen in Aflac, a leading provider of financial
+protection for health-related issues, serving over 50 million customers. Aflac has been using automation
+technologies, including screen scraping, long before RPA became mainstream. In 2017, Aflac implemented
+two RPA systems with the help of consultants. The first bot automated wellness claims processing, which
+was a quick success, leading to the creation of 28 additional bots. Notably, one employee whose job was
+partially automated was later promoted to manage the RPA system.
+As Aflac’s automation capabilities matured, the company expanded its focus to chatbot technology.
+Initially, it deployed a Facebook Messenger chatbot to answer common customer queries and redirect more
+complex issues to human call center agents. However, this system failed because Facebook Messenger could
+not identify individual users, making personalized responses impossible. Additionally, the company’s Q&A
+database lacked sufficient depth and quality.
+Learning from this failure, Aflac revised its strategy. The company introduced a new chatbot system that
+allowed employees to answer questions directly, which helped build a more accurate and comprehensive data
+foundation. This version included a login system to identify users and a significantly improved database,
+increasing the number of question types from 500 to over 20,000.
+The result was a major success, with higher customer satisfaction levels and reduced call center traffic
+during peak periods. As stated by Keith Farley, Vice President of US Innovation at Aflac, “We realized that
+the chatbot was not a replacement for employees. There are times when customers want to talk with a person,
+especially in situations involving illness or disease.”
+Aflac’s experience demonstrates that while chatbots can greatly improve efficiency and service quality, the
+best outcomes are achieved when they are used in combination with human support, ensuring both
+automation and empathy in customer interactions.
+Data Privacy, Ethics, and AI Regulation
+Governments across the world are becoming increasingly proactive in regulating the use of data, particularly
+as Artificial Intelligence (AI) continues to evolve into a powerful and influential technology. The European
+Union’s General Data Protection Regulation (GDPR) and the California Consumer Privacy Act
+(CCPA) are two landmark laws that serve as foundational frameworks for future data protection regulations
+in other regions and countries.
+As Robotic Process Automation (RPA) becomes more advanced and moves beyond simple rules-based
+automation, organizations must be especially cautious about compliance with these data privacy laws. Non-
+compliance or ethical lapses can result in severe consequences, including hefty fines and reputational
+damage.
+According to Zachary Jarvinen, Head of Technology Strategy, AI and Analytics at OpenText, the main
+objective of data privacy laws is to give consumers the right to know how their personal data is collected
+and used, and to provide them the legal authority to take action in cases of bias or data breaches. He further
+explains that while most organizations have traditionally focused on structured data, they now need to pay
+equal attention to unstructured and textual data that may contain Personally Identifiable Information
+(PII).
+Jarvinen emphasizes that archived data is a significant concern for many enterprises, as it often holds
+sensitive information that is difficult to monitor. To address this, AI-powered solutions can be used to
+identify, track, and manage sensitive data through automated workflows. Additionally, organizations must
+implement strong data governance frameworks to define accountability for data security and ensure
+compliance with privacy regulations. This may include forming specialized teams that combine both
+technical and regulatory expertise to oversee enterprise-wide data policies.
+Another crucial aspect of ethical AI is the elimination of bias in datasets. Since AI models rely heavily on
+data, any inherent bias can lead to unfair or discriminatory outcomes. Therefore, datasets must be cleaned,
+diversified, and validated to ensure they represent a wide range of backgrounds and characteristics.
+Organizations must also focus on achieving explainability and transparency in their AI systems. Black-box
+models that produce results without clarity can lead to mistrust and legal complications. According to
+research from DataRobot, 59% of companies plan to invest in more white-box AI systems to improve
+explainability, 54% intend to hire internal personnel to manage AI trust, and 48% will rely on third-party
+vendors for ensuring ethical AI governance.
+Lastly, the use of metadata is emerging as a valuable approach in enhancing data privacy and compliance.
+Steve Wood, Chief Product Officer at Boomi, highlights that metadata can support privacy management by
+allowing organizations to gain insights into lead generation changes, third-party data access, and
+potential breaches. With the help of machine learning and AI modeling, metadata can deliver meaningful
+information to business leaders while maintaining compliance with privacy standards and regulations.
+_______________________________________________________________________________________

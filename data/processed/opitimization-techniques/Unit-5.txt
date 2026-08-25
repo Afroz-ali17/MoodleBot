@@ -1,0 +1,399 @@
+Unit-5
+PERT&CPM
+I. Introduction about Network Analysis:
+Whenever dealing with a project like construction of building, introducing a new
+product, or buying and installing a new machine, what come to mind includes
+project completion deadlines, availability and requirement of resources for
+activities to be done, the project costs…. so on. In fact, undertaking any project
+requires breaking it down into constituent activities, establishing precedence
+relationships between them (that is which activity will precede/succeed which
+other activity or activities), time and resources needed for each activity, availability
+of the resources and the costs involved.
+PERT and CPM are the techniques which are available to a manager for getting
+answers to question like the following
+ Given the activities to be done in respect of a project along with time needed
+for doing each one of them, how long the project will take to complete?
+ By what date can the work on a particular stage of the project be expected
+to be completed?
+ What activities of the project can be delayed and by how much, while still
+meeting the project completion deadline?
+ What are the chances of completing the project by a certain due date?
+ How best can the limited amounts of resources available be allocated to the
+different activities so that the project can be completed at the earliest?
+ How can the activities be scheduled so that variations in the demand of
+resources may be reduced?
+For, all in all, PERT and CPM are important and potent net work techniques
+which have practical applications.
+II. Managerial Functions of project management:
+Project management by PERT / CPM consists of four main steps.
+1. Planning: The planning phase starts with dividing the total project
+into small project. The smaller projects are further divided into
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+activities and are analyzed by the department or section. The
+relationship of each activity with respect to other activities are defined
+and established and the corresponding responsibilities and the
+authority are also started. Thus, the possibility of overlooking any task
+necessary for the completion of the project is reduced substantially.
+2. Scheduling: The aim of this phase is to prepare a time chart showing
+the start and finish times for each activity as well as its relationship to
+other activities of the project. Moreover, the schedule must pinpoint
+the critical path activities which require special attention if the project
+is to be completed in time. For non-critical activities the schedule
+must show the amount of slack or float time which can be used
+advantageously when such activities are delayed or when limited
+resources are to be utilized effectively.
+3. Allocation of Resources: A resource is a physical variable like men,
+machine, space, raw material…etc. which are limited and conflicting.
+Demands are made for the same type of resource and systematic
+method for allocation of resources become essential.
+4. Controlling: The final phase in project management is controlling.
+Progress reports obtained from time to time and updation of reports
+helps to exercise financial and technical control over the project.
+Based on the reports, if needed, new course of action is determined for
+the remaining portion of the project.
+III. Basic terms in Network Analysis
+1. Network: Network is a graphical presentation of all the project activities
+showing their inter-relationship. It is a logical diagram after incorporating
+events and activities.
+2. Event: It is a start or completion of task. In other words an event is an
+instantaneous point of time at which activity or activities start or finish.
+These do not consume time or resource.
+Event start Event finish
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+Circles are used to represent events.
+Types of Events
+a) Merge event: when more than one activity comes and join an event, such
+event is known as merge event.
+b) Burst event: when more than one activity leaves an event, such event is
+known as burst event.
+c) Merge and burst events: An activity may be a merge and a burst event
+at the same time, as with respect to some activities it can be a merge
+event and with respect to some other activities, it may be a burst event.
+3. Activity: A project consists of number of operations or tasks, which are
+called activities and the project is said to be completed when all such
+activities are completed. Activity is the actual performance of a task. This
+consumes resources i.e time, manpower, space, material and money…etc.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+ACTIVITY
+Tail Head
+Activities represent project tasks or operations to be conducted. Every
+activity consumes time and resources for their accomplishment.
+An arrow is usually drawn to represent an activity with its head indicating
+the direction of progress in the project.
+Type of Activities
+1) Preceding Activity : Activities that must be completed immediately prior to
+the start of another activity are called preceding activity/
+2) Succeeding Activity: Activities that cannot be started until one or more or
+other activities are completed, but immediately succeed them are called
+succeeding activities.
+3) Concurrent Activity: Activities that can be accomplished simultaneously
+(concurrently) are known as concurrent activities.
+4) Dummy Activity: An activity that does not consume any kind of resource but
+nearly depicts the technological dependence is called a dummy activity.
+Dummy activity represents network but keeps up the correct logic in
+sequencing the activities. It represented with broken arrow.
+-----------------------------
+Dummy activity
+5) Critical Activity: Critical activities are those which if consumed more than
+their estimated time, the project will be delayed. An activity is called critical if
+its Earliest start time (EST) equivalent to Latest finish time (FST)
+4. Earliest Start Time (EST): It is the earliest possible time at which an
+activity can start and is calculated by moving from first to last event in a
+network diagram.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+5. Earliest Finish Time (EFT): It is the earliest possible time at which an
+activity can finish.
+EFT = EST +duration of that activity.
+6. Latest Finish Time (LFT) : It is the latest time by which the operation must
+be completed so that scheduled date for the completion of the project may
+not be delayed. It is calculated by moving backward from last event to
+first event of the network diagram.
+7. Latest start time (LST) : It is the latest possible time by which work can be
+started.
+LST = LFT – duration of that activity.
+8. Critical path: It is that sequence of activities which decides the total project
+duration. Critical path is formed by critical activities. It is the longest path in
+network and consumes maximum time and resources. A critical path has
+zero float and expected completion dates cannot met, if even one critical
+activity is delayed. A dummy activity joining the critical activities is also
+critical activity.
+9. Slack: It can be calculated by the difference between EFT and LFT for any
+job. A job for which the slack time is zero is known as critical path.
+10. Float: Float in the network analysis represent the difference between the
+maximum time available to finish the activity and the time required to
+complete it. There are so many activities where the maximum time available
+to finish the activity is more than the total time required to complete it. This
+difference is known as floats. Floats are three types are
+1. Total float: It is the additional time which a non-critical activity can
+consume without increasing the project duration. However, total float
+may affect the floats in previous and subsequent activities.
+2. Free float: It is that fraction from total float of an activity which can be
+used for rescheduling the activity without affecting the succeeding
+activity. If both tail and head events are given their earliest times. i.e EST
+and EFT the free float can be calculated by deducting head slack
+from total float.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+3. Independent float: It is the time by which an activity can be rescheduled
+without affecting the other activities, preceding or succeeding. It may
+calculated as follows
+Independent float = Earliest start time (EST) – Earliest finish
+time (EFT) of the activity.
+OR
+Independent float = free float – slack time of tail event.
+IV. Rules for Network Diagram
+1. Each defined activity is represented by one and only one arrow in the
+network.
+2. Before, an activity can be undertaken; all activities preceding it must be
+completed.
+3. The arrows depicting various activities are indicative of the logical
+precedence only. The length and bearing of the arrows are of no
+significance.
+4. The arrow direction indicates the general progression in time. The arrow
+head represents the point in time at which the ‘activity completion’ event
+takes place, while arrow tail represents the point in time at which the event
+‘activity start occurs’.
+5. The event marking the start of activities are called tail events while those
+marking the completion of activities are known as head events.
+6. Events are identified by numbers. An effort should be made to have each
+event identified by a number higher than that allotted to the event
+immediately preceding. In assigning numbers to the events, care should be
+taken that there is no duplication of event number in a network.
+7. The activities are identified by a numbers of their starting and the ending
+events. They are expressed as i-j where i represent the starting event, or
+initial node, number and j represents the ending event, or the terminal node,
+number.
+A
+B D
+4 5
+C
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+Here, A, B, C and D are the activities and 1, 2, 3, 4, and5 are the
+nodes or Events.
+8. A network should have only one initial and one terminal node.
+9. No set of activities can form a circular loop.
+10. All networks are constructed logically or based on the principle of
+dependency.
+11. Parallel activities between two events, without intervening events, are
+prohibited.
+V. Errors in Network Diagram
+1. Dangling: If an activity is disconnected before the completion of all activities in
+A project network diagram, it is called dangling.
+Dangling
+2. Looping: The act of drawing an endless loop is called cycling or looping error.
+Looping
+3. Redundancy: If unnecessary dummy activities are added is called redundancy.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+- - - - - - - - - - - - - - -- - - - ------
+Dummy activity
+VI. Fulkerson’s Rule:
+Fulkerson’s rule is used to assign the numbers to the events. The procedure for
+applying this rule consists of identifying the initial event and then gradually
+converting the succeeding event by deleting the arrows from the previous
+preceding events. A number is assigned only when by such deletions; a node is
+converted into initial events.
+The rule devised by Fulkerson’s is
+1. An initial event is that which has arrows coming out of it, but none entering it.
+There will be one such event in any network, numbering it 1.
+2. Delete all arrows emerging out from event 1. This will create at least one more
+Initial event, number this initial event as numbered 2.
+3. Follow step (2) and number the new initial event as number 3. Continue until
+Has last event is obtained, which has no arrow emerging out of it. (Forwarding
+Events and activities identification in a network).
+VII. Advantages of Network Analysis:
+i) These are most valuable and powerful for planning, scheduling and control of
+operations in large and complicated projects.
+ii) It is a useful tool to evaluate the level of performance by comparing actual
+performance against the planned targets.
+iii) Technological interdependence of various activities can be easily determined of
+proper integration and co-ordination of various operations.
+iv) It involves integrated approach and provides better co-ordination and
+communication between various components of a project.
+v) It can deal with time-cost trade off and determine the optimum schedule.
+vi) The technique is simple and easy and can be easily oriented towards computers.
+VIII. Disadvantages of Network Analysis :
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+1. Construction of networks for complex projects is complicated and time
+consuming due to trial and error approach.
+2. Estimation of reliable and accurate duration of various activities is a difficult
+exercise.
+3. With too many resource constraints the analysis becomes very difficult.
+4. Time-cost trade of procedure in many situations is complicated.
+VIII. Applications of Network Technique: (Applications of PERT / CPM
+techniques)
+Network techniques of PERT and CPM have wide spread applications.
+1. Research and Development (R&D) : PERT was extensively used in
+R&D are for the purpose of development of new products, process
+and systems.
+2. Construction Industry: one of the largest area in which network
+techniques have found application is construction industry.
+3. Manufacturing: few applications in this case are design, development
+and testing of new machines, installing machines and plant layouts.
+4. Marketing: for the development and launch of new projects and for
+plan of distribution, advertisement programmes are designed and
+networks find application in these areas.
+5. Maintenance planning: PERT is used for planning of maintenance
+activities such as shutdown and maintenance of chemical plants,
+power plants, cement manufacturing firms….etc.as well as
+overhauling of huge machineries and equipments.
+6. Inventory planning: net work techniques help in inventory control,
+spare parts acquisition …etc.
+7. Administration: networks have been used by the administration for
+stream lining paper work system, for making major administration
+system revisions, for long range planning and manpower
+planning..etc.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+IX. CPM (Critical Path Method) :
+One of the important objective of the network analysis is to know the minimum
+possible time by which the project can be completed. This is done by determining
+the critical path i.e the sequence of activities with longest duration. It is known as
+critical path because any delay in activities lying on this path would cause a delay
+in the whole project. To quicken the process, the activities lying on the critical path
+should be taken first.
+Critical Path Method (CPM) is a deterministic model, is based on the concept of
+events, not probability. CPM methods can be applied with notable success to large
+scale research and development programs. Ex: construction work, installation work
+and industrial maintenance.
+X. Steps in CPM (Identifying critical path) :
+1. Dividing systematically the project into various activities.
+2. Naming the activities.
+3. Arranging all the activities in logical sequence.
+4. Construction of arrow diagram.
+5. The nodes (events) and activities to be numbered.
+6. Finding time for each activity.
+7. Marking activity time on the arrow diagram.
+8. Early and late, start and finishing times to be calculated.
+9. Tabulating various times and mark EST and LFT on the arrow diagram.
+10. Calculation of total float for each activity.
+11. Critical activities are to be identified and critical path marked on arrow
+Diagram.
+12. Total project time to be calculated.
+13. Crashing critical activities of the network, in case the project durations is to be
+reduced.
+14. Optimizing the cost.
+15. Smoothing network resources.
+XI. Objectives of CPM Analysis :
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+1. To determine a route between two or more operations, that optimizes some
+measures of performance.
+2. To locate the obstacles and difficulties involved in a production process.
+3. To assign the starting and finishing times for each operation or activity.
+4. To determine the float associated with each non-critical activity.
+XII. Advantages of CPM:
+The application of CPM leads to the following advantages:
+1. It provides an analytical approach to the achievement of project objectives,
+which are defined clearly.
+2. It identifies most critical elements and pays more attention to these activities.
+3. It assists avoiding waste of time, energy and money on unimportant activities.
+4. It provides a standard method for communicating project plans, schedules and
+cost.
+5. It is a very useful analysis in production planning of a very large project.
+XIII. PERT ( Project Evaluation and Review Technique)
+PERT is a probabilistic model based on Beta distribution. It derives its estimates
+based on the probability of occurrence. PERT is a popular technique of network
+analysis. According to the originators of the PERT, any given activity delineated in
+a network is unlikely to be completed on time. Sometimes all aspects of a job may
+be easier to complete than expected. While at other times, unexpected obstacle
+may occur, causing unplanned delays. This method uses three time estimates for
+an activity rather than a single time.
+They are
+t
+i) Optimistic time ( ): This is the best shortest time the activity can take to
+o
+complete. It assumes when everything goes well.
+t
+ii) Most like time ( ): This refers to the time that would be expected to occur
+m
+most often if the activity were frequently repeated under exactly the same
+conditions. It is model time.
+t
+iii) Pessimistic time ( ) : This is the longest time the activity could take to finish .
+p
+It is the worst time estimate and represents the time the activity would take if bad
+luck was faced.
+XIV. Advantages of PERT
+1. PERT forces managers and subordinate managers to make a plan for production
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+Because time event analysis is quite without planning and seeing how the pieces
+Fit together.
+2. PERT encourages management control by exception. It concentrates attention on
+Critical elements that may need correction.
+3. It enables forward-working control as a delay will affect the succeeding events
+and possibly the whole project. The production management can somehow make
+up time by shortening that of some other event.
+4. The network system with its sub-systems creates a pressure for action at the
+Right spot and level and at the right time.
+5. PERT can be effectively used for rescheduling the activities.
+XV. Disadvantages of PERT
+1. It is time consuming and expensive technique.
+2. It is based on beta distribution and the assumption of beta distribution may not
+Always be true.
+3. PERT is not suitable when program is nebulous and a reasonable estimate of
+Time schedule is not possible.
+4. It is not useful for routine planning of recurring events such as mass production
+Because once a repetitive sequence is clearly worked out, elaborate and
+Continuing control is not required.
+5. The expected time and the corresponding variance are only estimated values.
+XVI. Distinguish between PERT and CPM:
+Although these techniques use the same principles and are based on network
+analysis yet they differ in the following respects from each other
+S. no PERT CPM
+1 A probabilistic model with A deterministic model with well-known
+uncertainty in activity duration activity.
+2 Approach is event-oriented Approach is activity-oriented
+3 Uses words like network Uses words like arrow diagram, nodes
+diagram, event and slack and float
+4 Does not demarcate between Marks critical activities.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.
+Unit-5
+PERT&CPM
+critical and non-critical activities
+5 Dummy activities are used to Dummy activities are not necessary for
+represent sequencing. usage.
+6 Find application in all those Find applications in all those projects
+projects where resources are where overall costs are primary
+always made available as and importance.
+when required
+7 Suitable especially in defense Suitable for problems in industrial
+projects and research and settings plants maintenance, civil
+development construction projects
+8 It has three time estimates , are t It has one time estimate
+o
+and t and t
+m p
+---------------------0---------------------
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501.

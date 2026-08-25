@@ -1,0 +1,473 @@
+Object Oriented Programming through Java
+Object Oriented Programming: Basic concepts
+Object means a real-world entity such as a pen, chair, table, computer, watch, etc
+The main aim of object-oriented programming is to implement real-world entities,
+for example, object, classes, abstraction, inheritance, polymorphism, etc.
+ Object means a real-world entity such as a pen, Simula is considered the first object-oriented
+chair, table, computer, watch, etc. programming language. The programming
+paradigm where everything is represented as
+ Object-Oriented Programming is a methodology or an object is known as a truly object-oriented
+paradigm to design a program using classes and programming language.
+objects.
+Smalltalk is considered the first truly object-
+ It simplifies software development and maintenance oriented programming language.
+by providing some concepts:
+•Object The popular object-oriented languages
+•Class are Java, C#, PHP, Python, C++, etc.
+•Inheritance
+•Polymorphism
+•Abstraction
+•Encapsulation
+Object
+Object
+ Any entity that has state and behavior is known as
+an object. For example, a chair, pen, table,
+keyboard, bike, etc. It can be physical or logical.
+ An Object can be defined as an instance of a class.
+An object contains an address and takes up some
+space in memory.
+ Objects can communicate without knowing the
+details of each other's data or code. The only
+necessary thing is the type of message accepted
+and the type of response returned by the objects.
+Example: A dog is an object because it has states like
+color, name, breed, etc. as well as behaviors like
+wagging the tail, barking, eating, etc.
+An object is a basic unit of Object-Oriented Programming that represents real-
+life entities. A typical Java program creates many objects, which as you know,
+interact by invoking methods.
+An object mainly consists of:
+1.State: It is represented by the attributes of an object. It also reflects the
+properties of an object.
+2.Behavior: It is represented by the methods of an object. It also reflects the
+response of an object to other objects.
+3.Identity: It is a unique name given to an object that enables it to interact with
+other objects.
+4.Method: A method is a collection of statements that perform some specific
+task and return the result to the caller. A method can perform some specific
+task without returning anything. Methods allow us to reuse the code without
+retyping it, which is why they are considered time savers. In Java, every
+method must be part of some class, which is different from languages
+like C, C++, and Python.
+Class
+ Collection of objects is called class. It is a logical
+entity.
+ A class can also be defined as a blueprint from
+which you can create an individual object.
+ A class is a user-defined blueprint or prototype
+from which objects are created.
+ It represents the set of properties or methods
+that are common to all objects of one type.
+ Using classes, you can create multiple objects
+with the same behavior instead of writing their
+code multiple times.
+Abstraction
+Abstraction
+ Hiding internal details and showing functionality is known as
+abstraction.
+ For example phone call, we don't know the internal processing.
+ AD
+//abstract class
+ In Java, we use abstract class and interface to achieve abstraction
+abstract class GFG
+{
+ Data Abstraction is the property by virtue of which only the essential
+//abstract methods declaration
+details are displayed to the user. The trivial or non-essential units are
+abstract void add();
+not displayed to the user.
+abstract void mul();
+ Ex: A car is viewed as a car rather than its individual components.
+abstract void div(); }
+ Data Abstraction may also be defined as the process of identifying
+only the required characteristics of an object, ignoring the irrelevant
+details. The properties and behaviors of an object differentiate it from
+other objects of similar type and also help in classifying/grouping the
+object.
+ In Java, abstraction is achieved by interfaces and abstract classes. We
+can achieve 100% abstraction using interfaces.
+Encapsulation
+Encapsulation
+//Encapsulation using
+ It is defined as the wrapping up of data under a single unit. It is
+private modifier
+the mechanism that binds together the code and the data it
+manipulates.
+//Employee class
+contains private data
+ Another way to think about encapsulation is that it is a protective
+shield that prevents the data from being accessed by the code called employee id
+outside this shield.
+and employee name
+ Technically, in encapsulation, the variables or the data in a class class Employee
+is hidden from any other class and can be accessed only through
+any member function of the class in which they are declared. {
+private int empid;
+ In encapsulation, the data in a class is hidden from other classes,
+which is similar to what data-hiding does. So, the terms
+private String ename;
+“encapsulation” and “data-hiding” are used interchangeably.
+}
+ Encapsulation can be achieved by declaring all the variables in a
+class as private and writing public methods in the class to set and
+get the values of the variables.
+//base class or parent class or
+Inheritance
+super class
+Inheritance
+Inheritance is an important pillar of OOP (Object Oriented class A
+Programming). It is the mechanism in Java by which one class
+{
+is allowed to inherit the features (fields and methods) of
+//parent class methods
+another class. We are achieving inheritance by
+using extends keyword.
+void method1(){}
+void method2(){}
+Inheritance is also known as “is-a” relationship.
+}
+•Superclass: The class whose features are inherited is known
+//derived class or child class or
+as superclass (also known as base or parent class).
+base class
+•Subclass: The class that inherits the other class is known as
+subclass (also known as derived or extended or child class). class B extends A
+The subclass can add its own fields and methods in addition to
+{
+the superclass fields and methods.
+•Reusability: Inheritance supports the concept of “reusability”, //Inherits parent class methods
+i.e. when we want to create a new class and there is already a
+//child class methods
+class that includes some of the code that we want, we can
+derive our new class from the existing class. By doing this, we void method3(){}
+are reusing the fields and methods of the existing class.
+void method4(){}
+}
+public class Sum
+Polymorphism
+{ // Overloaded sum().
+ It refers to the ability of object-oriented programming languages
+// This sum takes two int parameters
+to differentiate between entities with the same name efficiently.
+public int sum(int x, int y)
+ This is done by Java with the help of the signature and { return (x + y); } /
+declaration of these entities. The ability to appear in many
+/ Overloaded sum().
+forms is called polymorphism.
+// This sum takes three int parameters
+public int sum(int x, int y, int z)
+ If one task is performed in different ways, it is known as
+{ return (x + y + z); }
+polymorphism.
+// Overloaded sum().
+ For example: to convince the customer differently, to draw
+something, for example, shape, triangle, rectangle, etc. // This sum takes two double parameters
+public double sum(double x, double y)
+{ return (x + y); }
+ In Java, we use method overloading and method overriding to
+// Driver code
+achieve polymorphism.
+public static void main(String args[])
+ Another example can be to speak something; for example, a cat
+{ Sum s = new Sum();
+speaks meow, dog barks woof, etc.
+System.out.println(s.sum(10, 20));
+System.out.println(s.sum(10, 20, 30));
+System.out.println(s.sum(10.5, 20.5));
+} }
+Structure of Java Program
+Java is an object-oriented programming, platform-
+independent, and secure programming language that makes it popular.
+Using the Java programming language, we can develop a wide variety of
+applications.
+Documentation Section
+ The documentation section is an important section but optional for a Java program. It
+includes basic information about a Java program.
+ The information includes the author's name, date of creation, version, program name,
+company name, and description of the program.
+ It improves the readability of the program. Whatever we write in the documentation section, the
+Java compiler ignores the statements during the execution of the program.
+ To write the statements in the documentation section, we use comments.
+ The comments may be single-line, multi-line, and documentation comments.
+•Single-line Comment: It starts with a pair of forwarding slash (//). For example:
+A//First Java Program
+•Multi-line Comment: It starts with a /* and ends with */. We write between these two symbols.
+•For example:
+/*It is an example of
+multiline comment*/
+Documentation Comment: It starts with the delimiter (/**) and ends with */. For example:
+/**It is an example of documentation comment*/
+Package Declaration
+Package Declaration
+ The package declaration is optional. It is placed just after the documentation section.
+ In this section, we declare the package name in which the class is placed.
+ Note that there can be only one package statement in a Java program.
+ It must be defined before any class and interface declaration.
+ It is necessary because a Java class can be placed in different packages and directories
+based on the module they are used.
+ For all these classes package belongs to a single parent directory.
+ We use the keyword package to declare the package name.
+For example:
+package language;; //where language is the package name
+package java.lang; //where java is the root directory and lang is the subdirectory
+Import Statements
+Import Statements
+ The package contains the many predefined classes and interfaces. If we want to
+use any class of a particular package, we need to import that class.
+ The import statement represents the class stored in the other package.
+ We use the import keyword to import the class.
+ It is written before the class declaration and after the package statement.
+ We use the import statement in two ways, either import a specific class or import
+all classes of a particular package.
+In a Java program, we can use multiple import statements. For example:
+import java.util.Scanner; //it imports the Scanner class only
+import java.util.*; //it imports all the class of the java.util package
+Interface Section
+Interface Section
+ It is an optional section. We can create an interface in this section if required.
+ We use the interface keyword to create an interface.
+ An interface is a slightly different from the class. It contains
+only constants and method declarations.
+ Another difference is that it cannot be instantiated.
+ We can use interface in classes by using the implements keyword.
+ An interface can also be used with other interfaces by using the extends keyword.
+For example:
+1.interface car
+2.{
+3.void start();
+4.void stop();
+5.}
+Class Definition
+Class Definition
+ In this section, we define the class. It is vital part of a Java program.
+ Without the class, we cannot create any Java program.
+ A Java program may conation more than one class definition.
+ We use the class keyword to define the class.
+ The class is a blueprint of a Java program.
+ It contains information about user-defined methods, variables, and constants.
+ Every Java program has at least one class that contains the main() method.
+For example:
+class Student //class definition
+{
+}
+Main Method Class
+Main Method Class
+ In this section, we define the main() method. It is essential for all Java programs.
+ Because the execution of all Java programs starts from the main() method.
+ In other words, it is an entry point of the class. It must be inside the class.
+ Inside the main method, we create objects and call the methods.
+ We use the following statement to define the main() method:
+public static void main(String args[])
+{
+}
+For example:
+public class Student //class definition
+{
+public static void main(String args[])
+{
+//statements
+}
+}
+Writing Simple Java Programs
+public class Demo //class definition
+{
+public static void main(String args[])
+{
+void display()
+{
+System.out.println("Welcome to first java program");
+}
+//statements
+}
+}
+CheckPalindromeNumber.java
+import java.util.Scanner;
+//class definition
+public class CheckPalindromeNumber
+{
+//main method //logic to check if the number id palindrome or not
+public static void main(String args[]) temp=x;
+{ while(x>0)
+//variables to be used in program {
+int r, s=0, temp; r=x%10; //finds remainder
+int x; //It is the number variable to be checked f s=(s*10)+r;
+or palindrome x=x/10;
+Scanner sc=new Scanner(System.in); }
+System.out.println("Enter the number to check if(temp==s)
+: "); System.out.println("The given number is palindrome.");
+//reading a number from the user else
+x=sc.nextInt(); System.out.println("The given number is not palindrome.");
+}
+}
+Elements or Tokens in Java Programs
+ Java tokens are the basic building
+blocks of a Java program.
+ They are the smallest unit of a
+program, and they include
+ keywords, identifiers, operators,
+literals, separators, and
+comments. Separators are
+symbols that separate different
+parts of a program
+.
+Java Statements
+ Statements are roughly equivalent to sentences in natural
+languages. In general, statements are just like English
+sentences that make valid sense
+ What is statement in Java?
+ In Java, a statement is an executable instruction that tells
+the compiler what to perform. It forms a complete command
+to be executed and can include one or more expressions.
+ A sentence forms a complete idea that can include one or
+more clauses.
+Types of Statements
+Java statements can be broadly classified into the following
+categories:
+ Expression Statements
+ Declaration Statements
+ Control Statements
+Expression Statements
+Expression Statements
+ Expression is an essential building block of any Java program. Generally, it is used to generate a
+new value. Sometimes, we can also assign a value to a variable. In Java, expression is the
+combination of values, variables, operators, and method calls.
+ There are three types of expressions in Java:
+ Expressions that produce a value. For example, (6+9), (9%2), (pi*radius) + 2. Note that the
+expression enclosed in the parentheses will be evaluate first, after that rest of the expression.
+ Expressions that assign a value. For example, number = 90, pi = 3.14.
+ Expression that neither produces any result nor assigns a value. For
+example, increment or decrement a value by using increment or decrement operator
+respectively, method invocation, etc.
+ These expressions modify the value of a variable or state (memory) of a program. For
+example, count++, int sum = a + b; The expression changes only the value of the variable sum.
+ The value of variables a and b do not change, so it is also a side effect.
+Declaration Statements
+Declaration Statements
+In declaration statements, we declare variables and constants by specifying their data type
+and name.
+A variable holds a value that is going to use in the Java program. For example:
+1.int quantity;
+2.boolean flag;
+3.String message;
+Also, we can initialize a value to a variable. For example:
+1.int quantity = 20;
+2.boolean flag = false;
+3.String message = "Hello";
+Java also allows us to declare multiple variables in a single declaration statement. Note
+that all the variables must be of the same data type.
+1.int quantity, batch_number, lot_number;
+2.boolean flag = false, isContains = true;
+3.String message = "Hello", how are you;
+Control Statement
+Control statements decide the flow (order or sequence of execution of statements) of a
+Java program.
+In Java, statements are parsed from top to bottom. Therefore, using the control flow
+statements can interrupt a particular section of a program based on a certain condition.
+There are the following types of control statements:
+1.Conditional or Selection Statements
+•if Statement
+•if-else statement
+•if-else-if statement
+•switch statement
+2.Loop or Iterative Statements
+•for Loop
+•while Loop
+•do-while Loop
+•for-each Loop
+3.Flow Control or Jump Statements
+•return
+•continue
+•break
+Java Command Line Arguments
+Java Command Line Arguments
+ The java command-line argument is an argument i.e. passed at the time of running the java
+program.
+ The arguments passed from the console can be received in the java program and it can be used
+as an input.
+Simple example of command-line argument in java
+class CommandLineExample class A
+{ {
+public static void main(String args[]) public static void main(String args[])
+{ {
+System.out.println(“Here is your Command Line for(int i=0;i<args.length;i++)
+arguments …..: "+args[0]); System.out.println(args[i]);
+} }
+} }
+compile by > javac CommandLineExample.java
+run by > java CommandLineExample hi how it is
+How to get input from user in Java
+Java Scanner Class
+ Java Scanner class allows the user to take input from the console.
+ It belongs to java.util package.
+ It is used to read the input of primitive types like int, double, long, short, float, and byte.
+ It is the easiest way to read input in Java program.
+Syntax
+ Scanner sc=new Scanner(System.in);
+ The above statement creates a constructor of the Scanner class having System.inM as an
+argument.
+ It means it is going to read from the standard input stream of the program.
+ The java.util package should be import while using Scanner class.
+Example of String Input from user
+import java.util.*;
+class UserInputDemo
+{
+public static void main(String[] args)
+{
+Scanner sc= new Scanner(System.in); //System.in is a standard input stream
+System.out.print("Enter a string: ");
+String str= sc.nextLine(); //reads string
+System.out.print("You have entered: "+str);
+}
+}
+Example of integer input from user
+import java.util.*;
+class UserInputDemo
+{
+public static void main(String[] args)
+{
+Scanner sc= new Scanner(System.in);
+System.out.print("Enter first number- ");
+int a= sc.nextInt();
+System.out.print("Enter second number- ");
+int b= sc.nextInt();
+System.out.print("Enter third number- ");
+int c= sc.nextInt();
+int d=a+b+c;
+System.out.println("Total= " +d);
+}
+}
+Escape sequences in Java
+Escape sequences are a unique kind of character that are used to
+indicate a different way of interpreting a group of characters.
+An escape sequence in Java is a character that is preceded by a
+backslash ().
+An escape sequence is treated by the Java compiler as a single
+character with unique meaning.
+Java frequently employs the following escape sequences:
+\t: Adds a new tab
+: Adds a new line
+\r: Adds a carriage return
+': Adds a single quote
+": Adds a double quote
+\: Adds a backslash
+Programming Style
+•General advice on how to make your program more readable and less error-prone:
+•every class should be in a separate file;
+•use meaningful names for the variables and for the file names;
+•use comments;
+• comments should explain what a piece of code intends to do;
+• in particular, every method -- even a simple one -- should, as a minimum, have comments explaining
+what exactly it does, and what is the meaning of all its parameters
+• comments should not duplicate the text of the program; for example, "initialize the variables" is a
+good comment, but a comment "assign the value 0 to the variable x" after a line x = 0; does not add
+any additional meaning to the code;
+•always use {} for blocks corresponding to "if", "while", and "for" statements, even if the corresponding
+block consists of only one statement;
+•use indentation;
+• every time you have a method within a class, a group of statements within an if-else construction or a
+loop -- anything with {} -- indent this group of statements;
+• do not indent too much, since then you will run out of space; Java recommends 4 spaces; our
+textbook often uses 3; 2 spaces is also OK;
+• try not to use Tab because Tab may look different on different screens and different editors --
+especially if you sometimes use Tab and sometimes, simply add a few blank spaces;
+•avoid long lines since they're not handled well by many terminals.

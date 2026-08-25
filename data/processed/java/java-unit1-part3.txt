@@ -1,0 +1,382 @@
+Operators in Java
+Operator in Java is a symbol that is used to perform operations.
+For example: +, -, *, / etc.
+There are many types of operators in Java which are given below:
+Unary Operator,
+Arithmetic Operator,
+Shift Operator,
+Relational Operator,
+Bitwise Operator,
+Logical Operator,
+Ternary Operator and
+Assignment Operator.
+Java Operator Precedence
+Operator Type Category Precedence
+Unary postfix expr++ expr--
+prefix ++expr --expr +expr -expr ~ !
+Arithmetic multiplicative * / %
+additive + -
+Shift shift << >> >>>
+Relational comparison < > <= >= instanceof
+equality == !=
+Bitwise bitwise AND &
+bitwise exclusive OR ^
+bitwise inclusive OR |
+Logical logical AND &&
+logical OR ||
+Ternary ternary ? :
+Assignment assignment = += -= *= /= %= &= ^= |= <<= >>=
+>>>=
+Java Unary Operator Example: ++ and -- Java Arithmetic Operator Example
+public class OperatorExample{ public class OperatorExample{
+public static void main(String args[]){ public static void main(String args[]){
+int x=10; int a=10;
+System.out.println(x++);//10 (11) int b=5;
+System.out.println(++x);//12 System.out.println(a+b);//15
+System.out.println(x--);//12 (11) System.out.println(a-b);//5
+System.out.println(--x);//10 System.out.println(a*b);//50
+}} System.out.println(a/b);//2
+System.out.println(a%b);//0
+Java Unary Operator Example: ~ and ! }}
+public class OperatorExample{
+public static void main(String args[]){ Java Shift Operator Example: >> vs >>>
+int a=10; public class OperatorExample{
+int b=-10; public static void main(String args[]){
+boolean c=true; //For positive number, >> and >>> works same
+boolean d=false; System.out.println(20>>2);
+System.out.println(~a); System.out.println(20>>>2);
+System.out.println(~b); System.out.println(-20>>2);
+System.out.println(!c);//false (opposite of boolean value) System.out.println(-20>>>2);
+System.out.println(!d);//true }}
+}}
+Java OR Operator Example: Logical || and Java AND Operator Example: Logical && vs Bitwise &
+Bitwise | public class OperatorExample{
+public class OperatorExample{ public static void main(String args[]){
+public static void main(String args[]){ int a=10;
+int a=10; int b=5;
+int b=5; int c=20;
+int c=20; System.out.println(a<b&&a++<c);//false && true = false
+System.out.println(a>b||a<c);//true || true = true System.out.println(a);//10 because second condition is not
+System.out.println(a>b|a<c);//true | true = true checked
+//|| vs | System.out.println(a<b&a++<c);//false && true = false
+System.out.println(a>b||a++<c);//true || true = true System.out.println(a);//11 because second condition is che
+System.out.println(a);//10 because second conditio cked
+n is not checked }}
+System.out.println(a>b|a++<c);//true | true = true
+System.out.println(a);//11 because second condition
+is checked
+Java Ternary Operator Example
+}}
+public class OperatorExample{
+public static void main(String args[]){
+int a=2;
+int b=5;
+int min=(a<b)?a:b;
+System.out.println(min);
+}}
+Java Control Statements | Control Flow
+in Java
+Java compiler executes the code from top to Java provides three types of
+bottom. control flow statements.
+1.Decision Making statements
+The statements in the code are executed 1.if statements
+according to the order in which they appear. 2.switch statement
+2.Loop statements
+However, Java provides statements that can 1.do while loop
+be used to control the flow of Java code. 2.while loop
+3.for loop
+Such statements are called control flow 4.for-each loop
+statements. 3.Jump statements
+1.break statement
+It is one of the fundamental features of 2.continue statement
+Java, which provides a smooth flow of
+program.
+Decision-Making statements:
+As the name suggests, decision-making statements decide which statement to execute and when.
+1) If Statement:
+In Java, the "if" statement is used to evaluate a condition. The control of the program is diverted
+depending upon the specific condition. The condition of the If statement gives a Boolean value, either true
+or false. In Java, there are four types of if-statements given below.
+1.Simple if statement
+2.if-else statement
+3.if-else-if ladder
+4.Nested if-statement
+public class Student {
+Syntax of if statement is given below.
+public static void main(String[] args) {
+if(condition) {
+int x = 10;
+statement 1; //executes when condition is true
+int y = 12;
+}
+if(x+y > 20) {
+System.out.println("x + y is greater than 20");
+}
+}
+}
+if-else statement
+The if-else statement is an extension to the if-
+public class Student
+statement, which uses another block of code,
+{
+i.e., else block. The else block is executed if the
+public static void main(String[] args)
+condition of the if-block is evaluated as false.
+{
+Syntax:
+int x = 10;
+if(condition) {
+int y = 12;
+statement 1; //executes when condition is true
+if(x+y < 10)
+}
+{
+else{
+System.out.println("x + y is less than 10");
+statement 2; //executes when condition is false
+} else
+}
+{
+System.out.println("x + y is greater than 20");
+}
+}
+}
+if-else-if ladder:
+The if-else-if statement contains the if-statement followed by multiple else-if statements.
+public class Student
+{
+Syntax of if-else-if statement is given below.
+public static void main(String[] args)
+if(condition 1)
+{
+{
+String city = "Delhi";
+statement 1; //executes when condition 1 is true
+if(city == "Meerut")
+{
+}
+System.out.println("city is meerut");
+else if(condition 2)
+}
+{
+else if (city == "Noida")
+statement 2; //executes when condition 2 is true
+{
+System.out.println("city is noida");
+}
+}
+else
+else if(city == "Agra")
+{
+{
+statement 3; //executes when all the conditions
+System.out.println("city is agra");
+are false
+}
+}
+else
+{
+System.out.println(city);
+}
+} }
+Nested if-statement public class Student
+In nested if-statements, the if statement can {
+contain a if or if-else statement inside another public static void main(String[] args)
+if or else-if statement. {
+Syntax of Nested if-statement is given String address = "Delhi, India";
+below.
+if(condition 1) { if(address.endsWith("India"))
+statement 1; //executes when condition 1 is tru {
+e if(address.contains("Meerut"))
+if(condition 2) { {
+statement 2; //executes when condition 2 is tru System.out.println("Your city is Meerut");
+e }
+} else if(address.contains("Noida"))
+else{ {
+statement 3; //executes when condition 2 is fal System.out.println("Your city is Noida");
+se }
+} else
+} {
+System.out.println(address.split(",")[0]);
+}
+}else {
+System.out.println("You are not living in India");
+} } }
+Switch Statement:
+The switch statement contains multiple blocks of code called cases and a single case is executed
+based on the variable which is being switched.
+public class Student
+The syntax to use the switch statement
+{
+is given below.
+public static void main(String[] args)
+switch (expression){
+{
+case value1:
+int num = 2;
+statement1;
+switch (num)
+break;
+{
+.
+case 0:
+.
+System.out.println("number is 0");
+.
+break;
+case valueN:
+case 1:
+statementN;
+System.out.println("number is 1");
+break;
+break;
+default:
+default:
+default statement;
+System.out.println(num);
+}
+}
+}
+}
+Loop Statements
+In programming, sometimes we need to execute the block of code repeatedly while some condition
+evaluates to true.
+However, loop statements are used to execute the set of instructions in a repeated order.
+The execution of the set of instructions depends upon a particular condition.
+In Java, we have three types of loops
+that execute similarly. However, there
+are differences in their syntax and
+condition checking time.
+1.for loop
+2.while loop
+3.do-while loop
+Java for loop
+public class Calculattion
+In Java, for loop is similar to C and C++.
+{
+public static void main(String[] args)
+It enables us to initialize the loop variable, check
+{
+the condition, and increment/decrement in a
+// TODO Auto-generated method stub
+single line of code.
+int sum = 0;
+for(int j = 1; j<=10; j++) {
+We use the for loop only when we exactly know
+sum = sum + j;
+the number of times, we want to execute the
+}
+block of code.
+System.out.println("The sum of first 10 natural
+numbers is " + sum);
+for(initialization, condition, increment/decrement)
+}
+{
+}
+//block of statements
+}
+Java for-each loop
+Java provides an enhanced for loop to traverse the public class Calculation
+data structures like array or collection. {
+public static void main(String[] args)
+In the for-each loop, we don't need to update the {
+loop variable. // TODO Auto-generated method stub
+String[] names = {"Java","C","C++","Python","JavaScri
+The syntax to use the for-each loop in java is given pt"};
+below.
+for(data_type var : array_name/collection_name) System.out.println("Printing the content of the array n
+{ ames:\n");
+//statements
+} for(String name:names)
+{
+System.out.println(name);
+}
+}
+}
+Java while loop
+The while loop is also used to iterate over the number of statements multiple times.
+However, if we don't know the number of iterations in advance, it is recommended to use a while loop.
+Unlike for loop, the initialization and increment/decrement doesn't take place inside the loop statement in
+while loop.
+public class Calculation
+{
+The syntax of the while loop is given
+public static void main(String[] args)
+below.
+{
+while(condition)
+{
+int i = 0;
+//looping statements
+System.out.println("Printing the list of first 10 even
+}
+numbers \n");
+while(i<=10)
+{
+System.out.println(i);
+i = i + 2;
+}
+}
+}
+Java do-while loop
+The do-while loop checks the condition at the end of the
+loop after executing the loop statements.
+public class Calculation
+{
+When the number of iteration is not known and we have to
+public static void main(String[] args)
+execute the loop at least once, we can use do-while loop.
+{
+The syntax of the do-while loop is given
+int i = 0;
+below.
+System.out.println("Printing the list of first 10 even
+do
+numbers \n");
+{
+do
+//statements
+{
+} while (condition);
+System.out.println(i);
+i = i + 2;
+}
+while(i<=10);
+}
+}
+Jump Statements
+Jump statements are used to transfer the control of public class BreakExample
+the program to the specific statements. In other {
+words, jump statements transfer the execution
+control to the other part of the program. public static void main(String[] args)
+{
+There are two types of jump statements in Java,
+i.e., break and continue. for(int i = 0; i<= 10; i++)
+{
+Java break statement System.out.println(i);
+As the name suggests, the break statement is used if(i==6)
+to break the current flow of the program and {
+transfer the control to the next statement outside a break;
+loop or switch statement. }
+}
+However, it breaks only the inner loop in the case of }
+the nested loop. }
+Java continue statement
+Unlike break statement, the continue statement doesn't break the loop, whereas, it skips the specific
+part of the loop and jumps to the next iteration of the loop immediately.
+public class ContinueExample
+{
+public static void main(String[] args)
+{
+for(int i = 0; i<= 2; i++)
+{
+for (int j = i; j<=5; j++)
+{
+if(j == 4) {
+continue;
+}
+System.out.println(j);
+}
+}
+}
+}

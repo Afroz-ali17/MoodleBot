@@ -1,0 +1,588 @@
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Unit-III
+Functions and Strings
+Objective: To learn use of functions and strings in developing programs in Python
+language.
+Syllabus:
+Functions-function definition, call, return statements, Types of arguments Recursive
+functions, modules.
+Strings - Basic string operations, String formatting operator, Built-in functions.
+Programs:
+1. Write a function cumulative_product to compute cumulative product of a list of
+numbers.
+2. Write function to compute gcd, lcm of two numbers. Each function shouldn’t
+exceed one line.
+3. Find the sum of the even-valued terms in the Fibonacci sequence whose values do
+not exceed ten thousand.
+4. Write a program that accepts a string from a user and re-displays the same after
+removing vowels from it.
+5. Write a program to calculate the length of a string.
+6. Write a function to reverse a given string.
+Learning Outcomes:
+At the end of the unit student will be able to
+
+understand need for functions, variable scope and lifetime.
+
+identify use of modules
+
+use various operators in concatenating, appending, and multiplying strings.
+
+develop programs using built-in string methods and functions.
+Learning Material
+Functions
+
+A function is a block of organized and reusable program code that performs a
+single, specific, and well-defined task.
+
+Python enables its programmers to break up a program into functions, each of
+which can be written more or less independently of the others. Therefore, the
+code of one function is completely insulated from the codes of the other
+functions.
+Department Of Information Technology AY: 2018-19 GEC Page 2
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Figure 1: Calling a function
+
+In figure 1 which explains how a function func1() is called to perform a well-
+defined task. As soon as func1() is called, the program control is passed to the
+first statement in the function. All the statements in the function are executed
+and then the program control is passed to the statement following the one that
+called the function.
+Figure 2: Function calling another function
+
+In figure 2 func1() calls function named func2(). Therefore, func1() is known as
+the calling function and func2() is known as the called function. The moment the
+compiler encounters a function call, instead of executing the next statement in
+the calling function, the control jumps to the statements that are a part of the
+called function. After called function is executed, the control is returned back
+to the calling program.
+
+It is not necessary that the func1() can call only one function, it can call as
+many functions as it wants and as many times as it wants. For example, a
+function call placed within for loop or while loop may call the same function
+multiple times until the condition holds true.
+Need for Functions:
+Department Of Information Technology AY: 2018-19 GEC Page 3
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Figure 3: Top-down approach of solving a problem
+
+Each function to be written and tested separately.
+
+Understanding, coding and testing multiple separate functions are far easier
+than doing the same for one huge function.
+
+When a big program is broken into comparatively smaller functions, then
+different programmers working on that project can divide the workload by
+writing different functions.
+
+All the libraries in Python contain pre-defined and pre-tested functions which
+the programmers are free to use directly in their programs, without worrying
+about their code details. This speed up program development.
+
+Like Python libraries, programmers can also make their own functions and use
+them from different points in the main program or any other program that
+needs its functionalities. So code reuse is one of the most prominent reasons
+to use functions.
+Function Declaration and Definition:
+• A function, f that uses another function g, is known as the calling function and g is
+known as the called function.
+• The inputs that the function takes are known as arguments/parameters.
+• When a called function returns some result back to the calling function, it is said to
+return that result.
+• The calling function may or may not pass parameters to the called function. If the
+called function accepts arguments, the calling function will pass parameters, else
+not.
+• Function declaration is a declaration statement that identifies a function with its
+name, a list of arguments that it accepts and the type of data it returns.
+• Function definition consists of a function header that identifies the function,
+followed by the body of the function containing the executable code for that
+function.
+Department Of Information Technology AY: 2018-19 GEC Page 4
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Function Definition
+There are two basic types of functions
+1. built-in functions eg: dir(), len(), abs() etc.,
+2. user defined functions.
+
+Function blocks starts with the keyword def.
+
+The keyword is followed by the function name and parentheses (( )).
+
+After the parentheses a colon (:) is placed.
+
+Parameters or arguments that the function accept are placed within
+parentheses.
+
+The first statement of a function can be an optional statement - the
+docstringdescribe what the function does.
+
+The code block within the function is properly indented to form the block code.
+
+A function may have a return[expression] statement. That is, the return
+statement is optional.
+
+You can assign the function name to a variable. Doing this will allow you to call
+same function using the name of that variable.
+Figure 4: Program that subtracts two numbers using a function.
+Figure 5: The syntax of a function definition.
+Function Call
+
+Defining a function means specifying its name, parameters that are
+expected, and the set of instructions.
+Department Of Information Technology AY: 2018-19 GEC Page 5
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.BBalaji)
+
+The function call sstatement invokes the function. Wheen a function is
+invoked the programm control jumps to the called functionn to execute the
+statements that are a part of that function. Once the called function is
+executed, the program control passes back to the calling funnction.
+Function Parameters
+
+A function can take paarameters which are nothing but somee values that are
+passed to it so that thee function can manipulate them to prooduce the desired
+result. These parameterrs are normal variables with a small diifference that the
+values of these variables are defined (initialized) when we call the function and
+are then passed to the function.
+ Function name and the number and type of arguments in the function call
+must be same as that giiven in the function definition.
+
+If the data type of the arrgument passed does not matches withh that expected in
+function then an error is generated.
+Figure 6: a function that displlays string repeatedly.
+Figure 7: Program to demonstrate mismatch of name of function parameters and
+arguments.
+Note: Names of variables in fuunction call and header of function definnition may vary.
+Department Of Information Technoloogy AY: 2018-19 GEC Page 6
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Figure 8: Arguments may be passed in the form of expressions to the called function.
+Figure 9: Program to add two integers using functions
+Variable scope and lifetime:
+In python, you cannot just access any variable from any part of your program. Some
+of the variables may not even exist for the entire duration of the program. In which
+part of the program you can access a variable and in which parts of the program a
+variable exits depends on how the variable has been declared. Therefore, we need to
+understand these two things:
+1. Scope of the variable: Part of the program in which a variable is accessible is called
+its scope.
+2. Lifetime of the variable: Duration for which the variable exits it’s called its lifetime.
+Local and Global variables:
+A variable which is defined within a function is local to that function. A local variable
+can be accessed from the point of its definition until the end of the function in which
+it is defined. It exists as long as the function is executing. Function parameters
+behave like local variables in the function. Moreover, whenever we use the
+assignment operator (=) inside a function, a new local variable is created.
+Global variables are those variables which are defined in the main body of the
+program file. They are visible throughout the program file. As a good programming
+Department Of Information Technology AY: 2018-19 GEC Page 7
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+habit, you must try to avoid the use of global variables because they may get altered
+by mistake and then result in erroneous output.
+Figure 10: lists the differences between global and local variables.
+Comparison between global and local variables
+Global variables Local variables
+They are defined in the main body of They are defined within a function and
+the program file. islocalto that function.
+They can be accessed throughout the They can be accessed from the point of
+program life. its definition until the end of the block
+in which it is defined.
+Global variables are accessible to all They are not related in any way to
+functions in the program. other variables with the same names
+used outside the function.
+Using the Global Statement
+To define a variable defined inside a function as global, you must use the global
+statement. This declares the local or the inner variable of the function to have module
+scope.
+Key points to remember:
+Department Of Information Technology AY: 2018-19 GEC Page 8
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+You can have a variable with the same name as that of a global variable in the
+program. In such a case a new local variable of that name is created which is
+different from the global variable.
+Figure 11: Program to demonstrate the use of global statement.
+Resolution of names
+Scope defines the visibility of a name within a block. If a local variable is defined in a
+block, its scope is that particular block. If it is defined in a function, then its scope is
+all blocks within that function.
+When a variable name is used in a code block, it is resolved using the nearest
+enclosing scope. If no variable of that name is found, then a NameError is raised. In
+the code given below, str is a global string because it has been defined before calling
+the function.
+Figure 12: Program that demonstrates using a variable defined in global namespace.
+The Return Statement
+The syntax of return statement is,
+return [expression]
+Department Of Information Technology AY: 2018-19 GEC Page 9
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+The expression is written in brackets because it is optional. If the expression is
+present, it is evaluated and the resultant value is returned to the calling function.
+However, if no expression is specified then the function will return none.
+The return statement is used for two things.
+• Return a value to the caller
+• To end and exit a function and go back to its caller
+Figure 13: Program to write another function which returns an integer to the caller.
+More on defining functions:
+In this section we will discuss some more ways of defining a function.
+1. Required arguments
+2. Keyword arguments
+3. Default arguments
+4. Variable-length arguments
+Required Arguments
+In the required arguments, the arguments are passed to a function in correct
+positional order. Also, the number of arguments in the function call should exactly
+match with the number of arguments specified in the function definition
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 10
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Keyword Arguments
+When we call a function with some values, the values are assigned to the
+arguments based on their position. Python also allow functions to be called using
+keyword arguments in which the order (or position) of the arguments can be
+changed. The values are not assigned to arguments according to their position but
+based on their name (or keyword).
+Keyword arguments are beneficial in two cases.
+• First, if you skip arguments.
+• Second, if in the function call you change the order of parameters.
+Example:
+Default Arguments
+Python allows users to specify function arguments that can have default values. This
+means that a function can be called with fewer arguments than it is defined to have.
+That is, if the function accepts three parameters, but function call provides only two
+arguments, then the third parameter will be assigned the default (already specified)
+value. The default value to an argument is provided by using the assignment operator
+(=). Users can specify adefault value for one or more arguments.
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 11
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Variable-length Arguments
+In some situations, it is not known in advance how many arguments will be passed to
+a function. In such cases, Python allows programmers to make function calls with
+arbitrary (or any) number of arguments.
+When we use arbitrary arguments or variable length arguments, then the function
+definition use an asterisk (*) before the parameter name. The syntax for a function
+using variable arguments can be given as,
+Example:
+Lambda Functions or Anonymous Functions
+Lambda or anonymous functions are so called because they are not declared as other
+functions using the def keyword. Rather, they are created using the lambda keyword.
+Lambda functions are throw-away functions, i.e. they are just needed where they
+have been created and can be used anywhere a function is required. The lambda
+feature was added to Python due to the demand from LISP programmers.
+Lambda functions contain only a single line. Its syntax can be given as,
+Example
+Department Of Information Technology AY: 2018-19 GEC Page 12
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Documentation Strings
+Docstrings (documentation strings) serve the same purpose as that of comments, as
+they are designed to explain code. However, they are more specific and have a proper
+syntax.
+Example:
+Recursive Functions
+A recursive function is defined as a function that calls itself to solve a smaller version
+of its task until a final call is made which does not require a call to itself. Every
+recursive solution has two major cases, which are as follows:
+• base case, in which the problem is simple enough to be solved directly without
+making any further calls to the same function.
+• recursive case, in which first the problem at hand is divided into simpler sub parts.
+Recursion utilized divide and conquer technique of problem solving.
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 13
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Recursion vs Iteration:
+Recursion is more of a top-down approach to problem solving in while the original
+problem is divided into smaller sub-problems.
+Iteration follows a bottom-up approach that begins with what is known and then
+constructing the solution step-by-step.
+Pros The benefits of using a recursive program are:
+
+Recursive solutions often tend to be shorter and simpler than non-recursive
+ones.
+
+Code is clearer and easier to use.
+
+Recursion uses the original formula to solve a problem.
+
+It follows a divide and conquer technique to solve problems.
+
+In some instances, recursion may be more efficient.
+Cons The limitations of using a recursive program are:
+
+For some programmers and readers, recursion is difficult concept.
+
+Recursion is implemented using system stack. If the stack space on the system
+is limited, recursion to a deeper level will be difficult to implement.
+
+Aborting a recursive process in midstream is slow and sometimes nasty.
+
+Using a recursive function takes more memory and time to execute as
+compared to its non-recursive counterpart.
+
+It is difficult to find bugs, particularly when using global variables.
+Conclusion: The advantages of recursion pays off for the extra overhead involved
+in terms of time and space required.
+Modules
+
+We have seen that functions help us to reuse a particular piece of code.
+Module goes a step ahead. It allows you to reuse one or more functions in your
+programs, even in the programs in which those functions have not been
+defined.
+
+Putting simply, module is a file with a.py extension that has definitions of all
+functions and variables that you would like to use even in other programs. The
+program in which you want to use functions or variables defined in the module
+will simply import that particular module (or .py file).
+
+Modules are pre-written pieces of code that are used to perform common tasks
+like generating random numbers, performing mathematical operations, etc.
+Department Of Information Technology AY: 2018-19 GEC Page 14
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+The basic way to use a module is to add import module_name as the first line
+of your program and then writing module_name.var to access functions and
+values with the name var in the module.
+The from…import Statement
+A module may contain definition for many variables and functions. When you
+import a module, you can use any variable or function defined in that module.
+But if you want to use only selected variables or functions, then you can use
+the from...import statement. For example, in the aforementioned program you
+are using only the path variable in the sys module, so you could have better
+written from sys import path.
+Example:
+To import more than one item from a module, use a comma separated list. For
+example, to import the value of pi and sqrt() from the math module you can write,
+Making your own Modules
+Every Python program is a module, that is, every file that you save as .py extension is
+a module.
+
+Modules should be placed in the same directory as that of the program in
+which it is imported. It can also be stored in one of the directories listed in
+sys.path.
+Department Of Information Technology AY: 2018-19 GEC Page 15
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+The dir() function
+dir() is a built-in function that lists the identifiers defined in a module. These
+identifiers may include functions, classes and variables. If no name is specified, the
+dir() will return the list of names defined in the current module.
+Example: demonstrate the use of dir() function.
+The Python Module:
+
+We have seen that a Python module is a file that contains some definitions and
+statements. When a Python file is executed directly, it is considered the main
+module of a program.
+
+Main modules are given the special name __main__ and provide the basis for a
+complete Python program.
+
+The main module may import any number of other modules which may in turn
+import other modules. But the main module of a Python program cannot be
+imported into other modules.
+Department Of Information Technology AY: 2018-19 GEC Page 16
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Modules and Namespaces
+A namespace is a container that provides a named context for identifiers. Two
+identifiers with the same name in the same scope will lead to a name clash. In simple
+terms, Python does not allow programmers to have two different identifiers with the
+same name. However, in some situations we need to have same name identifiers. To
+cater to such situations, namespaces is the keyword. Namespaces enable programs
+to avoid potential name clashes by associating each identifier with the namespace
+from which it originates.
+Example:
+Local, Global, and Built-in Namespaces
+During a program’s execution, there are three main namespaces that are referenced-
+the built-in namespace, the global namespace, and the local namespace. The built-in
+namespace, as the name suggests contains names of all the built-in functions,
+constants, etc that are already defined in Python. The global namespace contains
+identifiers of the currently executing module and the local namespace has identifiers
+defined in the currently executing function (if any).
+When the Python interpreter sees an identifier, it first searches the local namespace,
+then the global namespace, and finally the built-in namespace. Therefore, if two
+identifiers with same name are defined in more than one of these namespaces, it
+becomes masked.
+Department Of Information Technology AY: 2018-19 GEC Page 17
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Example: Program to demonstrate name clashes in different namespaces.
+Module Private Variables
+
+In Python, all identifiers defined in a module are public by default. This means
+that all identifiers are accessible by any other module that imports it. But, if
+you want some variables or functions in a module to be privately used within
+the module, but not to be accessed from outside it, then you need to declare
+those identifiers as private.
+
+In Python identifiers whose name starts with two underscores (__) are known
+as private identifiers. These identifiers can be used only within the module. In
+no way, they can be accessed from outside the module.
+
+Therefore, when the module is imported using the import * form modulename,
+all the identifiers of a module’s namespace is imported except the private ones
+(ones beginning with double underscores). Thus, private identifiers become
+inaccessible from within the importing module.
+Advantages of Modules:
+
+Python modules provide all the benefits of modular software design. These
+modules provide services and functionality that can be reused in other
+programs.
+
+Even the standard library of Python contains a set of modules. It allows you to
+logically organize the code so that it becomes easier to understand and use.
+Department Of Information Technology AY: 2018-19 GEC Page 18
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Programs:
+1. Write a function cumulative product to compute cumulative product of a list of
+numbers.
+Program:
+def cumulative_product():
+list=[1,2,3,4]
+prod=1
+for i in list:
+prod=prod*i
+print prod
+cumulative_product()
+Output:
+2. Write function to compute gcd, lcm of two numbers. Each function shouldn’t
+exceed one line.
+Program:
+from fractions import gcd
+print gcd(5,25)
+def lcm():
+a=60
+b=40
+print (a * b) // gcd(a, b)
+lcm()
+output:
+Department Of Information Technology AY: 2018-19 GEC Page 19
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+3. Find the sum of the even-valued terms in the Fibonacci sequence whose values do
+not exceed ten thousand.
+program:
+i=0
+j=1
+sum=0
+while(i<10000):
+i=i+j
+j=i-j
+if(i%2==0):
+sum+=i
+print sum
+output:
+Department Of Information Technology AY: 2018-19 GEC Page 20
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Strings
+
+Python treats strings as contiguous series of characters delimited by single,
+double or even triple quotes. Python has a built-in string class named "str" that
+has many useful features. We can simultaneously declare and define a string
+by creating a variable of string type. This can be done in several ways which
+are as follows:
+
+name = "India" graduate = 'N' country = name nationality = str("Indian")
+
+Indexing: Individual characters in a string are accessed using the subscript ([ ])
+operator. The expression in brackets is called an index. The index specifies a
+member of an ordered set and in this case it specifies the character we want to
+access from the given set of characters in the string.
+
+The index of the first character is 0 and that of the last character is n-1 where
+n is the number of characters in the string. If you try to exceed the bounds
+(below 0 or above n-1), then an error is raised.
+
+Traversing a String: A string can be traversed by accessing character(s) from
+one index to another. For example, the following program uses indexing to
+traverse a string from first character to the last.
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 21
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Concatenating, Appending and Multiplying Strings
+Example: Program to concatenate two strings using + operator
+Example: Program to repeat a string using * operator
+Example: Program to append a string using += operator
+Strings are Immutable
+Python strings are immutable which means that once created they cannot be
+changed. Whenever you try to modify an existing string variable, a new string is
+created.
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 22
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+String Formatting Operator
+
+The % operator takes a format string on the left (that has %d, %s, etc) and the
+corresponding values in a tuple on the right. The format operator, % allow
+users to construct strings, replacing parts of the strings with the data stored in
+variables. The syntax for the string formatting operation is:
+
+"<Format>" % (<Values>)
+Example:
+Department Of Information Technology AY: 2018-19 GEC Page 23
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Built-in String Methods and Functions
+Department Of Information Technology AY: 2018-19 GEC Page 24
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Programs:
+1. Write a program that accepts a string from a user and re-displays the same after
+removing vowels from it.
+Program:
+while True:
+print('Enter x for exit.')
+string = raw_input('Enter any string: ')
+if string == 'x':
+break
+else:
+newstr = string
+Department Of Information Technology AY: 2018-19 GEC Page 25
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+print("\nRemoving vowels from the given string...")
+vowels = ('a', 'e', 'i', 'o', 'u')
+for x in string.lower():
+if x in vowels:
+newstr = newstr.replace(x,"")
+print("New string after successfully removing all vowels!")
+print(newstr,"\n")
+output:
+2. Write a program to calculate the length of a string.
+Program:
+string=raw_input("Enter string:")
+count=0
+for i in string:
+count=count+1
+print("Length of the string is:")
+print(count)
+Department Of Information Technology AY: 2018-19 GEC Page 26
+PYTHON PROGRAMMING UNIT-III
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+output:
+3. Write a function to reverse a given string.
+Program:
+def reverse(text):
+lst = []
+count = 1
+for i in range(0,len(text)):
+lst.append(text[len(text)-count])
+count += 1
+lst = ''.join(lst)
+return lst
+print reverse('Python Programming')
+output:
+Department Of Information Technology AY: 2018-19 GEC Page 27

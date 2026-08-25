@@ -1,0 +1,312 @@
+UNIT - 1
+Introduction to Big Data and Analytics Ecosystem
+V Phanishwara Hara Gopal
+Assistant Professor
+Department of CSE (Artificial Intelligence & Machine Learning)
+RGM College of Engineering and Technology (Autonomous)
+Big Data
+Types of Analytics
+Types of Analytics
+Type Key Question Purpose Application/Case Study Example
+A retailer analyzes monthly sales reports to
+Summarizes past data to identify the most popular products, peak sales
+Descriptive What happened?
+reveal patterns and trends. periods, and which store locations had the
+highest revenue.
+An e-commerce company investigates a 15%
+Investigates the root causes
+drop in conversion rates and finds a mobile
+Diagnostic Why did it happen? and contributing factors
+checkout bug was introduced in a recent
+behind past events.
+website update.
+Uses historical data to A bank uses a credit risk model to predict the
+What is likely to
+Predictive forecast future trends and likelihood of a customer defaulting on a loan
+happen?
+potential outcomes. based on their financial history and credit score.
+A logistics firm uses an optimization model to
+Recommends specific,
+What should we do dynamically reroute delivery trucks in real-time,
+Prescriptive optimal actions or decisions
+about it? accounting for current traffic and weather, to
+to achieve desired results.
+minimize fuel costs and ensure on-time delivery.
+Big Data – Opportunities and Challenges
+Challenges and
+Opportunities Item Description
+The goal is to achieve high reliability. Low data reliability
+Opportunity Reliability
+(veracity) is a common challenge.
+Partial failure, graceful This is a desired system design characteristic for building
+Opportunity decline rather than full resilient distributed systems that avoid complete system
+halt failure.
+Data recoverability, if a This describes a fault tolerance mechanism, a key feature to
+Opportunity node fails, another picks ensure data is not lost and processing continues, which is a
+up its workload design objective in big data systems.
+Node recoverability, a
+fixed node can rejoin the This is another design goal for system resilience and
+Opportunity
+group without a full simplified maintenance in distributed systems.
+group restart
+Scalability, adding The ability to scale is a primary feature and requirement of
+Opportunity resources adds load big data infrastructure, although achieving cost-effective and
+capacity performance-efficient scaling can be a challenge.
+Big Data – Opportunities and Challenges
+Challenges and
+Item Description
+Opportunities
+Having effective backup systems is a crucial part of data
+Opportunity Backup management and recovery, serving as a solution to
+potential data loss.
+Parallel processing is a fundamental technique used in big
+Opportunity Process data in parallel data systems (e.g., MapReduce, Apache Spark) to handle
+massive volumes and achieve necessary processing speeds.
+Not affordable,
+High cost of implementation, infrastructure, and specialized
+Challenge expensive(faster, more
+talent is a significant challenge for many organizations.
+reliability more cost)
+Ease of use is generally a goal, as complex technology can
+Challenge Easy to use and Secure be a challenge. Security is a major ongoing challenge due to
+the volume and sensitivity of the data.
+Big Data – Process data in Parallel
+• An Idea: Parallelism
+• Transfer speed improves at a greater rate than seek speed.
+• Process read/write parallel rather then sequential.
+• 1 drive – 75 MB/sec 16 days for 100TB
+• 1000 drives – 75 GB/sec 22 minutes for 100TB
+• A problem: Parallelism is Hard
+• Synchronization
+• Deadlock
+• Limited bandwidth
+• Timing issues and co-ordination
+• Spilt & Aggregation
+• Computers are complicate
+• Driver failure
+• Data availability
+• Co-ordination
+• We have Distribute computing !!!
+• Process data in parallel ? – not simple
+Big Data – Challenges in DC
+• We have distributed computing and it also come up with
+some challenges.
+• Resource sharing. Access any data and utilize CPU resource
+across the system.
+• Portability, reliable.
+• Concurrency: Allow concurrent access, update of shared
+resource, availability with high throughput.
+• Scalability: With data, with load.
+• Fault tolerance : By having provisions for redundancy and
+recovery.
+• Heterogeneity: Different operating system, different hardware.
+• Transparency: Should appear as a whole instead of collection of
+computers.
+• Hide details and complexity by accomplishing above challenges
+from the user and need a common unified interface to interact
+with it.
+• To address most of these challenges(but not all) - Hadoop
+came in.
+Hadoop
+• Apache Hadoop is a framework that
+• allows for the distributed processing of large data sets across clusters of commodity
+computers
+• using a simple programming model.
+• It is designed to scale up from single servers to thousands of machines,
+each providing computation and storage.
+• Hadoop is an open-source implementation of Google MapReduce,
+GFS(distributed file system).
+• Hadoop was created by Doug Cutting, the creator of Apache Lucene, the
+widely used text search library.
+• Hadoop fulfill need of common infrastructure – Efficient, reliable, easy to
+use – Open Source, Apache License
+Hadoop – Design Axioms
+• Store and process large amounts of data (PetaBytes) .
+• Performance, storage, processing scale linearly.
+• Compute should move to data
+• Simple core , modular and extensible.
+• Failure is normal, expected.
+• Manageable and Heal self.
+• Design run on commodity hardware-cost effective.
+Hadoop - Parallelism
+• For Storage and Distributed computing (MapReduce)
+• Spilt up the data
+• Process Data in parallel
+• Sort and combine to get the answer
+• Schedule, Process and aggregate independently
+• Failures are independent, Handle failures.
+• Handle fault tolerance
+Hadoop vs RDBMS
+An Elephant can't jump. But can carry heavy load !!!
+• A fundamental
+• tenet of relational databases structure defined by a schema, what about
+Large data sets are often unstructured or semi- structured, Hadoop is the
+best choice.
+• Hadoop MR framework uses key/value pairs as its basic data unit, which is
+flexible enough to work with the less-structured data types.
+• Scaling commercial relational databases is expensive and limited.
+• High-level declarative language like SQL, Block box Query engine.
+• You can query some data by stating the result which you want and let the
+database engine figure and drive it.
+• You can build complex statistical models from your data or analytical
+reporting or reformat your image data. SQL is not well designed for such
+tasks.
+• MapReduce tries to collocate the data with the compute node, so data
+access is fast since it is local.
+• Coordinating the processes in a large-scale distributed computation
+is a challenge.
+• HDFS and MR made easy split, store. process and aggregate.
+Hadoop vs RDBMS
+• To run a bigger database you need to buy a bigger
+machine.
+• The high-end machines are not cost effective for many
+applications.
+• For example, a machine with four times the power of a standard
+PC costs a lot more than putting four such PCs in a cluster.
+• Hadoop is designed to be a scale-out architecture operating on a
+cluster of commodity hardware.
+• Adding more resources means adding more machines to the
+Hadoop cluster.
+• Hardest aspect is gracefully handling partial failure
+• when you don’t know if a remote process has failed or not
+• and still making progress with the overall computation.
+• MapReduce spares the programmer from having to think about
+failure, since the implementation detects failed map or reduce
+tasks and reschedules with suitable replacements.
+• MapReduce is able to do this since it is a shared-nothing
+architecture, meaning that tasks have no dependence on one
+other.
+Hadoop vs RDMS
+• Hardware failure
+• As soon as you start using many pieces of hardware, the chance that one will
+fail is fairly high.
+• A common way of avoiding data loss is through replication.
+• Redundant copies of the data are kept by the system so that in the event of
+failure, there is another copy available.
+• Node failure and disk failure will handle efficiently in Hadoop framework.
+Hadoop vs RDBMS
+Is Hadoop alternative for RDBMs?
+• Hadoop is not replacing the traditional data systems
+used for building analytic applications – the RDBMS,
+EDW and MPP systems – but rather is a complement.
+• Interoperate with existing systems and tools, at the
+moment Apache Hadoop is not a substitute for a database
+• No Relation, Key Value pairs
+• Big Data, unstructured (Text) & semi structured (Seq /
+Binary Files)
+• Structured (Hbase=Google BigTable)
+• Works fine together with RDBMs, Hadoop is being used to
+distil large quantities of data into something more
+manageable.
+Hadoop Architecture
+• Hadoop designed and built on two independent frame works.
+Hadoop = HDFS + Map reduce HDFS (storage and File system)
+• HDFS is a reliable distributed file system that provides high-throughput access
+to data
+• MapReduce (processing) : MapReduce is a framework for performing high
+performance distributed data processing using the divide and aggregate
+programming paradigm
+• Hadoop has a master/slave architecture for both storage and
+processing.
+Hadoop Architecture
+Hadoop – Master/Slave Architecture
+HDFS Architecuture
+Hadoop Ecosystem
+MapReduce
+MapReduce
+MapReduce
+MapReduce
+What is NoSQL?
+NoSQL is an approach to database design that can accommodate a wide
+variety of data models, including key-value, document, columnar and graph
+formats. NoSQL, which stand for "not only SQL," is an alternative to
+traditional relational databases in which data is placed in tables and
+data schema is carefully designed before the database is built. NoSQL
+databases are especially useful for working with large sets of distributed
+data.
+NoSQL
+• A basic classification based on data model, with examples:
+• Column: Accumulo, Cassandra, Druid, HBase, Vertica
+• Document: Clusterpoint, Apache CouchDB, Couchbase, DocumentDB, HyperDex,
+Lotus Notes, MarkLogic, MongoDB, OrientDB, Qizx
+• Key-value: CouchDB, Oracle NoSQL Database, Dynamo, FoundationDB, HyperDex,
+MemcacheDB, Redis, Riak, FairCom c-treeACE, Aerospike, OrientDB, MUMPS
+• Graph: Allegro, Neo4J, InfiniteGraph, OrientDB, Virtuoso, Stardog
+• Multi-model: OrientDB, FoundationDB, ArangoDB, Alchemy Database, CortexDB
+No SQL vs SQL
+SQL Databases NoSQL Databases
+Types One type (SQL database) with Many different types including
+minor variations key-value stores, document
+databases, wide-column
+stores,
+and graph databases
+Development Developed in 1970s to deal Developed in 2000s to deal
+History with first wave of data storage with limitations of SQL
+applications databases, particularly
+concerning scale,
+replication and unstructured
+data storage
+Examples MySQL, Postgres, Oracle MongoDB, Cassandra, HBase,
+Database Neo4j
+No SQL vs SQL
+SQL Databases NoSQL Databases
+Scaling Vertically, meaning a single Horizontally, meaning that to
+server must be made add capacity, a database
+increasingly powerful in order administrator can simply add
+to deal with increased more commodity servers or
+demand. cloud instances.
+Development Mix of open-source (e.g., Open-source
+Model Postgres, MySQL) and closed
+source (e.g., Oracle Database)
+Consistency Can be configured for strong Depends on product. Some
+consistency provide strong consistency
+(e.g., MongoDB) whereas
+others offer eventual
+consistency (e.g., Cassandra)
+Key-Value Store NoSQL Database
+• A key-value database, or key-value store, is a data storage paradigm
+designed for storing, retrieving, and managing associative arrays, a data
+structure more commonly known today as a dictionary or hash tables.
+• These records are stored and retrieved using a key that uniquely identifies
+the record, and is used to quickly find the data within the database.
+• Examples: Riak and Amazon’s Dynamo are the most popular key-value
+store NoSQL databases.
+Key-Value Store NoSQL Database
+Document Store NoSQL Database
+A document database, also called a document store or document-
+oriented database, is a subset of a type of NoSQL database. Some
+document stores may also be key-value databases. A document database is
+used for storing, retrieving, and managing semi-structured data. Unlike
+traditional relational databases, the data model in a document database is
+not structured in a table format of rows and columns. The schema can vary,
+providing far more flexibility for data modeling than relational databases.
+Documents are grouped into “collections,” which serve a similar purpose
+to a relational table. A document database provides a query mechanism to
+search collections for documents with particular attributes.
+Example: Couchbase and Mongo DB are the most popular document based
+databases.
+Document Store NoSQL Database
+Column Store NoSQL Database
+In column-oriented NoSQL database, data is stored in cells grouped in
+columns of data rather than as rows of data. Columns are logically grouped
+into column families. Column families can contain a virtually unlimited
+number of columns that can be created at runtime or the definition of the
+schema. Read and write is done using columns rather than rows.
+Example: Google’s Big Table, HBase and Cassandra are the most popular
+column store based databases.
+Column Store NoSQL Database
+Graph Base NoSQL Database
+In a Graph Base NoSQL Database, you will not find the rigid format of
+SQL or the tables and columns representation, a flexible graphical
+representation is instead used which is perfect to address scalability
+concerns. Graph structures are used with edges, nodes and properties
+which provides index-free adjacency. Data can be easily transformed from
+one model to the other using a Graph Base NoSQL database.
+Graph Base NoSQL Database
+Data Lake vs. Data Warehouse
+Data Lake vs. Data Warehouse
+• Data Lake: When you need to store massive amounts of varied data
+cheaply and perform deep, exploratory analysis or build complex
+models.
+• Data Warehouse: When you need reliable, fast, consistent reports
+and dashboards for business users from known data sources.

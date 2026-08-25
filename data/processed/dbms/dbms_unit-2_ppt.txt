@@ -1,0 +1,212 @@
+Relational Algebra
+Relational Algebra
+Relational algebra is a procedural query language that works on relational model. The purpose of a query language is to retrieve data from database or perform various operations such as insert, update, delete on the data.
+Relational algebra is a procedural query language, it means that it tells what data to be retrieved and how to be retrieved.
+Types of Relational Algebra operations
+UNARY OPERATIONS
+Select Operation:
+The select operation selects tuples that satisfy a given predicate.
+It is denoted by sigma (σ).
+Notation:  σ p(r)
+Where:
+σ is used for selection prediction
+r is used for relation
+p is used as a propositional logic formula which may use connectors like: AND OR and NOT. These relational can use as relational operators like =, ≠, ≥, <, >, ≤.
+Example:
+Input:
+σ BRANCH_NAME="perryride" (LOAN)
+LOAN:
+UNARY OPERATIONS
+Project Operation:
+This operation shows the list of those attributes that we wish to appear in the result. Rest of the attributes are eliminated from the table.
+It is denoted by ∏.
+Notation: ∏ A1, A2, An (r)
+Where
+A1, A2, A3 is used as an attribute name of relation r.
+Example:
+INPUT:
+∏ LOAN_NO, AMOUNT (LOAN)
+LOAN:
+UNARY OPERATIONS
+Rename Operation:
+The rename operation is used to rename the output relation.
+It is denoted by rho (ρ).
+Example: We can use the rename operator to rename STUDENT relation to STUDENT1.
+QUERY: ρ(STUDENT1, STUDENT)
+Set Theory Operations
+Union Operation:
+Union operator is denoted by ∪ symbol and it is used to select all the rows (tuples) from two tables (relations).
+Notation: R ∪ S
+A union operation must hold the following condition:
+R and S must have the attribute of the same number.(i.e both table columns count should be same)
+Duplicate tuples are eliminated automatically.
+COURSE
+STUDENT
+Query: ∏ Student_Name (COURSE) ∪ ∏ Student_Name (STUDENT)
+OUTPUT:
+Set Theory Operations
+Set Intersection:
+Suppose there are two tables R and S. The set intersection operation contains all common tuples that are in both R & S.
+It is denoted by intersection ∩.
+Notation: R ∩ S
+Example: Using the above Course table and student table
+Input:
+∏ Student_Name (COURSE) ∩ ∏ Student_Name (STUDENT)
+OUTPUT:
+Set Theory Operations
+Set Difference/Minus:
+Suppose there are two tables R and S. we want to select all those tuples(rows) that are present in Relation R1 but not present in Relation R2,
+It is denoted by intersection minus (-).
+Notation: R - S
+Example:  Using the above Course table and student table
+Input:
+∏ Student_Name (STUDENT) - ∏ Student_Name (COURSE)
+OUTPUT:
+Set Theory Operations
+Cartesian product
+The Cartesian product is used to combine each row in one table with each row in the other table. (i.e no of rows in one table multiple by no of rows in other tables)
+It is also known as a cross product.
+It is denoted by X.
+Notation: E X D
+EMPLOYEE
+DEPARTMENT
+OUTPUT:
+Input:
+EMPLOYEE X DEPARTMENT
+Binary Operations
+Join Operations:
+Join operators can apply, if and only if there must be some common attributes in two relations, It is used when we need to access data from more than one Relations.
+Join operator denoted by ⨝.
+A Join operation combines related tuples from different relations.
+Join operator = cross product + condition
+1.Inner Join
+Natural Join
+Equi Join
+Theta Join
+EMPLOYEE:
+SALARY:
+Operation: (EMPLOYEE ⋈ SALARY)
+OUTPUT:
+Binary Operations
+Natural Join:
+A natural join is the set of tuples of all combinations in R and S that are equal on their common attribute names.
+It is denoted by ⋈.
+Example: Let's use the above EMPLOYEE table and SALARY table:
+Input:
+∏EMP_NAME, SALARY (EMPLOYEE ⋈ SALARY)
+Binary Operations
+EMPLOYEE:
+SALARY:
+INPUT: ∏EMP_NAME, SALARY (EMPLOYEE ⋈ SALARY)
+OUTPUT:
+Binary Operations
+Conditional join or Theta join:
+Conditional join or Theta join is a type of inner join in which tables are combined based on the specified condition.
+It is denoted by symbol θ.
+In conditional join, the join condition can include <, >, <=, >=, ≠ operators in addition to the = operator.
+TABLE A:
+TABLE B:
+INPUT :A ⨝ S<T B
+OUTPUT:
+SQL Query:
+SELECT R, S, T, U FROM TableA JOIN TableB ON S < T;
+Explanation: This query joins the table A, B and projects attributes R, S, T, U were condition S < T is satisfied.
+Binary Operations
+Equi Join:
+Equi Join is a type of Inner join in which we use equivalence('=') condition in the join condition
+It is also known as an inner join. It is the most common join. It is based on matched data as per the equality condition
+TABLE A:
+TABLE B:
+INPUT: A ⨝ A.Column B = B.Column B (B)
+OUTPUT :
+SQL Query:
+SELECT * FROM TableA NATURAL JOIN TableB;
+Explanation - The data value "a" is available in both tables Hence we write that "a" is the table in the given output.
+Binary Operations
+Division Operator (÷):
+Division operator A÷B can be applied if and only if:
+ Attributes of B is proper subset of Attributes of A.  The relation returned by division operator will have attributes = (All attributes of A – All Attributes of B)
+ The relation returned by division operator will return those tuples from relation A which are associated to every B’s tuple.
+B:
+A:
+A ÷ B
+OUTPUT:
+÷
+Extended or derived operations
+Outer Join
+Outer Join is a type of join that retrieves matching as well as non-matching records from related tables.
+These three types of outer join:
+Left outer join
+Right outer join
+Full outer join
+Extended or derived operations
+Left Outer Join:
+It is also called left join. This type of outer join retrieves all records from the left table and retrieves matching records from the right table.
+It is denoted by ⟕.
+Example: Suppose there are two tables Table A and Table B
+TABLE A:
+TABLE B:
+OUTPUT:
+INPUT : A ⟕ B
+SQL Query-
+SELECT * FROM TableA LEFT OUTER JOIN TableB ON TableA.Number = TableB.Number;
+Extended or derived operations
+Right Outer Join
+It is also called a right join This type of outer join retrieves all records from the right table and retrieves matching records from the left table. And for the record which doesn't lies in Left table will be marked as NULL in result Set.
+It is denoted by ⟖.
+Example: Suppose there are two tables Table A and Table B
+A ⟖ B
+SQL Query:
+SELECT * FROM TableA RIGHT OUTER JOIN TableB ON TableA.Number= TableB.Number;
+OUTPUT:
+⟖
+A
+B
+Extended or derived operations
+Full Outer Join:
+FULL JOIN creates the result set by combining the results of both LEFT JOIN and RIGHT JOIN. The result set will contain all the rows from both tables. For the rows for which there is no matching, the result set will contain NULL values.
+It is denoted by ⟗.
+Example: Table A and Table B are the same as in the left outer join
+A ⟗ B
+SQL Query:
+SELECT * FROM TableA FULL OUTER JOIN TableB ON TableA.Number= TableB.Number;
+⟗
+=
+A
+B
+A ⟗ B
+Relational Calculus
+Relational Calculus
+Relational calculus is a non-procedural query language. In the non-procedural query language, the user is concerned with the details of how to obtain the end results. The relational calculus tells what to do but never explains how to do.
+Types of Relational Calculus
+Tuple Relational Calculus (TRC)
+Domain Relational Calculus (DRC)
+Quantifiers:
+Universal Quantifier (∀): Means “for all.” It specifies that a condition must be true for all values.
+Example: ∀t (t.Age > 18) means all records have an age greater than 18.
+Existential Quantifier (∃): Means “there exists.” It specifies that at least one value satisfies the condition.
+Example: ∃t (t.Grade = ‘A’) means there is at least one student with an “A” grade.
+Equality and Comparison Operators:
+Common operators like =, <, >, ≤, and ≥ are used to compare attribute values.
+Tuple Relational Calculus (TRC)
+In Tuple Relational Calculus (TRC), queries are based on finding tuples that satisfy specific conditions.
+It is a non-procedural query language which is based on finding a number of tuple variables also known as range variable for which predicate holds true.
+Notation:{T | P (T)}   or {T | Condition (T)}
+where
+T is the resulting tuples
+P(T) is the condition used to fetch T.
+Example: { t | t ∈ Students ∧ t.Grade = ‘A’ }
+Workflow:
+Define Tuple Variable: Here, t is a tuple variable representing rows in the “Students” table.
+Set the Condition: The condition t.Grade = ‘A’ checks if the “Grade” attribute is ‘A’.
+Filter the Table: The query searches each row in the “Students” table and selects those that meet the condition.
+Output the Result: Only rows where the grade is ‘A’ are returned.
+INPUT:
+OUTPUT:
+Domain Relational Calculus (DRC)
+Domain Relational Calculus (DRC) uses individual attributes (domains) rather than whole tuples.
+It uses logical connectives ∧ (and), ∨ (or) and ┓ (not). It uses Existential (∃) and Universal Quantifiers (∀) to bind the variable.
+Query: find the first name and age of students where student age is greater than 27
+ANS: {< First_Name, Age > | ∈ Student ∧ Age > 27}
+STUDENT:
+OUTPUT:

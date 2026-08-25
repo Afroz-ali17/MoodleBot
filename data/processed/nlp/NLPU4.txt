@@ -1,0 +1,333 @@
+Semantic Interpretation : Semantic and Logical form, Word senses and ambiguity, the basic logical form language, encoding ambiguity in the logical Form, Verbs and States in logical form, Thematic roles, Speech acts and embedded sentences, Defining semantics structure: model theory.
+UNIT – IV
+Part-A
+Semantic Interpretation
+Semantic Interpretation is the process of mapping natural language sentences into a formal representation of meaning so that a machine (or a reasoning system) can understand, store, and infer information.
+Purpose
+Connect syntax (sentence structure) to semantics (meaning).
+Enable computers to:
+Answer questions
+Draw inferences
+Detect contradictions
+Perform tasks like translation or dialogue
+Key Idea
+Start with a parsed sentence (syntactic structure).
+Convert it into a logical form or other semantic structure that captures:
+Entities (people, objects)
+Relations (who did what to whom)
+Events, time, and modality (when, how, certainty)
+Example
+Core Components
+Word Senses: Identifying correct meanings of words.
+Compositional Semantics: Building the meaning of a whole sentence from parts using rules (e.g., lambda calculus).
+Ambiguity Handling: Structural or lexical ambiguities must be resolved or represented.
+Applications in NLP
+Question Answering
+Information Extraction
+Machine Translation
+Dialogue Systems
+Knowledge Graph Construction
+Challenges
+Ambiguity: Multiple possible meanings (e.g., “old men and women”).
+Context Dependence: Pragmatics and world knowledge influence meaning.
+Complex Structures: Nested clauses, modality, metaphor.
+Semantic and Logical Form
+Semantic and Logical Form describe how a natural-language sentence is converted into a formal meaning representation that computers (or reasoning systems) can work with.
+They are two levels of the same interpretation pipeline.
+Semantic Form
+An intermediate meaning representation derived from the syntax of a sentence.
+It preserves the structure of the original sentence and keeps possible ambiguities (like quantifier scope) unresolved.
+Purpose
+Acts as a bridge between syntactic parse and fully formal logic.
+Keeps information about word senses, argument roles, tense, etc.
+ExampleSentence: Every student read a book
+Semantic form records:
+Quantifiers: every, a
+Predicates: student, read, book
+Scope is not yet fixed.
+Logical Form (LF)
+A formal, context-independent representation of meaning, typically written in First-Order Predicate Calculus (FOPC).
+Purpose
+Captures the truth-conditional meaning of a sentence.
+Enables reasoning, inference, and question answering.
+Key Elements
+Terms: constants or variables for entities/events.
+Predicates: properties or relations.
+Quantifiers & Operators: ∀ (for all), ∃ (exists), ¬ (not), ∧ (and), ∨ (or), → (implies).
+Example Logical Form
+One reading of Every student read a book:
+Relationship
+Syntax → Parse tree
+Semantic Form → Structured meaning, ambiguity preserved
+Logical Form → Precise FOPC formula ready for inference
+Semantic Form is close to the linguistic structure; Logical Form is the mathematical representation.
+Word Senses and Ambiguity
+When interpreting natural language, one written or spoken word can carry multiple meanings.
+Handling these meanings—called word senses—and the resulting ambiguity is a central problem in semantic interpretation.
+Word Senses
+A word sense is a specific meaning of a word as used in a particular context.
+Examples
+“bank”
+Sense 1: financial institution
+Sense 2: edge of a river
+“go”
+Move, leave, vanish, fit, operate … (dictionaries list dozens of senses)
+Ontology
+To organize senses, semantics uses an ontology: a structured classification of entities, events, states, etc.
+Examples of broad ontological classes: objects, quantities, qualities, events, actions, states, locations.
+Types of Ambiguity
+Ambiguity arises when a word, phrase, or sentence allows more than one valid interpretation.
+Ambiguity in Semantic Interpretation
+Mapping to Logical Form requires choosing the correct sense of each word and the right structure.
+Example:
+Sentence: I saw her duck.
+Possible senses:
+I observed her pet duck.
+I observed her lower her head.
+Handling Word Senses & Ambiguity
+Lexical Resources: WordNet, dictionaries.
+Word Sense Disambiguation (WSD): Algorithms that use context (neighboring words, syntax, statistics) to pick the correct sense.
+Quasi-logical forms: Keep ambiguity in the logical representation until later resolution.
+Key Takeaways
+Each word may have multiple senses, and selecting the correct one is essential for accurate meaning representation.
+Ambiguity occurs at lexical, structural, and semantic levels.
+Proper disambiguation enables precise logical forms, better information retrieval, question answering, and other NLP tasks.
+Basic Logical Form Language
+The basic logical form (LF) language is the formal system used to represent the literal meaning of natural-language sentences so they can be understood, reasoned about, and manipulated by a computer.
+It is usually based on First-Order Predicate Calculus (FOPC).
+Purpose
+Provide a precise, context-independent representation of meaning.
+Serve as the target of semantic interpretation before mapping to a knowledge base.
+Allow inference (e.g., proving facts, answering questions).
+Core Building Blocks
+Forming Propositions
+Predicate + arguments (terms) form a proposition.
+Examples:
+“Fido is a dog” → (DOG FIDO)
+“Sue loves Jack” → (LOVES SUE JACK)LOVES is a binary predicate; Sue and Jack are terms.
+Complex Sentences
+Use logical operators to combine or modify propositions:
+Negation: “Sue does not love Jack”→ (NOT (LOVES SUE JACK))
+Conjunction: “Sue loves Jack and Mary”→ (AND (LOVES SUE JACK) (LOVES SUE MARY))
+Quantified: “Every student read a book”→ ∀x [STUDENT(x) → ∃y (BOOK(y) ∧ READ(x,y))]
+Connection to Natural Language
+Nouns → predicates or constants
+Verbs → n-ary predicates (number of arguments = participants)
+Adjectives/Adverbs → properties or modifiers of events/states.
+Example with event variable:
+“John broke the window”→ ∃e [BREAK(e) ∧ AGENT(e, JOHN) ∧ THEME(e, WINDOW)]
+Encoding Ambiguity in the Logical Form
+When we map a natural-language sentence into a logical representation, a single sentence can have more than one valid meaning.
+To represent that situation faithfully, we need techniques to encode ambiguity rather than immediately forcing one interpretation.
+Why Ambiguity Arises?
+Lexical ambiguity: a word has several senses (bank = riverbank or financial).
+Structural/Scope ambiguity: quantifier order or operator scope changes the meaning.
+Example: Every boy loves a dog
+Each boy loves (possibly different) dogs.
+There is one specific dog loved by all boys.
+Contextual ambiguity: pronouns or indexicals depend on situation (John saw him).
+Goal
+Create a logical form (LF) that:
+The representation keeps every reasonable meaning alive, letting later context or reasoning decide which one is correct.
+We design the early stage of language processing so it doesn’t force a single meaning right away.Instead, it keeps the multiple possible meanings available so that later parts of the system—which have access to context or real-world knowledge—can choose the correct one.
+Techniques to Encode Ambiguity
+Quasi-Logical Form (QLF) / Underspecified LF
+Generalized Quantifiers
+Scope-Binding Operators
+Context Functions for Names/Indexicals
+Quasi-Logical Form (QLF) / Underspecified LF
+Instead of producing many separate LFs, use a single representation with variables for scope.
+Example:
+(LOVES <EVERY b1 (BOY b1)> <A d1 (DOG d1)>)
+This QLF can later yield:
+∀b [BOY(b) → ∃d (DOG(d) ∧ LOVES(b,d))]
+∃d [DOG(d) ∧ ∀b (BOY(b) → LOVES(b,d))].
+Generalized Quantifiers
+Natural language quantifiers (most, many, few, etc.) can’t always be expressed directly with ∀ or ∃.
+Represent them with a generalized form first, e.g.,
+(MOST x : DOG(x) BARK(x))
+This stands until a reasoning module provides a more detailed treatment.
+Scope-Binding Operators
+Explicitly mark elements whose scope is undecided, such as negation and tense:
+Every boy didn’t run
+(NOT (EVERY b (BOY b) (RUN b))) → “No boy ran”
+(EVERY b (BOY b) (NOT (RUN b))) → “Not every boy ran.”
+Context Functions for Names/Indexicals
+Proper names or pronouns require a context function:
+(NAME j1 "John")
+ensures the LF can later bind “John” to the correct individual in the discourse situation.
+Advantages
+Efficiency: Avoids generating a combinatorial explosion of alternative parses.
+Flexibility: Later modules (discourse, pragmatics) choose the correct interpretation using context or probabilistic reasoning.
+Summary
+Encoding ambiguity means representing uncertainty directly inside the logical form.
+Typical tools: quasi-logical forms, generalized quantifiers, scope variables, and context functions.
+Final disambiguation is deferred until more information (discourse or world knowledge) is available.
+Example Summary
+Sentence: Every boy loves a dog
+Encoded LF:
+(LOVES <EVERY b1 (BOY b1)> <A d1 (DOG d1)>)
+This single representation encodes both readings without prematurely committing to one.
+Verbs and States in logical form
+In semantic interpretation, verbs describe actions, events, or conditions, and must be represented precisely in logical form (LF) so that their participants, time, and type (event or state) are clear.
+Verbs as Predicates
+In the basic logical form language, verbs become predicates that relate their arguments (Agent, Theme, Instrument, etc.).
+The number of arguments determines the predicate’s arity:
+run → unary predicate: (RUN John)
+love → binary predicate: (LOVE John Mary)
+give → ternary predicate: (GIVE John Mary Book)
+Eventive Verbs (Events)
+Many verbs describe events that occur at a time and place.
+Logical form often introduces an event variable e (Davidsonian semantics):
+This allows us to:
+Attach modifiers (time, place, manner):∃e [RUN(e, John) ∧ AT(e, Park) ∧ PAST(e)]
+Capture relationships between events.
+Stative Verbs (States)
+States describe conditions or properties that hold continuously rather than occur as discrete events.
+Examples: know, believe, own, love, be tall.
+Logical form often omits an explicit event variable:
+KNOW(Mary, French)
+or
+TALL(John)
+Some analyses still introduce a “state variable” for consistency, but it’s optional.
+Verb Alternations & Arity Changes
+The same verb can appear in different syntactic frames, affecting its logical form.
+Example: break
+1. John broke the window with a hammer.
+∃e [BREAK(e) ∧ AGENT(e, John) ∧ THEME(e, Window) ∧ INSTR(e, Hammer)]
+2. The hammer broke the window.
+∃e [BREAK(e) ∧ AGENT(e, Hammer) ∧ THEME(e, Window)]
+3. The window broke.
+∃e [BREAK(e) ∧ THEME(e, Window)]
+These reflect different argument structures while keeping the core event concept BREAK.
+States with Adjectives or Copulas
+Sentences like Mary was unhappy represent a state:
+UNHAPPY(Mary)
+or with tense:
+PAST(UNHAPPY(Mary))
+Key Takeaways
+Summary
+In logical form, verbs become predicates.
+Eventive verbs use an event variable to capture time, participants, and modifiers.
+Stative verbs describe ongoing conditions and may be represented simply as properties of their subjects.
+This distinction lets NLP systems reason correctly about what happened versus what is (or was) true.
+Thematic roles
+Thematic roles (also called semantic roles or theta roles) describe the underlying relationship between a verb (or predicate) and each of its arguments.
+They answer the question: “Who did what to whom, with what, when, and where?”
+Purpose
+Provide a semantic structure that is independent of word order or syntactic variation.
+Help map natural-language sentences to logical form by labeling each participant’s role in the event.
+Common Thematic Roles
+Common Thematic Roles
+Different frameworks sometimes refine or rename these roles (e.g., “Patient” vs. “Theme”), but the underlying ideas are similar.
+Examples
+a) Simple Event
+John broke the window with a hammer.
+Agent: John
+Theme: window
+Instrument: hammer
+Logical Form (with roles):
+∃e [BREAK(e) ∧ AGENT(e, John) ∧ THEME(e, Window) ∧ INSTR(e, Hammer)]
+Examples
+b) Intransitive Verb
+The rock fell.
+Theme: rock
+Source/Path/Goal may be added if specified.
+Key Observations
+Consistency across syntax:
+John broke the window.
+The window was broken by John.→ Same thematic roles, different grammar.
+Role ≠ Grammatical Function:
+The subject is not always the Agent.
+The window broke. → Subject = Theme.
+Importance in NLP
+Crucial for semantic parsing, question answering, information extraction, and machine translation.
+Supports Frame Semantics and Semantic Role Labeling (SRL), where systems automatically assign these roles.
+Summary Table
+Summary
+Thematic roles label the participants in an event with their semantic function, letting logical forms capture meaning beyond surface grammar—for example:
+∃e [SEE(e) ∧ EXPERIENCER(e, Mary) ∧ THEME(e, Star)]
+This enables machines to understand who did what to whom regardless of sentence structure.
+Speech acts and embedded sentences
+In semantic interpretation, we not only capture what a sentence states but also what the speaker intends (speech act) and how clauses can be nested inside one another (embedded sentences).
+Both are important for accurate logical form and reasoning.
+Speech Acts
+A speech act is the communicative function a sentence performs.
+The same surface sentence can serve different purposes depending on context.
+Major Types
+Key Idea
+Logical form normally captures propositional content, but speech-act operators indicate the intent.
+Example:
+(ASSERT (RAINING))
+(REQUEST (CLOSE door))
+This allows dialogue systems to distinguish a statement from a question.
+Embedded Sentences
+An embedded sentence (or subordinate clause) is a sentence inside another sentence.
+It acts as an argument of a verb, noun, or adjective.
+a) Common Patterns
+b) Scope & Binding
+Embedded sentences can introduce their own quantifiers and pronouns, whose reference may depend on the higher clause.
+Example: Mary believes she is smart.
+Pronoun she refers to Mary inside the embedded clause.
+c) Speech Acts + Embedding
+You can have a speech-act operator around a sentence containing another:
+(ASSERT (KNOW(Mary, RAINING)))
+→ Speaker asserts that Mary knows it is raining.
+Summary
+Speech acts label the intent of an utterance (assert, question, command, etc.).
+Embedded sentences are clauses functioning as arguments within larger structures and require nested logical forms.
+Correct representation:
+Preserves truth-conditional content,
+Captures who intends or believes what,
+Enables reasoning across complex statements in dialogue or knowledge bases.
+Example
+“John asked [if Mary believes [that it is raining]].”
+Logical Form:
+ASK(John, BELIEVE(Mary, RAINING))
+This nesting shows three layers: the top-level speech act (ASK), the belief clause, and the embedded proposition RAINING.
+Defining Semantic Structure: Model Theory
+Model theory provides the formal foundation for semantics—it tells us how a sentence’s logical form is assigned a truth value with respect to a well-defined model of the world.
+Core Idea
+A model describes a possible world in mathematical terms.
+A sentence is true if the interpretation of its logical form is satisfied in that model.
+So semantic interpretation =
+“Given a logical form and a model of the world, decide whether the statement is true or false.”
+Components of a Model
+A model M is usually defined as:
+M=⟨D,  I⟩
+where:
+D (Domain): the set of all entities, events, or objects we are talking about.
+I (Interpretation function): assigns meaning to each constant, predicate, and function symbol in the logical language.
+Example model:
+Domain D={john,mary,book1}
+Interpretation:
+STUDENT → {john, mary}
+BOOK → {book1}
+READ → {〈john, book1〉, 〈mary, book1〉}
+Truth Conditions
+Atomic Formulas:
+STUDENT(john) is true iff john ∈ I(STUDENT).
+Complex Formulas (inductive definition):
+¬φ is true iff φ is false.
+φ ∧ ψ is true iff both φ and ψ are true.
+∀x φ(x) is true iff φ(x) is true for every element of D.
+Example:
+∀x[STUDENT(x)→∃y(BOOK(y)∧READ(x,y))]
+is true in the model if every student has at least one pair (x,y) in READ where y is a book.
+Why It Matters for NLP
+Gives a mathematical basis for meaning—independent of any specific programming language.
+Allows:
+Inference: proving entailments (if A and A→B, then B).
+Consistency checks: detect contradictions.
+Question answering: determine if a proposition holds in a knowledge base.
+Connection to Logical Form
+Logical Form (LF): the syntactic/semantic representation we build from a sentence.
+Model Theory: the semantics that assigns truth values to that LF.
+Semantic interpretation = constructing LF and specifying how LF is evaluated in a model.
+Key Takeaways
+Summary
+Defining semantic structure with model theory means:
+Represent a sentence as a logical form.
+Specify a model (domain + interpretation).
+Evaluate the formula in that model to determine its truth.
+This formal link between language and mathematics is the backbone of computational semantics.

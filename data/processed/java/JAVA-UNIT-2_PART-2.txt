@@ -1,0 +1,666 @@
+Methods in Java
+ A method is a block of code or collection of statements or a set
+of code grouped together to perform a certain task or operation.
+ It is used to achieve the reusability of code.
+ We write a method once and use it many times.
+ We do not require to write code again and again.
+ It also provides the easy modification and readability of code,
+just by adding or removing a chunk of code.
+ The method is executed only when we call or invoke it.
+ The most important method in Java is the main() method.
+Method Signature: Every method has a method signature. It is a part of the
+method declaration. It includes the method name and parameter list.
+Access Specifier: Access specifier or modifier is the access type of the
+method. It specifies the visibility of the method. Java provides four types of
+access specifier:
+•Public: The method is accessible by all classes when we use public specifier
+in our application.
+•Private: When we use a private access specifier, the method is accessible
+only in the classes in which it is defined.
+•Protected: When we use protected access specifier, the method is
+accessible within the same package or subclasses in a different package.
+•Default: When we do not use any access specifier in the method declaration,
+Java uses default access specifier by default. It is visible only from the same
+package only.
+Return Type: Return type is a data type that the method returns. It
+may have a primitive data type, object, collection, void, etc. If the
+method does not return anything, we use void keyword.
+Method Name: It is a unique name that is used to define the name
+of a method. It must be corresponding to the functionality of the
+method. Suppose, if we are creating a method for subtraction of two
+numbers, the method name must be subtraction(). A method is
+invoked by its name.
+Parameter List: It is the list of parameters separated by a comma
+and enclosed in the pair of parentheses. It contains the data type
+and variable name. If the method has no parameter, left the
+parentheses blank.
+Method Body: It is a part of the method declaration. It contains all
+the actions to be performed. It is enclosed within the pair of curly
+braces.
+Naming a Method
+While defining a method, remember that the method name must
+be a verb and start with a lowercase letter.
+If the method name has more than two words, the first name
+must be a verb followed by adjective or noun.
+In the multi-word method name, the first letter of each word
+must be in uppercase except the first word.
+For example:
+Single-word method name: sum(), area()
+Multi-word method name: areaOfCircle(), stringComparision()
+It is also possible that a method has the same name as another
+method name in the same class, it is known as method
+overloading.
+Types of Method
+There are two types of methods in Java:
+•Predefined Method
+•User-defined Method
+an example of the predefined method.
+Demo.java
+public class Demo
+{
+public static void main(String[] args)
+{
+// using the max() method of Math class
+System.out.print("The maximum number is: " + Math.max(9,7));
+}
+}
+User-defined Method
+The method written by the user or programmer is known as a user-defined method.
+These methods are modified according to the requirement.
+//user defined method
+public static void findEvenOdd(int num)
+{
+//method body
+if(num%2==0)
+System.out.println(num+" is even");
+else
+System.out.println(num+" is odd");
+}
+How to Call or Invoke a User-defined Method
+Once we have defined a method, it should be called.
+The calling of a method in a program is simple.
+When we call or invoke a user-defined method, the program control transfer to the called method.
+import java.util.Scanner;
+public class EvenOdd
+{
+public static void main (String args[])
+{
+//creating Scanner class object
+Scanner scan=new Scanner(System.in);
+System.out.print("Enter the number: ");
+//reading value from the user
+int num=scan.nextInt();
+//method calling
+findEvenOdd(num);
+}
+import java.util.Scanner;
+public class EvenOdd
+{
+public static void main (String args[])
+{
+//creating Scanner class object
+Scanner scan=new Scanner(System.in);
+System.out.print("Enter the number: ");
+//reading value from user
+int num=scan.nextInt();
+//method calling
+findEvenOdd(num);
+}
+//user defined method
+public static void findEvenOdd(int num)
+{
+//method body
+if(num%2==0)
+System.out.println(num+" is even");
+else
+System.out.println(num+" is odd");
+} }
+Static Method
+A method that has static keyword is known as static
+method. In other words, a method that belongs to a class
+rather than an instance of a class is known as a static
+method.
+public class Display
+{
+We can also create a static method by using the
+public static void main(String[] args)
+keyword static before the method name.
+{
+show();
+}
+The main advantage of a static method is that we can call
+static void show()
+it without creating an object.
+{
+System.out.println("It is an example of static method.");
+It can access static data members and also change the
+}
+value of it. It is used to create an instance method.
+}
+It is invoked by using the class name. The best example
+of a static method is the main() method.
+abstract class Demo //abstract class
+Abstract Method {
+The method that does not has method body is
+//abstract method declaration
+known as abstract method.
+abstract void display();
+}
+In other words, without an implementation is
+public class MyClass extends Demo
+known as abstract method.
+{
+//method impelmentation
+It always declares in the abstract class.
+void display()
+It means the class itself must be abstract if it {
+has abstract method. System.out.println("Abstract method?");
+}
+To create an abstract method, we use the
+public static void main(String args[])
+keyword abstract.
+{
+//creating object of abstract class
+Syntax
+Demo obj = new MyClass();
+abstract void method_name();
+//invoking abstract method
+obj.display();
+}
+}
+Method Overloading in Java
+If a class has multiple methods having same name but different in parameters, it is known as Method
+Overloading.
+If we have to perform only one operation, having same name of the methods increases the readability
+of the program.
+Advantage of method overloading
+Method overloading increases the readability of the program.
+Different ways to overload the method
+There are two ways to overload the method in java
+1.By changing number of arguments
+2.By changing the data type
+1) Method Overloading: changing no. of arguments
+In this example, we have created two methods,
+first add() method performs addition of two numbers and second add method performs addition
+of three numbers.
+In this example, we are creating static methods so that we don't need to create instance for
+calling methods.
+class Adder
+{
+static int add(int a,int b)
+{return a+b;}
+static int add(int a,int b,int c)
+{return a+b+c;}
+}
+class TestOverloading1
+{
+public static void main(String[] args)
+{
+System.out.println(Adder.add(11,11));
+System.out.println(Adder.add(11,11,11));
+}}
+Method Overloading: changing data type of arguments
+In this example, we have created two methods that differs in data type. The first add method
+receives two integer arguments and second add method receives two double arguments.
+class Adder
+{
+static int add(int a, int b)
+{return a+b;}
+static double add(double a, double b)
+{return a+b;}
+}
+class TestOverloading2
+{
+public static void main(String[] args)
+{
+System.out.println(Adder.add(11,11));
+System.out.println(Adder.add(12.3,12.6));
+}}
+Java Method Parameters
+Parameters and Arguments
+Information can be passed to methods as a parameter. Parameters act as variables
+inside the method.
+Parameters are specified after the method name, inside the parentheses. You can
+add as many parameters as you want, just separate them with a comma.
+Types of Parameters:
+1. Formal Parameter:
+A variable and its corresponding data type are referred to as formal parameters when they exist
+in the definition or prototype of a function or method.
+Syntax:
+returnType functionName(dataType parameterName)
+{
+// Function body
+// Use the parameterName within the function
+}
+In the above syntax:
+•returnType represents the return type of the function.
+•functionName represents the name of the function.
+•dataType represents the data type of the formal parameter.
+•parameterName represents the name of the formal parameter.
+Actual Parameter:
+The value or expression that corresponds to a formal parameter and is supplied to a
+function or method during a function or method call is referred to as an actual
+parameter
+It is also known as an argument.
+It offers the real information or value that the method or function will work with.
+Syntax:
+functionName(argument)
+In the above syntax:
+•functionName represents the name of the function or method.
+•argument represents the actual value or expression being passed as an argument to
+the function or method.
+Parameter Passing Techniques in Java with Examples
+Parameter passing in Java refers to the mechanism of transferring data between methods or functions.
+Java supports two types of parameters passing techniques
+1.Call-by-value
+2.Call-by-reference.
+Understanding these techniques is essential for effectively utilizing method parameters in Java.
+Call-by-Value:
+1.
+In Call-by-value the copy of the value of the actual parameter is passed to the
+formal parameter of the method.
+Any of the modifications made to the formal parameter within the method do not
+affect the actual parameter.
+ALGORITHM:
+Step 1: Create a class named CallByValueExample.
+Step 2: Inside the main method:
+Step 2.1: Declare an integer variable num and assign it the value 10.
+Step 2.2: Print the value of num before calling the method.
+Step 2.3: Call the modifyValue method, passing num as the actual parameter.
+Step 2.4: Print the value of num after calling the method.
+AD
+Step 3: Define the modifyValue method that takes an integer parameter value:
+Step 3.1: Modify the formal parameter value by assigning it the value 20.
+Step 3.2: Print the value of value inside the method.
+import java.util.*;
+public class CallByValueExample
+{
+public static void main(String[] args)
+{
+int num = 10;
+System.out.println("Before calling method:"+num);
+modifyValue(num); // Calling the method and passing the value of 'num'
+System.out.println("After calling method:"+num);
+}
+public static void modifyValue(int value) {
+// Modifying the formal parameter
+value=20; // Assigning a new value to the formal parameter as value
+System.out.println("Inside method:"+value);
+}
+}
+Call-by-Reference:
+call by reference" is a method of passing arguments to functions or methods where the memory address (or
+reference) of the variable is passed rather than the value itself.
+In "call by reference," when a reference to a variable is passed, any modifications made to the parameter inside the
+function are transmitted back to the caller. This is because the formal parameter receives a reference (or pointer) to
+the actual data.
+ALGORITHM:
+Step 1: Start
+Step 2: Define the class "CallByReference"
+Step 2.1: Declare instance variables: a (int) and b (int)
+Step 2.1: Define a constructor to assign values to a and b
+Step 3: Define the method "changeValue" inside the "CallByReference" class:
+Step 3.1: Accept a parameter of type "CallByReference" called "obj"
+Step 3.2: Add 10 to the value of "obj.a"
+Step 3.3: Add 20 to the value of "obj.b"
+Step 4: Define the class "Main"
+Step 4.1: Define the main method
+Step 4.2: Create an instance of "CallByReference" called "object" with values 10 and 20
+Step 4.3: Print the values of "object.a" and "object.b"
+Step 4.4: Call the "changeValue" method on "object" and pass "object" as an argument
+Step 4.5: Print the updated values of "object.a" and "object.b"
+Step 5: End
+import java.util.*;
+// Callee
+// Caller
+class CallByReference
+public class CallByReferenceExample
+{
+{
+int a,b;
+public static void main(String[] args)
+{
+// Constructor to assign values to the class v
+// Create an instance of CallByReference and assign values u
+ariables
+sing the constructor
+CallByReference(int x,int y)
+CallByReference object=new CallByReference(10, 20);
+{
+a=x;
+System.out.println("Value of a: "+object.a +" & b: " +object.b);
+b=y;
+}
+// Call the changeValue method and pass the object as an ar
+// Method to change the values of class varia
+gument
+bles
+object.changeValue(object);
+void changeValue(CallByReference obj)
+{
+// Display the values after calling the method
+obj.a+=10;
+System.out.println("Value of a:"+object.a+ " & b: "+object.b);
+obj.b+=20;
+}
+}
+}
+}
+Java Recursion
+Recursion is the technique of making a function call itself.
+This technique provides a way to break complicated problems down
+into simple problems which are easier to solve.
+recursion to add all of the numbers up to 10.
+public class Main {
+public static void main(String[] args) {
+int result = sum(10);
+System.out.println(result);
+}
+public static int sum(int k) {
+if (k > 0) {
+return k + sum(k - 1);
+} else {
+return 0;
+}
+}
+}
+Java Recursion Example 3: Factorial Number
+Recursion in java is a process in which a public class RecursionExample
+method calls itself continuously.
+{
+static int factorial(int n)
+A method in java that calls itself is called
+recursive method. {
+if (n == 1)
+It makes the code compact but complex
+return 1;
+to understand.
+else
+return(n * factorial(n-1));
+Syntax:
+returntype methodname() }
+{
+//code to be executed
+public static void main(String[] args)
+methodname();//calling same method
+} {
+System.out.println("Factorial of 5 is: "+factorial(5));
+}
+}
+Java Recursion Example : Fibonacci Series
+public class RecursionExample
+{
+static int n1=0,n2=1,n3=0;
+static void printFibo(int count)
+{
+if(count>0)
+{
+n3 = n1 + n2;
+n1 = n2;
+n2 = n3;
+System.out.print(" "+n3);
+printFibo(count-1);
+}
+}
+public static void main(String[] args) {
+int count=15;
+System.out.print(n1+" "+n2);//printing 0 and 1
+printFibo(count-2);//n-2 because 2 numbers are already printed
+}
+}
+Method Overriding in Java
+If subclass (child class) has the same method as declared in the parent class, it is
+known as method overriding in Java.
+In other words, If a subclass provides the specific implementation of the
+method that has been declared by one of its parent class, it is known as method
+overriding.
+Usage of Java Method Overriding
+Method overriding is used to provide the specific implementation of a method
+which is already provided by its superclass.
+Method overriding is used for runtime polymorphism
+Rules for Java Method Overriding
+The method must have the same name as in the parent class
+The method must have the same parameter as in the parent class.
+There must be an IS-A relationship (inheritance).
+//Java Program to illustrate the use of Java Method Overriding
+//Creating a parent class.
+class Vehicle{
+//defining a method
+void run()
+{System.out.println("Vehicle is running");}
+}
+//Creating a child class
+class Bike2 extends Vehicle
+{
+//defining the same method as in the parent class
+void run()
+{
+System.out.println("Bike is running safely");}
+public static void main(String args[]){
+Bike2 obj = new Bike2();//creating object
+obj.run();//calling method
+} }
+//Java Program to demonstrate the real scenario of Java
+Method Overriding
+//where three classes are overriding the method of a pare
+nt class.
+//Creating a parent class.
+class Bank{
+//Test class to create objects and call the methods
+int getRateOfInterest(){return 0;}
+class Test2{
+}
+public static void main(String args[]){
+//Creating child classes.
+SBI s=new SBI();
+class SBI extends Bank{
+ICICI i=new ICICI();
+int getRateOfInterest(){return 8;}
+AXIS a=new AXIS();
+}
+System.out.println("SBI Rate of Interest: "+s.getRateOfInterest());
+class ICICI extends Bank{
+System.out.println("ICICI Rate of Interest: "+i.getRateOfInterest());
+int getRateOfInterest(){return 7;}
+}
+System.out.println("AXIS Rate of Interest: "+a.getRateOfInterest())
+class AXIS extends Bank{
+;
+int getRateOfInterest(){return 9;}
+}
+}
+}
+Nesting Of Methods in Java Syntax:
+class Main
+{
+method1(){
+a method can also be called by
+// statements
+another method using the class
+}
+name, but only if both methods are
+present in the same class. method2()
+{
+// statements
+Efficient code organization and
+simplified method calls within a class // calling method1() from method2()
+method1();
+are possible through nesting of
+}
+methods.
+method3()
+{
+// statements
+// calling of method2() from method3()
+method2();
+}
+}
+import java.util.Scanner;
+public class NestingMethodsExample1 {
+public static void main(String[] args) {
+int perimeter(int a, int y) {
+Scanner scanner = new Scanner(System.in);
+int p = 4 * (a + y);
+return p;
+// Getting input from user
+}
+System.out.print("Length of the rectangle: ");
+int a = scanner.nextInt();
+int area(int a, int y) {
+System.out.print("Breadth of the rectangle: ");
+// Calling perimeter method to calculate perimeter
+int y = scanner.nextInt();
+int p = perimeter(a, y);
+System.out.print("Height of the cuboid: ");
+System.out.println("Perimeter: " + p);
+int h = scanner.nextInt();
+int r = a * y;
+return r;
+// Creating object of NestingMethodsExample class
+}
+NestingMethodsExample obj = new NestingMethodsEx
+// Method to calculate the volume of a cuboid, using the ar
+ample();
+ea method
+int volume(int a, int y, int h) {
+// Calling volume method to calculate volume
+// Calling area method to calculate area
+int volume = obj.volume(a, y, h);
+int r = area(a, y);
+System.out.println("Area: " + r);
+// Printing volume
+// Calculating volume
+System.out.println("Volume: " + volume);
+int v = a * y * h;
+}
+return v;
+}
+}
+Constructors in Java
+In Java, a constructor is a block of codes similar to the method. It is called when an
+instance of the class is created.
+At the time of calling constructor, memory for the object is allocated in the memory.
+It is a special type of method which is used to initialize the object.
+Every time an object is created using the new() keyword, at least one constructor is
+called.
+It calls a default constructor if there is no constructor available in the class. In such case,
+Java compiler provides a default constructor by default.
+There are two types of constructors in Java: no-arg constructor, and parameterized
+constructor.
+Rules for creating Java constructor
+There are two rules defined for the constructor.
+1.Constructor name must be the same as its class name
+2.A Constructor must have no explicit return type
+3.A Java constructor cannot be abstract, static, final, and synchronized
+Types of Java constructors
+There are two types of constructors in Java:
+1.Default constructor (no-arg constructor)
+2.Parameterized constructor
+Java Default Constructor
+A constructor is called "Default Constructor" when it doesn't have any parameter.
+Syntax of default constructor:
+Example of default constructor
+<class_name>()
+{} In this example, we are creating the no-arg constructor
+in the Bike class.
+It will be invoked at the time of object creation.
+//Java Program to create and call a default constructor
+class Bike1
+{
+//creating a default constructor
+Bike1(){System.out.println("Bike is created");}
+//main method
+public static void main(String args[]){
+//calling a default constructor
+Bike1 b=new Bike1();
+}
+}
+Example of default constructor that displays the default values
+class Student3{
+int id;
+String name;
+//method to display the value of id and name
+void display(){System.out.println(id+" "+name);}
+public static void main(String args[]){
+//creating objects
+Student3 s1=new Student3();
+Student3 s2=new Student3();
+//displaying values of the object
+s1.display();
+s2.display();
+}
+}
+Java Parameterized Constructor
+A constructor which has a specific number of parameters is called a parameterized
+constructor.
+class Student4{
+int id;
+String name;
+//creating a parameterized constructor
+Student4(int i,String n){
+id = i;
+name = n;
+}
+//method to display the values
+void display(){System.out.println(id+" "+name);}
+public static void main(String args[]){
+//creating objects and passing values
+Student4 s1 = new Student4(111,"Karan");
+Student4 s2 = new Student4(222,"Aryan");
+//calling method to display the values of object
+s1.display();
+s2.display();
+}
+}
+Constructor overloading in Java
+In Java, we can overload constructors like methods. The constructor overloading can be defined as the
+concept of having more than one constructor with different parameters so that every constructor can perform
+a different task.
+public class Student {
+//instance variables of the class
+public static void main(String[] args) {
+int id;
+//object creation
+String name;
+Student s = new Student();
+System.out.println("\nDefault Constructor values: \n");
+Student(){
+System.out.println("Student Id : "+s.id + "\nStudent
+System.out.println("this a default constructor");
+Name : "+s.name);
+}
+System.out.println("\nParameterized Constructor
+Student(int i, String n){
+values: \n");
+id = i;
+Student student = new Student(10, "David");
+name = n;
+System.out.println("Student Id : "+student.id +
+}
+"\nStudent Name : "+student.name);
+}
+}
+Attributes Final and Static
+public class Circle { .
+// Define final static variables for the mathematic
+al constant pi and the default radius of a circle public static void main(String[] args) {
+final static double PI = 3.14159; // Create two circle objects, one with the default radiu
+final static int DEFAULT_RADIUS = 5; s and one with a radius of 10
+// Instance variable for the radius of the circle Circle circle1 = new Circle();
+int radius; Circle circle2 = new Circle(10);
+// Constructor to create a circle with the default
+radius public Circle() { // Print out the properties of each circle, including the
+this.radius = DEFAULT_RADIUS; radius, area, and circumference
+} System.out.println("Circle 1 - Radius: " + circle1.radius);
+// Constructor to create a circle with a specific r System.out.println("Circle 1 - Area: " + circle1.getArea());
+adius public Circle(int radius) { System.out.println("Circle1-Circumference: “
+this.radius = radius; + circle1.getCircumference());
+}
+//Method to calculate the area of the circle System.out.println("Circle 2 - Radius: " + circle2.radius);
+public double getArea() { System.out.println("Circle 2 - Area: " + circle2.getArea());
+return PI * radius * radius; System.out.println("Circle 2 - Circumference: "
+} + circle2.getCircumference());
+//Method to calculate the circumference of the c }
+ircle public double getCircumference() { }
+return 2 * PI * radius;
+}

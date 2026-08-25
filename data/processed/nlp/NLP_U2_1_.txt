@@ -1,0 +1,499 @@
+Bag of Words and TF-IDF, Language Modeling: Unigrams, Bigrams, N-gram Models, WordEmbeddings: Word2Vec, GloVe, FastText, Cosine Similarity and Distance Measures, TextClassification using Naive Bayes and SVM, Evaluation Metrics: Accuracy, Precision, Recall, F1.
+UNIT – II
+Text Representation and Statistical NLP
+Text Representation in NLP
+Text must be converted into numerical form so that machine learning models can process it. This transformation is called text representation.
+There are two major approaches:
+Bag of Words (BoW)
+Term Frequency–Inverse Document Frequency (TF-IDF)
+Bag of Words (BoW)
+The Bag of Words (BoW) model is a simple and widely used technique to represent text as numerical vectors. The core idea is:
+We treat a text document as a "bag" of its words, ignoring grammar and word order.
+We represent each document by the frequency of words occurring in it.
+This is a text-to-vector conversion technique, used as input to machine learning models.
+Step-by-Step Explanation
+Step 1: Vocabulary Building
+Collect all unique words across the document(s).
+This set of unique words becomes the vocabulary.
+For example, for 3 documents:
+Doc1: "I love NLP"
+Doc2: "I love Machine Learning"
+Doc3: "NLP is fun"
+Vocabulary: [I, love, NLP, Machine, Learning, is, fun]
+Step-by-Step Explanation
+Step 2: Vectorization
+Each document is converted into a vector of counts.
+The length of each vector = size of vocabulary.
+Each position in the vector represents a word from the vocabulary and its value is the count of that word in the document.
+So:
+Doc1 → [1, 1, 1, 0, 0, 0, 0]
+Doc2 → [1, 1, 0, 1, 1, 0, 0]
+Doc3 → [0, 0, 1, 0, 0, 1, 1]
+This is your BoW matrix, also called document-term matrix.
+Advantages of BoW
+Simple to understand and implement.
+Works well for small and medium-sized corpora.
+Good baseline for classification tasks.
+Limitations of BoW
+No understanding of meaning: The model doesn't understand that “good” and “excellent” are similar.
+No word order: "I love NLP" and "NLP love I" will be treated the same.
+High dimensionality: Vocabulary can become very large for large datasets.
+Sparsity: Most entries in the vector are 0.
+Term Frequency – Inverse Document Frequency (TF-IDF)
+BoW only counts how many times a word appears, but treats all words as equally important.
+TF-IDF addresses this limitation by:
+Highlighting important words in a document.
+Down-weighting common words (like "the", "is", "and") that appear in almost every document.
+TF-IDF = TF × IDF
+TF (Term Frequency)
+It tells how frequently a term appears in a document.
+For example, if “NLP” appears 3 times in a document of 100 words:
+IDF (Inverse Document Frequency)
+It tells how rare or unique a word is across all documents.
+Where:
+N = Total number of documents
+df(t) = Number of documents containing the term t
+If a term appears in every document, df(t)=N, so:
+Meaning: very common words get zero weight.
+TF-IDF Weight
+Multiply the TF and IDF:
+TF-IDF(t,d)=TF(t,d)×IDF(t)
+This gives a high score to terms that:
+Appear frequently in a particular document
+Appear rarely in other documents
+Example
+Suppose you have 3 documents:
+Doc1: "AI is our future"
+Doc2: "AI and ML are part of future"
+Doc3: "ML and DL are trends in AI"
+Let’s say the word "AI" appears in all 3 documents.
+TF of "AI" in Doc1 = 1/4 = 0.25
+IDF of "AI" = log(3/3) = 0
+So TF-IDF("AI", Doc1) = 0.25 × 0 = 0
+Meaning: "AI" is not a distinguishing term, so it gets zero importance.
+Advantages of TF-IDF
+Balances term frequency and uniqueness.
+Improves over raw BoW by reducing weights of common words.
+Widely used in search engines, document classification, and recommendation.
+Limitations of TF-IDF
+Still ignores semantic meaning (e.g., “car” and “automobile” are treated as unrelated).
+Doesn’t consider word position or context.
+Not suitable for capturing long-range dependencies or word meanings — that’s where word embeddings help (Word2Vec, GloVe, etc.).
+Language Modeling
+What is a Language Model?
+A Language Model (LM) is a statistical or probabilistic model that assigns a likelihood (probability) to a sequence of words.
+Purpose:
+To predict the next word given the previous words.
+To estimate the probability of a sentence being valid in a language.
+P(w1,w2,w3,...,wn)
+Where w1,w2,...,wn​ are words in a sequence.
+Language models are the foundation of NLP tasks like:
+Machine Translation
+Speech Recognition
+Text Generation
+Spell Correction
+Unigrams
+A unigram is a single word. A unigram model assumes that each word is independent of the previous one.
+In simpler terms, the probability of a sentence is computed by multiplying the individual probabilities of each word, assuming no context.
+Example
+Sentence: “I love NLP”
+Unigram Model:
+P(“I”)×P(“love”)×P(“NLP”)
+This model is easy to compute and works well when context is not important.
+However, it fails to capture grammar or word order.
+Estimation
+Using Maximum Likelihood Estimation (MLE):
+Example
+Suppose our corpus is:
+"I love NLP. I love AI."
+Corpus (after preprocessing and tokenizing):["i", "love", "nlp", "i", "love", "ai"]
+Word counts:
+"i" → 2
+"love" → 2
+"nlp" → 1
+"ai" → 1
+Example
+Calculating Sentence Probability
+Let’s calculate the probability of the sentence:"I love AI"
+P("i")×P("love")×P("ai")=0.33×0.33×0.17≈0.0185
+Pros and Cons
+Pros:
+Simple and computationally efficient.
+Requires small memory/storage.
+Cons:
+Ignores context and word order.
+Not suitable for tasks that depend on semantics or syntax.
+Bigrams
+A bigram model considers a pair of consecutive words. It assumes that each word depends only on the previous word.
+This is called the Markov assumption (specifically, first-order Markov).
+Calculation of Bigram Probabilities
+Example:
+"I love": 50 occurrences
+"I": 200 occurrences
+Example
+Let’s take the same corpus:
+"I love NLP. I love AI."
+After tokenization:["i", "love", "nlp", "i", "love", "ai"]
+Step 1: Bigram Counts
+Bigrams:
+("i", "love") → 2
+("love", "nlp") → 1
+("love", "ai") → 1
+Unigram counts (for the first word in bigrams):
+"i" → 2
+"love" → 2
+Step 2: Compute Bigram Probabilities
+Calculate Sentence Probability
+Pros and Cons
+Pros:
+Captures local dependencies.
+Better than unigram in modeling natural language.
+Cons:
+Still limited in context (only one word behind).
+Data sparsity problem: many bigrams might never appear in training data.
+Solution to Sparsity: Smoothing Techniques
+Add-one (Laplace) Smoothing
+Good-Turing Discounting
+Backoff and Interpolation
+N-gram Models
+An N-gram model generalizes unigrams and bigrams by using N-1 words of context to predict the next word.
+Unigram: N=1 (no context)
+Bigram: N=2 (1-word context)
+Trigram: N=3 (2-word context)
+4-gram: N=4 (3-word context)
+And so on…
+Example
+Sentence: "I love NLP very much"
+Trigram Model:
+P(“I”) × P(“love” ∣ “I” ) × P(“NLP” ∣ “I”, “love”) × P(“very” ∣ “love”, “NLP”) × P(“much” ∣ “NLP”, “very”)
+The higher the value of N, the more context the model uses, and typically the better it can predict.
+Example: Trigram Model (N = 3)
+Corpus:
+"I love NLP. I love AI."
+After preprocessing:["i", "love", "nlp", "i", "love", "ai "]
+Step 1: Trigram Counts
+Sliding a window of 3 words:
+("i", "love", "nlp")
+("love", "nlp", "i")
+("nlp", "i", "love")
+("i", "love", "ai")
+Step 1: Trigram Counts
+Step 2: Estimating Trigram Probabilities
+Pros and Cons
+Pros:
+More accurate than unigram or bigram.
+Captures longer dependencies between words.
+Cons:
+Data sparsity increases with N: More combinations of words = more unseen n-grams.
+Exponential increase in parameters.
+Requires more memory and processing.
+Practical Considerations
+In practice, N is kept small (N ≤ 5) to manage complexity.
+Use smoothing or backoff models to deal with unseen n-grams.
+Large-scale N-gram models were used in Google's earlier search models before neural models like BERT.
+Word Embeddings
+Word Embeddings in NLP are a way to represent words as numeric vectors (arrays of numbers) so that computers can understand and process them.
+Why do we need Word Embeddings?
+Computers can't understand text directly—they understand numbers.
+So we need to convert words into a form that machines can work with.
+But we don't want just any numbers—we want numbers that capture the meaning of words.
+What are Word Embeddings?
+Word embeddings are dense vector representations of words in a continuous vector space where:
+Similar words are placed closer together.
+Dissimilar words are placed farther apart.
+Example
+How are they created?
+They are usually learned from large text datasets using neural networks. Common methods include:
+Word2Vec
+GloVe (Global Vectors)
+FastText
+Example of use
+If you're building a chatbot or sentiment analyzer, word embeddings help the model understand:
+“awesome” and “great” mean similar things.
+“hate” and “dislike” are negative.
+Word2Vec
+Word2Vec is a method to convert words into vectors such that words used in similar contexts have similar vectors.
+It uses a neural network to learn these word representations from large text data.
+Two Main Models in Word2Vec
+CBOW (Continuous Bag of Words):
+Predicts a word based on its surrounding context.
+Example:
+For the sentence:
+“The cat sat on the mat”
+If the context is: [The, cat, on, the, mat],the model tries to predict the center word: "sat".
+Skip-Gram:
+Does the opposite: predicts surrounding context words given the center word.
+From the same sentence:
+If the center word is "sat", the model tries to predict [The, cat, on, the, mat].
+CBOW
+CBOW is a model in Word2Vec that learns to predict a target word from its context words.
+Context = words around a target word.
+It helps the model learn which words tend to appear together.
+CBOW Process
+For a given sentence, the model:
+Takes context words (before and after a word).
+Predicts the target (center) word.
+Sample Sentence
+Example: "The cat sat on the mat"
+Suppose we choose window size = 2, which means 2 words on each side are context.
+Let’s say our target word is "sat".
+Then, the context words are:
+"The", "cat", "on", "the"
+CBOW Input and Output:
+The model learns from many such examples and adjusts word vectors so that words in similar contexts end up with similar vector representations.
+Skip-Gram
+Skip-Gram is the opposite of CBOW.
+Instead of predicting the target word from its context words (like CBOW),
+Skip-Gram uses the target word to predict its context words.
+Intuition Behind Skip-Gram
+Let’s say you have the sentence:
+"The cat sat on the mat"
+Imagine you focus on the word "sat".
+Skip-Gram will try to predict the words around "sat" — like “cat”, “on”, “the”
+Simple Example Sentence
+"The cat sits on the mat"
+Let’s take the target word as "cat", and a window size of 2 (means 2 words before and after the target).
+Context Window
+Target word: "cat"
+Context words: ["The", "sits"]
+So, Skip-Gram pairs would be:
+("cat", "The") ("cat", "sits")
+How Skip-Gram Works
+For each word in the sentence, it generates such (target, context) pairs. For example:
+For "sits": context words = ["cat", "on"] →→ pairs: ("sits", "cat"), ("sits", "on")
+For "on": context words = ["sits", "the"] →→ pairs: ("on", "sits"), ("on", "the")
+What it Learns?
+By seeing many such pairs, the Skip-Gram model learns vector representations of words such that words appearing in similar contexts will have similar vectors.
+Intuition in Layman's Terms
+Imagine you are learning a new language by looking at how words appear near each other.
+If you often see "doctor" near "hospital", "nurse", "patient", the model learns that "doctor" is related to those words — without knowing the meaning explicitly.
+GloVe(Global Vectors for Word Representation)
+What is GloVe?
+GloVe is a word embedding technique developed by Stanford.
+Unlike Word2Vec (which learns embeddings from predicting context), GloVe uses global word co-occurrence statistics to capture the meaning of words.
+Goal:
+To map words into a continuous vector space where semantically similar words are close together.
+Key Intuition Behind GloVe
+Let’s say the word “ice” occurs often with “cold”, and “steam” occurs with “hot”, but rarely do “ice” and “steam” co-occur.This pattern tells us something about how these words are related.
+GloVe builds word vectors in such a way that these co-occurrence patterns are encoded into the geometry of the vector space.
+How GloVe Works (Step-by-step)
+Build a Co-occurrence Matrix
+Compute Ratios of Co-occurrence Probabilities
+1: Build a Co-occurrence Matrix
+A co-occurrence matrix is built from a corpus where:
+Rows: words
+Columns: context words
+Cells: number of times word iii appears in the context of word j
+Example:
+2: Compute Ratios of Co-occurrence Probabilities
+The insight is that the ratios of co-occurrence probabilities encode word meaning better than raw counts.
+Let’s define:
+Simple Example
+Let’s use a small vocabulary:[“king”, “queen”, “man”, “woman”]
+Step 1: Co-occurrence Matrix
+We scan a large corpus and count how many times each word appears near another word (context window). Suppose we get this (hypothetical) co-occurrence table:
+This table shows how often the word in the row appears with the word in the column.
+Step 2: Learn Vectors
+GloVe trains a model so that:
+Dot product of word vector w_i and context vector w_j ≈ log(co-occurrence count)
+This means GloVe tries to find word vectors such that:
+king • man ≈ log(20)
+queen • woman ≈ log(15)
+And so on.
+It uses matrix factorization + weighted least squares to learn these vectors.
+Result
+After training, GloVe might learn the following famous relationship:
+vec(“king”) - vec(“man”) + vec(“woman”) ≈ vec(“queen”)
+Which shows that:
+“king” is to “man” as “queen” is to “woman”
+It captures semantic relationships in vector space
+Why is GloVe Powerful?
+Combines global statistics (co-occurrence) with the vector representation power.
+Learns linear substructures (e.g., king - man + woman ≈ queen)
+Performs better on many NLP benchmarks than Word2Vec.
+FastText – Word Embedding Method
+FastText is an extension of Word2Vec, developed by Facebook AI. Unlike Word2Vec, which treats each word as a single unit, FastText represents a word as a bag of character n-grams.
+This allows FastText to:
+Understand morphology (structure of words)
+Handle rare words or even misspellings
+Better generalize to out-of-vocabulary words
+Why FastText?
+Let’s say we have two words:
+“playing”
+“played”
+Word2Vec learns separate vectors for these. It has no idea they're related.
+But FastText breaks words into subwords (like “play”, “ing”, “pla”, “lay”, etc.) and learns vectors for those too.
+FastText with a Simple Example
+Let’s take the word:
+"playing"
+Assume we use character 3-grams (trigrams).
+FastText represents "playing" as:
+<pl, pla, lay, ayi, yin, ing, ng>
+It also includes the full word "playing" in the vector.
+Example Trigrams:
+<pl, pla, lay, ayi, yin, ing, ng>
+< and > are special characters to mark beginning and end.
+How It Learns
+Instead of: vector("playing")
+FastText does:
+vector("playing") = average(vector("pla"), vector("lay"), ..., vector("ing"))
+So if a new word like "playment" comes, which wasn’t in training:
+FastText can still create a meaningful vector using its subword parts.
+Why It’s Powerful
+All these words share common subword n-grams — so FastText gives them similar embeddings, capturing their relationship.
+Advantage
+Works well on:
+Low-resource languages
+Misspellings (e.g., “happi” vs “happy”)
+Morphologically rich languages like German, Tamil, etc.
+Handles rare or unseen words
+Captures word structure (prefixes, suffixes)
+Conclusion
+FastText = Word2Vec + Subword information
+It learns word meanings by breaking words into character n-grams and combining their vectors.
+Cosine Similarity and Distance Measures
+Cosine Similarity measures how similar two vectors are based on the angle between them — not their length.
+Example
+Let’s say you have two sentences:
+Sentence A → "I like NLP" → Vector A = [1, 2]
+Sentence B → "I enjoy NLP" → Vector B = [2, 3]
+Let’s compute Cosine Similarity:
+Example
+Cosine Distance
+Cosine Distance tells how far apart two vectors are.
+Cosine Distance = 1 − Cosine Similarity
+In our case:
+Cosine Distance = 1 − 0.99 = 0.01 → very close
+Distance Measures
+Euclidean Distance
+Manhattan Distance
+Euclidean Distance
+Euclidean Distance measures the straight-line distance between two text vectors in a multi-dimensional space.
+Manhattan Distance
+It calculates the sum of absolute differences between the two vectors.
+Text Classification using Naive Bayes and SVM
+Text classification is a process of assigning categories (like spam or not spam, positive or negative) to text data.
+Two popular machine learning algorithms used for this are Naive Bayes and Support Vector Machine (SVM).
+Naive Bayes Classifier
+Naive Bayes is a probabilistic machine learning algorithm based on Bayes' Theorem.
+It is called "naive" because it assumes that all features (words) are independent of each other given the class label — which is often not true in real language, but the model still performs surprisingly well in practice.
+Bayes’ Theorem
+The algorithm calculates the probability of a class (e.g., "positive" or "negative" sentiment) given a set of features (words in a document) using:
+In NLP, a document D is typically represented as a set of words (features), and the "naive" assumption is that the presence of each word is independent of others given the class.
+Steps in Naive Bayes for Text Classification
+Preprocess Text: Tokenize, remove stop words, and convert text to a numerical representation (e.g., Bag of Words).
+Calculate Priors: Compute P(C), the probability of each class based on training data.
+Calculate Likelihoods: Estimate P(wi​∣C), the probability of word wi appearing in class C, using word frequencies.
+Classify: For a new document, compute the posterior probability for each class and choose the class with the highest probability.
+Example: Spam Email Classification
+Scenario: Classify an email as "Spam" or "Not Spam" based on its words.
+Training Data:
+Spam Emails:
+Email 1: "win money now"
+Email 2: "free cash prize"
+Not Spam Emails:
+Email 3: "meeting tomorrow"
+Email 4: "work schedule"
+Vocabulary: {win, money, now, free, cash, prize, meeting, tomorrow, work, schedule}
+Step 1: Calculate Priors
+Step 2: Calculate Likelihoods (with Laplace smoothing to handle unseen words)
+Step 2 (Likelihoods with Laplace Smoothing)
+Step 3: Classify a New Email
+Step 3: Classify a New Email
+Calculation for Spam
+Calculation for Not Spam
+Decision
+Why Naive Bayes for NLP?
+Efficiency: Fast training and prediction, even with large vocabularies.
+Handles High-Dimensional Data: Works well with sparse text data.
+Interpretability: Probabilities provide insight into classification decisions.
+Limitations: Assumes word independence (often untrue) and struggles with nuanced contexts.
+Support Vector Machine (SVM)
+Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification tasks, including in Natural Language Processing (NLP) for problems like text classification (e.g., spam detection, sentiment analysis).
+SVM aims to find the optimal hyperplane that best separates data points of different classes in a high-dimensional space, maximizing the margin (distance) between the hyperplane and the nearest data points (support vectors).
+For non-linearly separable data, SVM uses a "kernel trick" to transform the data into a higher-dimensional space where a linear boundary can be found.
+Key Concepts
+Hyperplane: A decision boundary separating classes (e.g., a line in 2D, a plane in 3D).
+Margin: The distance between the hyperplane and the nearest data point. SVM maximizes this margin for better generalization.
+Support Vectors: The data points closest to the hyperplane, which define the margin.
+Kernel Trick: For non-linear data, SVM applies kernels (e.g., linear, polynomial, or Radial Basis Function (RBF)) to map data to a higher-dimensional space.
+Soft Margin: Allows some misclassifications (controlled by a parameter C) to handle noisy data.
+Application in NLP: SVM is effective for text classification due to its ability to handle high-dimensional, sparse data (e.g., Bag of Words or TF-IDF vectors).
+Steps in SVM for Text Classification
+Preprocess Text: Convert text to numerical features (e.g., Bag of Words, TF-IDF).
+Train SVM: Find the hyperplane that maximizes the margin between classes using training data.
+Classify: Use the trained model to predict the class of new text based on its feature vector.
+Example: Sentiment Analysis of Movie Reviews
+Scenario: Classify movie reviews as "Positive" or "Negative" based on their text.
+Training Data:
+Positive Reviews:
+Review 1: "great movie fun"
+Review 2: "awesome film love"
+Negative Reviews:
+Review 3: "boring bad movie"
+Review 4: "terrible plot dull"
+Vocabulary: {great, movie, fun, awesome, film, love, boring, bad, plot, terrible, dull} (11 unique words)
+Step 1: Preprocess Text
+Convert reviews to TF-IDF vectors (simplified here as binary Bag of Words for brevity):
+Review 1: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0] (great, movie, fun)
+Review 2: [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0] (awesome, film, love)
+Review 3: [0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0] (boring, movie, bad)
+Review 4: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1] (plot, terrible, dull)
+Step 2 (Train SVM)
+The SVM training process involves solving an optimization problem to find the hyperplane that maximizes the margin between the Positive and Negative classes while minimizing classification errors. Here’s how it works:
+Objective
+Optimization Problem
+Training in the Example
+Step-3 Classify a New Review
+New Review: "great awesome movie"
+Why Positive?
+The words "great" and "awesome" appeared in Positive training reviews, so their features contribute positively to the decision function.
+The word "movie" is neutral (appears in both classes), but the strong positive weights of "great" and "awesome" dominate, pushing f(x)>0.
+Why SVM for NLP?
+Strengths:
+Effective in high-dimensional spaces (e.g., large vocabularies in text data).
+Robust to overfitting with proper regularization (via C).
+Works well with sparse data like TF-IDF vectors.
+Limitations:
+Computationally expensive for large datasets compared to Naive Bayes.
+Requires careful tuning of parameters (e.g., C, kernel type).
+Less interpretable than Naive Bayes.
+Evaluation Metrics: Accuracy, Precision, Recall, F1 Score
+Example: Spam Email Detection
+A model is built to classify emails as Spam or Not Spam.
+We test it on 100 emails, and we get the following results:
+Evaluation Metrics: Accuracy, Precision, Recall, F1 Score
+True Positive (TP) = 40 → Spam emails correctly identified as spam
+False Negative (FN) = 10 → Spam emails incorrectly marked as not spam
+False Positive (FP) = 5 → Non-spam emails wrongly flagged as spam
+True Negative (TN) = 45 → Non-spam emails correctly identified
+1. Accuracy
+Accuracy is a fundamental metric used for evaluating the performance of a classification model. It tells us the proportion of correct predictions made by the model out of all predictions. It is mathematically defined as:
+Interpretation: The model correctly classified 85% of the emails.
+1. Accuracy
+While accuracy provides a quick snapshot, it can be misleading in cases of imbalanced datasets.
+For example, in a dataset with 90% class A and 10% class B, a model predicting only class A will still achieve 90% accuracy but it will fail to identify any class B instances.
+Accuracy is good but it gives a False Positive sense of achieving high accuracy. The problem arises due to the possibility of misclassification of minor class samples being very high.
+2. Precision
+It measures how many of the positive predictions made by the model are actually correct.
+It's useful when the cost of false positives is high such as in medical diagnoses where predicting a disease when it’s not present can have serious consequences.
+2. Precision
+Precision helps ensure that when the model predicts a positive outcome, it’s likely to be correct.
+Interpretation: Out of all emails predicted as spam, 88.8% were actually spam.
+Useful if we want to avoid wrongly flagging legitimate emails.
+3. Recall or true positive rate
+Recall or Sensitivity measures how many of the actual positive cases were correctly identified by the model.
+It is important when missing a positive case (false negative) is more costly than false positives.
+3. Recall or true positive rate
+Interpretation: The model caught 80% of the spam emails.
+Useful if we want to make sure we detect most spam.
+In scenarios where catching all positive cases is important (like disease detection), recall is a key metric.
+4. F1-Score
+The F1 Score is the harmonic mean of precision and recall.
+It is useful when we need a balance between precision and recall as it combines both into a single number.
+A high F1 score means the model performs well on both metrics. Its range is [0,1].
+Lower recall and higher precision gives us great accuracy but then it misses a large number of instances.
+More the F1 score better will be performance.
+4. F1-Score
+It can be expressed mathematically in this way:
+Interpretation: Balanced measure of both Precision and Recall.

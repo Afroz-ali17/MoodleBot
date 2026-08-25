@@ -1,0 +1,303 @@
+COMPUTER VISION AND IMAGE PROCESSING
+UNIT-III
+3D Vision and Motion Analysis
+V Phanishwara Hara Gopal
+Department of CSE (AI&ML)
+RGMCET
+2025-2026
+1 Introduction to Stereo Vision
+Stereo vision involves using two images of the same scene taken from different viewpoints to
+extract 3D information. The core idea is to compute the depth of scene points by analyzing
+their projections onto two image planes.
+2 Epipolar Geometry
+Epipolar geometry describes the intrinsic projective geometry between two views of a scene.
+2.1 Terminology
+• Epipole: The point of intersection of the baseline with the image plane.
+• Epipolar Line: For a point in one image, the corresponding point in the other image
+lies along a line known as the epipolar line.
+• Baseline: The line joining the centers of projection (camera centers).
+2.2 Fundamental Matrix F
+x′TFx = 0
+Where x and x′ are the homogeneous image coordinates of corresponding points in the
+two images.
+2.3 Essential Matrix E
+If the cameras are calibrated, we use the essential matrix:
+E = [t] R
+×
+Where R is the relative rotation and t is the translation between the two camera coordi-
+nate systems.
+2.4 Rectification
+Rectificationtransformstheimageplanessothatepipolarlinesalignhorizontally, simplifying
+correspondence search to 1D disparity search.
+3 Disparity Mapping
+3.1 Disparity Definition
+Disparity is the horizontal difference in image coordinates of a scene point’s projections:
+d = x −x
+L R
+Where x and x are x-coordinates of a point in the left and right images respectively.
+L R
+3.2 Disparity Map
+A disparity map is a grayscale image where pixel intensity corresponds to disparity. It is
+used to infer depth.
+Block Matching Algorithm: For each pixel in the left image, a block is compared to
+blocks along the corresponding epipolar line in the right image using a similarity metric:
+(cid:88)
+SSD(u,v,d) = [I (u+i,v +j)−I (u+i−d,v +j)]2
+L R
+i,j
+Where d is the disparity shift.
+4 Depth Estimation
+The depth Z of a point can be computed using triangulation:
+f ·B
+Z =
+d
+Where:
+• f: focal length
+• B: baseline (distance between cameras)
+• d: disparity
+4.1 Properties
+- **Closer objects**: larger disparity (larger d → smaller Z) - **Farther objects**: smaller
+disparity (smaller d → larger Z)
+4.2 Challenges in Depth Estimation
+• Occlusions
+• Low texture areas
+• Repetitive patterns
+• Camera calibration errors
+5 Applications of Stereo Vision
+• 3D scene reconstruction
+• Autonomous navigation and obstacle detection
+• Augmented Reality (AR)
+• Robot grasping and manipulation
+Stereovisionenablesdepthrecoveryusingtwocalibratedimages. Epipolargeometrysim-
+plifies correspondence, while disparity estimation and triangulation are central to obtaining
+accurate 3D information.
+6 Introduction to Structure from Motion (SfM)
+Structure from Motion (SfM) is a computer vision technique that reconstructs the 3D struc-
+ture of a scene and estimates camera motion using a sequence of 2D images. Unlike stereo
+vision, SfM does not require multiple calibrated cameras; it works with a single moving
+camera.
+7 Feature Tracking Across Frames
+Tracking visual features is a prerequisite to estimate motion and build a 3D scene model.
+7.1 Feature Detection
+Common corner/feature detectors:
+• Harris Corner Detector
+• Shi–Tomasi Detector
+• SIFT (Scale Invariant Feature Transform)
+• ORB (Oriented FAST and Rotated BRIEF)
+7.2 Feature Matching and Tracking
+• Optical Flow: Tracks pixels between consecutive frames assuming brightness con-
+stancy.
+• KLT Tracker (Kanade-Lucas-Tomasi): Tracks feature points using local image
+patches.
+Optical Flow Constraint Equation:
+I u+I v +I = 0
+x y t
+Where I ,I ,I are spatio-temporal derivatives, and u,v are the optical flow components.
+x y t
+8 3D Reconstruction from Motion
+Given tracked points across multiple views, triangulation is used to compute 3D coordinates.
+8.1 Camera Projection Model
+x = PX
+Where:
+• X ∈ R4: Homogeneous 3D point
+• x ∈ R3: Homogeneous 2D image point
+• P: 3×4 camera projection matrix
+8.2 Factorization Method
+Given a measurement matrix W of tracked 2D points across f frames:
+W = MS
+Where:
+• M: motion matrix (2f ×3)
+• S: structure matrix (3×n), where n is the number of points
+Steps:
+1. Track features across frames
+2. Construct W (centered coordinate matrix)
+3. Apply SVD: W = UΣVT
+4. Use rank-3 approximation for 3D scene structure
+9 Applications in Scene Understanding
+SfM supports numerous vision-based systems:
+• 3D Reconstruction: Mapping buildings, terrain, archaeological sites
+• Autonomous Navigation: SLAM (Simultaneous Localization and Mapping)
+• AR/VR: Recovering camera pose and 3D geometry for realistic overlays
+• Cinematic and Gaming Visualization: Digitally recreate physical spaces
+SfM is a powerful monocular approach for recovering 3D structure from image sequences.
+It builds on robust feature tracking, motion estimation, and geometric triangulation to infer
+scene depth and motion trajectory.
+10 Introduction to Optical Flow
+Optical flow is the pattern of apparent motion of image objects between two consecutive
+frames caused by the movement of object or camera. It is widely used in video compression,
+motion tracking, 3D reconstruction, and robotics.
+10.1 Optical Flow Constraint Equation (OFCE)
+Assumes brightness constancy and small motion:
+I(x,y,t) = I(x+δx,y +δy,t+δt)
+Taking first-order Taylor series approximation leads to the constraint:
+I u+I v +I = 0
+x y t
+Where:
+• I ,I ,I : partial derivatives of intensity
+x y t
+• u,v: horizontal and vertical components of flow vector
+11 Lucas–Kanade Method
+This method assumes locally constant motion in a small window.
+11.1 Window-Based Approximation
+For a patch of n pixels:
+   
+I I I
+x1 y1 t1
+I
+x2
+I y2(cid:20) u(cid:21) I t2
+ . .  = − . 
+ . . . .  v  . . 
+   
+I I I
+xn yn tn
+This overdetermined linear system is solved using least-squares:
+A⃗v
+=⃗
+b ⇒⃗v =
+(ATA)−1AT⃗
+b
+11.2 Characteristics
+• Good for small motion
+• Robust and fast for sparse tracking
+• Used in pyramidal schemes for large displacements
+12 Horn–Schunck Method
+A global method assuming smooth flow across the image.
+12.1 Energy Minimization Formulation
+Minimizes the following energy functional:
+(cid:90)(cid:90)
+(cid:2) (cid:0) (cid:1)(cid:3)
+E(u,v) = (I u+I v +I )2 +α2 ∥∇u∥2 +∥∇v∥2 dxdy
+x y t
+Where:
+• α: regularization parameter controlling smoothness
+• ∇u,∇v: spatial gradients of the flow
+12.2 Iterative Solution
+Using Euler–Lagrange equations and iterative averaging with neighboring flow vectors:
+I (I u¯+I v¯+I )
+u(k+1) = u¯− x x y t
+α2 +I2 +I2
+x y
+I (I u¯+I v¯+I )
+v(k+1) = v¯− y x y t
+α2 +I2 +I2
+x y
+13 Motion Segmentation
+Motion segmentation partitions image sequences into regions corresponding to distinct mo-
+tion patterns.
+13.1 Approaches
+• Background subtraction: Static background model with foreground detection.
+• Optical flow clustering: Grouping pixels with similar motion vectors.
+• Layered motion models: Multiple affine or homographic motion models.
+14 Applications of Optical Flow
+• Human activity recognition
+• Object tracking in video
+• Autonomous vehicle perception
+• Surveillance and behavior analysis
+Optical flow provides dense motion field estimation, while methods like Lucas–Kanade
+and Horn–Schunck offer sparse and dense solutions respectively. These techniques form the
+foundation for motion-based segmentation and 3D analysis.
+15 Camera Calibration
+Camera calibration is the process of determining the parameters of a camera that describe
+its imaging geometry. These parameters are used to correct distortions and reconstruct 3D
+geometry from 2D images.
+15.1 Intrinsic Parameters
+These define the internal characteristics of the camera:
+ 
+f s c
+x x
+K = 0 f y c y
+0 0 1
+Where:
+• f ,f : focal lengths in pixels
+x y
+• (c ,c ): principal point (optical center)
+x y
+• s: skew coefficient (typically 0)
+15.2 Extrinsic Parameters
+Describe the position and orientation of the camera in world coordinates:
+[R|t]
+• R: 3×3 rotation matrix
+• t: 3×1 translation vector
+15.3 Complete Projection Matrix
+P = K[R|t]
+This matrix transforms 3D world points to 2D image points.
+16 Calibration Techniques
+16.1 Zhang’s Method
+One of the most widely used camera calibration techniques, based on multiple views of a
+planar checkerboard pattern.
+Steps:
+1. Capture several images of a known planar calibration grid.
+2. Detect 2D image points corresponding to known 3D positions on the grid.
+3. Estimate homographies H from plane to image.
+4. Solve for intrinsic matrix K, then recover R and t.
+Key Equation: Each 2D–3D correspondence follows the projective mapping:
+ 
+  X
+u
+Y 
+sv = K[R|t] 
+Z
+17 3D Point Cloud Generation
+Once a camera is calibrated, we can triangulate 3D points from stereo or motion-based
+correspondences.
+17.1 Triangulation
+GivenprojectionmatricesP ,P andcorrespondingimagepointsx ,x , reconstruct3Dpoint
+1 2 1 2
+X such that:
+x = P X, x = P X
+1 1 2 2
+Linear Least Squares Formulation: Set up the system AX = 0 from:
+x ×(P X) = 0, x ×(P X) = 0
+1 1 2 2
+Then solve using SVD.
+17.2 Point Cloud Visualization
+A point cloud is a set of 3D points (X,Y,Z) often visualized using:
+• Open3D or PCL (Point Cloud Library)
+• Colormaps to encode depth or intensity
+18 Applications of Camera Calibration and 3D Recon-
+struction
+• 3D scanning and digitization
+• Scene reconstruction in AR/VR
+• Robotics and autonomous navigation
+• Camera pose estimation in SLAM
+Camera calibration is critical for all 3D vision tasks. By estimating intrinsic and extrinsic
+parameters, it enables accurate 3D reconstruction and dense point cloud generation for use
+in modern computer vision applications.
+Topic Area Textbook Chapter Pages Key Concepts / Equations
+Epipolar geome- Szeliski Ch. 11 pp. Epipolar lines, Fundamental Matrix F,
+try 441–456 Essential Matrix E, epipoles
+Disparity map- Szeliski Ch. 11 pp. Stereo matching, disparity d = x −x ,
+l r
+ping & depth 456–462 depth Z = fB
+d
+estimation
+Feature tracking Szeliski Ch. 12 pp. Optical flow, KLT tracker, temporal
+across frames 499–502 coherence
+3D reconstruction Szeliski Ch. 12 pp. Projection matrix P, factorization
+from motion 503–512 W = MS, triangulation
+SfM applications Szeliski Ch. 12 pp. SLAM, scene understanding, robotics,
+513–515 AR/VR
+Lucas–Kanade Szeliski Ch. 8 pp. Local least-squares: A⃗v = ⃗b ⇒ ⃗v =
+method 278–281 (ATA)−1AT⃗b
+Horn–Schunck Szeliski Ch. 8 pp. Global energy: E(u,v) =
+method 282–284
+(cid:82)(cid:82) (cid:2)
+(I u+I v+I
+)2+α2(∇u2+∇v2)(cid:3)
+x y t
+Motion segmenta- Szeliski Ch. 8 pp. Optical flow clustering, background
+tion 287–290 subtraction, motion layers
+Intrinsic and Szeliski Ch. 6 pp. Intrinsic matrix K, extrinsics [R|t],
+extrinsic parame- 210–214 projection: P = K[R|t]
+ters
+Calibration tech- Szeliski Ch. 6 pp. Homography-based calibration
+niques 214–219 (Zhang’s method), multi-view cal-
+ibration
+3D point cloud Szeliski Ch. 7 pp. Triangulation,SVDfor3Dpointrecov-
+generation 226–232 ery, visualization using Open3D
+Table1: ReferenceSummarywithPageNumbersforUnit-III:3DVisionandMotionAnalysis
+References
+[1] Gonzalez, R. C., & Woods, R. E. (2008). Digital Image Processing (3rd ed.). Pearson
+Prentice Hall, Stony Brook University.
+[2] Szeliski, R. (2010). Computer Vision: Algorithms and Applications. Springer.

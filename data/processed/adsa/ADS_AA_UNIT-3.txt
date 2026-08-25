@@ -1,0 +1,370 @@
+ADVANCED DATA STRUCTURES & ALGORITHM ANALYSIS
+UNIT III
+UNIT-III:
+Dynamic Programming: General method, applications- 0/1 knapsack
+problem, All pairs shortest path problem, Travelling sales person problem,
+optimal binary search tree, Single source shortest paths: General weights,
+String Editing.
+Dynamic Programming:
+Dynamic programming is an algorithm design method that can be used when
+the solution to a problem can be viewed as the result of a sequence of
+decisions.
+0/1 knapsack problem:
+A solution to the knapsack problem can be obtained by making a sequence of
+decisions on the variables x , x , … , x .
+1 2 n
+A decision on variable x involves determining which of the values 0 or 1 is to
+i
+be assigned to it. Let us assume that decisions on the xi are made in the
+order x , x , … , x . Following a decision on x , we may be on one of two
+n n-1 1 n
+possible states. The capacity remaining in the knapsack is m and no profit
+has accrued (or) the capacity remaining is m-w and a profit of p has accrued.
+n n
+It is clear that the remaining decisions x , … , x must be optimal with
+n-1 1
+respect to the problem state resulting from the decision on x . Otherwise x ,
+n n
+x , … , x will not be optimal.
+n-1 1
+The value of the optimal solution with n objects and with knapsack capacity
+m is
+f (m) = max { f (m), f (m-w )+p }
+n n-1 n-1 n n
+In general
+f(y) = max { f (y), f (y-w)+p }
+i i-1 i-1 i i
+If we use the ordered set Si = { (f(y),y) | l ≤ j ≤ k } to represent f(y). Each
+i j j i
+member of Si is a pair (P,W), where P = f(y) and W = y. Note that S0 = {(0, 0)}.
+i j j
+We can compute Si+1 from Si by first computing
+S 1i = { (P,W) | (P-p i , W-w i) ∈ Si }
+Now, Si+1 can be computed by merging the pairs in Si and S i together. Note
+that if Si+1 contains two pairs (P,W) and (P ,W ) with the property that P ≤
+j j k k j
+P and W ≥ W , then the pair(P,W) can be discarded. This is called purging
+k j k j j
+rule.
+Eg: Consider the knapsack instance n = 3, (w , w , w ) = (2, 3, 4), (P , P , P )
+1 2 3 1 2 3
+= (1, 2, 5), and m = 6.
+Note that the pair (3, 5) has been eliminated from S3 as a result of the Purging
+rule.
+With m = 6, the value of f (6) is given by the tuple (6, 6) in S3. The tuple (6,
+6) ∉ S2, and so we must set x 3 = 1. The pair (6, 6) came from the pair (6-P 3,
+6-w 3) = (1,2). Hence(1,2) ∈ S2. Since (1,2) ∈ S1, we can set x 2 = 0. Since (1,2) ∉
+S0, we obtain x =1. Hence an optimal solution is (x , x , x )= (1,0,1)
+1 1 2 3
+Informal Knapsack Algorithm:
+All pairs shortest path problem:
+Let G = (V, E) be a directed graph with n vertices. Let cost be a cost Adjacency
+matrix for G such that cost(i,i)= 0, 1≤ i ≤ n. Then cost(i,j) is the length (or cost)
+of edge <i,j> if <i,j> ∊ E(G) and cost(i,j)= ∞ if i ≠ j and (i,j) ∉ E(G). The all-pairs
+shortest-path problem is to determine a matrix A such that A(i,j) is the length
+of a shortest path from i to j.
+Let us examine a shortest i to j path in G, i ≠ j. This path originates at vertex
+i and goes through some intermediate vertices (possibly none) and terminates
+at vertex j. We can assume that this path does not contain any cycles. If k is
+an intermediate vertex on this shortest path, then the sub paths from i to k
+and from k to j must be shortest paths from i to k and k to j, respectively.
+Otherwise, the i to j path is not of minimum length.
+If k is the intermediate vertex with highest index, then the i to k path is a
+shortest i to k path in G going through no vertex with index greater than k-1.
+Similarly the k to j path is a shortest k to j path in G going through no vertex
+of index greater than k-1.
+Using Ak(i,j) to represent the length of a shortest path from i to j going through
+no vertex of index greater than k, we obtain
+Clearly, A0(i,j) = cost(i,j), 1≤ i ≤ n, 1≤ j ≤ n. A shortest path from i to j going
+through no vertex higher than k either goes through vertex k or it does not. If
+it does, Ak(i,j) = Ak-1(i,k) +Ak-1(k,j).
+If it does not; then no intermediate vertex has index greater than k-1. Hence
+Ak,(i,j)= Ak-1(i,j).Combining, we get
+Travelling Sales person problem:
+Let G = (V,E) be a directed graph with edge costs C . The variable C is defined
+ij ij
+such that C ij > 0 for all i and j and C ij = ∞ if (i,j) ∉ E. Let |V| = n and assume
+n > 1. A tour of G is a directed simple cycle that includes every vertex in V.
+The cost of a tour is the sum of the cost of the edges on the tour. The traveling
+sales person problem is to find a tour of minimum cost.
+Assume that the tour starts and ends at vertex 1. Every tour consists of an
+edge (l,k) for some k ∊ V- {1} and a path from vertex k to vertex 1.Thepath from
+vertex k to vertex1goes through each vertex in V- {1} exactly once. It is easy to
+see that if the tour is optimal, then the path from k to 1must be a shortest
+k to 1path going through all vertices in V- {l,k}. Hence, the principle of
+optimality holds.
+Let g(i,S) be the length of a shortest path starting at vertex i, going through
+all vertices in S, and terminating at vertex 1.The function g(l,V-{1}) is the
+length of an optimal sales person tour.
+From the principle of optimality it follows that
+In general for i ∉ S,
+g(i, Φ) = C , 1 ≤ i ≤ n.
+i1
+Then we can obtain g(i, S) for all S of size1.Then we can obtain g(i, S) for S
+with |S|= 2, and so on.
+Eg:
+An optimal tour of the graph has length 35. Let J(i,S) be the value of j that
+minimizes g(i,S).
+J(1, {2,3,4}) = 2
+J(2, {3,4}) = 4
+J(4,{3}) =3
+So, the optimal tour is 1, 2, 4, 3, 1.
+OBST (Optimal Binary Search Tree):
+Binary Search Tree:
+A binary search tree T is a binary tree; either it is empty or each node in the
+tree contains an identifier, and
+i. All identifiers in the left sub tree of T are less than the identifiers in the
+root node T
+ii. All identifiers in the right sub tree of T are greater than the identifiers
+in the root node T
+iii. The left and right sub trees of T are also binary search trees.
+To determine whether an identifier X is present in a binary search tree, X is
+compared with the root. If X is less than the identifier in the root, then the
+search continues in the left sub tree. If X equals the identifier in the root, the
+search terminates successfully, Otherwise the search continues in the right
+sub tree.
+Consider the following two binary search trees:
+The tree of Figure (a) in the worst case requires four comparisons to find an
+identifier, whereas the tree of Figure (b) requires only three. On the average
+the two trees need 12/5 and 11/5 comparisons respectively.
+This calculation assumes that each identifier is searched for with equal
+probability and that no unsuccessful searches are made.
+In a general situation, we can expect different identifiers to be searched for
+with different frequencies (or probabilities). In addition, we can expect
+unsuccessful searches also to be made.
+Let us assume that the given set of identifiers is {a , a , a … a } with a < a
+1 2 3 n 1 2
+< a < … < a . Let p(i) be the probability with which we search for a. Let q(i)
+3 n i
+be the probability that the identifier x being searched for is such that a < x <
+i
+a , 0 ≤ i ≤ n. (assume a = -∞ and a = +∞).
+i+1 0 n+1
+Then, ∑ q(i) the probability of an unsuccessful search.
+0 ≤ i ≤ n
+∑ p(i) +∑ q(i) = 1.
+1 ≤ i ≤ n 0 ≤ i ≤ n
+Given this data we wish to construct an optimal binary search tree for {a1, a ,
+a … a }.
+3 n
+In obtaining a cost function for binary search trees, it is useful to add an
+external node in place of every empty sub tree in the search tree. All other
+nodes are internal nodes. If a binary search tree represents n identifiers, then
+there will be exactly n internal nodes and n +1external nodes. Every internal
+node represents a point where a successful search may terminate. Every
+external node represents a point where an unsuccessful search may
+terminate.
+If a successful search terminates at an internal node at level l, then the
+expected cost contribution from the internal node for a is p(i) * level(a).
+i i
+The identifiers not in the binary search tree can be partitioned into n + 1
+equivalence classes E, 0 ≤ i ≤ n. The class E contains all identifiers x such
+i 0
+that x < a . The class E1 contains all identifiers x such that ai < x < ai+1, 1 ≤
+i < n. The class E contains all identifiers x, x > a .
+n n
+If the failure node for E is at level l, then the cost contribution of this node
+i
+is q(i) * (level(E)-1).
+i
+So the expected cost of a binary search tree is
+∑ p(i)* level(a) +∑ q(i) * (level(E)-1).
+1 ≤ i ≤ n i 0 ≤ i ≤ n i
+Eg: (a1, a2, a3) = (do, if, while)
+With equal probabilities p(i) = q(i) = 1/7 for all i, we have
+cost(tree a) = 15/7
+cost(tree b) = 13/7
+cost(tree c) = 15/7
+cost(tree d) = 15/7
+cost(tree e) = 15/7
+As expected, tree b is optimal.
+With p(l)= 0.5, p(2) = 0.1, p(3) = 0.05, q(0)= 0.15, q(1) = 0.1, q(2)= 0.05 and
+g(3)= 0.05 we have
+cost(tree a) = 2.65
+cost(tree b) = 1.9
+cost(tree c) = 1.5
+cost(tree d) = 2.15
+cost(tree e) = 1.6 Tree c is optimal.
+To apply dynamic programming to the problem of obtaining an optimal binary
+search tree, we need to view the construction of such a tree as the result of a
+sequence of decisions and then observe that the principle of optimality holds
+when applied to the problem state resulting from a decision. A possible
+approach to this would be to make a decision as to which of the a's should
+i
+be assigned to the root node of the tree.
+If we choose a , then it is clear that the internal nodes for a , a , a … a as
+k 1 2 3 k-1
+well as the external nodes for the classes E ,E ,…,E will lie in the left sub
+0 1 k-1
+tree ‘l’ of the root. The remaining nodes will be in the right sub tree ‘r’. So we
+can define
+and
+In both cases the level is measured by regarding the root of the respective sub
+tree to be at level 1.
+Consider W(i,j) represent the sum
+we obtain the following as the expected cost of the search tree
+….. (1)
+If the tree is optimal, then eq(1) must be minimum. Hence, cost(l) must be
+minimum over all binary search trees containing a , a , a … a and
+1 2 3 k-1
+E ,E ,…,E . Similarly cost(r) also must be minimum.
+0 1 k-1
+If we use c(i,j) to represent the cost of an optimal binary search tree t
+ij
+containing a to a and E,...,E, then for the tree to be optimal, we must have
+i+1 j i j
+cost(l) = c(0,k-1) and cost(r)= c(k,n). In addition, k must be chosen such that
+is minimum.
+Hence,
+…(2)
+In general,
+…(3)
+Equation (3) can be solved for c(0,n) by first computing all c(i,j )such that j-i
+=1 (note c(i,i)= 0 and w(i,i)= q(i), 0 ≤ i ≤ n). Next we can compute all c(i,j) such
+that j-i = 2, then all c(i,j) with j - i = 3, and so on.
+If during this computation we record the root r(i,j) of each tree t , then an
+ij
+optimal binary search tree can be constructed from these r(i,j). Note that r(i,j)
+is the value of k that minimizes eq (3).
+Eg: Let n = 4 and (a , a , a , a ) = (do,if, int,while). Let p(l:4) = (3,3,1,1) and
+1 2 3 4
+q(0 :4) = (2,3,1,1,1). The p's and q's have been multiplied by 16 for
+convenience. Initially, we have w(i,i)= q(i), c(i,i)=0 and r(i,i)= 0, 0 ≤ i ≤ 4.
+Using W(i,j)=p(j)+<q(j)+w(i,j-1),we get
+The box in row i and column j shows the values of w(j,j+i), c(j,j+i) and r(j,j+i)
+respectively.
+Single-Source shortest paths: General weights
+Consider the single-source shortest path problem when some or all of the
+edges of the directed graph G may have negative length. ShortestPaths
+Algorithm does not necessarily give the correct results on such graphs. To see
+this, consider the graph
+Let v = 1be the source vertex. Referring back to Algorithm, since n = 3, the
+loop of lines 12 to 22 is iterated just once. Also u = 3 in lines15 and 16,and
+so no changes are made to dist[ ]. The algorithm terminates with dist[2]= 7
+and dist[3]= 5. The shortest path from 1 to 3 is 1,2,3. This path has length 2,
+which is less than the computed value of dist[3].
+When negative edge lengths are permitted, we require that the graph have no
+cycles of negative length. This is necessary to ensure that shortest paths
+consist of a finite number of edges. For example, in the graph
+The length of the shortest path from vertex 1 to vertex 3 is -∞. The length of
+the path 1,2,1,2,1,2,---,1,2,3 can be made arbitrarily small.
+When there are no cycles of negative length, there is a shortest path between
+any two vertices of an n-vertex graph that has at most n -1edges on it. To see
+this, note that a path that has more than n – 1 edges must repeat at least one
+vertex and hence must contain a cycle. Elimination of the cycles from the path
+results in another path with the same source and destination. This path is
+cycle-free and has a length that is no more than that of the original path, as
+the length of the eliminated cycles was at least zero. We can use this
+observation on the maximum number of edges on a cycle-free shortest path
+to obtain an algorithm to determine a shortest path from a source vertex to
+all remaining vertices in the graph. As in the case of ShortestPaths Algorithm,
+we compute only the length, dist[u], of the shortest path from the source
+vertex v to u.
+Let distl[u]be the length of a shortest path from the source vertex v to vertex
+u under the constraint that the shortest path contains at most l edges. Then,
+distl[u]= cost[v,u], 1≤u ≤n. As noted earlier, when there are no cycles of
+negative length, we can limit our searchfor shortest paths to paths with at
+most n -1 edges.Hence,distn-l[u]is the length of an unrestricted shortest path
+from v to u.
+Our goal then is to compute distn-1[u] for all u. This can be done using the
+dynamic programming methodology. First, we make the following
+observations:
+1. If the shortest path from v to u with at most k, k > 1,edges has no more
+than k-1edges,then distk[u] = distk-l[u].
+2. If the shortest path from v to u with at most k, k > 1,edges has exactly k
+edges, then it is made up of a shortest path from v to some vertex j followed
+by the edge <j,u>. The path from v to j has k -1 edges, and its length is
+distk-l[j]. All vertices i such that the edge <i,u> is in the graph are
+candidates for j. Since we are interested in a shortest path, the i that
+minimizes distk-1[i] + cost[i, u] is the correct value for j.
+These observations result in the following recurrence for dist:
+This recurrence can be used to compute distk from distk-1, for k =2,3,... ,n-1.
+distk[l]= 0 for all k since1is the source node.
+Also, dist1[2]= 6,dist1[3]= 5, and dist1[4] = 5, since there are edges from 1 to
+these nodes. The distance distl[ ] is ∞ for the nodes 5, 6, and 7 since there are
+no edges to these from 1.
+Here the terms 0 + 6, 5 - 2, 5 + ∞, ∞ + ∞, ∞ + ∞, and ∞ + ∞, correspond to a
+choice of i = 1,3,4,5,6,and 7, respectively. The rest of the entries are computed
+in an analogous manner.
+Bellman and Ford algorithm to compute shortest paths:
+Find the shortest paths from node 1 to every other node in the graph using
+the Bellman and Ford algorithm.
+String editing:
+We are given two strings X = x1,x2,...,xn and Y = y1, y2, …, ym, where xi, 1≤
+i ≤ n, and yj, 1 ≤ j ≤ m, are members of a finite set of symbols known as the
+alphabet. We want to transform X into Y using a sequence of edit operations
+on X. The permissible edit operations are insert, delete, and change(a symbol
+of X into another), and there is a cost associated with performing each. The
+cost of a sequence of operations is the sum of the costs of the individual
+operations in the sequence. The problem of string editing is to identify a
+minimum-cost sequence of edit operations that will transform X into Y.
+Let D(xi) be the cost of deleting the symbol xi from X, I(yj) be the cost of
+inserting the symbol yj into X, and C(xi,yj) be the cost of changing the symbol
+xi of X into yj.
+Eg:
+Consider the sequences
+X = x1, x2, x3, x4, x5 = a, a, b, a, b and Y = y1, y2, y3, y4 = b, a, b, b.
+Let the cost associated with each insertion and deletion be 1(for any symbol).
+Also let the cost of changing any symbol to any other symbol be 2. One
+possible way of transforming X into Y is delete each xi, 1≤ i ≤ 5, and insert
+each yj, 1≤ j ≤ 4. The total cost of this edit sequence is 9. Another possible
+edit sequence is delete x1 and x2 insert y4 at the end of string X. The total
+cost is only 3.
+A solution to the string editing problem consists of a sequence of decisions,
+one for each edit operation. Let є be a minimum-cost edit sequence for
+transforming X into Y. The first operation, O, in є is delete, insert, or change.
+If є ‘ = є – { O } and X’ is the result of applying O on X, then є’ should be a
+minimum-cost edit sequence that transforms X’ into Y. Thus the principle of
+optimality holds for this problem.
+A dynamic programming solution for this problem can be obtained as
+follows. Define cost(i,j) to be the minimum cost of any edit sequence for
+transforming x1, x2, x3, …, xi into y1, y2, y3, … ,yj (for 0 ≤ i ≤ n and 0 ≤ j ≤
+m). Compute cost(i,j) for each i and j. Then cost(n,m) is the cost of an
+optimal edit sequence.
+For i = j = 0, cost(i,j)= 0, since the two sequences are identical (and empty).
+Also, if j = 0 and i > 0, we can transform X into Y by a sequence of deletes.
+Thus, cost(i,0)= cost(i-1,0) + D(xi). Similarly, if i = 0 and j >0, we get cost(0,j)
+= cost(0,j-1)+I(yj). If i ≠ 0 and j ≠ 0, x1, x2,…, xi can be transformed into
+y1, y2,…,yj in one of three ways:
+1. Transform x1, x2, …, xi-1 into y1, y2, …yj using a minimum-cost edit
+Sequence and then delete xi. The corresponding cost is cost(i-1,j)+ D(xi).
+2. Transform x1, x2, …, xi-1 into y1, y2, …yj-1 using a minimum-cost edit
+sequence and then change the symbol xi to yj. The associated cost is
+cost(i-1,j-1)+C(xi,yj).
+3. Transform x1, x2, …, xi into y1, y2, …yj-1 using a minimum-cost edit
+sequence and then insert yj. This corresponds to a cost of cost(i,j-1)+I(yj).
+The minimum cost of any edit sequence that transforms x1, x2, …, xi into
+y1, y2, …yj (for i > 0 and j > 0) is the minimum of the above three costs,
+according to the principle of optimality. Therefore, we arrive at the following
+recurrence equation for cost(i,j):
+We have to compute cost(i,j) for all values of i and j (0 ≤ i ≤ n and 0 ≤ j ≤ m).
+There are (n+l)(m+1)such values. These values can be computed in the form
+of a table, M, where each row of M corresponds to a particular value of i and
+each column of M corresponds to a specific value of j. M(i,j) stores the value
+cost(i,j). The zeroth row can be computed first since it corresponds to
+performing a series of insertions. Likewise the zeroth column can also be
+computed. After this, one could compute the entries of M in row-major order,
+starting from the first row. Rows should be processed in the order1,2,... ,n.
+Entries in any row are computed in increasing order of column number.
+We see that each entry of M takes only 0(1) time to compute. Therefore the
+whole algorithm takes 0(mn) time. The value cost(n,m) is the final answer we
+are interested in. Having computed all the entries of M, a minimum edit
+sequence can be obtained by a simple backward trace from cost(n,m). This
+backward trace
+is enabled by recording which of the three options for i > 0, j > 0 yielded
+the minimum cost for each i and j.
+Eg:
+Consider the string editing problem X = a, a, b, a, b and Y = b, a, b, b. Each
+insertion and deletion has a unit cost and a change costs 2 units. For the
+cases i = 0, j > 1, and j = 0, i > 1, cost(i,j) can be computed first. Let us compute
+the rest of the entries in row-major order. The next entry to be computed is
+cost(l,1).
+cost(l,l) = min { cost(0,1) + D(x1), cost(0, 0) + C(x1,y1), cost(l, 0) + I(y1) }
+= min {2,2,2}=2
+Next is computed cost(l,2).
+Cost(1,2)= min { cost(0, 2) + D(x1), cost(0,1) +C{x1, y2), cost(l, 1)+I(y2) }
+= min {3,1,3}= 1
+The rest of the entries are computed similarly.
+The value cost(5,4)= 3. One possible minimum-cost edit sequence is delete x1,
+delete x2, and insert y4. Another possible minimum cost edit sequence is
+change x1 to y2 and delete x4.

@@ -1,0 +1,196 @@
+ADVANCED DATA STRUCTURES & ALGORITHM ANALYSIS
+UNIT IV
+UNIT-IV:
+Backtracking: General method, applications-n-queen problem, sum of subsets
+problem, graph coloring, 0/1 knapsack problem.
+Branch and Bound: General method, 0/1 knapsack problem, Travelling sales
+person problem.
+Backtracking:
+In the search for fundamental principles of algorithm design, backtracking
+represents one of the most general techniques. Many problems which deal with
+searching for a set of solutions or which ask for an optimal solution satisfying
+some constraints can be solved using the backtracking formulation.
+Many of the problems we solve using backtracking require that all the solutions
+satisfy a complex set of constraints. For any problem these constraints can be
+divided into two categories:
+1. explicit
+2. implicit
+Explicit constraints are rules that restrict each x to take on values only from
+i
+a given set.
+Eg:
+1. x > 0 or Si = {all non-negative real numbers}
+i
+2. x = 0 or 1 or Si = {0,1}
+i
+3. l < x < u or Si = {a: l < a < u }
+i i i i i
+The explicit constraints depend on the particular instance I of the problem
+being solved. All tuples that satisfy the explicit constraints define a possible
+solution space for I.
+Implicit constraints are rules that determine which of the tuples in the
+solution space of I satisfy the criterion function. Thus implicit constraints
+describe the way in which the x must relate to each other.
+i
+Let (x , x , x , …, x) be a path from the root to a node in a state space tree. Let
+1 2 3 i
+T(x , x , x , …, x) be the set of all possible values for x such that (x , x , x ,
+1 2 3 i i+1 1 2 3
+…, x ) is also a path to a problem state.
+i+1
+Let the bounding function B such that if B (x , x , x , …, x ) is false for a
+i+1 i+1 1 2 3 i+1
+path(x , x , x , …, x ) from the root node to a problem state, then the path
+1 2 3 i+1
+cannot be extended to reach an answer node.
+Recursive Backtracking algorithm:
+Iterative Backtracking algorithm:
+N-Queen’s problem:
+Consider an n X n chess board and try to find all the ways to place n non-
+attacking queens.
+Let (x , x , x , …, x ) represent a solution in which x is the column of the ith
+1 2 3 n i
+row where the ith queen is placed. The x’s will all be distinct since no two
+i
+queens can be placed in the same column.
+If we imagine the chess board squares being numbered as the indices of the
+two-dimensional array a[1:n, 1:n], then we observe that every element on the
+same diagonal that runs from the upper left to the lower right has the same
+row - column value. Also, every element on the same diagonal that goes from
+the upper right to lower left has the same row + column value.
+Suppose two queens are placed at positions (i,j) and (k,l). Then they are on the
+same diagonal only if
+i – j = k – l or i + j = k + l
+ j – l = i – k or  j – l = k – i
+Therefore, two queens lie on the same diagonal if and only if |j – l| = |i – k|.
+Sum of Subsets Problem:
+Suppose we are given n distinct positive numbers and we desire to find all
+combinations of these numbers whose sums are m. This is called the sum of
+subsets problem.
+Let n = 6, m = 30, and w[1 : 6] = {5,10,12,13,15,18}.
+The solutions are:
+1. (1, 1, 0, 0, 1, 0)
+2. (1, 0, 1, 1, 0, 0)
+3. (0, 0, 1, 0, 0, 1)
+A simple choice for the bounding functions is B({x ,x ,...,x ) = true iff
+1 2 k
+Clearly x,...,x cannot lead to an answer node if this condition is not satisfied.
+i k
+The bounding functions can be strengthened if we assume the w's are initially
+i
+in non-decreasing order. In this case x,...,x cannot lead to an answer node if
+i k
+Therefore, the bounding functions we use are
+Algorithm SumOfSub uses two variables s and r to store the values of
+respectively.
+The algorithm assumes w ≤ m and
+The initial call is SumOfSub (0, 1, )
+Graph Coloring problem:
+Let G be a graph and m be a given positive integer. We want to discover
+whether the nodes of G can be colored in such a way that no two adjacent
+nodes have the same color yet only m colors are used. This is called as
+m-colorability decision problem.
+If d is the degree of the given graph, then it can be colored with d + 1 colors.
+The m-colorability optimization problem asks for the smallest integer m for
+which the graph G can be colored. This integer is referred to as the chromatic
+number of the graph.
+A graph is said to be planar if and only if it can be drawn in a plane in such a
+way that no two edges cross each other.
+A famous special case of the m-colorability decision problem is the 4-color
+problem for planar graphs. The problem is: Given any map, can the regions be
+colored in such a way that no two adjacent regions have the same color yet
+only four colors are needed.
+Since a map can easily be transformed into a graph. Each region of the map
+becomes a node, and if two regions are adjacent, then the corresponding nodes
+are joined by an edge.
+A map and its planar graph representation are shown below:
+Function mColoring is begun by first assigning the graph to its adjacency
+matrix, setting the array x[ ] to zero, and then invoking the statement
+mColoring(1).
+Finding all m-colorings of a graph:
+Generating a next color:
+State space tree for mColoring when n =3 and m = 3.
+A 4-node graph and all possible 3-colorings
+0/1 Knapsack problem:
+Given n positive weights Wi, n positive profits pi, and a positive number m that
+is the knapsack capacity, this problem calls for choosing a subset of the
+weights such that
+The xi's constitute a zero-one-valued vector.
+The solution space for this problem consists of the 2n distinct ways to assign
+zero or one values to the xi's.
+Bounding functions are needed to help kill some live nodes in the state space
+tree without expanding them. A good bounding function for this problem is
+obtained by using an upper bound on the value of the best feasible solution
+obtainable by expanding the given live node and any of its descendants. If this
+upper bound is less than the value of the best solution determined so far, then
+that live node can be killed.
+A bounding function algorithm
+The algorithm BKnap is invoked as BKnap(l,0,0) by setting initially fp := -1.
+Backtracking solution to the 0/1 knapsack problem:
+Consider the knapsack instance n = 4, (p1, p2, p3, p4) = (10, 10, 12, 18),
+(w1, w2, w3, w4) = (2, 4, 6, 9), and m = 15.
+p = {11, 21, 31, 33, 43, 53, 55, 65},
+w = { 1, 11, 21, 23, 33, 43, 45, 55},
+m = 110, and n = 8
+Branch and Bound:
+The term branch-and-bound refers to all state space search methods in which
+all children of the E-node are generated before any other live node can become
+the E-node.
+A node which has been generated and all of whose children have not yet been
+generated is called a live node.
+The live node whose children are currently being generated is called the E-node
+(node being expanded).
+A dead node is a generated node which is not to be expanded further or all of
+whose children have been generated.
+Portion of 4-queens state space tree generated by FIFO branch-and-bound:
+Least Cost(LC) Search:
+In both LIFO and FIFO branch-and-bound the selection rule for the next E-
+node is rather rigid and in a sense blind. The selection rule for the next E-node
+does not give any preference to a node that has a very good chance of getting
+the search to an answer node quickly. Thus, in the above state space tree,
+when node 30 is generated, it should have become obvious to the search
+algorithm that this node will lead to an answer node in one move. However, the
+rigid FIFO rule first requires the expansion of all live nodes generated before
+node 30 was expanded.
+Control Abstractions for LC-Search:
+0/1 Knapsack problem:
+The state space trees are discussed with respect to minimization problems
+whereas the knapsack problem is a maximization problem. This difficulty is
+easily overcome by replacing the objective function.
+The modified knapsack problem is stated as
+Function u( )for knapsack problem:
+Consider the knapsack instance n = 4, (p1, p2, p3, p4) = (10, 10, 12, 18),
+(w1, w2, w3, w4) = (2, 4, 6, 9), and m = 15.
+LC Branch-and-Bound Solution:
+The tag sequence for the path 8, 7, 4, 2, 1 is 1 0 1 1 and so
+x4 = 1, x3 = 0, x2 = 1,and x1 = 1.
+FIFO Branch-and-Bound Solution:
+The value of upper and the path from node 12 to the root is output.
+Travelling sales person problem
+Let G = (V, E) be a directed graph defining an instance of the traveling sales
+person problem. Let Cij equal the costof edge(i,j), Cij = ∞ if (i,j) ∉ E, and let
+|V|= n. Without loss of generality, we can assume that every tour starts and
+π π
+ends at vertex 1. So, the solution space S is given by S= {1, , 1| is a
+permutation of (2,3,... ,n)}. Then |S| = (n - 1)!. The size of S can be reduced by
+restricting S so that (l,i1,i2,..., in-1,1) ∈ S iff (i,i ) ∈ E, 0 ≤ j ≤ n -1,and i0 = in
+j j+1
+= 1. S can be organized into a state space tree.
+Figure shows the tree organization for the case of a complete graph with |V| =
+4. Each leaf node L is a solution node and represents the tour defined by the
+path from the root to L. Node 14 represents the tour i0 = 1,i1 = i2 = 4,i3 = 2,
+and i4= 1.
+A row (column) is said to be reduced iff it contains at least one zero and all
+remaining entries are non-negative.
+A matrix is reduced iff every row and column is reduced.
+We can associate a reduced cost matrix with every node in the traveling Sales
+person state space tree. Let A be the reduced cost matrix or node R. Let S be a
+child of R such that the tree edge(R,S) corresponds to including edge(i,j)in the
+tour. If S is not a leaf, then the reduced cost matrix for S may be obtained as
+follows:
+(1) Change all entries in row i and column j of A to ∞. This prevents the use of
+any more edges leaving vertex i or entering vertex j.
+(2) Set A(j, 1)to ∞. This prevents the use of edge(j,1).
+(3)Reduce all rows and columns in the resulting matrix except for rows and
+columns containing only ∞. Let the resulting matrix be B.
+If r is the total amount subtracted in step(3) then c(S)= c(R)+A(i,j)+r.

@@ -1,0 +1,514 @@
+Classes and Objects in Java
+In Java, classes and objects are basic concepts of Object Oriented Programming (OOPs) that
+are used to represent real-world concepts and entities.
+The class represents a group of objects having similar properties and behavior.
+An object in Java is the physical as well as a logical entity, whereas, a class in Java is a logical
+entity only.
+An entity that has state and behavior is known as an object e.g., chair, bike, marker, pen, table, car,
+etc. It can be physical or logical
+What is a class in Java
+A class is a group of objects which have common
+properties.
+It is a template or blueprint from which objects are
+created. It is a logical entity.
+It can't be physical.
+A class in Java can contain:
+•Fields
+•Methods
+•Constructors
+•Blocks
+•Nested class and interface
+Syntax to declare a class:
+class <class_name>{
+field;
+method;
+}
+Instance variable in Java
+Method in Java
+A variable which is created inside the class but
+In Java, a method is like a function which
+outside the method is known as an instance
+is used to expose the behavior of an
+variable.
+object.
+Advantage of Method
+Instance variable doesn't get memory at
+•Code Reusability
+compile time.
+•Code Optimization
+It gets memory at runtime when an object or
+instance is created. That is why it is known as
+an instance variable.
+new keyword in Java
+The new keyword is used to allocate memory at runtime.
+All objects get memory in Heap memory area.
+Object and Class Example: main within the class
+In this example, we have created a Student class which has two data members id and name. We are
+creating the object of the Student class by new keyword and printing the object's value.
+/Java Program to illustrate how to define a class and fields
+//Defining a Student class.
+class Student
+{
+//defining fields
+int id;//field or data member or instance variable
+String name;
+//creating main method inside the Student class
+public static void main(String args[])
+{
+//Creating an object or instance
+Student s1=new Student(); //creating an object of Student
+//Printing values of the object
+System.out.println(s1.id);//accessing member through reference variable
+System.out.println(s1.name);
+}
+}
+Object and Class Example: Rectangle
+class Rectangle
+{
+int length;
+int width;
+void insert(int l, int w)
+{
+length=l;
+width=w;
+}
+void calculateArea()
+{
+System.out.println(length*width);}
+}
+class TestRectangle1{
+public static void main(String args[]){
+Rectangle r1=new Rectangle();
+Rectangle r2=new Rectangle();
+r1.insert(11,5);
+r2.insert(3,15);
+r1.calculateArea();
+r2.calculateArea(); } }
+What are the different ways to create an
+object in Java?
+There are many ways to create an object
+in java.
+They are:
+•By new keyword
+•By newInstance() method
+•By clone() method
+•By deserialization
+•By factory method etc.
+Anonymous simply means nameless. An object which has no
+reference is known as an anonymous object. It can be used at the
+time of object creation only.
+If you have to use an object only once, an anonymous object is a
+good approach.
+class Calculation
+For example: {
+void fact(int n)
+new Calculation();//anonymous object {
+int fact=1;
+Calling method through a reference: for(int i=1;i<=n;i++)
+Calculation c=new Calculation(); {
+c.fact(5); fact=fact*i;
+}
+System.out.println("factorial is "+fact);
+Calling method through an anonymous object }
+new Calculation().fact(5); public static void main(String args[])
+{
+new Calculation().fact(5);//calling method with anonymou
+s object
+}
+}
+Creating multiple objects by one type only
+We can create multiple objects by one type only as we do in case of primitives.
+//Java Program to illustrate the use of Rectangle class which //has length and width data members
+class Rectangle
+{
+int length;
+int width;
+void insert(int l,int w){
+length=l;
+width=w;
+}
+void calculateArea()
+{
+System.out.println(length*width);
+} }
+class TestRectangle2
+{
+public static void main(String args[]) {
+Rectangle r1=new Rectangle();
+Rectangle r2=new Rectangle();//creating two objects
+r1.insert(11,5);
+r2.insert(3,15);
+r1.calculateArea();
+r2.calculateArea(); } }
+Access Modifiers in Java
+There are two types of modifiers in Java: access modifiers and non-access
+modifiers.
+The access modifiers in Java specifies the accessibility or scope of a field, method,
+constructor, or class. We can change the access level of fields, constructors,
+methods, and class by applying the access modifier on it.
+There are four types of Java access modifiers:
+1.Private: The access level of a private modifier is only within the class. It cannot
+be accessed from outside the class.
+2.Default: The access level of a default modifier is only within the package. It
+cannot be accessed from outside the package. If you do not specify any access
+level, it will be the default.
+3.Protected: The access level of a protected modifier is within the package and
+outside the package through child class. If you do not make the child class, it
+cannot be accessed from outside the package.
+4.Public: The access level of a public modifier is everywhere. It can be accessed
+from within the class, outside the class, within the package and outside the
+package.
+Access Modifier within class within package outside package outside package
+by subclass only
+Private Y N N N
+Default Y Y N N
+Protected Y Y Y N
+Public Y Y Y Y
+Controlling Access to Members of a Class
+Access level modifiers determine whether other classes can use a particular field or invoke a particular
+method.
+There are two levels of access control:
+At the top level—public, or package-private (no explicit modifier).
+At the member level—public, private, protected, or package-private (no explicit modifier).
+A class may be declared with the modifier public, in which case that class is visible to all classes
+everywhere.
+If a class has no modifier (the default, also known as package-private), it is visible only within its own
+package (packages are named groups of related classes
+At the member level, you can also use the public modifier or no modifier (package-private) just as with
+top-level classes, and with the same meaning.
+Access Levels
+Modifier Class Package Subclass World
+public Y Y Y Y
+protected Y Y Y N
+no modifier Y Y N N
+private Y N N N
+Private
+The private access modifier is accessible only within the class.
+class A
+{
+private int data=40;
+private void msg()
+{
+System.out.println("Hello java");
+}
+}
+public class Simple
+{
+public static void main(String args[])
+{
+A obj=new A();
+System.out.println(obj.data);//Compile Time Error
+obj.msg();//Compile Time Error
+}
+}
+Default
+If you don't use any modifier, it is treated as default by default. The default modifier is
+accessible only within package. It cannot be accessed from outside the package. It provides
+more accessibility than private. But, it is more restrictive than protected, and public.
+//save by A.java
+package pack;
+class A
+//save by B.java
+{
+package mypack;
+void msg(){System.out.println("Hello");}
+import pack.*;
+}
+class B
+{
+public static void main(String args[])
+{
+A obj = new A();//Compile Time Error
+obj.msg();//Compile Time Error
+}
+}
+Protected
+The protected access modifier is accessible within package and outside the package but through
+inheritance only.
+The protected access modifier can be applied on the data member, method and constructor. It can't
+be applied on the class.
+It provides more accessibility than the default modifer.
+//save by A.java
+//save by B.java
+package pack;
+package mypack;
+public class A{
+import pack.*;
+protected void msg(){System.out.println("Hello");}
+}
+class B extends A
+{
+public static void main(String args[])
+{
+B obj = new B();
+obj.msg();
+}
+}
+Public
+The public access modifier is accessible everywhere. It has the widest scope among all other
+modifiers.
+//save by A.java
+package pack;
+public class A{
+public void msg(){System.out.println("Hello");
+//save by B.java
+}
+}
+package mypack;
+import pack.*;
+class B{
+public static void main(String args[]){
+A obj = new A();
+obj.msg();
+}
+}
+In Java, a class is a blueprint for creating objects that have their own set of properties and
+methods.
+• Class members refer to the variables and methods that are defined within a class.
+• There are two types of class members in Java: instance variables and methods, and static
+variables and methods.
+• Instance variables and methods belong to an instance of a class, while static variables and
+methods belong to the class itself and can be accessed without creating an instance of the
+class.
+• Instance variables represent the state of an object, while instance methods define the
+behavior of the object.
+Static variables and methods are shared by all instances of a class and can be accessed directly
+through the class name.
+myObject.myInstanceVariable
+MyClass.myStaticMethod()
+To access a class member, you use the dot notation, which is the name of the object or class,
+followed by a period, and then the name of the member.
+Assigning One Object to Another
+• Yes, in many programming languages, you can assign one instance of an object to another
+instance of another object, as long as both objects are of the same class or a class that is
+derived from the class of the first object.
+• This is typically done using the assignment operator (=) or a constructor that takes another
+object as an argument.
+• However, in some cases, the assignment may not be valid if the objects are different type or
+the class itself does not support the assignment.
+It assigns the reference of the Object. In other words, both
+variables 'point' to the same Object.
+For example/
+int [] a = new int[5];
+int [] b = a;
+b and a now 'point' to the same array.
+So, if I do: b[0] = 3;
+Variable 'a' 'points' to: {3,0,0,0,0}
+Variable 'b' 'points' to: {3,0,0,0,0}
+and If I also do:
+a[1] = 15.
+a: {3,15,0,0,0}
+b: {3,15,0,0,0}
+This is also referred to as a 'shallow copy'.
+Accessing Private Members of Class
+A Java private keyword is an access modifier. It can be assigned to variables, methods, and
+inner classes. It is the most restricted type of access modifier.
+Points to remember
+•The private access modifier is accessible only within the same class.
+•We can't assign private to outer class and interface.
+•The best use of private keyword is to create a fully encapsulated class in Java by making
+all the data members of that class private.
+•If we make any class constructor private, we cannot create the instance of that class from
+outside the class.
+Example 1: Access private fields using getter and setter methods
+class Test
+{
+// access name
+// private variables
+public String getName()
+private int age;
+{
+private String name;
+return this.name;
+// initialize age
+}
+public void setAge(int age)
+}
+{
+this.age = age;
+class Main {
+}
+public static void main(String[] args) {
+// initialize name
+// create an object of Test
+public void setName(String name)
+Test test = new Test();
+{
+// set value of private variables
+this.name = name;
+test.setAge(24);
+}
+test.setName("Programiz");
+// access age
+public int getAge()
+// get value of private variables
+{
+System.out.println("Age: " + test.getAge());
+return this.age;
+System.out.println("Name: " + test.getName());
+}
+}
+}
+Nested Classes in Java
+In Java, it is possible to define a class within another class, such classes are known as nested classes.
+They enable you to logically group classes that are only used in one place, thus this increases the use
+of encapsulation and creates more readable and maintainable code.
+•The scope of a nested class is bounded by the scope of its enclosing class.
+•A nested class has access to the members, including private members, of the class in which it is
+nested.
+•But the enclosing class does not have access to the member of the nested class.
+•A nested class is also a member of its enclosing class.
+•As a member of its enclosing class, a nested class can be declared private, public, protected,
+or package-private(default).
+•Nested classes are divided into two categories:
+• static nested class: Nested classes that are declared static are called static nested classes.
+• inner class: An inner class is a non-static nested class.
+Syntax:
+class OuterClass
+We use inner classes to logically group classes and
+interfaces in one place to be more readable and
+maintainable.
+{ ...
+Advantage of Java inner classes
+There are three advantages of inner classes in Java. They
+are as follows:
+1.Nested classes represent a particular type of
+relationship that is it can access all the members (data
+class NestedClass
+members and methods) of the outer class, including
+private.
+2.Nested classes are used to develop more readable
+{ ... } and maintainable code because it logically group
+classes and interfaces in one place only.
+3.Code Optimization: It requires less code to write.
+}
+Types of Nested classes
+There are two types of nested classes non-static and static nested classes.
+The non-static nested classes are also known as inner classes.
+•Non-static nested class (inner class)
+1.Member inner class
+2.Anonymous inner class
+3.Local inner class
+•Static nested class
+Type Description
+Member Inner Class A class created within class and outside
+method.
+Anonymous Inner Class A class created for implementing an interface
+or extending class. The java compiler decides
+its name.
+Local Inner Class A class was created within the method.
+Static Nested Class A static class was created within the class.
+Nested Interface An interface created within class or interface.
+/ Java program to demonstrate accessing// a inner
+class
+// outer class
+class OuterClass {
+// static member
+static int outer_x = 10;
+// Driver class
+// instance(non-static) member
+int outer_y = 20; public class InnerClassDemo {
+public static void main(String[] args)
+// private member
+{
+private int outer_private = 30;
+// accessing an inner class
+// inner class
+class InnerClass { OuterClass outerObject = new
+void display()
+OuterClass();
+{
+// can access static member of outer class
+System.out.println("outer_x = " + outer_x); OuterClass.InnerClass innerObject
+// can also access non-static member of outer
+= outerObject.new InnerClass();
+// class
+System.out.println("outer_y = " + outer_y);
+innerObject.display();
+// can also access a private member of the outer
+// class }
+System.out.println("outer_private = "
+}
++ outer_private);
+}
+}
+}
+Anonymous Inner Class in Java
+An anonymous inner class can be useful when making an instance of an object with certain
+“extras” such as overriding methods of a class or interface, without having to actually subclass a
+class.
+Anonymous classes also have the same restrictions as local classes with respect to their
+members:
+•We cannot declare static initializers or member interfaces in an anonymous class.
+•An anonymous class can have static members provided that they are constant variables.
+Note: We can declare the following in anonymous classes as follows:
+•Fields
+•Extra methods (even if they do not implement any methods of the supertype)
+•Instance initializers
+•Local classes
+// Java program to demonstrate Need for
+// Anonymous Inner class
+// Interface
+interface Age {
+// Class 2
+// Defining variables and methods
+// Main class
+int x = 21;
+// AnonymousDemo
+void getAge();
+class GFG {
+}
+// Main driver method
+public static void main(String[] args)
+// Class 1
+{
+// Helper class implementing methods of Age Interface
+// Class 1 is implementation class of Age interface
+class MyClass implements Age {
+MyClass obj = new MyClass();
+// Overriding getAge() method
+// calling getage() method implemented at Class1
+@Override public void getAge()
+// inside main() method
+{
+obj.getAge();
+// Print statement
+}
+System.out.print("Age is " + x);
+}
+}
+}
+Java final method
+If you make any method as final, you cannot override
+Java final class
+it.
+If you make any class as final, you cannot extend it.
+Example of final method
+Example of final class
+class Bike{
+final class Bike
+final void run(){System.out.println("running");}
+{
+}
+}
+class Honda1 extends Bike
+class Honda extends Bike{
+{
+void run()
+void run()
+{
+{System.out.println("running safely with 100kmph");
+System.out.println("running safely with 100kmph");
+}
+}
+public static void main(String args[])
+public static void main(String args[]){
+{
+Honda honda= new Honda();
+Honda1 honda= new Honda1();
+honda.run();
+honda.run();
+}
+}
+}
+}

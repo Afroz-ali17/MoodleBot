@@ -21,8 +21,11 @@ import re
 import csv
 import pathlib
 
+# pyrefly: ignore [missing-import]
 import pdfplumber
+# pyrefly: ignore [missing-import]
 from pptx import Presentation
+# pyrefly: ignore [missing-import]
 from docx import Document
 
 RAW_DIR = pathlib.Path(__file__).parent.parent / "data" / "raw"
@@ -89,40 +92,56 @@ def extract_docx(path: pathlib.Path) -> str:
     return "\n".join(p.text for p in doc.paragraphs if p.text.strip())
 
 
+def extract_html(path: pathlib.Path) -> str:
+    content = path.read_text(encoding="utf-8", errors="ignore")
+    text = re.sub(r'<script.*?>.*?</script>', '', content, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<style.*?>.*?</style>', '', text, flags=re.DOTALL | re.IGNORECASE)
+    text = re.sub(r'<[^>]+>', ' ', text)
+    return text
+
+
+def extract_ppt(path: pathlib.Path) -> str:
+    content = path.read_bytes()
+    ascii_strings = re.findall(rb'[\x20-\x7E]{4,}', content)
+    utf16_strings = re.findall(rb'(?:[\x20-\x7E]\x00){4,}', content)
+    decoded_ascii = [s.decode('ascii', errors='ignore') for s in ascii_strings]
+    decoded_utf16 = [s.decode('utf-8', errors='ignore') for s in utf16_strings]
+    return "\n".join(decoded_ascii + decoded_utf16)
+
+
 EXTRACTORS = {
     ".pdf": extract_pdf,
     ".pptx": extract_pptx,
     ".docx": extract_docx,
+    ".html": extract_html,
+    ".htm": extract_html,
+    ".ppt": extract_ppt,
 }
 
 
-def parse_topic_slug(filename: str) -> tuple[str, str]:
-    """Split 'topic-slug__original-name.ext' into (topic_slug, original_name).
-    Falls back to 'uncategorized' if the '__' convention wasn't followed."""
-    stem = pathlib.Path(filename).stem
-    if "__" in stem:
-        topic, original = stem.split("__", 1)
-        return topic, original
-    return "uncategorized", stem
-
-
 def main():
-    if not RAW_DIR.exists() or not any(RAW_DIR.iterdir()):
+    all_files = sorted([p for p in RAW_DIR.rglob("*") if p.is_file() and p.name != ".gitkeep"])
+    if not all_files:
         print(f"No files found in {RAW_DIR}. Add course materials there first.")
-        print("Naming convention: <topic-slug>__<filename>.pdf (e.g. normalization__week4_notes.pdf)")
         return
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
     manifest_rows = []
 
-    for file_path in sorted(RAW_DIR.iterdir()):
-        if not file_path.is_file():
-            continue
+    for file_path in all_files:
         if file_path.suffix.lower() not in EXTRACTORS:
             print(f"Skipping unsupported file type: {file_path.name}")
             continue
 
-        topic_slug, original_name = parse_topic_slug(file_path.name)
+        if "__" in file_path.stem:
+            topic_slug, original_name = file_path.stem.split("__", 1)
+        elif file_path.parent != RAW_DIR:
+            topic_slug = re.sub(r'[^a-zA-Z0-9]+', '-', file_path.parent.name).strip('-').lower()
+            original_name = re.sub(r'[^a-zA-Z0-9_-]+', '_', file_path.stem)
+        else:
+            topic_slug = "uncategorized"
+            original_name = file_path.stem
+
         extractor = EXTRACTORS[file_path.suffix.lower()]
 
         try:

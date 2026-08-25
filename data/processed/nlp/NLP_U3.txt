@@ -1,0 +1,287 @@
+Grammars for Natural Language: Movement Phenomenon in Language, Gap Threading, Human Preferences in Parsing, Shift Reduce Parsers, Deterministic Parsers.
+UNIT – III
+Grammars for Natural Language
+Grammars for Natural Language
+What is grammar?
+A grammar is a formal system of rules that specifies:
+Which sentences are valid in a language.
+How words combine into phrases and sentences.
+In NLP, grammars are crucial for parsing—determining the structure of an input sentence.
+Example
+S → NP VP
+NP → Det N
+VP → V NP
+S (Sentence) consists of a Noun Phrase (NP) and a Verb Phrase (VP).
+NP may consist of a Determiner (Det) and a Noun (N).
+VP may consist of a Verb (V) followed by an NP.
+So:
+The dog chased the cat
+“The dog” → NP
+“chased the cat” → VP
+Together → S.
+Why Do We Need Grammars in NLP?
+Natural language is ambiguous and complex.
+Grammars provide a systematic way to handle:
+Agreement (singular/plural, tense).
+Phrase structure.
+Word order.
+Without grammar, systems can only do surface-level text matching (e.g., keyword search), not deep understanding.
+Types of Grammars
+Context-Free Grammars (CFGs)
+Feature-Based Grammars
+Augmented Transition Networks (ATNs)
+Unification Grammars / Logic Grammars
+Probabilistic Context-Free Grammars (PCFGs)
+1. Context-Free Grammars (CFGs)
+Most common in NLP.
+Rule form: A → B C D …
+Can generate parse trees.
+Example:
+S → NP VP
+VP → V NP | V
+NP → Det N | N
+Limitations: Can’t handle long-distance dependencies (e.g., wh-movement).
+2. Feature-Based Grammars
+Extend CFGs with features (number, gender, tense).
+Prevents invalid parses like: “He go to school.”
+Example rule:
+NP[number=?n]→Det[number=?n] N[number=?n]
+3. Augmented Transition Networks (ATNs)
+Graph-based grammars with registers and actions.
+Can handle movement and gaps more naturally.
+Useful for questions, relative clauses.
+4. Unification Grammars / Logic Grammars
+Based on logic programming.
+Powerful for handling constraints like agreement and subcategorization.
+Often used in Prolog-based NLP systems.
+5. Probabilistic Context-Free Grammars (PCFGs)
+Add probabilities to rules.
+Helps resolve ambiguity by preferring more likely parses.
+Example:
+Rule: VP → V NP [0.7]
+Rule: VP → V [0.3]
+Key Problems with Grammars for Natural Language
+Ambiguity
+A single sentence may have multiple valid parses.
+Example: I saw the man with the telescope.
+Did I use the telescope, or did the man have it?
+Movement Phenomena
+Wh-questions, topicalization require handling displaced constituents.
+Example: What did you buy __ ?
+Efficiency
+Pure CFG parsing can be computationally expensive (O(n³)).
+Deterministic and probabilistic approaches help.
+Practical Relevance
+Grammars are used in:
+Parsing systems (early NLP, still used in syntax-based MT).
+Speech recognition (to restrict possible word sequences).
+Question Answering (mapping questions to logical forms).
+Modern NLP: Though deep learning dominates, grammars remain crucial for linguistic explainability and hybrid systems.
+Summary
+A grammar provides the blueprint for sentence formation.
+Context-Free Grammars are the base, but natural language requires extensions (features, ATNs, PCFGs).
+Handling ambiguity and movement are the biggest challenges.
+Movement Phenomenon in Language
+What is Movement in Language?
+In natural languages, sometimes a word or phrase appears far from the position where it is understood to belong.
+This displacement is called movement.
+Common in questions, relative clauses, topicalization, etc.
+In transformational grammar (TG):
+Deep structure: basic order of constituents.
+Surface structure: actual word order after transformations (like inversion or wh-movement).
+Example: Yes/No Questions
+Compare assertions and their question forms:
+Assertion: John is giving Sue a back rub.
+Question: Is John giving Sue a back rub?
+Here, the subject NP (John) and the first auxiliary (is) swap positions. This is called subject–auxiliary inversion.
+If no auxiliary exists, English inserts do-support:
+Assertion: John went to the store.
+Question: Did John go to the store?
+Example: Wh-Questions
+Assertion: You bought a book.
+Question: What did you buy __ ?
+Here:
+“What” is moved to the front of the sentence.
+The original position is left as a gap (__) in the object position.
+Other examples:
+Where will the fat man put the book?
+In what way will the fat man put the book in the corner?
+In all cases:
+A wh-word (what, who, where, how, etc.) is fronted.
+The auxiliary verb inverts with the subject.
+A gap is left behind.
+Why is Movement Important in NLP?
+CFGs alone can’t handle such rearrangements, since CFG rules are strictly local.
+Movement requires mechanisms like:
+Gap features (propagating “missing constituents” through the tree).
+Hold lists (ATNs) (temporarily store moved constituents).
+Gap threading (passing fillers and gaps as arguments).
+Types of Movement
+Wh-movement
+Question words move to the front.
+What did Mary buy __ ?
+Subject–Aux Inversion
+In questions, the auxiliary precedes the subject.
+Will he run tomorrow?
+Topicalization
+Object moved to the front for emphasis.
+This book, I really like __.
+Relative Clauses
+The relative pronoun moves, leaving a gap.
+The man [who we saw __ ] is here.
+Linguistic Explanation
+Transformational grammar posits two levels:
+Deep structure: generated by a CFG.
+Transformations: rules like “move WH-word to front” or “invert subject–auxiliary”.
+Example (Deep vs. Surface Structure):
+Deep: John will eat what
+Surface: What will John eat __ ?
+NLP Challenges
+Parsers must track moved elements and connect them to their original position.
+Example: What did you say John bought __ ?
+Parser must link “what” with the object of “bought”, not “say”.
+These challenges motivated techniques like:
+ATN hold lists
+Gap threading
+Feature-based unification grammars
+Summary
+Movement = displacement of constituents from their base position.
+Seen in yes/no questions, wh-questions, relative clauses, topicalization.
+Requires transformational or feature-based grammar extensions beyond plain CFGs.
+Crucial in NLP parsing to correctly handle questions and long-distance dependencies.
+Gap Threading
+In natural language, when a word/phrase moves (like in wh-questions or relative clauses), it leaves behind a gap.
+Example:
+The man [who we saw __ ] cried.
+“who” has moved, and its original position (object of saw) is empty → gap.
+The parser must connect the filler (“who”) with its gap position.
+Plain CFGs cannot do this, because rules only see local context.
+Earlier Solutions (and their Problems)
+Gap features: Add a GAP feature to rules that propagates missing constituents.
+ATN Hold Mechanism: Keep moved items on a “hold list” until a gap appears.
+Problem: These approaches either become too restrictive or allow too many possibilities.
+Gap Threading Approach
+A more systematic method used in logic grammars.
+Key idea: Pass lists of “possible fillers” through the grammar as extra arguments.
+Formally:
+s(pos_in, pos_out, fillers_in, fillers_out)
+fillers_in: list of fillers available (like “who”, “what”).
+fillers_out: list after parsing (unused fillers remain).
+If a filler is consumed at a gap → it disappears from fillers_out.
+Example: Relative Clause
+Sentence: The man who we saw __ cried.
+Step 1: “who” introduces a filler → [NP].
+Step 2: This filler is passed through the rules (S → NP VP).
+Step 3: At VP, it continues until the object NP position is reached.
+Step 4: NP rule uses the filler (consumes it).
+Step 5: Now fillers_out is empty → parse succeeds.
+Why It Works?
+Threading ensures:
+Fillers are only used once.
+Fillers can be passed down multiple levels of rules until they reach the right gap.
+Prevents incorrect parses like:
+The man who the boy cried ate the pie. (bad, because “who” doesn’t fill any proper gap).
+Advantages
+Cleaner than “hold lists”.
+Explicitly enforces that every moved item must fill exactly one gap.
+Works naturally in logic-based grammars (Prolog DCGs, unification grammars).
+Summary
+Gap threading = passing filler/gap information as extra arguments through grammar rules.
+Ensures proper connection between moved elements (fillers) and their original gap positions.
+Widely used in relative clauses and wh-questions.
+Makes grammars more linguistically accurate and computationally precise.
+Human Preferences in Parsing
+The Problem of Ambiguity
+Natural language is ambiguous: a single sentence may have multiple valid parse trees.
+Example:
+The raft floated down the river sank.
+Initially, we parse The raft floated down the river as a full sentence.
+But when sank appears, we realize we must re-parse (garden-path effect).
+Humans don’t consider all possible parses equally. Instead, they follow heuristics that guide interpretation.
+Garden-Path Sentences
+Sentences that mislead readers into the wrong interpretation before forcing reanalysis.
+Example:
+The horse raced past the barn fell.
+Preferred (but wrong) parse: raced = main verb.
+Correct parse: The horse [that was raced past the barn] fell
+Principles of Human Parsing Preferences
+Psycholinguists have identified heuristics that humans use:
+Minimal Attachment
+Right Association (Late Closure)
+Lexical Preferences
+a) Minimal Attachment
+Prefer the parse with the fewest nodes in the tree.
+Example: The man kept the dog in the house.
+Option 1: PP (Prepositional Phrase) in the house modifies kept (simpler).
+Option 2: PP modifies the dog (adds more structure).
+Humans prefer Option 1.
+b) Right Association (Late Closure)
+Attach new material to the most recent phrase.
+Example: George said that Henry left in his car.
+Option 1: Henry left in his car (attach PP to Henry’s VP).
+Option 2: George said in his car (attach PP to higher VP).
+Humans prefer Option 1 (late closure).
+c) Lexical Preferences
+Certain words bias interpretation.
+Example: We painted all the walls with cracks.
+People tend to read it as “used cracks to paint” (VP attachment), even though semantically odd.
+Shows how word meanings interact with structure.
+Why It Matters for NLP?
+Parsing algorithms need to decide which parse tree to choose when multiple are possible.
+Early NLP parsers adopted these human-inspired heuristics.
+Later systems used probabilities (PCFGs) to model preferences statistically.
+Today, modern parsers (neural) still reflect these biases, learned from data.
+Summary
+Humans prefer certain parses due to cognitive simplicity and recency effects.
+Three main heuristics:
+Minimal Attachment → prefer simpler structure.
+Right Association (Late Closure) → attach new material to most recent phrase.
+Lexical Preferences → word meanings influence parsing.
+Important in designing NLP parsers and understanding garden-path effects in language processing.
+Shift Reduce Parsers
+Shift-reduce parsing is a bottom-up parsing technique used for Context-Free Grammars (CFGs).
+Goal: Construct a parse tree for an input string starting from the leaves (words) and working up to the start symbol (S).
+Widely used in compiler design and Natural Language Processing (NLP) for efficient parsing.
+Core Idea
+Maintain a stack and an input buffer:
+Stack: holds partially recognized grammar symbols.
+Input buffer: holds remaining input tokens.
+Parser repeatedly applies four possible actions until the stack contains only the start symbol and the input is empty.
+Four Actions
+Step-by-Step Example
+Grammar
+Step-by-Step Example
+Step-by-Step Example
+Characteristics
+Bottom-up: starts from tokens, builds up to S.
+Deterministic (LR family): can be implemented efficiently.
+Handles a large class of CFGs (more than simple top-down parsers).
+Applications in NLP
+Parsing natural language sentences for syntactic structure.
+Foundation for many probabilistic shift-reduce parsers (e.g., in modern dependency parsing).
+Summary
+Shift-Reduce Parsing uses a stack and input buffer.
+Actions: Shift, Reduce, Accept, Error.
+Efficient and widely used for both programming languages and natural language parsing.
+Deterministic Parsers
+A deterministic parser is a parser that never needs to backtrack or explore multiple parse trees.
+At each step, given the current input symbol and the current parser state, there is exactly one valid action.
+This makes the parsing process predictable, fast, and efficient, important in both compiler design and natural language processing.
+Core Idea
+Deterministic ≈ Single unique path
+The parser uses a deterministic algorithm to build a parse tree, so:
+No ambiguity in parser decisions.
+Only one parse tree is constructed for any valid input.
+Types of Deterministic Parsers
+In NLP, deterministic shift-reduce parsers often belong to the LR family.
+How It Works (General Steps)
+Advantages
+Efficiency: Linear-time parsing for deterministic context-free grammars.
+No Backtracking: Predictable performance.
+Practical: Widely used in compilers and many NLP parsers.
+Limitations
+Requires grammars to be deterministic (unambiguous) or converted to a deterministic form.
+Some natural languages are highly ambiguous, so extra mechanisms (like probabilistic scoring) are often added in NLP.
+NLP Perspective
+Deterministic Dependency Parsers: Modern parsers (e.g., transition-based parsers like arc-standard, arc-eager) use deterministic decisions with machine-learned models to pick the next action.
+Often combined with probabilistic models to resolve real-world ambiguities while maintaining a deterministic parsing algorithm.

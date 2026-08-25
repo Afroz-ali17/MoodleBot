@@ -1,0 +1,373 @@
+COMPUTER VISION AND IMAGE PROCESSING
+UNIT-IV
+Object Recognition and Machine Learning in Vision
+V Phanishwara Hara Gopal
+Department of CSE (AI&ML)
+RGMCET
+2025-2026
+1 Feature Descriptors and Matching
+Feature descriptors and matching form the foundation of object recognition and scene analy-
+sis. They enable the identification of distinctive patterns in images that remain stable under
+transformations such as scaling, rotation, illumination changes, and viewpoint variations.
+1.1 Scale-Invariant Feature Transform (SIFT)
+The Scale-Invariant Feature Transform (SIFT), proposed by David Lowe (1999, 2004), ex-
+tracts distinctive keypoints and descriptors from images that are robust to scale, rotation,
+and moderate affine transformations.
+1.1.1 Key Steps in SIFT
+1. Scale-space extrema detection: Keypoints are detected as maxima/minima of the
+Difference-of-Gaussians (DoG) function across scales:
+D(x,y,σ) = (G(x,y,kσ)−G(x,y,σ))∗I(x,y)
+where G is the Gaussian kernel, I is the image, and k is a constant factor.
+2. Keypoint localization: Taylor series expansion is used to refine location, scale, and
+remove unstable points with low contrast or along edges.
+3. Orientation assignment: Each keypoint is assigned a dominant orientation based
+on local image gradient:
+(cid:113)
+m(x,y) = (L −L )2 +(L −L )2
+x+1,y x−1,y x,y+1 x,y−1
+(cid:18) (cid:19)
+L −L
+θ(x,y) = tan−1 x,y+1 x,y−1
+L −L
+x+1,y x−1,y
+4. Descriptor generation: For each keypoint, a 16×16 neighborhood is divided into
+4×4 subregions. Each subregion produces an 8-bin orientation histogram, resulting in
+a 4×4×8 = 128 dimensional feature vector.
+1.1.2 Properties of SIFT
+• Invariant to scale, rotation, and moderate affine changes.
+• Robust against illumination changes and occlusion.
+• Computationally expensive for large-scale applications.
+1.2 Speeded-Up Robust Features (SURF)
+SURF (Bay et al., 2006) was developed as a faster alternative to SIFT while maintaining
+robustness.
+1.2.1 Key Concepts in SURF
+• Uses an integral image for fast computation of box filters.
+• Scale-space is constructed using box filters that approximate Gaussian derivatives.
+• Keypoints are detected using the Hessian matrix determinant:
+(cid:20) (cid:21)
+L (x,y,σ) L (x,y,σ)
+H(x,y,σ) = xx xy , det(H) = L L −(0.9L )2
+L (x,y,σ) L (x,y,σ) xx yy xy
+xy yy
+• Orientation is assigned using Haar wavelet responses in a circular neighborhood.
+• Feature descriptors are constructed from sums of Haar wavelet responses in 4×4 sub-
+regions, producing a 64-dimensional descriptor.
+1.2.2 Properties of SURF
+• Faster than SIFT due to integral images and box filters.
+• Descriptor dimension (64) is lower than SIFT (128), improving efficiency.
+• Some loss in distinctiveness compared to SIFT.
+1.3 Feature Matching Algorithms
+After feature extraction, descriptors are matched across images to find correspondences.
+1.3.1 Distance Metrics
+• Euclidean distance: Commonly used for SIFT and SURF descriptors.
+(cid:118)
+(cid:117) n
+(cid:117)(cid:88)
+d(f ,f ) = (cid:116) (f −f )2
+1 2 1i 2i
+i=1
+• Hamming distance: Used for binary descriptors such as ORB, BRIEF.
+1.3.2 Matching Strategies
+1. Nearest Neighbor (NN): Match a feature to the descriptor with the smallest dis-
+tance.
+2. Nearest Neighbor Ratio Test (NNR): Lowe’s ratio test improves robustness by
+comparing best and second-best matches:
+d
+< τ, τ ∈ [0.6,0.8]
+d
+3. RANSAC (Random Sample Consensus): Used after initial matches to eliminate
+outliers and estimate a geometric model (e.g., homography).
+1.3.3 Applications
+• Image stitching and panorama generation.
+• Object recognition and retrieval.
+• 3D reconstruction and Structure-from-Motion (SfM).
+• Visual SLAM (Simultaneous Localization and Mapping).
+2 Object Detection and Recognition
+Object detection and recognition aim to localize and identify objects within images. De-
+tection involves finding object instances (with bounding boxes or masks), while recognition
+refers to classifying detected objects into semantic categories.
+2.1 Template Matching
+Template matching is a basic approach where a predefined pattern (template) is compared
+against an input image.
+2.1.1 Mathematical Formulation
+• Let I(x,y) be the input image and T(u,v) the template of size M ×N.
+• Sum of Squared Differences (SSD):
+M−1N−1
+(cid:88) (cid:88)
+R(x,y) = [I(x+u,y +v)−T(u,v)]2
+u=0 v=0
+• Normalized Cross-Correlation (NCC):
+(cid:80) (cid:2) ¯ ¯ (cid:3)
+(I(x+u,y +v)−I )(T(u,v)−T)
+u,v x,y
+R(x,y) =
+(cid:113)
+(cid:80) (I(x+u,y +v)−I¯ )2(cid:80) (T(u,v)−T¯ )2
+u,v x,y u,v
+¯ ¯
+where I and T are local means.
+x,y
+2.1.2 Properties
+• Simple to implement; effective for rigid objects with limited scale/rotation variation.
+• Sensitive to illumination, scale, rotation, and occlusion changes.
+2.2 Deformable Part Models (DPM)
+Deformable Part Models, introduced by Felzenszwalb et al. (2010), model objects as a
+collection of parts with spatial constraints.
+2.2.1 Model Representation
+• Root filter: captures global object appearance.
+• Part filters: capture local regions/features.
+• Deformation model: penalizes displacement of parts from anchor positions.
+n
+(cid:88)
+score(x) = w ·ϕ (x)+ [w ·ϕ (x )−d (∆x ,∆y )]
+0 0 i i i i i i
+i=1
+where ϕ are feature descriptors (e.g., HOG) and d is quadratic deformation cost.
+i
+2.2.2 Training and Detection
+• Trained using latent SVM (Support Vector Machine).
+• Detection via sliding window search at multiple scales.
+2.2.3 Properties
+• Robust to partial occlusion and pose variations.
+• Computationally heavier compared to rigid models.
+• Precursor to deep learning object detectors.
+2.3 Convolutional Neural Networks (CNNs) for Object Detection
+CNNs have become the state-of-the-art for object detection and recognition.
+2.3.1 Basic CNN Architecture
+1. Convolutional layers: Extract local features via kernels:
+(cid:88)(cid:88)
+(I ∗K)(x,y) = I(x+u,y +v)K(u,v)
+u v
+2. Activation (ReLU): f(z) = max(0,z) introduces nonlinearity.
+3. Pooling layers: Downsample spatial resolution (e.g., max pooling).
+4. Fully connected layers: Aggregate features for classification.
+2.3.2 Object Detection Frameworks
+• R-CNN family (R-CNN, Fast R-CNN, Faster R-CNN): Region proposal →
+CNN feature extraction → classifier.
+• YOLO (You Only Look Once): Single-stage detector dividing image into grids,
+predicting bounding boxes and classes simultaneously.
+• SSD (Single Shot Multibox Detector): Detects at multiple scales using feature
+maps at different layers.
+2.3.3 Loss Functions
+• Classification loss (cross-entropy):
+C
+(cid:88)
+L = − y log(yˆ )
+cls c c
+c=1
+• Localization loss (smooth L ):
+(cid:88)
+L = smooth (t −tˆ)
+loc L1 i i
+i∈{x,y,w,h}
+2.3.4 Applications
+• Autonomous driving (vehicle and pedestrian detection).
+• Surveillance systems.
+• Medical image analysis (tumor detection, organ segmentation).
+• Industrial inspection and robotics.
+3 Introduction to Machine Learning for Vision
+Machine learning methods enable systems to learn patterns from data and generalize to new,
+unseen examples. In computer vision, these methods are essential for tasks like classification,
+detection, recognition, and clustering.
+3.1 Supervised and Unsupervised Learning
+3.1.1 Supervised Learning
+• In supervised learning, models are trained with labeled datasets consisting of in-
+put–output pairs (x ,y ).
+i i
+• Goal: learn a mapping f : x → y that minimizes prediction error.
+• Loss function example (classification cross-entropy):
+N C
+(cid:88)(cid:88)
+L = − y log(yˆ )
+ic ic
+i=1 c=1
+• Applications in vision: object classification, face recognition, scene categorization.
+3.1.2 Unsupervised Learning
+• Works with unlabeled data; goal is to discover hidden structures or patterns.
+• Commonmethods: clustering(K-means,Mean-shift),dimensionalityreduction(PCA).
+• Example (K-means objective function):
+N
+(cid:88)
+J = min∥x −µ ∥2
+i k
+k
+i=1
+• Applications: image segmentation, anomaly detection, unsupervised feature learning.
+3.2 Support Vector Machines (SVMs)
+Support Vector Machines are powerful supervised classifiers, effective for small- to medium-
+sized vision datasets.
+3.2.1 Linear SVM
+• Given training data {(x ,y )} with y ∈ {−1,+1}, SVM finds the maximum-margin
+i i i
+hyperplane:
+f(x) = wTx+b
+• Optimization problem:
+min ∥w∥2 s.t. y (wTx +b) ≥ 1, ∀i
+i i
+w,b 2
+3.2.2 Soft Margin SVM
+• To handle non-separable data, slack variables ξ are introduced:
+i
+1 (cid:88)
+min ∥w∥2 +C ξ
+i
+w,b,ξ 2
+i
+where C balances margin maximization and classification error.
+3.2.3 Kernel SVM
+• Maps input data to higher dimensions using kernel functions K(x ,x ).
+i j
+• Common kernels: linear, polynomial, radial basis function (RBF).
+• Widely used in image classification with handcrafted features (HOG, SIFT).
+3.3 Decision Trees
+Decision trees are non-parametric classifiers that recursively partition feature space.
+3.3.1 Tree Construction
+• Each node splits data based on feature thresholds.
+• Splitting criterion: maximize information gain or reduce impurity.
+• Gini impurity:
+C
+(cid:88)
+G = 1− p2
+c
+c=1
+• Entropy:
+C
+(cid:88)
+H = − p log p
+c 2 c
+c=1
+3.3.2 Properties
+• Easy to interpret and visualize.
+• Prone to overfitting; mitigated by pruning or ensemble methods.
+3.4 Random Forests
+Random Forests are ensembles of decision trees, combining multiple weak learners to form
+a strong classifier.
+3.4.1 Key Concepts
+• Bootstrap Aggregation (Bagging): Train each tree on a random bootstrap sample
+of the dataset.
+• Random Feature Selection: At each split, choose the best split among a random
+subset of features.
+• Prediction: majority vote for classification or average for regression.
+3.4.2 Advantages
+• Robust to noise and overfitting compared to single trees.
+• Works well with high-dimensional data and nonlinear boundaries.
+• Used in vision for image classification, feature selection, and retrieval.
+3.5 Applications in Vision
+• SVMs: face detection (e.g., HOG + SVM in Dalal–Triggs pedestrian detector).
+• Decision Trees: interpretable models for small-scale recognition tasks.
+• Random Forests: landmark detection, medical image classification, keypoint recogni-
+tion.
+4 Deep Learning Architectures
+Beyond convolutional neural networks (CNNs), advanced deep learning architectures are
+widely used in computer vision for feature learning, sequence modeling, and generative
+modeling. This section introduces autoencoders, recurrent neural networks (RNNs), and
+generative adversarial networks (GANs).
+4.1 Autoencoders
+Autoencoders are unsupervised neural networks designed to learn compact representations
+of input data.
+4.1.1 Architecture
+• Composed of two main components:
+1. Encoder: maps input x to latent code z.
+z = f (x)
+θ
+2. Decoder: reconstructs input from latent code.
+xˆ = g (z)
+ϕ
+• Training minimizes reconstruction loss, typically mean squared error (MSE):
+L(x,xˆ) = ∥x−xˆ∥2
+4.1.2 Variants
+• Denoising Autoencoders: learn robust features by reconstructing inputs from cor-
+rupted versions.
+• Sparse Autoencoders: impose sparsity constraints on latent code z.
+• Variational Autoencoders (VAEs): probabilistic framework with latent distribu-
+tion q (z|x), optimizing the evidence lower bound (ELBO).
+θ
+4.1.3 Applications in Vision
+• Dimensionality reduction and feature learning.
+• Image denoising and super-resolution.
+• Pretraining for deep architectures.
+4.2 Recurrent Neural Networks (RNNs)
+RNNsaredesignedforsequentialdata, makingthemusefulinvisiontasksinvolvingtemporal
+dependencies.
+4.2.1 Standard RNN
+• At time t, hidden state is:
+h = σ(W h +W x +b)
+t h t−1 x t
+• Output:
+y = W h +c
+t y t
+4.2.2 Limitations
+• Struggles with long-term dependencies due to vanishing/exploding gradients.
+4.2.3 Variants
+• Long Short-Term Memory (LSTM): introduces gates (input, forget, output) to
+preserve information over longer sequences.
+• Gated Recurrent Unit (GRU): simplified variant of LSTM with fewer parameters.
+4.2.4 Applications in Vision
+• Video classification and action recognition.
+• Image captioning (CNN encoder + RNN decoder).
+• Gesture recognition and activity analysis.
+4.3 Generative Adversarial Networks (GANs)
+GANs (Goodfellow et al., 2014) are generative models consisting of two competing networks.
+4.3.1 Architecture
+• Generator G(z): maps random noise vector z ∼ p(z) to synthetic image.
+• Discriminator D(x): distinguishes real images from generated ones.
+4.3.2 Objective Function
+minmaxV(D,G) = E [logD(x)]+E [log(1−D(G(z)))]
+G D
+x∼p data(x) z∼pz(z)
+4.3.3 Training Dynamics
+• Adversarial training: D improves at classification while G learns to fool D.
+• Balance between G and D is crucial; instability can lead to mode collapse.
+4.3.4 Variants
+• Conditional GAN (cGAN): generation conditioned on labels y.
+• DCGAN: deep convolutional GAN using CNN layers in G and D.
+• CycleGAN: learns mappings between two unpaired domains (e.g., summer ↔ winter
+scenes).
+4.3.5 Applications in Vision
+• Image synthesis and data augmentation.
+• Super-resolution and image-to-image translation.
+• Domain adaptation for cross-modality medical imaging.
+Topic Area Textbook Chapter Pages Key Concepts / Equations
+SIFT feature descriptor Szeliski Ch. 4 pp. 205–210 Scale-space DoG extrema, ori-
+entation assignment, 128-D de-
+scriptor
+SURF feature descriptor Gonzalez & Ch. 11 pp. 875–880 Integral images, Hessian deter-
+Woods minant, 64-D descriptor
+Feature matching algo- Szeliski Ch. 4 pp. 212–218 Euclidean distance, Hamming
+rithms distance, Lowe’s ratio test,
+RANSAC filtering
+Template matching Gonzalez & Ch. 9 pp. 737–745 SSD: R(x,y) = (cid:80) (I−T)2, NCC
+Woods for illumination invariance
+Deformable Part Models Szeliski Ch. 5 pp. 280–285 Root + part filters, latent SVM,
+(DPM) deformation cost: d (∆x,∆y)
+i
+CNNs for object detection Szeliski Ch. 14 pp. 673–690 Conv layers, pooling, R-CNN,
+YOLO, SSD, loss = L +L
+cls loc
+Supervised&unsupervised Gonzalez & Ch. 10 pp. 801–808 Loss: cross-entropy L =
+(cid:80)
+learning Woods − ylogyˆ, clustering ob-
+jective J = (cid:80) ∥x−µ∥2
+Support Vector Machines Szeliski Ch. 5 pp. 255–258 Max-margin hyperplane:
+(SVMs) min 1∥w∥2, kernel trick, soft
+margin with ξ
+i
+Decision trees & Random Gonzalez & Ch. 10 pp. 809–815 Splitting: entropy H =
+(cid:80)
+forests Woods − plogp, Gini impurity,
+bagging, random feature selec-
+tion
+Autoencoders Szeliski Ch. 14 pp. 700–705 Encoder z = f (x), decoder xˆ =
+θ
+g (z), loss = MSE
+ϕ
+Recurrent Neural Net- Szeliski Ch. 14 pp. 706–710 Hidden state: h = σ(W h +
+t h t−1
+works (RNNs) W x ), LSTM/GRU variants
+x t
+Generative Adversarial Szeliski Ch. 14 pp. 715–720 Minimax:
+Networks (GANs) min max E[logD(x)] +
+G D
+E[log(1 − D(G(z)))], DC-
+GAN, cGAN
+Table 1: Reference Summary with Page Numbers for Unit–IV Topics

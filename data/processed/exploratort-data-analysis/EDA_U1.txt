@@ -1,0 +1,816 @@
+Exploratory Data Analysis with Python
+III B.Tech – I Semester
+Introduction to Data Science and EDA, Importance of EDA in Data Science Life Cycle, Setting up Python Environment: Jupyter, Anaconda, VS Code, Introduction to NumPy and Pandas: Arrays, Series, DataFrames, Data loading, viewing, basic operations (info, describe, shape)
+UNIT – I
+Introduction to EDA and Python Environment
+Introduction to Data Science and EDA
+What is Data Science?
+Data Science is an interdisciplinary field that combines statistical analysis, computer science, and domain expertise to extract meaningful insights from structured and unstructured data. It involves collecting, cleaning, analyzing, and interpreting data to solve real-world problems, make predictions, or inform decision-making.
+Key components
+Data Collection: Gathering data from various sources like databases, APIs, or web scraping.
+Data Cleaning: Handling missing values, outliers, and inconsistencies to ensure data quality.
+Data Analysis: Applying statistical and machine learning techniques to uncover patterns or trends.
+Data Visualization: Presenting findings through charts, graphs, or dashboards for better understanding.
+Domain Knowledge: Leveraging expertise in a specific field (e.g., finance, healthcare) to contextualize results.
+Data Science is widely used in industries like finance (fraud detection), healthcare (disease prediction), marketing (customer segmentation), and more.
+What is Exploratory Data Analysis (EDA)?
+Exploratory Data Analysis (EDA) is the process of analyzing and summarizing datasets to understand their structure, patterns, and anomalies before applying advanced modeling techniques.
+Introduced by statistician John Tukey, EDA emphasizes visualizing data and deriving insights through descriptive statistics.
+Goals of EDA
+The main goals of EDA are:
+Understand the Data: Identify data types, distributions, and relationships between variables.
+Detect Anomalies: Spot outliers, errors, or inconsistencies that may affect analysis.
+Identify Patterns: Discover trends, correlations, or clusters in the data.
+Generate Hypotheses: Formulate questions or assumptions to guide further analysis or modeling.
+Prepare for Modeling: Inform decisions about feature selection, transformation, or preprocessing.
+Steps in EDA
+Data Collection and Loading.
+Data Inspection
+Data Cleaning
+Univariate Analysis
+Bivariate/Multivariate Analysis
+Data Visualization
+Feature Engineering
+Summarize Insights
+Data Collection and Loading
+Import data from sources like CSV, Excel, SQL databases, or APIs.
+Tools: Python (pandas), R, Excel, or SQL.
+Data Inspection
+Check the dataset's structure (rows, columns, data types).
+Use functions like df.head(), df.info(), or df.describe() in Python's pandas library.
+Identify missing values, duplicates, or incorrect data types.
+Data Cleaning
+Handle missing values (impute with mean/median, drop rows/columns).
+Remove or correct outliers if necessary.
+Standardize formats (e.g., dates, categorical variables).
+Univariate Analysis
+Analyze individual variables to understand their distribution.
+Numerical Variables: Use histograms, box plots, or summary statistics (mean, median, standard deviation).
+Categorical Variables: Use bar plots or frequency tables.
+Bivariate/Multivariate Analysis
+Explore relationships between variables.
+Correlation Analysis: Use correlation matrices or heatmaps to identify relationships between numerical variables.
+Scatter Plots: Visualize pairwise relationships.
+Categorical-Numerical Analysis: Use box plots or violin plots to compare distributions across categories.
+Categorical-Categorical Analysis: Use contingency tables or stacked bar charts.
+Data Visualization
+Create visual representations to communicate findings effectively.
+Common tools: Matplotlib, Seaborn, Plotly (Python), ggplot2 (R).
+Examples: Histograms, scatter plots, box plots, heatmaps, pair plots.
+Feature Engineering
+Create new features based on insights (e.g., extracting date components, combining variables).
+Normalize or scale numerical features if needed.
+Summarize Insights
+Document key findings, such as trends, anomalies, or potential issues.
+Formulate hypotheses for further analysis or modeling.
+Tools for EDA
+Python: Libraries like pandas (data manipulation), NumPy (numerical operations), Matplotlib/Seaborn/Plotly (visualization), and scikit-learn (preprocessing).
+R: Packages like dplyr, tidyr, ggplot2, and data.table.
+Other Tools: Excel, Tableau, Power BI, or Jupyter Notebooks for interactive analysis.
+Key Insights from EDA
+Distributions: Are variables normally distributed, skewed, or multimodal?
+Outliers: Are there extreme values that need further investigation?
+Correlations: Are there strong relationships between variables that could inform feature selection?
+Missing Data: How much data is missing, and what imputation strategy is appropriate?
+Categorical Patterns: Do certain categories dominate or show distinct behaviors?
+Best Practices for EDA
+Start with simple visualizations to get a feel for the data.
+Document all findings and assumptions.
+Avoid overfitting insights to the data—EDA is for exploration, not confirmation.
+Use domain knowledge to interpret results meaningfully.
+Iterate: Revisit EDA after cleaning or transforming data to validate changes.
+Why EDA Matters?
+EDA is a critical step in the data science pipeline because it:
+Reduces errors by identifying data quality issues early.
+Saves time by guiding appropriate modeling techniques.
+Enhances interpretability by providing context for results.
+Builds intuition about the dataset, which is essential for effective decision-making.
+By thoroughly exploring the data, you set a strong foundation for subsequent steps like feature engineering, model building, and deployment.
+Importance of Exploratory Data Analysis (EDA) in the Data Science Life Cycle
+What is Exploratory Data Analysis (EDA)?
+Exploratory Data Analysis (EDA) is the process of analyzing and visualizing data to understand its structure, patterns, and relationships before building predictive models or drawing insights.
+Why is EDA Important?
+Helps identify missing values and outliers.
+Uncovers trends, correlations, and distributions.
+Detects anomalies and data inconsistencies.
+Provides insights into feature importance.
+Guides feature selection and model building.
+Importance of Exploratory Data Analysis (EDA) in the Data Science Life Cycle
+Exploratory Data Analysis (EDA) is a critical phase in the Data Science Life Cycle, serving as the foundation for effective data-driven decision-making and modeling.
+The Data Science Life Cycle typically includes stages like problem definition, data collection, data cleaning, EDA, modeling, evaluation, and deployment.
+EDA plays a pivotal role in bridging data preparation and modeling, ensuring that subsequent steps are informed, efficient, and robust.
+Below are the key reasons why EDA is essential in the Data Science Life Cycle:
+1. Understanding the Data
+Role: EDA provides an initial understanding of the dataset’s structure, variables, and characteristics (e.g., data types, distributions, ranges).
+Impact: Helps identify whether the data aligns with the problem statement and business objectives. For example, EDA reveals if key variables (e.g., sales, customer demographics) are present and usable.
+Example: Visualizing the distribution of a target variable (e.g., sales revenue) using a histogram can reveal if it’s skewed, informing whether transformations (e.g., log-scaling) are needed.
+2. Identifying Data Quality Issues
+Role: EDA uncovers issues like missing values, outliers, duplicates, or inconsistent formats that could skew analysis or modeling.
+Impact: Addressing these issues early prevents errors in downstream processes, such as biased model predictions or incorrect conclusions.
+Example: A box plot might highlight extreme outliers in a feature like income, prompting investigation into whether they are errors or valid data points.
+3. Uncovering Patterns and Relationships
+Role: EDA uses visualizations (e.g., scatter plots, heatmaps) and statistical summaries to identify trends, correlations, or clusters in the data.
+Impact: These insights guide feature selection, hypothesis generation, and model choice. For instance, strong correlations between variables may suggest multicollinearity, affecting regression models.
+Example: A correlation heatmap might show that customer age and spending are positively correlated, suggesting age as a key predictor in a predictive model.
+4. Guiding Feature Engineering
+Role: EDA informs the creation, transformation, or selection of features by revealing which variables are relevant or need modification.
+Impact: Well-engineered features improve model performance and interpretability. EDA might suggest combining variables (e.g., creating a “total spend” feature from monthly purchases).
+Example: A pair plot showing non-linear relationships might indicate the need for polynomial features or interaction terms.
+5. Informing Model Selection
+Role: EDA helps determine the appropriate modeling approach by revealing data characteristics like linearity, normality, or class imbalance.
+Impact: Choosing the right model (e.g., linear regression vs. decision trees) saves time and improves results. For instance, skewed target variables might favor tree-based models over linear ones.
+Example: A histogram showing a non-normal target variable might steer you toward robust algorithms like random forests instead of assuming normality for linear regression.
+6. Detecting Anomalies and Outliers
+Role: EDA identifies unusual data points that could indicate errors, fraud, or significant phenomena.
+Impact: Handling outliers appropriately (e.g., removing, capping, or investigating) ensures model robustness and prevents skewed results.
+Example: A scatter plot of transaction amounts might reveal unusually high values, prompting checks for fraudulent activity.
+7. Facilitating Hypothesis Generation
+Role: EDA sparks questions or hypotheses about the data that can guide deeper analysis or modeling.
+Impact: Hypotheses formed during EDA (e.g., “Younger customers spend more on weekends”) can be tested in later stages, aligning the analysis with business goals.
+Example: A bar plot showing purchase frequency by customer segment might suggest targeting specific groups for marketing campaigns.
+8. Enhancing Communication with Stakeholders
+Role: EDA produces intuitive visualizations (e.g., bar charts, box plots) that communicate insights to non-technical stakeholders.
+Impact: Clear visuals help align data scientists and stakeholders on key findings, ensuring the project addresses relevant business needs.
+Example: A heatmap of customer churn by region can highlight areas needing intervention, easily understood by business teams.
+9. Reducing Risks in Modeling
+Role: By identifying data issues and patterns early, EDA minimizes the risk of building models on flawed assumptions or poor-quality data.
+Impact: Saves time and resources by avoiding iterations caused by undetected issues, such as overfitting to noisy data.
+Example: EDA might reveal class imbalance in a classification problem, prompting techniques like oversampling or using metrics like F1-score instead of accuracy.
+10. Supporting Iterative Analysis
+Role: EDA is not a one-time step; it’s revisited after data cleaning, feature engineering, or initial modeling to validate changes or explore new insights.
+Impact: Ensures the data remains aligned with the evolving needs of the project, improving overall outcomes.
+Example: After imputing missing values, re-running EDA ensures the imputed data doesn’t distort distributions.
+EDA in the Context of the Data Science Life Cycle
+Before EDA: Problem definition and data collection set the stage, ensuring the right data is gathered to address the business question.
+During EDA: Data is explored to understand its structure, quality, and potential for analysis, guiding cleaning and preprocessing.
+After EDA: Insights from EDA inform feature engineering, model selection, and evaluation, while visualizations support communication during deployment or reporting.
+Practical Example
+In a customer churn prediction project:
+EDA Step: Visualize churn rates by customer demographics (e.g., age, subscription length) using bar plots and check for missing data in key features.
+Impact: Discovering that older customers have higher churn rates informs feature selection (e.g., include age) and model choice (e.g., logistic regression for interpretability). Identifying missing subscription data prompts imputation strategies.
+Importance of EDA in Data Science Life Cycle
+Exploratory Data Analysis (EDA) is a critical step in the Data Science Life Cycle because it lays the foundation for effective data modeling and decision-making. Here’s a brief explanation of its importance:
+Importance of EDA in Data Science Life Cycle
+Understands Data Structure: EDA reveals the dataset’s characteristics, such as size, data types, missing values, and distributions, ensuring you know what you’re working with.
+Identifies Patterns and Relationships: Through visualizations and statistics, EDA uncovers trends, correlations, and anomalies, guiding hypothesis generation and feature selection.
+Detects Data Quality Issues: It helps identify missing values, outliers, or inconsistencies that could skew analysis or model performance if not addressed.
+Informs Preprocessing: Insights from EDA guide data cleaning, transformation, and feature engineering, improving model accuracy and robustness.
+Reduces Risks: By thoroughly exploring the data, EDA minimizes assumptions and prevents errors in later stages, such as model training or interpretation.
+Facilitates Communication: EDA’s visualizations and summaries help communicate insights to stakeholders, aligning technical work with business goals.
+Summary
+EDA ensures data scientists make informed decisions, build reliable models, and derive meaningful insights, acting as the bridge between raw data and actionable results.
+Introduction to NumPy and Pandas: Arrays
+HISTORY OF PYTHON
+Python was created by Guido van Rossum.
+first released on February 20, 1991.
+1989: Guido van Rossum begins developing Python at
+CWI(research institute), inspired by ABC,modula 3.
+We have 3 versions in python
+1.x
+2.x
+3.x
+1991: Python 0.9.0 released with basic features like functions and exception handling.
+What is NumPy?
+NumPy is a Python library used for working with arrays.
+It also has functions for working in domain of linear algebra, fourier transform, and matrices.
+NumPy was created in 2005 by Travis Oliphant. It is an open source project and you can use it freely.
+NumPy stands for Numerical Python.
+Why Use NumPy?
+In Python we have lists that serve the purpose of arrays, but they are slow to process.
+NumPy aims to provide an array object that is up to 50x faster than traditional Python lists.
+The array object in NumPy is called ndarray, it provides a lot of supporting functions that make working with ndarray very easy.
+Arrays are very frequently used in data science, where speed and resources are very important.
+Why is NumPy Faster Than Lists?
+NumPy arrays are stored at one continuous place in memory unlike lists, so processes can access and manipulate them very efficiently.
+This behavior is called locality of reference in computer science.
+This is the main reason why NumPy is faster than lists. Also it is optimized to work with latest CPU architectures.
+Which Language is NumPy written in?
+NumPy is a Python library and is written partially in Python, but most of the parts that require fast computation are written in C or C++.
+Where is the NumPy Codebase?
+The source code for NumPy is located at this github repository https://github.com/numpy/numpy
+Installation of NumPy
+If you have Python and PIP already installed on a system, then installation of NumPy is very easy.
+Install it using this command:
+C:\Users\Your Name>pip install numpy
+If this command fails, then use a python distribution that already has NumPy installed like, Anaconda, Spyder etc.
+Import NumPy
+Once NumPy is installed, import it in your applications by adding the import keyword:
+import numpy
+Now NumPy is imported and ready to use.
+Example
+import numpyarr=numpy.array([1, 2, 3, 4, 5])print(arr)
+NumPy as np
+NumPy is usually imported under the np alias.
+alias: In Python alias are an alternate name for referring to the same thing.
+Create an alias with the as keyword while importing:
+import numpy as np
+Now the NumPy package can be referred to as np instead of numpy.
+Example
+Source Code
+import numpy as nparr = np.array([1, 2, 3, 4, 5])print(arr)
+Output:
+[1 2 3 4 5]
+Checking NumPy Version
+The version string is stored under_version_attribute.
+Example
+import numpy as npprint(np.__version__)
+NumPy Creating Arrays
+Create a NumPy ndarray Object
+NumPy is used to work with arrays. The array object in NumPy is called ndarray.
+We can create a NumPy ndarray object by using the array() function.
+Example
+import numpy as nparr = np.array([1, 2, 3, 4, 5])print(arr)print(type(arr))
+Output:
+[1 2 3 4 5]
+<class 'numpy.ndarray'>
+type(): This built-in Python function tells us the type of the object passed to it. Like in above code it shows that arr is numpy.ndarray type.
+Example
+To create an ndarray, we can pass a list, tuple or any array-like object into the array() method, and it will be converted into an ndarray:
+Example:
+Use a tuple to create a NumPy array:
+import numpy as nparr = np.array((1, 2, 3, 4, 5))print(arr)
+Output:
+[1 2 3 4 5]
+Dimensions in Arrays
+A dimension in arrays is one level of array depth (nested arrays).
+nested array: are arrays that have arrays as their elements.
+0-D Arrays
+0-D arrays, or Scalars, are the elements in an array. Each value in an array is a 0-D array.
+Example:
+Create a 0-D array with value 42
+import numpy as nparr = np.array(42)print(arr)
+Output
+1-D Arrays
+An array that has 0-D arrays as its elements is called uni-dimensional or 1-D array.
+These are the most common and basic arrays.
+Example:Create a 1-D array containing the values 1,2,3,4,5:
+import numpy as nparr = np.array([1, 2, 3, 4, 5])print(arr)
+2-D Arrays
+An array that has 1-D arrays as its elements is called a 2-D array.
+These are often used to represent matrix or 2nd order tensors.
+NumPy has a whole sub module dedicated towards matrix operations called numpy.mat
+Example:Create a 2-D array containing two arrays with the values 1,2,3 and 4,5,6:
+import numpy as nparr = np.array([[1, 2, 3], [4, 5, 6]])print(arr)
+Output
+[[1 2 3]
+[4 5 6]]
+3-D arrays
+An array that has 2-D arrays (matrices) as its elements is called 3-D array.
+These are often used to represent a 3rd order tensor.
+Example: Create a 3-D array with two 2-D arrays, both containing two arrays with the values 1,2,3 and 4,5,6:
+import numpy as nparr = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])print(arr)
+Output
+[[[1 2 3]
+[4 5 6]]
+[[1 2 3]
+[4 5 6]]]
+Check Number of Dimensions?
+NumPy Arrays provides the ndim attribute that returns an integer that tells us how many dimensions the array have.
+Example: Check how many dimensions the arrays have:
+import numpy as npa = np.array(42)b = np.array([1, 2, 3, 4, 5])c = np.array([[1, 2, 3], [4, 5, 6]])d = np.array([[[1, 2, 3], [4, 5, 6]], [[1, 2, 3], [4, 5, 6]]])print(a.ndim)print(b.ndim)print(c.ndim)print(d.ndim)
+Output:
+NumPy Array Indexing
+Access Array Elements
+Array indexing is the same as accessing an array element.
+You can access an array element by referring to its index number.
+The indexes in NumPy arrays start with 0, meaning that the first element has index 0, and the second has index 1 etc.
+Example
+Get the first element from the following array:
+import numpy as nparr = np.array([1, 2, 3, 4])print(arr[0])
+Output:
+Example
+Get third and fourth elements from the following array and add them.
+import numpy as nparr = np.array([1, 2, 3, 4])print(arr[2] + arr[3])
+Output:
+Access 2-D Arrays
+To access elements from 2-D arrays we can use comma separated integers representing the dimension and the index of the element.
+Think of 2-D arrays like a table with rows and columns, where the dimension represents the row and the index represents the column.
+Example - Access the element on the first row, second column:
+import numpy as nparr = np.array([[1,2,3,4,5], [6,7,8,9,10]])print('2nd element on 1st row: ', arr[0, 1])
+Output:
+2nd element on 1st row: 2
+Access 3-D Arrays
+To access elements from 3-D arrays we can use comma separated integers representing the dimensions and the index of the element.
+Example: Access the third element of the second array of the first array:
+import numpy as nparr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])print(arr[0, 1, 2])
+Output:
+Negative Indexing
+Use negative indexing to access an array from the end.
+Example: Print the last element from the 2nd dim:
+import numpy as nparr = np.array([[1,2,3,4,5], [6,7,8,9,10]])print('Last element from 2nd dim: ', arr[1, -1])
+Output:
+Last element from 2nd dim: 10
+NumPy Array Slicing
+Slicing arrays
+Slicing in python means taking elements from one given index to another given index.
+We pass slice instead of index like this: [start:end].
+We can also define the step, like this: [start:end:step].
+If we don't pass start its considered 0
+If we don't pass end its considered length of array in that dimension
+If we don't pass step its considered 1
+Example
+Slice elements from index 1 to index 5 from the following array:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[1:5])
+Output:
+[2 3 4 5]
+Note: The result includes the start index, but excludes the end index.
+Example
+Slice elements from index 4 to the end of the array:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[4:])
+Output:
+[5, 6, 7]
+Example
+Slice elements from the beginning to index 4 (not included):
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[:4])
+Output:
+[1, 2, 3, 4]
+Negative Slicing
+Use the minus operator to refer to an index from the end:
+Example: Slice from the index 3 from the end to index 1 from the end:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[-3:-1])
+Output:
+[5, 6]
+STEP
+Use the step value to determine the step of the slicing:
+Example: Return every other element from index 1 to index 5:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[1:5:2])
+Output:
+[2, 4]
+Example
+Return every other element from the entire array:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7])print(arr[::2])
+Output:
+[1 3 5 7]
+Slicing 2-D Arrays
+Example: From the second element, slice elements from index 1 to index 4 (not included):
+import numpy as nparr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])print(arr[1, 1:4])
+Output:
+[7, 8, 9]
+Example
+From both elements, return index 2:
+import numpy as nparr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])print(arr[0:2, 2])
+Output:
+[3, 8]
+Example
+From both elements, slice index 1 to index 4 (not included), this will return a 2-D array:
+import numpy as nparr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])print(arr[0:2, 1:4])
+Output
+[[2 3 4]
+[7 8 9]]
+NumPy Data Types
+Data Types in Python
+By default Python have these data types:
+strings - used to represent text data, the text is given under quote marks. e.g. "ABCD"
+integer - used to represent integer numbers. e.g. -1, -2, -3
+float - used to represent real numbers. e.g. 1.2, 42.42
+boolean - used to represent True or False.
+complex - used to represent complex numbers. e.g. 1.0 + 2.0j, 1.5 + 2.5j
+Data Types in NumPy
+NumPy has some extra data types, and refer to data types with one character, like i for integers, u for unsigned integers etc.
+Below is a list of all data types in NumPy and the characters used to represent them.
+i - integer
+b - boolean
+u - unsigned integer
+f - float
+c - complex float
+m - timedelta
+M - datetime
+O - object
+S - string
+U - unicode string
+V - fixed chunk of memory for other type ( void )
+Checking the Data Type of an Array
+The NumPy array object has a property called dtype that returns the data type of the array:
+Example:Get the data type of an array object:
+import numpy as nparr = np.array([1, 2, 3, 4])print(arr.dtype)
+Output:
+int64
+Example
+Get the data type of an array containing strings:
+import numpy as nparr = np.array(['apple', 'banana', 'cherry'])print(arr.dtype)
+Output:
+<U6
+Creating Arrays With a Defined Data Type
+We use the array() function to create arrays, this function can take an optional argument: dtype that allows us to define the expected data type of the array elements:
+Example:Create an array with data type string:
+import numpy as nparr = np.array([1, 2, 3, 4], dtype='S')print(arr)print(arr.dtype)
+Output:
+[b'1' b'2' b'3' b'4'] |S1
+Example
+For i, u, f, S and U we can define size as well.
+Example:Create an array with data type 4 bytes integer:
+import numpy as nparr = np.array([1, 2, 3, 4], dtype='i4')print(arr)print(arr.dtype)
+Output:
+[1 2 3 4]
+int32
+What if a Value Can Not Be Converted?
+If a type is given in which elements can't be casted then NumPy will raise a ValueError.
+ValueError: In Python ValueError is raised when the type of passed argument to a function is unexpected/incorrect.
+Example: A non integer string like 'a' can not be converted to integer (will raise an error):
+import numpy as nparr = np.array(['a', '2', '3'], dtype='i')
+Output:
+Traceback (most recent call last):
+File "./prog.py", line 3, in
+ValueError: invalid literal for int() with base 10: 'a'
+Converting Data Type on Existing Arrays
+The best way to change the data type of an existing array, is to make a copy of the array with the astype() method.
+The astype() function creates a copy of the array, and allows you to specify the data type as a parameter.
+The data type can be specified using a string, like 'f' for float, 'i' for integer etc. or you can use the data type directly like float for float and int for integer.
+Example
+Change data type from float to integer by using 'i' as parameter value:
+import numpy as nparr = np.array([1.1, 2.1, 3.1])newarr = arr.astype('i')print(newarr)print(newarr.dtype)
+Output:
+[1 2 3]int32
+Example
+Change data type from float to integer by using int as parameter value:
+import numpy as nparr = np.array([1.1, 2.1, 3.1])newarr = arr.astype(int)print(newarr)print(newarr.dtype)
+Output:
+[1 2 3]int64
+Example
+Change data type from integer to boolean:
+import numpy as nparr = np.array([1, 0, 3])newarr = arr.astype(bool)print(newarr)print(newarr.dtype)
+Output:
+[True False True]bool
+NumPy Array Copy vs View
+The Difference Between Copy and View
+The main difference between a copy and a view of an array is that the copy is a new array, and the view is just a view of the original array.
+The copy owns the data and any changes made to the copy will not affect original array, and any changes made to the original array will not affect the copy.
+The view does not own the data and any changes made to the view will affect the original array, and any changes made to the original array will affect the view.
+Example
+Make a copy, change the original array, and display both arrays:
+import numpy as nparr = np.array([1, 2, 3, 4, 5])x = arr.copy()arr[0] = 42print(arr)print(x)
+Output:
+[42 2 3 4 5]
+[1 2 3 4 5]
+The copy SHOULD NOT be affected by the changes made to the original array.
+VIEW
+Example:Make a view, change the original array, and display both arrays:
+import numpy as nparr = np.array([1, 2, 3, 4, 5])x = arr.view()arr[0] = 42print(arr)print(x)
+Output:
+[42 2 3 4 5]
+[42 2 3 4 5]
+The view SHOULD be affected by the changes made to the original array.
+Make Changes in the VIEW
+Example: Make a view, change the view, and display both arrays:
+import numpy as nparr = np.array([1, 2, 3, 4, 5])x = arr.view()x[0] = 31print(arr)print(x)
+Output:
+[31 2 3 4 5]
+[31 2 3 4 5]
+The original array SHOULD be affected by the changes made to the view.
+Check if Array Owns its Data
+As mentioned above, copies owns the data, and views does not own the data, but how can we check this?
+Every NumPy array has the attribute base that returns None if the array owns the data.
+Otherwise, the base  attribute refers to the original object.
+Example: Print the value of the base attribute to check if an array owns it's data or not:
+import numpy as nparr = np.array([1, 2, 3, 4, 5])x = arr.copy()y = arr.view()print(x.base)print(y.base)
+Output:
+[1 2 3 4 5]
+The copy returns None.The view returns the original array.
+NumPy Array Shape
+Shape of an Array
+The shape of an array is the number of elements in each dimension.
+Get the Shape of an Array
+NumPy arrays have an attribute called shape that returns a tuple with each index having the number of corresponding elements.
+Example
+Print the shape of a 2-D array:
+import numpy as nparr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])print(arr.shape)
+The example above returns (2, 4), which means that the array has 2 dimensions, where the first dimension has 2 elements and the second has 4.
+Example
+Create an array with 5 dimensions using ndmin using a vector with values 1,2,3,4 and verify that last dimension has value 4:
+import numpy as nparr = np.array([1, 2, 3, 4], ndmin=5)print(arr)print('shape of array :', arr.shape)
+Output:
+[[[[[1 2 3 4]]]]]shape of array : (1, 1, 1, 1, 4)
+What does the shape tuple represent?
+Integers at every index tells about the number of elements the corresponding dimension has.
+In the example above at index-4 we have value 4, so we can say that 5th ( 4 + 1 th) dimension has 4 elements.
+NumPy Array Reshaping
+Reshaping arrays
+Reshaping means changing the shape of an array.
+The shape of an array is the number of elements in each dimension.
+By reshaping we can add or remove dimensions or change number of elements in each dimension.
+Reshape From 1-D to 2-D
+Example
+Convert the following 1-D array with 12 elements into a 2-D array.
+The outermost dimension will have 4 arrays, each with 3 elements:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])newarr = arr.reshape(4, 3)print(newarr)
+Output:
+[[ 1 2 3]
+[ 4 5 6]
+[ 7 8 9]
+[10 11 12]]
+Reshape From 1-D to 3-D
+Example: Convert the following 1-D array with 12 elements into a 3-D array.
+The outermost dimension will have 2 arrays that contains 3 arrays, each with 2 elements:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])newarr = arr.reshape(2, 3, 2)print(newarr)
+Output:
+[[[ 1 2]
+[ 3 4]
+[ 5 6]]
+[[ 7 8]
+[ 9 10]
+[11 12]]]
+Can We Reshape Into any Shape?
+Yes, as long as the elements required for reshaping are equal in both shapes.
+We can reshape an 8 elements 1D array into 4 elements in 2 rows 2D array but we cannot reshape it into a 3 elements 3 rows 2D array as that would require 3x3 = 9 elements.
+Example: Try converting 1D array with 8 elements to a 2D array with 3 elements in each dimension (will raise an error):
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])newarr = arr.reshape(3, 3)print(newarr)
+Output:
+[[1 2 3]
+[4 5 6]
+[7 8 9]]
+Returns Copy or View?
+Example:Check if the returned array is a copy or a view:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7, 8])print(arr.reshape(2, 4).base)
+Outside:
+[1 2 3 4 5 6 7 8]
+The example above returns the original array, so it is a view.
+Unknown Dimension
+You are allowed to have one "unknown" dimension.
+Meaning that you do not have to specify an exact number for one of the dimensions in the reshape method.
+Pass -1 as the value, and NumPy will calculate this number for you.
+Example: Convert 1D array with 8 elements to 3D array with 2x2 elements:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6, 7, 8])newarr = arr.reshape(2, 2, -1)print(newarr)
+Output:
+[[[1 2]
+[3 4]]
+[[5 6]
+[7 8]]]
+Note: We can not pass -1 to more than one dimension.
+Flattening the arrays
+Flattening array means converting a multidimensional array into a 1D array.
+We can use reshape(-1) to do this.
+Example: Convert the array into a 1D array:
+import numpy as nparr = np.array([[1, 2, 3], [4, 5, 6]])newarr = arr.reshape(-1)print(newarr)
+Output:
+[1 2 3 4 5 6]
+Note: There are a lot of functions for changing the shapes of arrays in numpy flatten, ravel and also for rearranging the elements rot90, flip, fliplr, flipud etc. These fall under Intermediate to Advanced section of numpy.
+NumPy Joining Array
+Joining NumPy Arrays
+Joining means putting contents of two or more arrays in a single array.
+In SQL we join tables based on a key, whereas in NumPy we join arrays by axes.
+We pass a sequence of arrays that we want to join to the concatenate() function, along with the axis. If axis is not explicitly passed, it is taken as 0.
+Example: Join two arrays
+import numpy as nparr1 = np.array([1, 2, 3])arr2 = np.array([4, 5, 6])arr = np.concatenate((arr1, arr2))print(arr)
+Output:
+[1 2 3 4 5 6]
+Example
+Join two 2-D arrays along rows (axis=1):
+import numpy as nparr1 = np.array([[1, 2], [3, 4]])arr2 = np.array([[5, 6], [7, 8]])arr = np.concatenate((arr1, arr2), axis=1)print(arr)
+Output:
+[[1 2 5 6]
+[3 4 7 8]]
+Joining Arrays Using Stack Functions
+Stacking is same as concatenation, the only difference is that stacking is done along a new axis.
+We can concatenate two 1-D arrays along the second axis which would result in putting them one over the other, ie. stacking.
+We pass a sequence of arrays that we want to join to the stack() method along with the axis. If axis is not explicitly passed it is taken as 0.
+Example
+Program
+import numpy as nparr1 = np.array([1, 2, 3])arr2 = np.array([4, 5, 6])arr = np.stack((arr1, arr2), axis=1)print(arr)
+Output:
+[[1 4]
+[2 5]
+[3 6]]
+Stacking Along Rows
+NumPy provides a helper function: hstack() to stack along rows.
+Example Program:
+import numpy as nparr1 = np.array([1, 2, 3])arr2 = np.array([4, 5, 6])arr = np.hstack((arr1, arr2))print(arr)
+Output:
+[1 2 3 4 5 6]
+Stacking Along Columns
+NumPy provides a helper function: vstack()  to stack along columns.
+Example Program:
+import numpy as nparr1 = np.array([1, 2, 3])arr2 = np.array([4, 5, 6])arr = np.vstack((arr1, arr2))print(arr)
+Output:
+[[1 2 3]
+[4 5 6]]
+Stacking Along Height (depth)
+NumPy provides a helper function: dstack() to stack along height, which is the same as depth.
+Example Program:
+import numpy as nparr1 = np.array([1, 2, 3])arr2 = np.array([4, 5, 6])arr = np.dstack((arr1, arr2))print(arr)
+Output:
+[[[1 4]
+[2 5]
+[3 6]]]
+NumPy Splitting Array
+Splitting NumPy Arrays
+Splitting is reverse operation of Joining.
+Joining merges multiple arrays into one and Splitting breaks one array into multiple.
+We use array_split() for splitting arrays, we pass it the array we want to split and the number of splits.
+Example: Split the array in 3 parts:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6])newarr = np.array_split(arr, 3)print(newarr)
+Output:
+[array([1, 2]), array([3, 4]), array([5, 6])]
+Note: The return value is a list containing three arrays.
+Example
+If the array has less elements than required, it will adjust from the end accordingly.
+Example: Split the array in 4 parts:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6])newarr = np.array_split(arr, 4)print(newarr)
+Output:
+[array([1, 2]), array([3, 4]), array([5]), array([6])]
+Note: We also have the method split() available but it will not adjust the elements when elements are less in source array for splitting like in example above, array_split() worked properly but split() would fail.
+Split Into Arrays
+The return value of the array_split() method is an array containing each of the split as an array.
+If you split an array into 3 arrays, you can access them from the result just like any array element:
+Example: Access the splitted arrays:
+import numpy as nparr = np.array([1, 2, 3, 4, 5, 6])newarr = np.array_split(arr, 3)print(newarr[0])print(newarr[1])print(newarr[2])
+Output:
+[1 2]
+[3 4]
+[5 6]
+Splitting 2-D Arrays
+Use the same syntax when splitting 2-D arrays.
+Use the array_split() method, pass in the array you want to split and the number of splits you want to do.
+Example: Split the 2-D array into three 2-D arrays.
+import numpy as nparr = np.array([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]])newarr = np.array_split(arr, 3)print(newarr)
+Output:
+[array([[1, 2],
+[3, 4]]), array([[5, 6],
+[7, 8]]), array([[ 9, 10],
+[11, 12]])]
+The example above returns three 2-D arrays.
+Pandas
+Pandas is a Python library.
+Pandas is used to analyze data.
+Example
+Load a CSV file into a Pandas DataFrame:
+Source code:
+import pandas as pddf = pd.read_csv('data.csv')print(df.to_string())
+Output:
+What is Pandas?
+Pandas is a Python library used for working with data sets.
+It has functions for analyzing, cleaning, exploring, and manipulating data.
+The name "Pandas" has a reference to both "Panel Data", and "Python Data Analysis" and was created by Wes McKinney in 2008.
+Why Use Pandas?
+Pandas allows us to analyze big data and make conclusions based on statistical theories.
+Pandas can clean messy data sets, and make them readable and relevant.
+Relevant data is very important in data science.
+What Can Pandas Do?
+Pandas gives you answers about the data. Like:
+Is there a correlation between two or more columns?
+What is average value?
+Max value?
+Min value?
+Pandas are also able to delete rows that are not relevant, or contains wrong values, like empty or NULL values. This is called cleaning the data.
+Where is the Pandas Codebase?
+The source code for Pandas is located at this github repository https://github.com/pandas-dev/pandas
+Installation of Pandas
+If you have Python and PIP already installed on a system, then installation of Pandas is very easy.
+Install it using this command:
+C:\Users\Your Name>pip install pandas
+If this command fails, then use a python distribution that already has Pandas installed like, Anaconda, Spyder etc.
+import Pandas
+Once Pandas is installed, import it in your applications by adding the import keyword:
+import pandas
+Now Pandas is imported and ready to use.
+Example
+import pandasmydataset = {  'cars':["BMW", "Volvo", "Ford"],  'passings': [3, 7, 2]}myvar=pandas.DataFrame(mydataset)print(myvar)
+Output:
+Pandas as pd
+Pandas is usually imported under the pd alias.
+alias: In Python alias are an alternate name for referring to the same thing.
+Create an alias with the as keyword while importing:
+import pandas as pd
+Now the Pandas package can be referred to as pd instead of pandas.
+Example
+import pandas as pdmydataset={  'cars':["BMW", "Volvo", "Ford"],  'passings': [3, 7, 2]}myvar = pd.DataFrame(mydataset)print(myvar)
+Output:
+Checking Pandas Version
+The version string is stored under __version__ attribute.
+Source code
+import pandas as pdprint(pd.__version__)
+Output:
+2.2.2
+What is a Series?
+A Pandas Series is like a column in a table.
+It is a one-dimensional array holding data of any type.
+Example: Create a simple Pandas Series from a list:
+import pandas as pda = [1, 7, 2]myvar = pd.Series(a)print(myvar)
+Output:
+Labels
+If nothing else is specified, the values are labeled with their index number. First value has index 0, second value has index 1 etc.
+This label can be used to access a specified value.
+Example: Return the first value of the Series:
+import pandas as pd
+a = [1, 7, 2]
+myvar = pd.Series(a)
+print(myvar[0])
+Output:
+Create Labels
+With the index argument, you can name your own labels.
+Example: Create your own labels:
+import pandas as pda = [1, 7, 2]myvar=pd.Series(a,index=["x","y","z"])print(myvar)
+Output:
+Example
+When you have created labels, you can access an item by referring to the label.
+Example: Return the value of "y":
+import pandas as pd
+a = [1, 7, 2]
+myvar=pd.Series(a,index=["x","y","z"])
+print(myvar["y"])
+Output:
+Key/Value Objects as Series
+You can also use a key/value object, like a dictionary, when creating a Series.
+Example: Create a simple Pandas Series from a dictionary:
+import pandas as pdcalories={"day1":420,"day2":380,"day3":390}myvar = pd.Series(calories)print(myvar)
+Output:
+Note: The keys of the dictionary become the labels.
+Example
+To select only some of the items in the dictionary, use the index argument and specify only the items you want to include in the Series.
+Example: Create a Series using only data from "day1" and "day2":
+import pandas as pdcalories = {"day1": 420, "day2": 380, "day3": 390}myvar = pd.Series(calories, index = ["day1", "day2"])print(myvar)
+Output:
+DataFrames
+Data sets in Pandas are usually multi-dimensional tables, called DataFrames.
+Series is like a column, a DataFrame is the whole table.
+Example: Create a DataFrame from two Series:
+import pandas as pddata = {  "calories": [420, 380, 390],  "duration": [50, 40, 45]}myvar = pd.DataFrame(data)print(myvar)
+Output:
+Pandas DataFrames
+What is a DataFrame?
+A Pandas DataFrame is a 2 dimensional data structure, like a 2 dimensional array, or a table with rows and columns.
+Example: Create a simple Pandas DataFrame:
+import pandas as pddata = {  "calories": [420, 380, 390],  "duration": [50, 40, 45]}#load data into a DataFrame object:df = pd.DataFrame(data)print(df)
+Output:
+Locate Row
+As you can see from the result above, the DataFrame is like a table with rows and columns.
+Pandas use the loc attribute to return one or more specified row(s)
+Example: Return row 0:
+import pandas as pd
+data = {
+"calories": [420, 380, 390],
+"duration": [50, 40, 45]
+}
+#load data into a DataFrame object:
+df = pd.DataFrame(data)
+print(df.loc[0])
+Output:
+Example
+Example: Return row 0 and 1.
+import pandas as pd
+data = {
+"calories": [420, 380, 390],
+"duration": [50, 40, 45]
+}
+#load data into a DataFrame object:
+df = pd.DataFrame(data)
+print(df.loc[[0, 1]])
+Output:
+Named Indexes
+With the index argument, you can name your own indexes.
+Example: Add a list of names to give each row a name:
+import pandas as pddata = {  "calories": [420, 380, 390],  "duration": [50, 40, 45]}df = pd.DataFrame(data, index = ["day1", "day2", "day3"])print(df)
+Output:
+Locate Named Indexes
+Use the named index in the loc attribute to return the specified row(s).
+Example: Return "day2":
+import pandas as pd
+data = {
+"calories": [420, 380, 390],
+"duration": [50, 40, 45]
+}
+df = pd.DataFrame(data, index = ["day1", "day2", "day3"])
+print(df.loc["day2"])
+Output:
+Load Files Into a DataFrame
+If your data sets are stored in a file, Pandas can load them into a DataFrame.
+Example: Load a comma separated file (CSV file) into a DataFrame:
+import pandas as pddf = pd.read_csv('data.csv')print(df)
+Output:
+Viewing Data in Pandas
+Once your data is loaded into a DataFrame, you can explore it using different methods.
+1. View First / Last Rows
+import pandas as pd
+df = pd.read_csv("students.csv") print(df.head()) # first 5 rows print(df.head(10)) # first 10 rows
+print(df.tail()) # last 5 rows
+2. Get Shape (Rows & Columns)
+print(df.shape)
+Output:
+(100, 5) # 100 rows and 5 columns
+3. View Column Names
+print(df.columns)
+Output
+Index(['Duration', 'Pulse', 'Maxpulse', 'Calories'], dtype='object')
+4. View Data Types
+print(df.dtypes)
+Output
+Name object Marks int64 Grade object
+5. Quick Overview of Dataset
+print(df.info())
+Output:
+6. Summary Statistics
+print(df.describe())
+Output:
+7. View Specific Columns
+print(df['Name'].head()) # single column
+print(df[['Name', 'Marks']]) # multiple columns
+8. View Specific Rows
+print(df.iloc[0]) # first row by position
+print(df.loc[0]) # first row by label
+print(df.iloc[0:5]) # first 5 rows
+Summary
+head() / tail() → preview rows
+shape → size of DataFrame
+columns / dtypes → metadata
+info() → full overview
+describe() → numeric summary
+loc[] & iloc[] → access rows and columns

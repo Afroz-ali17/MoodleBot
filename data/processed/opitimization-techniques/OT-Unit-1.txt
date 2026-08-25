@@ -1,0 +1,823 @@
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Academic Year : 2024-25
+Year / Semester : II/II
+Section : CSE&BS, CSE(AI & ML)
+Regulations : R23
+Faculty Name : Dr. Y. Raja Obula Reddy
+Department : Mathematics
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Unit-1
+Introduction:
+Optimization techniques refer to mathematical methods and computational
+procedures used to find the best possible solution or outcome from a set of available
+alternatives. These techniques are applied to problems in various fields, such as
+engineering, economics, logistics, finance, operations research, and artificial intelligence,
+among others. The goal is to maximize or minimize some objective function while
+satisfying certain constraints.
+Meaning of Optimization Techniques:
+Optimization is the process of finding the most efficient solution to a problem under
+given conditions. It involves:
+Objective Function: This is the function that needs to be maximized or minimized (e.g.,
+profit, cost, efficiency, etc.).
+Decision Variables: These are the variables or parameters that can be controlled or
+adjusted to achieve the objective.
+Constraints: These are the restrictions or limitations imposed on the decision variables,
+which may include resource limitations, time constraints, or other factors that must be
+considered while optimizing.
+Optimization techniques aim to find the set of decision variables that provide the best
+value of the objective function while respecting the constraints.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Nature of Optimization Techniques :
+The nature of optimization techniques can be described as follows:
+Mathematical Foundation: Optimization methods are grounded in mathematical theory,
+particularly in fields like calculus, linear algebra, and mathematical programming.
+Problem-Specific: Different optimization problems require different techniques. For
+example, linear programming might be used for linear problems, while non-linear
+programming or genetic algorithms could be used for more complex, non-linear problems.
+Iterative Process: Many optimization techniques, especially those applied to large-scale
+or complex problems, require iterative methods, where solutions are progressively
+improved through steps until an optimal or satisfactory solution is found.
+Global vs. Local Optimization: Optimization can be classified into global optimization
+(seeking the absolute best solution across all possibilities) and local optimization (seeking
+the best solution within a particular region or subset of the search space).
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Scope of Optimization Techniques :
+The scope of optimization techniques is vast and spans multiple domains, including:
+Operations Research: In operations research, optimization techniques are used to improve
+business processes, manage resources, design supply chains, and optimize logistics and
+transportation.
+Engineering: In engineering, optimization is applied to design structures, systems, and
+processes that are cost-effective and efficient. Examples include optimizing material usage in
+construction or minimizing energy consumption in manufacturing.
+Economics and Finance: Optimization methods are widely used for portfolio optimization,
+risk management, cost minimization, and pricing strategies in economics and finance.
+Machine Learning and AI: In machine learning, optimization plays a key role in training
+models (e.g., minimizing loss functions in neural networks or other predictive models).
+Computer Science: Techniques like dynamic programming, greedy algorithms, and
+backtracking are used to solve optimization problems in areas like algorithm design,
+computational complexity, and data analysis.
+Healthcare: Optimization is used in healthcare to improve hospital resource management,
+patient scheduling, and treatment planning.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Significance of Optimization Techniques:
+The significance of optimization techniques extends across many domains, with
+broad impact in the following areas:
+Efficiency and Cost Reduction: Optimization helps organizations and individuals
+minimize costs and maximize resource utilization, whether in manufacturing,
+services, or logistics. By finding the optimal solution, companies can avoid
+inefficiencies, reduce waste, and increase profits.
+Improved Decision-Making: Optimization provides a framework for making better,
+more informed decisions based on quantitative analysis. It allows decision-makers to
+rely on systematic processes to achieve the best outcomes, especially in complex
+scenarios.
+Innovation and Design Optimization: In engineering, optimization techniques
+enable the development of new and innovative solutions by balancing multiple
+conflicting objectives, such as minimizing cost while maximizing performance.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Typical Applications of Optimization Techniques:
+Optimization is used in a wide range of applications across various industries:
+Operations Research & Logistics:
+Supply Chain Optimization: Minimize transportation costs, optimize inventory,
+and improve warehouse management.
+Production Scheduling: Allocate resources optimally in manufacturing to
+minimize downtime and improve throughput.
+Facility Location: Determine optimal locations for warehouses or factories to
+minimize transportation costs.
+Manufacturing & Engineering
+Structural Design Optimization: In civil engineering, optimization is used to
+design structures (e.g., bridges, buildings) that are strong, cost-effective, and
+efficient in material usage.
+Process Optimization: Manufacturing processes like assembly lines, chemical
+processes, and quality control can be optimized to improve productivity and
+reduce waste.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Healthcare & Medicine:
+Treatment Planning: In radiation therapy, optimization techniques are used to
+plan the delivery of radiation in a way that maximizes the dose to the tumor
+while minimizing damage to healthy tissue.
+Medical Imaging: Optimization algorithms help improve the quality of medical
+images, such as MRI or CT scans, by enhancing contrast and reducing noise.
+Healthcare Resource Allocation: Optimizing the allocation of hospital beds,
+medical staff, or equipment to minimize wait times and improve patient care.
+Transportation & Routing:
+Traveling Salesman Problem (TSP): Optimization techniques help determine
+the shortest route for a salesperson to visit a set of cities and return to the
+starting point.
+Vehicle Routing: In logistics, optimization is used to find the best routes for
+delivery trucks to minimize fuel costs and delivery times.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Linear programming
+The most important function of management is decision making. A large number
+of decision problems faced by an executive involve optimum allocation of scarce resources
+to various activities with the objective of increasing profits or decreasing costs or both. The
+decision problem becomes complicated when a number of resources are required to be
+allocated and there are several activities to perform. The problem can be well handled by the
+technique of linear programming.
+Linear programming is a mathematical technique. This technique is applied for choosing the
+best alternative from a set of feasible alternatives.
+In LPP objective functions as well as restrictions or constraints can be expressed as linear
+mathematical functions. This LPP technique is designed to help managers in planning,
+decision making and to allocate the resources.
+Components of LPP:
+Objective Function: Objective function is that linear function which is either to be
+maximized or to be minimized. The objective function is also known as the “criterion
+function”.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Decision Variables:
+The variables contained in the objective function are known as “activity variables” or
+“decision variables” because the solution specifies the level of activity for each variable
+represented in the objective function. A solution can specify zero production of some
+variables but negative variables values are not permitted in the solution of a LPP. x , x ,
+1 2
+x , ….x are decision (or choice ) variables.
+3 n
+Constraints:
+constraints are the algebraic statements which for maximization problems generally
+specify the limited availability of resources and for minimization problems they usually
+establish minimum quality or composition requirements.
+Thus, constraints are the limitations under which one has to plan and decide. i.e.,
+restrictions imposed upon activity or decision variables.
+Constraints expressed as ( <, =, > ) follows:
+a x + a x + a x +…..+ a x ≤ b (or) a x + a x + a x +…..+ a x ≥b
+11 1 12 2 13 3 1n n 1 11 1 12 2 13 3 1n n 1
+(or) -a x - a x - a x -…..- a x ≤ b
+11 1 12 2 13 3 1n n 1
+Basic Feasible Solution (BFS): It is a basic solution which satisfies the non negativity
+restrictions. Basic Feasible Solution are of two types,
+Degenerate BFS: If one or more basic variables are zero.
+Non Degenerate BFS : All basic variables are non zero.
+Optimal Basic Feasible Solution : Basic Feasible Solution which optimizes the
+objective function.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+General statement of Linear programming problems:
+Suppose an LP problem involve the determination of the values of ‘n’ decision
+variables 𝑥 ,𝑥 , … 𝑥 such that the linear objective function of these variables assume
+1 2 3
+an optimum value(maximum) when these variables are subject of minimum set ‘m’
+constraints which are also linear functions of the variables. The standard form of
+general linear programming problem may be written in the following form.
+Optimize (maximize or minimize)
+Z = C x +C X +C X -----------+C X (objective function)
+1 1 2 2 3 3 n n
+Subject to the linear constraints:
+a x +a x +a x +………….+a x (≤=≥) b
+11 1 12 2 13 3 1n n 1
+a +a +a x +………….+a x (≤=≥ )) b
+21x1 22x2 33 3 2n n 2
+------------------------------------------------------- (Constraints)
+---------------------------------------------------------
+---------------------------------------------------------
+a x +a x +a x +………….+a x (≤=≥ ) b
+m1 1 m2 2 m3 3 mn n m
+and x x x x ≥ 0 ( non-negativity restriction)
+1, 2, 3---------------- n
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Advantages of linear programming problem:
+Quality of decisions: linear programming techniques improve the quality of decisions. User
+of this technique becomes more objective and less subjective.
+Possible solutions: linear programming gives possible and practical solution since there
+might be other constraints operating outside of the problem which must be taken into
+account.
+Use of productive factors: linear programming helps in attaining the optimum use of
+productive factors. It also indicates how a decision make can employ his productive factors
+effectively by selecting and distributing these elements.
+Re-evaluations: linear programming also helps in re-evaluations of a basic plan for
+changing conditions. If conditions change when the plan is partly carried out, they can be
+determined so as to adjust the reminder of the plan for best result.
+Disadvantage of linear programming:
+Assumption of non-reality for linearity: The assumption that all relations are linear may
+not hold good in many real situations.
+Fractional solutions: the solution many times is in fractions which may not remain optional
+in rounding off.
+Complexity: when the numbers of variables or constraints involved in the phenomenon are
+quite large then it may become necessary to use computers.
+Possibility of more than one objective : it deals with single objective, whereas in real life
+situations we may come across more than one objective.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Characteristics of standard form
+1. All variables are non-negative.
+2. The right-hand side of each constraint is non-negative.
+3. All constraints are expressed as equations.
+4. Objective function may be of maximizations or minimization type.
+Steps for graphical solution of linear programming problem
+Step 1 : the constraints of the problem are taken as equalities and plotted on the graph
+paper. The region satisfying each constraint is determined and then the region common to
+all the constraint relations is located. This region is known as feasible region for the
+problem as all points lying in this region will simultaneously satisfy the given constraints.
+The solution set of the system of constraints is found to be represented by some convex
+polygon termed as feasible region.
+Step2 : Objective function is also plotted on the same graph paper by taking some arbitrary
+value of z.
+Step 3 : Trail and error method is used to locate the optional solution inside the feasible
+region determined in step (1) so that the objective function is optimized. It is experienced
+that the optional solution is located near the extreme points of the feasible region. Thus the
+optimum feasible point should be searched only at the corners of the convex polygon.
+The graph for all the constraints and the objective function will be straight lines in linear
+programming problem.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+As the optimal values occur at the corner points of the feasible region, it is enough to
+calculate the value of the objective function of the corner points of the feasible region and
+select the one which gives the optimal solution. i.e., in the case of maximization problem
+optimal point corresponds to the corner point at which the objective function has a maximum
+value and in the case of minimization, the corner point which gives the objective function the
+minimum as the optimal solution.
+Types of graphical method
+• Maximization method
+• Minimization method
+Exceptional cases
+• Multiple optimal solutions
+• No feasible solution
+• Unbounded solution
+Prolem 1: Solve the following LPP by Graphical Method
+Maximize Z = 40 x + 50 x
+1 2
+Subject to
+x + 2x ≤ 40
+1 2
+4x + 3x ≤ 120, where x , x ≥0
+1 2 1 2
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Solution1: Considering the constraint inequality as equality we have,
+Let constraint 1: x + 2x ≤ 40 ⇒ x + 2x = 40 gives (0, 20) and (40, 0).
+1 2 1 2
+Let constraint 2: 4x + 3x ≤ 120 ⇒ 4x + 3x = 120 gives (0, 40) and (30, 0)
+1 2 1 2
+Let constraint 3 : x , x ≥ 0 ⇒ x = 0, x = 0.
+1 2 1 2
+Now, plotting the points in the graph, we have
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+From the graph, the feasible region is ABCD.
+Now, The value of objective function at each of these extreme points is as follows:
+S.No Point Z = 40x + 50x
+1 2
+1 A(0, 0) 0
+2 B(30, 0) 1200
+3 C(24,8) 1360
+4 D(0, 20) 1000
+Hence, the optimal solution to the given LPP is
+x = 24 , x = 8 and Max Z = 1360
+1 2
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+PROBLEM 2: Solve graphically the given linear programming problem.
+Maximize Z = 3x + 2x
+1 2
+subject to 2x + x ≤ 40, x + x ≤ 24, 2 x +3 x ≤ 60 and x , x ≥ 0.
+1 2 1 2 1 2 1 2
+Ans: Bounded feasible region by O(0,0), A(20,0), B(16,8), C(12,12), D(0,20)
+x = 16 , x = 8 and Max Z = 64.
+1 2
+PROBLEM 3: Solve graphically the given linear programming problem.
+Minimize Z = 40x + 30y, subject to constraints 2x+ 6y ≥ 9, 4x + y ≥ 6 and x y ≥ 0.
+,
+Ans: Unbounded feasible region by A(0,6), B(1.25,1), C(4.5,0)
+x= 1.25 , y = 1 and Min Z = 80
+PROBLEM 4: Solve graphically the given linear programming problem.
+Minimize Z = 20x + 10x ,
+1 2
+subject to x +2x ≤ 40, 3x + x ≥ 30, 4x +3x ≥ 60 and x , x ≥ 0.
+1 2 1 2 1 2 1 2
+Ans: Bounded feasible region by A(15,0), B(40,0), C(4,18), D(6,12)
+x = 6 , x = 12 and Min Z = 240.
+1 2
+PROBLEM 5: Solve graphically the given linear programming problem.
+Maximize Z = 100x + 40x
+1 2
+subject to 5x + 2x ≤ 1000, 3x + 2x ≤ 900, x +2 x ≤ 500 and x , x ≥ 0.
+1 2 1 2 1 2 1 2
+Ans: Bounded feasible region by O(0,0), A(200,0), B(125,187.5), C(0,250)
+The maximum value of Z=20000 occurs at two vertices A and B.
+PROBLEM 6: Solve graphically the given linear programming problem.
+Minimize Z = x + y
+subject to constraints : x+ y ≤ 1, -3x + y ≥ 3 and x y ≥ 0.
+,
+Ans: Infeasible region. No solution.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+SIMPLEX METHOD
+Simplex method is the most general and powerful technique to solve linear programming
+problem. It is an iterative procedure which either solves linear programming problem in a
+finite number of steps or gives an indication that there is an unbounded solution to linear
+programming problem. Simplex method is designed to solve simultaneously a system of
+linear equation where there are more/less unknowns than the number of equations.
+Slack variables: if the subject to constraints are included ≤ , then to convert them into
+equality , we can use slack variables.
+Ex : 2x+3y≤ 5 then we can redefine this inequality as 2x+3y+ S = 5. Here S is the slack
+1 1
+variable.
+Surplus variables: if the subject to constraints are included ≥ , then to convert them into
+equality , we can use surplus variables.
+Ex: 6x+7y ≥ 9 then we can redifine this inequality as 6x+7y –S = 9 . here S is the surplus
+1 1
+variable.
+Artificial variables: in many cases the constraints are a combination of ≤, ≥ 𝑎𝑛𝑑 = in-
+equations and equations. It is observed that the introduction of surplus variables is not able to
+provide the initial feasible solution. To solve the problem artificial variables are introduced.
+The artificial variables are fictitious and cannot have any physical meaning. A very large
+penalty denoted by M per units is assigned in objective function to the artificial variables
+designated as ‘-M’ in the case of maximization problems and +M in the case of minimization
+problems.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Working rule for simplex method
+Step 1 : program concerning the given problem should be written
+Step 2 : Add slack or surplus variables to eliminate the inequalities and rewrite the program.
+Step 3 : Determine first basic feasible solution by starting at the origin i.e., start with zero
+solution.
+Step 4: Write out the initial simplex table
+Step 5: calculate Z (which is the inner product of C and X )
+j j j
+Step 6: Calculate Z - C and select greatest absolute value with negative sign in the index row.
+j j
+Step 7: The highest number with negative sign deter minds the key column. Accordingly
+deter mind the incoming variable.
+Step 8: Develop ratio column to find the outgoing variable where outgoing variable: min
+{X /values of incoming variable rows which are positive}.
+b
+Step 9: Determine the key figure i.e., the number at the intersection of the key column and
+key row
+Step 10: Obtain new table.
+i) For the entering variable, divide the figures in the row of leaving variable by key figure
+ii) For other numbers following the rule:
+Number to put in the new tableau =
+𝑁𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑡ℎ𝑒 𝑜𝑙𝑑 𝑡𝑎𝑏𝑙𝑒𝑎𝑢 −
+𝑐𝑜𝑟𝑟𝑒𝑠𝑠𝑝𝑜𝑛𝑑𝑖𝑛𝑔 𝑛𝑢𝑚𝑏𝑒𝑟𝑖𝑛 𝑘𝑒𝑦 𝑟𝑜𝑤 (𝐶𝑜𝑟𝑟𝑒𝑠𝑝𝑜𝑛𝑑𝑖𝑛𝑔 𝑛𝑢𝑚𝑏𝑒𝑟 𝑖𝑛 𝑘𝑒𝑦 𝑐𝑜𝑙𝑢𝑚𝑛 )
+𝐾𝑒𝑦 𝑓𝑖𝑔𝑢𝑟𝑒
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Step 11: Repeat step 5 to 10 until no negative number exists in the index row. In other words
+stop when no figure in the index row has negative sign. This means that the optimum solutions
+have been obtained.
+PROBLEM 1: Solve by Simplex method and find the non-negative roots.
+Maximize Z = 100x + 60x +40x
+1 2 3
+subject to x + x + x ≤ 100, 10x +4 x +5 x ≤ 600, 2x +2 x + 6x ≤ 300 and x , x , x ≥ 0
+1 2 3 1 2 3 1 2 3 1 2 3
+SOLUTION 1 : The given problem is to maximize and all b ≥ 0, then the standard form of LPP
+j
+by introducing slack variables is as follows;
+Maximize Z = 100𝑥 + 60𝑥 + 40𝑥 + 0𝑠 + 0𝑠 + 0𝑠 ,
+1 2 3 1 2 3
+Subject to 𝑥 + 𝑥 + 𝑥 + 𝑠 + 0𝑠 + 0𝑠 = 100,
+1 2 3 1 2 3
+10𝑥 + 4𝑥 + 5𝑥 + 0𝑠 + 𝑠 + 0𝑠 = 600, 2𝑥 + 2𝑥 + 6𝑥 + 0𝑠 + 0𝑠 + 0𝑠 = 300.
+1 2 3 1 2 3 1 2 3 1 2 3
+SiSmimpplelex xT aTabblele-1-1
+BasBisa sis xx xx xx ss ss ss bb bb/a/a
+11 22 33 11 22 33 i i i i ijij
+ss 00 11 11 11 11 00 00 110000 110000
+ss 00 1100 44 55 00 11 00 660000 6600
+ss 00 22 22 66 00 00 11 330000 115500
+CC 110000 6600 4400 00 00 00
+i i
+ZZ 00 00 00 00 00 00
+j j
+∆∆==𝑍𝑍−−𝐶𝐶 -1-10000 -6-600 -4-400 00 00 00
+𝑗𝑗 𝑗𝑗 𝑗𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Simplex Table-2
+Basis x x x s s s b b /a
+1 2 3 1 2 3 i i ij
+s 0 0 3/5 1/2 1 -1/10 0 40 66.75
+x 100 1 2/5 1/2 0 1/10 0 60 150
+s 0 0 6/5 5 0 -1/5 1 180 150
+C 100 60 40 0 0 0
+i
+Z 100 40 50 0 10 0
+j
+∆ = 𝑍 − 𝐶 0 -20 10 0 10 0
+𝑗 𝑗 𝑗
+Simplex Table-3
+Basis x x x s s s b
+1 2 3 1 2 3 i
+x 60 0 1 5/6 5/3 -16 0 200/3
+x 100 1 0 1/6 -2/3 1/6 0 100/3
+s 0 0 0 4 -2 0 1 100
+C 100 60 40 0 0 0
+i
+Z 100 60 200/3 100/3 20/3 0
+j
+∆ = 𝑍 − 𝐶 0 0 160/6 100/3 20/3 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+From Simplex Table-3 , All values of ∆ ≥ 0.
+𝑗
+100 200
+Thus, the optimal solution is 𝑥 = , 𝑥 = , 𝑥 = 0 and Max Z=7333.33 .
+1 2 3
+3 3
+PROBLEM 2: Solve the following LPP by using Simplex method.
+Maximize Z = 2x +5x ,
+1 2
+subject to x +4x ≤ 24, 3x +x ≤ 21, x + x ≤ 9 and x , x ≥ 0.
+1 2 1 2 1 2 1 2
+Ans: x = 4, x = 5, MaxZ=33
+1 2
+PROBLEM 3: Solve the following LPP by Simplex method.
+Maximize Z = 15𝑥 + 6𝑥 + 9𝑥 + 2𝑥
+1 2 3 4
+subject to 2𝑥 + 𝑥 + 5𝑥 + 6𝑥 ≤ 20, 3𝑥 + 𝑥 + 3𝑥 + 25𝑥 ≤ 24, 7𝑥 + 7𝑥 ≤ 70
+1 2 3 4 1 2 3 4 1 4
+and x , x , x x ≥ 0.
+1 2 3, 4
+Ans: x = 4, x = 12, x = 0 and Max Z=132
+1 2 3
+PROBLEM 4: Solve the following LPP by Simplex method.
+Minimize Z = x -3x +2x
+1 2 3
+subject to 3x - x +2 x ≤ 7, -2x +4 x ≤ 12, -4x +3 x + 8x ≤ 10 and x , x , x ≥ 0.
+1 2 3 1 2 1 2 3 1 2 3
+Ans: x = 4, x = 5, x = 0 and Min Z = -11
+1 2 3
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Solution (4): Since the given objective function is of minimization, we convert in to
+maximization using Min Z = -Max (-Z).
+Max Z = -x +3x -2x
+1 2 3
+subject to 3x - x +2 x ≤ 7, -2x +4 x ≤ 12, -4x +3 x + 8x ≤ 10 and x , x , x ≥ 0.
+1 2 3 1 2 1 2 3 1 2 3
+We rewrite the inequality of the constraints into an equation by adding slack variables 𝑠 , 𝑠 ,
+1 2
+𝑠 and the standard form of LPP becomes ,
+Max Z = -x +3x -2x +0𝑠 + 0𝑠 + 0𝑠 ,
+1 2 3 1 2 3
+subject to 3x - x +2 x +𝑠 + 0𝑠 + 0𝑠 ≤ 7,
+1 2 3 1 2 3
+-2x +4 x +0𝑠 + 𝑠 + 0𝑠 ≤ 12,
+1 2 1 2 3
+-4x +3 x + 8x +0𝑠 + 0𝑠 + 𝑠 ≤ 10 and x , x , x ≥ 0.
+1 2 3 1 2 3 1 2 3
+Simplex Table-1
+Basis x x x s s s b b /a
+1 2 3 1 2 3 i i ij
+s 0 3 -1 2 1 0 0 7 -7
+s 0 0 -2 4 0 0 1 0 3
+s 0 -4 3 8 0 0 1 10 10/3=3.33
+Z 0 0 0 0 0 0
+j
+C -1 3 -2 0 0 0
+i
+∆ = 𝑍 − 𝐶 1 -3 2 0 0 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Simplex Table-2
+Basis x x x s s s b b /a
+1 2 3 1 2 3 i i ij
+s 0 5/2 0 2 1 1/4 0 10 4
+x 3 -1/2 1 0 0 1/4 0 3 -3/2
+s 0 -5/2 0 8 0 -3/4 1 1 -5/2
+Z -3/2 3 0 0 3/4 0
+j
+C -1 3 -2 0 0 0
+i
+∆ = 𝑍 − 𝐶 -1/2 0 2 0 3/4 0
+𝑗 𝑗 𝑗
+Simplex Table-3
+Basis x x x s s s b
+1 2 3 1 2 3 i
+x -1 1 0 4/5 2/5 1/10 0 4
+x 3 0 1 2/5 1/5 3/10 0 5
+s 0 0 0 10 1 -1/2 1 11
+Z -1 3 2/5 1/5 4/5 0
+j
+C -1 3 -2 0 0 0
+i
+∆ = 𝑍 − 𝐶 0 0 12/5 1/5 4/5 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Since all values of ∆ ≥ 0, the solution is optimum.
+𝑗
+𝑥 = 4, 𝑥 = 5, 𝑥 = 0 and Max Z = 11
+1 2 3
+∴ 𝑀𝑖𝑛 𝑍 = −𝑀𝑎𝑥 −𝑍 = −11
+∴ 𝑥 = 4, 𝑥 = 5, 𝑥 = 0 and 𝑀𝑖𝑛 𝑍 = -11.
+1 2 3
+Big-M method or Penalty method:
+The big-M method is another method of removing artificial variables from the basis.
+In the method, we assign coefficients to artificial variables, undesirable from the
+objective function point of view. If objective function Z is to be minimized, then a
+very large positive price (called penalty) is assigned to each artificial variable.
+Similarly, if Z is to be maximized, the a very large negative price ( also called
+penalty) is assigned to each of these variables. The penalty will be designated by –M
+for maximization problem and +M for minimization problem, where M > 0.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Working rule for solving a Linear programming problem by using Big-M
+method/penalty method:
+Step 1 : Express the LPP in the standard form by adding surplus variables and artificial
+variables. Assign a zero coefficient to surplus variables and a very large positive number
++M (minimization case) and –M (maximization case) to artificial variable in the objective
+function.
+Step 2 : The initial basic feasible solution is obtained by assigning zero value original
+variables.
+Step 3: calculate the values of Z -C in the last row of the simplex table and examine these
+J J
+values
+a) If all Z -C 0 , then the current basic feasible solution is optimal.
+J J
+≥
+b) If for a column, k, Z -C , is most negative and all entries in this column are
+k k
+positive, then the problem has an unbounded optimal solution.
+c) If one or more ZJ-C < 0, then select the variable to enter into the basis with the
+J
+largest negative i.e Z -C value . that is Z -C = min (Z -C : Z -C < 0 )
+J J k k J J J J
+The column to be entered is called key or pivot column.
+Step 4: Determine key row and key element in the same manner as it is done in the simplex
+algorithm of the maximization case.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+PROBLEM 1: Solve the following LPP .
+Maximize Z = 2x +4x ,
+1 2
+subject to 2x +x ≤ 18, 3x +2x ≥ 30, x + 2x = 26 and x , x ≥ 0.
+1 2 1 2 1 2 1 2
+Solution 1: After introducing the necessary slack, surplus and artificial variables, the
+standard form of LPP becomes,
+Maximize Z = 2𝑥 + 4𝑥 + 0𝑠 + 0𝑠 − 𝑀𝐴 − 𝑀𝐴
+1 2 1 2 1 2
+Subject to 2𝑥 + 𝑥 + 𝑠 + 0𝑠 + 0𝐴 + 0𝐴 = 18,
+1 2 1 2 1 2
+3𝑥 + 2𝑥 + 0𝑠 − 𝑠 + 𝐴 + 0𝐴 = 30,𝑥 + 2𝑥 + 0𝑠 + 0𝑠 + 0𝐴 + 𝐴 = 26.
+1 2 1 2 1 2 1 2 1 2 1 2
+Simplex Table-1
+Basis x x s s 𝐴 𝐴 b b /a
+1 2 1 2 1 2 i i ij
+s 0 2 1 1 0 0 0 18 18
+𝐴 -M 3 2 0 -1 1 0 30 15
+𝐴 -M 1 2 0 0 0 1 26 13
+Z -4M -4M 0 M -M -M
+j
+C 2 4 0 0 -M -M
+i
+∆ = 𝑍 − 𝐶 -(4M+2) -(4M+4) 0 M 0 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Simplex Table-2
+Basis x x s s 𝐴 𝐴 b b /a
+1 2 1 2 1 2 i i ij
+s 0 3/2 0 1 0 0 -1/2 5 10/3
+𝐴 -M 2 0 0 -1 1 -1 4 2
+x 4 1/2 1 0 0 0 1/2 13 26
+Z -2M+2 4 0 M -M M+2
+j
+C 2 4 0 0 -M -M
+i
+∆ = 𝑍 − 𝐶 -2M 0 0 M 0 2M+2
+𝑗 𝑗 𝑗
+Simplex Table-3
+Basis x x s s 𝐴 𝐴 b
+1 2 1 2 1 2 i
+s 0 0 0 1 3/4 -3/4 1/4 2
+x 2 1 0 0 -1/2 1/2 -1/2 2
+x 4 0 1 0 1/4 -1/4 3/4 12
+Z 2 4 0 0 0 2
+j
+C 2 4 0 0 -M -M
+i
+∆ = 𝑍 − 𝐶 0 0 0 0 M M+2
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Since all values of ∆ ≥ 0, the solution is optimum.
+𝑗
+𝑥 = 2, 𝑥 = 12 and Max Z = 52.
+1 2
+PROBLEM 2: Solve the following LPP by Big-M method .
+Maximize Z = 3x -x ,
+1 2
+subject to 2x +x ≤ 2, x +3x ≥ 3, x ≤ 4 and x , x ≥ 0.
+1 2 1 2 2 1 2
+Ans: 𝑥 = 3/5, 𝑥 = 4/5 and Max Z = 1.
+1 2
+PROBLEM 3: Solve the following LPP by Big-M method .
+Minimize Z = 60x +80x ,
+1 2
+subject to x ≥ 200 , x ≤ 400,, x + x = 500 and x , x ≥ 0.
+2 1 1 2 1 2
+Ans: 𝑥 = 300, 𝑥 = 200 and 𝑀𝑖𝑛 𝑍 = 34000.
+1 2
+PROBLEM 4: Solve the following LPP by Big-M method .
+Minimize Z = 12x +20x ,
+1 2
+subject to 6x +8x ≥ 100, 7x +12x ≥ 120 and x , x ≥ 0.
+1 2 1 2 1 2
+Ans: 𝑥 = 15, 𝑥 = and 𝑀𝑖𝑛 𝑍 = 205.
+1 2
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Two phase method:
+As an alternative to the Big –M method, there is also available another method for dealing
+with LPP involving artificial variables. This is called the Two-phase method and as its name
+implies, it separates the solution procedure into two phases. In the first of this method, the sum
+of the artificial variables is minimized subject to the given constraints (known as auxiliary
+LPP ) to get a basic feasible solution to the original LPP. Second phase then optimizes the
+original objective function starting with the basic feasible solution obtained at the end of phase
+1.
+Working rule for solving a Linear programming problem by using Two-phase method
+Step 1 : write the given LPP into its standard from and check whether there exist a starting
+basic feasible solution.
+a) If there is a ready starting basic feasible solution, go to phase 2.
+b) If these do not exist a ready starting basic feasible solution goes on to the next step.
+Phase -1 :
+Step 2: Add the artificial variable to the left side of each equation that lacks the needed
+starting basic variables. Construct an auxiliary objective function aimed at minimizing the
+sum of all artificial variables.
+Thus, the new objective is to Minimize Z= A + A + -------------------+ A
+1 2 n
+Maximize Z= -A - A - ------------------- - A
+1 2 n
+i.e., where A (i=1,2,……………..,m) are the non-negative artificial variables.
+i
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Step3: Apply simplex algorithm to the specially constructed LPP. The following three
+cases ,may arise at the least interaction
+a) Max Z* < 0, and at least one artificial variable is present in the basis with
+positive value. In such a case the original LPP does not posses any feasible
+solution.
+b) Max Z* = 0, and at least one artificial variable is present in the basis at zero
+value. In such a case the original LPP posses the feasible solution. in order to
+get basic feasible solution we may proceed directly to phase-2 or else
+eliminate the artificial basic variable and then proceed to phase-2.
+c) Max Z* = 0 and no artificial variable is present in the basis. In such a case, a
+basic feasible solution to the original LPP has been found. Go to phase 2.
+Phase 2 :
+Step 4: consider the optimum basic feasible solution of phase-1 as a starting basic
+feasible solution for the original LPP. Assign actual coefficients to the variables in the
+objective function and a value zero to the artificial variables that appear at zero value in
+the final simplex table of phase 1.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+PROBLEM 1: Use two-phase simplex method to solve
+Maximize Z = 5x - 4x +3x
+1 2 3
+subject to 2x + x - 6 x = 20, 6x +5 x +10 x ≤ 76, 8x - 3x + 6x ≤ 50 and x , x , x ≥ 0.
+1 2 3 1 2 3 1 2 3 1 2 3
+Solution 1: Introducing slack variables 𝑠 , 𝑠 ≥ 0 and an artificial variable 𝐴 ≥ 0 in the
+1 2 1
+constraints of the given LPP, the problem is reformulated in the standard form.
+Phase-I
+Assigning a cost ‘-1’ to the artificial variable 𝐴 and cost ‘0’ to other variables, the objective
+function of auxiliary LPP is
+Maximize 𝑍∗ = 0𝑥 + 0𝑥 + 0𝑥 + 0𝑠 + 0𝑠 − 1𝐴
+1 2 3 1 2 1
+subject to 2x + x - 6 x +𝐴 = 20, 6x +5 x +10 x +𝑠 =76, 8x - 3x + 6x +𝑠 = 50 and x ,
+1 2 3 1 1 2 3 1 1 2 3 2 1
+x , x 𝑠 , 𝑠 , 𝐴 ≥ 0.
+2 3, 1 2 1
+Simplex Table-1: Non Optimal Solution
+Basis x x x 𝐴 s s b b /a
+1 2 3 1 1 2 i i ij
+𝐴 -1 2 1 -6 -1 0 0 20 10
+s 0 6 5 10 0 1 0 76 12.66
+s 0 8 -3 6 0 0 1 50 6.25
+Z -2 -1 6 -1 0 0
+j
+C 0 0 0 -1 0 0
+i
+∆ = 𝑍 − 𝐶 -2 -1 6 0 0 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Simplex Table-2 : Non Optimal Solution
+Basis x x x 𝐴 s s b b /a
+1 2 3 1 1 2 i i ij
+𝐴 -1 0 7/4 -15/2 1 0 -1/4 15/2 30/7
+s 0 0 29/4 11/2 0 1 -3/4 77/2 154/29
+x 0 1 -3/8 3/4 0 0 1/8 25/4 -50/3
+Z 0 -7/4 15/2 -1 0 1/4
+j
+C 0 0 0 -1 0 0
+i
+∆ = 𝑍 − 𝐶 0 -7/4 15/2 0 0 1/4
+𝑗 𝑗 𝑗
+Simplex Table-3: Non Optimal Solution
+Basis x x x 𝐴 s s b
+1 2 3 1 1 2 i
+x 0 0 1 -30/7 4/7 0 -1/7 30/7
+s 0 0 0 256/7 -29/7 1 2/7 52/7
+x 0 0 1 -6/7 3/4 0 1/14 55/7
+Z 0 0 0 0 0 0
+j
+C 0 0 0 -1 0 0
+i
+∆ = 𝑍 − 𝐶 0 0 0 1 0 0
+𝑗 𝑗 𝑗
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Since all values of ∆ ≥ 0, an optimum solution to the auxiliary LPP has been obtained.
+𝑗
+Also Maximize 𝑍∗ = 0 with no artificial variable in the basis.
+Now, we go to Phase-II
+Phase-II: Consider the final simple table of Phase- I.
+Consider the actual cost associated with the original variables. Delete the artificial variable
+𝐴 column from the table as it is eliminated in in phase-I.
+Simplex Table-1: Optimal Solution
+Basis x x x s s b
+1 2 3 1 2 i
+x -4 0 1 -30/7 0 -1/7 30/7
+s 0 0 0 256/7 1 2/7 52/7
+x 5 1 0 -6/7 0 1/4 55/7
+Z 5 -4 90/7 0 13/14
+j
+C 5 -4 3 0 0
+i
+∆ = 𝑍 − 𝐶 0 0 69/7 0 13/14
+𝑗 𝑗 𝑗
+Since all values of ∆ ≥ 0, an optimum basic feasible solution has been reached.
+𝑗
+Hence, an optimum feasible solution to the given LPP is
+𝑥 = 55/7, 𝑥 = 30/7, 𝑥 = 0 and 𝑀𝑎𝑥 𝑍 = 155/7.
+1 2 3
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+PROBLEM 2: Solve the following LPP by two-phase method .
+Minimize Z = 40x +24x ,
+1 2
+subject to 20x +50x ≥ 4800, 80x +50x ≥ 7200 and x , x ≥ 0.
+1 2 1 2 1 2
+Difference between Two phase and Big-M method:
+Two phase method Big-M method
+Initial BFS is easily obtained because zero Initial BFS is difficult because zero
+coefficient is attached to basic variables. coefficient is not attached.
+Easy and less time consuming. Difficult because variables involved.
+No assumption at the original system of Assumptions are made.
+constraints is made.
+Variants of Simplex Method:
+Here we present certain complications and variations encountered in the
+application of the simplex method. These are called the variants of the simplex method.
+The following Variants are being considered.
+1. Unbounded solution
+2. Multiple solutions
+3. Infeasible solution.
+4. Degeneracy.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Unbounded solution:
+It occurs when there is no constraint on the solution so that one or more of the
+decision variables can be increased indefinitely without violating any of the restrictions.
+It occurs in maximization problems, e.g., when a solution variable can be made infinitely
+large without violating a constraint. It is discovered in simplex method if at any iteration
+stage , all the entries in minimum ratio column are infinite (or) negative.
+Multiple solutions:
+Sometimes a LPP gives solutions that are optimum but not unique. This means
+more than one optimum solution is possible. Following are the characteristics of the final
+table in such cases:
+1) Solution is optimum.
+2) (𝑍 − 𝐶 ) values of all basic variables are zero.
+𝑗 𝑗
+3) (𝑍 − 𝐶 ) values of non-basic variable may or may not be zero.
+𝑗 𝑗
+4) (𝑍 − 𝐶 ) values of at least one non-basic variable will be zero.
+𝑗 𝑗
+5) More than one optimum solution is possible.
+6) Values of objective function Z remains the same for all possible solutions.
+7) Basis in final tableau contains in addition to basic variable X, viz., x , x …..non basic
+1 2
+variables S, viz., S , S ….
+1 2
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Infeasible Solutions:
+It has already been stated that a solution is called feasible if it satisfies all the
+constraints and the non-negativity conditions. Sometimes it is possible that the constraints may
+be inconsistent so that there is no feasible solution the problem. Such a situation is called
+unfeasibility and such instance is referred to as a non-feasible solution. A solution is also non-
+feasible if an artificial variable appears in the basis of the solution purported to be optimal.
+Degeneracy :
+while solving a LPP under the simplex method, a situation may arise in which there
+is a tie between two or more basic variables for ‘leaving the basis’, i.e., the minimum ratio to
+identify the basic variable to the basis is not unique or the values of one or more basic
+variables in the solution column become equal to zero. This causes the problem of degeneracy.
+Degeneracy may occur during iterations in simplex method. In most of the cases,
+when there is a tie in the minimum ratios, the selection is made arbitrary. However, adopting
+the following rules can minimise the number of iterations required to arrive the optimum
+solution.
+1) Divide the coefficients of the slack variables in the simplex table where degeneracy is
+detected by the corresponding positive numbers of the key column in the row starting from
+left to right.
+2) The row that contains the smallest ratio, comparing from left to right, become the key row.
+-----@@@-----

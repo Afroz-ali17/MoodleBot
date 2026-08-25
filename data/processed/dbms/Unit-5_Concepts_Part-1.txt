@@ -1,0 +1,179 @@
+Unit-5
+Transaction State
+Transaction
+A transaction is a set of operations or tasks performed to complete a logical process, which may or may not change the data in a database
+To handle different situations, like system failures, a transaction is divided into different states
+A transaction maintains data integrity and consistency by following ACID properties (Atomicity, Consistency, Isolation, Durability)
+Transaction
+Example for Transaction:
+Transaction: Increase Salary of John by 10% and Add a New Employee
+BEGIN TRANSACTION;
+UPDATE Employee SET Salary = Salary * 1.1 WHERE Emp_ID = 101;
+INSERT INTO Employee (Emp_ID, Name, Salary, Department) VALUES (103, 'David', 70000, 'Finance');COMMIT;
+Continues…
+Example for Transaction:
+The BEGIN TRANSACTION starts the transaction.
+John's salary is increased by 10% (50000 → 55000).
+A new employee 'David' is added.
+COMMIT ensures that these changes are permanently saved.
+ROLLBAROLLBACK; ROLLBACK;CK;
+If an error occurs before COMMIT
+ROLLBACK;
+Continues…
+Real-Time Example
+ATM Withdrawal:
+You request to withdraw ₹5000.
+The system checks your balance.
+The ATM deducts ₹5000 from your account.
+If everything is fine, the transaction is committed, and the money is dispensed.
+If the process fails in between, the transaction is rolled back (no money is deducted).
+Transaction State
+Transaction State
+List of Transaction States:
+Active State
+Partially Committed State
+Committed State
+Failed State
+Aborted State
+Terminated State
+Transaction State
+1. Active State – It is the first stage of any transaction when it has begun to execute. The execution of the transaction takes place in this state
+Operations such as insertion, deletion, or updation are performed during this state
+During this state, the data records are under manipulation and they are not saved to the database, rather they remain somewhere in a buffer in the main memory
+Transaction State
+1. Active State – It is the first stage of any transaction when it has begun to execute. The execution of the transaction takes place in this state
+Operations such as insertion, deletion, or updation are performed during this state
+During this state, the data records are under manipulation and they are not saved to the database, rather they remain somewhere in a buffer in the main memory
+Continues…
+BEGIN TRANSACTION; -- Transaction starts
+UPDATE Employee SET Salary = 80000
+WHERE Emp_ID = 101;
+At this stage, the transaction is active because the salary update is being executed.
+Real-time Example
+A user is adding an item to their shopping cart in an online shopping app. The action is not yet saved permanently in the system.
+Transaction State
+2. Partially Committed –
+The transaction has finished its final operation, but the changes are still not saved to the database
+After completing all read and write operations, the modifications are initially stored in main memory or a local buffer.
+If the changes are made permanent on the DataBase then the state will change to “committed state” and in case of failure it will go to the “failed state”
+Transaction State
+Example with Employee Table
+COMMIT; -- Ready to save the changes
+At this stage, the system is verifying if the transaction can be permanently saved.
+Real-time Example
+A bank customer transfers ₹5000 from Account A to Account B. The money is deducted from Account A, but the bank is still verifying before finalizing the deposit into Account B.
+Transaction State
+3. Committed State
+The transaction is successfully completed and all changes are permanently saved in the database
+The system ensures that the database is in a consistent state
+Example with Employee Table
+COMMIT; -- Changes are now permanently saved
+Now, the salary update is permanently saved in the Employee table.
+Transaction State
+Example with Employee Table
+COMMIT; -- Ready to save the changes
+At this stage, the system is verifying if the transaction can be permanently saved
+Real-time Example
+A bank customer transfers ₹5000 from Account A to Account B. The money is deducted from Account A, but the bank is still verifying before finalizing the deposit into Account B.
+Transaction State
+4. Failed State –
+If any of the transaction-related operations cause an error during the active or partially committed state, further execution of the transaction is stopped and it is brought into a failed state
+Here, the database recovery system makes sure that the database is in a consistent state
+Transaction State
+Example with Employee Table
+UPDATE Employee SET Salary = -55000 WHERE Emp_ID = 101; -- Invalid Salary
+The transaction fails because salary cannot be negative, violating a database constraint.
+Real-time Example
+A user tries to withdraw ₹10,000 from an ATM but has only ₹5,000 in the account. The transaction fails due to insufficient balance.
+Transaction State
+5. Aborted State-
+If a transaction reaches the failed state due to a failed check, the database recovery system will attempt to restore it to a consistent state
+If recovery is not possible, the transaction is either rolled back or cancelled to ensure the database remains consistent
+In the aborted state, the DBMS recovery system performs one of two actions:
+Kill the transaction: The system terminates the transaction to prevent it from affecting other operations
+Restart the transaction: After making necessary adjustments, the system reverts the transaction to an active state and attempts to continue its execution
+Transaction State
+Example with Employee Table
+ROLLBACK; -- Undo all changes
+Now, the employee’s salary remains unchanged as the update was not successful.
+Real-time Example
+A train ticket booking fails due to a payment error, so the seat remains available, and the booking is not recorded
+Transaction State
+7. Terminated State –
+If there isn’t any roll-back or the transaction comes from the “committed state”, then the system is consistent and ready for new transaction and the old transaction is terminated
+Example with Employee Table
+After commit or rollback, the system ends the transaction. No further actions are possible on it.
+Real-time Example
+A flight ticket booking is either successfully booked or canceled, and the system closes the transaction.
+Transaction State
+7. Terminated State –
+If there isn’t any roll-back or the transaction comes from the “committed state”, then the system is consistent and ready for new transaction and the old transaction is terminated
+Example with Employee Table
+After commit or rollback, the system ends the transaction. No further actions are possible on it.
+Real-time Example
+A flight ticket booking is either successfully booked or canceled, and the system closes the transaction.
+Transaction State
+ACID properties
+ACID Properties
+A transaction is a single logical unit of work that interacts with the database, potentially modifying its content through read and write operations
+To maintain database Reliability consistency both before and after a transaction, specific properties, known as ACID properties must be followed
+ACID properties in DBMS, which are essential for ensuring data consistency, integrity, and reliability during database transactions
+ACID Properties
+ACID Properties
+1. Atomicity (All or Nothing Rule)
+Atomicity ensures that a transaction is either fully completed or not executed at all. If any part of the transaction fails, the entire transaction is rolled back
+Example using Employee Table
+Let’s say we want to transfer ₹5000 from Employee_A to Employee_B in an "Employees" table.
+Transaction Steps:
+Deduct ₹5000 from Employee_A's salary.
+Add ₹5000 to Employee_B's salary.
+If both steps are successful, the transaction is committed.
+If the system crashes after Step 1 (before Step 2), the transaction is rolled back, and Employee_A's salary remains unchanged
+ACID Properties
+Real-Time Example
+If you withdraw money from an ATM, the amount should be deducted from your account only if the cash is dispensed. If cash is not dispensed due to an error, the transaction is canceled.
+ACID Properties
+2. Consistency (Data Integrity Rule)
+Consistency ensures that the database remains in a valid state before and after the transaction. The transaction should maintain the integrity constraints
+Example using Employee Table
+Suppose an "Employees" table has a constraint that salary should not be negative.
+Transaction Steps:
+Deduct ₹5000 from Employee_A’s salary.
+Add ₹5000 to Employee_B’s salary.
+If Employee_A’s salary becomes negative, the transaction is rolled back to maintain consistency.
+If the transaction succeeds, the database moves from one valid state to another.
+ACID Properties
+Real-Time Example
+If you book a train ticket online, the system must ensure that the available seats count is properly updated. If the number of available seats becomes negative, the transaction is rolled back.
+ACID Properties
+3. Isolation (No Interference Rule)
+Isolation ensures that multiple transactions occur independently without interfering with each other. Each transaction should execute as if it’s the only one running.
+Example using Employee Table
+Two employees, Employee_A and Employee_B, are trying to withdraw ₹5000 at the same time.
+Scenario:
+Transaction_1: Employee_A is withdrawing ₹5000.
+Transaction_2: Employee_B is withdrawing ₹5000.
+If Transaction_1 is not yet completed and Transaction_2 tries to read the balance, it should not see an inconsistent state.
+The database isolates both transactions to ensure correctness.
+ACID Properties
+Real-Time Example
+When two people are booking the last seat on a flight ticketing website, isolation ensures that only one person gets the ticket, avoiding duplicate bookings.
+ACID Properties
+4. Durability (Permanent Changes Rule)
+Durability ensures that once a transaction is committed, the changes are permanently saved in the database, even in case of system failures.
+Example using Employee Table
+If a salary update transaction for Employee_A is successfully committed:
+Scenario:
+Employee_A’s salary is increased by ₹5000.
+The transaction is committed.
+Even if the system crashes, the salary update remains permanent.
+ACID Properties
+Real-Time Example
+When you place an order on Amazon, once the order is confirmed, it remains in your order history, even if the website crashes afterward
+ACID Properties
+ACID Properties
+Advantages of ACID Properties in DBMS
+Data Consistency: ACID properties ensure that the data remains consistent and accurate after any transaction execution.
+Data Integrity: ACID properties maintain the integrity of the data by ensuring that any changes to the database are permanent and cannot be lost.
+Concurrency Control: ACID properties help to manage multiple transactions occurring concurrently by preventing interference between them.
+Recovery: ACID properties ensure that in case of any failure or crash, the system can recover the data up to the point of failure or crash.

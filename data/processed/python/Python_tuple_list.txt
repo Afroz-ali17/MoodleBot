@@ -1,0 +1,611 @@
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Unit-4
+Tuples and Lists
+Objective:
+To familiarize concepts of tuples and lists in Python programming.
+Outcome:
+Apply lists and tuples in developing Python programs.
+Syllabus
+Tuples – creating, accessing values, updating, deleting elements in a tuple, Basic
+Tuple operations.
+Lists – accessing, updating values in Lists, Basic List operations, mutability of lists.
+Programs: Write a python program to
+1. swap two values using Tuple assignments.
+2. sort a Tuple of values.
+3. scans an email address and forms a tuple of user name and domain name.
+4. print sum and average of the elements present in the list.
+5. forms a list of first character of every word present in another list.
+Learning Outcomes:
+At the end of the unit student will be able to
+1. demonstrate creating, accessing elements in a tuples and lists.
+2. describe updating and deleting elements in a tuple.
+3. apply various operations on lists and tuple.
+4. develop programs using lists and tuples.
+Learning Material
+Tuple Definition:
+1. A tuple is a sequence of immutable objects. That is, you can change the value of
+one or more items in a list; you cannot change the values in a tuple.
+2. Tuples use parenthesis to define its elements. Whereas lists use square brackets.
+Creating a Tuple:
+Creating a tuple is as simple as putting different comma-separated values. Optionally
+you can put these comma-separated values between parentheses.
+Syntax: Tup1=(val1,val2,….)
+Where val (or values) can be an integer, a floating number, a character, or a string.
+Department Of Information Technology AY: 2018-19 GEC Page 2
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Examples:
+1) Tup1=( ) #creates an empty tuple.
+print(Tup1)
+output:
+note: no ouput will be displayed.
+2) Tup1=(5) #creates a tuple with single element
+print(Tup1)
+Output:
+3) Tup1=(1,2,3,4,5) #creates a tuple of integers
+print (Tup1)
+Tup2=(‘a’,’b’,’c’,’d’) #creates a tuple of characters
+print(Tup2)
+Tup3=(“abc”,”def”,”ghi”) #creates a tuple of strings
+print(Tup3)
+Tup4=(1.2,2.3,3.4,4.5,5.6) #creates a tuple of floating point numbers
+print(Tup4)
+Tup5=(1,”abc”,2.3,’d’) #creates a tuple of mixed values
+print(Tup5)
+Output:
+1,2,3,4,5
+‘a’,’b’,’c’,’d’
+‘abc’,’def’,’ghi’
+1.2,2.3,3.4,4.5,5.6
+1,’abc’,2.3,’d’
+4) A Tuple with parenthesis
+print(‘a’,”bcd”,2,4.6)
+Department Of Information Technology AY: 2018-19 GEC Page 3
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Output:
+A bcd2 4.6
+5) Default Tuple without parenthesis
+a,b=10,20
+print(a,b)
+Output:
+10 20
+Accessing values of tuples:
+ Like strings and lists tuples indices also starts with 0.
+ The operations performed are slice, concatenate etc.,
+ To access values in tuple, slice operation is used along with the index.
+Example :
+1) Tup1=(1,2,3,4,5,6,7,8,9,10)
+print(“Tup[3:6]=”,Tup1[3:6])
+print(“Tup[:8]=”,Tup1[:4])
+print(“Tup[4:]=”,Tup1[4:])
+print(“Tup[:]=”,Tup1[:])
+Output:
+Tup[3:6]=(4,5,6)
+Tup[:8]=(1,2,3,4)
+Tup[4:]=5,6,7,8,9,10)
+Tup[:]=(1,2,3,4,5,6,7,8,9,10)
+The tuple values can be accessed using square brackets:
+2) Tuple =(1,2,3,4,5.5,’str’)
+Input:
+1.print tuple
+2.print tuple[5]
+3.print tuple[1:5]
+Department Of Information Technology AY: 2018-19 GEC Page 4
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Output:
+1.1,2,3,4,5.5,’str’
+2.’str’
+3.2,3,4,5.5
+Updating tuples:
+As we all know tuples are immutable objects so we cannot update the values but we
+can just extract the values from a tuple to form another tuple.
+Example:
+1) Tup1=(1,2,3,4,5)
+Tup2=(6,7,8,9,10)
+Tup3=Tup1+Tup2
+print(Tup3)
+Output:
+(1,2,3,4,5,6,7,8,9,10)
+2) Tup1=(1,2,3,4,5)
+Tup2=(‘sree’,’vidya’,’ram’)
+Tup3=Tup1+Tup2
+print Tup3
+Output:
+(1,2,3,4,5,’sree’,’vidya’,’ram’)
+Deleting elements of a tuple:
+1.Deleting a single element in a tuple is not possible as we know tuple is a immutable
+object.
+Hence there is another option to delete a single element of a tuple i.e..,you can create
+a new tuple that has all elements in your tuple except the ones you don’t want.
+Example:
+1) Tup1=(1,2,3,4,5)
+del Tup1[3]
+print Tup1
+Output:
+Traceback (most recent call last):
+File "test.py", line 9, in <module>
+del Tup1[3]
+Type error: ‘tuple’ object doesn’t support item deletion
+Department Of Information Technology AY: 2018-19 GEC Page 5
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+2) however, you can always delete the entire tuple by using del statement.
+Tup1=(1,2,3,4,5)
+del Tup1
+print Tup1
+Output:
+Traceback (most recent call last):
+File "test.py", line 9, in <module>
+print Tup1;
+NameError: name 'Tup1' is not defined
+Key Note: Note that exception is raised because you are now trying to print a tuple
+that has already been deleted.
+Basic tuple operations:
+Like strings and lists,you can also perform operations like concatenation,
+repetition,etc. on tuples. The only difference is that a new tuple should be created
+when a change is required in an existing tuple.
+Operation Expression Output
+Length len((1,2,3,4,5,6)) 6
+Concatenation (1,2,3)+(4,5,6) (1,2,3,4,5,6)
+Repetition (‘Good..’)*3 ‘Good ..Good..Good’
+Membership 5 in (1,2,3,4,5,6,7,8,9) True
+Iteration for i in 1,2,3,4,5,6,7,8,910
+(1,2,3,4,5,6,7,8,9,10):
+print(i,end=’ ‘)
+Comparision(Use >,<,==) Tup1=(1,2,3,4,5) False
+Tup2=(1,2,3,4,5)
+print(Tup1>Tup2)
+Maximum max(1,0,3,8,2,9) 9
+Minimum min(1,0,3,8,2,9) 0
+Convert to tuple(converts tuple(“Hello”) (‘H’,’e’,’l’,’l’,’o’)
+a sequence into a tuple) tuple([1,2,3,4,5]) (1,2,3,4,5)
+Sorting( The sorted( ) t=(4,67,9) [4, 9, 67]
+function takes elements sorted(t)
+in a tuple and returns a
+new sorted list (does not
+sort the tuple itself)).
+Department Of Information Technology AY: 2018-19 GEC Page 6
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+1) Length of the tuple:
+Ex:
+Input:
+Tup1= (1,2,3,4,5)
+print len (Tup1)
+Output:
+2) Concatenation:
+Ex:
+Input:
+Tup1=(1,2,3,4)
+Tup2=(5,6,7)
+print tup1+tup2
+Output:
+(1,2,3,4,5,6,7)
+3) Repetition:
+Ex:
+Input:
+Tuple1=(‘my’)
+print tuple1*3
+Output:
+(‘my’,’my’,’my’)
+4) Membership:
+Ex:
+Input:
+Tuple1=(1,2,3,4,6,7)
+5) Iteration:
+Ex:
+Input:
+For i in (1,2,3,4,5,6,7,8,9,10):
+print (i,end=’ ‘)
+Output:
+1,2,3,4,5,6,7,8,9,10
+6) Comparison:
+Ex:
+Input:
+Tup1 = (1,2,3,4,5)
+Tup2 =(6,7,8,9,10)
+print(Tup1<tup2)
+Output:
+True
+7) Maximum:
+Ex:
+Input:
+Max(1,2,6,5,4)
+Output: 6
+Department Of Information Technology AY: 2018-19 GEC Page 7
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+8) Minimum:
+Ex:
+Input:
+Min(1,2,3,4,5)
+Output:
+9) Convert to tuple:
+Ex:
+Input:
+Tuple(“vidya”)
+Output:
+(‘v’,’i’,’d’,’y’,’a’)
+LISTS
+The most basic data structure in Python is the sequence. Each element of a
+sequence is assigned a number - its position or index. The first index is zero, the
+second index is one, and so forth. There are certain things you can do with all
+sequence types. These operations include indexing, slicing, adding, multiplying, and
+checking for membership.
+Creating a List:
+Creating a list is as simple as putting different comma-separated values
+between square brackets. Similar to string indices, list indices start at 0, and lists
+can be sliced, concatenated and so on.
+Syntax:
+List_variable = [val1,val2,…]
+Example:
+1) list_A =[1,2,3,4]
+print(list_A)
+Output
+[1,2,3,4]
+2) list_C=[‘Good”,”Going”]
+print(list_C)
+Output
+[‘Good’,’Going’]
+Accessing values in lists:
+ Similar to strings, lists can be sliced and concatenated.
+ To access values in lists, square brackets are used to slice along with index or
+indices to get value stored at that index.
+ syntax
+s=list[start:stop:step]
+Department Of Information Technology AY: 2018-19 GEC Page 8
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+For Example:
+Seq=List[::2] # get every other element, starting with index 0.
+Seq=List[1::2] # get every other element, starting with index 1.
+Example 1:
+num_list=[1,2,3,4,5,6,7,8,9,10]
+print(“num_list is:”,num_list)
+print(“first elemnent in the list is”,num_list[0])
+print(“num_list[2:5]=”,num_list[2:5])
+print(“num_list[::2]=”,num_list[::2])
+print(“num_list[1::3]=”,num_list[1::3])
+Output:
+num_list is: [1,2,3,4,5,6,7,8,9,10]
+first elemnent in the list is 1
+num_list[2:5]= [3,4,5]
+num_list[::2]= [1,3,5,7,9]
+num_list[1::3]= [2,5,8]
+Updating values in the lists:
+ once created, one or more elements of a list can be easily updated by giving the
+slice on the left-hand side of the assignment operator.
+ You can also append new values in the list and remove existing values from the
+list using the append( ) method and del statement respectively.
+Example:
+1) num_list= [1,2,3,4,5,6,7,8,9,10]
+print(“list is:”,num_list)
+num_list[5]=100
+print(“List after updation is:”,num_list)
+num_list.append(200)
+print(“List after appending a value is: “,num_list)
+del num_list[3]
+print(“List after deleting a value is:”,num_list)
+Output:
+list is: [1,2,3,4,5,6,7,8,9,10]
+List after updation is: [1,2,3,4,5,100,7,8,9,10]
+List after appending a value is: [1,2,3,4,5,100,7,8,9,10,200]
+List after deleting a value is: [1,2,3,5,100,7,8,9,10,200]
+Basic list operations:
+Operatio Description Example Output
+n
+len Returns length of list len([1,2,3,4,5,6,7,8,9,10]) 10
+concatena Joins two lists [1,2,3,4,5]+[6,7,8,9,10] [1,2,3,4,5,6,7,8,9,10]
+Department Of Information Technology AY: 2018-19 GEC Page 9
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+tion
+repetition Repeats elements in “Hello”,”World”*2 [‘Hello’,’World’,’Hello’
+the lists ,’World’]
+in Checks if the value is ‘a’ in[‘a’,’e’,’i’,’o’,’u’] True
+present in the list
+not in Checks if the value is 3 not in [0,2,4,6,8] True
+not present in the list
+max Returns maximum num_list=[6,3,7,0,1,2,4,9 9
+value in the list ]
+print(max(num_list))
+min Returns minimum num_list=[6,3,7,0,1,2,4,9 0
+value in the list ]
+print(min(num_list))
+sum Adds the values in the num_list=[1,2,3,4,5,6,7,8 SUM=55
+list that has numbers ,9,10]
+print(“SUM=”,sum(num_li
+st))
+all Returns True if all num_list=[0,1,2,3] False
+elements of the list print(all(num_list))
+are true(or if the list is
+empty)
+any Returns True if any num_list=[6,3,7,0,1,2,4,9 True
+element of the list is ]
+true. if the list is print(any(num_list))
+empty return false
+list Converts list1=list(“HELLO”) [‘H’,’E’,’L’,’L’,’O’]
+iterable(tuple,string,se print(list1)
+t,dictionary)
+sorted Returns a new sorted list1=[3,4,1,2,7,8] [1,2,3,4,7,8]
+list. The original list list2=sorted(list1)
+not sorted print(list2)
+Mutability of lists:
+ Unlike strings, lists are mutable.
+ This means we can change an item in a list by accessing it directly as part of
+the assignment statement.
+ Using the indexing operator (square brackets) on the left side of an assignment,
+we can update one of the list items.
+Example:
+fruit = ["banana", "apple", "cherry"]
+print(fruit)
+Department Of Information Technology AY: 2018-19 GEC Page 10
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+fruit[0] = "pear"
+fruit[-1] = "orange"
+print(fruit)
+Output:
+['banana', 'apple', 'cherry']
+['pear', 'apple', 'orange']
+Functional Programming:
+Functional Programming decomposes a problem into a set of functions. The
+map(),filter(), and reduce() functions.
+1) map( ) Function:
+The map() function applies a particular function to every element of a
+list.
+Syntax:
+map(function,sequence)
+After applying the specified function in the sequence, the map( ) function
+returns the modified list.
+Ex: Program that adds 2 to every value in the list.
+def add_2(x):
+x+=2
+return x
+num_list=[1,2,3,4,5,6,7]
+print(“original list is:”,num_list)
+new_list=list(map(add_2,num_list))
+print(“modified list is:”,new_list)
+output:
+original list is: [1,2,3,4,5,6,7]
+modified list is:[3,4,5,6,7,8,9]
+Department Of Information Technology AY: 2018-19 GEC Page 11
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+2) reduce ( ):
+The reduce( ) function with syntax as given below returns a single value
+generated by calling the function on the first two items of the sequence,
+then on the result and the next item and so on.
+Syntax: reduce(function,sequence)
+Ex: Program to calculate the sum of values in a list using the reduce( )
+function.
+import functools # functools is a module that contains the function
+reduce( )
+def add(x,y):
+return x+y
+num_list=[1,2,3,4,5]
+print(“sum of values in list=”)
+print(functools.reduce(add,num_list))
+Output:
+sum of values in list= 15
+3) filter( ) function:
+It constructs a list from those elements of the list for which a function
+returns True.
+Syntax:
+filter(function,sequence)
+As per the syntax filter( ) function returns a sequence that contains items from
+the sequence for which the function is True. If sequence is a string, Unicode, or a
+tuple, then the result will be the same type;
+Ex: Program to create a list of numbers divisible by 2 or 4 using list
+comprehension.
+def check(x):
+if(x%2==0 or x%4 ==0):
+return 1
+Department Of Information Technology AY: 2018-19 GEC Page 12
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+#call check( ) for every value between 2 to 21
+evens=list(filter(check,range(2,22))
+print(evens)
+Output:
+[2,4,6,8,10,12,14,16,18,20]
+programs:
+1. Write a program to swap two values using Tuple assignments.
+Program: (val1,val2,val3)=(1,2,3)
+(tup1,tup2,tup3)=(4,5,6)
+(a,b,c)=(val1,val2,val3)
+(val1,val2,val3)=(tup1,tup2,tup3)
+(tup1,tup2,tup3)=(a,b,c)
+print (val1,val2,val3)
+print (tup1,tup2,tup3)
+Output:
+(4, 5, 6)
+(1, 2, 3)
+2. Write a program to sort a Tuple of values.
+Program: tup=[5,1,40,8,6,2,1]
+print(sorted(tup))
+Output:
+[1, 1, 2, 5, 6, 8, 40]
+3. Write program that scans an email address and forms a tuple of user name and
+domain name.
+Program:
+addr =input('Enter email address:')
+(uname, domain) = addr.split('@')
+print('Username:',uname)
+print('domain name:',domain)
+Department Of Information Technology AY: 2018-19 GEC Page 13
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Output:
+Enter email address:gec@gmail.com
+Username: gec
+domain name: gmail.com
+4. Write a program to print sum and average of the elements present in the list.
+Program:
+lst = [ ]
+num = int(input('How many numbers: '))
+for n in range(num):
+numbers = int(input('Enter number '))
+lst.append(numbers)
+print("Sum of elements in given list is :", sum(lst))
+avg=sum(lst)/num
+print(avg)
+Output:
+How many numbers: 7
+Enter number 1
+Enter number 2
+Enter number 3
+Enter number 4
+Enter number 5
+Enter number 6
+Enter number 7
+Sum of elements in given list is : 28
+Department Of Information Technology AY: 2018-19 GEC Page 14
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+5. Write a program that forms a list of first character of every word present in another
+list.
+Program:
+b= [ ]
+l= ["gudlavalleru","engineering","college"]
+for item in l:
+b.append(item[0])
+print(b)
+Output: [‘g’,’e’,’c’]
+Assignment-Cum-Tutorial Questions
+SECTION A: OBJECTIVE QUESTIONS
+1. If list=[1,2,3,4,5] then the list[5] will result in-------------------- [ ]
+(a) 4 (b) 3 (c) 2 (d) Index Error
+2. If List=[1,2,3,4,5] and rewrite List[3]=List[1], then what will be the List[3]
+[ ]
+(a) 1 (b) 3 (c) 2 (d) 4
+3. In lists index value starts from Zero. [True/False]
+4. print len((1,2,3,4,5,6)) is [ ]
+(a) 5 (b) 6 (c) 21 (d) 7
+5. Tuple is immutable and list is mutable. [True/False]
+6. It is possible to add, edit, and delete elements from a list. [True/False]
+7. list=['a','b','c','d','e'] output for print list[2:5] = ['c', 'd', 'e'].
+8. tuple=('abcd',23,2.4,1)
+print tuple[:3] what is the output? [ ]
+a) ('abcd',23,2.4) b) (1) c) (23,2.4,1) d) ('abcd',23,2.4,1)
+9. what is the output of print tuple[2:] if tuple=('abcd',786,2.23,1,2) [ ]
+a) (cd,786,2.23,1,2) b) (2.23,1,2) c) (786,2.23,1,2) d) (1,2)
+10. Suppose t = (1, 2, 4, 3), which of the following is incorrect? [ ]
+a) print(t[3]) b) t[3] = 45
+c) print(max(t)) d) print(len(t))
+Department Of Information Technology AY: 2018-19 GEC Page 15
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+11. What is the output of the program: [ ]
+for fruit in ['apple','banana','mango']:
+print("I like",fruit)
+a) [apple’,’banana’,’mango’] b) I like ‘apple’
+b) c) I like apple d) I like
+I like ‘banana’ I like banana I like
+I like ‘mango’ I like mango I like
+12. What is the output of the program [ ]
+my_list = ['p','r','o','b','l','e','m']
+print('p' in my_list)
+print('a' in my_list)
+print('c' not in my_list)
+a) True b)True c)False d) False
+False True True True
+True False False True
+13. What is the output of the program [ ]
+my_tuple = ('p','e','r','m','i','t')
+print(my_tuple[-1])
+print(my_tuple[-6])
+a) t b) t c) p d) t
+p t p NULL
+14. What is the output of the program [ ]
+my_tuple = ('p','r','o','g','r','a','m','i','z')
+print(my_tuple[1:4])
+print(my_tuple[:-7])
+print(my_tuple[7:])
+print(my_tuple[:])
+a) ('r', 'o', 'g') b) (‘p’,’r’,’o’)
+('p', 'r') (‘r’,’p’)
+('i', 'z') (‘z’,’’i’)
+('p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z') ('p','r','o','g','r','a','m','i','z')
+c)('p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z') d) ('p', 'r', 'o', 'g', 'r', 'a', 'm', 'i', 'z')
+('r', 'o', 'g') ('i', 'z')
+('p', 'r') ('p', 'r')
+('i', 'z') ('r', 'o', 'g')
+15. What is the output of the program [ ]
+print((1, 2, 3) + (4, 5, 6))
+print(("Repeat",) * 3)
+a) (1, 2, 3, 4, 5, 6) b) (‘Repeat’,Repeat’,’Repeat’)
+('Repeat', 'Repeat', 'Repeat') (1,2,3,4,5,6)
+c)(1,2,3)+(4,5,6) d) (“Repeat”,)*3
+“Repeat” (1,2,3)+(4,5,6)
+Department Of Information Technology AY: 2018-19 GEC Page 16
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+16. What is the output of the program [ ]
+my_tuple = ('a','p','p','l','e',)
+print(my_tuple.count('p'))
+print(my_tuple.index('l'))
+a) 2 b) 2 c) 3 d) 3
+3 2 2 3
+17. What is the output of the program [ ]
+pow2 = [2 ** x for x in range(10)]
+print(pow2)
+a) [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+b) [512,256,128,64,32,16,8,4,2,1]
+c) [1,2,3,4,5,6,7,8,9,10]
+d) [1,3,5,7,9]
+18. What is the output of the program [ ]
+my_list = ['p','r','o','b','e']
+print(my_list[-1])
+print(my_list[-5])
+a) e b) e c) p d) e
+NULL p e e
+19. What is the output of the program [ ]
+odd=[1,3,5]
+Print(odd+[9,7,5])
+Print([“re”]*3)
+a) [1,3,5,9,7,5] b) [1,3,5,9,7]
+[“re”,”re”,”re”] [“re”,”re”,”re”]
+c) (odd+[9,7,5]) d) [1,3,5]
+([“re”]*3) ([“re”]*3)
+20. What is the output of the program [
+]
+odd = [1, 9]
+odd.insert(1,3)
+print(odd)
+odd[2:2] = [5, 7]
+print(odd)
+a) [1, 3, 9] b) [1,3,5,7,9] c) [1,9,3] d) [1,9,1,3]
+[1, 3, 5, 7, 9] [1,3,5,7,9] [1,9,3,5,7] [1,9,1,3,5,7]
+Department Of Information Technology AY: 2018-19 GEC Page 17
+PYTHON PROGRAMMING UNIT-IV
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+SECTION B: Subjective Questions
+1. What is negative index in list and tuple? [ April-2018]
+2. What is tuple? What are the different operations performed on tuple? Explain
+with an example? [ NOV-2018]
+3. Illustrate the ways of creating the tuple and the tuple assignment with suitable
+programs. [ April-2018]
+4. Summarize basic List operations with examples. [ NOV-2018]
+5. How can you access and update values in a list?
+6. Explain mutability of lists?
+7. Write a set of commands that covers at least five tuple functions and five list
+functions?
+8. Write a program to find sum of all even numbers in a list?
+9. Write a program that reverses a list using a loop?
+10. Write a program to find whether a particular element is present in the list?
+11. Write a program that finds the sum of all the numbers in a list using a while
+loop?
+12. Write a program that forms a List of first character of every word present in
+another List. [ NOV-2018]
+13. Write a program that creates a list[‘a’,’b’,’c’], then create a tuple from that list.
+14. Write a program that converts a list of characters into their corresponding
+ASCII values using map( ) function.
+15. Write a program using filter function to list cubes of numbers from 1-10.
+16. Write a code snippet in Python to Access Elements of a Tuple. [ NOV-2018]
+17. Write code snippets in Python for modifying and deleting Elements of Tuple.
+18. “Tuples are immutable”. Explain with examples. [ April-2018]
+Department Of Information Technology AY: 2018-19 GEC Page 18

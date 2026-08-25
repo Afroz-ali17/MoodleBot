@@ -1,0 +1,643 @@
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+UNIT-VI
+File Handling
+Syllabus:
+File types, File path, File operations-open, close, read, write, Types of arguments.
+Programs: Write a python program to
+1. Write a program to print each line of a file in reverse order.
+2. Write a program to compute the number of characters, words and lines in a
+file.
+3. Write a program to copy contents of one file into another file.
+Learning Outcomes:
+At the end of the unit student will be able to
+
+Understand various File Types
+
+Describe File Paths like Absolute and Relative
+
+Understand various operations on files.
+
+Implement programs on Files.
+Department Of Information Technology AY: 2018-19 GEC Page 2
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Learning Material
+1. Introduction to Files:
+
+When a program is being executed,its data is stored in RAM.Though RAM can
+be accessed faster by the CPU,it is also volatile,which means when the
+program ends, or the computer shuts down, all the data is lost.If you want to
+use the data in future,then you need to store this data on a permanent or non-
+volatile storage media such as hard disk, USB drive and DVD e.t.c.,
+
+A file is a collection of data stored on a secondary storage device like hard
+disk.
+
+A file is basically used because real-life applications involve large amounts of
+data and in such situations the console oriented I/O operations pose two major
+problems:
+
+First, it becomes cumbersome and time consuming to handle huge amount of
+data through terminals.
+
+Second, when doing I/O using terminal, the entire data is lost when either the
+program is terminated or computer is turned off. Therefore, it becomes
+necessary to store data on a permanent storage (the disks) and read whenever
+necessary, without destroying the data.
+2. File Types
+
+Like C and C++,Python also supports two types of files
+1.ASCII Text Files
+2.Binary Files
+2.1ASCII Text Files
+
+A text file is a stream of characters that can be sequentially processed by a
+computer in forward direction. For this reason a text file is usually opened for
+only one kind of operation (reading, writing, or appending) at any given time.
+
+Because text files can process characters, they can only read or write data one
+character at a time. In Python, a text stream is treated as a special kind of file.
+
+Depending on the requirements of the operating system and on the operation
+that has to be performed (read/write operation) on the file, the newline
+characters may be converted to or from carriage-return/linefeed combinations.
+
+Besides this, other character conversions may also be done to satisfy the
+storage requirements of the operating system. However, these conversions
+occur transparently to process a text file. In a text file, each line contains zero
+or more characters and ends with one or more characters.
+Department Of Information Technology AY: 2018-19 GEC Page 3
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+Another important thing is that when a text file is used, there are actually two
+representations of data- internal or external. For example, an integer value will
+be represented as a number that occupies 2 or 4 bytes of memory internally
+but externally the integer value will be represented as a string of characters
+representing its decimal or hexadecimal value.
+Note: In a text file, each line of data ends with a newline character. Each file
+ends with a special character called end-of-file (EOF) Marker.
+2.2 Binary Files
+
+A binary file is a file which may contain any type of data, encoded in binary
+form for computer storage and processing purposes. It includes files such as
+word processing documents, PDFs, images, spreadsheets, videos, zip files and
+other executable programs.
+
+Like a text file, a binary file is a collection of bytes. A binary file is also referred
+to as a character stream with following two essential differences.
+
+A binary file does not require any special processing of the data and each byte
+of data is transferred to or from the disk unprocessed.
+
+Python places no constructs on the file, and it may be read from, or written to,
+in any manner the programmer wants.
+
+While text files can be processed sequentially, binary files, on the other
+hand, can be either processed sequentially or randomly depending on the
+needs of the application.
+Note:Binary files store data in the internal representation format.Therefore, an
+integer value will be stored in binary form as 2 byte value.The same format is
+used to store data in memory as well as in files.Like Text files,Binary files also
+ends with an EOF Marker
+3.File Path:
+
+Files that we use are stored on a storage medium like the hard disk in such a
+way that they can be easily retrieved as and when required.
+
+Every file is identified by its path that begins from the root node or the root
+folder. In Windows, C:\ (also known as C drive) is the root folder but you can
+also have a path that starts from other drives like D:\, E:\, etc. The file path is
+also known as pathname.
+
+In order to access a file on a particular disk we have two paths.
+1. Absolute Path
+2. Relative Path
+Department Of Information Technology AY: 2018-19 GEC Page 4
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+While an absolute path always contains the root and the complete directory
+list to specify the exact location the file.
+Example:To access BTech_CS.docx,The absolute path is
+C:\Students\Under Graduate\BTech_CS.docx
+
+Relative path needs to be combined with another path in order to access a file.
+It starts with respect to the current working directory and therefore lacks the
+leading slashes.
+Example: Suppose you are working on current directory Under Graduate in
+order to access BTech_CS.docx,The Relative path is
+Under Graduate\BTech_CS.docx
+4. File Operations
+
+When we want to read from or write to a file we need to open it first. When we
+are done, it needs to be closed, so that resources that are tied with the file are
+freed.
+
+Python has many in-built functions and methods to manipulate files.These
+
+Hence, in Python, a file operation takes place in the following order.
+1. Open a file
+2. Read or write (perform operation)
+3. Close the file
+Department Of Information Technology AY: 2018-19 GEC Page 5
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4.1 Opening A File
+
+Before reading from or writing to a file, you must first open it using Python’s
+built-in open() function. This function creates a file object, which will be used
+to invoke methods associated with it.
+
+The Syntax of open() is:
+fileObj = open(file_name [, access_mode])
+Where file_name is a string value that specifies name of the file that you
+want to access. access_mode indicates the mode in which the file has to be
+opened, i.e., read, write, append, etc.
+
+Example:Write a Program to print the details of file object
+Note:Access mode is an optional parameter and the default file access mode is
+read(r).
+4.1.1.Access modes
+
+Python supports the following access modes for opening a file those are
+Department Of Information Technology AY: 2018-19 GEC Page 6
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4.1.2The File Object Attributes
+
+Once a file is successfully opened, a file object is returned. Using this file
+object, you can easily access different type of information related to that file.
+This information can be obtained by reading values of specific attributes of the
+file.
+
+The Following table shows list attributes related to file object.
+
+Example: Program to open a file and print its attribute values.
+Department Of Information Technology AY: 2018-19 GEC Page 7
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4.2 Closing A File
+
+The close() method is used to close the file object. Once a file object is closed,
+you cannot further read from or write into the file associated with the file
+object.
+
+While closing the file object the close() flushes any unwritten information.
+Although, Python automatically closes a file when the reference object of a file
+is reassigned to another file, but as a good programming habit you should
+always explicitly use the close() method to close a file.
+
+The syntax of close() is
+fileObj.close()
+
+The close() method frees up any system resources such as file descriptors, file
+locks, etc. that are associated with the file.
+
+Once the file is closed using the close() method, any attempt to use the file
+object will result in an error.
+Example2: Write a Python program to assess if a file is closed or not..
+(April 2018 Regular)
+file = open('File1.txt','wb')
+print('Name of the file :',file.name)
+print('File is closed:',file.closed)
+print('File is now being closed')
+file.close()
+print('File is closed',file.closed)
+print(file.read())
+Output:
+Name of the file : File1.txt
+File is closed: False
+File is now being closed
+File is closed True
+Department Of Information Technology AY: 2018-19 GEC Page 8
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Traceback (most recent call last):
+File "D:/Python/sample.py", line 7, in <module>
+print(file.read())
+io.UnsupportedOperation: read
+4.3 Writing A File
+
+The write() method is used to write a string to an already opened file. Of course
+this string may include numbers, special characters or other symbols.
+
+While writing data to a file, you must remember that the write() method does
+not add a newline character ('\n') to the end of the string.
+
+The syntax of write() method is:
+fileObj.write(string)
+Example:Program that writes a message in the file,data.txt
+file=open('data.txt','w')
+file.write('hello cse we are learning python programming')
+file.close() data.txt
+print('file writing successful') hello cse we are learning python programming
+Output:
+file writing successful
+4.3.1 writeline() method:
+
+The writelines() method is used to write a list of strings.
+Example:Program to write to afile using the writelines() method
+file=open('data.txt','w')
+lines=['hello','cse','hope to enjoy','learning','python programming']
+file.writelines(lines) data.txt
+file.close() hellocsehope to enjoylearningpython programming
+print('file writing successful')
+Output:
+file writing successful
+Department Of Information Technology AY: 2018-19 GEC Page 9
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4.3.2 append() method:
+
+Once you have stored some data in a file,you can always open that file again to
+write more data or append data to it.
+
+To append a file, you must open it using ‘a’ or ‘ab’ mode depending on whether
+it is text file or binary file.
+
+Note that if you open a file with ‘w’ or ‘wb’ mode and then start writing data
+into it, then the existing contents would be overwritten.
+Example:Program to append data to an already existing file
+file=open('data.txt','a') data.txt
+file.write('\nHave a nice day') hellocsehope to enjoylearningpython programming
+file.close() Have a nice day
+print('Data appended successful')
+Output:
+Data appended successful
+4.4 Reading A File
+
+The read() method is used to read a string from an already opened file.As said
+before, the string can include, alphabets, numbers, characters or other
+symbols.
+
+The syntax of read() method is
+fileObj.read([count])
+Where In the above syntax, count is an optional parameter which if
+passed to the read() method specifies the number of bytes to be read from the
+opened file.
+
+The read() method starts reading from the beginning of the file and if count is
+missing or has a negative value then, it reads the entire contents of the file (i.e.,
+till the end of file).
+Example1:Program to print the first 8 characters of the file data.txt
+file=open('data.txt','r') data.txt
+print(file.read(8))
+hellocsehope to enjoylearningpython programming
+file.close()
+Output: Have a nice day
+hellocse
+Department Of Information Technology AY: 2018-19 GEC Page 10
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Example2:Program to display the content of file using for loop
+file=open('data.txt','r')
+for line in file: data.txt
+print(line) hellocsehope to enjoylearningpython programming
+file.close() Have a nice day
+Output:
+hellocsehope to enjoylearningpython programming
+Have a nice day
+Note:read() methods returns a newline as ‘\n’
+4.4.1readline() Method
+
+It is used to read single line from the file.
+
+This method returns an empty string when end of the file has been reached.
+ExampleProgram to demonstrate the usage of readline() function
+file=open('data.txt','r')
+print('firtsline:',file.readline())
+data.txt
+print('second line:',file.readline())
+hellocsehope to enjoylearningpython programming
+print('third line:',file.readline())
+Have a nice day
+file.close()
+Output:
+firtsline: hellocsehope to enjoylearningpython programming
+second line: Have a nice day
+third line:
+4.4.2 readlines() Method
+
+readlines() Method is used to read all the lines in the file.
+Department Of Information Technology AY: 2018-19 GEC Page 11
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Example:Program to demonstrate readlines() function
+file=open('data.txt','r') data.txt
+print(file.readlines()) hellocsehope to enjoylearningpython programming
+file.close() Have a nice day
+Output:
+['hellocsehope to enjoylearningpython programming\n', 'Have a nice day']
+4.4.3 list() Method
+
+list() method is also used to display entire contents of the file.you need to pass
+the file object as an argument to the list() method.
+Example: Program to display the contents of the file data.txt using the list()
+method
+file=open('data.txt','r')
+data.txt
+print(list(file))
+hellocsehope to enjoylearningpython programming
+file.close()
+Have a nice day
+Output:
+['hellocsehope to enjoylearningpython programming\n', 'Have a nice day']
+4.4.4Opening a file using with keyword:
+
+It is good programming habit to use the with keyword when working with file
+objects.
+
+This has the advantage that the file is properly closed after it is used even if an
+error occurs during read or write operation or even when you forget to explicitly
+close the file.
+Department Of Information Technology AY: 2018-19 GEC Page 12
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Note: When you open a file for reading, or writing, the file is searched in the current
+directory. If the file exists somewhere else then you need to specify the path of the
+file.
+4.4.5 Splitting Words:
+
+Python allows you to read line(s) from a file and splits the line (treated as a
+string) based on a character. By default, this character is space but you can
+even specify any other character to split words in the string.
+Example: Program to split the line into series of words and use space to perform
+the split operation
+with open('data.txt','r') as file:
+data.txt
+line=file.readline()
+hellocsehope to enjoylearningpython programming
+words=line.split()
+print(words)
+Output:
+['hellocsehope', 'to', 'enjoylearningpython', 'programming']
+4.5 Some Other Useful File Methods:
+
+The following are some of additional methods which will work on files
+Department Of Information Technology AY: 2018-19 GEC Page 13
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4.6 File Positions:
+
+With every file, the file management system associates a pointer often known
+as file pointer that facilitates the movement across the file for reading and/ or
+writing data.
+
+The file pointer specifies a location from where the current read or write
+operation is initiated. Once the read/write operation is completed, the pointer
+is automatically updated.
+
+Python has various methods that tells or sets the position of the file pointer.
+
+For example, the tell() method tells the current position within the file at which
+the next read or write operation will occur. It is specified as number of bytes
+from the beginning of the file.
+
+When you just open a file for reading, the file pointer is positioned at location
+0, which is the beginning of the file.
+
+The syntax for seek() function is seek(offset[, from])
+Department Of Information Technology AY: 2018-19 GEC Page 14
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+
+The offset argument indicates the number of bytes to be moved and the from
+argument specifies the reference position from where the bytes are to be
+moved.
+Example: Program that tells and sets the position of file pointer
+File1.txt
+Hello All,
+Hope you are enjoying learning python
+4.7 Renaming and Deleting Files:
+
+The os module in Python has various methods that can be used to perform file-
+processing operations like renaming and deleting files. To use the methods
+defined in the os module, you should first import it in your program then call
+any related functions.
+
+The rename() Method: The rename() method takes two arguments, the current
+filename and the new filename.
+Its syntax is: os.rename(old_file_name, new_file_name)
+
+The remove() Method: This method can be used to delete file(s). The method
+takes a filename (name of the file to be deleted) as an argument and deletes
+that file.
+Its syntax is: os.remove(file_name)
+Example: Program to rename file ‘File1.txt’ to ‘student.txt’
+Department Of Information Technology AY: 2018-19 GEC Page 15
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Example: Program to delete a file named File1.txt
+5. Types of Arguments
+5.1 Command line Arguments:
+
+The Python sys module provides access to any command-line arguments via
+the sys.argv. This serves two purposes
+ sys.argv is the list of command-line arguments.
+ len(sys.argv) is the number of command-line arguments.
+ Here sys.argv[0] is the program ie. script name.
+Example1:Write a Python program to demonstrate the usage of Command Line
+Arguments
+sample11.py
+#!/usr/bin/python
+import sys
+print ('Number of arguments:', len(sys.argv), 'arguments.')
+print ('Argument List:', str(sys.argv))
+Department Of Information Technology AY: 2018-19 GEC Page 16
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+Output:
+Example2: Write a Python program to copy the content of one file to another
+using command line arguments.
+sample12.py input.txt
+Hello hi
+#!/usr/bin/python How are you
+import sys
+print ('Number of arguments:', len(sys.argv), 'arguments.')
+with open(str(sys.argv[1])) as f:
+output.txt
+with open((sys.argv[2]), "w") as f1:
+Hello hi
+for line in f: How are you
+f1.write(line)
+print('File Copied Success')
+6. File Handling Programs
+1.Write a program to print each line of a file in reverse order
+Program:
+input.txt
+with open('input.txt','r') as fp: Hello hi
+How are you
+for line in fp:
+print (line[::-1])
+Output:
+ih olleH
+uoy era who
+Department Of Information Technology AY: 2018-19 GEC Page 17
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+2. Write a program to compute the number of characters, words and lines in a
+file
+Program:
+fname = "data.txt"
+data.txt
+num_lines = 0
+hellocsehope to enjoylearningpython programming
+num_words = 0
+num_chars = 0 Have a nice day
+with open(fname, 'r') as f:
+for line in f:
+words = line.split()
+num_lines += 1
+num_words += len(words)
+num_chars += len(line)
+print('The no of lines in a given file is',num_lines)
+print('The no of words in a given file is',num_words)
+print('The no of chars in a given file is',num_chars)
+Output:
+The no of lines in a given file is 2
+The no of words in a given file is 8
+The no of chars in a given file is 63
+3. Write a program to copy contents of one file to another file
+Program:
+with open("data.txt") as f:
+with open("out.txt", "w") as f1:
+for line in f:
+f1.write(line)
+Output:
+data.txt out.txt
+hellocsehope to enjoylearningpython hellocsehope to enjoylearningpython
+programming programming
+Department Of Information Technology AY: 2018-19 GEC Page 18
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+4. Write a Python Program to count number of Vowels and Number of
+Consonants in a given file. (November 2018 Supplementary)
+Program:
+infile = open("data.txt", "r")
+vowels = set("AEIOUaeiou")
+cons = set("bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ")
+countV = 0
+countC = 0
+for c in infile.read():
+if c in vowels:
+countV += 1
+elif c in cons:
+countC += 1
+print("The no of Vowels are",countV)
+print("The no of Consonants are",countC)
+Assignment-Cum-Tutorial Questions
+SECTION A: Objective Questions
+1. Identify The right way to close a file [ ]
+a)File.close() b)close(file) c)close(“file”) d)File.closed
+2. _____________ is an example of volatile memory
+3. A file is stored in _______________ memory [ ]
+a)primary b)secondary c)cache d)volatile
+4. What will happen when a file is opened in write mode and then immediately
+closed. [ ]
+a)Filecontentsaredeleted
+b) Nothing Happens
+c) A Blank Line is written to the file
+d)an error occurs
+5. The default access mode of the file is _____________
+6. If a file opened in ‘w’ mode does not exist, then [ ]
+a) nothing will happen
+b) File will be created
+c) Data will be written to a afile that has a name similar to the specified name
+d) Error will be generated
+Department Of Information Technology AY: 2018-19 GEC Page 19
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+7. Identify the delimiter in the Solaris file system [ ]
+a)/ b)\ c): d)|
+8. By default a new file is created in which directory [ ]
+a)root b)current working c)Python directory d)D Drive
+9. which method is used to read a single line from the file [ ]
+a)read() b)readline() c)readlines() d)reads()
+10. When you open a file for appending that does not exist, then a new file is
+created [True/False]
+11. Identify the correct way to write “Welcome to Python” in a file [ ]
+a)write(file,”Welcome to python”)
+b)write(“Welcome to Python”,file)
+c)file.write(“Welcome to Python”)
+d)”Welcome to Python”.write(file)
+12. If the file.txt has 10 lines written in it,what will the result? [ ]
+len(open(‘file.txt’).readlines())
+a)1 b)0 c)10 d)2
+13. Identify the sub folder in the path [ ]
+C:\Students\UnderGraduates\B.Tech_CS.docx
+a)C: b) Students c)B.Tech_CS.docx d) UnderGraduates
+14. Which method returns a string that includes everything specified in the
+path? [ ]
+a)os.path.dirname(path)
+b)os.path.basename(path)
+c)os.path.relpath()
+d)os.path.abs()
+15. if count is missing or has a negative value in the read() method then, no
+contents are read from the file. [True/False]
+16. os.path.abs() method accepts a file path as an argument and returns True if
+the path is an absolute path and False otherwise
+[True/False]
+Department Of Information Technology AY: 2018-19 GEC Page 20
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+17. How many characters would be printed by this code (One character is one
+byte)________________________
+file=open(“file.txt”,”r”)
+for i in range(100):
+print(file.read(10))
+file.close()
+18. Fill in the blank to open a file,read its content and prints its length
+file=_______(“file.txt”,”r”)
+text=file.__________()
+print(_________(text))
+file.close()
+19. Predict the output of the following program [ ]
+f = None
+for i in range (5):
+with open("data.txt", "w") as f:
+if i > 2
+break
+print(f.closed)
+a)True b) False c) None d) Error
+20. Predict the output of the following program [ ]
+with open("hello.txt", "w") as f:
+f.write("Hello World how are you today")
+with open('hello.txt', 'r') as f:
+data = f.readlines()
+for line in data:
+words = line.split()
+print (words)
+Department Of Information Technology AY: 2018-19 GEC Page 21
+PYTHON PROGRAMMING UNIT-VI
+(Smt.Ch.Suguna Latha, Sri.T.Balaji)
+f.close()
+a. Runtime Error
+b. Hello World how are you today
+c. [‘Hello’, ‘World’, ‘how’, ‘are’, ‘you’, ‘today’]
+d. Hello
+SECTION B: SUBJETIVE QUESTIONS
+1. Define file. Explain about the importance of files in Python.
+2. Define path. Distinguish between absolute and relative path with an example.
+3. Discuss briefly about various types of file.
+4. Write in detail about various modes of file.
+5. Give an overview of File positions.
+6. Explain different file operations with suitable programming examples.
+(April 2018 Regular and November 2018 Supplementary)
+7. What is the purpose of opening a file using with keyword.
+8. Write a Python program to count number of vowels and consonants in a given
+text file
+9. Write a Python program that reads data from a file and Calculates the
+percentage of vowels and consonants in the file
+10. Write a Python program that copies one file to another in such away that all
+comment lines are skipped and not copied in the destination file
+11. Write a python program to find no of lines, words and characters in a given
+text file
+12. Write a Python program to combine each line from first file with the
+corresponding line in second file.
+13. Write a program that accepts file name as an input from the user. Open the
+file and count number of times a character appears in the file.
+14. Write a program that tells and sets the position of the file pointer.
+-----------OOO-----------
+Department Of Information Technology AY: 2018-19 GEC Page 22

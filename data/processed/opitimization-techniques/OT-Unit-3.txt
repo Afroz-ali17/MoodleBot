@@ -1,0 +1,417 @@
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Academic Year : 2024-25
+Year / Semester : II/II
+Section : CSE&BS, CSE(AI & ML)
+Regulations : R23
+Faculty Name : Dr. Y. Raja Obula Reddy
+Department : Mathematics
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+UNIT -3
+Sequencing Model
+Introduction :
+In this Module, we discuss the problem of determining the sequence (order) in which
+a number of jobs should be performed on different machines in order to make
+effective use of available facilities and achieve greater output. If there are n jobs
+which are to be performed on m different machines then the problem is to determine
+the sequence of jobs, which minimizes the total elapsed time, that is, the time from
+the start of the first job up to the completion of the last job.
+Suppose that 2 or 3 jobs are to be processed on 2 or 3 machines. Then the job
+sequencing can be done by the method of enumeration. If, however, the number of
+jobs and/or machines increases, then the problem becomes complicated and the
+method of enumeration is not suitable.
+Let us suppose that we have n machines and m jobs. Then we have (n!)m possible
+sequences. For n = 5 and m = 5, we have (5!)5 = 25, 000,000,000 possible sequences.
+It is time consuming to find all the sequences and select the optimal one among all
+the sequences. Hence, we have to look for an easier method for finding the optimal
+sequence.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Basic Terminology in sequencing model:
+In the following, we describe the basic terminologies which are commonly used in
+job sequencing:
+Number of machines - It refers to the number of service facilities through which
+a job must pass before it is assumed to be completed.
+Processing time - This is the time required by each job on each machine.
+Processing order - This refers to the order (sequence) in which machines are
+required for completing the job.
+Idle time on a machine - This is the time during which a machine does not have a
+job to process.
+Total elapsed time - This is the time interval between starting the first job and
+completing the last job, including the idle time (if any), in a particular order by the
+given set of machines.
+No passing rule - This means that the passing is not allowed, i.e., the same order
+of jobs is maintained over each machine. If n jobs are to be processed through two
+machines A and B in the order AB, then this means that each job will go to
+machine A first and then to B.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Principal Assumptions in sequencing problem :
+General assumptions for sequencing problems are as follows:
+1. The processing time on each machine is known.
+2. The time required to complete a job is independent of the order of jobs in
+which they are to be processed.
+3. No machine can process more than one job simultaneously.
+4. The time taken by each job in changing over from one machine to another is
+negligible.
+5. Each job, once started on a machine is to be performed up to completion on
+that machine.
+6. The order of completion of job has no significance, i.e., no job is to be given
+priority.
+7. A job starts on the machine as soon as the job and the machine both are idle.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Types of Job Sequencing Problem :
+Various types of job sequencing problem arise in the world. All sequencing
+problems cannot be solved. Here, we consider the following five types of job
+sequencing problem:
+1. Processing of n jobs through one machine.
+2. n jobs are to be processed on 2 machines, say, machine A and machine B in
+the order AB. This means that each job is to be processed first on machine A
+and then on machine B.
+3. n jobs are to be processed on 3 machines A, B and C in the order ABC, i.e.,
+first on machine A, second on machine B and third on machine C.
+4. n jobs are to be processed on m machines in the given order
+5. 2 jobs are to be processed on m machines in the given order.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+1. Processing of n Jobs through 1 Machine :
+The case when a number of jobs is to be processed on a single facility is quite
+common in actual practice. Generally Processing of n Jobs through 1 Machine problems are
+solved by using shortest processing time (SPT ) rule.
+Shortest Processing Time Rule:
+sequencing the jobs in a way that the job with least processing time is picked up first,
+followed by the one with the next smallest processing time and so on is known as SPT
+sequencing and achieves the following objectives :
+i) Minimizing mean waiting time,
+ii) Minimizing mean flow time,
+iii) Minimizing mean lateness,
+iv) Minimizing the mean number of jobs waiting as in-process inventory.
+Problem 1: Six jobs A,B,C, D, E and F have arrived at one time to be processed on a single
+machine. Assuming that no new jobs arrive thereafter , determine
+i) Optimal sequence as per SPT rule,
+ii) Completion time of the jobs,
+iii) Mean flow time
+iv) Average in-process inventory.
+Job A B C D E F
+Processing time (minutes) 7 6 8 4 3 5
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Sol:
+i) As per SPT rule optimal sequence is E-D-F-B-A-C.
+ii) Completion times of the jobs are : 3, 7, 12, 18, 25 and 33 minutes respectively.
+3+7+12+18+25+33
+iii) Mean flow time =
+= 16.33 minutes.
+iv) Number of jobs waiting as in-process inventory are
+6 during time 0-3 minutes,
+5 during 3-7 minutes,
+4 during 7-12 minutes,
+3during 12-18 minutes,
+2 during 18-25 minutes,
+1 during 25-33 minutes.
+(6)(3)+(5)(4)+(4)(5)+(3)(6)+(2)(7)+(1)(8)
+∴ Average in-process inventory =
+= 2.97
+= 3 jobs (approximately).
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Problem 2: Find the optimal sequence as per SPT rule, for the following:
+Job A B C D E F G
+Processing time (minutes) 5 8 6 3 10 14 7
+Problem 3: Find the optimal sequence as per SPT rule, for the following:
+Job A B C D E F
+Processing time (minutes) 8 6 9 4 2 5
+2. Processing of n Jobs through 2 Machines :
+Suppose that n jobs are to be processed on 2 machines, say, A and B. Each job has
+to pass through the same sequence of operations in the same order, i.e., passing is not
+allowed. After a job is completely processed on machine A, it is assigned to machine B. If
+machine B is not free at that moment, then the job enters in the waiting queue. Each job from
+the waiting queue is assigned to machine B according to FIFO (first in first out) discipline.
+Let A = processing time for ith job on machine A
+i
+B = processing time for ith job on machine B
+i
+T = total elapsed time
+The problem is to determine the sequence in which n jobs should be processed through
+machines A and B so that the total elapsed time (T ) is minimum. In the following, we present
+a technique developed by Johnson and Bellman for determining an optimal sequence.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Johnson’s Algorithm :
+Step 1: Select the minimum processing time out of all A ’s and B ’s. If it is A then do the rth
+i i r
+job first. If it is B then do the sth job at last.
+s
+Step 2: If there is a tie in selecting the minimum of all the processing times, then such a
+situation is dealt with the following three ways:
+i) If the minimum of all the processing times is A , which is also equal to B , that is,
+r s
+min(A , B ) = A = B , then do the rth job first and sth job at last.
+i i r s
+ii) If min(A , B ) = A , but A = A , i.e., there is a tie for minimum among
+i i r r k
+A ’s, then select any one.
+i
+iii) If min(A , B ) = B , but B = B , i.e., there is a tie for minimum among
+i i s s t
+B ’s, then select any one.
+i
+Step 3: Now, eliminate the job which has already been assigned from further consideration,
+and repeat steps 1 and 2 until an optimal sequence is found.
+Note: Johnson’s algorithm concentrates on minimizing the idle time of machines. It is proved
+that the optimal sequence of n jobs which are to be processed on machine A and machine B in
+the order AB necessarily involves the same ordering of jobs on each machine. The total
+elapsed time is minimum when the sequence of jobs is same for both the machines.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Problem 1: Suppose that there are five jobs, each of which has to be processed on two
+machines 𝑀 and 𝑀 in the order 𝑀 𝑀 . Processing times are given in the following table:
+1 2 1 2
+Job 1 2 3 4 5
+Machine 𝑀 6 2 10 4 11
+Machine 𝑀 3 7 8 9 5
+Determine a sequence in which these jobs should be processed so as to minimize the total
+processing time.
+Problem 2: There are two machines A and B (in the order AB) that performs the five obs. The
+processing time (in hours) of five jobs are shown in table below:
+Job 1 2 3 4 5
+Machine A 3 8 5 7 4
+Machine B 4 10 6 5 8
+Find the optimal sequence for five jobs, so as to minimize elapsed time. Also calculate the
+idle time of both machines.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Problem 3: There are six jobs, each of which must go through two machines A and B in the
+order AB. Processing times in hours are given as
+Job 1 2 3 4 5 6
+Machine A 7 4 2 5 9 8
+Machine B 3 8 6 6 4 1
+Determine a sequence of the six jobs that will minimize the elapsed time T.
+Problem 4: There are six jobs, each of which has to go through the machines A and B in the
+order AB. Processing times in hours are given as
+Job 1 2 3 4 5 6
+Machine A 12 9 10 8 10 10
+Machine B 10 7 9 14 6 8
+Determine a sequence of these jobs that will minimize the total elapsed time T. Also find
+idle time for machines A and B.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+3. Processing of n Jobs through 3 Machines :
+In this section, we discuss on extension of Johnson’s procedure for scheduling n
+jobs on three machines A, B and C in order ABC. This list of jobs with their processing times
+on three machines A, B and C is given below.
+Processing time on machine Job s · · ·
+1 2 3 n
+A t11 t12 t13 · · · t1n
+B t21 t22 t23 · · · t2n
+C t31 t32 t33 · · · t3n
+An optimal solution to this problem can be obtained if either or both of the following
+conditions hold good:
+1. The minimum processing time on machine A is at least as great as the maximum processing
+time on machine B, that is, min t ≥ max t , for j = 1, 2, · · · , n.
+1j 2j
+2. The minimum processing time on machine C is at least as great as the maximum processing
+time on machine B, that is, min t ≥ max t , for j = 1, 2, · · · , n.
+3j 2j
+If either or both the above conditions hold good, then the algorithm can be summarized in the
+following steps:
+Step 1 : Examine the processing times of the given jobs on all three machines and if either one
+or both the above conditions hold, then go to Step 2; otherwise, the algorithm fails.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Step 2 : Introduce two fictitious machines, say G and H, with corresponding processing times
+given by
+i) t = t + t , j = 1, 2, · · · , n, i.e., the processing time on machine G is the sum of
+Gj 1j 2j
+the processing times on machines A and B.
+ii) t = t + t , j = 1, 2, · · · , n, i.e., the processing time on machine H is the sum of
+Hj 2j 3j
+the processing times on machines B and C.
+Step 3 : Determine the optimal sequence for n jobs and two machine equivalent sequencing
+problem with the prescribed ordering GH in the same way as discussed earlier.
+Problem 1: There are five jobs which must go through these machines A, B and C in the order
+ABC. Processing times of the jobs on different machines given below:
+Jobs A B C
+1 8 5 4
+2 10 6 9
+3 6 2 8
+4 7 3 6
+5 11 4 5
+Determine a sequence for 5 jobs which will minimize elapsed time (T).
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Problem 2: A machine operator has to perform 3 operations , Turning, Threading and
+Knurling on three machines A, B and C in the order ABC. Find the optimum sequence when
+the time in hours is given:
+Jobs Turning A Threading B Knurling C
+i i i
+1 3 8 13
+2 12 6 14
+3 5 4 9
+4 2 6 12
+5 9 3 8
+6 11 1 13
+Evaluate idle time also for each machine.
+Problem 3: There are five jobs which must go through these machines A, B and C in the order
+ABC. Processing times of the jobs on different machines given below:
+Jobs A B C
+1 7 5 6
+2 8 5 8
+3 6 4 7
+4 5 2 4
+5 6 1 3
+Determine a sequence for 5 jobs which will minimize elapsed time (T).
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+4. Processing of n Jobs through m Machines :
+There is no general method available by which we can determine optimal
+sequences for problems involving processing of n jobs on m machines. They can be handled
+only by enumeration, which is a very lengthy and time-consuming method because a total of
+(n!)m different sequences need to be considered in such a case. However, for such a problem,
+we have a method applicable if no passing of jobs is permissible, and either or both the
+conditions given below are satisfied.
+Let there be n jobs, each of which is to be processed through m machines, say, M ,
+M , · · · , M in the order M M · · · M . The list of jobs with their processing times is given
+2 m 1 2 m
+in the following table:
+Jobs
+1 2 3 n
+M t11 t12 t13 · · · t1n
+M t21 t22 t23 · · · t2n
+Machines 2
+M t31 t32 t33 · · · t3n
+. . . . . .
+tm1 tm2 tm3 tmn
+M · · ·
+m
+An optimal solution to this problem can be obtained, if either or both of the following
+conditions hold(s):
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+i) min t ≥ max t , for i = 2, 3, · · · , m − 1.
+1j ij
+ii) min t ≥ max t , for i = 2, 3, · · · , m − 1.
+mj ij
+Optimal sequence algorithm:
+The iterative procedure for determining the optimal sequence for n jobs on m ma- chines can
+be summarized as given below:
+Step 1: Find min t , min t and maximum of each of t , t , · · · , t for all j = 1, 2, · · · , n.
+1j mj 2j 3j m−1,j
+Step 2: Check the following conditions:
+i) min t ≥ max t , for i = 2, 3, · · · , m − 1.
+1j ij
+ii) min t ≥ max t , for i = 2, 3, · · · , m − 1.
+mj ij
+Step 3: If the inequalities in Step 2 are not satisfied, the method fails. Otherwise, go to next
+step.
+Step 4: Convert the m machine problem into a two-machine problem by introducing two
+fictitious machines G and H with processing times such that
+t = t1j + t2j + · · · + tm−1,j
+Gj
+t = t + t + · · · + t
+Hj 2j 3j mj
+Step 5: Determine the optimal sequence for n jobs and 2 machines equivalent se- quencing
+problem with the prescribed order GH in the same way as discussed earlier. The resulting
+sequence will be optimum for the given problem.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Note:
+1. In addition to conditions given in Step 2, if t + t + · · · + t = c, is a fixed positive
+1j 2j m−1,j
+constant for all i = 1, 2, · · · , n, then determine the optimal sequence for n jobs and two
+machines M and M in the order M M by using the optimal sequence algorithm.
+1 m 1 m
+2. In addition to the conditions given in Step 2, if t = t and t = t , for j = 1, 2, · · · , n,
+1j mj Gj Hj
+then there will be n! optimal sequences, each of which will yield minimum total elapsed time.
+3. The above mentioned procedure of solving sequencing problem is not a general procedure.
+The method is applicable only to those sequencing problems in which the minimum cost
+(time) of processing the jobs through first and/or last machine is greater than or equal to the
+cost of processing the jobs through inter- mediate machines. They are many industrial
+operations in which the machines are set in some order which does not obey this rule.
+Problem 1: There are 4 jobs, each of which has to go through the machines M M M in
+1, 2,… 6
+the M M M M M M Processing time (in hours) for each machine is given below in the
+1 2 3 4 5 6.
+table:
+Jobs Machines
+M M M M M M
+1 2 3 4 5 6
+Job A 20 10 9 4 12 27
+Job B 19 8 11 8 10 21
+Job C 13 7 10 7 9 17
+Job D 22 6 5 6 10 14
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Problem 2: Determine the optimal sequence of performing 5 jobs on 4 machines. The
+machining of each job is required in the order ABCD and the processing timings are as
+follows:
+Jobs Machines
+A B C D
+1 8 3 4 7
+2 9 2 5 5
+3 6 4 5 8
+4 12 5 1 9
+5 7 1 2 3
+Problem 3: Five jobs 1,2,3,4,5 are to be processed on four machines A, B, C, D. Their
+processing times are given in the following table. Determine the optimal sequence, minimum
+elapsed time and idle time for each machine.
+Job Processing Times in Hours
+A B C D
+1 7 15 14 21
+2 11 18 18 6
+3 2 13 11 16
+4 14 4 27 14
+5 18 11 32 16
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+5. Processing of 2 Jobs through m Machines :
+This section focuses on the problem of processing 2 jobs through m machines.
+Problems under this category can be solved with the help of graphical method. The
+graphical method is explained with the help of the following example.
+Example 1: Two jobs are to be performed on five machines A, B, C, D, and E.
+Processing times are given in the following table:
+Machines
+Job 1 Sequence A B C D E
+Time (in hours) 3 4 2 6 2
+Job 2 Sequence B C A D E
+Time (in hours) 5 4 3 2 6
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Solution: The following steps are to be followed to solve the problem graphically:
+ Draw two perpendicular lines. Horizontal line represents the processing time for job 1
+while job 2 remains idle, and vertical line represents processing time for job 2 while job 1
+remains idle.
+ Mark the processing times of job 1 and job 2 on the horizontal and vertical lines
+respectively according to the given order of machines.
+ Draw the rectangular blocks by pairing the same machines as shown in the following
+Figure .
+ Avoiding the rectangular blocks, draw the line starting from origin O to the end point,
+moving horizontally, vertically and diagonally along a line which makes an angle 45o with
+the horizontal line.
+ An optimum path minimizes the idle time for both the jobs. So, it is the path on which
+diagonal movement is maximum.
+ The elapsed time is obtained by adding the idle time for either job to the processing time
+for that job. For this example, idle time for job 1 is 3+2 =5 hours. Elapsed time =
+processing time of job 1 + idle time of job 1 = (3+4+2+6+2)+5 =17 + 5 = 22 hours.
+Likewise, idle time for job 2 is 2 hours. Elapsed time = processing time of job 2 + idle
+time of job 2 = (5 + 4 + 3 + 2 + 6) + (2) = 20 + 2 = 22 hours.
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Graph for Example 1
+Rajeev Gandhi Memorial College of Engineering and Technology(Autonomous), Nandyal
+Department of Mathematics
+Example 2: Two major parts P and P for a product require processing through six
+1 2
+machine centers. The technological sequence of these parts on the six machines and the
+manufacturing times on each machine are:
+P Machine C A E F D B
+Sequence
+Time (Hours) 2 3 4 5 6 1
+P Machine B A E F C D
+Sequence
+Time (Hours) 3 2 5 3 2 3
+What would be the optimal scheduling to minimize the total processing time for these
+two parts?

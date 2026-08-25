@@ -1,0 +1,121 @@
+File Handling
+A file is a resource to store data. As part of the programming requirement, we may have to store our data permanently for future purpose. For this requirement we should go for files. Files are very common permanent storage areas to store our data.
+Types of Files:
+Text files
+Binary files
+Text files: Text files are those which store data in the form of characters or strings.
+Binary files: Binary files can be used to store text, images, audio and video.
+Opening a File:
+Syntax: f = open(filename, mode)
+Closing a File in Python:
+Syntax: f.close()
+Modes in File Handling:
+r :open an existing file for read operation. The file pointer is positioned at the beginning of the file. If the specified file does not exist then we will get FileNotFoundError. This is default mode.
+w : open an existing file for write operation. If the file already contains some data then it will be overridden. If the specified file is not already avaialble then this mode will create that file.
+a : open an existing file for append operation. It won't override existing data . If the specified file is not already avaialble then this mode will create a new file.
+r+ :To read and write data into the file. The previous data in the file will not be deleted. The file pointer is placed at the beginning of the file.
+w+ :To write and read data. It will override existing data.
+a+ :To append and read data from the file. It wont override existing data.
+x :To open a file in exclusive creation mode for write operation. If the file already exists then we will get FileExistsError.
+Binary Text modes:
+rb,wb,ab,r+b,w+b,a+b,xb
+Various properties of File Object:
+name : Name of opened file
+mode : Mode in which the file is opened
+closed : Returns boolean value indicates that file is closed or not
+readable(): Retruns boolean value indicates that whether file is readable or not
+writable(): Returns boolean value indicates that whether file is writable or not.
+Example:
+f=open("abc.txt",'w')
+print("File Name: ",f.name)
+print("File Mode: ",f.mode)
+print("Is File Readable: ",f.readable())
+print("Is File Writable: ",f.writable())
+print("Is File Closed : ",f.closed)
+f.close()
+print("Is File Closed : ",f.closed)
+Writing data to text files:
+We can write character data to the text files by using the following 2 methods.
+1.write(str)
+2.writelines(list of lines)
+Example:
+f=open("abcd.txt",'w')
+f.write("Durga\n")
+f.write("Software\n")
+f.write("Solutions\n")
+print("Data written to the file successfully")
+f.close()
+Note: In the above program, data present in the file will be overridden everytime if we run the program. Instead of overriding if we want append operation then we should open the file as follows.
+Example:
+f=open("abcd.txt",'w')
+list=["sunny\n","bunny\n","vinny\n","chinny"]
+f.writelines(list)
+print("List of lines written to the file successfully")
+f.close()
+Note: while writing data by using write() methods, compulsory we have to provide line seperator(\n),otherwise total data should be written to a single line.
+Reading Character Data from text files:
+We can read character data from text file by using the following read methods.
+read():To read total data from the file
+read(n) :To read 'n' characters from the file
+readline(): To read only one line
+readlines():To read all lines into a list
+Example: To read total data from the file
+f=open("abc.txt",'r')
+data=f.read()
+print(data)
+f.close()
+Example: To read only first 10 characters
+f=open("abc.txt",'r')
+data=f.read(10)
+print(data)
+f.close()
+Example: To read data line by line:
+f=open("abc.txt",'r')
+line1=f.readline()
+print(line1,end='')
+line2=f.readline()
+print(line2,end='')
+line3=f.readline()
+print(line3,end='')
+f.close()
+Example: To read all lines into list:
+f=open("abc.txt",'r')
+lines=f.readlines()
+for line in lines:
+print(line,end='')
+f.close()
+The with statement:
+with is a keyword in python. This keyword can be used while opening a file. We can use this to group file operation statements within a block.
+The advantage of this ‘with’ keyword is that it will take care of closing the file. After completing all operations automatically even in the case of exceptions also, and we are not required to close explicitly.
+Example:
+with open("abc.txt","w") as f:
+f.write("Durga\n")
+f.write("Software\n")
+f.write("Solutions\n")
+print("Is File Closed: ",f.closed)
+print("Is File Closed: ",f.closed)
+Coping Data from one file to another file:
+f=open("text.txt","r")
+f2=open("text1.txt","w")
+f2.write(f.read())
+f.close()
+f2.close()
+print("completed")
+For Counting Words,Characters,lines in the given file
+import os, sys
+fname=input("Enter File Name: ")
+if os.path.isfile(fname):
+print("File exists:", fname)
+f=open(fname, "r")
+else:
+print("File does not exist:", fname)
+sys.exit(0)
+lcount=wcount=ccount=0
+for line in f:
+lcount=lcount+1
+ccount=ccount+len(line)
+words=line.split()
+wcount=wcount+len(words)
+print("The number of Lines:", lcount)
+print("The number of Words:", wcount)
+print("The number of Characters:", ccount)

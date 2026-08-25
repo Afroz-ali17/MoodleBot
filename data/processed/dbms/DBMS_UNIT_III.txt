@@ -1,0 +1,706 @@
+RGM College of
+Engineering & Technology
+UNIT-III
+Introduction to SQL:
+➢ Structured Query Language (SQL) is the most widely used commercial
+relational database language.
+➢ It was originally developed at IBM in the SEQUEL-XRM and System-R
+projects (1974 - 1977).
+➢ Codd introduced DBMS products based on SQL, and it is now a de facto
+standard. SQL continues to evolve in response to changing needs in the
+database area. The SQL-92 is standardized with ANSI/ISO standard for
+SQL, which is called SQL-99. The SQL language has several aspects to it:
+The Data Definition Language (DDL):
+➢
+The set of SQL commands like creation, deletion, and modification
+of definitions for tables and views. Integrity constraints can be
+defined on tables, either when the table is created or later. The DDL
+also provides commands for specifying access rights or privileges to
+tables and views.
+The Data Manipulation Language (DML):
+➢
+This subset of SQL allows users to pose queries and to insert,
+delete, and modify rows.
+Introduction to SQL:
+Triggers and Advanced Constraints:
+➢ The new SQL:1999 standard includes support for triggers,
+which are actions executed by the DBMS whenever changes
+to the database meet conditions specified in the trigger.
+➢SQL provides mechanisms to control user’s access to data objects such
+as tables and views.
+Transaction management:
+➢ Various commands allow a user to explicitly control aspects of
+how a transaction is to be executed.
+Client-server execution and remote database access:
+➢ These commands control how a client application program can
+connect to an SQL database server, or access data from a
+database over a network.
+Advanced Features:
+➢ Integrity Constraints and Assertions.
+THE FORM OF A BASIC SQL QUERY
+➢ Let we define the syntax of a simple SQL query and explains its meaning
+through a conceptual evaluation strategy. A conceptual evaluation
+strategy is a way to evaluate the query that is intended to be easy to
+understand, rather than efficient.
+➢ A DBMS would typically execute a query in a different and more
+efficient way :
+The basic form of an SQL query is as follows:
+SELECT [DISTINCT] select-list
+FROM from-list
+WHERE qualification
+➢ Every query must have a SELECT clause, which specifies columns to be
+retained in the result, and a FROM clause, which specifies a cross-
+product of tables. The optional WHERE clause specifies selection
+conditions on the tables mentioned in the FROM clause.
+➢ Let us consider a simple query:
+Query: Find the names and ages of all sailors.
+SQL> SELECT DISTINCT S.sname, S.age FROM Sailors S
+THE FORM OF A BASIC SQL QUERY
+➢ Consider the following instances from sailors database includes
+sailors, Boats and Reserves tables
+THE FORM OF A BASIC SQL QUERY
+Query2: Find all sailors with a rating above 7
+SQL> SELECT S.sid, S.sname, S.rating, S.age FROM Sailors AS S
+WHERE S.rating > 7;
+➢ Let we now consider the syntax of a basic SQL query in more detail.
+➢ The from-list in the FROM clause is a list of table names. A table name
+can be followed by a range variable; a range variable is particularly
+useful when the same table name appears more than once in the from-
+list.
+➢ The select-list is a list of (expressions involving) column names of tables
+named in the from-list. Column names can be prefixed by a range
+variable.
+➢ The qualification in the WHERE clause is a boolean combination (i.e., an
+expression using the logical connectives AND, OR, and NOT) of
+conditions of the form expression op expression, where op is one of the
+comparison operators {<=, =, <>, >=, >}
+➢ An expression is a column name, a constant, or an (arithmetic or string)
+expression.
+➢ .
+THE FORM OF A BASIC SQL QUERY
+➢ The DISTINCT keyword is optional. It indicates that the table
+computed as an answer to this query should not contain
+duplicates, that is, two copies of the same row. The default is that
+duplicates are not eliminated.
+➢ In brief, the conceptual evaluation strategy performed in the
+following manner:
+➢ Compute the cross-product of the tables in the from-list.
+➢ Delete rows in the cross-product that fail the qualification conditions.
+➢ Delete all columns that do not appear in the select-list.
+➢ If DISTINCT is specified, eliminate duplicate rows.
+Describe the evaluation strategy with an example
+Query3: Find the names of sailors who have reserved boat number
+103.
+➢ It can be expressed in SQL as follows.
+SQL> SELECT S.sname FROM Sailors S, Reserves R
+WHERE S.sid = R.sid AND R.bid=103;
+➢ The evaluation of the above query performed by cross product of
+instances S4 and R3.
+Describe the evaluation strategy with an example
+➢ The cross product of these instances of R3 and S4 performed in
+the following manner
+➢ The second step is to apply the qualification S.sid = R.sid AND
+R.bid=103.
+➢ The third step is to eliminate unwanted columns; only sname
+appears in the SELECT clause. Finally, displays unique values in the
+result
+Examples of Basic SQL Queries
+Query4: Find the sid’s of sailors who have reserved a Red
+boat.
+SQL> SELECT R.sid FROM Boats B, Reserves R
+WHERE B.bid = R.bid and B.color = 'red';
+Query5: Find the colors of boats reserved by Lubber.
+SQL> SELECT B.color FROM Sailors S, Reserves R,
+Boats B WHERE S.sid = R.sid AND R.bid = B.bid AND
+S.sname = 'Lubber';
+Query6: Find the names of sailors who have reserved at
+least one boat.
+SQL> SELECT S.sname FROM Sailors S, Reserves R
+WHERE S.sid = R.sid;
+Expressions and Strings in the SELECT Command
+➢ SQL supports a more general version of the select-list than just a list of
+columns.
+➢ Each item in a select-list can be of the form expression AS column
+name, where expression is any arithmetic or string expression over
+column names (possibly prefixed by range variables) and constants, and
+column name is a new name for this column in the output of the query.
+Query7: Compute increments for the ratings of persons who have sailed
+two different boats on the same day.
+SQL> SELECT S.sname, S.rating+1 AS rating FROM Sailors S,
+Reserves R1, Reserves R2 WHERE S.sid = R1.sid and S.sid = R2.sid and
+R1.day = R2.day and R1.bid <> R2.bid;
+Query8: Find the ages of sailors whose name begins and ends with B and
+has at least three characters.
+SQL> SELECT S.age FROM Sailors S WHERE S.sname LIKE 'B_%b';
+UNION, INTERSECT, AND EXCEPT
+➢ SQL provides three set-manipulation constructs that extend the basic query. Since the answer to a query is a
+multi set of rows, it is natural to consider the use of operations such as union, intersection, and difference.
+➢ SQL supports these operations under the names UNION, INTERSECT, and EXCEPT.
+➢ SQL also provides other set operations:
+➢ IN (to check if an element is in a given set),
+➢ op ANY, op ALL (to compare a value with the elements in a given set, using comparison operator op),
+➢ EXISTS (to check if a set is empty).
+➢ IN and EXISTS can be prefixed by NOT, with the obvious modification to their meaning.
+Query9: Find the names of sailors who have reserved a red or a green boat.
+SQL> SELECT S.sname FROM Sailors S, Reserves R, Boats B WHERE S.sid = R.sid AND R.bid = B.bid AND
+(B.color = 'red' OR B.color = 'green');
+(OR)
+SQL> SELECT S.sname FROM Sailors S, Reserves R, Boats B WHERE S.sid = R.sid AND R.bid = B.bid AND
+B.color = 'red' UNION SELECT S2.sname FROM Sailors S2, Boats B2, Reserves R2 WHERE S2.sid = R2.sid AND
+R2.bid = B2.bid AND B2.color = 'green‘;
+Examples For exists operator:
+Query: Find sailors information when boat color red is exists in boats relation?
+SQL> select * from sailors where exists (select color from boats where color='red');
+SQL> select * from sailors where exists (select color from boats where color='brown');
+SQL> select * from sailors where not exists(select color from boats where color='brown');
+UNION, INTERSECT, AND EXCEPT
+Query10: Find the names of sailor's who have reserved both a red and a green boat?
+SQL> SELECT S.sname FROM Sailors S, Reserves R1, Boats B1, Reserves R2, Boats B2 where
+S.sid = R1.sid AND R1.bid = B1.bid AND S.sid = R2.sid AND R2.bid = B2.bid AND B1.color='red' AND
+B2.color = 'green';
+(OR)
+SQL> SELECT S.snarne FROM Sailors S, Reserves R, Boats B WHERE S.sid = R.sid AND R.bid =
+B.bid AND B.color = 'red' INTERSECT SELECT S2.sname FROM Sailors S2, Boats B2, Reserves R2
+WHERE S2.sid = R2.sid AND R2.bid = B2.bid AND B2.color = 'green';
+Query11: Find the sid’s of all sailors who have reserved red boats but not green boats?
+SQL> SELECT S.sid FROM Sailors S, Reserves R, Boats B WHERE S.sid = R.sid AND R.bid =
+B.bid AND B.color = 'red'
+minus
+SELECT S2.sid FROM Sailors S2, Reserves R2, Boats B2 WHERE S2.sid = R2.sid AND R2.bid =
+B2.bid AND B2.color = 'green';
+NESTED QUERIES
+➢ One of the most powerful features of SQL is nested queries. A
+nested query is a query that has another query embedded within
+it; the embedded query is called a sub query.
+➢ The embedded query can of course be a nested query itself; thus
+queries that have very deeply nested structures are possible.
+When writing a query, we sometimes need to express a condition
+that refers to a table that must itself be computed.
+➢ The query used to compute this subsidiary table is a sub query
+and appears as part of the main query.
+➢ A sub query typically appears within the WHERE clause of a
+query. Sub queries can sometimes appear in the FROM clause or
+the HAVING clause.
+Introduction to Nested Queries
+➢ As an example, let us rewrite the following query, which we discussed
+earlier, using a nested sub query:
+Query12: Find the names of sailors who have reserved boat 103.
+SQL> SELECT S.sname FROM Sailors WHERE S S.sid IN (SELECT R.sid FROM
+Reserves R WHERE R.bid = 103);
+➢ The best way to understand a nested query is to think of it in terms of a
+conceptual evaluation strategy.
+➢ In our example, the strategy consists of examining rows in Sailors and,
+for each such row, evaluating the sub query over Reserves.
+➢ In general, the conceptual evaluation strategy that we presented for
+defining the semantics of a query can be extended to cover nested
+queries as follows: Construct the cross-product of the tables in the
+FROM clause of the top-level query as before.
+➢ For each row in the cross-product, while testing the qualification in the
+WHERE clause, (re)compute the sub query. Of course, the sub query
+might itself contain another nested sub query, in which case we apply
+the same idea one more time, leading to an evaluation strategy with
+several levels of nested loops
+Introduction to Nested Queries
+Query13: Find the names of sailors who have reserved a red
+boat.
+SQL> SELECT S.sname FROM Sailors S WHERE S.sid IN
+(SELECT R.sid FROM Reserves R WHERE R. bid IN (SELECT
+B.bid FROM Boats B WHERE B.color = 'red'));
+➢ To find the names of sailors who have not reserved a red
+boat, we replace the outermost occurrence of IN by NOT
+IN, as illustrated in the next query.
+Query14: Find the names of sailors who have not reserved a
+red boat.
+SQL> SELECT S.sname FROM Sailors S WHERE S.sid
+NOT IN ( SELECT R.sid FROM Reserves R WHERE R.bid IN (
+SELECT B.bid FROM Boats B WHERE B.color = 'red' ));
+Correlated Nested Queries
+➢ In the nested queries seen so far, the inner sub query has been
+completely independent of the outer query. In general, the inner
+sub query could depend on the row currently being examined in
+the outer query (in terms of our conceptual evaluation strategy).
+Let us rewrite the following query once more.
+Query15: Find the names of sailors who have reserved boat number
+103.
+SQL> SELECT S.sname FROM Sailors S WHERE EXISTS (SELECT
+* FROM Reserves R WHERE R.bid = 103 AND R.sid = S.sid);
+➢ The EXISTS operator is another set comparison operator, such as
+IN. It allows us to test whether a set is nonempty, an implicit
+comparison with the empty set. Thus, for each Sailor row S, we
+test whether the set of Reserves rows R such that R.bid = 103
+AND S.sid = R.sid is nonempty. If so, sailor S has reserved boat
+103, and we retrieve the name.
+Correlated Nested Queries
+➢ The sub query clearly depends on the current row S
+and must be re-evaluated for each row in Sailors.
+The occurrence of S in the sub query (in the form of
+the literal S.sid) is called a correlation, and such
+queries are called correlated queries.
+➢ This query also illustrates the use of the special
+symbol * in situations where all we want to do is to
+check that a qualifying row exists, and do not really
+want to retrieve any columns from the row. This is
+one of the two uses of * in the SELECT clause that is
+good programming style; the other is as an
+argument of the COUNT aggregate operation. As a
+further example, by using NOT EXISTS instead of
+EXISTS, we can compute the names of sailors who
+have not reserved a red boat
+Set Comparison operators
+➢ We have already seen the set-comparison operators EXISTS, IN and
+UNIQUE, along with their negated versions. SQL also supports op ANY
+and op ALL, where op is one of the arithmetic comparison operators
+{<=, =, <>, >=, >}. (SOME is also available, but it is just a synonym for
+ANY).
+Query16: Find sailors whose rating is better than some sailor called
+Horatio.
+SQL> SELECT S.sid FROM Sailors S WHERE S.rating > ANY (SELECT
+S2.rating FROM Sailors S2 WHERE S2.sname = 'Horatio');
+Query17: Find sailors whose rating is better than every sailor called
+Horatio.
+SQL> SELECT S.sid FROM Sailors S WHERE S.rating > ALL (SELECT
+S2.rating FROM Sailors S2 WHERE S2.sname = 'Horatio');
+The example of illustrating ALL operator to find out sailors who had highest
+rating with the following example.
+Query18: Find the Sailors with the highest rating.
+SQL> SELECT S.sid FROM Sailors S WHERE S.rating >= ALL (SELECT
+S2.rating FROM Sailors S2);
+AGGREGATE OPERATORS
+➢ In addition to simply retrieving data, we often want to perform some
+computation or summarization. SQL allows the use of arithmetic expressions.
+We now consider a powerful class of constructs for computing aggregate
+values such as MIN and SUM.
+➢ These features represent a significant extension of relational algebra. SQL
+supports five aggregate operations, which can be applied on any column, say
+A, of a relation:
+1. COUNT ([DISTINCT] A): The number of (unique) values in the A column.
+2. SUM ([DISTINCT] A): The sum of all (unique) values in the A column.
+3. AVG ([DISTINCT] A): The average of all (unique) values in the A column.
+4. MAX (A): The maximum value in the A column.
+5. MIN (A): The minimum value in the A column.
+Note that it does not make sense to specify DISTINCT in conjunction with MIN or
+MAX (although SQL does not preclude this).
+Query19: Find the average age of all sailors.
+SQL> SELECT AVG (S.age) FROM Sailors S; On instance S3 of Sailors table,
+the average age of sailors is 37.4.
+Query20: Find the average age of sailors with a rating of 10.
+SQL> SELECT AVG (S.age) FROM Sailors S WHERE S.rating = 10;
+AGGREGATE OPERATORS
+Query21: Find the name and age of the oldest sailor. Consider the
+following attempt to answer this query:
+SQL> SELECT S.sname, MAX (S.age) FROM Sailors S;
+(OR)
+SQL> SELECT S.sname, S.age FROM Sailors S WHERE S.age =
+(SELECT MAX (S2.age) FROM Sailors S2 );
+➢ We can count the number of sailors using COUNT. This example
+illustrates the use of * as an argument to COUNT, which is useful when
+we want to count all rows.
+Query22: Count the number of sailors.
+SQL> SELECT COUNT (*) FROM Sailors S;
+Query23: Count the number of different sailor names.
+SQL> SELECT COUNT ( DISTINCT S.sname ) FROM Sailors S;
+Query24: Find the names of sailors who are older than the oldest sailor
+with a rating of 10.
+SQL> SELECT S.sname FROM Sailors S WHERE S.age > (SELECT MAX
+(S2.age) FROM Sailors S2 WHERE S2.rating = 10 );
+The GROUP BY and HAVING Clauses
+➢ So far, we have applied aggregate operations to all (qualifying) rows in a
+relation. Often we want to apply aggregate operations to each of a number of
+groups of rows in a relation, where the number of groups depends on the
+relation instance (i.e., is not known in advance). For example, consider the
+following query.
+Query25: Find the age of the youngest sailor for each rating level. If we know that
+ratings are integers in the range 1 to l0, we could write 10 queries of the form:
+SQL> SELECT MIN (S.age) FROM Sailors S WHERE S.rating = i;
+➢ Where i = 1,2, ... ,10 writing 10 such queries is tedious. More important, we
+may not know what rating levels exist in advance. To write such queries, we
+need a major extension to the basic SQL query form, namely, the GROUP BY
+clause. In fact, the extension also includes an optional HAVING clause that can
+be used to specify qualifications over groups.
+➢ The general form of an SQL query with these extensions is: SELECT [DISTINCT]
+select-list FROM from-list WHERE qualification GROUP BY grouping-list HAVING
+group-qualification Using the GROUP BY clause, we can write (Q 25) as follows
+SQL> SELECT S.rating, MIN (S.age) FROM Sailors S GROUP BY S.rating;
+Let us consider some important points concerning the new clauses:
+The select-list in the SELECT clause consists of
+(1) a list of column names and
+(2) A list of terms having the form agg op ( column-name) AS newname.
+The GROUP BY and HAVING Clauses
+➢ We already saw AS used to rename output columns. Columns that are the
+result of aggregate operators do not already have a column name, and
+therefore giving the column a name with AS is especially useful.
+➢ Every column that appears in (1) must also appear in grouping-list. The reason
+is that each row in the result of the query corresponds to one group, which is a
+collection of rows that agree on the values of columns in grouping list.
+➢ In general, if a column appears in list (1), but not in grouping-list, there can be
+multiple rows within a group that have different values in this column, and it is
+not clear what value should be assigned to this column in an answer row.
+➢ We can sometimes use primary key information to verify that a column has a
+unique value in all rows within each group. For example, if the grouping-list
+contains the primary key of a table in the from-list, every column of that table
+has a unique value within each group. In SQL:1999, such columns are also
+allowed to appear in part (1) of the select-list.
+➢ The expressions appearing in the group-qualification in the HAVING clause
+must have a single value per group. The intuition is that the HAVING clause
+determines whether an answer row is to be generated for a given group. To
+satisfy this requirement in SQL-92, a column appearing in the group
+qualification must appear as the argument to an aggregation operator, or it
+must also appear in grouping-list.
+The GROUP BY and HAVING Clauses
+➢ In SQL:1999, two new set functions have been introduced that allow us
+to check whether every or any row in a group satisfies a condition; this
+allows us to use conditions similar to those in a WHERE clause. If
+GROUP BY is omitted, the entire table is regarded as a single group.
+Let us explain the semantics of such a query through an example.
+Query26: Find the age of the youngest sailor who is eligible to vote (i.e., is
+at least 18 years old) for each rating level with at least two such sailors.
+SQL> SELECT S.rating, MIN (S.age) AS minage FROM Sailors S
+WHERE S.age >= 18 GROUP BY S.rating HAVING COUNT (*) > 1;
+➢ SQL:1999 has introduced two new set functions, EVERY and ANY. To
+illustrate these functions, we can replace the HAVING clause in our
+example by HAVING COUNT (*) > 1 AND EVERY ( S.age <= 60 );
+➢ In other words, we can write the same query in the following format:
+SQL> SELECT S.rating, MIN (S.age) AS minage FROM Sailors S
+WHERE S.age >= 18 AND S.age <= 60 GROUP BY S.rating HAVING
+COUNT (*) > 1;
+More Examples of Aggregate Queries:
+Query27: For each red boat, find the number of reservations for this boat.
+SQL> SELECT B.bid, COUNT (*) AS reservationcount FROM Boats B,
+Reserves R WHERE R.bid = B.bid AND B.color = 'red' GROUP BY B.bid;
+➢ The above query specification is illegal, due to that the same query can be
+define in alternative way as follows:
+SQL> SELECT B.bid, COUNT (*) AS reservationcount FROM Boats B,
+Reserves R WHERE R.bid = B.bid GROUP BY B.bid HAVING B.color = 'red';
+Query28: Find the average age of sailors for each rating level that has at least two
+sailors.
+SQL> SELECT S.rating, AVG (S.age) AS avgage FROM Sailors S GROUP BY
+S.rating HAVING COUNT (*) > 1;
+Query29: Find the average age of sailors who are of voting age (i.e. at least 18
+years old) for each rating level that has at least two sailors.
+SQL> SELECT S.rating, AVG ( S.age ) AS avgage FROM Sailors S WHERE S.
+age >= 18 GROUP BY S.rating HAVING 1 < ( SELECT COUNT (*) FROM Sailors S2
+WHERE S.rating = S2.rating );
+More Examples of Aggregate Queries:
+Query30: Find the average age of sailors who are of voting
+age (i.e., at least 18 years old) for each rating level that has
+at least two such sailors.
+SQL> SELECT S.rating, AVG ( S.age ) AS avgage FROM
+Sailors S WHERE S. age> 18 GROUP BY S.rating HAVING 1 <
+( SELECT COUNT (*) FROM Sailors S2 WHERE S.rating =
+S2.rating AND S2.age >= 18 );
+Query31: Find those ratings for which the average age of
+sailors is the minimum overall ratings. We use this query
+to illustrate that aggregate operations cannot be nested.
+One might consider writing it as follows:
+SQL> SELECT S.rating FROM Sailors S WHERE
+AVG(S.age) = (SELECT MIN (AVG (S2.age)) FROM Sailors S2
+GROUP BY S2.rating );
+NULL VALUES
+➢ So far, we have assumed that column values in a row are always known.
+In practice column values can be unknown. For example, when a sailor,
+say Dan, joins a yacht club, he may not yet have a rating assigned.
+➢ Since the definition for the Sailors table has a rating column, what row
+should we insert for Dan? That is needed here is a special value that
+denotes unknown.
+➢ Suppose the Sailor table definition was modified to include a maiden-
+name column. However, only married women who take their husband's
+last name have a maiden name. For women who do not take their
+husband's name and for men, the maiden-name column is inapplicable.
+Again, what value do we include in this column for the row representing
+Dan?
+➢ SQL provides a special column value called null to use in such situations.
+We use null when the column value is either unknown or inapplicable.
+Using our Sailor table definition, we might enter the row (98. Dan, null,
+39) to represent Dan.
+➢ The presence of null values complicates many issues, and we consider
+the impact of null values on SQL in this section.
+Comparisons Using Null Values:
+➢ Consider a comparison such as rating = 8. If this is applied
+to the row for Dan, is this condition true or false? Since
+Dan's rating is unknown, it is reasonable to say that this
+comparison should evaluate to the value unknown.
+➢ In fact, this is the case for the comparisons rating> 8 and
+rating < 8 as well. Perhaps less obviously, if we compare
+two null values using , =, and so on, the result is always
+unknown.
+➢ For example, if we have null in two distinct rows of the
+sailor relation, any comparison returns unknown.
+➢ SQL also provides a special comparison operator IS NULL
+to test whether a column value is null;
+➢ for example, we can say rating IS NULL, which would
+evaluate to true on the row representing Dan. We can also
+say rating IS NOT NULL, which would evaluate to false on
+the row for Dan.
+Logical Connectives AND, OR, and NOT:
+➢ Now, what about Boolean expressions such as rating = 8 OR age < 40
+and raing = 8 AND age < 40? Considering the row for Dan again,
+because age < 40, the first expression evaluates to true regardless of
+the value of rating, but what about the second? We can only say
+unknown.
+➢ But this example raises an important point once we have null values, we
+must define the logical operators AND, OR, and NOT using a three-
+valued logic in which expressions evaluate to true, false, or unknown.
+➢ We extend the usual interpretations of AND, OR, and NOT to cover the
+case when one of the arguments is unknown &. follows. The expression
+NOT unknown is defined to be unknown. OR of two arguments
+evaluates to true if either argument evaluates to true, and to unknown
+if one argument evaluates to false and the other evaluates to unknown.
+(If both arguments are false, of course, OR evaluates to false.) AND of
+two arguments evaluates to false if either argument evaluates to false,
+and to unknown if one argument evaluates to unknown and the other
+evaluates to true or unknown. (If both arguments are true, AND
+evaluates to true.)
+Impact on SQL Constructs
+➢ Boolean expressions arise in many contexts in SQL, and the impact of null
+values must be recognized. For example, the qualification in the WHERE clause
+eliminates rows (in the crossproduct of tables named in the FROM clause) for
+which the qualification does not evaluate to true. Therefore, in the presence of
+null values, any row that evaluates to false or unknown is eliminated.
+➢ Eliminating rows that evaluate to unknown has a subtle but significant impact
+on queries, especially nested queries involving EXISTS or UNIQUE. Another
+issue in the presence of null values is the definition of when two rows in a
+relation instance are regarded as duplicates.
+➢ The SQL definition is that two rows are duplicates if corresponding columns are
+either equal, or both contain null. Contrast this definition with the fact that if
+we compare two null values using =, the result is unknown! In the context of
+duplicates, this comparison is implicitly treated as true, which is an anomaly.
+As expected, the arithmetic operations +, -, *, and / all return null if one of
+their arguments is null. However, nulls can cause some unexpected behavior
+with aggregate operations. COUNT(*) handles null values just like other values;
+that is, they get counted. All the other aggregate operations (COUNT, SUM,
+AVG, MIN, MAX, and variations using DISTINCT) simply discard null values--
+thus SUM cannot be understood as just the addition of all values in the
+(multi)set of values that it is applied to; a preliminary step of discarding all null
+values must also be accounted for. As a special case, if one of these operators-
+other than COUNT is applied to only null values, the result is again null
+Outer Joins:
+➢ Some interesting variants of the join operation that rely on null values, called outer
+joins, are supported in SQL. Consider the join of two tables, say Sailors Reserves. Tuples
+of Sailors that do not match some row in Reserves according to the join condition c do
+not appear in the result.
+➢ In an outer join, on the other hand, Sailor rows without a matching Reserves row
+appear exactly once in the result, with the result columns inherited from Reserves
+assigned null values.
+➢ In fact, there are several variants of the outer join idea. In a left outer join, Sailor rows
+without a matching Reserves row appear in the result, but not vice versa. In a right
+outer join, Reserves rows without a matching Sailors row appear in the result, but not
+vice versa.
+➢ In a full outer join, both Sailors and Reserves rows without a match appear in the
+result. (Of course, rows with a match always appear in the result, for all these variants,
+just like the usual joins, sometimes called inner joins, presented in Chapter 4.) SQL
+allows the desired type of join to be specified in the FROM clause.
+➢ For example, the following query lists (sid, bid) pairs corresponding to sailors and boats
+they have reserved:
+➢ SQL> SELECT S.sid, R.bid FROM Sailors S NATURAL LEFT OUTER JOIN Reserves R;
+➢ The NATURAL keyword specifies that the join condition is equality on all common
+attributes (in this example, sid)
+SQL Concepts
+Disallowing Null Values:
+➢ We can disallow null values by specifying NOT NULL as part of the field definition; for
+example, sname CHAR(20) NOT NULL. In addition, the fields in a primary key are not
+allowed to take on null values.
+➢ Thus, there is an implicit NOT NULL constraint for every field listed in a PRIMARY KEY
+constraint
+COMPLEX INTEGRITY CONSTRAINTS IN SQL:
+➢ In this section we discuss the specification of complex integrity constraints that utilize
+the full power of SQL queries. The features discussed in this section complement the
+integrity constraint features of SQL presented in Unit 2
+Constraints over a Single Table:
+➢ We can specify complex constraints over a single table using table constraints, which
+have the form CHECK conditional-expression.
+➢ For example, to ensure that rating must be an integer in the range 1 to 10, we could
+use:
+SQL> CREATE TABLE Sailors (sid INTEGER, sname CHAR(10), rating INTEGER, age
+REAL, PRIMARY KEY (sid), CHECK (rating >= 1 AND rating <= 10 ));
+SQL Concepts
+Domain Constraints and Distinct Types:
+➢ A user can define a new domain using the CREATE DOMAIN statement, which uses
+CHECK constraints.
+SQL> CREATE DOMAIN ratingval INTEGER DEFAULT 1 CHECK ( VALUE >= 1 AND
+VALUE <= 10 );
+➢ INTEGER is the underlying, or source, type for the domain ratingval, and every ratingval
+value must be of this type. Values in ratingval are further restricted by using a CHECK
+constraint; in defining this constraint, we use the keyword VALUE to refer to a value in
+the domain. By using this facility, we can constrain the values that belong to a domain
+using the full power of SQL queries.
+➢ Once a domain is defined, the name of the domain can be used to restrict column
+values in a table; we can use the following line in a schema declaration,
+➢ for example: rating ratingval; The optional DEFAULT keyword is used to associate a
+default value with a domain.
+➢ If the domain ratingval is used for a column in some relation and no value is entered for
+this column in an inserted tuple, the default value 1 associated with ratingval is used.
+➢ SQL support for the concept of a domain is limited in an important respect. For
+example, we can define two domains called SailorId and BoatId, each using INTEGER as
+the underlying type.
+SQL Concepts
+➢ The intent is to force a comparison of a SailorId value with a BoatId value to always fail
+(since they are drawn from different domains); however, since they both have the same
+base type, INTEGER, the comparison will succeed in SQL.
+➢ This problem is addressed through the introduction of distinct types in SQL:1999.
+CREATE TYPE ratingtype AS INTEGER This statement defines a new distinct type called
+ratingtype, with INTEGER as its source type. Values of type ratingtype can be compared
+with each other, but they cannot be compared with values of other types. In particular,
+ratingtype values are treated as being distinct from values of the source type, INTEGER.
+We cannot compare them to integers or combine them with integers (e.g., add an
+integer to a ratingtype value).
+➢ If we want to define operations on the new type, for example, an average function, we
+must do so explicitly; none of the existing operations on the source type carryover.
+➢ Example:
+➢ create type address as object
+➢ (hno varchar2(20),street varchar2(20),city varchar2(20))
+➢ create table emps(eid number(4),name varchar(20),location address);
+➢ insert into emps values
+➢ (101,'Robert',address('p-1/2','rythunagar','nandyal'));
+➢ select * from emps;
+➢ select c.eid,c.name,c.location.hno,c.location.street,c.location.city from emps c;
+➢ update emps c set c.location.hno='r-1/202' where c.eid=101;
+Assertions: Integrity Constraints over several tables
+➢ Table constraints are associated with a single table, although the conditional expression
+in the CHECK clause can refer to other tables. Table constraints are required to hold
+only if the associated table is nonempty. Thus, when a constraint involves two or more
+tables, the table constraint mechanism is sometimes cumbersome and not quite what
+is desired. To cover such situations, SQL supports the creation of assertions, which are
+constraints not associated with anyone table. As an example, suppose that we wish to
+enforce the constraint that the number of boats plus the number of sailors should be
+less than 100. (This condition might be required, say, to qualify as a ‘small’ sailing club.)
+We could try the following table constraint:
+➢ SQL> CREATE TABLE Sailors ( sid INTEGER, sname CHAR(10) , rating INTEGER, age REAL,
+PRIMARY KEY (sid), CHECK ( rating >= 1 AND rating <= 10) CHECK ( ( SELECT COUNT
+(S.sid) FROM Sailors S ) + ( SELECT COUNT (B. bid) FROM Boats B ) < 100 ))
+➢ This solution suffers from two drawbacks. It is associated with Sailors, although it
+involves Boats in a completely symmetric way. More important, if the Sailors table is
+empty, this constraint is defined (as per the semantics of table constraints) to always
+hold, even if we have more than 100 rows in Boats. We could extend this constraint
+specification to check that Sailors is nonempty, but this approach becomes
+cumbersome. The best solution is to create an assertion, as follows
+➢ SQL> CREATE ASSERTION smallClub CHECK ((SELECT COUNT (S.sid) FROM Sailors S) +
+(SELECT COUNT (B. bid) FROM Boats B) < 100);
+Triggers & Active Databases
+• A trigger is a procedure that is automatically invoked by the DBMS in response to
+specified changes to the database, and is typically specified by the DBA. A database that
+has a set of associated triggers is called an active database. A trigger description
+contains three parts:
+– Event: A change to the database that activates the trigger.
+– Condition: A query or test that is run when the trigger is activated.
+– Action: A procedure that is executed when the trigger is activated and its condition
+is true.
+• A trigger can be thought of as a 'daemon' that monitors a database, and is executed
+when the database is modified in a way that matches the event specification.
+• An insert, delete, or update statement could activate a trigger, regardless of which user
+or application invoked the activating statement; users may not even be aware that a
+trigger was executed as a side effect of their program.
+• A condition in a trigger can be a true/false or a query. A query is interpreted as true if
+the answer set is nonempty and false if the query has no answers. If the condition part
+evaluates to true, the action associated with the trigger is executed.
+• A trigger action can examine the answers to the query in the condition part of the
+trigger, refer to old and new values of tuples modified by the statement activating the
+trigger, execute Hew queries, and make changes to the database.
+Triggers & Active Databases
+• In fact, an action can even execute a series of data-definition commands (e.g., create
+new tables, change authorizations) and transaction-oriented commands (e.g., commit)
+or call host-language procedures.
+• An important issue is when the action part of a trigger executes in relation to the
+statement that activated the trigger.
+• For example, a statement that inserts records into the Students table may activate a
+trigger that is used to maintain statistics on how many students younger than 18 are
+inserted at a time by a typical insert statement.
+• Depending on exactly what the trigger does, we may want its action to execute before
+changes are made to the Students table or afterwards: A trigger that initializes a
+variable used to count the number of qualifying insertions should be executed before,
+and a trigger that executes once per qualifying inserted record and increments the
+variable should be executed after each record is inserted (because we may want to
+examine the values in the new record to determine the action).
+Triggers & Active Databases
+➢ Trigger is also same as stored procedure & also it will automatically invoked whenever
+DML operation performed against table or view. there are two types of triggers
+supported by pl/sql
+statement level triggers
+row level triggers
+Statement Level Triggers:
+➢ in statement level trigger, trigger body is executed only once for DML statement, where
+as in row level trigger, trigger body is executed for each row for dml statements
+syntax:
+create[or replace] trigger triggername
+before/after trigger trigger event
+insert/update/delete on tablename
+for each row
+where condition
+declare
+variable declarations,cursors,
+begin
+......
+......
+end;
+Triggers & Assertions
+Triggers & Assertions
+Triggers & Active Databases
+Row Level triggers:
+➢ in row level trigger, trigger body is executed for each row for DML satement, that why
+we using for each row clause in trigger specification and also data internally stored in 2
+rollback segment qualifiers these are old, new. These qualifiers are used in either
+trigger specification or in trigger body. when we are using these modifiers in trigger
+body we must use colon prefix in the qualifiers.
+syntax:
+:old.columnname
+or
+:new.columnname
+➢ but when we are using these qualifiers in when clause we are not allow to use colon in
+front of the qualifiers.
+Triggers & Active Databases
+Example:
+write a pl/sql row level trigger on emp table whenever user inserting data into a emp
+table salary should be more than 5000
+solution:
+create or replace trigger tg1
+before insert on emp
+for each row
+begin
+if :new.salary<5000 then
+raise_application_error(-20123,'salary should be more than
+5000');
+end if;
+end;
+/
+sql> insert into emp(empno,salary)values(1,2000);
+error: ora-20123: salary should be more than 5000
+Triggers & Active Databases
+example:
+write a pl/sql trigger using emp, dept table implement on delete cascade concept,
+without using on delete clause
+solution:
+create or replace trigger tg1
+after delete on dept
+for each row
+begin
+delete rom emp where deptno=:old.deptno;
+end;
+/
+sql> delete from dept where deptno=20;
+Triggers & Active Databases
+example:
+write a pl/sql trigger using emp, dept table implement on delete cascade concept,
+without using on delete clause
+solution:
+create or replace trigger tg1
+after delete on dept
+for each row
+begin
+delete rom emp where deptno=:old.deptno;
+end;
+/
+sql> delete from dept where deptno=20;
+Triggers & Active Databases
+example:
+write a pl/sql row level trigger on dept table whenever updating deptno's in dept
+table automatically those deptno's modified into
+emp table.
+solution:
+create or replace trigger tg1
+after update on dept
+for each row
+begin
+update emp set deptno=:new.deptno where deptno=:old.deptno;
+end;
+/
+sql> update dept set deptno=1 where deptno=10;
+sql> select * from emp;

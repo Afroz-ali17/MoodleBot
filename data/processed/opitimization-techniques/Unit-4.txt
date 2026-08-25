@@ -1,0 +1,554 @@
+Unit-4
+GAME THEOREY
+Game:
+In a broad sense, Game is not as a kind of sport, a competitive situation will be
+called as Game.
+OR
+Game is an activity between two or more persons involving activities by each
+person according to a predetermined set of rules, where at the end of the game,
+each person receives some benefits or satisfaction or suffers loss (negative benefit).
+Properties of game:
+1. There is finite number of competitors called “players”.
+2. Each of the participants has a series of plans or models of behavior or a finite
+number of possible courses of action. i.e. has several choices as to his
+appropriate actions however, there may not same for each competitor.
+3. A play of the game takes place where each player employs it strategy.
+4. The choices of all participants are assumed to be made simultaneously, so that
+no competitor knows his opponent’s choice until he selects his own course of
+action.
+5. The outcome of the all specific sets of choice by all the competitors is known
+in advance and defined numerically. The outcome of all combinations results
+to each player (positive, negative or zero). The negative gain is considered as
+loss.
+6. The gain of a participant depends not only on his own actions, but also those of
+others.
+7. The player can make individual decisions without direct communications.
+8. The game is said to be “fair game” if the value of game is zero, otherwise it is
+known as “unfair”.
+Game Theory
+Game theory is a type of decision theory in which one’s choice of action is
+determined after taking into account all possible alternatives available to an
+opponent’s playing the same game rather than just by the possibilities of several
+outcome results.
+Game theory deals with competitive situations of decision making under
+uncertainty. I t was first developed by John Von Neumann.( He is called as father
+of game theory).
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+The game theory has only been capable of analyzing very simple competitive
+situations. Thus, there has been a great gap between what the theory can handle
+and most actual competitive situations in industry and elsewhere. So the primary
+contribution of the game theory has been its concepts rather than its formal
+application to solving real problems.
+This theory is applicable to a wide variety of situations such as military battles,
+companies struggling for market share, two players struggling to win at chess,
+negotiations between organizations etc.
+The theory of games is based on the “mini max principle” which implies that each
+competitor will act so as to minimize his maximum loss (or maximize his
+minimum gain).
+The game theory does not describe how a game should be played. It described only
+the procedures by which plays can be selected.
+Characteristics of a game theory:
+Game of strategy: The activities which are evaluated by skill is known as a game
+as strategy.
+Game of chance: The activities which are determined by chance is known as game
+of chance.
+Number of activities: May be finite or infinite.
+Number of persons: If the number of persons playing in a game is ‘n’ it is said to
+be n-persons game. Here the person means an individual or a group aiming at a
+particular objective.
+Number of alternatives (choices) available to each person: In a particular activity
+may be finite or infinite. A finite game has finite number of activities, each
+involving a finite number of alternatives, otherwise the game is said to be infinite.
+Information to the players about the past activities of other players: Is completely
+available, partly available or not available at all.
+Pay off: A quantitative measure of satisfaction a person gets at the end of each play
+is called pay off. It is a real valued function of variables in the game. Let V be the
+i
+payoff to the player P 1≤ i ≤ n, in an n-person game, if ∑𝑛 𝑉 0, then the game
+i, 𝑖=1 i =
+is said to be the zero-sum game.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Terms involved in the game theory:
+Game and its properties: you can get the information from above.
+Strategy: A strategy refers to the action to be taken by a player in various
+contingences in playing a game.
+The strategy may be of two kinds i) pure strategy ii) mixed strategy
+i) Pure strategy: If a player knows that the other player is going to do, a
+deterministic situation is obtained and objective function is to maximize the
+gain.
+i.e the pure strategy is a decision rule always to select a particular course of
+action.
+A pure strategy is usually represented by a number with which the course of
+action is associated.
+ii) Mixed strategy: If a player is guessing as to which activity is to be
+selected by the others on any particular occasion, a probabilistic situation is
+obtained and objective function is to maximize the expected gain or to
+minimize the losses.
+Optimal strategy: The strategy that puts the player in the most preferred
+situation irrespective of his opponent’s strategy is called as an optimal
+strategy.
+Pay off matrix: The pay off matrix represents payoff in terms of gains or
+losses when the player select their particular strategies can be represented in
+the form of a matrix is called payoff matrix.
+If a player a has m-courses of action and player B has n-courses of
+action. The payoff matrix may be constructed using the following steps.
+Row designations for each matrix are the course of action available to A.
+Column designations for each matrix are the course of action available to B.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Payoff matrix for A
+Player B
+1 2 3 j n
+V V V --------------------V --------------------------------V1n
+11 12 13 1j
+V V V V V
+3 21 22 23---------------------------------- 2J--------------------------------------- 2n
+V V V V V
+31 32 33------------------------------------ 3J---------------------------------------------------- 3n
+Player A - - -- -------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+- - - ----------------------------------------------------------------------------------
+V V V V V
+i i1 i2 i3 ------------------------------------ ij--------------------------------------- in
+- ---------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+m V m1 V m2V m3----------------------------V mj--------------------------V mn
+Saddle point: The saddle point is also called equilibrium point in the theory
+of games.
+A saddle point of a payoff matrix which is minimum in its row and
+maximum in its column, mathematically, if a payoff matrix {V } is such
+ij
+that
+Max {min {V }} = Min {max {V }} = Vrs (say)
+ij ij
+i j j i
+Then the matrix is said to have a saddle point (r, s).
+Ex: B’s strategy
+b1 b2 b3 Row minima
+a1 12 -8 -2 -8
+A’s strategy a2 6 7 3
+a3 -10 -6 2 -10
+Column maxima 12 7
+So saddle point is a b
+2 3
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Note: It is also possible that there are more than one saddle points for a
+given problem. Consider, for instance
+Working rule to determine saddle point:
+1. Select the minimum (least) element in each row of the payoff matrix and
+write them under ‘row minima’ heading. Then select a largest element
+among these elements.
+2. Select the maximum (largest) element in each column of the payoff
+matrix and write them under ‘column maxima’ heading. Then select a
+least element among these elements.
+3. Find out the elements which are same under row minima and column
+maxima. This elements represents the value of the game is called the
+saddle (equilibrium) point.
+Value of the game: The payoff (V ) at the saddle point (r, s) is called the
+rs
+value of the game.
+Zero sum and non-zero sum games:
+Competitive games are classified according to the number of players
+involved i.e. as a two player game, three player games. Another important
+distinction is zero-sum games and non-zero sum games.
+A zero sum game is one in which the sum of the payments to all the
+competitors is zero for every possible outcome of the game. In other words
+in such a game, the sum of the points won equal to sum of the points lost.
+Mathematically, suppose an n-person game is played by n players
+p ,p ,…..p whose respective payoffs at the end of a play of the game are
+1 2 n
+v ,v ………,v then the game will be called zero-sum if ∑𝑛 𝑉=0 at each
+1 2, n 𝑖=1 i
+play of the game.
+Two persons game is always zero sum game since one player losses
+What the other wins.
+But in a non-zero sum game the sum of the payoff from any play of
+the game may be either positive or negative but not zero. Most of the
+competitive games are zero-sum games.
+For example if two chess players agree that at the end of the game
+the loser would pay Rs 50 to the winner then it would mean a zero-sum
+game.
+i.e. A gain of one exactly matches the loss of the others.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+The games can also be classified on the basis of the number of strategies. A
+game is said to be finite if each player has the option of choosing from only
+a finite number of strategies otherwise it is called infinite.
+Application of game theory:
+Game theory has been used to study a wide variety of human and
+animal behaviors. It was initially developed economic behaviors, including
+behaviors of firms, markets, and consumers. The use of game theory in the
+social sciences has expanded, and game theory has been applied to political,
+sociology, and psychological behaviors as well.
+1) Political science: The application of game theory to political science is
+focused in the overlapping areas of fair division, political economy,
+public choice, positive political theory, and social choice theory. In each
+of these areas, researchers have developed game theoretic model in
+which the players are often voters, stares special interest groups, and
+politicians.
+2) Economics and business: Economists have long used game theory to
+analyze a wide array of economic phenomena, including auctions,
+bargaining, duopolies, fair division, oligopolies, social network
+formation and voting systems.
+3) Biology: unlike economics, the payoffs for games in biology are often
+interpreted as corresponding to fitness. In addition, the focus has been
+less on equilibrium that corresponds to a notion of rationality, but rather
+on ones that would be maintained by evolutionary forces. The best
+known equilibrium in biology is known as the evolutionarily stable
+strategy.
+4) Computer science and logic: Game theory has come to play an
+increasingly important role in logic and in computer science. Several
+logical theories have a basis in game semantics. In addition, computer
+scientists have used games to model interactive computations. Also,
+game theory provides a theoretical basis to the field of multi-agent
+systems.
+Assumptions of game:
+1. Each player has available to him a finite number of possible course of
+action. The list may not be same for each player.
+2. Player A attempts to maximize gains and player B minimizes losses.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+3. The decisions of both players are made individually prior to the play
+with no communication between them.
+4. The decision are made simultaneously and also announced
+simultaneously so that neither player has an advantage resulting from
+direct knowledge of the other player’s decision.
+5. Both the players know not only possible payoffs to themselves but also
+of each other.
+Two –persons zero-sum games (Rectangular games):
+A game with only two players (say A and player B) is called a Two-
+person’s zero-sum game, if the losses of one player are equivalent to the
+gains of the other, so that the sum of their net gains is zero.
+Two-person zero-sum games are called rectangular games as these are
+usually represented by a payoff matrix in rectangular form.
+Payoff matrix: suppose the player A has m activities and the player B has n
+activities .Then a payoff matrix can be formed by adopting the following
+rules.
+1) Row designations for each matrix are activities available to player A.
+2) Column designations for each matrix are activities available to player B.
+3) Cell entry V is the payment to the player A in A’s payoff matrix when
+ij
+A chooses the activity i and B chooses the activity j.
+4) With zero-sum, two person game, the cell entry in the player B’s payoff
+matrix will be negative of the corresponding cell entry ‘V ’ in the player
+ij
+A’s payoff matrix so that sum of payoff matrix for player A and player B
+is ultimately zero.
+Payoff matrix for A
+Player B
+1 2 3 j n
+V V V --------------------V --------------------------------V1n
+11 12 13 1j
+V V V V V
+3 21 22 23---------------------------------- 2J--------------------------------------- 2n
+V V V V V
+31 32 33------------------------------------ 3J---------------------------------------------------- 3n
+Player A - - -- -------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+- - - ----------------------------------------------------------------------------------
+V V V V V
+i i1 i2 i3 ------------------------------------ ij--------------------------------------- in
+- ---------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+m V m1 V m2V m3----------------------------V im---------------------------V mn
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Payoff matrix for B
+Player B
+1 2 3 j n
+-V - V - V --------- -- - V ----------------------- -V1n
+11 12 13 1j
+-V -V -V -V
+3 21 22 23-------------------- 2J--------------------------- - V2n
+-V -V32 -V33 -V -V
+31 ------------------ 3J--------------------------------------------- 3n
+Player A - - -- -------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
+- - - ----------------------------------------------------------------------------------
+i
+-V -V -V -V -V
+i1 i2 i3 ----------------- ij------------------------- in
+- ---------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+m - V m1- Vm2-Vm3 -----------------V im------------------- -V mn
+Games having the zero-sum character that is the algebraic sum of gains and
+loosed of all players is zero are called zero sum games. Zero sum games with 2
+players are called rectangular games. In this case the loss (gain) of one player is
+exactly equal to the gain (loss) of the other. The gain resulting from a two-person
+zero-sum game can be represented in the matrix form, usually called “payoff
+matrix”
+A saddle point of a payoff matrix is that position in the payoff matrix where
+maximum of row minima coincides with the minimum of the column maximum.
+The payoff at the saddle point is called the value of the game. The saddle point
+need not be unique. We shall denote the maximin value of the game byV1and the
+minimax value of the game by V2 .A game is said to be fair if V1 = 0 = V2.
+A game is said strictly determinable if V1 = V = V2.
+Characteristics of Two-persons zero sum game:
+1. Only two persons participate in the game
+2. Each player has a finite number of strategies to use.
+3. Each specific strategy results in a payoff.
+4. Total payoff to the two players at the end of each play is zero.
+Rules of dominance:
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Sometimes, it is observed that one of pure strategies of either player is
+inferior to at least one of the remaining ones. The superior strategies are said
+to dominate the inferior ones. In such cases of dominance, we can reduce
+the size of the payoff matrix by deleting those strategies which are
+dominated by others.
+The method of reducing mxn game to 2xn or mx2 or 2x2 games is
+dominance property.
+1. If each element in one row say ith row of the payoff matrix is less than or
+equal to the corresponding element in the other row say Kth row, then the
+player A will never choose the ith strategy. We can delete the ith row from
+the payoff matrix.
+2. If each element of one column says ith column is greater than or equal to
+the corresponding column say kth column, then the player B will never
+choose rth column. We can delete the rth column from the payoff matrix.
+3. Dominance need not be based on superiority of pure strategies only a
+given strategy can be dominated, if it is inferior to an average of two or
+more other pure strategies.
+In general if some convex combination of some rows dominance the
+ith row then irh row will be deleted.
+If the ith row dominance the convex combination of some other rows
+then one of the rows involving in the combinations may be deleted.
+Similar rules follow the columns also.
+Method of game without saddle point with mixed strategies:
+In certain cases, no pure strategy solutions exist for the game. In other
+words, saddle points do not exist. In such a game , both players may
+adopt an optimal blend of the strategies called “Mixed strategy” to find a
+saddle point because they are the probabilistic combination of the choice
+strategy. The optima mix for each player may be determined by
+assigning each strategy a probability of it being chose. Thus, these mixed
+strategies are probabilistic combinations of available better (or dominant)
+strategies and these games hence called “probabilistic games”.
+Similarly, when saddle points do not exist in the game, we can use
+the dominance principle to reduce to 2x2 game or at least 2xn or mx2
+matrices. If this is also not possible we can formulate it as linear
+programming problem.
+Thus the probabilistic mixed strategy games without saddle points are
+commonly solved by any of the following method.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+1. Algebraic method
+2. Graphical method
+3. Matrix method
+4. Arithmetic method
+I. Algebraic method:
+Suppose a general 2x2 game without saddle points. i.e.
+Max {row (min)}≠ min{column(max)} , as given below
+Player B Player B
+B1 B2 B1 B2
+Player A A1 a b A1 a a
+11 12
+Or Player A
+A2 c d A2 a a
+21 22
+Since, it is assumed that there are no saddle points. ‘A’ wishes to use a
+mixed strategy of A1 and A2 with the probabilities of P and P
+1 2
+and ‘B’ to use a mixed strategy of B and B with the probabilities of q
+1 2 1
+and q respectively.
+According to the assumption that A always tried to maximize his
+minimum returns and B tries to minimize his maximum losses, they
+employ their strategies most optimally such that the B’s minimax losses
+will be equal to A’s maximin gains.
+Hence,
+𝑎22−𝑎21 𝑎11−𝑎12
+P = P =
+1 2
+(𝑎11+𝑎22)−(𝑎12+𝑎21) (𝑎11+𝑎22)−(𝑎12+𝑎21)
+𝑎22−𝑎12 𝑎11−𝑎21
+q = q =
+1 2
+(𝑎11+𝑎22)−(𝑎12+𝑎21) (𝑎11+𝑎22)−(𝑎12+𝑎21)
+(𝑎11∗𝑎22)−(𝑎12∗𝑎21)
+Value of the game, V=
+(𝑎11+𝑎22)−(𝑎21+𝑎12)
+II. Graphical method:
+Graphical solutions are helpful for the two-person zero-sum games of
+order 2xn or mx2 .i.e when one of the players have only two dominant
+strategies to mix while other has many strategies to play. However,
+graphical solutions used with an assumption that optimal strategies for both
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+the players assign non-zero probabilities to the same number of pure
+strategies. Therefore, if one player has only two strategies, the other also
+should have to use same (two) number of strategies. This method is helpful
+in finding out which two strategies can be used.
+Here we have two cases viz, 2xn or mx2 cases.
+2xn games: In this case, row player has two strategies to play while column
+player has n strategies. The graphical method is applied to find which two
+strategies of column player are to be used.
+Suppose a payoff given in following table:
+Player B
+B B B …………….. B
+1 2 3 n
+A a a a …………….. a
+1 11 12 13 1n
+Player A
+A a a a …………….. a
+2 21 22 23 2n
+If a player A mixes his strategies A and A with probabilities p and p ≥0
+1 2 1 2
+where p +p = 1 then for each strategy of B, A will have the expected payoff
+1 2
+as follows.
+B’s pure strategy A’s payoff
+B a p +a p
+1 11 1 21 2
+B a p +a p
+2 12 1 22 2
+B a p +a p
+3 13 1 23 2
+. ………….
+. ………….
+B a p +a p
+n 1n 1 2n 2
+As ‘A’ is assumed to always try to maximize his minimum gains. The
+highest point of lower envelop (lower boundary) by drawing these as
+straight lines represents the optimal probability matrix. The line
+corresponding to this point will yield a 2x2 matrix from which the value of
+the game, optimal strategies and their probability mixed can be found.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Thus the two series are to be represented on two parallel axes these are
+joined to represent respective payoffs. Then the lower envelop is identified
+and upon the highest point is located. The coefficients of these lines make
+2x2 matrixes for further calculation.
+mx2 games: In these case a column player has two strategies while row
+player can choose optimal mix of two among m strategies. The graphical
+method is used to find which two strategies of rows player would be the
+best.
+Suppose a payoff of two players A and B is given below,
+Player B
+B B
+1 2
+A a a
+1 11 12
+Player A A a a
+2 21 22
+A a a
+3 31 32
+.… ….
+A a a
+m m1 m2
+When player B mixes his strategies B and B with non-zero probabilities
+1 2
+q and q where q +q then, for each strategy of A, B’s expected payoff is
+1 2 1 2
+given by
+A’s pure strategy B’s payoff
+A a q +a q
+1 11 1 12 2
+A a q +a q
+2 21 1 22 2
+. …..
+. ……
+. …….
+A a q +a q
+m m1 1 m2 2
+Now, as B is assumed to be the looser always, he will try to minimize his
+maximum losses. Thus when these expected payoffs of B, when drawn as
+straight lines between two parallel axes the lowest point( minimizing) of the
+upper envelop(maximum losses), represents his optimal strategy. The line
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+consisting of this point will represent the best two strategies at its edges on
+the two parallel axes of unit distance apart. The perpendicular drawn from
+the minimum point of envelop on to x-axis divides segment on x-axis into
+two parts equal to the probabilities used by B.
+III. Matrix method:
+For nxn games, this method provides an easiest method for finding the
+optimum strategies of the two players. The method consists of the following
+steps:
+Step 1: let A = (a ) be nxn payoff matrix. Obtain a new matrix C, whose
+ij
+first column is obtained from A by subtracting 2nd column from 1st , second
+column is obtained by subtracting A’s 3rd column from 2nd and so on till the
+last column of A is taken care of . Thus C is an nxn (n-1) matrix.
+Step 2: obtain a new matrix R, from A, by subtracting its successive rows
+from the preceding ones, in exactly the same manner as was done for
+columns in step 1. Thus, R is a (n-1) xn matrix.
+Step 3: Determine the magnitude of oddments corresponding to each row
+and each column of A. The oddment corresponding to ith row of A is defined
+as the determinant |C| where C is obtained from C by deleting ith row .
+i i i
+Similarly oddment (jth column of A) = |R| where R is obtained from R by
+j j
+deleting its jth column.
+Step 4 : write the magnitude of oddments (after ignoring negative signs, if
+any) against these respective rows and columns.
+Step 5: check whether the sum of row oddments is equal to the sum of
+column oddments if so, the oddments expressed as fractions of the grand
+total yields the optimum strategies. If not, the method fails.
+Step 6: calculate the expected value of game corresponding to the optimum
+mixed strategy determined above for the row player (against any move of
+the column player).
+IV. Arithmetic method:
+Arithmetic method provides an easy technique for obtaining the
+optimum strategies for each player in (2x2) games without saddle point.
+This method consists of the following steps:
+Step 1: find the difference of two numbers in column I and put it under the
+column II, neglecting the negative sign if occurs.
+Step 2: find the difference of two numbers in column II and put it under
+column I, neglecting the negative sing if occurs.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501
+Unit-4
+GAME THEOREY
+Step 3: repeat the above two steps for the two rows also
+The values thus obtained are called the oddments. These are
+the frequencies with which the players must use their courses of action in
+their optimum strategies. These may be converted to probabilities by
+dividing each of them their sum.
+Limitations of game theory:
+1. Unrealistic assumption: the assumption that the players know their own
+as well as other’s (opponent’s) payoff is unrealistic. One can only guess
+of his own.
+2. Complexity with more number of players: as the number of players
+increase, the problem becomes so complex that it is becomes difficult to
+solve.
+3. Minimax- maximin is impractical: the assumption of maximin-minimax
+show that the players are risk-averse and have thorough knowledge of
+strategies, which seems impractical.
+4. Limitations on collusion: the game theory cannot be applicable in case of
+players share their business secrets to work out collusion.
+5. Non-dynamic or static nature: In markets, generally the changes are very
+frequent and fast. The game theory least scope to work out the strategy
+Immediately unless some ground work to known payoff is made.
+6. No base for calculating payoff: There is any correct formula and
+scientific base for calculating payoffs game.
+Dr. Y. Raja Obula Reddy
+Department of Mathematics, RGMCET, Nandyal-518501

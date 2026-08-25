@@ -1,0 +1,220 @@
+UNIT – IV
+Bot Development
+UiPath Orchestrator
+Once a bot is created in UiPath Studio, it needs to be managed and deployed using the
+UiPath Orchestrator. The Orchestrator can be deployed either on an organization’s own
+servers or on the cloud at cloud.uipath.com. Depending on organizational requirements,
+separate instances of the software can be created for different purposes such as development,
+staging, and production, or for various departments like human resources, finance, and
+marketing. This structure helps streamline the bot development and deployment process.
+When accessing the cloud version of UiPath Orchestrator, after logging in to the portal, users
+can click Service at the bottom of the screen to enter the Orchestrator. In the top-right corner,
+the user icon leads to Settings, where the general tab allows time zone selection. For global
+organizations, setting the time zone to “(UTC) Coordinated Universal Time” is
+recommended. The Settings section also provides options for email integration, deployment
+URL details, and security configuration.
+On the left side of the Orchestrator interface, several important sections are available:
+• Robots: Used to register bots.
+• Processes: Allows creation of new processes by importing bots developed in UiPath
+Studio.
+• Jobs: Displays information about bots that are currently running or have run
+previously.
+• Schedules: Enables users to set deployment times for bots.
+• Assets: Used to create variables such as text, Boolean, integer, and credentials for
+logins.
+• Queues: An advanced system for managing multiple bots and task loads efficiently.
+To understand its functionality, consider an example of connecting a simple bot that displays
+“Hello, world!”. The first step is to connect the bot to the cloud by selecting Machines from
+the main screen and pressing the + button. Three options appear: Standard Machine, Machine
+Template, and Close. The most common choice is Standard Machine.
+Before proceeding, the Machine ID of the computer must be identified. This can be done by
+opening Windows Explorer, right-clicking on “This PC,” and locating the ID under
+“Computer Name” or “Device Name.” This ID is then entered in the Standard Machine
+section, followed by clicking PROVISION.
+Next, the Machine Key is required, which can be obtained by pressing the vertical “…” icon.
+After this, navigate to ROBOTS on the right side of the screen and click +. Three options
+appear: Standard Robot, Floating Robot, and Close. Choose Standard Robot, select the
+appropriate computer name from the dropdown, name the bot (for example, “Hello”), and
+enter the Windows login credentials.
+After this, UiPath will show the robot as created but disconnected. To activate it, launch the
+UiPath Robot application from the Windows Start menu. Then, click the settings icon at the
+top, enter the machine ID, and set the Orchestrator URL to https://platform.uipath.com. Once
+connected, the bot becomes active and ready for operation under the UiPath Orchestrator.
+Best Practices for Bot Development
+Developing a bot may appear simple with drag-and-drop features, but designing an effective
+and efficient bot requires following certain best practices. These practices help ensure that
+bots deliver accurate results, are easy to maintain, and align with business objectives.
+1. Templates and Bot Stores:
+Before starting the design of a new bot, it is advisable to check if a similar bot or workflow
+already exists. Leading RPA providers offer their own bot stores and libraries that contain
+prebuilt templates and automation components. Utilizing these can save time, reduce effort,
+and ensure reliability, as many of these bots are tested and optimized for common business
+tasks.
+2. Reusable Workflows:
+Reusable workflows allow developers to create bots using smaller, modular parts. This
+approach reduces complexity and simplifies maintenance. For instance, if a process sequence
+is used across multiple bots—say 20 bots—and a change needs to be made later, it would
+normally require updating each bot individually. However, with a reusable workflow, a single
+change automatically applies across all bots using that component. This increases efficiency
+and consistency in bot operations.
+3. Be the Bot:
+Designing an effective bot requires adopting a different mindset. The goal is not to simply
+replicate human actions, as human processes may be inefficient or inconsistent. Bots operate
+continuously, 24/7, unlike humans who typically work limited hours. Therefore, while
+designing, developers should think like a bot—focusing on logic, precision, and automation
+efficiency rather than human-like behavior. This “blank slate” approach helps in creating
+optimized, rule-based automations that maximize performance.
+4. Readability:
+Maintaining clear and readable workflows is essential for effective bot development and
+collaboration. Developers should establish standard naming conventions for activities and
+variables to improve clarity. Adding comments and descriptions throughout the workflow
+helps others understand the bot’s functionality, making it easier to review, debug, or modify
+in the future. Readable and well-documented bots are crucial for long-term scalability and
+team collaboration.
+5. Think About the Business:
+Bot development must be closely aligned with business objectives. According to Asheesh
+Mehra, cofounder and CEO of AntWorks, successful RPA development requires
+collaboration between business teams and IT teams. The automation should be designed to
+serve clearly identified business processes and should be scalable as the organization grows.
+Additionally, business rules must be clearly defined, including the handling of exceptions and
+specifying conditions where human intervention is required.
+Following these best practices ensures that bots are not only technically sound but also
+business-oriented, scalable, and easy to maintain within an organization’s RPA framework.
+Common UiPath Functions
+UiPath provides various core functions that are essential in building and automating business
+processes using Robotic Process Automation (RPA). Among these, the most common
+functions include Login Automation and Screen Scraping.
+1. Login Automation
+One of the fundamental functions in UiPath is automating the login process for web
+applications. UiPath provides a test environment known as Acme System 1
+(https://acmetest.uipath.com/account/login) that simulates a company system with features
+such as vendor accounts, checks, and invoices. To use this, a user must first register by
+entering their email and password.
+To create a login bot, UiPath requires the Microsoft Edge extension, which can be installed
+through the Tools menu on the UiPath Studio start screen. Once the extension is installed and
+activated, a new bot can be created by dragging and dropping a Sequence activity from
+Workflow ➤ Control ➤ Sequence onto the Main screen.
+Next, by selecting the Record option at the top and choosing Web, UiPath records user
+interactions with the Acme System 1 website. Once the recording is stopped, UiPath
+automatically generates the workflows required for login. Recording actions in this way is a
+common and efficient method in RPA development.
+To make the login process dynamic and reusable, UiPath allows customization through the
+use of Arguments. These are defined at the bottom tab of the Main screen, where users can
+specify argument names such as username or password, along with their data type and default
+value. This ensures that the same workflow can adapt to different users or environments.
+2. Screen Scraping
+Another widely used UiPath function is Screen Scraping, which enables the extraction of
+data from web pages or applications. UiPath Studio simplifies this process by providing a
+built-in Screen Scraping option at the top of the interface.
+When activated, the user can select a web page containing information such as a data table.
+UiPath automatically detects the structure of the data and prompts whether to scrape all of it.
+It can also recognize data that spans across multiple pages. The extracted data is stored in a
+Data Table, allowing easy manipulation within the bot using applications like Excel or other
+data processing tools.
+Through these functions, UiPath enables users to automate repetitive processes such as
+logging into systems and extracting structured information, forming the foundation for
+effective and efficient RPA solutions.
+Debugging in UiPath
+While coding a bot can be done quickly, the most time-consuming part of bot development is
+often debugging. As computer scientist Alan Jay Perlis once said, “There are two ways to
+write error-free programs; only the third one works.” This highlights the inevitability of
+errors in programming. Fortunately, RPA platforms like UiPath provide extensive
+documentation, active user forums, and powerful debugging tools to identify and fix issues
+efficiently.
+In UiPath, debugging tools can be accessed through the Debug section located at the top of
+the screen. This section provides multiple features that help in tracking, analyzing, and
+resolving errors in workflows.
+1. Log Files:
+Creating detailed log files is an essential step in debugging. Logs display executed
+instructions, affected values, and timestamps, which help in identifying the source of an
+issue. To enable this, developers can use the Log Activities option. After that, the bot can be
+executed by clicking Debug File or pressing F9. The generated logs can be viewed by
+selecting Open Logs.
+2. Step Execution and Activity Highlighting:
+UiPath allows developers to visualize workflow execution. By using the Pick Slow Step icon
+and selecting Highlight Activities, each executed element is highlighted in yellow, allowing
+developers to observe the bot’s actions at a manageable speed and locate errors more
+effectively.
+3. Breakpoints:
+A Breakpoint can be set at any point in the workflow where an issue is suspected. When
+execution reaches a Breakpoint, the process pauses, allowing the developer to analyze
+variables and logic. The Locals tab shows the current values of all variables, helping to
+verify whether the bot is processing data correctly. Developers can then choose to proceed
+using:
+• Step Into: Executes the next step in the workflow to observe detailed changes.
+• Step Over: Skips to the next activity in the workflow.
+These options provide precise control during debugging, helping isolate the source of an
+error.
+4. Exception Handling (Try/Catch):
+Another effective debugging approach is to implement exception handling using the
+Try/Catch construct. This allows the bot to continue running even when an error occurs,
+rather than stopping execution completely.
+To use Try/Catch in UiPath:
+• Drag and drop a Sequence (Workflow ➤ Control ➤ Sequence) onto the Main screen.
+• Add a Message Box (System ➤ Dialog ➤ Message Box) inside the sequence and
+enter “Hello, World!” as the message.
+• When executed using Start or F5, the bot might stop due to an error. To prevent this,
+drag and drop a Try/Catch (Workflow ➤ Error Handling ➤ Try Catch) activity onto
+the Main screen.
+• Move the Log Message or other activities inside the Try block.
+• Click Add new catch, select System.Exception, and add a Log Message in the
+Catch section with Log level: Warn and message “An error has been detected.”
+When this bot is executed, the first Log Message runs in the Try block. If an error occurs, the
+Catch block triggers the warning message, allowing the process to continue while still
+alerting the user about the issue.
+Through the combined use of logging, breakpoints, step execution, and exception handling,
+UiPath provides a comprehensive environment for debugging bots effectively and ensuring
+smooth, error-resistant automation workflows.
+___________________________________________________________________________
+Activities in UiPath Studio
+In UiPath Studio, creating bots involves extensive use of Activities, which are pre-defined
+actions or building blocks that can be dragged and dropped into workflows. Activities range
+from simple tasks requiring minimal configuration to complex operations that involve
+intricate logic. Understanding the main types of Activities is essential for effective bot
+development.
+1. Workflow Activities:
+Workflow activities are the foundation of any bot. Developers typically start with a
+Flowchart or Sequence. Sequences allow the use of programming constructs to control
+logic, such as:
+• Do While: Repeats actions while a condition is true.
+• For Each: Iterates over collections.
+• If: Implements conditional logic.
+• Break and Continue: Controls flow within loops.
+2. UI Automation Activities:
+These activities automate user interactions with applications and interfaces. Key areas
+include:
+• OCR (Optical Character Recognition): Screen scraping and text extraction.
+• Text: Manipulation and recognition of text.
+• Windows: Managing windows, e.g., hide, maximize, restore.
+• Image and Element Handling: Interactions with images, mouse, and keyboard.
+• Browser Automation: Navigate across web pages, execute JavaScript, and manage
+browser elements.
+3. User Events Activities:
+These monitor external triggers such as keypresses, mouse clicks, or other user interactions,
+allowing bots to respond dynamically to user actions.
+4. Programming Activities:
+Programming activities enable advanced functions such as:
+• Database interactions (read/write operations).
+• Debugging workflows.
+• Setting and managing variables for dynamic processing.
+5. Orchestrator Activities:
+Orchestrator-related activities help in managing and scheduling bots, as well as configuring
+credentials and access for secure automation.
+6. App Integration Activities:
+UiPath Studio supports integration with popular applications such as:
+• CSV and Excel: Reading, writing, and processing data.
+• Mail: Automating email-related tasks, including sending and reading emails.
+7. Computer Vision Activities:
+These leverage AI-based features for identifying text, images, and UI elements on screens,
+enabling automation even in unstructured environments.
+8. System Activities:
+System activities allow interaction with the underlying desktop environment. Key
+functionalities include:
+• File operations: create, copy, append, move files.
+• Path and file existence checks.
+• Clipboard operations.
+• Open and close applications.
+• Manage environment variables and passwords.
+• Invoke PowerShell scripts for advanced system automation.
+By effectively using these Activities, developers can build robust, efficient, and intelligent
+bots capable of automating complex business processes in UiPath Studio.

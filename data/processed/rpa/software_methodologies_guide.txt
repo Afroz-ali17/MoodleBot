@@ -1,0 +1,188 @@
+Software Development Methodologies Guide
+🚀 Software Development Methodologies
+Building software is challenging. You need technical experts, good communication, and the right management approach. Different teams use different methods to organize their work and deliver results faster. Let's learn about the most popular ones in simple, everyday language.
+Why Does This Matter?
+When companies like Microsoft built Windows Vista, it took 5 years! The problem wasn't the coding skills—it was poor teamwork and communication. Different teams were working in "silos" and their code didn't work together. Today, software companies use proven management methods to avoid these problems.
+The Four Main Approaches
+⚡
+Agile
+Think of Agile like building a house step-by-step. Instead of planning every brick before you start, you build one room, check it works, then improve it based on feedback.
+Core Idea
+Work in small, quick cycles
+Get feedback often
+Make changes as needed
+Team collaboration is key
+🎯
+Scrum
+Scrum is like a sports team running plays. It's actually a type of Agile method, but with very organized, short bursts of work called "sprints" (usually 1-2 weeks).
+Core Idea
+Sprints: 1-2 week cycles
+Regular team meetings
+Clear roles & goals
+Track progress daily
+📊
+Kanban
+Kanban uses visual cards to track work. It comes from Toyota's manufacturing process. Imagine a board with columns: To Do → In Progress → Done. Work moves through these stages.
+Core Idea
+Visual workflow boards
+Continuous flow
+Limit work-in-progress
+Flexible timing
+📋
+Waterfall
+Waterfall is the traditional method. Plan everything first, then build it like a waterfall flowing downward. Each step must be completed before moving to the next.
+Core Idea
+Detailed upfront planning
+Step-by-step execution
+Formal documentation
+Changes are difficult
+Visual Comparisons
+How Each Methodology Flows
+Agile: Continuous Cycles
+Sprint 1
+Sprint 2
+Sprint 3
+Sprint N
+Feedback loop repeats continuously
+Scrum: Time-boxed Sprints
+1-2 Week Sprint
+Design
+Code
+Test
+Deploy
+Kanban: Visual Workflow Board
+To Do
+Task 1
+Task 2
+In Progress
+Task 3
+Done
+Task 4 ✓
+Task 5 ✓
+Waterfall: Sequential Steps
+1. Planning
+2. Design
+3. Development
+4. Deployment
+Side-by-Side Comparison
+Aspect
+Agile
+Scrum
+Kanban
+Waterfall
+Planning
+High-level planning, flexible
+Planned sprints upfront
+Continuous, flexible
+Detailed planning first
+Cycles
+Variable length
+Fixed (1-2 weeks)
+Continuous flow
+One long cycle
+Changes
+Easy to make
+Between sprints
+Always possible
+Difficult & costly
+Team Communication
+Very frequent
+Daily meetings
+Regular check-ins
+As needed
+Testing
+Continuous
+During sprints
+Continuous
+At the end
+Best For
+Complex, evolving projects
+Medium teams, clear goals
+Maintenance & support
+Well-defined projects
+Flexibility
+⭐⭐⭐⭐⭐
+⭐⭐⭐⭐
+⭐⭐⭐⭐⭐
+⭐
+Learning Curve
+Medium
+Medium-High
+Easy
+Easy
+Advantages & Disadvantages
+⚡ Agile
+Advantages
+Quickly adapt to changes
+Customers see progress often
+Problems found early
+Team morale stays high
+Good for innovation
+Disadvantages
+Requires experienced team
+Hard to predict costs
+Less formal documentation
+Not ideal for very small teams
+Can lack clear deadlines
+🎯 Scrum
+Advantages
+Organized & predictable
+Keeps team focused
+Clear progress tracking
+Works well for medium teams
+Regular feedback loops
+Disadvantages
+Lots of meetings required
+Less flexible timing
+Requires Scrum expertise
+Not ideal for simple projects
+Can create rigidity
+📊 Kanban
+Advantages
+Very simple to understand
+Visual & easy to track
+Flexible scheduling
+Great for ongoing work
+Low team overhead
+Disadvantages
+Can lack planning structure
+Harder to predict timeline
+Not ideal for large projects
+Requires discipline
+Less team interaction
+📋 Waterfall
+Advantages
+Clear plan from start
+Easy to estimate costs
+Good documentation
+Works for fixed requirements
+Simple to understand
+Disadvantages
+Hard to make changes
+Problems found too late
+Long wait for product
+Less customer feedback
+High risk approach
+Historical Timeline
+1970s - Waterfall Emerges
+The Waterfall method is created. It's the standard way software companies build systems, following a strict step-by-step process.
+1990s - Agile Philosophy Grows
+Software developers begin questioning Waterfall's rigidity. The idea of flexibility and iteration starts to gain popularity.
+2001 - Agile Manifesto Published
+17 software developers meet and create the "Manifesto for Agile Software Development." This formalizes Agile as a major movement.
+2000s - Scrum & Kanban Popularized
+Scrum becomes the most popular Agile framework. Kanban (borrowed from Toyota's manufacturing) is adapted for software development.
+2010s - Multi-Method Era
+Companies realize different projects need different approaches. Teams start mixing methods or using Hybrid approaches based on their needs.
+Today - Context Matters Most
+Modern software teams choose the methodology that best fits their project, team size, customer needs, and goals.
+Key Takeaways
+🎯 What You Should Remember
+✓ Agile & Scrum are best when requirements change often or you need quick feedback.
+✓ Kanban works well for ongoing, continuous work like maintenance and support.
+✓ Waterfall is useful only when you have clear, unchanging requirements from the start.
+✓ Communication is the secret ingredient that makes any method work.
+✓ No perfect method exists—it depends on your project, team, and goals.
+✓ Many successful teams blend methods to get the best of multiple approaches.
+📚 Created to help understand software development methodologies in simple, everyday language
+This guide makes complex concepts accessible to everyone—whether you're a manager, business owner, or curious learner.

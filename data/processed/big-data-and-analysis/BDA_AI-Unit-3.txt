@@ -1,0 +1,325 @@
+UNIT-3
+BDA & AI APPLICATIONS
+Machine Learning on Big Data
+V PHANISHWARA HARA GOPAL,
+ASSISTANT PROFESSOR,
+DEPARTMENT OF CSE (AI&ML),
+RGM COLLEGE OF ENGINEERING & TECHNOLOGY (AUTONOMOUS).
+Introduction to MLlib vs. Scikit-learn
+• Scikit-learn: The industry standard for small-to-medium datasets. It
+operates on a single node (CPU-bound) and uses NumPy/SciPy for
+vectorized operations.
+• Spark MLlib: Designed for Horizontal Scaling. It distributes both data
+and computation across a cluster, handling petabytes of data that
+exceed a single machine’s RAM.
+• The "Small Data" vs. "Big Data" Boundary: If data fits in memory,
+Scikit-learn is often faster due to lower overhead. If data requires a
+cluster, MLlib is essential.
+• Architecture: Scikit-learn is In-memory/Single-node; MLlib is
+Distributed/Multi-node (built on the Spark engine).
+Comparative Analysis
+Feature Scikit-learn Spark MLlib (spark.ml)
+NumPy arrays, Pandas
+Data Structure Spark DataFrames
+DataFrames
+Scaling Vertical (Bigger RAM/CPU) Horizontal (More Nodes)
+Extremely Broad Core Algorithms
+Algorithm Variety
+(Ensembles, SVM, etc.) (Optimized for Dist.)
+Multi-threading on 1 Distributed tasks via
+Parallelism
+machine YARN/Mesos
+Feature engineering on Production pipelines on
+Best For
+sampled data raw data lakes
+Features of Spark MLlib
+Workflow of MLlib
+Spark MLlib Core Components
+• Transformers: Algorithms that transform one DataFrame into another
+(e.g., Tokenizer, StandardScaler). They implement the .transform()
+method.
+• Estimators: Algorithms that "fit" on data to produce a Transformer
+(e.g., LogisticRegression). They implement the .fit() method.
+• Pipelines: A sequence of stages (Transformers and Estimators) that
+define a full end-to-end ML workflow.
+• Persistence: The ability to save a trained model or a whole pipeline to
+HDFS and load it later for real-time inference.
+Data Preprocessing for Big Data Pipelines
+• The "Garbage In, Garbage Out" Principle: Raw Big Data is often noisy,
+incomplete, and inconsistently formatted.
+• Challenges at Scale: You cannot "manually" inspect 10 billion rows for
+outliers. Preprocessing must be automated and distributed.
+• Core Tasks:
+• Data Cleaning: Handling nulls (Imputation) and removing duplicates.
+• Feature Scaling: Standardizing ranges so one feature doesn't dominate.
+• Encoding: Converting categorical strings into numerical indices.
+Data Preprocessing Techniques
+Feature Engineering Techniques in Spark
+• VectorAssembler: A crucial Spark-specific step. Most MLlib
+algorithms require all features to be merged into a single Vector
+column.
+• StringIndexer & OneHotEncoder: Indexer: Maps "Red", "Blue" to 0,
+1.Encoder: Converts those indices into binary vectors (e.g., [1, 0]).
+• StandardScaler: Centers data to have a mean of 0 and unit standard
+deviation. This is vital for algorithms like SVM or K-Means that rely on
+distance metrics.
+The Big Data ML Lifecycle
+• Step 1: Ingestion (Spark SQL / DataFrames).
+• Step 2: Preprocessing (Cleaning and Normalization).
+• Step 3: Feature Engineering (Vectorization).
+• Step 4: Model Training (Distributed Optimization).
+• Step 5: Evaluation (Metrics like RMSE, Accuracy).
+Quick Comparison: Local vs. Spark ML
+Feature Local ML (Scikit- Spark ML (MLlib)
+Learn)
+Data Size Fits in RAM Terabytes/Petabytes
+Execution Single Machine Distributed Cluster
+Feature Prep Manual Pipelines VectorAssembler /
+Pipelines
+Complexity High flexibility Optimized for Scale
+Supervised Learning at Scale
+• Definition: Learning a mapping function (Y = f(X)) from input variables
+(X) to an output variable (Y) using labeled training data.
+• The Big Data Challenge: When N (number of observations) or P
+(number of features) is massive, traditional closed-form solutions (like
+Ordinary Least Squares) become computationally impossible due to
+matrix inversion costs.
+• Spark's Approach: Iterative optimization. Spark uses the distributed
+DAG to compute gradients in parallel across partitions and aggregate
+them to update model weights.
+Classification on Large Datasets
+• Binary vs. Multi-class: Predicting two categories (e.g., Spam/Not
+Spam) vs. multiple (e.g., Digit recognition 0-9).
+• Key Algorithms in MLlib:
+• Logistic Regression: The baseline for classification. Supports L1 (Lasso) and L2
+(Ridge) regularization to prevent overfitting.
+• Decision Trees & Random Forests: Highly parallelizable; Spark builds multiple
+trees simultaneously.
+• Linear Support Vector Machines (SVM): Optimized for high-dimensional
+feature spaces.
+• Scalability: Spark uses a "tree-aggregation" strategy to sum up partial
+gradients from executors to the driver.
+Regression on Large Datasets
+• Predicting a continuous numerical value (e.g., predicting house prices
+or stock trends).
+• Key Algorithms in MLlib:
+• Linear Regression: Fits a linear relationship between features and labels.
+• Generalized Linear Models (GLM): Supports different distributions (Poisson,
+Binomial, Gamma).
+• Decision Tree Regression: Non-linear approach suitable for capturing complex
+interactions.
+• Evaluation Metrics:
+• RMSE (Root Mean Squared Error): Penalizes large errors.
+• R2 (Coefficient of Determination): Measures how well the model explains
+variance.
+Classification and Regression Tasks
+Importance of Regularization
+Handling Class Imbalance in Big Data
+• The Problem: In datasets like "Fraud Detection“, 99.9% of
+transactions are legitimate.
+• A model can achieve 99.9% accuracy by simply guessing "not fraud" every
+time.
+• Solutions in MLlib:
+• Weighting: Assigning a higher "weight" to the minority class in the loss
+function.
+• Sub-sampling/Over-sampling: Using Spark's .sample() method to balance the
+training DataFrame.
+• Evaluation Beyond Accuracy: Focusing on Precision, Recall, and F1-
+Score.
+Distributed Optimization – The Math of Scale
+• Stochastic Gradient Descent (SGD): Updates weights using a small
+batch of data. Ideal for massive datasets where looking at all data at
+once is impossible.
+• Communication Overhead: The main bottleneck in distributed ML is
+not the CPU, but the network.
+• Aggregation: Partial results from each partition are sent back to the
+Driver to compute the global model update.
+Practical Implementation Pipeline
+• Read Data: spark.read.parquet(...)
+• Vectorize: VectorAssembler to create the features column.
+• Define Model: lr = LogisticRegression(labelCol="target",
+featuresCol="features")
+• Train: model = lr.fit(trainingData)
+• Predict: predictions = model.transform(testData)
+• Evaluate: BinaryClassificationEvaluator
+Unsupervised Learning at Scale
+• The Algorithms that identify structures in a dataset without a target
+variable (Y).
+• The Big Data Utility: Customer Segmentation: Grouping millions of
+users by behavior.
+• Anomaly Detection: Finding data points that don't fit into any cluster (e.g.,
+system intrusions).
+• Data Compression: Reducing the number of features to save storage and
+computation time.
+• Spark's Role: MLlib provides distributed versions of these algorithms
+designed to handle high-dimensional data across a cluster.
+Techniques using Unlabeled Data
+Clustering – K-Means at Scale
+• Algorithm: Iteratively assigns points to the nearest cluster center
+(centroid) and updates the centroid based on the mean of assigned
+points.
+• Spark Optimization – K-Means++: Spark uses the kmeans (K-Means
+Parallel) initialization to ensure initial centroids are well-spread,
+reducing the number of iterations needed.
+• The "Within-Cluster Sum of Squared Errors" (WSSSE): The metric
+Spark uses to evaluate how "tight" the clusters are.
+• Choosing 'K': The "Elbow Method" is used to find the optimal number
+of clusters by plotting WSSSE against K.
+Dimensionality Reduction – PCA
+• The Curse of Dimensionality: As the number of features (columns)
+increases, data becomes sparse, and distance-based algorithms (like
+K-Means) lose effectiveness.
+• Goal of PCA: To project high-dimensional data into a lower-
+dimensional space while retaining as much variance (information) as
+possible.
+• How it Works: It finds "Principal Components"—new, uncorrelated
+variables that are linear combinations of the original features.
+• Big Data Application: Reducing a 1,000-feature dataset to 50
+"Principal Components" to speed up downstream ML training.
+Latent Dirichlet Allocation (LDA) for Topic
+Modeling
+• Concept: A clustering method specifically for text data.
+• Mechanism: It assumes every document is a mixture of topics, and
+every topic is a mixture of words.
+• Use Case: Automatically categorizing millions of news articles or
+customer reviews into themes without reading them.
+• Spark Advantage: MLlib's LDA implementation can handle massive
+vocabularies and document counts by distributing the "Expectation-
+Maximization" (EM) steps.
+Clustering vs. Dimensionality Reduction
+PCA (Dimensionality
+Feature K-Means Clustering
+Reduction)
+Grouping similar Reducing the number of
+Primary Goal
+observations together. features.
+New set of reduced
+Output Cluster labels (0, 1, 2...)
+features (PCs).
+Requires numerical Requires numerical
+Input Requirement
+features (Vectors). features (Vectors).
+k (Number of
+Key Parameter k (Number of clusters).
+components).
+Major Metric Silhouette Score / WSSSE. Explained Variance Ratio.
+The Unsupervised Pipeline
+• Standardization: (Crucial Part!) PCA and K-Means are distance-
+based.Use StandardScaler first.
+• Reduction: Apply PCA to reduce noise and redundancy.
+• Clustering: Apply K-Means on the reduced features.
+• Analysis: Interpret the clusters based on original feature averages.
+Training, Validation, and Test Splits
+• Training Set: Used by the algorithm to learn the underlying patterns
+(weights).
+• Validation Set: Used to tune Hyperparameters (e.g., the depth of a
+tree or the regularization constant).
+• Test Set: It is only used once at the very end to estimate the model’s
+performance on real-world, unseen data.
+• Spark Tip: Use df.randomSplit([0.7, 0.2, 0.1]) to ensure a deterministic
+and distributed split across the cluster.
+Cross-Validation at Scale
+• k-Fold Cross-Validation: The dataset is split into k subsets. The model
+is trained k times, each time using a different subset as the validation
+set.
+• The Big Data Trade-off: While k-fold provides the most robust
+estimate of error, it is computationally expensive because it requires
+training the model k times.
+• Spark's CrossValidator: Automates this process by running parallel
+jobs for each fold and each hyperparameter combination.
+Evaluating Classification Models
+• Confusion Matrix: A table used to describe the performance of a
+classification model.
+• True Positives (TP) / True Negatives (TN)
+• False Positives (FP) / False Negatives (FN)
+• Precision vs. Recall:
+• Precision: Accuracy of positive predictions.
+• Recall: Ability to find all positive instances.
+• Area Under the ROC Curve (AUC-ROC): Measures the model's ability
+to distinguish between classes. An AUC of 1.0 is perfect; 0.5 is no
+better than a coin flip.
+Evaluating Regression Models
+• Root Mean Squared Error (RMSE): The square root of the average of
+squared differences between prediction and actual observation.
+• Mean Absolute Error (MAE): The average of the absolute differences.
+Unlike RMSE, it doesn't penalize outliers as heavily.
+• R2 (Coefficient of Determination): Explains how much of the variance
+in the target variable is captured by the model.
+• Residual Analysis: Plotting Error = Actual - Predicted. In a good
+model, residuals should be randomly distributed around zero.
+Hyperparameter Tuning with Grid Search
+• Hyperparameters: Settings that are not learned from data (e.g., the
+number of trees in a Random Forest).
+• Grid Search: Systematically working through a predefined subset of
+hyperparameters.
+• ParamGridBuilder: Spark's tool to build a grid of parameters to test.
+• Efficiency: Combined with CrossValidator, Spark evaluates these
+combinations in parallel, significantly speeding up the tuning process
+compared to sequential execution.
+Model Persistence and Deployment
+• Serialization: Saving the model state to disk (HDFS/S3).
+• ML Persistence: Spark allows you to save the entire Pipeline
+(Preprocessing + Model), ensuring that the same transformations are
+applied to new data during inference.
+• Model Serving: The model can be loaded into a Spark Streaming job
+for real-time predictions or into a Batch job for nightly reporting.
+Need for Distributed Training
+• Scale of Data: When datasets reach the terabyte or petabyte scale, a
+single machine cannot iterate through the data fast enough to
+converge on a solution.
+• Model Complexity: Deep learning models and large-scale ensembles
+(like XGBoost) require massive floating-point operations.
+• Distributed Training Defined: The process of partitioning the training
+workload across multiple processing units (CPUs/GPUs) to accelerate
+the learning process.
+Data Parallelism and Parameter Servers
+• Data Partitioning: The training dataset is split into "mini-batches" and
+distributed across Worker nodes.
+• The Workflow:
+• Each Worker has a local copy of the model.
+• Workers calculate Gradients based on their local data chunk.
+• Gradients are sent to a central Parameter Server or aggregated via All-Reduce.
+• The global model weights are updated and sent back to the Workers.
+Optimization Techniques – SGD and L-BFGS
+• Stochastic Gradient Descent (SGD): The workhorse of distributed ML.
+It updates weights frequently using small subsets of data.
+• Iterative MapReduce: Since training is iterative, Spark's ability to
+cache data in memory is what makes distributed SGD viable
+compared to traditional Hadoop.
+• L-BFGS (Limited-memory BFGS): An optimization algorithm in the
+quasi-Newton family. It converges faster than SGD for certain
+problems (like Logistic Regression) but requires more memory per
+node.
+Synchronous vs. Asynchronous Updates
+• Synchronous Training: All Workers must finish their batch and send
+gradients before the model is updated.
+• Pros: Stable convergence.
+• Cons: The "Straggler Problem"—the whole cluster waits for the slowest node.
+• Asynchronous Training: Workers update the global model as soon as
+they finish their batch.
+• Pros: No waiting; high throughput.
+• Cons: "Stale Gradients"—the model might be updated using information from
+an older version of the weights, leading to instability.
+Communication Optimization
+• Problem: If 1,000 Workers send gradients to one Driver, the Driver’s
+network card becomes a bottleneck.
+• Tree Aggregation: Spark uses a multi-level tree structure to aggregate
+results.
+• Workers send results to "Leader" Workers.
+• Leaders aggregate and send to the next level.
+• This reduces the complexity from O(N) to O(log N).
+Distributed Deep Learning
+• Limitations of MLlib: While great for "Classical ML," MLlib isn't built
+for Deep Learning (Neural Networks).
+• The Solution: Frameworks like Horovod, TensorFlow on Spark, or
+PyTorch Lightning.
+• How it works: These frameworks use Spark to orchestrate the data
+and then switch to high-performance libraries (like NCCL) for the
+actual GPU-to-GPU communication.
+Summary
+1. Transition: From Scikit-learn (local) to MLlib (distributed).
+2. Preprocessing: Scaling and Vectorization at scale.
+3. Supervised/Unsupervised: Scaling Regression, Classification, and
+Clustering.
+4. Validation: Cross-validation and hyperparameter tuning in a cluster.
+5. Optimization: The mechanics of how the cluster actually "learns."

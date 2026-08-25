@@ -1,0 +1,1061 @@
+Data Base Management
+System
+UNIT-V
+Introduction of Transaction Management
+Transactions:
+Transactions are a set of operations used to perform a logical set of work. It is the bundle of all the instructions of a logical operation. A transaction usually means that the data in the database has changed
+Transaction Management
+A transaction is defined as any one execution of a user program in a DBMS and differs from an execution of a program outside the DBMS. For performance reasons, a DBMS has to interleave the actions of several transactions.
+The interleaving is done carefully to ensure that the result of a concurrent execution of transactions is nonetheless equivalent (in its effect upon the database) to some serial, or one-at-a-time, execution of the same set of transactions. How the DBMS handles concurrent executions is an important aspect of transaction management and is the subject of concurrency control.
+A closely related issue is how the DBMS handles partial transactions, or transactions that are interrupted before they run to normal completion. The DBMS ensures that the changes made by such partial transactions are not seen by other transactions. How this is achieved is the subject of crash recovery
+Introduction of Transaction Management
+Example:
+Transfer of 50₹ from Account A to Account B. Initially A= 500₹, B= 800₹. This data is brought to RAM from Hard Disk. .
+R(A) -- 500 // Accessed from RAM
+A=A-50 // Deducting 50₹ from A
+W(A)--450 //Updated in RAM.
+R(B) -- 800 // Accessed from RAM.
+B=B+50 // 50₹ is added to B's Account
+W(B) --850 // Updated In RAM
+Commit // The data in RAM is taken back to Hard Disk
+Introduction of Transaction Management
+Example:
+R(A)
+A=500
+B=800
+A=A-50
+W(A)
+R(B)
+B=B+50
+W(B)
+Reads A/C Balance of A from DB
+Decrement A/C Balance of A from DB by 50
+Write Updated A/C balance of A to DB
+Reads A/C Balance of B from DB
+Write Updated A/C balance of B to DB
+Increment A/C Balance of B from DB by 50
+A=450
+B=850
+ACID PROPERTIES
+A user writes data access/update programs in terms of the high-level query and update language supported by the DBMS. To understand how the DBMS handles such requests, with respect to concurrency control and recovery, it is convenient to regard an execution of a user program, or transaction, as a series of reads and writes of database objects:
+To read a database object, it is first brought into main memory from disk, and then its value is copied into a program variable
+To write a database object, an in-memory copy of the object is first modified and then written to disk
+Database `objects' are the units in which programs read or write information. The units could be pages, records, and so on, but this is dependent on the DBMS and is not central to the principles underlying concurrency control or recovery. We will consider a database to be a fixed collection of independent objects.
+There are four important properties of transactions that a DBMS must ensure to maintain data in the face of concurrent access and system failures:
+ACID PROPERTIES
+A
+C
+I
+D
+Atomicity
+Consistency
+Isolation
+Durability
+Atomicity
+Users should be able to regard the execution of each transaction as atomic: either all actions are carried out or none are. Users should not have to worry about the effect of incomplete transactions
+Example: either all or none transactions states are failed before commit then all transactions are rollback is called Atomicity
+Atomicity involves the following two operations
+Abort: If a transaction aborts, then all the changes made are not visible
+Commit: If a transaction commits then all the changes made are visible
+ACID PROPERTIES
+Consistency:
+Each transaction, run by itself with no concurrent execution of other transactions, must preserve the consistency of the database. This property is called consistency
+or
+Another way we can also say, Before transaction start and after transaction completed sum of money should be same is called consistency
+Isolation:
+Users should be able to understand a transaction without considering the effect of other concurrently executing transactions, even if the DBMS interleaves the actions of several transactions for performance reasons. This property is sometimes referred to as isolation: Transactions are isolated, or protected, from the effects of concurrently scheduling other transactions.
+Durability:
+Once the DBMS informs the user that a transaction has been successfully completed, its effects should persist even if the system crashes before all its changes are reflected on disk. This property is called durability
+ACID PROPERTIES
+Transactions & Schedules
+Transactions
+A transaction is seen by the DBMS as a series, or list of actions. The actions that can be executed by a transaction include reads and writes of database objects
+A transaction can also be defined as a set of actions that are partially ordered. That is, the relative order of some of the actions may not be important. In order to concentrate on the main issues, we will treat transactions (and later, schedules) as a list of actions.
+When the transaction T is clear from the context, we will omit the subscript. In addition to reading and writing, each transaction must specify as its final action either commit (i.e., complete successfully) or abort (i.e., terminate and undo all the actions carried out thus far). Abort T denotes the action of T aborting, and Commit T denotes T committing
+Transactions & Schedules
+Operations In Transaction
+The main operations in a transaction are
+Read Operation
+Write Operation
+READ OPERATION
+Read operation reads the data from the database and then stores it in the buffer in main memory.
+For example- Read(A) instruction will read the value of A from the database and will store it in the buffer in main memory.
+WRITE OPERATION
+Write operation writes the updated data value back to the database from the buffer
+For example- Write(A) will write the updated value of A from the buffer to the database.
+Transaction Sates
+Transaction States are as follows
+A transaction goes through many different states throughout its life cycle. These states are called as transaction states.
+Active State
+Partially committed state
+Committed State
+Terminated State
+Failed State
+Aborted State
+Failure
+Failure
+Rollback
+Permanent
+Store
+Read Actions
+Transaction States
+Active State
+This is the first state in the life cycle of a transaction
+A transaction is called in an active state as long as its instructions are getting executed.
+All the changes made by the transaction now are stored in the buffer in main memory.
+Partially Committed State
+After the last instruction of transaction has executed, it enters into a partially committed state.
+After entering this state, the transaction is considered to be partially committed.
+It is not considered fully committed because all the changes made by the transaction are still stored in the buffer in main memory.
+Transaction States
+Committed State
+After all the changes made by the transaction have been successfully stored into the database
+Now the transaction is considered to be fully committed.
+Note
+After a transaction has entered the committed state, it is not possible to roll back the transaction.
+In other words, it is not possible to undo the changes that has been made by the transaction.
+This is because the system is updated into a new consistent state.
+The only way to undo the changes is by carrying out another transaction called as compensating transaction that performs the reverse operations.
+Transaction States
+Failed State
+When a transaction is getting executed in the active state or partially committed state and some failure occurs due to which it becomes impossible to continue the execution, it enters into a failed state.
+Aborted State
+After the transaction has failed and entered into a failed state, all the changes made by it have to be undone.
+To undo the changes made by the transaction, it becomes necessary to roll back the transaction.
+After the transaction has rolled back completely, it enters into an aborted state.
+Terminated State
+This is the last state in the life cycle of a transaction.
+After entering the committed state or aborted state, the transaction finally enters into a terminated state where its life cycle finally comes to an end.
+Schedule
+It is chronological execution sequence of multiple transactions is called schedule or A schedule is a series of operations from one or more transactions. A schedule can be of two types:
+Serial Schedule
+If only after the commit of one transaction, the other transaction begins then schedule is said to be serial Schedule
+A serial schedule satisfies all the ACID properties
+Example
+T1
+T2
+T3
+R(A)
+W(A)
+R(A)
+W(B)
+Commit
+R(B)
+R(B)
+Commit
+Commit
+Schedule
+Concurrent Schedule
+A schedule consist of interleaved execution of two or more transactions simultaneously is known as concurrent schedule
+Example
+T1
+T2
+T3
+R(A)
+W(B)
+R(A)
+W(B)
+Commit
+R(A)
+W(A)
+Commit
+Commit
+Schedule
+The schedule in figure does not contain an abort or commit action for either transaction. A schedule that contains either an abort or a commit for each transaction whose actions are listed in it is called a complete schedule. A complete schedule must contain all the actions of every transaction that appears in it.
+If the actions of different transactions are not interleaved, that is, transactions are executed from start to finish one by one then it is called a serial schedule
+Example
+T1
+T2
+R(A)
+W(A)
+R(B)
+W(B)
+R(C)
+W(C)
+Concurrent Execution of Transactions
+Now that we've introduced the concept of a schedule, we have a convenient way to describe interleaved executions of transactions. The DBMS interleaves the actions of different transactions to improve performance, in terms of increased throughput or improved response times for short transactions, but not all interleaving should be allowed. In this section we consider what interleaving, or schedules, a DBMS should allow
+Advantages of Serializable schedule
+Never Creates Inconsistency
+Disadvantages of Serializable schedule
+Poor throughput(i.e No of transactions complete per unit time is very less)
+Poor resource utilization
+Advantages of Concurrent schedule
+better throughput
+better resource utilization
+Concurrent Execution of Transactions
+Drawback of Concurrent schedule
+Consistency issues may arise due to non-serialization
+i.e. the results of the concurrent schedule execution may not match with the result obtained if the transactions were executed independently in a serial order.
+Solution for the serialization problem
+Making concurrent schedules “Serializable”
+Motivation for Concurrent Execution?
+The schedule shown in above figure represents an interleaved execution of the two transactions. Ensuring transaction isolation while permitting such concurrent execution is difficult, but it is necessary for performance reasons. First, while one transaction is waiting for a page to be read in from disk, the CPU can process another transaction. This is because I/O activity can be done in parallel with CPU activity in a computer. Overlapping I/O and CPU activity reduces the amount of time disks and processors are idle, and increases system throughput (the average number of transactions completed in a given time). Second, interleaved execution of a short transaction with a long transaction usually allows the short transaction to complete quickly. In serial execution, a short transaction could get stuck behind a long transaction leading to unpredictable delays in response time, or average time taken to complete a transaction.
+Serializability
+The problem of inconsistency may arise in case of a concurrent schedule, for this solution is “Serializability” (i.e. converting the concurrent schedule into an equivalent schedule which has a “serial” order of execution of its constituent transactions.
+Or We say, converting the concurrent schedule into an equivalent schedule which has a “serializable schedule”, such concurrent schedule is consistent & is free from inconsistent problem.
+OR
+Serializability means, one parallel schedule is there you to find a clone that should be serial schedule to do this we have two methods
+Conflict
+View
+Schedule
+Example
+T1
+T2
+R(A)
+W(A)
+R(A)
+W(A)
+T1
+T2
+T1
+T2
+R(A)
+W(A)
+R(A)
+W(A)
+T1
+T2
+T1
+T2
+R(A)
+R(A)
+W(A)
+W(A)
+The above schedule is called serial schedule here first T1 completes then T2 completes
+The above schedule is called serial schedule here first T2 completes then after T1 completes
+The above schedule is called parallel
+Note:
+Now this schedule can be serializable or not? If yes we can have possibilities (T1----->T2 or T2----->T1 is called serializability.
+Serializability
+Anomalies associated with interleaved Execution
+We now illustrate three main ways in which a schedule involving two consistency preserving, committed transactions could run against a consistent database and leave it in an inconsistent state.
+Two actions on the same data object conflict if at least one of them is write. The three anomalous situations can be described in terms of when the actions of two transactions T1 and T2 conflict with each other: in a write read (WR) conflict T2 reads a data object previously written by T1; we define read-write (RW) and write-write (WW) conflicts similarly.
+Conflict Serializability
+A schedule is said to be conflict serializable, if one of its conflict equivalent schedule is serializable.
+Conflict Equivalent Schedule
+If S’ is a schedule formed after swapping the non-conflict pairs in a given Schedule S, then S & S’ are called conflict equivalent schedules
+Serializability
+Check conflict pairs in other transactions and draw edges
+We can perform this by taking precedence graph easily
+Example
+Conflict Pairs: R-W, W-R, W-W
+Note: above both combination pairs are called conflict pairs (i.e. order is not matter)
+Serializability
+Why they are conflict?
+O/P of the result values change if the order of execution of these conflict pairs is inverted
+Example
+Conflict Pairs: R-W, W-R, W-W
+R(A)
+W(A)
+A=50
+A=A+50=100
+Output:50
+A=50
+R(A)
+W(A)
+A=A+50=100
+Output:100
+Note: If we have on operation W(X) ====> need to check two possibilities, that is W(X),R(X) in other transactions
+Serializability
+Important Note
+We can never swap the order of conflict pairs, as by doing so, the final result changes & schedule no more remain equivalent
+Example
+T1
+T2
+T3
+R(X)
+W(Y)
+R(A)
+R(Z)
+R(Y)
+R(Y)
+R(Y)
+W(Z)
+R(Y)
+W(X)
+W(Z)
+Serializability
+Step1: check for each transaction operation with other transaction operations to find conflicts
+Example: If T1 R(X) is check with any W(X) is there in T2 & T3 if is there then it is a conflict, like that check for every operation of T1,T2 & T3.
+here if we observed in T3 R(X) having conflict with T1 W(X) so it is in conflict then draw edges using Precedence graph.
+T1
+T2
+T3
+Like that T2 R(Y) is conflict with T3 W(Y), T2 R(Z) is conflict with T1 W(Z), T2 W(Z) is conflict with T1 R(Z) & W(Z)
+T1
+T2
+T3
+Serializability
+Now check for no loop/cycle in this graph, if no loop/cycle is called conflict serializable, if conflict serializable then is this graph is called serializable & consistent in database.
+If the above schedule is in serializable we have six possibilities like: T1-->T2-->T3, T1-->T3-->T2, T2-->T1-->T3, T2-->T3-->T1, T3-->T1-->T2, T3-->T2-->T1
+To check which is possible from above possibilities, we also need to check in the graph by using indegree=0( means need to check on to which vertex is not coming edges)
+In above graph T2 is not having any edges which are not coming from other like T1 & T2 so indegree is zero for T2
+Now take T2 as first and remove T2 from the graph and check for remaining also which having indegree is zero
+Result:
+T2-->T3-->T1
+View Serializability
+Serializability
+Conflict Serializability
+View Serializable
+Serializable
+Non-Serializable
+Yes
+Yes
+No
+VIEW SERIALIZABILITY
+Conflict serializability is sufficient but not necessary for Serializability. A more general sufficient condition is view serializability. Two schedules S1 and S2 over the same set of transactions any transaction that appears in either S1 or S2 must also appear in the other|are view equivalent under these conditions
+1. If Ti reads the initial value of object A in S1, it must also read the initial value of A in S2.
+2. If Ti reads a value of A written by Tj in S1, it must also read the value of A written by Tj in S2.
+3. For each data object A, the transaction (if any) that performs the final write on A in S1 must also perform the final write on A in S2.
+A schedule is view serializable if it is view equivalent to some serial schedule. Every conflict serializable schedule is view serializable, although the converse is not true.
+View Serializability
+Definition of View Serializable
+A schedule is said to be view serializable, if it has an equivalent “View Equivalent” Schedule.
+View Equivalent Schedule
+A schedule S’ is said to be a view equivalent schedule to S if it satisfies the following 3 conditions
+Initial Read
+If T1,T2,T3 ,…….Tj transaction perform initial read (i.e. Read the values of data items directly from the database before any modification (write operation)on the data items A,B,C……., J respectively in a schedule S then none of these initial reads should be violated in its view equivalent schedule S’.
+Read Write Sequence
+The read-write conflict pairs should be in the same sequence in both the view equivalent schedules
+View Serializability
+Final Update
+If Ti is a transaction that updates a data item X finally (at the end)in a schedule S, then Ti should only update finally the data item X in the view equivalent schedule S’
+Checking whether schedule is conflict serializable or not?
+R(A)
+T1
+S(Schedule)
+T2
+T3
+W(A)
+W(A)
+W(A)
+By this diagram we say that is not in serial schedule & it is in parallel schedule. So now we need to check conflict serializability by using precedence graph.
+Step1: Now here we start with first operation of T1 R(A) is conflict with T2 W(A) & T3 W(A) so graph is
+T1
+T2
+T3
+View Serializability
+Checking whether schedule is conflict serializable or not?
+Step2: Now T2 W(A) is conflict with T1 W(A) & T3 W(A) so graph is
+T1
+T2
+T3
+Now by taking this graph we say that it is in loop/cycle, so is called non-conflict serializable.
+If it is not conflict serializable we can’t say it is serializable,if it is not serializable also we can’t say it is not in consistency in database, finally no answer for whether it is serializable or not?.
+-So we don’t have answer then we need to go for another method called View Serializability
+View Serializability
+To implement view serializable do the following changes and check
+R(A)
+T2
+T1
+T3
+W(A)
+W(A)
+W(A)
+T1
+T2
+T3
+R(A)
+W(A)
+W(A)
+W(A)
+T1
+T1
+T2
+T2
+T3
+R(A)
+R(A)
+W(A)
+W(A)
+W(A)
+W(A)
+W(A)
+W(A)
+T3
+A=100
+A=100
+A=A-40
+A=A-40
+A=A-20
+A=A-40
+A=A-40
+A=A-20
+=0
+Here we implemented View Serializable with non conflict serializable,if by few changes, even though if we changes has done but operations should same.
+Note: why View Serializable?
+First check a schedule is serializable/parallel, if parallel, now check conflict serializable, if non serializable then it is not answerable then check for whether serializable has possible or not by using view serializable
+=0
+Conflict Pairs
+Reading Un committed data (WR Conflicts)
+The first source of anomalies is that a transaction T2 could read a database object A that has been modified by another transaction T1, which has not yet committed. Such a read is called a dirty read. A simple example illustrates how such a schedule could lead to an inconsistent database state.
+Consider two transactions T1 and T2, each of which, run alone, preserves database consistency
+The general problem illustrated here is that T1 may write some value into A that makes the database inconsistent. As long as T1 overwrites this value with a `correct' value of A before committing, no harm is done if T1 and T2 run in some serial order, because T2 would then not see the (temporary) inconsistency. On the other hand, interleaved execution can expose this inconsistency and lead to an inconsistent final database state
+Conflict Pairs
+Example:
+T1
+T2
+R(A)
+W(A)
+W(A)
+R(A)
+R(B)
+W(B)
+T1
+T2
+S
+A=70
+R(A)
+A=A-50
+W(A)
+R(A)
+W(A)
+A=A*2
+Commit
+R(B)
+W(B)
+Note: In this Schedule we have no problem, but
+T1
+T2
+R(A)
+A=A-50
+W(A)
+R(A)
+W(A)
+Commit
+R(B)
+W(B)
+A=A*2
+(40)
+|
+|
+|
+|
+*
+Here Operation is still running
+Suppose Here transaction Failed
+Due to transaction failed rollback happen
+(Atomicity)
+T1 is roll backed so the value remain same(i.e A=70), but the value of T2 R(A) is 20 this is wrong so this operation read called dirty read, actually we have no problem if T1 is not failed ,because of T1 Failure T2 R(A) caused dirty read.
+Conflict Pairs
+Unrepeatable reads (RW Conflicts)
+The second way in which anomalous behavior could result is that a transaction T2 could change the value of an object A that has been read by a transaction T1, while T1 is still in progress. This situation causes two problems. First, if T1 tries to read the value of A again, it will get a different result, even though it has not modified A in the meantime. This situation could not arise in a serial execution of two transactions; it is called an unrepeatable read.
+Example1:
+T1
+T2
+R(A)
+A=2
+R(A)
+A=A-2
+W(A)
+Commit
+R(A)
+W(A)
+Commit
+Here T1 R(A) is read the value 2 , T2 R(A) read 2 and W(A) has done with 0 then commit.
+Now T1 R(A) value is not 2 it is 0 this is the problem of R-W conflict.
+Note: T1 not understand the value is which one either 0 or 2 so need to abort/rollback.
+|
+|
+|
+Still progress
+Conflict Pairs(R-W)
+Example2:
+T1
+T2
+R(A)
+A=10
+R(A)
+W(A)
+Commit
+W(A)
+Commit
+A=A-1
+A=A-1
+Let available books in library A=10
+After doing all operations finally in the database the value of A=9, but in operations T1 & T2 two times done A-1 means two books are taken.
+||
+Conflict Pairs(W-W)
+Overwriting uncommitted data (w-w):
+The third source of anomalous behavior is that a transaction T2 could overwrite the value of an object A, which has already been modified by a transaction T1, while T1 is still in progress. Even if T2 does not read the value of A written by T1, a potential problem exists as the following example illustrates.
+Suppose that Harry and Larry are two employees, and their salaries must be kept equal. Transaction T1 sets their salaries to $1,000 and transaction T2 sets their salaries to $2,000.
+If we execute these in the serial order T1 followed by T2, both receive the salary $2,000; the serial order T2 followed by T1 gives each the salary $1,000.
+Either of these is acceptable from a consistency standpoint (although Harry and Larry may prefer a higher salary!). Notice that neither transaction reads a salary value before writing it, such a write is called a blind write.
+Example1:
+Conflict Pairs(R-W)
+Example2:
+T1
+T2
+R(A)
+A=500
+R(A)
+W(A)
+W(A)
+A=A-100
+A=A+200
+Lost update problem OR W-W conflict
+From this schedule the database is having value is 700 not 400 because which transaction is doing write operation last, that will update in db
+So transaction T1 lost update of 400.
+||
+Conflict Pairs
+Schedules involving aborted transactions:
+We now extend our definition of serializability to include aborted transactions. Intuitively, all actions of aborted transactions are to be undone, and we can therefore imagine that they were never carried out to begin with. Using this intuition, we extend the definition of a serializable schedule as follows: A serializable schedule over a set S of transactions is a schedule whose e_ect on any consistent database instance is guaranteed to be identical to that of some complete serial schedule over the set of committed transactions in S.
+This definition of serializability relies on the actions of aborted transactions being undone completely, which may be impossible in some situations. For example, suppose that (1) an account transfer program T1 deducts $100 from account A, then (2) an interest deposit program T2 reads the current values of accounts A and B and adds 6 percent interest to each, then commits, and then (3) T1 is aborted.
+If T2 had not yet committed, we could deal with the situation by cascading the abort of T1 and also aborting T2; this process would recursively abort any transaction that read data written by T2, and so on. But T2 has already committed, and so we cannot undo its actions! We say that such a schedule is unrecoverable
+Conflict Pairs
+Schedules involving aborted transactions:
+A recoverable schedule is one in which transactions commit only after (and if!) all transactions whose changes they read commit. If transactions read only the changes of committed transactions, not only is the schedule recoverable, but also aborting a transaction can be accomplished without cascading the abort to other transactions. Such a schedule is said to avoid cascading aborts.
+There is another potential problem in undoing the actions of a transaction. Suppose that a transaction T2 overwrites the value of an object A that has been modified by a transaction T1, while T1 is still in progress, and T1 subsequently aborts. All of T1's changes to database objects are undone by restoring the value of any object that it modified to the value of the object before T1's changes. (We will look at the details of how a transaction abort is handled in Chapter 20.) When T1 is aborted, and its changes are undone in this manner, T2's changes are lost as well, even if T2 decides to commit. So, for example, if A originally had the value 5, then was changed by T1 to 6, and by T2 to T1, if T1 now aborts, the value of A becomes 5 again. Even if T2 commits, its change to A is inadvertently lost. A concurrency control technique called Strict 2PL, introduced.
+Conflict Pairs
+Example:
+Concurrency Control
+OR
+A DBMS must be able to ensure that only serializable, recoverable schedules are allowed, and that no actions of committed transactions are lost while undoing aborted transactions. A DBMS typically uses a locking protocol to achieve this.
+A locking protocol is a set of rules to be followed by each transaction (and enforced by the DBMS), in order to ensure that even though actions of several transactions might be interleaved, the net effect is identical to executing all transactions in some serial order.
+It is the process of managing simultaneous execution of transactions in a shared database, to ensure the Serializability of transactions
+Purpose of Transactions
+To enforce isolation(one transaction is not interleaving with another transaction)
+To preserve database consistency
+To resolve read-write and write –write conflicts
+Concurrency Control Techniques
+Lock based Protocol or shared-exclusive locking protocol
+A lock guarantees exclusive use of a data item into a concurrent transaction
+To access the data item(Lock Acquire)
+After completion of data item (release lock)
+All data items must be accessed in a mutually exclusive manner
+Types of Locks
+Shared Lock(Lock-s)
+If transaction locked data item in shared mode then allowed to read only
+Exclusive Lock(Lock-x)
+If transaction locked data item in exclusive mode then allowed to read and write both
+Concurrency Control Techniques
+Compatibility between lock modes:
+Example for lock protocol:
+T1
+T2
+Lock of X(B)
+R(B)
+B-50
+W(B)
+Unlock(B)
+Lock of S(B)
+R(B)
+Unlock(B)
+Exclusive Lock
+Shared Lock
+Note
+Any number of transactions can hold shared lock on an item but exclusive lock can be hold only by one transaction at a time.
+Concurrency Control
+Problems with shared-Exclusive lock:
+By using shared-exclusive locking protocol can we achieve only serializable? Ans: No, because some times not possible serializable by using this locking protocol. Lets take one example.
+May not sufficient to produce only serializable schedule
+Here the Schedule S wants to perform two transactions called T1 & T2
+T1
+T2
+Now T1 wants to perform Read & Write operations on A
+R(A)
+W(A)
+So we need to allow T1 to take Exclusive lock because Read & write only possible in Exclusive lock
+X(A)
+Now T2 wants to perform Read operation on A, is it possible? Ans: No,b/c on A T1 has Exclusive lock
+But when T1 is Unlock A then T2 Get lock called shared b/c only T2 wants Read on A
+R(A)
+U(A)
+S(A)
+Now T1 wants to perform Read & Write operation on A, is allowable or not? Ans: No, b/c T2 has shared lock if it unlock then ok
+U(A)
+R(A)
+W(A)
+X(B)
+U(A)
+Concurrency Control
+May not from Dead Lock:
+Here the Schedule S wants to perform two transactions called T1 & T2
+T1
+T2
+Now T1 wants to exclusive lock A, first operation so it allows this lock
+X(A)
+G
+Now T2 wants to perform exclusive lock on B so it is not A so allowed this lock
+X(B)
+Now T1 is asking for write operation on B so it not possible because T2 having exclusive lock on B,so says wait upto lock release from T2
+X(A)
+G
+X(B)
+W
+W
+Deadlock situation
+G-Grant
+W-Wait
+Now T2 is asking for write operation on A so it not possible because T1 having exclusive lock on A,so says wait upto lock release from T1
+In this situation both transaction can’t release locks this situation is called Dead Lock
+Note:
+Here waiting time is infinite (i.e. continuously waiting)
+Note: T1 of X(B) is asking T2 of X(B) I you unlock then I will take lock, like that T2 X(A) is asking to T1 of X(A) to unlock (i.e. no operation is not doing unlock this situation is called deadlock
+Concurrency Control
+May not from Starvation:
+T1
+T2
+X(A)
+G
+U(A)
+S(A)
+G
+X(A)
+W
+T3
+T4
+|
+|
+||
+|
+||
+|
+|
+|
+|
+|
+||
+S(A)
+|
+|
+||
+U(A)
+S(A)
+|
+|
+||
+U(A)
+Note:
+In this schedule waiting is not infinite(i.e. waiiting is happen some time only
+Strict Two-Phase Locking(Strict 2 PL)
+The first Rule is:
+The most widely used locking protocol, called Strict Two-Phase Locking, or Strict 2PL, has two rules
+(1) If a transaction T wants to read (respectively, modify) an object, it first requests a shared (Respectively, exclusive) lock on the object.
+Of course, a transaction that has an exclusive lock can also read the object; an additional shared lock is not required. A transaction that requests a lock is suspended until the DBMS is able to grant it the requested lock. The DBMS keeps track of the locks it has granted and ensures that if a transaction holds an exclusive lock on an object, no other transaction holds a shared or exclusive lock on the same object. The second rule in Strict 2PL is:
+The Second rule in 2pl is:
+(2) All locks held by a transaction are released when the transaction is completed
+Strict Two-Phase Locking(Strict 2PL)
+Example:
+Requests to acquire and release locks can be automatically inserted into transactions by the DBMS; users need not worry, in effect the locking protocol allows only `safe' inter leavings of transactions. If two transactions access completely independent parts of the database, they will be able to concurrently obtain the locks that they need and proceed merrily on their ways. On the other hand, if two transactions access the same object, and one of them wants to modify it, their actions are effectively ordered serially all actions of one of these transactions (the one that gets the lock on the common object first) are completed before (this lock is released and) the other transaction can proceed
+Two Phases:
+Locks are acquired and no locks are released
+Growing phase:
+shrinking phase:
+Locks are released and no locks are acquired
+Example:
+T1
+X(A)
+S(B)
+R(A)
+W(A)
+S(A)
+R(C)
+R(D)
+U(A)
+- -
+- -
+- -
+- -
+Growing Phase
+Shrinking Phase
+Strict Two-Phase Locking(Strict 2PL)
+Example:
+Strict Two-Phase Locking(Strict 2PL)
+2 phase locking mechanism is implementing to achieve serializability
+T1
+T2
+R(A)
+W(A)
+Lets say 2 transactions are there T1 and T2, now T1 demand Read(A) & W(A) so we have to apply exclusive Lock on A
+X(A)
+we there is no need to release lets say T2 came, and T2 on this point says that I want Read(A) but when unlock T1 then get access of T2 Read(A), but unlocking of T1 is only possible after growing phase may here T1 is doing still growing phase so there is no shrinking, where it will do shrinking after Read(B) with shared lock, now T2 Read(A) get lock access(i.e. shared/exclusive) upto now it is waiting state
+S(A)
+R(A)
+W
+S(B)
+R(B)
+U(A)
+|
+|
+|
+U(B)
+Shrinking Phase
+Growing phase
+Note: T2 R(A) is in waiting state upto T1 start shrinking phase and in shrinking phase unlock (A) then get access of T2 R(A) as S(A)
+Example:
+Strict Two-Phase Locking(Strict 2PL)
+T1
+T2
+Lock S(A)
+Unlock(A)
+Lock S(B)
+Lock S(A)
+Lock X(D)
+Unlock(B)
+Unlock(A)
+Unlock(B)
+Lets say Schedule S and Transactions T1 & T2 , here I have written already it transaction, process execute and all task, so here how 2PL is playing.
+Lets say firstly lock on S(A) came, T1 demanded that I want shared lock on A, so we granted here it is in growing phase, lets say between T2 came T2 demand on share lock on A, we will check that shared lock on A is already given, so it is possible to give shared on shared, Yes.
+Here we need to understand that when we used lock based control only we thought that only one transaction at time is running no another transaction also possible based on compatibility table.
+Note: if we want to check how serialization is achieved here and is serializable schedule is formed either TT2 or T2T1 for this we use lock point, that point can check where transaction is taking last lock point or we can say where transaction is unlocking its first lock that is called lock point, if we can find on the basis, so first lock point is where T1 lock point come first so T1 is happening earlier and then T2 is happening so T1T2
+Dealing with Deadlock
+Example:
+It is a situation in which two or more transactions are waiting for one another to give up locks
+For example assume a set of transactions T1,T2,T3.
+T1 needs a resource X to complete its task, but X is hold by T2 and T2 is waiting for a resource Y which is hold by T3, T3 is waiting for resource Z which is hold by T1
+Thus all the processes wait for each other to release resources
+In this situation, none of the processes can finish their task this situation is known as deadlock
+Dealing with Deadlock
+Example:
+R(A)
+T1
+T2
+W(A)
+Lock-X(B)
+R(B)
+W(B)
+Lock-X(B)
+R(B)
+W(B)
+Lock-X(A)
+R(A)
+W(A)
+W
+W
+Waiting for T2 to release lock on B
+Waiting for T1 to release lock on A
+Deadlock Possibility Conditions
+Mutual Exclusive condition:
+A dead lock occurs in the following 4 conditions hold simultaneously in the system
+There must be at least one resource that cannot be used or shared by more than one process at a time.
+Example
+T1
+T2
+R1
+R2
+Request
+Deadlock Possibility Conditions
+Hold and wait condition:
+A process that is holding a resource that can request for additional resources that are being hold by other process in the system
+Example
+T1
+R1
+R2
+T2
+Request
+wait
+Lock
+Hold
+Hold
+Lock
+Request
+wait
+Deadlock Possibility Conditions
+No preemption condition:
+A resource cannot be forcibly taken from a process only the process can release a resource that’s being hold by it
+Example
+T1
+R2
+T2
+Note: Here T1 is hold by process R1 Even Task is complete process is not releasing for T2 i.e. NPC
+Deadlock Possibility Conditions
+Circular wait condition:
+A condition where one process is wait for a resource that is being hold by second process and second process waiting for third process and so on and the last process waiting for the first process.
+Example
+T1
+T2
+T3
+Deadlock Detection
+Wait-for-graph is one of the method for detecting the deadlock
+Example
+It is always better to avoid deadlock in a system rather than aborting or restarting the transaction
+Deadlock Detection
+For wait-for-graph method, a graph is drawn based on the transactions and their locks on the resources
+Example
+A deadlock occurs in a system if there exists a cycle in the wait-for-graph and each transaction involved in the cycle is said to be in a dead lock state
+R1
+R2
+R3
+T1
+T2
+T3
+T4
+T1
+T2
+T3
+T4
+Resource allocation graph
+Wait-for-graph
+Deadlock Prevention
+Techniques to control deadlock
+Assuming that Ti request a resource which is hold by Tj
+Mutual Exclusion
+No Preemption
+Hold & Wait
+Circular wait
+2. Use of Timestamp: there are 2 schemes in timestamp based deadlock prevention
+Wait-die
+If Ts(Ti)<Ts(Tj)
+Ti wait
+Else
+Ti Rollback
+Wound-wait
+If Ts(Ti)>Ts(Tj)
+Ti wait
+Else
+Ti Rollback
+Deadlock Prevention
+3. Timeout-based-Scheme: Based on lock-timeout. A transaction that has requested a lock waits for at most a specified amount of time. If lock is not granted within that time, transaction is said to timeout and it is rolls back and restarts
+Lock Management
+The part of the DBMS that keeps track of the locks issued to transactions is called the lock manager. the data object identifier as the key. The DBMS also maintains a descriptive entry for each transaction in a transaction table, and among other things, the entry contains a pointer to a list of locks held by the transaction.
+A lock table entry for an object which can be a page, a record, and so on, depending on the DBMS contains the following information: the number of transactions currently holding a lock on the object (this can be more than one if the object is locked in shared mode), the nature of the lock (shared or exclusive), and a pointer to a queue of lock requests.
+Implementing Locks and Unlock Requests
+According to the Strict 2PL protocol, before a transaction T reads or writes a database object O, it must obtain a shared or exclusive lock on O and must hold on to the lock until it commits or aborts.
+When a transaction needs a lock on an object, it issues a lock request to the lock manager:
+Lock Management
+Implementing Locks and Unlock Requests
+If a shared lock is requested, the queue of requests is empty, and the object is not currently locked in exclusive mode, the lock manager grants the lock and updates the lock table entry for the object (indicating that the object is locked in shared mode, and incrementing the number of transactions holding a lock by one).
+If an exclusive lock is requested, and no transaction currently holds a lock on the object (which also implies the queue of requests is empty), the lock manager grants the lock and updates the lock table entry.
+Otherwise, the requested lock cannot be immediately granted, and the lock request is added to the queue of lock requests for this object. The transaction requesting the lock is suspended,When a transaction aborts or commits, it releases all its locks. When a lock on an object is released, the lock manager updates the lock table entry for the object and examines the lock request at the head of the queue for this object.
+Lock Management
+Atomicity of Locking and Unlocking
+The implementation of lock and unlock commands must ensure that these are atomic operations. To ensure atomicity of these operations when several instances of the lock manager code can execute concurrently, access to the lock table has to be guarded by an operating system synchronization mechanism such as a semaphore. To understand why, suppose that a transaction requests an exclusive lock. The lock manager checks and finds that no other transaction holds a lock on the object and therefore decides to grant the request.
+Performance of Locking
+Lock-based schemes are designed to resolve conflicts between transactions and use two basic mechanisms: blocking and aborting
+Both mechanisms involve a performance penalty: Blocked transactions may hold locks that force other transactions to wait, and aborting and restarting a transaction obviously wastes the work done thus far by that transaction.
+A deadlock represents an extreme instance of blocking in which a set of transactions is forever blocked unless one of the deadlocked transactions is aborted by the DBMS. In practice, fewer than 1%of transactions are involved in a deadlock, (there are relatively few aborts. Therefore, the overhead of locking comes primarily from delays due to blocking.
+Consider how blocking delays affect throughput,The first few transactions are unlikely to conflict, and throughput rises in proportion to the number of active transactions. As more and more transactions execute concurrently on the same number of database objects, the likelihood of their blocking each other goes up. Thus, delays due to blocking increase with the number of active transactions, and throughput increases more slowly than the number of active transactions.
+Performance of Locking
+In fact, there comes a point when adding another active transaction actually reduces throughput; the new transaction is blocked and effectively competes with (and blocks) existing transactions. DBA should monitor the fraction of blocked transactions to see if the system is at risk of thrashing.
+Throughput can be increased in three ways:
+By locking the smallest sized objects possible (reducing the likelihood that two transactions need the same lock).
+By reducing the time that transaction hold locks (so that other transactions are blocked for a shorter time).
+By reducing hot spots. A hot spot is a database object that is frequently accessed and modified, and causes a lot of blocking delays. Hot spots can significantly affect performance.
+The granularity of locking is largely determined by the database systems implementation of locking, and application programmers and the DBA have little control over it
+What should we Lock?
+Until now, we have discussed transactions and concurrency control in terms of an abstract model in which a database contains a fixed collection of objects, and each transaction is a series of read and write operations on individual objects.
+An important question to consider in the context of SQL is what the DBMS should treat as an object when setting locks for a given SQL statement (that is part of a transaction).
+Consider the following query:
+SELECT S.rating, MIN (S.age)
+FROM Sailors S
+WHERE S.rating = 8;
+Suppose that this query runs as part of transaction T1 and an SQL statement that modifies the age of a given sailor, say Joe, with rating=8 runs as part of transaction T2. What 'objects' should the DBMS lock when executing these transactions? Intuitively, we must detect a conflict between these transactions.
+Lock Conversions
+A transaction may need to acquire an exclusive lock on an object for which it already holds a shared lock. For example, a SQL update statement could result in shared locks being set on each row in a table. If a row satisfies the condition (in the WHERE clause) for being updated, an exclusive lock must be obtained for that row. Such a lock upgrade request must be handled specially by granting the exclusive lock immediately if no other transaction holds a shared lock on the object and inserting the request at the front of the queue other\vise
+The rationale for favoring the transaction thus is that it already holds a shared lock on the object and queuing it behind. Another transaction that wants an exclusive lock on the same object causes both a deadlock. Unfortunately, while favoring lock upgrades helps, it does not prevent deadlocks caused by two conflicting upgrade requests
+For example, if two transactions that hold a shared lock on an object both requests an upgrade to an exclusive lock, this leads to a deadlock. A better approach is to avoid the need for lock upgrades altogether by obtaining exclusive locks initially and downgrading to a shared lock once it is clear that this is sufficient. The downgrade approach reduces concurrency by obtaining write locks in some cases where they are not required. On the whole, however, it improves throughput by reducing deadlocks.
+Lock Conversions
+Concurrency can be increased by introducing a new kind of lock, called an update lock, that is compatible with shared locks but not other update and exclusive locks. By setting an update lock initially, rather than exclusive locks, we prevent conflicts with other read operations. Once we are sure we need not update the object, we can downgrade to a shared lock. If we need to update the object, we must first upgrade to an exclusive lock. This upgrade does not lead to a deadlock because no other transaction can have an upgrade or exclusive lock on the object
+Transaction Support In SQL
+We have thus far studied transactions and transaction management using an abstract model of a transaction as a sequence of read, write, and abort/commit actions. We now consider what support SQL provides for users to specify transaction-level behavior.
+Creating and Terminating Transactions
+A transaction is automatically started when a user executes a statement that accesses either the database or the catalogs, such as a SELECT query, an UPDATE command, or a CREATE TABLE statement
+Once a transaction is started, other statements can be executed as part of this transaction until the transaction is terminated by either a COMMIT command or a ROLLBACK (the SQL keyword for abort) command.
+In SQL:1999, two new features are provided to support applications that involve long-running transactions, or that must run several transactions one after the other. To understand these extensions, recall that all the actions of a given transaction are executed in order, regardless of how the actions of different transactions are interleaved. We can think of each transaction as a sequence of steps
+Transaction Support In SQL
+Creating and Terminating Transactions
+The first feature, called a save point, allows us to identify a point in a transaction and selectively roll back operations carried out after this point. This is especially useful if the transaction carries out what-if kinds of operations, and wishes to undo or keep the changes based on the results. This can be accomplished by defining save points. In a long-running transaction, we may want to define a series of save points. The save point command allows us to give each save point a name:
+SAVEPOINT (save point name)
+A subsequent rollback command can specify the save point to roll back to.
+ROLLBACK TO SAVEPOINT (save point name)
+Transaction characteristics in SQL
+In order to give programmers control over the locking overhead incurred by their transactions, SQL allows them to specify three characteristics of a transaction: access mode, diagnostics size, and isolation level. The diagnostics size determines the number of error conditions that can be recorded; If the access mode is READ ONLY, the transaction is not allowed to modify the database. Thus, INSERT, DELETE, UPDATE, and CREATE commands cannot be executed.
+If we have to execute one of these commands, the access mode should be set to READ WRITE or transactions with READ ONLY access mode. Only shared locks need to be obtained, thereby increasing concurrency.
+The isolation level controls the extent to which a given transaction is exposed to the actions of other transactions executing concurrently. By choosing one of four possible isolation level settings, a user can obtain greater concurrency at the cost of increasing the transaction's exposure to other transaction's uncommitted changes.
+Isolation level choices are READ UNCOMMITTED, READ COMMITTED, REPEATABLE READ, and SERIALIZABLE. The isolation level and access mode can be set using the SET TRANSACTION command. For example, the following command declares the current transaction to be SERIALIZABLE and READ ONLY:SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY When a transaction is started, the default is SERIALIZABLE and READ WRITE
+Introduction to Crash Recovery
+The recovery manager of a DBMS is responsible for ensuring transaction atomicity and durability. It ensures atomicity by undoing the actions of transactions that do not commit, and durability by making sure that all actions of committed transactions survive system crashes, (e.g., a core dump caused by a bus error) and media failures (e.g., a disk is corrupted)
+Then a DBMS is restarted after crashes. the recovery manager is given control and must bring the database to a consistent state. The recovery manager is also responsible for undoing the actions of an aborted transaction. To see what it takes to implement a recovery manager, it is necessary to understand what happens during normal execution.
+The transaction manager of a DBMS controls the execution of transactions. Before reading and writing objects during normal execution, locks must be acquired (and released at some later time) according to a chosen locking protocol. For simplicity of exposition, we make the following assumption : Atomic Writes: Writing a page to disk is an atomic action.
+Introduction to Crash Recovery
+Stealing Frames and Forcing Pages
+With respect to writing objects, two additional questions arise
+1. Can the changes made to an object 0 in the buffer pool by a transaction T be written to disk before T commits? Such writes are executed when another transaction wants to bring in a page and the buffer manager chooses to replace the frame containing 0; of course, this page must have been unpinned by T. If such writes are allowed, we say that a steal approach is used. (Informally, the second transaction 'steals' a frame from T.)
+2. When a transaction cOl1units, must we ensure that all the changes it has made to objects in the buffer pool are immediately forced to disk? If so. we say that a force approach is used. From the standpoint of implementing a recovery manager, it is simplest to use a buffer manager with a no-steal force approach. If a no-steal approach is used, we do not have to undo the changes of an aborted transaction (because these dumges have not been written to disk) l and if a force approach is used, we do not have to redo the changes of a committed transaction if there is a subsequent crash (because all these changes are guaranteed to have been written to disk at commit time).However, these policies have important drawbacks. The no-steal approach assumes that all pages modified by ongoing transactions can be accommodated in the buffer pool, and in the presence of large transactions (typically run in batch mode, e.g., payroll processing), this assumption is unrealistic. The force approach results in excessive page I/O costs.
+Recovery-Related steps during normal execution
+The recovery manager of a DBMS maintains some information during normal execution of transactions to enable it to perform its task in the event of a failure. In particular, a log of all modifications to the database is saved on stable storage, which is guaranteed to survive crashes and media failures.
+Stable storage is implemented by maintaining multiple copies of information (perhaps in different locations) on nonvolatile storage devices such as disks or tapes. The log enables the recovery manager to undo the actions of aborted and incomplete transactions and redo the actions of committed transactions.
+For example, a transaction that committed before the crash may have made updates to a copy (of a database object) in the buffer pool, and this change may not have been written to disk before the crash, because of a no-force approach. Such changes must be identified using the log and written to disk.
+. Further, changes of transactions that did not commit prior to the crash might have been written to disk because of a steal approach. Such changes must be identified using the log and then undone.
+Recovery-Related steps during normal execution
+The amount of work involved during recovery is proportional to the changes made by committed transactions that have not been written to disk at the time of the crash. To reduce the time to recover from a crash, the DBMS periodically forces buffer pages to disk during normal execution using a background process (while making sure that any log entries that describe changes these pages are written to disk first, i.e., following the WAL protocol). A process called check pointing, which saves information about active transactions and dirty buffer pool pages, also helps reduce the time taken to recover from a crash.
+Overview of ARIES
+ARIES is a recovery algorithm that is designed to work with a steal, no-force approach. When the recovery manager is invoked after a crash, restart proceeds in three phases. In the Analysis phase, it identifies dirty pages in the buffer pool (i.e., changes that have not been written to disk) and active transactions at the time of the crash. In the Redo phase, it repeats all actions, starting from an appropriate point in the log, and restores the database state to what it was at the time of the crash. Finally, in the Undo phase, it undoes the actions of transactions that did not commit, so that the database reflects only the actions of committed transactions.
+When the recovery manager is invoked after a crash, restart proceeds in three phases
+1. Analysis: Identifies dirty pages in the buffer pool (i.e., changes that have not been written to disk) and active transactions at the time of the crash.
+2. Redo: Repeats all actions, starting from an appropriate point in the log, and restores the database state to what it was at the time of the crash.
+3. Undo: Undoes the actions of transactions that did not commit, so that the database reflects only the actions of committed transactions.
+2PL,SERIALIZABILITY & RECOVERABILITY
+In this topic, we consider how locking protocols guarantee some important properties of schedules; namely, serializability and recoverability. Two schedules are said to be conflict equivalent if they involve the (same set of) actions of the same transactions and they order every pair of conflicting actions of two committed transactions in the same way.
+Two actions conflict, if they operate on the same data object and at least one of them is a write. The outcome of a schedule depends only on the order of conflicting operations; we can interchange any pair of non-conflicting operations without altering the effect of the schedule on the database.
+If two schedules are conflict equivalent, it is easy to see that they have the same effect on a database. Indeed, because they order all pairs of conflicting operations in the same way, we can obtain one of them from the other by repeatedly swapping pairs of non-conflicting actions, that is, by swapping pairs of actions whose relative order does not alter the outcome.
+2PL,SERIALIZABILITY & RECOVERABILITY
+A schedule is conflict serializable if it is conflict equivalent to some serial schedule. Every conflict serializable schedule is serializable, if we assume that the set of items in the database does not grow or shrink; that is, values can be modified but items are not added or deleted. We will make this assumption for now and consider its consequences this schedule is equivalent to executing the transactions This schedule is equivalent to executing the transactions.
+.It is useful to capture all potential conflicts between the transactions in a schedule in a precedence graph, also called a serializability graph. The precedence graph for a schedule S contains: A node for each committed transaction in S.An arc from Ti to Tj if an action of Ti precedes and conflicts with one of Tj's actions.
+1. A schedule S is conflict serializable if and only if its precedence graph is acyclic.
+2. Strict 2PL ensures that the precedence graph for any schedule that it allows is acyclic.
+2PL,SERIALIZABILITY & RECOVERABILITY
+A widely studied variant of Strict 2PL, called Two-Phase Locking (2PL), relaxes the second rule of Strict 2PL to allow transactions to release locks before the end, that is, before the commit or abort action
+.For 2PL, the second rule is replaced by the following rule:(2PL) (2) A transaction cannot request additional locks once it releases any lock.Thus, every transaction has a `growing' phase in which it acquires locks, followed by a `shrinking' phase in which it releases locks. It can be shown that even (non-strict) 2PL ensures a cyclic it of the precedence graph and therefore allows only serializable schedules. Intuitively, an equivalent serial order of transactions is given by the order in which transactions enter their shrinking phase:If T2 reads or writes an object written by T1, T1 must have released its lock on the object before T2 requested a lock on this object. Thus, T1 will precede T2. (A similar argument shows that T1 precedes T2 if T2 writes an object previously read by T1.
+A formal proof of the claim would have to show that there is no cycle of transactions that `precede' each other by this argument.)A schedule is said to be strict if a value written by a transaction T is not read or overwritten by other transactions until T either aborts or commits
+2PL,SERIALIZABILITY & RECOVERABILITY
+Strict schedules are recoverable, do not require cascading aborts, and actions of aborted transactions can be undone by restoring the original values of modified objects. (See the last example in Section 18.3.4.) Strict 2PL improves upon 2PL by guaranteeing that every allowed schedule is strict, in addition to being conflict serializable. The reason is that when a transaction T writes an object under Strict 2PL, it holds the (exclusive) lock until it commits or aborts. Thus, no other transaction can see or modify this object until T is complete.
+Concurrency Control Without Locking
+Locking is the most widely used approach to concurrency control in a DBMS, but it is not the only one. We now consider some alternative approaches
+Optimistic concurrency control
+Locking protocols take a pessimistic approach to conflicts between transactions and use either transaction abort or blocking to resolve conflicts. In a system with relatively light contention for data objects, the overhead of obtaining locks and following a locking protocol must nonetheless be paid.
+In optimistic concurrency control, the basic premise is that most transactions will not conflict with other transactions, and the idea is to be as permissive as possible in allowing transactions to execute.
+Some Important points:
+In pessimistic we have a common buffer in which transactions read or write data
+But no concept of common buffer in optimistic, hence each transaction has its own buffer in which it read & write data
+Concurrency Control Without Locking
+Transactions proceed in three phases:
+1. Read: The transaction executes, reading values from the database and writing to a private workspace.
+2. Validation: If the transaction decides that it wants to commit, the DBMS checks whether the transaction could possibly have conflicted with any other concurrently executing transaction. If there is a possible conflict, the transaction is aborted; its private workspace is cleared and it is restarted.
+3. Write: If validation determines that there are no possible conflicts, the changes to data objects made by the transaction in its private workspace are copied into the database.
+Each transaction Ti is assigned a timestamp TS(Ti) at the beginning of its validation phase, and the validation criterion checks whether the timestamp-ordering of transactions is an equivalent serial order. For every pair of transactions Ti and Tj such that TS(Ti) < TS(Tj), one of the following conditions must hold:
+Concurrency Control Without Locking
+1. Ti completes (all three phases) before Tj begins; or
+2. Ti completes before Tj starts its Write phase, and Ti does not write any database object that is read by Tj; or
+3. Ti completes its Read phase before Tj completes its Read phase, and Ti does not write any database object that is either read or written by Tj. To validate Tj, we must check to see that one of these conditions holds with respect to each committed transaction Ti such that TS(Ti) < TS(Tj). Each of these conditions ensures that Tj's modifications are not visible to Ti.
+Further, the first condition allows Tj to see some of Ti's changes, but clearly, they execute completely in serial order with respect to each other. The second condition allows Tj to read objects while Ti is still modifying objects, but there is no conflict because Tj does not read any object modified by Ti. Although Tj might overwrite some objects written by Ti, all of Ti's writes precede all of Tj's writes. The third condition allows Ti and Tj to write objects at the same time, and thus have even more overlap in time than the second condition, but the sets of objects written by the two transactions cannot overlap. Thus, no RW, WR, or WW conflicts are possible if any of these three conditions is met.
+Timestamp-Based Concurrency Control
+Unique values assign to transaction
+Tells the order (when they enters into the system)
+Read_TS(RTS)=last (Latest) transaction no which performed read successfully
+Write_TS(WTS)=last(Latest)transaction no which performed write successfully
+Example
+10.00
+T1
+Older
+10.10
+T2
+Younger
+10.15
+T3
+Youngest
+TS(Ti)
+Timestamp-Based Concurrency Control
+R(A)
+T1
+T2
+W(A)
+T1
+T2
+T3
+T3
+R(A)
+R(A)
+W(A)
+W(A)
+RTS(A)=30
+WTS(A)=20
+Rules: Transaction Ti issues a Read (A) operation
+If WTS(A)> TS(Ti), Rollback Ti
+Otherwise execute R(A) Operation
+Set RTS(A)=Max{RTS(A),TS(Ti)}
+Timestamp-Based Concurrency Control
+Transaction Ti issues a Write(A) operation
+If RTS(A)>TS(Ti) then Rollback Ti
+If WTS(A)>TS(Ti) then Rollback Ti
+Otherwise execute Write(A) operation
+Set WTS(A)=TS(Ti)
+Note
+If you talk about timestamp protocol, then timestamp ordering protocol most important point to remember is, that which transaction comes first that transaction will complete first, we always consider this, means we have to priority to older.
+Lets say, if I take 2 transactions T1 and T2 and T1 timestamp is 100 and T2 timestamp is 200, now lets say T1 has performed Read(A) and after that T2 wants to do write(A) so we will allow this, what we are saying that transaction that take earlier we will give priority to it.
+Timestamp-Based Concurrency Control
+So whenever this type of problem comes, although this is conflict Read and Write. But there is no problem in this, we are saying that this is performing write but this younger, so no problem it came later,so like this way, we perform TI WRITE(A) and I will remove T1 R(A) and T2 R(A) is after T1 W(A) is also no problem even T2 W(A) is also no problem because T2 is Younger than T1, but we have to remember the important point is if If T2 R(A) and after this T1 Try to do W(A) then don’t allow according below rules.
+T1
+T2
+R(A)
+T1
+T2
+R(A)
+T1
+T2
+W(A)
+old
+Young
+old
+old
+Young
+Young
+W(A)
+W(A)
+W(A)
+Here we have no problem b/c as per rule T1 complete transaction first due to it is older
+Here also no problem
+Here also no problem
+Timestamp-Based Concurrency Control
+T1
+T2
+R(A)
+T1
+T2
+R(A)
+T1
+T2
+W(A)
+old
+Young
+old
+old
+Young
+Young
+W(A)
+W(A)
+W(A)
+Here does not allow this operation b/c T1 completes transaction first as per rule and update some value. T2 read first value not updated value so need to rollback T1
+commit
+Overwrite 10
+Case1: This is based on Rule2
+Case2: This is based on Rule1
+Case3:
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+Rollback
+Fail
+Fail
+Rollback
+commit
+Multi Version Concurrency Control
+This helps in stopping delay for read operations, it maintains the different versions of data items each write operation W(A) create a new version of A when any transaction want to read A then appropriate version of A for R(A) is selected by control Manager
+Multi version timestamp ordering
+Each Ti is associated with unique time stamp TS(Ti)
+Each Data item An(n is version of A) has 3 fields
+Content
+Data value for that version
+Write-TS(An)
+It is equal to timestamp of transaction that has created An
+Consider A transaction Ti & An be any data item with version n whose write timestamp is less than or equal to TS(Ti)
+Read(An) By Ti=content of An are returned to Ti
+Write (An) By Ti=Ti rollbacks if TS((Ti)<Read-TS(An)
+Multi Version Concurrency Control
+If TS(Ti)=Write=TS(An) then new version is created with New Content
+Example
+TS(T1)=4
+TS(T2)=2
+TS(T3)=6
+Ti=5
+A1
+W(A)=6
+W(A)=10
+A2
+A3
+W(A)=70
+1) Read(A2) by Ti
+A2
+2) write(A3)----->Rollback(b/c TS(T3)>TS(TI))
+3) TS(Ti)=W-TS(An) A=90
+A4

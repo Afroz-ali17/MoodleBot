@@ -1,0 +1,337 @@
+COMPUTER VISION AND IMAGE PROCESSING
+UNIT-II
+Image Analysis Techniques
+V Phanishwara Hara Gopal
+Department of CSE (AI&ML)
+RGMCET
+2025-2026
+1 Edge Detection and Feature Extraction
+Edge detection and feature extraction are fundamental to understanding image structure.
+They are key preprocessing stages in many computer vision pipelines, including object de-
+tection, image matching, motion tracking, and SLAM (Simultaneous Localization and Map-
+ping).
+2 Gradient Operators
+Edges represent significant local changes in image intensity. These changes can be detected
+using first derivative approximations via gradient filters.
+2.1 Image Gradient
+Given an image function f(x,y), the gradient is defined as:
+(cid:20)∂f(cid:21)
+∇f = ∂x (1)
+∂f
+∂y
+The gradient magnitude is:
+(cid:115)
+(cid:18) ∂f(cid:19)2 (cid:18) ∂f(cid:19)2
+|∇f| = + (2)
+∂x ∂y
+The direction of the edge is:
+(cid:18) (cid:19)
+∂f/∂y
+θ(x,y) = tan−1 (3)
+∂f/∂x
+2.2 Sobel Operator
+Sobel filters combine Gaussian smoothing and first-order derivative estimation:
+   
+−1 0 1 −1 −2 −1
+G x = −2 0 2, G y =  0 0 0 
+−1 0 1 1 2 1
+2.3 Prewitt Operator
+Prewitt filters are simpler and emphasize uniform weights:
+   
+−1 0 1 −1 −1 −1
+G x = −1 0 1, G y =  0 0 0 
+−1 0 1 1 1 1
+2.4 Edge Magnitude Calculation
+Edge magnitude is typically computed as:
+(cid:113)
+|∇f| ≈ |G |+|G | or G2 +G2 (4)
+x y x y
+—
+3 Canny Edge Detection
+The Canny edge detector (1986) is a multi-stage algorithm considered the gold standard for
+edge detection.
+3.1 Steps of Canny Edge Detection
+1. Gaussian smoothing: Suppress noise
+2. Compute gradients: Use Sobel filters to find G , G
+x y
+3. Magnitude and direction:
+(cid:18) (cid:19)
+(cid:113) G
+M(x,y) = G2 +G2, θ(x,y) = tan−1 y
+x y G
+x
+4. Non-maximum suppression: Thin edges by retaining only local maxima
+5. Double thresholding: Apply high and low thresholds to classify strong, weak, and
+irrelevant edges
+6. Edge tracking by hysteresis: Final edge map includes strong edges and weak edges
+connected to strong ones
+3.2 Advantages
+• Optimal in terms of detection, localization, and minimal response (as per Canny’s
+criteria)
+• Robust to noise due to Gaussian smoothing
+—
+4 Corner and Interest Point Detection
+Edges are not sufficient to localize keypoints. Corners (interest points) provide distinct 2D
+features that can be matched and tracked.
+4.1 Harris Corner Detector
+Proposed in 1988, this method uses image gradients to compute a corner response function.
+Auto-correlation Matrix:
+(cid:20) (cid:80) I2 (cid:80) I I (cid:21)
+M = (cid:80)
+I
+x
+I
+(cid:80) Ix 2y
+x y y
+Corner Response Function:
+R = det(M)−k ·(trace(M))2 (5)
+Where:
+• det(M) = λ λ
+1 2
+• trace(M) = λ +λ
+1 2
+• k ∈ [0.04,0.06]
+Interpretation:
+• R < 0: Edge
+• R ≈ 0: Flat region
+• R > 0: Corner
+4.2 Shi-Tomasi Corner Detection
+Improves Harris by using the minimum eigenvalue:
+R = min(λ ,λ ) (6)
+1 2
+4.3 Applications
+• Corner points are used in tracking, e.g., Lucas–Kanade optical flow
+• Feature descriptors like SIFT, SURF, and ORB build on corner localization
+• Interest points enable robust matching in structure-from-motion and SLAM
+Gradient-based edge detection identifies significant changes in intensity. Canny offers
+optimal and refined edge localization. Corners and interest points, such as those found using
+Harris or Shi–Tomasi, serve as the basis for keypoint detection in modern computer vision
+systems including deep learning feature matching and robotics.
+5 Image Segmentation
+Image segmentation is the process of partitioning an image into meaningful regions, typically
+corresponding to objects or boundaries. It plays a key role in object detection, recognition,
+and classification in AI and ML systems.
+6 Thresholding Methods
+6.1 Basic Global Thresholding
+A global threshold T segments an image into foreground and background:
+(cid:40)
+1, if f(x,y) ≥ T
+g(x,y) = (7)
+0, otherwise
+Threshold T is often selected using histogram analysis.
+6.2 Otsu’s Method (Optimal Threshold)
+Otsu’s algorithm selects a threshold T that maximizes the between-class variance:
+• Total mean: µ = (cid:80)L−1i·p(i)
+T i=0
+• Class probabilities:
+T L−1
+(cid:88) (cid:88)
+ω (T) = p(i), ω (T) = p(i)
+0 1
+i=0 i=T+1
+• Class means:
+T L−1
+1 (cid:88) 1 (cid:88)
+µ (T) = i·p(i), µ (T) = i·p(i)
+0 1
+ω ω
+0 1
+i=0 i=T+1
+• Between-class variance:
+σ2(T) = ω (T)ω (T)[µ (T)−µ (T)]2
+B 0 1 0 1
+The optimal threshold T maximizes σ2.
+B
+6.3 Adaptive Thresholding
+Threshold is computed locally over image subregions:
+(cid:40)
+1, if f(x,y) ≥ T(x,y)
+g(x,y) = (8)
+0, otherwise
+Useful for non-uniform lighting conditions.
+7 Region-Based Segmentation
+7.1 Region Growing
+Start with a seed pixel and expand the region by including neighboring pixels that satisfy a
+similarity criterion:
+|f(x,y)−f(s,t)| < ϵ
+Where f(s,t) is the intensity of a seed point and ϵ is a predefined threshold.
+7.2 Region Splitting and Merging
+The image is recursively split into quadrants until homogeneity is achieved:
+• Splitting: divide regions that are not homogeneous
+• Merging: combine adjacent homogeneous regions
+Let R be a region, then the homogeneity predicate is:
+|µ −f(x,y)| < δ
+R
+8 Clustering-Based Segmentation
+Clustering treats segmentation as an unsupervised learning problem.
+8.1 K-Means Clustering
+A popular algorithm for partitioning pixels into k clusters based on feature similarity (typi-
+cally intensity or color).
+Algorithm:
+1. Initialize k cluster centers µ ,µ ,...,µ
+1 2 k
+2. Assign each pixel to the closest cluster:
+c = argmin∥x −µ ∥2
+i i j
+j
+3. Update cluster centers:
+1 (cid:88)
+µ = x
+j i
+N
+j
+xi∈Cj
+4. Repeat until convergence
+8.2 Mean Shift Clustering
+A non-parametric clustering algorithm that finds dense areas in feature space.
+Kernel Density Estimation: Given a kernel K(x), the mean shift vector is:
+(cid:80)n
+x K(x−x )
+m(x) = i=1 i i −x (9)
+(cid:80)n
+K(x−x )
+i=1 i
+Procedure: Iteratively shift each point towards the region of maximum density using the
+above vector until convergence.
+8.3 Comparison
+• K-means: Fast, requires predefining k, sensitive to initialization.
+• Mean Shift: No need for k, robust to outliers, but computationally intensive.
+8.4 Applications in AI and ML
+• Foreground/background separation for object detection
+• Preprocessing for CNN-based semantic segmentation
+• Medical imaging: lesion and tumor isolation
+• Clustering features in image embedding spaces
+Segmentation is crucial for understanding visual content. Thresholding is effective for
+simple tasks, region-based techniques are spatially coherent, and clustering approaches offer
+unsupervised generalization. These methods form the foundation of modern deep learning
+segmentation pipelines.
+9 Morphological Image Processing - Introduction
+Morphological image processing provides tools for extracting image components such as
+boundaries, skeletons, and shapes using set theory operations. Texture analysis involves
+measuring the variation in surface intensity or structure to characterize patterns useful in
+classification tasks.
+10 Morphological Image Processing
+Morphological operations apply structuring elements to binary or grayscale images. Let A
+be a binary image and B a structuring element.
+10.1 Erosion
+Erosion removes pixels on object boundaries.
+A⊖B = {z | B ⊆ A} (10)
+z
+It shrinks the object by ”eroding” its boundaries.
+10.2 Dilation
+Dilation adds pixels to object boundaries.
+ˆ
+A⊕B = {z | (B) ∩A ̸= ∅} (11)
+z
+It expands objects in an image.
+10.3 Opening
+Opening removes small foreground objects while preserving the shape and size of larger
+objects.
+A◦B = (A⊖B)⊕B (12)
+10.4 Closing
+Closing fills small holes in objects while retaining the shape of larger objects.
+A•B = (A⊕B)⊖B (13)
+10.5 Applications in Shape Analysis
+• Remove noise from binary images
+• Detect object boundaries
+• Extract connected components
+• Shape descriptors (area, perimeter, compactness)
+11 Texture Analysis
+Texture is the spatial arrangement of pixel intensities. Texture features are critical in clas-
+sification, segmentation, and pattern recognition.
+11.1 Statistical Methods: Gray-Level Co-occurrence Matrix (GLCM)
+GLCM captures second-order statistics of spatial relationships between pixel intensities.
+Let P(i,j,d,θ) be the number of times gray levels i and j occur at distance d and angle
+θ.
+From GLCM, derive texture descriptors:
+• Energy (Angular Second Moment):
+(cid:88)
+Energy = P(i,j)2
+i,j
+• Contrast:
+(cid:88)
+Contrast = (i−j)2P(i,j)
+i,j
+• Homogeneity:
+(cid:88) P(i,j)
+Homogeneity =
+1+|i−j|
+i,j
+• Correlation:
+(cid:88) (i−µ )(j −µ )P(i,j)
+i j
+Correlation =
+σ σ
+i j
+i,j
+Directionality: GLCMs are computed in multiple directions (0°, 45°, 90°, 135°).
+11.2 Transform-Based Methods: Gabor Filters
+Gabor filters are used to analyze frequency and orientation content of textures.
+A 2D Gabor filter is defined as:
+(cid:18) x′2 +γ2y′2(cid:19) (cid:18) x′ (cid:19)
+g(x,y) = exp − cos 2π +ϕ (14)
+2σ2 λ
+Where:
+x′ = xcosθ+ysinθ
+y′ = −xsinθ+ycosθ
+Parameters:
+• λ: wavelength of the sinusoidal factor
+• θ: orientation
+• ϕ: phase offset
+• σ: standard deviation
+• γ: spatial aspect ratio
+Gabor filter banks (multi-scale, multi-orientation) are commonly used in CNN input
+preprocessing.
+11.3 Applications in Pattern Recognition
+• Character Recognition: Morphological thinning to extract stroke features.
+• Face Recognition: Gabor features for expression and texture representation.
+• Texture Classification: Use of GLCM or Gabor energy features for segmentation.
+• Biometric Verification: Fingerprint and iris texture patterns analyzed using co-
+occurrence statistics.
+• Surface Inspection: Automated quality control in manufacturing using texture-
+based anomaly detection.
+Morphological operations simplify binary image analysis, especially for shape extraction
+and preprocessing. Texture analysis techniques such as GLCMs and Gabor filters provide
+statistical and frequency-based representations that are essential for AI-driven classification,
+recognition, and biomedical imaging systems.
+Topic Area Textbook Chapter Pages Key Concepts / Equations
+Gradient operators Gonzalez & Ch. 10 pp. 566–572 Sobel/Prewitt kernels,
+(cid:113)
+(Sobel, Prewitt) Woods Gradient: |∇f|= G2 +G2
+x y
+Canny edge detec- Gonzalez & Ch. 10 pp. 577–579 Gaussian filtering, gradient, non-max
+tor Woods suppression, double thresholding
+Corner and interest Gonzalez & Ch. 11 pp. 606–608 Harris detector: R = det(M) −
+point detection Woods k(trace(M))2
+Thresholdingmeth- Gonzalez & Ch. 10 pp. 560–564 Global/adaptive thresholds,
+ods Woods Otsu’s: maximize between-class vari-
+ance σ2
+B
+Region-based seg- Gonzalez & Ch. 10 pp. 564–567 Region growing: |f(x,y)−f(s,t)|<ϵ,
+mentation Woods splitting and merging
+K-means clustering Gonzalez & Ch. 11 pp. 632–636 Assign pixels to k clusters:
+Woods c =argmin ∥x −µ ∥2
+i j i j
+Mean-shift cluster- Szeliski Ch. 7 pp. 236–239 Mean-shift vector:
+ing m(x)=
+(cid:80)xiK(x−xi)
+−x
+(cid:80)K(x−xi)
+Erosion and dila- Gonzalez & Ch. 9 pp. 528–531 Binary morphology:
+tion Woods Erosion A⊖B, Dilation A⊕B
+Opening and clos- Gonzalez & Ch. 9 pp. 531–533 Opening: A◦B =(A⊖B)⊕B,
+ing Woods Closing: A•B =(A⊕B)⊖B
+Shape analysis ap- Gonzalez & Ch. 9 pp. 538–541 Boundary extraction, connected com-
+plications Woods ponents, skeletons
+Texture analysis Gonzalez & Ch. 11 pp. 623–627 Contrast, Energy, Homogeneity, Corre-
+(GLCM) Woods lation from GLCM P(i,j)
+Gabor filter meth- Gonzalez & Ch. 11 pp. 628–631 Gabor: Gaussian envelope modulated
+ods Woods by sinusoid
+(multi-scale, multi-orientation)
+Pattern recognition Gonzalez & Ch. 11 pp. 632–636 Classificationtasksusingmorphological
+applications Woods and texture features
+Table 1: Reference Summary with Page Numbers for Unit-2 Topics)
+References
+[1] Gonzalez, R. C., & Woods, R. E. (2008). Digital Image Processing (3rd ed.). Pearson
+Prentice Hall, Stony Brook University.
+[2] Szeliski, R. (2010). Computer Vision: Algorithms and Applications. Springer.

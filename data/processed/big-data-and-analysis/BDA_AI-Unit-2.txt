@@ -1,0 +1,279 @@
+UNIT-2
+BDA & AI APPLICATIONS
+Big Data Tools and Frameworks
+V PHANISHWARA HARA GOPAL,
+ASSISTANT PROFESSOR,
+DEPARTMENT OF CSE (AI&ML),
+RGM COLLEGE OF ENGINEERING & TECHNOLOGY (AUTONOMOUS).
+Introduction to Apache Spark Architecture
+• Definition: An open-source, multi-language engine for executing data
+engineering, data science, and machine learning on single-node
+machines or clusters.
+• The "In-Memory" Advantage: Unlike MapReduce, Spark processes
+data in RAM, reducing IO overhead by up to 100x.
+• Unified Stack: Spark SQL, Spark Streaming, MLlib (Machine Learning),
+and GraphX.
+Introduction to Apache Spark Architecture
+Introduction to Apache Spark Architecture
+The Spark Cluster Components
+• Driver Program: The process running the main() function and creating
+the SparkContext.
+• Cluster Manager: Allocates resources across applications (e.g., YARN,
+Mesos, or Standalone).
+• Executors: Worker nodes that run individual tasks and store data in
+memory or disk.
+• Tasks: The smallest unit of work sent to executors.
+The Spark Cluster Components
+The Spark Cluster Components
+RDDs (Resilient Distributed Datasets)
+• Resilient
+• Fault-tolerant; if a node fails, the data can be reconstructed.
+• Distributed
+• Data is partitioned across multiple nodes in the cluster.
+• Dataset
+• A collection of partitioned data (Objects, Integers, etc.).
+• Immutability
+• Once created, an RDD cannot be changed.
+RDDs (Resilient Distributed Datasets)
+RDD Operations – Transformations vs. Actions
+• Transformations: Create a new RDD from an existing one (e.g., map(),
+filter(), flatMap()).
+• Actions: Return a value to the Driver or write data to storage (e.g.,
+count(), collect(), saveAsTextFile()).
+• Lazy Evaluation: Spark does not execute transformations
+immediately. It builds a "Lineage Graph" and only executes when an
+Action is called.
+Directed Acyclic Graph (DAG) in Spark
+• Spark creates a DAG of stages to be executed.
+• Narrow Dependencies: Each partition of the
+parent RDD is used by at most one partition
+of the child RDD (e.g., map, filter).
+• Wide Dependencies: Multiple child partitions
+depend on one parent partition (e.g.,
+groupByKey, reduceByKey). This triggers a
+Shuffle.
+Fault Tolerance via Lineage
+• RDDs do not use replication to handle
+failures (unlike HDFS).
+• Instead, they keep track of the Lineage
+(the sequence of transformations).
+• If a partition is lost, Spark re-runs only
+the necessary transformations on that
+specific partition of the original data.
+Spark SQL - Why Structured APIs?
+• The "Black Box" Problem: In RDDs, Spark doesn't understand the
+data structure (it’s just a collection of JVM objects), making
+optimization difficult.
+• Structure is Key: By introducing schemas (named columns and types),
+Spark can optimize the query plan before execution.
+• The Unified Entry Point: SparkSession.
+• In Spark 2.x and 3.x, SparkSession replaces SQLContext and HiveContext to
+provide a single point of interaction.
+DataFrames and Datasets
+• DataFrame:
+• A distributed collection of data organized into named columns.
+• Conceptually equivalent to a table in a relational database.
+• "Untyped": Errors are caught at runtime, not compile time.
+• Dataset:
+• An extension of the DataFrame API that provides Type-Safety.
+• Available only in Java and Scala (since Python/R are dynamic).
+• "Typed": Errors are caught at compile time.
+Spark SQL Engine – The Catalyst Optimizer
+• Goal: To transform a high-level query into an optimized physical
+execution plan.
+• Four Phases:
+• Analysis: Resolving column names/tables using the "Catalog.“
+• Logical Optimization: Rule-based optimization (e.g., Predicate Pushdown,
+Column Pruning).
+• Physical Planning: Selecting the most cost-effective execution strategy (e.g.,
+choosing a Broadcast Join over a Shuffle Join).
+• Code Generation: Using "Tungsten" to generate efficient Java bytecode.
+The Tungsten Execution Engine
+• Memory Management: Uses "Off-heap" memory to avoid Java
+Garbage Collection (GC) overhead.
+• Binary Processing: Data is stored in a compact binary format rather
+than as heavy JVM objects.
+• Whole-Stage Code Generation: Instead of interpreting each row,
+Tungsten collapses multiple operators into a single, highly optimized
+function.
+RDD vs DataFrame vs Dataset
+Feature RDD DataFrame Dataset
+Structured (Strongly
+Data Structure Unstructured Structured (Schema)
+Typed)
+Optimization None (Manual) Catalyst & Tungsten Catalyst & Tungsten
+Language Support All All Java & Scala only
+Type Safety High (Compile-time) Low (Runtime) High (Compile-time)
+Performance Slower Faster Faster
+Example:
+•Spark SQL: spark.sql("SELECT name FROM students WHERE grade > 90")
+•DataFrame DSL: df.select("name").filter(col("grade") > 90)
+Spark Streaming for Real-Time Analytics
+• Batch vs. Streaming: Batch processes static data (hours/days);
+Streaming processes data as it arrives (seconds/milliseconds).
+• Micro-Batching: Spark's approach of treating a continuous stream as
+a series of very small, discrete batches.
+• Continuous Processing: An alternative Spark mode for even lower
+latency (sub-millisecond).
+• Use Cases: Fraud detection, live sensor monitoring, real-time bidding,
+and log analysis.
+Spark Streaming Architecture
+• Discretized Streams (DStreams): The basic abstraction in Spark 1.x. It
+is essentially a sequence of RDDs.
+Spark Streaming Architecture
+• Structured Streaming (Spark 2.x+): The modern, DataFrame-based
+API.
+Spark Streaming Architecture
+• The Unbounded Table Model: Structured Streaming treats the input
+stream as a table that is continuously being appended to.
+• Result Table: As new data arrives, a query is run, and the result is
+updated in a Result Table.
+Apache Kafka – The Ingestion Backbone
+• Definition: A distributed, partitioned, replicated commit log service.
+• Core Role: Acts as a buffer (Message Queue) between data producers
+(web logs, IoT) and data consumers (Spark, Databases).
+• Architecture Components:
+• Producers: Send data to topics.
+• Brokers: The servers that store the data.
+• Topics: Logical categories for messages.
+• Partitions: Topics are divided into partitions for parallelism and scalability.
+• Consumers/Consumer Groups: Read data from topics.
+Apache Kafka – The Ingestion Backbone
+Deep Dive into Kafka Partitions and Offsets
+• Offsets: A unique, sequential ID assigned to each message within a
+partition.
+• Immutability: Once a message is written to a partition, it cannot be
+changed.
+• Consumer Groups: Multiple consumers can work together to read a
+topic. Each consumer handles specific partitions, allowing for massive
+horizontal scaling.
+Integrating Kafka with Spark Streaming
+• Source: Spark connects to Kafka as a "Source" using readStream.
+• Checkpointing: Spark saves the "offset" it has reached in Kafka. If
+Spark crashes, it restarts from that exact offset.
+• Fault Tolerance: The combination of Kafka’s replayable logs and
+Spark’s checkpointing ensures Exactly-Once semantics.
+• The Flow:
+Sink
+Source (IoT) Kafka (Ingestion) Spark (Processing)
+(Cassandra/HDFS)
+Window Operations and Late Data
+• Windowing: Performing aggregations over a time window (e.g.,
+"Count clicks every 5 minutes").
+• Sliding Windows: A window that moves every X minutes (e.g., 10-
+minute window sliding every 5 minutes).
+• Watermarking: A feature that tells Spark how long to wait for late-
+arriving data before giving up on it.
+Apache Hive – The SQL on Hadoop Pioneer
+• Definition: A data warehouse system built on top of Hadoop for
+querying and managing large datasets using HiveQL (SQL-like).
+• The Metastore: A central repository (usually an external RDBMS like
+MySQL) that stores metadata like table schemas, column types, and
+HDFS locations.
+• Schema-on-Read: Unlike traditional RDBMS (Schema-on-Write), Hive
+allows you to load raw data and apply a schema only when the data is
+read.
+• Execution Engines: Traditionally used MapReduce; modern versions
+use Apache Tez or Spark for better performance.
+Apache Hive Architecture
+• User Interface: CLI, Web UI, or
+JDBC/ODBC drivers for BI tools (Tableau,
+PowerBI).
+• Driver: Manages the session and query
+lifecycle.
+• Compiler: Converts HiveQL into a
+Directed Acyclic Graph (DAG) of
+MapReduce or Tez tasks.
+• Execution Engine: Communicates with
+YARN to process data in the cluster.
+Apache Pig – Procedural Data Flow
+• Definition: A high-level platform for creating
+programs that run on Apache Hadoop.
+• Pig Latin: A procedural scripting language. It
+describes how data should be transformed step-
+by-step (unlike SQL, which describes what data to
+get).
+• Multi-Query Approach: Can perform multiple
+operations in a single script, reducing the lines of
+code significantly compared to Java MapReduce.
+• Data Model: Supports complex, nested data types:
+Atoms, Tuples, Bags, and Maps.
+Apache Impala – The MPP SQL Engine
+• Definition: A Massively Parallel Processing (MPP) SQL query engine.
+• Speed: 5x to 50x faster than Hive for interactive queries.
+• Architectural Difference: Does not use MapReduce. It uses a
+dedicated daemon process (impalad) that stays running on every
+node to avoid "cold start" overhead.
+• Language: Written in C++ for high performance.
+• Trade-off: Lacks the fault tolerance of Hive. If a node fails during a
+query, Impala must restart the query; Hive (via MapReduce) can
+recover.
+Apache Impala – The MPP SQL Engine
+Comparative Table of Hive, Pig, and Impala
+Feature Apache Hive Apache Pig Apache Impala
+HiveQL (Declarative Impala SQL
+Language Pig Latin (Procedural)
+SQL) (Declarative)
+BI Analysts / Data
+Primary User Data Analysts Data Engineers
+Scientists
+Heavy Batch / Data ETL / Unstructured Interactive Ad-hoc
+Best For
+Warehousing Data Queries
+MapReduce / Tez / MPP Engine (C++
+Execution MapReduce / Tez
+Spark Daemons)
+Fault Tolerance High (recovers jobs) High (recovers jobs) Low (restarts query)
+Comparative Analysis of Hadoop vs Spark
+• Hadoop (MapReduce): Designed for high-volume, batch processing
+where data is stored and read from disk at every stage. It follows a
+"Read -> Process -> Write to Disk" cycle.
+• Apache Spark: Designed for speed and iterative processing. It keeps
+data in memory (RAM) whenever possible to avoid the expensive I/O
+operations of disk access.
+• The "V" Factor:
+• Hadoop excels at Volume (massive storage)
+• Spark excels at Velocity (fast processing).
+Data Processing Model
+• Hadoop MapReduce: Strictly limited to two functions: Map and
+Reduce. Complex logic must be chained as a sequence of these two
+operations, leading to "MapReduce Job Chaining.“
+• Apache Spark: Uses a Directed Acyclic Graph (DAG). It can handle
+complex workflows including filters, joins, and groupings in a single
+job, optimizing the execution plan before any data moves.
+Performance & Latency
+• Speed: Spark is generally 10x to 100x faster than MapReduce for in-
+memory processing.
+• Iterative Algorithms: Spark is significantly superior for Machine
+Learning (ML) and Graph processing where the same data is accessed
+repeatedly.
+• Real-Time: Spark supports Micro-batching for near real-time
+streaming; MapReduce is purely for batch processing.
+Fault Tolerance Mechanisms
+• Hadoop: Achieves fault tolerance through Data Replication. HDFS
+stores three copies of every block. If a node fails, the job continues
+using another copy.
+• Spark: Achieves fault tolerance through RDD Lineage. Instead of
+replicating data, Spark remembers the "recipe" (transformations)
+used to create a dataset. If a partition is lost, it simply re-runs those
+specific steps.
+Ease of Use & Language Support
+• Hadoop: Traditionally requires Java for MapReduce (though "Hadoop
+Streaming" allows other languages). It is often considered "low-level"
+and difficult to code.
+• Spark: Offers rich, high-level APIs in Java, Scala, Python (PySpark), and
+R. It feels much more like writing standard application code.
+Comparative Analysis of Hadoop vs. Spark
+Feature Hadoop (MapReduce) Apache Spark
+Memory-based (RAM) / Disk as
+Storage Disk-based (HDFS)
+fallback
+Speed Slower (High I/O overhead) Much Faster (In-memory)
+Fault Tolerance Replication (3x copies) Lineage (Re-computation)
+Transformations & Actions
+Operations Map and Reduce only
+(DAG)
+Batch processing of massive Iterative ML, Streaming,
+Best For
+data Interactive SQL
+Complexity High (Verbose Java code) Moderate (Concise APIs)

@@ -1,0 +1,832 @@
+UNIT –I
+Introduction to Algorithms:
+Algorithms, Pseudocode for expressing algorithms, Performance Analysis-Space
+complexity, Time complexity, Asymptotic Notation- Big oh, Omega, Theta notation and
+Little oh notation, Polynomial Vs Exponential Algorithms, Average, Best and Worst Case
+Complexities, Analysing Recursive Programs.
+INTRODUCTION TO ALGORITHMS: WHAT IS AN
+ALGORITHM? Informal Definition:
+An Algorithm is any well-defined computational procedure that takes some value or set of
+values as Input and produces a set of values or some value as output. Thus algorithm is a
+sequence of computational steps that transforms the input into the output.
+Formal Definition:
+An Algorithm is a finite set of instructions that, if followed, accomplishes a particular task. In
+addition, all algorithms should satisfy the following criteria.
+ INPUT  Zero or more quantities are externally supplied.
+ OUTPUT  At least one quantity is produced.
+ DEFINITENESS  Each instruction is clear and unambiguous.
+ FINITENESS  If we trace out the instructions of an algorithm, then for all cases,
+the algorithm terminates after a finite number of steps.
+ EFFECTIVENESS  Every instruction must very basic so that it can be carried out,
+in principle, by a person using only pencil & paper.
+Issues or study of Algorithm:
+1. How to device or design an algorithm  creating and algorithm.
+2. How to express an algorithm  definiteness.
+3. How to analysis an algorithm  time and space complexity.
+4. How to validate an algorithm  fitness.
+5. Testing the algorithm  checking for error.
+Algorithm Specification:
+Algorithm can be described in three ways.
+1. Natural language like English:
+When this way is choused care should be taken, we should ensure that each & every
+statement is definite.
+2. Graphic representation called flowchart:
+This method will work well when the algorithm is small& simple.
+3. Pseudo-code Method:
+In this method, we should typically describe algorithms as program, which resembles
+language like Pascal & algol.
+PSEUDO-CODE FOR EXPRESSING AN ALGORITHM:
+1. Comments begin with // and continue until the end of line.
+2. Blocks are indicated with matching braces {and}.
+3. An identifier begins with a letter. The data types of variables are not explicitly
+declared.
+4. Compound data types can be formed with records. Here is an example,
+Node. Record
+{
+data type – 1 data-1;
+.
+.
+.
+data type – n data – n;
+node * link;
+}
+Here link is a pointer to the record type node. Individual data items of a record can be
+accessed with  and period.
+5. Assignment of values to variables is done using the assignment statement.
+<Variable>:= <expression>;
+6. There are two Boolean values TRUE and FALSE.
+ Logical Operators AND, OR, NOT
+Relational Operators <, <=,>,>=, =, !=
+7. The following looping statements are employed.
+For, while and repeat-until
+While Loop:
+While < condition > do
+{
+<statement-1>
+.
+.
+.
+<statement-n> }
+For Loop:
+For variable: = value-1 to value-2 step step do
+{
+<statement-1>
+.
+.
+.
+<statement-n>
+}
+repeat-until:
+repeat
+<statement-1>
+.
+.
+.
+<statement-n>
+until<condition>
+8. A conditional statement has the following forms.
+ If <condition> then <statement>
+ If <condition> then <statement-1>
+Else <statement-1>
+Case statement:
+Case
+{
+: <condition-1> : <statement-1>
+.
+.
+.
+: <condition-n> : <statement-n>
+: else : <statement-n+1>
+}
+9. Input and output are done using the instructions read & write.
+10. There is only one type of procedure: Algorithm, the heading takes the form,
+Algorithm Name (Parameter lists)
+ As an example, the following algorithm fields & returns the maximum of ‘n’ given
+numbers:
+1. algorithm Max(A,n)
+2. // A is an array of size n
+3. {
+4. Result := A[1];
+5. for I:= 2 to n do
+6. if A[I] > Result then
+7. Result :=A[I];
+8. return Result;
+9. }
+In this algorithm (named Max), A & n are procedure parameters. Result & I are Local
+variables.
+ Next we present 2 examples to illustrate the process of translation problem into an
+algorithm.
+Selection Sort:
+ Suppose we Must devise an algorithm that sorts a collection of n>=1 elements
+of arbitrary type.
+ A Simple solution given by the following.
+ ( From those elements that are currently unsorted ,find the smallest & place it
+next in the sorted list.)
+Algorithm:
+1. For i:= 1 to n do
+2. {
+3. Examine a[I] to a[n] and suppose the smallest element is at a[j];
+4. Interchange a[I] and a[j];
+5. }
+ Finding the smallest element (sat a[j]) and interchanging it with a[ i ]
+ We can solve the latter problem using the code,
+t := a[i];
+a[i]:=a[j];
+a[j]:=t;
+ The first subtask can be solved by assuming the minimum is a[ I ];checking a[I]
+with a[I+1],a[I+2]…….,and whenever a smaller element is found, regarding it
+as the new minimum. a[n] is compared with the current minimum.
+ Putting all these observations together, we get the algorithm Selection sort.
+Theorem: Algorithm selection sort(a,n) correctly sorts a set of n>=1 elements .The result
+remains is a a[1:n] such that a[1] <= a[2] ….<=a[n].
+Selection Sort:
+Selection Sort begins by finding the least element in the list. This element is
+moved to the front. Then the least element among the remaining element is found out and put
+into second position. This procedure is repeated till the entire list has been studied.
+Example: List L = 3,5,4,1,2
+1 is selected ,  1,5,4,3,2
+2 is selected, 1,2,4,3,5
+3 is selected, 1,2,3,4,5
+4 is selected, 1,2,3,4,5
+Proof:
+ We first note that any I, say I=q, following the execution of lines 6 to 9,it is the
+case that a[q] Þ a[r],q<r<=n.
+ Also observe that when ‘i’ becomes greater than q, a[1:q] is unchanged. Hence,
+following the last execution of these lines (i.e. I=n).We have a[1] <= a[2]
+<=……a[n].
+ We observe this point that the upper limit of the for loop in the line 4 can be
+changed to n-1 without damaging the correctness of the algorithm.
+Algorithm:
+1. Algorithm selection sort (a,n)
+2. // Sort the array a[1:n] into non-decreasing order.
+3.{
+4. for I:=1 to n do
+5. {
+6. j:=I;
+7. for k:=i+1 to n do
+8. if (a[k]<a[j])
+9. t:=a[I];
+10. a[I]:=a[j];
+11. a[j]:=t;
+12. }
+13. }
+PERFORMANCE ANALYSIS:
+1. Space Complexity:
+The space complexity of an algorithm is the amount of money it needs to run to
+compilation.
+2. Time Complexity:
+The time complexity of an algorithm is the amount of computer time it needs to run to
+compilation.
+Space Complexity:
+Space Complexity Example:
+Algorithm abc(a,b,c)
+{
+return a+b++*c+(a+b-c)/(a+b) +4.0;
+}
+ The Space needed by each of these algorithms is seen to be the sum of the following
+component.
+1.A fixed part that is independent of the characteristics (eg:number,size)of the inputs and
+outputs.
+The part typically includes the instruction space (ie. Space for the code), space for
+simple variable and fixed-size component variables (also called aggregate) space for
+constants, and so on.
+variable part that consists of the space needed by component variables whose size is
+dependent on the particular problem instance being solved, the space needed by
+referenced variables (to the extent that is depends on instance characteristics), and
+the recursion stack space.
+a. The space requirement s(p) of any algorithm p may therefore be written as,
+S(P) = c+ Sp(Instance characteristics) Where ‘c’ is a constant.
+Example : Algorithm sum(a,n)
+{
+s=0.0;
+for I=1 to n do
+s= s+a[I];
+return s;
+}
+ The problem instances for this algorithm are characterized by n,the number of elements
+to be summed. The space needed d by ‘n’ is one word, since it is of type integer.
+ The space needed by ‘a’a is the space needed by variables of tyepe array of floating point
+numbers.
+ This is atleast ‘n’ words, since ‘a’ must be large enough to hold the ‘n’ elements to be
+summed.
+ So,we obtain Ssum(n)>=(n+s) [ n for a[ ],one each for n,I a& s]
+Time Complexity:
+The time T(p) taken by a program P is the sum of the compile time and the run
+time(execution time)
+The compile time does not depend on the instance characteristics. Also we may assume
+that a compiled program will be run several times without recompilation .This rum time is
+denoted by tp(instance characteristics).
+ The number of steps any problem statemn t is assigned depends on the kind of statement.
+For example, comments  0 steps.
+Assignment statements  1 steps. [Which does not involve any calls to other
+algorithms]
+Interactive statement such as for, while & repeat-until Control part of the statement.
+1. We introduce a variable, count into the program statement to increment count
+with initial value 0.Statement to increment count by the appropriate amount are
+introduced into the program.
+This is done so that each time a statement in the original program is executes count
+is incremented by the step count of that statement.
+Algorithm:
+Algorithm sum(a,n)
+{
+s= 0.0;
+count = count+1;
+for I=1 to n do
+{
+count =count+1;
+s=s+a[I];
+count=count+1;
+}
+count=count+1;
+count=count+1;
+return s;
+}
+ If the count is zero to start with, then it will be 2n+3 on termination. So each
+invocation of sum execute a total of 2n+3 steps.
+2. The second method to determine the step count of an algorithm is to build a table in
+which we list the total number of steps contributes by each statement.
+First determine the number of steps per execution (s/e) of the statement and the total
+number of times (ie., frequency) each statement is executed.
+By combining these two quantities, the total contribution of all statements, the
+step count for the entire algorithm is obtained.
+Statement S/e Frequency Total
+1. Algorithm Sum(a,n) 0 - 0
+2.{ 0 - 0
+3. S=0.0; 1 1 1
+4. for I=1 to n do 1 n+1 n+1
+5. s=s+a[I]; 1 n n
+6. return s; 1 1 1
+7. } 0 - 0
+Total 2n+3
+ASYMPTOTIC NOTATIONS
+There are different kinds of mathematical notations used to represent time complexity.
+These are called Asymptotic notations. They are as follows:
+1. Big oh(O) notation
+2. Omega(Ω) notation
+3. Theta(ɵ) notation
+1. Big oh(O) notation:
+ Big oh(O) notation is used to represent upperbound of algorithm runtime.
+ Let f(n) and g(n) are two non-negative functions
+ The function f(n) = O(g(n)) if and only if there exists positive constants c and n 0
+such that f(n)≤c*g(n) for all n , n ≥ n 0.
+Example:
+If f(n)=3n+2 then prove that f(n) = O(n)
+Let f(n) =3n+2, c=4, g(n) =n
+if n=1 3n+2 ≤ 4n
+3(1)+2 ≤ 4(1)
+3+2 ≤ 4
+5 ≤ 4 (F)
+if n=2 3n+2≤4n
+3(2)+2 ≤ 4(2)
+8 ≤ 8 (T)
+3n+2 ≤ 4n for all n ≥ 2
+This is in the form of f(n) ≤ c*g(n) for all n ≥ n where c=4, n =2
+0, 0
+Therefore, f(n) = O(n),
+2. Omega(Ω) notation:
+ Big oh(O) notation is used to represent lowerbound of algorithm runtime.
+ Let f(n) and g(n) are two non-negative functions
+ The function f(n) = Ω(g(n)) if and only if there exists positive constants c and n 0
+such that f(n) ≥ c*g(n) for all n , n ≥ n 0.
+Example
+f(n)=3n+2 then prove that f(n) = Ω(g(n))
+Let f(n) =3n+2, c=3, g(n) =n
+if n=1 3n+2 ≥ 3n
+3(1)+2 ≥ 3(1)
+5 ≥ 3 (T)
+3n+2 ≥ 4n for all n ≥ 1
+This is in the form of f(n) ≥ c*g(n) for all n ≥ n where c=3, n =1
+0, 0
+Therefore, f(n) = Ω(n).
+3. Theta(ɵ) notation:
+ Theta(ɵ) notation is used to represent the running time between upper bound and
+lower bound.
+ Let f(n) and g(n) be two non-negative functions.
+ The function f(n) = θ(g(n)) if and only if there exists positive constants c , c and
+1 2
+n such that c *g(n) ≤ f(n)≤c * g(n) for all n, n≥n
+0 1 2 0 .
+Example:
+f(n)=3n+2 then Prove that f(n) = θ(g(n))
+Lower bound = 3n+2 ≥ 3n for all n ≥ 1
+c =3,g(n)=n,n =1
+1 0
+Upper Bound = 3n+2 ≤ 4n for all n ≥ 2
+c2=4, g(n)=n , n0=2
+3(n) ≤ 3n+2 ≤ 4(n) for all n, n ≥ 2
+This is in the form of c *g(n) ≤ f(n) ≤ c * g(n) for all n≥n Where c =3, c =4, g(n)=n,
+1 2 0 1 2
+n 0=2
+Therefore f(n)= θ(n)
+POLYNOMIAL VS EXPONENTIAL ALGORITHMS
+The time complexity(generally referred as running time) of an algorithm is expressed
+as the amount of time taken by an algorithm for some size of the input to the problem.
+Big O notation is commonly used to express the time complexity of any algorithm as this
+suppresses the lower order terms and is described asymptotically. Time complexity is
+estimated by counting the operations(provided as instructions in a program) performed in an
+algorithm. Here each operation takes a fixed amount of time in execution. Generally time
+complexities are classified as constant, linear, logarithmic, polynomial, exponential etc.
+Among these the polynomial and exponential are the most prominently considered and
+defines the complexity of an algorithm. These two parameters for any algorithm are always
+influenced by size of input.
+Polynomial Running Time
+An algorithm is said to be solvable in polynomial time if the number of steps required
+to complete the algorithm for a given input is O(nk) for some non-negative integer k, where
+n is the complexity of the input. Polynomial-time algorithms are said to be "fast." Most
+familiar mathematical operations such as addition, subtraction, multiplication, and division,
+as well as computing square roots, powers, and logarithms, can be performed in polynomial
+time. Computing the digits of most interesting mathematical constants, including pi and e,
+can also be done in polynomial time.
+All basic arithmetic operations ((i.e.) Addition, subtraction, multiplication,division),
+comparison operations, sort operations are considered as polynomial time algorithms.
+Exponential Running Time
+The set of problems which can be solved by an exponential time algorithms, but for
+which no polynomial time algorithms is known.
+An algorithm is said to be exponential time, if T(n) is upper bounded by 2poly(n), where
+poly(n) is some polynomial in n. More formally, an algorithm is exponential time if T(n) is
+bounded by O(2nk) for some constant k.
+Algorithms which have exponential time complexity grow much faster than
+polynomial algorithms.
+The difference you are probably looking for happens to be where the variable is in the
+equation that expresses the run time. Equations that show a polynomial time complexity
+have variables in the bases of their terms.
+Examples: n3 + 2n2 + 1. Notice n is in the base, NOT the exponent.
+In exponential equations, the variable is in the exponent.
+Examples: 2n. As said before, exponential time grows much faster. If n is equal to 1000 (a
+reasonable input for an algorithm), then notice 10003 is 1 billion, and 21000 is simply huge!
+For a reference, there are about 280 hydrogen atoms in the sun, this is much more than 1
+billion.
+AVERAGE, BEST AND WORST CASE COMPLEXITIES
+Best case: This analysis constrains on the input, other than size. Resulting in the fasters
+possible run time
+Worst case: This analysis constrains on the input, other than size. Resulting in the fasters
+possible run time
+Average case: This type of analysis results in average running time over every type of input.
+Complexity: Complexity refers to the rate at which the storage time grows as a function of
+the problem size.
+ANALYSING RECURSIVE PROGRAMS.
+For every recursive algorithm, we can write recurrence relation to analyse the time
+complexity of the algorithm.
+Recurrence relation of recursive algorithms
+A recurrence relation is an equation that defines a sequence where any term is defined in
+terms of its previous terms.
+The recurrence relation for the time complexity of some problems are given below:
+Fibonacci Number
+T(N) = T(N-1) + T(N-2)
+Base Conditions: T(0) = 0 and T(1) = 1
+Binary Search
+T(N) = T(N/2) + C
+Base Condition: T(1) = 1
+Merge Sort
+T(N) = 2 T(N/2) + CN
+Base Condition: T(1) = 1
+Recursive Algorithm: Finding min and max in an array
+T(N) = 2 T(N/2) + 2
+Base Condition: T(1) = 0 and T(2) = 1
+Quick Sort
+T(N) = T(i) + T(N-i-1) + CN
+The time taken by quick sort depends upon the distribution of the input array and partition
+strategy. T(i) and T(N-i-1) are two smaller subproblems after the partition where i is the
+number of elements that are smaller than the pivot. CN is the time complexity of the partition
+process where C is a constant. .
+Worst Case: This is a case of the unbalanced partition where the partition process always
+picks the greatest or smallest element as a pivot(Think!).For the recurrence relation of the
+worst case scenario, we can put i = 0 in the above equation.
+T(N) = T(0) + T(N-1) + CN
+which is equivalent to
+T(N) = T(N-1) + CN
+Best Case: This is a case of the balanced partition where the partition process always picks
+the middle element as pivot. For the recurrence relation of the worst case scenario, put i =
+N/2 in the above equation.
+T(N) = T(N/2) + T(N/2-1) + CN
+which is equivalent to
+T(N) = 2T(N/2) + CN
+Average Case: For average case analysis, we need to consider all possible permutation of
+input and time taken by each permutation.
+T(N) = (for i = 0 to N-1) ∑ ( T(i) + T(N-i-1) ) / N
+Note: This looks mathematically complex but we can find several other intuitive ways to
+analyse the average case of quick sort.
+Analyzing the Efficiency of Recursive Algorithms
+Step 1: Identify the number of sub-problems and a parameter (or parameters) indicating an
+input’s size of each sub-problem (function call with smaller input size)
+Step 2: Add the time complexities of the sub-problems and the total number of basic
+operations performed at that stage of recursion.
+Step3: Set up a recurrence relation, with a correct base condition, for the number of times the
+basic operation is executed.
+Step4: Solve the recurrence or, at least, ascertain the order of growth of its solution. There
+are several ways to analyse the recurrence relation but we are discussing here two popular
+approaches of solving recurrences:
+ Method 1: Recursion Tree Method
+ Method 2: Master Theorem
+Method 1: Recursion Tree Method
+A recurrence tree is a tree where each node represents the cost of a certain recursive
+subproblem. We take the sum of each value of nodes to find the total complexity of the
+algorithm.
+Steps for solving a recurrence relation
+1. Draw a recursion tree based on the given recurrence relation.
+2. Determine the number of levels, cost at each level and cost of the last level.
+3. Add the cost of all levels and simplify the expression.
+Let us solve the given recurrence relation by Recurrence Tree Method
+T(N) = 2*T(N/2) + CN
+From the above recurrence relation, we can find that
+1. The problem of size N is divided into two sub-problems of size N/2.
+2. The cost of dividing a sub-problem and then combining its solution of size N is CN.
+3. Each time, the problem will be divided into half, until the size of the problem
+becomes 1.
+The recursion tree for the above relation will be
+Method 2: Master theorem
+Master theorem states that for a recurrence relation of form
+T(N) = aT(N/b) + f(N) where a >= 1 and b > 1
+If f(N) = O(N^k) and k ≥ 0, then
+Case 1: T(N) = O(N^logb(a)), if k < logb(a).
+Case 2: T(N) = O((N^k)*logN), if k = logb(a).
+Case 3: T(N) = O(N^k), if k > logb(a)
+Example 1
+T(N) = T(N/2) + C
+The above recurrence relation is of binary search. Comparing this with master theorem, we
+get a = 1, b = 2 and k = 0 because f(N) = C = C(N^0)
+Here logb(a) = k, so we can apply case 2 of the master theorem.
+T(n) = (N⁰*log(N)) = O(logN).
+Example 2
+T(N) = 2*T(N/2) + CN
+The above recurrence relation is of merge sort. Comparing this with master theorem,a = 2, b
+= 2 and f(N) = CN. Comparing left and right sides of f(N), we get k = 1.
+logb(a) = log2(2) = 1 = K
+So, we can apply the case 2 of the master theorem.
+=> T(N) = O(N¹*log(N)) = O(NlogN).
+UNIT –II
+Binary Search Trees: Definition and Operations, AVL Trees: Definition and Operations,
+Applications.
+B Trees: Definition and Operations.
+INTRODUCTION
+In a binary tree, every node can have a maximum of two children but there is no need to
+maintain the order of nodes basing on their values. In a binary tree, the elements are arranged
+in the order they arrive at the tree from top to bottom and left to right.
+A binary tree has the following time complexities...
+1. Search Operation - O(n)
+2. Insertion Operation - O(1)
+3. Deletion Operation - O(n)
+BINARY SEARCH TREE
+To enhance the performance of binary tree, we use a special type of binary tree known
+as Binary Search Tree. Binary search tree mainly focuses on the search operation in a binary
+tree. Binary search tree can be defined as follows...
+Binary Search Tree is a binary tree in which every node contains only smaller values in
+its left subtree and only larger values in its right subtree.
+In a binary search tree, all the nodes in the left subtree of any node contains smaller values
+and all the nodes in the right subtree of any node contains larger values as shown in the
+following figure...
+Example
+The following tree is a Binary Search Tree. In this tree, left subtree of every node contains
+nodes with smaller values and right subtree of every node contains larger values.
+Every binary search tree is a binary tree but every binary tree need not to be binary
+search tree.
+Advantages of using binary search tree
+1. Searching become very efficient in a binary search tree since, we get a hint at each
+step, about which sub-tree contains the desired element.
+2. The binary search tree is considered as efficient data structure in compare to arrays
+and linked lists. In searching process, it removes half sub-tree at every step. Searching
+for an element in a binary search tree takes o(log n) time. In worst case, the time it
+takes to search an element is 0(n).
+3. It also speed up the insertion and deletion operations as compare to that in array and
+linked list.
+Example1:
+Create the binary search tree using the following data elements.
+43, 10, 79, 90, 12, 54, 11, 9, 50
+1. Insert 43 into the tree as the root of the tree.
+2. Read the next element, if it is lesser than the root node element, insert it as the root of
+the left sub-tree.
+3. Otherwise, insert it as the root of the right of the right sub-tree.
+The process of creating BST by using the given elements, is shown in the image
+below.
+Example2
+Construct a Binary Search Tree by inserting the following sequence of numbers...
+10,12,5,4,20,8,7,15 and 13
+OPERATIONS ON A BINARY SEARCH TREE
+The following operations are performed on a binary search tree...
+1. Search
+2. Insertion
+3. Deletion
+1. Search Operation in BST
+Searching means finding or locating some specific element or node within a data structure.
+However, searching for some specific node in binary search tree is pretty easy due to the fact
+that, element in BST are stored in a particular order.
+1. Compare the element with the root of the tree.
+2. If the item is matched then return the location of the node.
+3. Otherwise check if item is less than the element present on root, if so then move to the
+left sub-tree.
+4. If not, then move to the right sub-tree.
+5. Repeat this procedure recursively until match found.
+6. If element is not found then return NULL.
+Algorithm:
+Search (ROOT, ITEM)
+o Step 1: IF ROOT -> DATA = ITEM OR ROOT = NULL
+Return ROOT
+ELSE
+IF ROOT < ROOT -> DATA
+Return search(ROOT -> LEFT, ITEM)
+ELSE
+Return search(ROOT -> RIGHT,ITEM)
+[END OF IF]
+[END OF IF]
+o Step 2: END
+2. Insert Operation in BST
+Insert function is used to add a new element in a binary search tree at appropriate location.
+Insert function is to be designed in such a way that, it must node violate the property of
+binary search tree at each value.
+1. Allocate the memory for tree.
+2. Set the data part to the value and set the left and right pointer of tree, point to NULL.
+3. If the item to be inserted, will be the first element of the tree, then the left and right of
+this node will point to NULL.
+4. Else, check if the item is less than the root element of the tree, if this is true, then
+recursively perform this operation with the left of the root.
+5. If this is false, then perform this operation recursively with the right sub-tree of the
+root.
+Insert (TREE, ITEM)
+o Step 1: IF TREE = NULL
+Allocate memory for TREE
+SET TREE -> DATA = ITEM
+SET TREE -> LEFT = TREE -> RIGHT = NULL
+ELSE
+IF ITEM < TREE -> DATA
+Insert(TREE -> LEFT, ITEM)
+ELSE
+Insert(TREE -> RIGHT, ITEM)
+[END OF IF]
+[END OF IF]
+o Step 2: END
+3. Delete Operation in BST
+Delete function is used to delete the specified node from a binary search tree. However, we
+must delete a node from a binary search tree in such a way, that the property of binary search
+tree doesn't violate.
+There are three situations of deleting a node from binary search tree.
+a) The node to be deleted is a leaf node
+It is the simplest case, in this case, replace the leaf node with the NULL and simple free the
+allocated space.
+In the following image, we are deleting the node 85, since the node is a leaf node, therefore
+the node will be replaced with NULL and allocated space will be freed.
+b) The node to be deleted has only one child.
+In this case, replace the node with its child and delete the child node, which now contains the
+value which is to be deleted. Simply replace it with the NULL and free the allocated space.
+In the following image, the node 12 is to be deleted. It has only one child. The node will be
+replaced with its child node and the replaced node 12 (which is now leaf node) will simply be
+deleted.
+.
+c) The node to be deleted has two children
+It is a bit complexed case compare to other two cases. However, the node which is to be
+deleted, is replaced with its in-order successor or predecessor recursively until the node value
+(to be deleted) is placed on the leaf of the tree. After the procedure, replace the node with
+NULL and free the allocated space.
+In the following image, the node 50 is to be deleted which is the root node of the tree. The in-
+order traversal of the tree given below.
+6, 25, 30, 50, 52, 60, 70, 75.
+replace 50 with its in-order successor 52. Now, 50 will be moved to the leaf of the tree, which
+will simply be deleted.
+Algorithm Delete (TREE, ITEM)
+Step1: IFTREE=NULL
+Write "item not found in the tree" ELSE IF ITEM < TREE -> DATA
+Delete(TREE->LEFT,ITEM)
+ELSE IF ITEM>TREE->DATA
+Delete(TREE->RIGHT,ITEM)
+ELSE IF TREE->LEFT AND TREE->RIGHT
+SET TEMP = findLargestNode(TREE -> LEFT)
+SET TREE -> DATA = TEMP -> DATA
+Delete(TREE -> LEFT, TEMP -> DATA)
+ELSE
+SET TEMP = TREE
+IF TREE -> LEFT = NULL AND TREE -> RIGHT = NULL
+SET TREE = NULL
+ELSE IF TREE -> LEFT != NULL
+SET TREE = TREE -> LEFT
+ELSE
+SET TREE = TREE -> RIGHT
+[END OF IF]
+FREE TEMP
+[END OF IF]
+Step 2: END
+AVL TREES
+AVL tree is a height-balanced binary search tree. That means, an AVL tree is also a
+binary search tree but it is a balanced tree. A binary tree is said to be balanced if, the
+difference between the heights of left and right subtrees of every node in the tree is either -1,
+0 or +1. In other words, a binary tree is said to be balanced if the height of left and right
+children of every node differ by either -1, 0 or +1. In an AVL tree, every node maintains an
+extra information known as balance factor. The AVL tree was introduced in the year 1962
+by G.M. Adelson-Velsky and E.M. Landis.
+An AVL tree is defined as follows...
+An AVL tree is a balanced binary search tree. In an AVL tree, balance factor of every
+node is either -1, 0 or +1.
+Balance factor of a node is the difference between the heights of the left and right subtrees of
+that node. The balance factor of a node is calculated either height of left subtree - height of
+right subtree (OR) height of right subtree - height of left subtree. In the following
+explanation, we calculate as follows...
+Balance factor = heightOfLeftSubtree - heightOfRightSubtree
+Example of AVL Tree
+The above tree is a binary search tree and every node is satisfying balance factor condition.
+So this tree is said to be an AVL tree.
+Every AVL Tree is a binary search tree but every Binary Search Tree need not be AVL
+tree.
+AVL Tree Rotations
+In AVL tree, after performing operations like insertion and deletion we need to check
+the balance factor of every node in the tree. If every node satisfies the balance factor
+condition then we conclude the operation otherwise we must make it balanced. Whenever the
+tree becomes imbalanced due to any operation we use rotation operations to make the tree
+balanced.
+Rotation operations are used to make the tree balanced.
+Rotation is the process of moving nodes either to left or to right to make the tree
+balanced.
+There are four rotations and they are classified into two types.
+i) Single Left Rotation (LL Rotation)
+In LL Rotation, every node moves one position to left from the current position. To
+understand LL Rotation, let us consider the following insertion operation in AVL Tree...
+ii) Single Right Rotation (RR Rotation)
+In RR Rotation, every node moves one position to right from the current position. To
+understand RR Rotation, let us consider the following insertion operation in AVL Tree...
+iii) Left Right Rotation (LR Rotation)
+The LR Rotation is a sequence of single left rotation followed by a single right rotation. In
+LR Rotation, at first, every node moves one position to the left and one position to right from
+the current position. To understand LR Rotation, let us consider the following insertion
+operation in AVL Tree...
+iv) Right Left Rotation (RL Rotation)
+The RL Rotation is sequence of single right rotation followed by single left rotation. In RL
+Rotation, at first every node moves one position to right and one position to left from the
+current position. To understand RL Rotation, let us consider the following insertion operation
+in AVL Tree...
+Operations on an AVL Tree
+The following operations are performed on AVL tree...
+1. Search
+2. Insertion
+3. Deletion
+i) Search Operation in AVL Tree
+In an AVL tree, the search operation is performed with O(log n) time complexity. The search
+operation in the AVL tree is similar to the search operation in a Binary search tree. We use
+the following steps to search an element in AVL tree...
+ Step 1 - Read the search element from the user.
+ Step 2 - Compare the search element with the value of root node in the tree.
+ Step 3 - If both are matched, then display "Given node is found!!!" and terminate the
+function
+ Step 4 - If both are not matched, then check whether search element is smaller or
+larger than that node value.
+ Step 5 - If search element is smaller, then continue the search process in left subtree.
+ Step 6 - If search element is larger, then continue the search process in right subtree.
+ Step 7 - Repeat the same until we find the exact element or until the search element is
+compared with the leaf node.
+ Step 8 - If we reach to the node having the value equal to the search value, then
+display "Element is found" and terminate the function.
+ Step 9 - If we reach to the leaf node and if it is also not matched with the search
+element, then display "Element is not found" and terminate the function.
+ii) Insertion Operation in AVL Tree
+In an AVL tree, the insertion operation is performed with O(log n) time complexity. In AVL
+Tree, a new node is always inserted as a leaf node. The insertion operation is performed as
+follows...
+ Step 1 - Insert the new element into the tree using Binary Search Tree insertion logic.
+ Step 2 - After insertion, check the Balance Factor of every node.
+ Step 3 - If the Balance Factor of every node is 0 or 1 or -1 then go for next
+operation.
+ Step 4 - If the Balance Factor of any node is other than 0 or 1 or -1 then that tree is
+said to be imbalanced. In this case, perform suitable Rotation to make it balanced and
+go for next operation.
+Example: Construct an AVL Tree by inserting numbers from 1 to 8.
+iii) Deletion Operation in AVL Tree
+The deletion operation in AVL Tree is similar to deletion operation in BST. But after every
+deletion operation, we need to check with the Balance Factor condition. If the tree is balanced
+after deletion go for next operation otherwise perform suitable rotation to make the tree
+Balanced.
+The two types of rotations are L rotation and R rotation. Here, we will discuss R rotations.
+L rotations are the mirror images of them.
+If the node which is to be deleted is present in the left sub-tree of the critical node, then L
+rotation needs to be applied else if, the node which is to be deleted is present in the right sub-
+tree of the critical node, the R rotation will be applied.
+Let us consider that, A is the critical node and B is the root node of its left sub-tree. If node
+X, present in the right sub-tree of A, is to be deleted, then there can be three different
+situations:
+a) R0 rotation (Node B has balance factor 0 )
+If the node B has 0 balance factor, and the balance factor of node A disturbed upon deleting
+the node X, then the tree will be rebalanced by rotating tree using R0 rotation.
+The critical node A is moved to its right and the node B becomes the root of the tree with T1
+as its left sub-tree. The sub-trees T2 and T3 becomes the left and right sub-tree of the node A.
+the process involved in R0 rotation is shown in the following image.
+Example:
+Delete the node 30 from the AVL tree shown in the following image.
+Solution
+In this case, the node B has balance factor 0, therefore the tree will be
+rotated by using R0 rotation as shown in the following image. The node
+B(10) becomes the root, while the node A is moved to its right. The right
+child of node B will now become the left child of node A.
+b) R1 Rotation (Node B has balance factor 1)
+R1 Rotation is to be performed if the balance factor of Node B is 1. In R1 rotation, the critical
+node A is moved to its right having sub-trees T2 and T3 as its left and right child
+respectively. T1 is to be placed as the left sub-tree of the node B.
+The process involved in R1 rotation is shown in the following image.
+Example
+Delete Node 55 from the AVL tree shown in the following image.
+Solution :
+Deleting 55 from the AVL Tree disturbs the balance factor of the node 50 i.e. node A which
+becomes the critical node. This is the condition of R1 rotation in which, the node A will be
+moved to its right (shown in the image below). The right of B is now become the left of A
+(i.e. 45).
+The process involved in the solution is shown in the following image.
+c) R-1 Rotation (Node B has balance factor -1)
+R-1 rotation is to be performed if the node B has balance factor -1. This case is treated in the
+same way as LR rotation. In this case, the node C, which is the right child of node B,
+becomes the root node of the tree with B and A as its left and right children respectively.
+The sub-trees T1, T2 becomes the left and right sub-trees of B whereas, T3, T4 become the
+left and right sub-trees of A. The process involved in R-1 rotation is shown in the following
+image.
+Example
+Delete the node 60 from the AVL tree shown in the following image.
+Solution:
+in this case, node B has balance factor -1. Deleting the node 60, disturbs the balance factor of
+the node 50 therefore, it needs to be R-1 rotated. The node C i.e. 45 becomes the root of the
+tree with the node B(40) and A(50) as its left and right child.
+Applications of A VL Trees
+AVL trees are applied in th e following situations:
+ There are few insertion and deletion operations
+ Short search time is needed
+ Input data is sorted or nearl y sorted
+AVL tree structures can be used in situations which require fast searching. But, the large cost
+of re balancing may limit the usefulness.
+B Tree
+B Tree is a specialized m-way tree that can be widely used for disk access. A B-Tree of order
+m can have at most m-1 keys and m children. One of the main reason of using B tree is its
+capability to store large number of keys in a single node and large key values by keeping the
+height of the tree relatively small.
+A B tree of order m contains all the properties of an M way tree. In addition, it contains the
+following properties.
+1. Every node in a B-Tree contains at most m children.
+2. Every node in a B-Tree except the root node and the leaf node contain at least m/2
+children.
+3. The root nodes must have at least 2 nodes.
+4. All leaf nodes must be at the same level.
+It is not necessary that, all the nodes contain the same number of children but, each node
+must have m/2 number of nodes.
+A B tree of order 4 is shown in the following image.
+While performing some operations on B Tree, any property of B Tree may violate such as
+number of minimum children a node can have. To maintain the properties of B Tree, the tree
+may split or join.
+Operations of B Trees
+1.Searching
+2.Insertion
+3.Deletion
+i) Searching :
+Searching in B Trees is similar to that in Binary search tree. For example, if we search for an
+item 49 in the following B Tree. The process will something like following :
+1. Compare item 49 with root node 78. since 49 < 78 hence, move to its left sub-tree.
+2. Since, 40<49<56, traverse right sub-tree of 40.
+3. 49>45, move to right. Compare 49.
+4. match found, return.
+Searching in a B tree depends upon the height of the tree. The search algorithm takes O(log
+n) time to search any element in a B tree.
+ii) Inserting
+Insertions are done at the leaf node level. The following algorithm needs to be followed in
+order to insert an item into B Tree.
+1. Traverse the B Tree in order to find the appropriate leaf node at which the node can
+be inserted.
+2. If the leaf node contain less than m-1 keys then insert the element in the increasing
+order.
+3. Else, if the leaf node contains m-1 keys, then follow the following steps.
+o Insert the new element in the increasing order of elements.
+o Split the node into the two nodes at the median.
+o Push the median element upto its parent node.
+o If the parent node also contain m-1 number of keys, then split it too by
+following the same steps.
+Example:
+Insert the node 8 into the B Tree of order 5 shown in the following image.
+8 will be inserted to the right of 5, therefore insert 8.
+The node, now contain 5 keys which is greater than (5 -1 = 4 ) keys. Therefore split the node
+from the median i.e. 8 and push it up to its parent node shown as follows.
+iii) Deletion
+Deletion is also performed at the leaf nodes. The node which is to be deleted can either be a
+leaf node or an internal node. Following algorithm needs to be followed in order to delete a
+node from a B tree.
+1. Locate the leaf node.
+2. If there are more than m/2 keys in the leaf node then delete the desired key from the
+node.
+3. If the leaf node doesn't contain m/2 keys then complete the keys by taking the element
+from eight or left sibling.
+o If the left sibling contains more than m/2 elements then push its largest
+element up to its parent and move the intervening element down to the node
+where the key is deleted.
+o If the right sibling contains more than m/2 elements then push its smallest
+element up to the parent and move intervening element down to the node
+where the key is deleted.
+4. If neither of the sibling contain more than m/2 elements then create a new leaf node
+by joining two leaf nodes and the intervening element of the parent node.
+5. If parent is left with less than m/2 nodes then, apply the above process on the parent
+too.
+If the the node which is to be deleted is an internal node, then replace the node with its in-
+order successor or predecessor. Since, successor or predecessor will always be on the leaf
+node hence, the process will be similar as the node is being deleted from the leaf node.
+Example 1
+Delete the node 53 from the B Tree of order 5 shown in the following figure.
+53 is present in the right child of element 49. Delete it.
+Now, 57 is the only element which is left in the node, the minimum number of elements that
+must be present in a B tree of order 5, is 2. it is less than that, the elements in its left and right
+sub-tree are also not sufficient therefore, merge it with the left sibling and intervening
+element of parent i.e. 49.
+The final B tree is shown as follows.
+Application of B tree
+B tree is used to index the data and provides fast access to the actual data stored on the disks
+since, the access to value stored in a large database that is stored on a disk is a very time
+consuming process.
+Searching an un-indexed and unsorted database containing n key values needs O(n) running
+time in worst case. However, if we use B Tree to index this database, it will be searched in
+O(log n) time in worst case.

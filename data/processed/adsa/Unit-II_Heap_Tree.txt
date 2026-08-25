@@ -1,0 +1,412 @@
+Chapter 8
+Priority Queues and Heap Trees
+8.1 Trees stored in arrays
+It was noted earlier that binary trees can be stored with the help of pointer-like structures,
+in which each item contains references to its children. If the tree in question is a complete
+binary tree, there is a useful array based alternative.
+De(cid:12)nition. A binary tree is complete if every level, except possibly the last, is completely
+(cid:12)lled, and all the leaves on the last level are placed as far to the left as possible.
+Intuitively, a complete binary tree is one that can be obtained by (cid:12)lling the nodes starting
+with the root, and then each next level in turn, always from the left, until one runs out of
+nodes. Complete binary trees always have minimal height for their size n, namely log n, and
+are always perfectly balanced (but not every perfectly balanced tree is complete in the sense
+of the above de(cid:12)nition). Moreover, and more importantly, it is possible for them to be stored
+straightforwardly in arrays, top-to-bottom left-to-right, as in the following example:
+a[1]
+a[2] a[3]
+a[4] a[5] a[6] a[7]
+For complete binary trees, such arrays provide very tight representations.
+Notice that this time we have chosen to start the array with index 1 rather than 0. This
+hasseveral computational advantages. Thenodeson level ithenhave indices2i; ;2i+1 1.
+(cid:1)(cid:1)(cid:1) (cid:0)
+The level of a node with index i is log i , that is, log i rounded down. The children of a
+2 2
+b c
+node with index i, if they exist, have indices 2i and 2i+1. The parent of a child with index i
+has index i=2 (using integer division). This allows the following simple algorithms:
+boolean isRoot(int i) {
+return i == 1
+}
+int level(int i) {
+return log(i)
+}
+int parent(int i) {
+return i / 2
+}
+int left(int i) {
+return 2 * i
+}
+int right(int i) {
+return 2 * i + 1
+}
+which make the processing of these trees much easier.
+This way of storing a binary tree as an array, however, will not be e(cid:14)cient if the tree
+is not complete, because it involves reserving space in the array for every possible node in
+the tree. Since keeping binary search trees balanced is a di(cid:14)cult problem, it is therefore
+not really a viable option to adapt the algorithms for binary search trees to work with them
+stored as arrays. Array-based representations will also be ine(cid:14)cient for binary search trees
+because node insertion or deletion will usually involve shifting large portions of the array.
+However, we shall now see that there is another kind of binary tree for which array-based
+representations allow very e(cid:14)cient processing.
+8.2 Priority queues and binary heap trees
+While most queues in every-day life operate on a (cid:12)rst come, (cid:12)rst served basis, it is sometimes
+important to be able to assign a priority to the items in the queue, and always serve the item
+withthehighestprioritynext. Anexampleofthiswouldbeinahospitalcasualtydepartment,
+where life-threatening injuries need to be treated (cid:12)rst. The structure of a complete binary
+tree in array form is particularly useful for representing such priority queues.
+It turns out that these queues can be implemented e(cid:14)ciently by a particular type of
+complete binary tree known as a binary heap tree. The idea is that the node labels, which
+were the search keys when talking about binary search trees, are now numbers representing
+the priority of each item in question (with higher numbers meaning a higher priority in our
+examples). With heap trees, it is possible to insert and delete elements e(cid:14)ciently without
+having to keep the whole tree sorted like a binary search tree. This is because we only ever
+want to remove one element at a time, namely the one with the highest priority present, and
+the idea is that the highest priority item will always be found at the root of the tree.
+De(cid:12)nition. A binary heap tree is a complete binary tree which is either empty or satis(cid:12)es
+the following conditions:
+The priority of the root is higher than (or equal to) that of its children.
+(cid:15)
+The left and right subtrees of the root are heap trees.
+(cid:15)
+Alternatively, one could de(cid:12)ne a heap tree as a complete binary tree such that the priority of
+every node is higher than (or equal to) that of all its descendents. Or, as a complete binary
+tree for which the priorities become smaller along every path down through the tree.
+The most obvious di(cid:11)erence between a binary heap tree and a binary search trees is that
+the biggest number now occurs at the root rather than at the right-most node. Secondly,
+whereas with binary search trees, the left and right sub-trees connected to a given parent
+node play very di(cid:11)erent ro^les, they are interchangeable in binary heap trees.
+Three examples of binary trees that are valid heap trees are:
+90 70 9 9
+8 8 3 2
+80 75 42 60
+1 3 1
+17 44 10 72 14
+and three which are not valid heap trees are:
+6 6 6
+4 3 5 5 4
+5 4 3 3
+the (cid:12)rst because 5 > 4 violates the required priority ordering, the second because it is not
+perfectly balanced and hence not complete, and the third because it is not complete due to
+the node on the last level not being as far to the left as possible.
+8.3 Basic operations on binary heap trees
+In order to develop algorithms using an array representation, we need to allocate memory
+and keep track of the largest position that has been (cid:12)lled so far, which is the same as the
+current number of nodes in the heap tree. This will involve something like:
+int MAX = 100 // Maximum number of nodes allowed
+int heap[MAX+1] // Stores priority values of nodes of heap tree
+int n = 0 // Largest position that has been filled so far
+For heap trees to be a useful representation of priority queues, we must be able to insert new
+nodes (or customers) with a given priority, delete unwanted nodes, and identify and remove
+the top-priority node, i.e. the root (that is, ‘serve’ the highest priority customer). We also
+need to be able to determine when the queue/tree is empty. Thus, assuming the priorities
+are given by integers, we need a constructor, mutators/selectors, and a condition:
+insert(int p, array heap, int n)
+delete(int i, array heap, int n)
+int root(array heap, int n)
+boolean heapEmpty(array heap, int n)
+Identifying whether the heap tree is empty, and getting the root and last leaf, is easy:
+boolean heapEmpty(array heap, int n) {
+return n == 0
+}
+int root(array heap, int n) {
+if ( heapEmpty(heap,n) )
+error(‘Heap is empty’)
+else return heap[1]
+}
+int lastLeaf(array heap, int n) {
+if ( heapEmpty(heap,n) )
+error(‘Heap is empty’)
+else return heap[n]
+}
+Inserting and deleting heap tree nodes is also straightforward, but not quite so easy.
+8.4 Inserting a new heap tree node
+Since we always keep track of the last position n in the tree which has been (cid:12)lled so far, we
+can easily insert a new element at position n+1, provided there is still room in the array,
+and increment n. The tree that results will still be a complete binary tree, but the heap tree
+priority ordering property might have been violated. Hence we may need to ‘bubble up’ the
+new element into a valid position. This can be done easily by comparing its priority with
+that of its parent, and if the new element has higher priority, then it is exchanged with its
+parent. We may have to repeat this process, but once we reach a parent that has higher or
+equal priority, we can stop because we know there can be no lower priority items further up
+the tree. Hence an algorithm which inserts a new heap tree node with priority p is:
+insert(int p, array heap, int n) {
+if ( n == MAX ) {
+error(‘Heap is full’)
+else {
+heap[n+1] = p
+bubbleUp(n+1,heap,n+1)
+}
+}
+bubbleUp(int i, array heap, int n) {
+if ( isRoot(i) )
+return
+elseif ( heap[i] > heap[parent(i)] ) {
+swap heap[i] and heap[parent(i)]
+bubbleUp(parent(i),heap,n)
+}
+}
+Note that this insert algorithm does not increment the heap size n { that has to be done
+separately by whatever algorithm calls it.
+Inserting a node takes at most O(log n) steps, because the maximum number of times
+we may have to ‘bubble up’ the new element is the height of the tree which is log n.
+8.5 Deleting a heap tree node
+To use a binary heap tree as a priority queue, we will regularly need to delete the root, i.e.
+remove the nodewith the highest priority. We will then be left with something which is not a
+binarytree at all. However, we can easily make it into a complete binary tree again by taking
+the node at the ‘last’ position and using that to (cid:12)ll the new vacancy at the root. However, as
+with insertion of a new item, the heap tree (priority ordering) property might be violated. In
+that case, we will need to ‘bubble down’ the new root by comparing it with both its children
+and exchanging it with the largest. This process is then repeated until the new root element
+has found a valid place. Thus, a suitable algorithm is:
+deleteRoot(array heap, int n) {
+if ( n < 1 )
+error(‘Node does not exist’)
+else {
+heap[1] = heap[n]
+bubbleDown(1,heap,n-1)
+}
+}
+A similar process can also be applied if we need to delete any other node from the heap tree,
+but in that case we may need to ‘bubble up’ the shifted last node rather than bubble it down.
+Since the original heap tree is ordered, items will only ever need to be bubbled up or down,
+never both, so we can simply call both, because neither procedure changes anything if it is
+not required. Thus, an algorithm which deletes any node i from a heap tree is:
+delete(int i, array heap, int n) {
+if ( n < i )
+error(‘Node does not exist’)
+else {
+heap[i] = heap[n]
+bubbleUp(i,heap,n-1)
+bubbleDown(i,heap,n-1)
+}
+}
+The bubble down process is more di(cid:14)cult to implement than bubble up, because a node
+may have none, one or two children, and those three cases have to be handled di(cid:11)erently. In
+the case of two children, it is crucial that when both children have higher priority than the
+given node, it is the highest priority one that is swapped up, or their priority ordering will
+be violated. Thus we have:
+bubbleleDown(int i, array heap, int n) {
+if ( left(i) > n ) // no children
+return
+elseif ( right(i) > n ) // only left child
+if ( heap[i] < heap[left(i)] )
+swap heap[i] and heap[left(i)]
+else // two children
+if ( heap[left(i)] > heap[right(i)] and heap[i] < heap[left(i)] ) {
+swap heap[i] and heap[left(i)]
+bubbleDown(left(i),heap,n)
+}
+elseif ( heap[i] < heap[right(i)] ) {
+swap heap[i] and heap[right(i)]
+bubbleDown(right(i),heap,n)
+}
+}
+}
+In the same way that the insert algorithm does not increment the heap size, this delete
+algorithm does not decrement the heap size n { that has to be done separately by whatever
+algorithm calls it. Note also that this algorithm does not attempt to be fair in the sense that
+iftwo ormorenodeshave thesamepriority, itisnotnecessarily theone thathasbeenwaiting
+longest that will be removed (cid:12)rst. However, this factor could easily be (cid:12)xed, if required, by
+keeping track of arrival times and using that in cases of equal priority.
+As with insertion, deletion takes at most O(log n) steps, because the maximum number
+of times it may have to bubble down or bubble up the replacement element is the height of
+the tree which is log n.
+8.6 Building a new heap tree from scratch
+Sometimes one is given a whole set of n new items in one go, and there is a need to build
+a binary heap tree containing them. In other words, we have a set of items that we wish
+to heapify. One obvious possibility would be to insert the n items one by one into a heap
+tree, starting from an empty tree, using the O(log n) ‘bubble up’ based insert algorithm
+discussed earlier. That would clearly have overall time complexity of O(nlog n).
+It turns out, however, that rearranging an array of items into heap tree form can be done
+more e(cid:14)ciently using ‘bubble down’. First note that, if we have the n items in an array a in
+positions 1;:::;n, then all the items with an index greater than n=2 will be leaves, and not
+need bubbling down. Therefore, if we just bubble down all the non-leaf items a[n/2],...,
+a[1] by exchanging them with the larger of their children until they either are positioned at
+a leaf, or until their children are both smaller, we obtain a valid heap tree.
+Consider a simple example array if items from which a heap tree must be built:
+5 8 3 9 1 4 7 6 2
+We can start bysimply drawingthe array as a tree, andsee that the last 5 entries (those with
+indices greater than 9=2 = 4) are leaves of the tree, as follows:
+8 3
+9 1 4 7
+6 2
+Then the rearrangement algorithm starts by bubbling down a[n=2] = a[4] = 9, which turns
+out not to be necessary, so the array remains the same. Next a[3] = 3 is bubbled down,
+swapping with a[7]= 7, giving:
+5 8 7 9 1 4 3 6 2
+Next a[2]= 8 is bubbled down, swapping with a[4]= 9, giving:
+5 9 7 8 1 4 3 6 2
+Finally, a[1]= 5 is bubbled down, swapping with a[2] =9, to give (cid:12)rst:
+9 5 7 8 1 4 3 6 2
+then swapping with a[4]= 8 to give:
+9 8 7 5 1 4 3 6 2
+and (cid:12)nally swapping with a[8]= 6 to give:
+9 8 7 6 1 4 3 5 2
+which has the array rearranged as the required heap tree.
+Thus, using the above bubbleDown procedure, the algorithm to build a complete binary
+heap tree from any given array a of size n is simply:
+heapify(array a, int n) {
+for( i = n/2 ; i > 0 ; i-- )
+bubbleDown(i,a,n)
+}
+The time complexity of this heap tree creation algorithm might be computed as follows: It
+potentiallybubblesdown n=2 items,namelythosewithindices1,..., n=2 . Themaximum
+b c b c
+number of bubble down steps for each of those items is the height of the tree, which is log n,
+and each step involves two comparisons { one to (cid:12)nd the highest priority child node, and one
+to compare the item with that child node. So the total number of comparisons involved is
+at most (n=2):log n:2 = nlog n, which is the same as we would have by inserting the array
+2 2
+items one at a time into an initially empty tree.
+In fact, this is a good example of a situation in which a naive counting of loops and tree
+heights over-estimates the time complexity. This is because the numberof bubbledown steps
+will usually be less than the full height of the tree. In fact, at each level as you go down the
+tree, there are more nodes, and fewer potential bubble down steps, so the total number of
+operations will actually be much less than nlog n. To be sure of the complexity class, we
+need to perform a more accurate calculation. At each level i of a tree of height h there will
+be 2i nodes, with at most h i bubble down steps, each with 2 comparisons, so the total
+(cid:0)
+number of comparisons for a tree of height h will on average be
+h h h
+h i j
+C(h) = 2i(h i) = 2h (cid:0) = 2h
+(cid:0) 2h(cid:0)i 2j
+Xi=0 Xi=0 Xj=0
+The (cid:12)nal sum converges to 2 as h increases (see Appendix A.4), so for large h we have
+j
+C(h) 2h = 2h:2 = 2h+1 n
+(cid:25) 2j (cid:25)
+Xj=0
+and the worst case will be no more than twice that. Thus, the total number of operations
+is O(2h+1) = O(n), meaning that the complexity class of heapify is actually O(n), which is
+better than the O(nlog n) complexity of inserting the items one at a time.
+8.7 Binomial heaps
+A Binomial heap is similar to a binary heap as described above, but has the advantage of
+more e(cid:14)cient procedures for insertion and merging. Unlike a binary heap, which consists of
+a single binary tree, a binomial heap is implemented as a collection of binomial trees.
+De(cid:12)nition. A binomial tree is de(cid:12)ned recursively as follows:
+A binomial tree of order 0 is a single node.
+(cid:15)
+A binomial tree of orderk hasa root nodewithchildren that are roots of binomial trees
+(cid:15)
+of orders k 1, k 2, ..., 2, 1, 0 (in that order).
+(cid:0) (cid:0)
+Thus, a binomial tree of order k has height k, contains 2k nodes, and is trivially constructed
+byattachingoneorderk 1binomialtreeastheleft-mostchildofanotherorderk 1binomial
+(cid:0) (cid:0)
+tree. Binomial trees of order 0, 1, 2 and 3 take the form:
+and it is clear from these what higher order trees will look like.
+ABinomial heap isconstructedasacollection ofbinomialtreeswithaparticularstructure
+and node ordering properties:
+There can only be zero or one binomial tree of each order.
+(cid:15)
+Eachconstituentbinomialtreemustsatisfythepriorityorderingproperty,i.e.eachnode
+(cid:15)
+must have priority less than or equal to its parent.
+The structure of such a heap is easily understood by noting that a binomial tree of order k
+contains exactly 2k nodes, and a binomial heap can only contain zero or one binomial tree of
+each order, so the total number of nodes in a Binomial Heap must be
+n= b 2k b [0;1]
+k k
+Xk=0
+whereb speci(cid:12)esthenumberoftreesoforderk. Thusthereisaone-to-one mappingbetween
+k
+the binomial heap structure and the standard binary representation of the number n, and
+since the binary representation is clearly unique, so is the binomial heap structure. The
+maximum number of trees in a heap with n nodes therefore equals the number of digits when
+n is written in binary without leading zeros, i.e. log n+1. The heap can be stored e(cid:14)ciently
+as a linked list of root nodes ordered by increasing tree order.
+The most important operation for binomial heaps is merge, because that can be used as
+a sub-process for most other operations. Underlying that is the merge of two binomial trees
+of order j into a binomial tree of order j+1. By de(cid:12)nition, that is achieved by adding one of
+those trees as the left most sub-tree of the root of the other, and preservation of the priority
+ordering simply requires that it is the tree with the highest priority root that provides the
+root of the combined tree. Then merging two binomial heaps is achieved by merging the
+constituent trees whenever there are two of the same order, in a sequential manner analogous
+to the addition of two binary numbers.
+Insertionofanewelementintoanexistingbinomialheapiseasilydonebytreatingthenew
+element as a binomial heap consisting of a single node (i.e., an order zero tree), and merging
+that using the standardmerge algorithm. Theaverage time complexity of that insert is given
+by computing the average number of tree combinations required. The probability of needing
+the order zero combination is 0:5, the probability of needing a second combination is 0:52,
+and the third is 0:53, and so on, which sum to one. So insertion has O(1) complexity. That
+is better than the O(log n) complexity for insertion into standard binary heaps, but creating
+a whole new binomial heap will be n times that, i.e. O(n), which is the same as that of the
+heapify algorithm for binary heaps. For merging whole binomial heaps, the insert complexity
+will be multiplied by the number of trees, which is O(log n), so the complexity of merge is
+O(log n), which is better than the O(n) complexity of merging binary heaps that can be
+achieved by concatenating the heap arrays and using the O(n) heapify algorithm.
+Another important heap operation in practice is that of updating the heap after increas-
+ing a node priority. For standard binary heaps, that simply requires application of the usual
+bubble-up process with O(log n) complexity. Clearly, a similar process can be used in bino-
+mial heaps, and that will also be of O(log n) complexity.
+Thehighestprioritynodeinabinomialheapwillclearly bethehighestpriorityroot node,
+andapointertothatcanbemaintainedbyeachheapupdateoperationwithoutincreasingthe
+complexity of the operation. Serving the highest priority item requires deleting the highest
+priority node from the order j tree it appears in, and that will break it up into another
+binomial heap consisting of trees of all orders from 0 to j 1. However, those trees can
+(cid:0)
+easily be merged back into the original heap using the standard merge algorithm, with the
+standard merge complexity of O(log n). Deleting non-root nodes can also be achieved with
+the existing operations by increasing the relevant node priority to in(cid:12)nity, bubbling-up, and
+using the root delete operation, again with O(log n) complexity overall. So, the complexity
+of delete is always O(log n).
+Exercise: Findpseudocodeversionsofthemerge,insertanddeletealgorithmsforbinomial
+heaps, and check how their time complexities di(cid:11)er from those of standard binary heaps.
+8.8 Fibonacci heaps
+AFibonacci heap isanothercollectionoftreesthatsatisfythestandardheapproperty,namely
+that the priority of each child node is always less than or equal to that of its parent. Thus it
+can be used as a priority queue in a similar way to standard binary or binomial heaps, but
+the structure of Fibonacci heaps are more (cid:13)exible and e(cid:14)cient, and have better run times
+than binary and binomial heaps. They are named after the Fibonacci numbers that restrict
+the tree sizes and appear in their time complexity analysis.
+The(cid:13)exibility ande(cid:14)ciency ofFibonacci heapscomes atthe cost ofmorecomplexity: the
+trees do not have a (cid:12)xed shape, and in the extreme cases every element in the heap can be in
+a separate tree. Normally, the roots of all the trees are stored using a circular doubly linked
+list, and the children of each node are handled in the same way. A pointer to the highest
+priority root node is maintained, making it trivial to (cid:12)nd the highest priority node in the
+heap. The e(cid:14)ciency is achieved by performing many operations in a lazy manner, with much
+of the work postponed for later operations to deal with.
+Fibonacci heaps can easily be merged with O(1) complexity by simply concatenating the
+two lists of root nodes, and then insertion can be done by merging the existing heap with a
+new heap consisting only of the new node. By repeating inserting n items, a whole heap can
+be created with O(n) complexity.
+Obviously, atsomepoint,orderneedstobeintroducedintotheheapto achieve theoverall
+e(cid:14)ciency. Thisisdonebykeepingthenumberofchildrenofallnodestobeatmost O(log n),
+and the size of a subtree rooted in a node with k children is at least F , where F is the
+k+2 k
+kth Fibonacci number. The number of trees in the heap is decreased as part of the delete
+operation that is used to remove the highest priority node and update the pointer to the
+highest priority root. This delete algorithm is quite complex. First it removes the highest
+priority root, leaving its childrentobecome rootsofnewtrees withinthe heap, theprocessing
+of which will beO(log n). Then the numberof trees is reduced by linking together trees that
+have roots with the same number of children, similar to a Binomial heap, until every root
+has a di(cid:11)erent number of children, leaving at most O(log n) trees. Finally the roots of those
+trees are checked to reset the pointer to the highest priority. It can be shown that all the
+required processes can be completed with O(log n) average time complexity.
+For each node, a record is kept of its number of children and whether it is marked. The
+mark indicates that at least one of its children has been separated since the node was made
+a child of another node, so all roots are unmarked. The mark is used by the algorithm for
+increasing a node priority, which is also complex, but can be achieved with O(1) complexity.
+This gives Fibonacci heaps an important advantage over both binary and binomial heaps for
+which this operation has O(log n) time complexity.
+Finally, an arbitrary node can be deleted from the heap by increasing its node priority
+to in(cid:12)nity and appyling the delete highest priority algorithm, resulting in an overall time
+complexity of O(log n).
+Exercise: Find pseudocode versions of the various Fibonacci heap operations, and work
+out how Fibonacci numbers are involved in computing the time complexities.
+8.9 Comparison of heap time complexities
+Itisclear thatthemorecomplexBinomialandFinonacciHeapso(cid:11)eraverage timecomplexity
+advantages over simple Binary Heap Trees. The following table summarizes the average time
+complexities of the crucial heap operations:
+Heap type Insert Delete Merge Heapify Up priority
+Binary O(log n) O(log n) O(n) O(n) O(log n)
+2 2 2
+Binomial O(1) O(log n) O(log n) O(n) O(log n)
+2 2 2
+Fibonacci O(1) O(log n) O(1) O(n) O(1)
+Obviouslyitwilldependontheapplicationinquestionwhetherusingamorecomplicatedheap
+is worth the e(cid:11)ort. We shall see later that Fibonacci heaps are important in practice because
+theyareusedinthemoste(cid:14)cient versionsofmanyalgorithmsthatcan beimplementedusing
+priority queues, suchas Dijkstra’s algorithm for(cid:12)ndingshortest routes, andPrim’s algorithm
+for (cid:12)nding minimal spanning trees.
