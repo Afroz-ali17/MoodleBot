@@ -58,16 +58,30 @@ def extract_pdf(path: pathlib.Path) -> str:
 
 
 def extract_pptx(path: pathlib.Path) -> str:
-    prs = Presentation(path)
-    text_parts = []
-    for slide in prs.slides:
-        for shape in slide.shapes:
-            if shape.has_text_frame:
-                for para in shape.text_frame.paragraphs:
-                    line = "".join(run.text for run in para.runs)
-                    if line.strip():
-                        text_parts.append(line)
-    return "\n".join(text_parts)
+    try:
+        prs = Presentation(path)
+        text_parts = []
+        for slide in prs.slides:
+            for shape in slide.shapes:
+                if shape.has_text_frame:
+                    for para in shape.text_frame.paragraphs:
+                        line = "".join(run.text for run in para.runs)
+                        if line.strip():
+                            text_parts.append(line)
+        return "\n".join(text_parts)
+    except Exception:
+        import zipfile
+        text_parts = []
+        with zipfile.ZipFile(path, 'r') as z:
+            slide_files = sorted([f for f in z.namelist() if f.startswith('ppt/slides/slide') and f.endswith('.xml')],
+                                 key=lambda x: int(re.search(r'\d+', x).group()) if re.search(r'\d+', x) else 0)
+            for slide_file in slide_files:
+                xml_content = z.read(slide_file).decode('utf-8', errors='ignore')
+                matches = re.findall(r'<a:t[^>]*>(.*?)</a:t>', xml_content, re.DOTALL)
+                slide_text = ' '.join([m.strip() for m in matches if m.strip()])
+                if slide_text:
+                    text_parts.append(slide_text)
+        return "\n\n".join(text_parts)
 
 
 def extract_docx(path: pathlib.Path) -> str:
@@ -102,6 +116,8 @@ def main():
     manifest_rows = []
 
     for file_path in sorted(RAW_DIR.iterdir()):
+        if not file_path.is_file():
+            continue
         if file_path.suffix.lower() not in EXTRACTORS:
             print(f"Skipping unsupported file type: {file_path.name}")
             continue

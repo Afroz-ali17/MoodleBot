@@ -7,7 +7,7 @@ version: "3.8"
 
 services:
   moodle-db:
-    image: bitnami/mariadb:10.11
+    image: bitnamilegacy/mariadb:10.11
     container_name: moodlebot-db
     restart: unless-stopped
     environment:
@@ -24,7 +24,7 @@ services:
       retries: 10
 
   moodle:
-    image: bitnami/moodle:4.4
+    image: bitnamilegacy/moodle:4.4
     container_name: moodlebot-lms
     restart: unless-stopped
     depends_on:
