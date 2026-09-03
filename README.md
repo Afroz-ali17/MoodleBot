@@ -5,11 +5,11 @@ Systems course. Final year project — Department of CSE (AI & ML), RGMCET.
 
 ## Team
 
-| Member | Roll No. | Track |
+| Member | Roll No. | 
 |---|---|---|
-| M. Sumanth | 23091A3351 | RAG pipeline / backend |
-| P. Umesh | 23091A3359 | Moodle integration |
-| P. Afroz Ali Khan | 24095A3301 | Data / evaluation / TAM |
+| M. Sumanth | 23091A3351 |
+| P. Umesh | 23091A3359 | 
+| P. Afroz Ali Khan | 24095A3301 |
 
 Guide: Dr. G. Kishor Kumar, Professor, Dept. of CSE (AI & ML), RGMCET
 
