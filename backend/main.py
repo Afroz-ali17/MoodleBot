@@ -1,15 +1,19 @@
 """
-MoodleBot backend API — skeleton for Week 2.
+MoodleBot backend API.
 
-Week 2 goal: this just needs to run and respond to health checks.
-The /chat endpoint is stubbed out; RAG wiring happens in Weeks 3-4.
+Week 3 update: /chat now runs the real RAG pipeline (retrieval + grounded
+generation) instead of returning a stub. Requires:
+  1. backend/vector_store/ to exist (run ingest.py first)
+  2. GROK_API_KEY set in backend/.env
 """
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from datetime import datetime
 
-app = FastAPI(title="MoodleBot API", version="0.1.0")
+from rag_chain import get_pipeline
+
+app = FastAPI(title="MoodleBot API", version="0.2.0")
 
 
 class ChatRequest(BaseModel):
@@ -33,18 +37,26 @@ def health():
 @app.post("/chat", response_model=ChatResponse)
 def chat(req: ChatRequest):
     """
-    STUB for Week 2 — returns a placeholder so the Moodle integration
-    team can build against a stable contract before RAG is wired in.
+    Runs the RAG pipeline: retrieve relevant course chunks, then generate
+    a grounded answer from the LLM.
 
-    Weeks 3-4: replace this body with:
-      1. embed(req.question)
-      2. retrieve top-k chunks from vector store
-      3. call LLM with retrieved context
-      4. log the interaction (see data/processed/interaction_log.csv)
+    Interaction logging (for Week 12-13 accuracy evaluation) gets added
+    once the pilot deployment step is closer — tracked as a Week 4 TODO.
     """
+    try:
+        pipeline = get_pipeline()
+        result = pipeline.answer(req.question)
+    except RuntimeError as e:
+        # Expected setup issues: vector store missing (run ingest.py) or API key missing
+        raise HTTPException(status_code=503, detail=str(e))
+    except Exception as e:
+        # Unexpected failures (network errors, model download issues, LLM API
+        # errors, etc.) — surfaced as 502 rather than crashing the request.
+        raise HTTPException(status_code=502, detail=f"RAG pipeline error: {e}")
+
     return ChatResponse(
-        answer=f"[stub] MoodleBot received: '{req.question}'. RAG pipeline not wired in yet.",
-        sources=[],
+        answer=result["answer"],
+        sources=result["sources"],
         timestamp=datetime.utcnow().isoformat(),
     )
 

@@ -5,13 +5,10 @@ pydantic==2.9.2
 python-dotenv==1.0.1
 
 # RAG stack
-langchain==0.3.1
-langchain-community==0.3.1
 chromadb==0.5.5
 sentence-transformers==3.1.1
 
-# LLM provider (swap/add as needed)
-anthropic==0.34.2
+# LLM provider — Grok (xAI), accessed via the OpenAI-compatible SDK
 openai==1.47.1
 
 # Data processing (for Week 2 data collection)

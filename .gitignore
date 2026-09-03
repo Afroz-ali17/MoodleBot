@@ -4,12 +4,15 @@ __pycache__/
 *.pyc
 .env
 
+# Vector Store (generated locally via ingest.py)
+backend/vector_store/
+
+# IDE
+.vscode/
+
 # Data (raw course materials likely shouldn't be public if copyrighted)
 data/raw/*
 !data/raw/.gitkeep
-# Track processed text datasets and manifest
-# data/processed/*
-
 
 # OS
 .DS_Store
