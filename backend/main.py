@@ -27,6 +27,27 @@ class ChatResponse(BaseModel):
     timestamp: str
 
 
+import pathlib
+from fastapi.responses import FileResponse
+
+STATIC_DIR = pathlib.Path(__file__).parent / "static"
+
+
+@app.get("/")
+def root():
+    """Serves the interactive MoodleBot Web Interface."""
+    index_path = STATIC_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(index_path)
+    return {
+        "message": "Welcome to MoodleBot API",
+        "version": "0.2.0",
+        "docs": "/docs",
+        "health": "/health",
+        "chat": "/chat"
+    }
+
+
 @app.get("/health")
 def health():
     """Used to confirm the API is up — check this after `docker compose up`

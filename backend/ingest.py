@@ -15,19 +15,19 @@ this is the first thing to tune (try smaller chunks for dense definition
 lists, larger chunks for narrative content).
 """
 
+import os
 import sys
 import pathlib
 import uuid
-import dotenv
 
-# pyrefly: ignore [missing-import]
-import chromadb
-from sentence_transformers import SentenceTransformer
+# Disable ChromaDB telemetry to prevent network hanging
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
-# Load environment variables from backend/.env
-dotenv.load_dotenv(pathlib.Path(__file__).parent / ".env")
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
+
+import chromadb
+from sentence_transformers import SentenceTransformer
 
 PROCESSED_DIR = pathlib.Path(__file__).parent.parent / "data" / "processed"
 VECTOR_STORE_DIR = pathlib.Path(__file__).parent / "vector_store"
@@ -80,9 +80,10 @@ def main():
         print("Run prepare_data.py first (Week 2 step) to populate data/processed/.")
         return
 
-    print(f"Loaded {len(docs)} processed document(s). Loading embedding model "
-          f"'{EMBEDDING_MODEL_NAME}' (first run downloads the model, ~90MB)...")
-    model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+    try:
+        model = SentenceTransformer(EMBEDDING_MODEL_NAME, local_files_only=True)
+    except Exception:
+        model = SentenceTransformer(EMBEDDING_MODEL_NAME)
 
     VECTOR_STORE_DIR.mkdir(parents=True, exist_ok=True)
     client = chromadb.PersistentClient(path=str(VECTOR_STORE_DIR))

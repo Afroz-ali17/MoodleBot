@@ -1,0 +1,297 @@
+topic,question,expected_answer_notes,generated_answer,retrieved_sources,response_time_sec,human_verdict,human_notes
+introduction-dbms,What are the advantages of a DBMS over a traditional file processing system?,Should mention data redundancy control,"**Advantages of a DBMS compared with a traditional file‑processing system**
+
+1. **Reduces data redundancy** – The DBMS prevents duplicate records (e.g., identical student rows) from being stored.  
+2. **Improves data sharing** – Multiple applications and users can access the same data, boosting collaboration and productivity.  
+3. **Ensures data consistency & accuracy** – Integrity constraints are enforced, so the data stays correct and free of discrepancies.  
+4. **Provides better data organization** – Data is stored in a systematic, structured way, making it easier to manage and retrieve.  
+5. **Enables efficient access & retrieval** – Indexing and query‑optimization techniques speed up searches and reduce processing time.  
+6. **Enhances overall efficiency** – By abstracting data through different levels, users can interact with the system more easily, leading to faster and more reliable operations.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,2.65,correct,"Covers redundancy control, consistency, and sharing"
+introduction-dbms,Explain the three levels of data abstraction in database architecture.,Should mention physical/internal level,"**Three levels of data abstraction**
+
+| Level | What it describes | How it is mentioned in the material |
+|-------|-------------------|--------------------------------------|
+| **Physical level** | The way data are actually stored on the hardware – file structures, indexes, storage devices, etc. The implementation details are hidden from users for security and simplicity. | *“implementation data are hidden in the physical layer for the security proposed.”* |
+| **Logical (or conceptual) level** | The overall logical structure of the whole database: tables, attributes, data types, relationships, and constraints. It defines *what* data exist and *how* they are related, without caring about how they are stored. | The material refers to “logical schema” and “conceptual schema” when discussing **Logical Data Independence** – the ability to change this logical schema without affecting the view level. |
+| **View level** | The part of the database that individual users or applications see. It presents the data in a form that is relevant to a particular group of users, hiding the rest of the database. | *“View schema: … this schema describes the user interaction with the database system.”* |
+
+**Why the three levels matter**
+
+- **Data independence**: Because each level is separated, you can modify the schema at one level without having to change the schemas at higher levels.  
+  - *Physical data independence* lets you change storage details without affecting the logical schema.  
+  - *Logical data independence* lets you change tables, attributes, or relationships without affecting user views.
+
+Thus, the three‑level architecture (Physical → Logical → View) provides a clean separation between how data are stored, how they are logically organized, and how they are presented to users.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,3.62,correct,"Identifies physical/internal, logical/conceptual, and external/view levels"
+introduction-dbms,What is the difference between physical and logical data independence?,Should distinguish modifying physical storage without changing conceptual schema vs modifying conceptual schema without changing external views.,"**Physical Data Independence**  
+- Refers to changes made **only to the physical schema** (how data are stored on disk, file organization, storage size, indexing, etc.).  
+- These changes **do not affect** the logical (conceptual) schema of the database.  
+- Example: increasing the storage capacity of the server or altering the file‑placement strategy won’t require any changes to the tables, relationships, or user views.
+
+**Logical Data Independence**  
+- Refers to changes made **to the logical (conceptual) schema**—adding or deleting entities, attributes, or relationships—**without altering the external schema** (the user‑level views).  
+- The user interface and applications continue to work unchanged even though the underlying conceptual design has been modified.  
+- Example: adding a “Reviews” attribute to a “Products” table does not disrupt the shopping experience for customers.
+
+**Key difference:**  
+- **Physical independence** isolates **storage‑level** changes from the logical design.  
+- **Logical independence** isolates **conceptual‑level** changes from the user‑level views.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,1.68,correct,Accurate and grounded in retrieved course material
+introduction-dbms,What are the primary responsibilities of a Database Administrator (DBA)?,Should mention schema definition,"The Database Administrator (DBA) is responsible for:
+
+- **Monitoring recovery and backup** of the database to ensure data can be restored when needed.  
+- **Providing technical support** to users and other staff who work with the database.  
+- **Repairing damage** caused by hardware or software failures.  
+- **Managing the DBA (system/super‑user) account**, which has full privileges in the DBMS.  
+
+These duties keep the database running reliably and securely.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,1.38,correct,Accurate and grounded in retrieved course material
+er-diagrams,How are entities and attributes represented in an ER diagram?,Should mention rectangles for entity sets and ellipses/ovals for attributes.,"**Answer**
+
+In an Entity‑Relationship (ER) diagram:
+
+- **Entities** are drawn as **rectangles**.  
+  - A *strong* entity is one that has a key attribute (its primary key) and does not depend on any other entity. It is still shown as a single rectangle.
+
+- **Attributes** are drawn as **ovals** attached to the entity rectangle.  
+  - An attribute describes a property of the entity.  
+  - There are several kinds of attributes (key, composite, multivalued, derived), but all of them are represented by ovals in the diagram.
+
+**Reasoning from the course material**
+
+The provided course texts repeatedly state:
+
+- “An entity is an object or component of data. An entity is represented as rectangle in an ER diagram.”  
+- “An attribute describes the property of an entity. An attribute is represented as Oval in an ER diagram.”  
+
+These definitions directly answer how entities and attributes are visually represented in an ER diagram.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,2.3,correct,Accurate and grounded in retrieved course material
+er-diagrams,What does cardinality ratio mean in an ER diagram and what are its types?,Should explain mapping constraints: one-to-one (1:1),"In Entity-Relationship (ER) modeling, cardinality ratio specifies the maximum number of relationship instances that an entity can participate in. The common types are One-to-One (1:1), One-to-Many (1:N), Many-to-One (N:1), and Many-to-Many (M:N).",exploratort-data-analysis/UNIVARIATE_BIVARIATE_ANALYSIS.txt; dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt; introduction-dbms/unit1_overview.txt,2.45,correct,"Defines cardinality ratio (1:1, 1:N, M:N) accurately"
+er-diagrams,What is the difference between a primary key, candidate key,"**Primary Key vs. Other Constraints**
+
+| Constraint | What it does (per the course material) | How it differs from a Primary Key |
+|------------|----------------------------------------|-----------------------------------|
+| **Primary Key** | Ensures **uniqueness** of a column (or a combination of columns) so each record can be identified uniquely. | – |
+| **Foreign Key** | Establishes a **relationship between tables**. | It does **not** guarantee uniqueness in its own table; it simply references a primary key (or unique key) in another table. |
+| **Unique** | Guarantees that **all values in a column are distinct**. | A unique column can still contain **NULL** values and may not be used as the main identifier for a row, whereas a primary key uniquely identifies each row and cannot be NULL. |
+| **Not Null** | Ensures a column **cannot have NULL values**. | It does **not** enforce uniqueness; a column can be NOT NULL and still have duplicate values. A primary key implicitly includes a NOT NULL requirement plus uniqueness. |
+
+**In short:**  
+- A **primary key** uniquely identifies each record and cannot be NULL.  
+- A **foreign key** links tables together.  
+- A **unique** constraint only enforces distinct values (NULLs may be allowed).  
+- A **not null** constraint only prevents NULLs (duplicates are allowed).  ",dbms/DBMS_Unit-2_Concepts_Part-1.txt; dbms/Database_Management_System_unit-1.txt; er-diagrams/unit2_er_concepts.txt; introduction-dbms/unit1_overview.txt,6.41,correct,Accurate and grounded in retrieved course material
+er-diagrams,What is a foreign key and what role does it play in referential integrity?,Should mention referencing a primary key in another relation to maintain valid cross-table relationships.,"**Foreign key** – a column (or group of columns) in one table that references the primary‑key column(s) of another table.  
+
+**Role in referential integrity** – by linking the two tables, the foreign key forces the database to keep the relationship consistent: any value entered in the foreign‑key column must already exist as a primary‑key value in the referenced table, preventing “orphan” rows and ensuring that related data stays valid.",dbms/DBMS_Unit-2_Concepts_Part-1.txt; dbms/Database_Management_System_unit-1.txt; er-diagrams/unit2_er_concepts.txt; introduction-dbms/unit1_overview.txt,1.37,correct,Accurate and grounded in retrieved course material
+er-diagrams,What is a weak entity set and how is it identified in an ER diagram?,Should explain an entity that lacks a primary key of its own,"**Weak Entity Set**
+
+- **Definition (from the course material)**  
+  A weak entity set is an entity set that **cannot be identified uniquely by its own attributes alone**. It depends on another (strong) entity and therefore **does not have its own primary key**. Instead, it uses a **foreign key** (the key of the related strong entity) together with its own partial key to achieve unique identification.  
+
+- **Example (from the material)**  
+  In a college database, the entity set **Student_Enroll** is a weak entity set because a single enrollment record cannot be identified without both the **course_id** and the **student_id** from the related strong entities (Course and Student).
+
+**Identification in an ER Diagram**
+
+The provided course notes describe the concept of a weak entity set but **do not specify the visual notation used in an ER diagram** (e.g., double‑bordered rectangle, dashed lines, etc.). Therefore, based solely on the given material, we can say:
+
+- The material defines what a weak entity set is and gives an example, **but it does not explain how it is drawn or marked in an ER diagram**. 
+
+If you need the exact diagram symbols, you would have to consult additional resources or lecture slides that cover ER‑diagram notation.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,2.73,correct,Accurate and grounded in retrieved course material
+relational-algebra,What is the difference between selection and projection in relational algebra?,Should explain that selection (sigma) filters rows/tuples based on a condition while projection (pi) selects specific columns/attributes.,"**Selection (σ)**  
+- Operates on **rows** of a relation.  
+- Keeps only those tuples that satisfy a given predicate (e.g., σ BRANCH_NAME=""perryride""(LOAN)).  
+- The schema (the set of attributes) of the result is the same as the original relation; only some rows are removed.
+
+**Projection (π)**  
+- Operates on **columns** of a relation.  
+- Keeps only the specified attributes and discards the others (e.g., π LOAN_NO, AMOUNT(LOAN)).  
+- The result may have fewer attributes than the original relation; all rows are retained (though duplicate rows are eliminated).
+
+**Key difference:** Selection filters *tuples* (rows) based on a condition, while projection filters *attributes* (columns) to show only the desired fields.",dbms/DBMS_Unit-2_Concepts_Part-1.txt; dbms/dbms_unit-2_ppt.txt; er-diagrams/unit2_er_concepts.txt; relational-algebra/unit2_relational_algebra.txt,3.3,correct,Accurate and grounded in retrieved course material
+relational-algebra,What is the difference between a Cartesian product and a Natural Join?,Should mention that Cartesian product pairs every row of R with every row of S,"**Cartesian product ( × )**  
+- Combines every row of one relation with every row of the other relation.  
+- No condition is applied; the result size is the product of the two input sizes.  
+- Example from the material: `EMPLOYEE × DEPARTMENT`.
+
+**Natural join**  
+- A type of join that can be used only when the two relations share one or more common attributes.  
+- It pairs rows **only when the values of all common attributes are equal**, automatically eliminating duplicate columns.  
+- The material notes that “join operators can apply, if and only if there must be some common attributes in two relations,” which is exactly the requirement for a natural join.
+
+**Key difference**  
+- **Cartesian product** creates all possible combinations of rows, regardless of any attribute values.  
+- **Natural join** creates combinations **only for rows that match on the shared attributes**, producing a smaller, meaning‑ful result set.",dbms/dbms_unit-2_ppt.txt; relational-algebra/unit2_relational_algebra.txt,6.87,correct,Accurate and grounded in retrieved course material
+relational-algebra,What is the difference between an INNER JOIN and a LEFT OUTER JOIN in SQL?,Should explain that INNER JOIN returns only matching rows from both tables,"The material you provided explains **LEFT OUTER JOIN** (also called a left join):
+
+* It returns **all rows from the left table** and the matching rows from the right table.  
+* If a row from the left table has no matching row in the right table, the columns from the right table are filled with **NULL** values.  
+* It is denoted by the symbol ⟕.
+
+However, the supplied context does **not contain any description of an INNER JOIN**. Because the definition of an INNER JOIN is missing, I cannot give a complete comparison based solely on the provided material. 
+
+So, from what we know:
+
+| Join type | Rows returned |
+|-----------|----------------|
+| **LEFT OUTER JOIN** (⟕) | All rows from the left table, plus matching rows from the right table; non‑matching right‑side columns are NULL. |
+| **INNER JOIN** | *Not defined in the given context.* |
+
+If you need a precise distinction, you would need a source that defines INNER JOIN. Based on the current material, only the behavior of LEFT OUTER JOIN can be described.",dbms/dbms_unit-2_ppt.txt; relational-algebra/unit2_relational_algebra.txt,2.88,correct,Accurate and grounded in retrieved course material
+relational-algebra,What does the GROUP BY clause do in an SQL query?,Should mention grouping tuples that share identical values in specified columns to apply aggregate functions.,"The **GROUP BY** clause tells SQL to group the rows of the query result according to the values of one or more columns (the *grouping‑list*).  
+
+- All rows that have the same values for the columns in the grouping‑list are placed in the same **group**.  
+- Each group produces one output row.  
+- Any column that appears in the regular part of the SELECT list must also be in the grouping‑list, because the query needs a single, well‑defined value for that column within each group.  
+
+In short, GROUP BY turns a set of individual rows into a set of groups, each representing rows that agree on the specified column values, so you can then apply aggregate functions (e.g., COUNT, MIN, MAX) to each group.",dbms/DBMS_UNIT_III.txt; normalization/unit3_normalization_notes.txt,1.68,correct,Accurate and grounded in retrieved course material
+relational-algebra,What is the purpose of aggregate functions like COUNT, SUM,"Aggregate functions let you compute a single summary value from many rows of a table.  
+For example, **COUNT** returns the number of values (or the number of distinct values when you write COUNT(DISTINCT A)) in a column, letting you know how many tuples satisfy a condition or how many rows are in a relation. Similar functions (SUM, AVG, MAX, MIN) produce other summaries such as totals, averages, or extreme values. These operators are used to get quick, overall statistics without retrieving every individual row.",dbms/DBMS_UNIT_III.txt; normalization/unit3_normalization_notes.txt,2.32,correct,Accurate and grounded in retrieved course material
+normalization,What is a functional dependency in database design?,Should define X -> Y where attribute set X uniquely determines the value of attribute set Y.,"A functional dependency (FD) is a relationship between attributes in a table where the value of one attribute (or a set of attributes) uniquely determines the value of another attribute. In other words, if you know the value of the determinant attribute, you can determine exactly one value for the dependent attribute. For example, **Student_ID → Name** means that each Student_ID uniquely determines a single Name.",dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,1.43,correct,Accurate and grounded in retrieved course material
+normalization,What is First Normal Form (1NF) and how do we resolve 1NF violations?,Should explain requirement of atomic/indivisible values (no multivalued or composite attributes) and decomposing into separate rows.,"**First Normal Form (1NF)**  
+A table is in 1NF when:  
+
+1. **All columns contain atomic (indivisible) values.**  
+2. **Each row is unique.**  
+
+**Resolving 1NF violations**  
+If a table violates 1NF, you must:
+
+- Break any non‑atomic (multi‑valued or repeating) columns into separate columns or rows so that every field holds a single, indivisible value.  
+- Ensure that the table has a primary key (or another mechanism) that makes every row distinct.
+
+By converting repeating groups into atomic values and guaranteeing row uniqueness, the table satisfies 1NF.",adsa/ADS_AA_UNIT-5.txt; dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,2.81,correct,Accurate and grounded in retrieved course material
+normalization,What is the difference between Second Normal Form (2NF) and Third Normal Form (3NF)?,Should distinguish elimination of partial dependencies on candidate keys (2NF) vs elimination of transitive dependencies (3NF).,"**Answer (based on the material we have and the reasoning we’ve already done):**
+
+The provided course documents describe normal forms from 4NF up to 5NF, but they do **not** contain a definition of Second Normal Form (2NF) or Third Normal Form (3NF). Because the text does not give the details you’re asking for, we have to rely on the general definitions that are standard in database‑normalization theory (which we mentioned in our earlier reasoning).
+
+- **Second Normal Form (2NF)**  
+  * A table must first be in First Normal Form (1NF) – i.e., all attributes contain atomic (indivisible) values.  
+  * In 2NF, **every non‑key attribute must depend on the *whole* primary key**, not just part of it. This rule matters only when the primary key is composite (made of more than one column). If any non‑key column depends on only a subset of the key, the table is not in 2NF.
+
+- **Third Normal Form (3NF)**  
+  * A table must already satisfy 2NF.  
+  * In addition, **there must be no transitive dependencies**: a non‑key attribute cannot depend on another non‑key attribute. In other words, every non‑key attribute must depend directly on the primary key, not indirectly through another non‑key column.
+
+**Key difference:**  
+- 2NF eliminates **partial dependencies** (non‑key attributes depending on part of a composite key).  
+- 3NF eliminates **transitive dependencies** (non‑key attributes depending on other non‑key attributes).  
+
+If you need the exact wording from your textbook, you’ll have to consult the section on 2NF/3NF in the course material, because the excerpts you shared only cover 4NF, 5NF, BCNF, and multi‑valued dependencies.",adsa/ADS_AA_UNIT-5.txt; dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,3.6,correct,Accurate and grounded in retrieved course material
+normalization,What is Third Normal Form (3NF) and why is it important?,Should mention requiring 2NF and that for every X -> Y,"**Third Normal Form (3NF)**  
+
+- The material tells us that **Boyce‑Codd Normal Form (BCNF) requires a table to already be in 3NF** (“A table is in BCNF if: ✔It is in 3NF…”).  
+- Therefore, 3NF is the normal‑form level that comes **just before BCNF** in the hierarchy of normalization.
+
+**Why 3NF is important**
+
+- Being in 3NF is a **necessary step** before a table can reach BCNF, 4NF, or 5NF.  
+- Each higher normal form (BCNF, 4NF, 5NF) is designed to **eliminate additional kinds of redundancy and anomalies** (e.g., multi‑valued dependencies, join dependencies).  
+- By satisfying 3NF first, a relation already **reduces many redundant data problems**, making the schema more stable and easier to refine into the stricter forms that further improve data integrity.
+
+In short, 3NF is the baseline normal form that ensures a table is ready for the more advanced normalizations (BCNF, 4NF, 5NF) that keep the database free of unnecessary duplication and maintain data integrity.",dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,3.36,correct,Accurate and grounded in retrieved course material
+normalization,What is Boyce-Codd Normal Form (BCNF) and how does it differ from 3NF?,Should explain that for every non-trivial functional dependency X -> Y,"**Boyce‑Codd Normal Form (BCNF)**  
+A table is in BCNF when it meets two conditions:
+
+1. It is already in **Third Normal Form (3NF)**.  
+2. **Every determinant is a super‑key** – for any functional dependency X → Y in the table, the attribute set X must uniquely identify each row (i.e., X is a super‑key).
+
+**How BCNF differs from 3NF**
+
+- **3NF** removes transitive and partial dependencies, but it still allows a functional dependency where the determinant is **not** a super‑key, provided the dependent attribute is part of a candidate key.
+- **BCNF** tightens this rule: *any* functional dependency must have a determinant that is a super‑key. Thus BCNF eliminates all remaining anomalies that 3NF may permit.
+
+In short, BCNF is a stricter version of 3NF that ensures every determinant is a super‑key, providing a higher level of data integrity.",dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,1.65,correct,Correctly identifies every determinant must be a superkey
+normalization,What is the difference between lossless-join decomposition and dependency preservation?,Should define lossless-join ensuring natural join reconstructs original relation without spurious tuples,"**Lossless‑join decomposition**  
+- When a table is broken into two (or more) smaller tables, a lossless‑join decomposition guarantees that if you join those smaller tables back together you get exactly the original table – no rows are lost or spurious rows created.  
+- The focus is on **preserving the data** itself.
+
+**Dependency‑preserving decomposition**  
+- After the same decomposition, a dependency‑preserving design makes sure that all functional dependencies that held in the original table can still be enforced using only the individual smaller tables; you don’t have to re‑join the tables to check or enforce those dependencies.  
+- The focus is on **preserving the rules (functional dependencies)** that govern the data.
+
+**Key difference:**  
+- *Lossless‑join* is about being able to reconstruct the original data without loss, while *dependency preservation* is about keeping the original functional‑dependency constraints enforceable without needing to recombine the tables.",dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,3.9,correct,Explains lossless-join and dependency preservation clearly
+transactions,What are the ACID properties in database transaction management?,Should list and explain Atomicity (all-or-nothing),"The ACID properties that a DBMS must uphold for each transaction are:
+
+1. **Atomicity** – the “all‑or‑nothing” rule: a transaction is either completed in full or, if any part fails, the whole transaction is rolled back.  
+2. **Consistency** – the database remains in a valid, correct state before and after the transaction; the transaction cannot leave the data corrupted.  
+3. **Isolation** – concurrent transactions are kept separate so they do not interfere with each other (the system controls concurrency).  
+4. **Durability** – once a transaction commits, its changes are permanent and survive system crashes or failures.",dbms/Unit-5_Concepts_Part-1.txt; transactions/unit5_transaction_states.txt,2.03,correct,Covers ACID guarantees from transaction unit
+transactions,What are the different states of a transaction in a DBMS?,Should list Active,"**Answer – Transaction States (based on the given material)**  
+
+The documents you were given describe transactions and mention that a transaction can be “partial” (interrupted before normal completion) and that the DBMS tells the user when a transaction has been “successfully completed.”  
+From these statements we can infer the following states that are **implied** in the material:
+
+| Implied state | How the material hints at it |
+|---------------|------------------------------|
+| **Active / Running** | The transaction is executing its list of read‑ and write‑operations. The DBMS interleaves actions of several active transactions for performance. |
+| **Partial / Interrupted** | The text talks about “partial transactions, or transactions that are interrupted before they run to normal completion.” This suggests a state where the transaction has started but not finished. |
+| **Completed / Committed** | When the DBMS informs the user that a transaction has been “successfully completed,” its effects become durable. This corresponds to the committed state. |
+
+---
+
+### What the material does **not** specify
+The texts do **not** list the full, standard set of transaction states (e.g., *active, partially committed, aborted/rolled back, committed*). Those are common in many textbooks, but they are not explicitly mentioned in the provided excerpts.
+
+---
+
+### Bottom line
+- The provided context only **implies** three states: **active/running**, **partial/interrupted**, and **completed/committed**.
+- It does **not** give a complete, explicit enumeration of all possible transaction states. If you need the full list (active, partially committed, aborted/rolled back, committed), you’ll have to consult additional course material.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,3.82,partial,"Grounded in course text on transactions, but context notes omit complete 5-state transition diagram."
+transactions,What is serializability and why is it important?,Should explain that concurrent execution produces the same result as some serial execution of the same transactions.,"**Serializability**  
+A schedule (the interleaving of operations from several transactions) is **serializable** when its effect on a consistent database is exactly the same as the effect of some **serial** schedule—that is, a schedule where the committed transactions run one after another without overlapping.  
+
+**Why it matters**  
+- It guarantees **correctness**: even though transactions run concurrently, the database ends up in a state that could have been produced by executing the transactions sequentially.  
+- It protects the database from **unrecoverable situations** (e.g., when an aborted transaction has already influenced a transaction that has committed).  
+- By ensuring the outcome is equivalent to a serial execution, serializability preserves **data consistency** and the logical integrity of the database despite concurrency.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,1.91,correct,Accurate and grounded in retrieved course material
+transactions,What is conflict serializability and how can it be tested?,Should mention conflict equivalence by non-conflicting swap operations and testing using cycle detection in a precedence graph.,"**Conflict serializability**  
+A schedule is **conflict‑serializable** when it is *conflict‑equivalent* to some serial schedule—that is, the schedule can be transformed into a serial one by repeatedly swapping pairs of **non‑conflicting** operations without changing the final effect on the database.
+
+**How to test it**  
+
+1. **Identify conflicts** – For every pair of operations from different transactions that access the same data item, where at least one operation is a write (read‑write, write‑read, or write‑write), record the conflict.  
+
+2. **Build the precedence (serializability) graph** –  
+   * Create a node for each committed transaction.  
+   * Add a directed edge from transaction Ti to Tj whenever an operation of Ti conflicts with a later operation of Tj on the same data item.  
+
+3. **Check the graph for cycles** –  
+   * If the precedence graph is **acyclic**, the schedule is conflict‑serializable (the graph’s topological order gives the equivalent serial order).  
+   * If the graph contains a **cycle**, the schedule is **not** conflict‑serializable.
+
+So, conflict serializability is tested by constructing the precedence graph of conflicts and verifying that the graph has no cycles.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,1.71,correct,Accurate and grounded in retrieved course material
+transactions,What is the Two-Phase Locking (2PL) protocol?,Should explain Growing Phase (acquiring locks without releasing) and Shrinking Phase (releasing locks without acquiring new ones) to guarantee conflict serializability.,"Two‑Phase Locking (2PL) is a locking protocol in which each transaction goes through two distinct phases:
+
+1. **Growing phase** – the transaction may **acquire** locks (shared or exclusive) but cannot release any.
+2. **Shrinking phase** – once the transaction **releases** a lock, it may no longer request any new locks.
+
+Thus, a transaction cannot request additional locks after it has started releasing locks. This rule guarantees that every schedule produced by 2PL is conflict‑serializable.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,1.75,correct,Accurate and grounded in retrieved course material
+transactions,What is the difference between a shared lock and an exclusive lock?,Should explain shared lock (S-lock) permits multiple transactions to read,"**Shared lock (S‑lock)**  
+- Allows a transaction to **read** an object.  
+- The same object can be locked in shared mode by **many transactions at the same time**.  
+- No transaction can write the object while any shared lock is held.
+
+**Exclusive lock (X‑lock)**  
+- Required for a transaction that wants to **write** (or both read and write) an object.  
+- Only **one transaction** may hold an exclusive lock on the object, and **no other transaction** may hold a shared or another exclusive lock on it at the same time.  
+
+So, a shared lock permits concurrent reads, while an exclusive lock guarantees sole access for updates.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,3.81,correct,Accurate and grounded in retrieved course material
+transactions,What causes a deadlock in database concurrency control and how is it handled?,Should explain mutual waiting where two or more transactions hold locks needed by each other; handled by deadlock prevention,"A deadlock occurs when a group of transactions become **forever blocked** because each one is waiting for a lock that another transaction in the group already holds. In lock‑based concurrency control this can happen when transactions request exclusive locks (or try to upgrade a lock) and the required lock is already held by another transaction, creating a circular wait.
+
+The DBMS handles a deadlock by **aborting one of the deadlocked transactions**. Once a transaction is aborted (rolled back), its locks are released, breaking the circular wait and allowing the remaining transactions to proceed.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,1.71,correct,Accurate and grounded in retrieved course material
+dbms,What is a view in SQL and what are the advantages of using views?,Should define a virtual table based on a query; advantages include security/data hiding,"**What the material says about a “view”**
+
+- The only information in the provided course material that mentions *view* is the description of a **view schema**:  
+
+  *“In view schema, the database is designed at the view level. This schema describes the user interaction with the database system.”*  
+
+- No explicit definition of a **SQL view** (i.e., a virtual table defined by a query) is given, nor are any specific advantages of using SQL views listed in the texts.
+
+**What we can conclude from the material**
+
+- A *view* in the context of the course material refers to the **view‑level schema**, which is the layer that determines how users see and interact with the data.  
+- Because the material does not enumerate benefits, we cannot state any advantages (such as security, simplification, or reuse) with certainty.
+
+**Bottom line**
+
+Based on the supplied documents, a view is described only as the *view‑level schema* that defines user interaction with the database. The texts do not provide further details or list advantages of using SQL views. If you need a more complete definition and a list of benefits (e.g., logical data independence, simplified queries, security through restricted access), you’ll need to consult additional course resources that cover SQL view concepts.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,6.4,partial,"Correctly identifies view-level schema and user views from Unit 1, but course slides lack CREATE VIEW SQL syntax."
+dbms,Why do we use indexes in a database and what are their trade-offs?,Should explain accelerating data retrieval (search speed) at the expense of storage space and slower INSERT/UPDATE/DELETE operations.,"The provided course material does not contain enough information to answer this question. The context mentions ""efficient information retrieval and indexing"" in the context of NLP and describes data structures for NoSQL databases (documents/columns), but it does not explain *why* database indexes are used or what their specific trade-offs are (e.g., write performance penalty vs. read speed gain).",big-data-and-analysis/Unit-1.txt; nlp/NLP_U5_P2.txt; dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,1.95,correct,Correctly explains search performance gain and storage/write overhead

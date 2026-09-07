@@ -165,6 +165,73 @@ curl -X POST http://localhost:8000/chat \
 corpus, and `rag_chain.py` gives sensible, grounded answers to a handful of
 manual test questions across different topics.
 
+## Week 4 — test and refine the RAG pipeline
+
+Manual spot-checks in Week 3 tell you if things basically work. Week 4 is
+about measuring accuracy systematically and tuning based on real numbers —
+this is also where your abstract's 88% accuracy figure will come from.
+
+### 1. Build a real test question set
+
+Expand `backend/test_questions.csv` (a template with 8 sample rows is
+included) into at least 15-30 questions that cover every topic in your
+course. Columns:
+- `topic` — should match your `data/raw/` topic-slug naming
+- `question` — a realistic student question
+- `expected_answer_notes` — what a correct answer should mention (used for
+  your own grading, not by the script)
+
+### 2. Run the evaluation harness
+
+```bash
+cd backend
+python3 evaluate.py
+```
+
+This runs every question through your live RAG pipeline and writes
+`results/eval_<timestamp>.csv` with each generated answer, which sources
+were retrieved, and response time. Errors on individual questions are
+caught and logged per-row — one bad question won't kill the whole run.
+
+### 3. Grade the results by hand
+
+Open the results CSV and fill in `human_verdict` for every row:
+- `correct` — accurate and grounded in course content
+- `partial` — mostly right but incomplete or slightly off
+- `incorrect` — wrong, hallucinated, or off-topic
+
+Add a short note in `human_notes` for anything that went wrong — this is
+what tells you *what* to fix, not just the score.
+
+### 4. Score it
+
+```bash
+python3 score.py results/eval_<timestamp>.csv
+```
+
+This prints strict accuracy (correct-only), lenient accuracy (partial =
+half credit), and a per-topic breakdown so you can see exactly where
+weaknesses are concentrated.
+
+### 5. Tune and re-run
+
+If accuracy is below your target:
+| Symptom | Likely cause | Try |
+|---|---|---|
+| Wrong topic retrieved | Chunks too broad/narrow, or `TOP_K` too low | Adjust `CHUNK_SIZE_WORDS`/`CHUNK_OVERLAP_WORDS` in `ingest.py`, or `TOP_K` in `rag_chain.py` |
+| Right chunks, wrong/vague answer | Prompt not strict enough | Tighten `SYSTEM_PROMPT` in `rag_chain.py` |
+| Hallucinated details | Model ignoring "use only context" instruction | Make the system prompt more explicit; consider lowering `max_tokens` |
+| Slow responses | Too many/too-large retrieved chunks | Lower `TOP_K` or `CHUNK_SIZE_WORDS` |
+
+After any change to chunking, re-run `python3 ingest.py` to rebuild the
+vector store, then re-run `evaluate.py` + `score.py` to compare against
+your previous run. Keep every dated results CSV — this run history is
+useful evidence for your final report.
+
+**Target for end of Week 4:** a documented accuracy score (aim for 88%+ to
+match your abstract's benchmark) across a real, multi-topic test set, with
+at least one tuning iteration showing before/after improvement.
+
 ## Roadmap
 
 See `docs/` for the full 10-week plan and requirements documents.

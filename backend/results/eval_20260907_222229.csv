@@ -1,0 +1,135 @@
+topic,question,expected_answer_notes,generated_answer,retrieved_sources,response_time_sec,human_verdict,human_notes
+introduction-dbms,What are the advantages of a DBMS over a traditional file processing system?,Should mention data redundancy control,"**Advantages of a DBMS compared with a traditional file‑processing system**
+
+1. **Reduced data redundancy** – The DBMS prevents duplicate records (e.g., two identical student rows); duplicates are eliminated automatically.  
+2. **Data sharing** – Multiple applications and users can access the same data simultaneously, improving collaboration and productivity.  
+3. **Data consistency & accuracy** – Integrity constraints are enforced, so the data remains consistent and error‑free, avoiding the discrepancies common in manual file handling.  
+4. **Better data organization** – Data is stored in a systematic, structured way, making it easier to manage and retrieve.  
+5. **Efficient access & retrieval** – Indexing and query‑optimization techniques speed up searches and reduce the time needed to process large volumes of data.  
+6. **Overall efficiency** – By hiding complexity through data‑abstraction levels, the DBMS lets users interact with the data more easily and improves overall system performance.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,2.76,,
+introduction-dbms,Explain the three levels of data abstraction in database architecture.,Should mention physical/internal level,"**Three levels of data abstraction (the three‑schema architecture)**  
+
+| Level | What it describes | How it appears in the material |
+|-------|-------------------|--------------------------------|
+| **External (View) level** | The way individual users or user groups see the data – the “user interaction” with the database. | The context calls this the **view schema**: “In view schema, the database is designed at the view level. This schema describes the user interaction with the database system.” |
+| **Conceptual (Logical) level** | The overall logical structure of the whole database – the entities, attributes, relationships, and constraints, independent of any particular user view. | The material refers to **Logical Data Independence** and to “changing the logical schema (Conceptual or …)”. This indicates a logical (conceptual) schema that sits above the physical storage. |
+| **Internal (Physical) level** | How the data are actually stored on the storage medium – files, indexes, record layouts, and access methods. | The text mentions **Physical Data Independence** (“the ability to modify a schema in one level without affecting a schema in the next higher level”) and notes that “implementation data are hidden in the physical layer for the security proposed.” This hidden implementation corresponds to the internal/physical level. |
+
+**Why the three levels matter**  
+- They give **data independence**: changes at one level (e.g., moving data to a new storage device) do not force changes at the higher level (e.g., the logical schema or user views).  
+- Users work with the **view schema**; designers work with the **logical schema**; DBMS developers manage the **physical schema**.  
+
+So, based on the provided material, the three levels of data abstraction are:
+
+1. **View (External) level** – user‑oriented representation.  
+2. **Logical (Conceptual) level** – overall logical design of the database.  
+3. **Physical (Internal) level** – actual storage and access details.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,7.85,,
+introduction-dbms,What is the difference between physical and logical data independence?,Should distinguish modifying physical storage without changing conceptual schema vs modifying conceptual schema without changing external views.,"**Logical Data Independence**  
+- Involves changing the **logical (conceptual) schema** – e.g., adding or deleting entities or attributes.  
+- These changes do **not affect the external or view schema** that users interact with.  
+- Example: Adding a “Reviews” column to a “Products” table while the shopping‑site UI remains unchanged.
+
+**Physical Data Independence**  
+- Involves changing the **physical storage schema** – e.g., altering file structures, storage size, or indexing methods.  
+- These changes do **not affect the logical (conceptual) schema** of the database.  
+- Example: Expanding the database server’s storage capacity without changing the tables or their relationships.
+
+**Key difference:** Logical independence shields the user‑level view from changes to the conceptual design, while physical independence shields the conceptual design from changes to how the data is physically stored.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,1.52,,
+introduction-dbms,What are the primary responsibilities of a Database Administrator (DBA)?,Should mention schema definition,"The Database Administrator (DBA) is responsible for:
+
+- **Monitoring recovery and backup** operations to ensure data can be restored if needed.  
+- **Providing technical support** for the DBMS and its users.  
+- **Repairing damage** caused by hardware or software failures.  
+- **Managing the DBA (system or super‑user) account**, which has full control over the database.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,1.93,,
+er-diagrams,How are entities and attributes represented in an ER diagram?,Should mention rectangles for entity sets and ellipses/ovals for attributes.,"**Answer**
+
+- **Entity** – In an ER diagram an entity (an object or component of data) is drawn as a **rectangle**.  
+- **Attribute** – An attribute (a property that describes an entity) is drawn as an **oval** attached to its entity rectangle.
+
+**Reasoning from the course material**
+
+- The material defines an *entity* as “an object or component of data” and states it is “represented as rectangle in an ER diagram.”
+- It defines an *attribute* as “a property of an entity” and notes that “an attribute is represented as Oval in an ER diagram.”
+
+Thus, when you look at an ER diagram, you’ll see rectangles for entities and ovals for their attributes.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,2.75,,
+er-diagrams,What does cardinality ratio mean in an ER diagram and what are its types?,Should explain mapping constraints: one-to-one (1:1),"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 21870, Requested 13450. Please try again in 10.64s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+er-diagrams,What is the difference between a primary key, candidate key,"**Primary Key vs. Other Constraints (and Weak Entities)**  
+
+| Feature | Primary Key | Foreign Key | Unique | Not Null | Check |
+|---------|-------------|-------------|--------|----------|-------|
+| **Purpose** | Guarantees that each row in a table can be identified **uniquely**. | Creates a **relationship** to a primary key (or candidate key) in another table. | Guarantees that all values in the column are **distinct**, but does not identify rows. | Guarantees that a column **cannot contain NULL** values. | Enforces a **condition** that each value must satisfy (e.g., age > 0). |
+| **Uniqueness** | **Must be unique** for every row (single column or combination). | May be **non‑unique**; many rows can reference the same parent row. | Must be unique, but a table can have multiple UNIQUE columns. | No uniqueness requirement (only non‑null). | No uniqueness requirement. |
+| **NULLs** | **Cannot be NULL** (implicitly NOT NULL). | Can be NULL (if the relationship is optional). | May allow a single NULL (depends on DBMS). | **Never NULL**. | Depends on the condition; NULL may be allowed if the condition permits it. |
+| **Role in Entity Types** | Strong (independent) entity sets have a primary key (e.g., **Course** identified by `course_id`). | Weak entity sets lack their own primary key; they rely on a **foreign key** (plus possibly other attributes) to be identified (e.g., **Student_Enroll** depends on `course_id` + `student_id`). | – | – | – |
+
+### Key Take‑aways
+- **Primary key** = the main identifier for a record; it enforces **uniqueness** and **non‑nullness**.
+- **Foreign key** links a record to another table; it does **not** guarantee uniqueness in its own table.
+- **Unique** constraint also enforces distinct values but does not serve as the table’s main identifier and may allow NULLs.
+- **Not Null** simply forbids NULLs; it does not enforce uniqueness.
+- **Check** validates data against a condition; it does not affect uniqueness or nullability.
+
+Thus, the primary key’s distinctive role is to **uniquely identify each row** and to serve as the anchor for relationships (via foreign keys) and for defining strong entity sets.",dbms/DBMS_Unit-2_Concepts_Part-1.txt; dbms/Database_Management_System_unit-1.txt; er-diagrams/unit2_er_concepts.txt; introduction-dbms/unit1_overview.txt,6.75,,
+er-diagrams,What is a foreign key and what role does it play in referential integrity?,Should mention referencing a primary key in another relation to maintain valid cross-table relationships.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6543, Requested 1636. Please try again in 1.3425s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+er-diagrams,What is a weak entity set and how is it identified in an ER diagram?,Should explain an entity that lacks a primary key of its own,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 29369, Requested 1780. Please try again in 2.298s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+relational-algebra,What is the difference between selection and projection in relational algebra?,Should explain that selection (sigma) filters rows/tuples based on a condition while projection (pi) selects specific columns/attributes.,"**Selection (σ)**  
+- Operates on a relation to **filter rows**.  
+- Keeps only those tuples that satisfy a given predicate (e.g., `σ BRANCH_NAME=""perryride""(LOAN)`).  
+- The result has the **same columns** as the original relation, but possibly fewer rows.
+
+**Projection (π)**  
+- Operates on a relation to **choose columns** (attributes).  
+- Keeps only the listed attributes and discards the others (e.g., `π LOAN_NO, AMOUNT(LOAN)`).  
+- The result has the **same rows** (subject to duplicate elimination) but only the selected columns.
+
+So, selection narrows **rows** based on a condition, while projection narrows **columns** to the attributes you want to see.",dbms/DBMS_Unit-2_Concepts_Part-1.txt; dbms/dbms_unit-2_ppt.txt; er-diagrams/unit2_er_concepts.txt; relational-algebra/unit2_relational_algebra.txt,2.88,,
+relational-algebra,What is the difference between a Cartesian product and a Natural Join?,Should mention that Cartesian product pairs every row of R with every row of S,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 29556, Requested 1793. Please try again in 2.698s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+relational-algebra,What is the difference between an INNER JOIN and a LEFT OUTER JOIN in SQL?,Should explain that INNER JOIN returns only matching rows from both tables,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 28819, Requested 1249. Please try again in 136ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+relational-algebra,What does the GROUP BY clause do in an SQL query?,Should mention grouping tuples that share identical values in specified columns to apply aggregate functions.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 29150, Requested 1253. Please try again in 806ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+relational-algebra,What is the purpose of aggregate functions like COUNT, SUM,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6261, Requested 1919. Please try again in 1.349999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is a functional dependency in database design?,Should define X -> Y where attribute set X uniquely determines the value of attribute set Y.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 8000, Used 6009, Requested 2074. Please try again in 622.5ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is First Normal Form (1NF) and how do we resolve 1NF violations?,Should explain requirement of atomic/indivisible values (no multivalued or composite attributes) and decomposing into separate rows.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 28817, Requested 1204. Please try again in 42ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is the difference between Second Normal Form (2NF) and Third Normal Form (3NF)?,Should distinguish elimination of partial dependencies on candidate keys (2NF) vs elimination of transitive dependencies (3NF).,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is Third Normal Form (3NF) and why is it important?,Should mention requiring 2NF and that for every X -> Y,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is Boyce-Codd Normal Form (BCNF) and how does it differ from 3NF?,Should explain that for every non-trivial functional dependency X -> Y,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+normalization,What is the difference between lossless-join decomposition and dependency preservation?,Should define lossless-join ensuring natural join reconstructs original relation without spurious tuples,"**Lossless‑join decomposition**  
+When a table is split into several tables, a lossless‑join decomposition guarantees that you can **re‑join the tables and get exactly the original rows back** – no data is lost.
+
+**Dependency‑preserving decomposition**  
+When the same split is done, a dependency‑preserving decomposition makes sure that **all functional dependencies that held in the original table can still be enforced on the individual smaller tables**. You don’t need to join the tables to check or enforce those dependencies.
+
+So, lossless‑join is about **recovering the original data**, while dependency preservation is about **keeping the original rules (functional dependencies) enforceable**.",dbms/DBMS_UNIT_IV_All_Concepts.txt; normalization/unit4_schema_refinement.txt,4.08,,
+transactions,What are the ACID properties in database transaction management?,Should list and explain Atomicity (all-or-nothing),"The ACID properties that a DBMS must uphold for each transaction are:
+
+| Property | What the context says it guarantees |
+|----------|--------------------------------------|
+| **Atomicity** | “All or Nothing Rule” – the transaction is either fully completed or not executed at all; if any part fails the whole transaction is rolled back. |
+| **Consistency** | The database remains consistent and accurate after the transaction; changes are permanent and cannot be lost. |
+| **Isolation** (called **Concurrency Control** in the text) | Manages multiple transactions occurring at the same time and prevents them from interfering with each other. |
+| **Durability** (called **Recovery** in the text) | After a failure or crash, the system can recover the data up to the point of the failure, ensuring the committed changes are permanent.",dbms/Unit-5_Concepts_Part-1.txt; transactions/unit5_transaction_states.txt,3.85,,
+transactions,What are the different states of a transaction in a DBMS?,Should list Active,"The material you provided explains what a transaction is, the ACID properties, and why the DBMS must control concurrent and partial transactions, but it does **not** list the specific states that a transaction can be in (e.g., active, committed, aborted, etc.).  
+
+Because the course content does not contain that information, I can’t give a definitive answer based on the provided material. If you need the exact list of transaction states, you’ll need to consult additional course resources or the textbook that covers transaction lifecycle details.",dbms/DBMS_UNIT_V.txt; transactions/unit5_transactions_concurrency.txt,8.41,,
+transactions,What is serializability and why is it important?,Should explain that concurrent execution produces the same result as some serial execution of the same transactions.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+transactions,What is conflict serializability and how can it be tested?,Should mention conflict equivalence by non-conflicting swap operations and testing using cycle detection in a precedence graph.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+transactions,What is the Two-Phase Locking (2PL) protocol?,Should explain Growing Phase (acquiring locks without releasing) and Shrinking Phase (releasing locks without acquiring new ones) to guarantee conflict serializability.,"Two‑Phase Locking (2PL) is a locking protocol that relaxes Strict 2PL by allowing a transaction to release locks before it commits or aborts. It enforces a single rule:
+
+**Rule:** *Once a transaction releases any lock, it may not request any additional locks.*
+
+Because of this rule each transaction proceeds in two distinct phases:
+
+1. **Growing phase** – the transaction acquires (requests) locks only.
+2. **Shrinking phase** – after the first lock release, the transaction releases locks only and cannot obtain new ones.
+
+This ordering guarantees that every schedule produced by 2PL is conflict‑serializable (its precedence graph is acyclic). The serial order of the transactions corresponds to the order in which they enter their shrinking phase.",transactions/unit5_transactions_concurrency.txt,3.78,,
+transactions,What is the difference between a shared lock and an exclusive lock?,Should explain shared lock (S-lock) permits multiple transactions to read,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+transactions,What causes a deadlock in database concurrency control and how is it handled?,Should explain mutual waiting where two or more transactions hold locks needed by each other; handled by deadlock prevention,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `groq/compound` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on requests per minute (RPM): Limit 30, Used 30, Requested 1. Please try again in 2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'requests', 'code': 'rate_limit_exceeded'}}",,,,
+dbms,What is a view in SQL and what are the advantages of using views?,Should define a virtual table based on a query; advantages include security/data hiding,"**What a view is (according to the provided material)**  
+- The context describes a **view schema** as “the database designed at the view level. This schema describes the user interaction with the database system.”  
+- In other words, a *view* represents the way users see or interact with the underlying data, rather than how the data is physically stored.
+
+**Advantages of using views**  
+- The supplied course material does **not** list any specific advantages of using views in SQL.  
+
+So, based on the given information, we can define a view as a user‑oriented representation of the data (the view schema), but we cannot provide the typical advantages (such as security, simplification, or logical data independence) because those details are not included in the provided context.",dbms/Database_Management_System_unit-1.txt; introduction-dbms/unit1_overview.txt,7.87,,
+dbms,Why do we use indexes in a database and what are their trade-offs?,Should explain accelerating data retrieval (search speed) at the expense of storage space and slower INSERT/UPDATE/DELETE operations.,"[ERROR] Error code: 429 - {'error': {'message': 'Rate limit reached for model `meta-llama/llama-4-scout-17b-16e-instruct` in organization `org_01m0m4tpcsematycy6vty05b2y` service tier `on_demand` on tokens per minute (TPM): Limit 30000, Used 28765, Requested 1797. Please try again in 1.124s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'compound', 'code': 'rate_limit_exceeded'}}",,,,
