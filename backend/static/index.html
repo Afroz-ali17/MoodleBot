@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MoodleBot — AI Course Assistant</title>
+  <title>MoodleBot — Universal AI Academic Assistant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
       --bg-base: #090d16;
       --bg-surface: #0f172a;
       --bg-surface-elevated: #1e293b;
-      --bg-glass: rgba(15, 23, 42, 0.75);
+      --bg-glass: rgba(15, 23, 42, 0.85);
       --border-subtle: #1e293b;
       --border-highlight: #334155;
       --primary: #6366f1;
@@ -59,7 +59,7 @@
     }
 
     .brand {
-      padding: 24px 20px;
+      padding: 20px;
       border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
@@ -75,6 +75,7 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 0 20px var(--primary-glow);
+      flex-shrink: 0;
     }
 
     .brand-icon svg {
@@ -93,38 +94,41 @@
     }
 
     .brand-subtitle {
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       color: var(--text-muted);
       font-weight: 400;
     }
 
     .sidebar-section {
-      padding: 20px;
+      padding: 16px 20px;
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .sidebar-heading {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text-subtle);
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .meta-card {
       background: var(--bg-surface-elevated);
       border: 1px solid var(--border-highlight);
       border-radius: 10px;
-      padding: 12px 14px;
-      font-size: 0.8rem;
+      padding: 10px 12px;
+      font-size: 0.78rem;
     }
 
     .meta-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .meta-row:last-child {
       margin-bottom: 0;
@@ -143,9 +147,9 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 9999px;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 600;
       background: rgba(16, 185, 129, 0.15);
       color: var(--success);
@@ -153,8 +157,8 @@
     }
 
     .status-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--success);
       box-shadow: 0 0 8px var(--success);
@@ -166,37 +170,70 @@
       50% { opacity: 0.4; }
     }
 
-    .topics-list {
-      list-style: none;
+    /* Subjects List in Sidebar */
+    .subjects-browser {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 16px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      max-height: 220px;
-      overflow-y: auto;
-      padding-right: 4px;
+      gap: 12px;
     }
 
-    .topic-pill {
+    .category-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .category-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent-cyan);
+      padding: 4px 6px;
+    }
+
+    .subject-pill {
       font-size: 0.78rem;
-      padding: 8px 12px;
+      padding: 7px 10px;
       border-radius: 8px;
-      background: rgba(30, 41, 59, 0.5);
-      border: 1px solid rgba(51, 65, 85, 0.4);
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(51, 65, 85, 0.3);
       color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
     }
 
-    .topic-pill svg {
+    .subject-pill:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: var(--text-main);
+      transform: translateX(2px);
+    }
+
+    .subject-pill.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+      border-color: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .subject-pill svg {
       width: 14px;
       height: 14px;
       fill: var(--primary);
+      flex-shrink: 0;
     }
 
     .sidebar-footer {
-      margin-top: auto;
-      padding: 16px 20px;
+      padding: 14px 20px;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
@@ -227,39 +264,80 @@
 
     /* Top Bar */
     .chat-header {
-      padding: 18px 28px;
+      padding: 14px 28px;
       border-bottom: 1px solid var(--border-subtle);
       background: var(--bg-glass);
       backdrop-filter: blur(12px);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
+      z-index: 5;
     }
 
     .header-info h2 {
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .header-info p {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
 
-    .header-actions {
+    .header-controls {
       display: flex;
       gap: 12px;
       align-items: center;
+    }
+
+    /* Subject Scope Dropdown */
+    .subject-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-highlight);
+      border-radius: 10px;
+      padding: 4px 10px;
+    }
+
+    .subject-picker label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .subject-dropdown {
+      background: transparent;
+      color: var(--text-main);
+      border: none;
+      outline: none;
+      font-size: 0.82rem;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 4px 2px;
+      max-width: 240px;
+    }
+
+    .subject-dropdown option {
+      background: var(--bg-surface);
+      color: var(--text-main);
     }
 
     .btn-secondary {
       background: var(--bg-surface-elevated);
       color: var(--text-main);
       border: 1px solid var(--border-highlight);
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 8px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
       cursor: pointer;
       display: flex;
@@ -267,6 +345,7 @@
       gap: 6px;
       text-decoration: none;
       transition: all 0.2s;
+      white-space: nowrap;
     }
 
     .btn-secondary:hover {
@@ -278,7 +357,7 @@
     .messages-area {
       flex: 1;
       overflow-y: auto;
-      padding: 28px;
+      padding: 24px 28px;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -289,8 +368,8 @@
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
       border: 1px solid var(--border-highlight);
       border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 12px;
+      padding: 24px 28px;
+      margin-bottom: 8px;
       position: relative;
       overflow: hidden;
     }
@@ -307,7 +386,7 @@
     }
 
     .welcome-card h1 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 700;
       margin-bottom: 8px;
       background: linear-gradient(90deg, #ffffff, #a5b4fc);
@@ -316,15 +395,19 @@
     }
 
     .welcome-card p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       line-height: 1.6;
-      max-width: 680px;
-      margin-bottom: 20px;
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .welcome-card strong {
+      color: #e2e8f0;
     }
 
     .prompt-chips-title {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -335,16 +418,16 @@
     .prompt-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .chip-btn {
       background: rgba(15, 23, 42, 0.8);
       color: var(--text-main);
       border: 1px solid var(--border-highlight);
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 9999px;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -362,8 +445,8 @@
     /* Message Bubbles */
     .message {
       display: flex;
-      gap: 16px;
-      max-width: 860px;
+      gap: 14px;
+      max-width: 880px;
       animation: fadeIn 0.3s ease forwards;
     }
 
@@ -378,14 +461,14 @@
     }
 
     .avatar {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
     }
 
@@ -408,9 +491,9 @@
     }
 
     .message-bubble {
-      padding: 16px 20px;
+      padding: 14px 18px;
       border-radius: 14px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.65;
     }
 
@@ -429,73 +512,87 @@
 
     /* Markdown inside bubble */
     .message-bubble h1, .message-bubble h2, .message-bubble h3 {
-      margin-top: 14px;
+      margin-top: 12px;
       margin-bottom: 6px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #fff;
+      color: #f1f5f9;
     }
-    .message-bubble h1:first-child, .message-bubble h2:first-child, .message-bubble h3:first-child {
-      margin-top: 0;
-    }
+    .message-bubble h1 { font-size: 1.15rem; }
+    .message-bubble h2 { font-size: 1.05rem; }
+    .message-bubble h3 { font-size: 0.95rem; }
 
     .message-bubble p {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .message-bubble p:last-child {
       margin-bottom: 0;
     }
 
     .message-bubble ul, .message-bubble ol {
-      margin: 8px 0 10px 20px;
+      margin-left: 20px;
+      margin-bottom: 8px;
     }
 
     .message-bubble li {
       margin-bottom: 4px;
     }
 
-    .message-bubble table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-      font-size: 0.85rem;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .message-bubble th, .message-bubble td {
-      border: 1px solid #334155;
-      padding: 8px 12px;
-      text-align: left;
-    }
-
-    .message-bubble th {
-      background: rgba(51, 65, 85, 0.4);
-      color: #e2e8f0;
-      font-weight: 600;
-    }
-
     .message-bubble code {
       font-family: 'Fira Code', monospace;
-      background: rgba(0, 0, 0, 0.35);
+      background: var(--code-bg);
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 0.85em;
-      color: #a5b4fc;
+      color: #38bdf8;
+      border: 1px solid #1e293b;
     }
 
-    /* Sources container */
+    .message-bubble pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border-highlight);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+
+    .message-bubble pre code {
+      background: transparent;
+      padding: 0;
+      border: none;
+      color: #e2e8f0;
+    }
+
+    /* Metadata Badge on Bot Message */
+    .bot-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      margin-top: 2px;
+    }
+
+    .scope-tag {
+      background: rgba(139, 92, 246, 0.15);
+      color: #ddd6fe;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    /* Sources citation box */
     .sources-box {
-      margin-top: 8px;
-      padding: 10px 14px;
+      margin-top: 4px;
+      padding: 10px 12px;
       background: rgba(15, 23, 42, 0.6);
-      border: 1px dashed #334155;
+      border: 1px solid var(--border-highlight);
       border-radius: 8px;
       font-size: 0.78rem;
     }
 
     .sources-title {
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-muted);
       margin-bottom: 6px;
@@ -549,10 +646,36 @@
 
     /* Input Dock */
     .input-dock {
-      padding: 20px 28px;
+      padding: 16px 28px;
       background: var(--bg-glass);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border-subtle);
+    }
+
+    .active-filter-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: #c7d2fe;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      margin-bottom: 8px;
+      width: fit-content;
+    }
+
+    .active-filter-badge button {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 0 2px;
+    }
+    .active-filter-badge button:hover {
+      color: #fff;
     }
 
     .input-wrapper {
@@ -577,7 +700,7 @@
       border: none;
       outline: none;
       color: var(--text-main);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-family: inherit;
     }
 
@@ -590,8 +713,8 @@
       color: #fff;
       border: none;
       border-radius: 10px;
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -624,6 +747,9 @@
       .sidebar {
         display: none;
       }
+      .subject-dropdown {
+        max-width: 150px;
+      }
     }
   </style>
 </head>
@@ -637,7 +763,7 @@
       </div>
       <div>
         <div class="brand-title">MoodleBot</div>
-        <div class="brand-subtitle">AI Teaching Assistant</div>
+        <div class="brand-subtitle">Multi-Subject AI Academic Assistant</div>
       </div>
     </div>
 
@@ -650,51 +776,77 @@
           <span class="status-badge" id="system-status"><span class="status-dot"></span> Ready</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Course Chunks</span>
+          <span class="meta-label">Total Chunks</span>
           <span class="meta-value" id="chunks-count">2,527</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Embedding Model</span>
-          <span class="meta-value">all-MiniLM-L6-v2</span>
+          <span class="meta-label">Curriculum Scope</span>
+          <span class="meta-value">18 Subjects (93 Files)</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">LLM Engine</span>
-          <span class="meta-value">Groq (Llama 3.3)</span>
+          <span class="meta-value">Groq Qwen 2.5 / Llama 3.3</span>
         </div>
       </div>
     </div>
 
-    <!-- Indexed Units -->
-    <div class="sidebar-section" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-      <div class="sidebar-heading">Knowledge Base Units (93 Files)</div>
-      <ul class="topics-list">
-        <li class="topic-pill">
-          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-          Unit 1: Overview & Architecture
-        </li>
-        <li class="topic-pill">
-          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-          Unit 2: ER Diagrams & Relational Model
-        </li>
-        <li class="topic-pill">
-          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-          Unit 3: Normalization (1NF, 2NF, 3NF, BCNF)
-        </li>
-        <li class="topic-pill">
-          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-          Unit 4: Schema Refinement
-        </li>
-        <li class="topic-pill">
-          <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-          Unit 5: Transactions & ACID Properties
-        </li>
-      </ul>
+    <!-- Multi-Subject Explorer -->
+    <div class="sidebar-heading" style="padding: 12px 20px 4px 20px; margin-bottom: 0;">
+      <span>Academic Subjects (18)</span>
+      <span style="font-size: 0.65rem; color: var(--primary);" id="active-filter-label">All Subjects</span>
+    </div>
+
+    <div class="subjects-browser" id="subjects-browser">
+      <!-- Universal option -->
+      <div class="subject-pill active" data-subject="all" onclick="selectSubject('all')">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <span>🌐 Universal (All Subjects)</span>
+      </div>
+
+      <!-- Categories will be dynamically grouped or fallback to pre-rendered -->
+      <div class="category-group">
+        <div class="category-label">Programming & Core CS</div>
+        <div class="subject-pill" data-subject="python" onclick="selectSubject('python')">🐍 Python Programming</div>
+        <div class="subject-pill" data-subject="java" onclick="selectSubject('java')">☕ Java & OOPs</div>
+        <div class="subject-pill" data-subject="adsa" onclick="selectSubject('adsa')">⚡ Data Structures & Algorithms</div>
+      </div>
+
+      <div class="category-group">
+        <div class="category-label">AI & Data Science</div>
+        <div class="subject-pill" data-subject="nlp" onclick="selectSubject('nlp')">🧠 Natural Language Processing</div>
+        <div class="subject-pill" data-subject="computer-vision-and-image-processing" onclick="selectSubject('computer-vision-and-image-processing')">👁️ Computer Vision & Image Proc.</div>
+        <div class="subject-pill" data-subject="big-data-and-analysis" onclick="selectSubject('big-data-and-analysis')">📈 Big Data & Analysis</div>
+        <div class="subject-pill" data-subject="exploratort-data-analysis" onclick="selectSubject('exploratort-data-analysis')">📊 Exploratory Data Analysis</div>
+      </div>
+
+      <div class="category-group">
+        <div class="category-label">Database Systems</div>
+        <div class="subject-pill" data-subject="dbms" onclick="selectSubject('dbms')">🗄️ Database Management Systems</div>
+        <div class="subject-pill" data-subject="introduction-dbms" onclick="selectSubject('introduction-dbms')">🏛️ Intro & 3-Tier Architecture</div>
+        <div class="subject-pill" data-subject="er-diagrams" onclick="selectSubject('er-diagrams')">📐 ER Diagrams & Modeling</div>
+        <div class="subject-pill" data-subject="relational-algebra" onclick="selectSubject('relational-algebra')">🔗 Relational Algebra & SQL</div>
+        <div class="subject-pill" data-subject="normalization" onclick="selectSubject('normalization')">🧩 Normalization (1NF–BCNF)</div>
+        <div class="subject-pill" data-subject="transactions" onclick="selectSubject('transactions')">🔒 Transactions & Concurrency</div>
+      </div>
+
+      <div class="category-group">
+        <div class="category-label">Emerging Technologies & Math</div>
+        <div class="subject-pill" data-subject="iqta" onclick="selectSubject('iqta')">⚛️ Quantum Tech & Technologies</div>
+        <div class="subject-pill" data-subject="rpa" onclick="selectSubject('rpa')">🤖 Robotic Process Automation</div>
+        <div class="subject-pill" data-subject="opitimization-techniques" onclick="selectSubject('opitimization-techniques')">🎯 Optimization Techniques</div>
+        <div class="subject-pill" data-subject="dmgt" onclick="selectSubject('dmgt')">🔢 Discrete Math & Graph Theory</div>
+      </div>
+
+      <div class="category-group">
+        <div class="category-label">Professional Development</div>
+        <div class="subject-pill" data-subject="academic-writing-and-public-speaking" onclick="selectSubject('academic-writing-and-public-speaking')">🗣️ Academic Writing & Speaking</div>
+      </div>
     </div>
 
     <!-- Footer Links -->
     <div class="sidebar-footer">
-      <span>RGMCET • CSE (AI & ML)</span>
-      <a href="/docs" target="_blank">Swagger API ↗</a>
+      <span>RGMCET • CSE Curriculum</span>
+      <a href="/docs" target="_blank">API Docs ↗</a>
     </div>
   </aside>
 
@@ -703,17 +855,51 @@
     <!-- Header -->
     <header class="chat-header">
       <div class="header-info">
-        <h2>Database Systems & Information Management</h2>
-        <p>Ground-truth RAG Assistant powered by Course Notes & Lecture Slides</p>
+        <h2>
+          <span>RGMCET Multi-Subject Academic Assistant</span>
+        </h2>
+        <p>Ground-truth RAG powered by official lecture slides, syllabus, and course notes</p>
       </div>
-      <div class="header-actions">
-        <a href="http://localhost:8080" target="_blank" class="btn-secondary">
+      <div class="header-controls">
+        <!-- Subject Scope Dropdown -->
+        <div class="subject-picker">
+          <label for="subject-select">Subject Scope:</label>
+          <select id="subject-select" class="subject-dropdown" onchange="handleDropdownChange(this.value)">
+            <option value="all">🌐 All Subjects (Universal)</option>
+            <optgroup label="Programming & Core CS">
+              <option value="python">🐍 Python Programming</option>
+              <option value="java">☕ Java & OOPs</option>
+              <option value="adsa">⚡ Data Structures & Algorithms</option>
+            </optgroup>
+            <optgroup label="AI & Data Science">
+              <option value="nlp">🧠 Natural Language Processing</option>
+              <option value="computer-vision-and-image-processing">👁️ Computer Vision & Image Proc.</option>
+              <option value="big-data-and-analysis">📈 Big Data & Analysis</option>
+              <option value="exploratort-data-analysis">📊 Exploratory Data Analysis</option>
+            </optgroup>
+            <optgroup label="Database Systems">
+              <option value="dbms">🗄️ Database Management Systems</option>
+              <option value="introduction-dbms">🏛️ Intro & 3-Tier Architecture</option>
+              <option value="er-diagrams">📐 ER Diagrams & Modeling</option>
+              <option value="relational-algebra">🔗 Relational Algebra & SQL</option>
+              <option value="normalization">🧩 Normalization (1NF–BCNF)</option>
+              <option value="transactions">🔒 Transactions & Concurrency</option>
+            </optgroup>
+            <optgroup label="Emerging Tech & Math">
+              <option value="iqta">⚛️ Quantum Technologies (IQTA)</option>
+              <option value="rpa">🤖 Robotic Process Automation</option>
+              <option value="opitimization-techniques">🎯 Optimization Techniques</option>
+              <option value="dmgt">🔢 Discrete Math & Graph Theory</option>
+            </optgroup>
+            <optgroup label="Professional Skills">
+              <option value="academic-writing-and-public-speaking">🗣️ Academic Writing & Speaking</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <a href="http://localhost:8080" target="_blank" class="btn-secondary" title="Open Moodle Portal">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
-          Moodle Portal
-        </a>
-        <a href="/docs" target="_blank" class="btn-secondary">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-          API Docs
+          Moodle
         </a>
       </div>
     </header>
@@ -723,26 +909,34 @@
       
       <!-- Welcome Hero Banner -->
       <div class="welcome-card">
-        <h1>Welcome, Student! 👋</h1>
+        <h1>Welcome, RGMCET Student! 🎓</h1>
         <p>
-          I am your course-specific AI teaching assistant. I answer questions exclusively based on 
-          the <strong>Database Management Systems</strong> course notes and lecture materials, 
-          citing the exact source documents for every explanation.
+          I am your institutional AI academic assistant for <strong>RGMCET</strong>. 
+          I provide precise, textbook-grounded answers across <strong>18 academic subjects</strong>—including Python, Java, Data Structures, NLP, Computer Vision, Quantum Computing, and Database Systems—citing the exact course lecture files.
         </p>
 
-        <div class="prompt-chips-title">Try asking one of these questions:</div>
+        <div class="prompt-chips-title">Sample Multi-Disciplinary Prompts (Click to Ask):</div>
         <div class="prompt-chips">
-          <button class="chip-btn" onclick="sendSample('What are the ACID properties in database transaction management?')">
-            ⚡ What are the ACID properties?
+          <button class="chip-btn" onclick="sendSample('Explain list comprehensions vs generator expressions in Python with examples', 'python')">
+            🐍 Python: List vs Generator
           </button>
-          <button class="chip-btn" onclick="sendSample('What is the difference between a primary key and a foreign key?')">
-            🔑 Primary Key vs Foreign Key
+          <button class="chip-btn" onclick="sendSample('Explain method overloading vs method overriding in Java with code', 'java')">
+            ☕ Java: Overloading vs Overriding
           </button>
-          <button class="chip-btn" onclick="sendSample('What is Third Normal Form (3NF) and how does it prevent redundancy?')">
-            🔍 Explain Third Normal Form (3NF)
+          <button class="chip-btn" onclick="sendSample('What is a Qubit and what is quantum superposition?', 'iqta')">
+            ⚛️ Quantum: Qubits & Superposition
           </button>
-          <button class="chip-btn" onclick="sendSample('What is Boyce-Codd Normal Form (BCNF)?')">
-            📊 What is BCNF?
+          <button class="chip-btn" onclick="sendSample('What are the ACID properties in database transaction management?', 'dbms')">
+            ⚡ DBMS: ACID Properties
+          </button>
+          <button class="chip-btn" onclick="sendSample('What is tokenization, stemming, and lemmatization in Natural Language Processing?', 'nlp')">
+            🧠 NLP: Tokenization & Lemmatization
+          </button>
+          <button class="chip-btn" onclick="sendSample('Explain Third Normal Form (3NF) and Boyce-Codd Normal Form (BCNF)', 'normalization')">
+            🔍 DBMS: 3NF & BCNF Normalization
+          </button>
+          <button class="chip-btn" onclick="sendSample('What is edge detection using Sobel and Prewitt filters in Computer Vision?', 'computer-vision-and-image-processing')">
+            👁️ CVIP: Edge Detection Operators
           </button>
         </div>
       </div>
@@ -751,12 +945,17 @@
 
     <!-- Input Dock -->
     <div class="input-dock">
+      <div class="active-filter-badge" id="active-filter-pill">
+        <span>Scoping query to: <strong id="filter-subject-name">Python Programming</strong></span>
+        <button onclick="selectSubject('all')" title="Clear subject scope">✕</button>
+      </div>
+
       <div class="input-wrapper">
         <input 
           type="text" 
           id="query-input" 
           class="input-box" 
-          placeholder="Ask a question about database concepts, normalization, transactions..." 
+          placeholder="Ask any academic question across all 18 subjects, or select a subject scope above..." 
           autocomplete="off"
         />
         <button id="send-btn" class="send-btn" onclick="handleSend()" title="Send Question">
@@ -767,7 +966,7 @@
         </button>
       </div>
       <div class="input-footer">
-        <span>Grounded on RGMCET DBMS Course Knowledge Base</span>
+        <span id="grounding-note">Grounded on RGMCET Multi-Subject Course Materials (2,527 Chunks)</span>
         <span>Press <strong>Enter ↵</strong> to submit</span>
       </div>
     </div>
@@ -777,6 +976,13 @@
     const messagesArea = document.getElementById('messages-area');
     const queryInput = document.getElementById('query-input');
     const sendBtn = document.getElementById('send-btn');
+    const subjectSelect = document.getElementById('subject-select');
+    const activeFilterPill = document.getElementById('active-filter-pill');
+    const filterSubjectName = document.getElementById('filter-subject-name');
+    const activeFilterLabel = document.getElementById('active-filter-label');
+    const groundingNote = document.getElementById('grounding-note');
+
+    let currentSubject = 'all';
 
     queryInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
@@ -785,7 +991,45 @@
       }
     });
 
-    function sendSample(text) {
+    function selectSubject(slug) {
+      currentSubject = slug;
+      subjectSelect.value = slug;
+
+      // Update sidebar pills
+      document.querySelectorAll('.subject-pill').forEach(pill => {
+        if (pill.getAttribute('data-subject') === slug) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      // Update pill and labels
+      const selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
+      const displayName = selectedOption ? selectedOption.text : slug;
+
+      if (slug === 'all') {
+        activeFilterPill.style.display = 'none';
+        activeFilterLabel.innerText = 'All Subjects';
+        queryInput.placeholder = 'Ask any academic question across all 18 subjects...';
+        groundingNote.innerText = 'Grounded on RGMCET Multi-Subject Course Materials (2,527 Chunks)';
+      } else {
+        activeFilterPill.style.display = 'inline-flex';
+        filterSubjectName.innerText = displayName;
+        activeFilterLabel.innerText = displayName.replace(/^[^\w]+/, '').trim();
+        queryInput.placeholder = `Ask a question about ${displayName}...`;
+        groundingNote.innerText = `Filtered Search Scope: ${displayName}`;
+      }
+    }
+
+    function handleDropdownChange(value) {
+      selectSubject(value);
+    }
+
+    function sendSample(text, subjectSlug) {
+      if (subjectSlug) {
+        selectSubject(subjectSlug);
+      }
       queryInput.value = text;
       handleSend();
     }
@@ -804,20 +1048,25 @@
       messagesArea.scrollTop = messagesArea.scrollHeight;
 
       try {
+        const payload = {
+          student_id: 'student_ui_session',
+          question: question
+        };
+        if (currentSubject && currentSubject !== 'all') {
+          payload.subject = currentSubject;
+        }
+
         const response = await fetch('/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            student_id: 'student_ui_session',
-            question: question
-          })
+          body: JSON.stringify(payload)
         });
 
         const data = await response.json();
         typingEl.remove();
 
         if (response.ok) {
-          appendBotMessage(data.answer, data.sources || []);
+          appendBotMessage(data.answer, data.sources || [], data.subject);
         } else {
           appendBotMessage('⚠️ **Error**: ' + (data.detail || 'Could not process request.'), []);
         }
@@ -844,11 +1093,20 @@
       messagesArea.scrollTop = messagesArea.scrollHeight;
     }
 
-    function appendBotMessage(answerMarkdown, sources) {
+    function appendBotMessage(answerMarkdown, sources, subject) {
       const msg = document.createElement('div');
       msg.className = 'message bot';
 
       const parsedHtml = marked.parse(answerMarkdown);
+
+      let metaBarHtml = '';
+      if (subject && subject !== 'all') {
+        metaBarHtml = `
+          <div class="bot-meta-bar">
+            <span class="scope-tag">📚 Subject: ${escapeHtml(subject)}</span>
+          </div>
+        `;
+      }
 
       let sourcesHtml = '';
       if (sources && sources.length > 0) {
@@ -857,7 +1115,7 @@
           <div class="sources-box">
             <div class="sources-title">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-              Sources Retrieved from Course Material:
+              Sources Retrieved from Course Materials:
             </div>
             <div class="sources-list">${tags}</div>
           </div>
@@ -867,6 +1125,7 @@
       msg.innerHTML = `
         <div class="avatar bot">MB</div>
         <div class="message-content">
+          ${metaBarHtml}
           <div class="message-bubble">${parsedHtml}</div>
           ${sourcesHtml}
         </div>
@@ -894,7 +1153,7 @@
 
     function escapeHtml(string) {
       const div = document.createElement('div');
-      div.innerText = string;
+      div.innerText = string || '';
       return div.innerHTML;
     }
   </script>

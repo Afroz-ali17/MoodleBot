@@ -29,23 +29,17 @@ COLLECTION_NAME = "moodlebot_course_content"
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
 TOP_K = 4
 
-DBMS_CORE_TOPICS = {
-    "dbms",
-    "introduction-dbms",
-    "er-diagrams",
-    "relational-algebra",
-    "normalization",
-    "transactions",
-}
-
-SYSTEM_PROMPT = """You are MoodleBot, the AI teaching assistant for the Database \
-Management Systems course. Answer the student's question using ONLY the provided course context.
+SYSTEM_PROMPT = """You are MoodleBot, the intelligent academic AI Teaching Assistant \
+for RGMCET, supporting students across the entire engineering and computer science curriculum \
+(including Programming in Python & Java, Data Structures & Algorithms, Natural Language Processing, \
+Computer Vision, Big Data & Analytics, Database Systems, Mathematics, Quantum Technologies, and RPA). \
+Answer the student's question accurately and clearly using ONLY the provided course material in the context below.
 
 Guidelines:
-1. Grounding: Rely strictly on the provided context. Do not invent or assume outside facts.
-2. Structure: Format answers clearly using bold key terms, bullet points, or comparison tables.
-3. Completeness: Thoroughly explain definitions, distinctions, and properties present in the text.
-4. Transparency: If a specific detail (e.g. syntax or extended diagram) is omitted in the course text, clearly state what the course slides confirm.
+1. Grounding: Rely strictly on the provided course context. Do not fabricate or assume outside facts.
+2. Structure: Format answers clearly with bold key concepts, bullet points, syntax blocks, or comparison tables where appropriate.
+3. Multi-Subject Context: Ensure definitions and explanations directly reflect the relevant subject's lecture notes and slides.
+4. Transparency: If a specific detail (e.g. edge-case code or extended theoretical formula) is not present in the course text, clearly state what the course notes confirm.
 """
 
 
@@ -54,7 +48,7 @@ class RagPipeline:
         self._embed_model = None
         self._collection = None
         self._llm_client = None
-        self.model_name = "groq/compound"
+        self.model_name = "qwen/qwen3.8-27b"
 
     @property
     def embed_model(self):
@@ -99,32 +93,33 @@ class RagPipeline:
             self._llm_client = OpenAI(api_key=api_key, base_url=base_url, timeout=25.0)
         return self._llm_client
 
-    def retrieve(self, question: str, top_k: int = TOP_K) -> list[dict]:
-        """Returns list of {text, topic, source_file, distance}, prioritizing core DBMS modules."""
+    def retrieve(self, question: str, top_k: int = TOP_K, subject: str | None = None) -> list[dict]:
+        """
+        Returns list of {text, topic, source_file, distance}.
+        If subject is specified, filters strictly to that course module.
+        Otherwise, conducts universal semantic search across all 18 curriculum subjects.
+        """
         query_embedding = self.embed_model.encode([question]).tolist()
-        candidates_k = min(top_k * 2, 10)
-        results = self.collection.query(
-            query_embeddings=query_embedding,
-            n_results=candidates_k,
-        )
-        candidates = []
-        for doc, meta, dist in zip(
-            results["documents"][0], results["metadatas"][0], results["distances"][0]
-        ):
-            candidates.append({
-                "text": doc,
-                "topic": meta.get("topic"),
-                "source_file": meta.get("source_file"),
-                "distance": dist,
-            })
+        query_kwargs = {
+            "query_embeddings": query_embedding,
+            "n_results": top_k,
+        }
+        if subject and subject.strip() and subject.lower() not in ("all", "any"):
+            query_kwargs["where"] = {"topic": subject.strip().lower()}
 
-        # Prioritize core DBMS topics over elective courses
-        def priority_score(c):
-            is_core = 0 if c["topic"] in DBMS_CORE_TOPICS else 1
-            return (is_core, c["distance"])
-
-        candidates.sort(key=priority_score)
-        return candidates[:top_k]
+        results = self.collection.query(**query_kwargs)
+        chunks = []
+        if results and results["documents"] and results["documents"][0]:
+            for doc, meta, dist in zip(
+                results["documents"][0], results["metadatas"][0], results["distances"][0]
+            ):
+                chunks.append({
+                    "text": doc,
+                    "topic": meta.get("topic"),
+                    "source_file": meta.get("source_file"),
+                    "distance": dist,
+                })
+        return chunks
 
     def generate(self, question: str, retrieved_chunks: list[dict]) -> str:
         context = "\n\n---\n\n".join(
@@ -159,13 +154,14 @@ class RagPipeline:
                 return response.choices[0].message.content
             raise
 
-    def answer(self, question: str) -> dict:
-        """Full pipeline: retrieve + generate. Returns {answer, sources}."""
-        chunks = self.retrieve(question)
+    def answer(self, question: str, subject: str | None = None) -> dict:
+        """Full pipeline: retrieve + generate across all subjects or a specific course."""
+        chunks = self.retrieve(question, subject=subject)
         if not chunks:
+            subj_desc = f" for subject '{subject}'" if subject else ""
             return {
-                "answer": "I don't have any course content loaded yet to answer that. "
-                          "Please check back once the knowledge base is populated.",
+                "answer": f"I don't have relevant course content{subj_desc} to answer that question. "
+                          "Please verify the subject or check back once additional materials are loaded.",
                 "sources": [],
             }
         answer_text = self.generate(question, chunks)
@@ -186,12 +182,22 @@ def get_pipeline() -> RagPipeline:
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print('Usage: python3 rag_chain.py "your question here"')
+        print('Usage: python3 rag_chain.py "your question here" [--subject <topic_slug>]')
         sys.exit(1)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
-    question = " ".join(sys.argv[1:])
+    
+    subject = None
+    args = sys.argv[1:]
+    if "--subject" in args:
+        idx = args.index("--subject")
+        if idx + 1 < len(args):
+            subject = args[idx + 1]
+            args = args[:idx] + args[idx + 2:]
+    
+    question = " ".join(args)
     pipeline = get_pipeline()
-    result = pipeline.answer(question)
+    result = pipeline.answer(question, subject=subject)
+    print(f"\n[Subject: {subject or 'All Subjects'}]")
     print("\nAnswer:\n", result["answer"])
     print("\nSources:", result["sources"])
