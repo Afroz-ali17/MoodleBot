@@ -12,14 +12,18 @@ import os
 import sys
 import pathlib
 
+# Disable ChromaDB telemetry before importing chromadb to prevent signature warnings
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
+
+import logging
+logging.getLogger("chromadb.telemetry").setLevel(logging.CRITICAL)
+
 import dotenv
 # pyrefly: ignore [missing-import]
 import chromadb
+from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
 from openai import OpenAI
-
-# Disable ChromaDB telemetry to prevent hanging on network drops
-os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
 # Load environment variables from backend/.env
 dotenv.load_dotenv(pathlib.Path(__file__).parent / ".env")
@@ -70,7 +74,8 @@ class RagPipeline:
                     "Vector store not found. Run `python3 ingest.py` first "
                     "to build it from data/processed/."
                 )
-            client = chromadb.PersistentClient(path=str(VECTOR_STORE_DIR))
+            settings = Settings(anonymized_telemetry=False, is_persistent=True)
+            client = chromadb.PersistentClient(path=str(VECTOR_STORE_DIR), settings=settings)
             self._collection = client.get_collection(COLLECTION_NAME)
         return self._collection
 
@@ -196,8 +201,21 @@ if __name__ == "__main__":
             args = args[:idx] + args[idx + 2:]
     
     question = " ".join(args)
+    print(f"\n[Target Subject Scope: {subject or 'All Subjects (Universal)'}]")
+    print(f"🔍 Searching knowledge base for: \"{question}\"...")
+    
     pipeline = get_pipeline()
-    result = pipeline.answer(question, subject=subject)
-    print(f"\n[Subject: {subject or 'All Subjects'}]")
-    print("\nAnswer:\n", result["answer"])
-    print("\nSources:", result["sources"])
+    chunks = pipeline.retrieve(question, subject=subject)
+    if not chunks:
+        print("❌ No matching course materials found.")
+        sys.exit(0)
+        
+    sources = sorted({f"{c['topic']}/{c['source_file']}" for c in chunks})
+    print(f"📄 Retrieved {len(chunks)} relevant chunks from: {', '.join(sources)}")
+    print("🤖 Synthesizing answer with institutional course guidelines...\n")
+    
+    answer_text = pipeline.generate(question, chunks)
+    print("=" * 60)
+    print("Answer:\n", answer_text)
+    print("=" * 60)
+    print("\nSources Cited:", sources)
