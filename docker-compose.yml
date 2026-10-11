@@ -32,6 +32,8 @@ services:
         condition: service_healthy
     ports:
       - "8080:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       MOODLE_DATABASE_TYPE: mariadb
       MOODLE_DATABASE_HOST: moodle-db
