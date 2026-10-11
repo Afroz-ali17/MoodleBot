@@ -31,7 +31,7 @@ from rag_chain import get_pipeline
 
 STATIC_DIR = pathlib.Path(__file__).parent / "static"
 PROCESSED_DIR = pathlib.Path(__file__).parent.parent / "data" / "processed"
-SALT = os.environ.get("MOODLEBOT_SALT", "moodlebot-secret-salt-2026")
+SALT = os.environ.get("ANON_SALT") or os.environ.get("MOODLEBOT_SALT", "moodlebot-secret-salt-2026")
 SESSION_ID_PATTERN = r"^[a-zA-Z0-9_-]{1,64}$"
 
 _rate_limits: dict[str, list[float]] = collections.defaultdict(list)
