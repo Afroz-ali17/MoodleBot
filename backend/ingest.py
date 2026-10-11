@@ -26,6 +26,7 @@ os.environ["ANONYMIZED_TELEMETRY"] = "False"
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
+# pyrefly: ignore [missing-import]
 import chromadb
 from sentence_transformers import SentenceTransformer
 

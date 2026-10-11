@@ -47,6 +47,7 @@ services:
     volumes:
       - moodle_data:/bitnami/moodle
       - moodle_data_moodledata:/bitnami/moodledata
+      - ./moodle-plugin/block_moodlebot:/bitnami/moodle/blocks/moodlebot
 
 volumes:
   moodle_db_data:

@@ -92,8 +92,8 @@ MoodleBot evolved from a single-course DBMS prototype into a universal instituti
 | **Week 3: RAG Pipeline Baseline** | Completed | Built `ingest.py`, `rag_chain.py`, and `main.py`; integrated ChromaDB with Groq API; verified basic question-answering. |
 | **Week 4: Benchmark & Multi-Subject** | Completed | Created 29-question ground-truth evaluation suite (`test_questions.csv`); achieved **93.1% strict accuracy (96.6% lenient)**; eliminated hallucinations (0%); upgraded to universal 18-subject support with dynamic metadata filtering; built interactive frontend UI. |
 | **Project Review 1 Prep** | Completed | Generated 12-slide institutional presentation in both interactive HTML and native `.pptx` (`docs/MoodleBot_Project_Review_1.pptx`). |
-| **Week 5: Moodle Plugin Integration** | **Next (Active)** | Develop PHP/JS block plugin in `moodle-plugin/`; embed chat widget into Moodle course pages; auto-pass course context. |
-| **Week 6: Empirical User Study (TAM)** | Planned | Deploy Technology Acceptance Model (TAM) survey measuring Perceived Usefulness (PU) and Perceived Ease of Use (PEOU) across 50+ students. |
+| **Week 5: LMS Plugin & Persistence** | Completed | Developed `block_moodlebot` Moodle 4.x block plugin, SQLite interaction persistence (`db.py`), multi-turn conversation memory, student privacy hashing, feedback rating, and 23/23 passing automated pytest tests. |
+| **Week 6: Empirical User Study (TAM)** | **Next (Active)** | Deploy Technology Acceptance Model (TAM) survey measuring Perceived Usefulness (PU) and Perceived Ease of Use (PEOU) across 50+ students. |
 | **Weeks 7–10: Production & Defense** | Planned | Security hardening, caching, Docker production deployment, final project defense presentation. |
 
 ---

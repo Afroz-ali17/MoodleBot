@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoodleBot — Project Review 1 Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0a0e1a;
+    --bg-slide: #0f1629;
+    --bg-card: #1a2040;
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --accent: #8b5cf6;
+    --cyan: #06b6d4;
+    --emerald: #10b981;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --border: #1e293b;
+    --glow: rgba(99, 102, 241, 0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Slide container */
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    padding: 48px 64px;
+    background: var(--bg-slide);
+    overflow: hidden;
+  }
+
+  .slide.active {
+    display: flex;
+  }
+
+  /* Decorative elements */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--glow), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .slide > * { position: relative; z-index: 1; }
+
+  /* Top bar */
+  .slide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .slide-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .slide-logo {
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Typography */
+  .slide-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .slide-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Cards grid */
+  .cards {
+    display: grid;
+    gap: 16px;
+    flex: 1;
+  }
+  .cards-2 { grid-template-columns: 1fr 1fr; }
+  .cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .cards-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.2s;
+  }
+
+  .card:hover {
+    border-color: var(--primary);
+  }
+
+  .card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+  }
+
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    color: var(--primary-light);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+
+  tr:hover td { color: var(--text); }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  .tag-purple { background: rgba(139,92,246,0.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
+  .tag-blue { background: rgba(99,102,241,0.2); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.3); }
+  .tag-cyan { background: rgba(6,182,212,0.2); color: #67e8f9; border: 1px solid rgba(6,182,212,0.3); }
+  .tag-green { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
+  .tag-amber { background: rgba(245,158,11,0.2); color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+  .tag-rose { background: rgba(244,63,94,0.2); color: #fda4af; border: 1px solid rgba(244,63,94,0.3); }
+
+  /* Metric boxes */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 16px 0;
+  }
+
+  .metric-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .metric-label {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+
+  /* Lists */
+  .content-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .content-list li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .content-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-light);
+    font-weight: 700;
+  }
+
+  .content-list li strong {
+    color: var(--text);
+  }
+
+  /* Flow diagram */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+
+  .flow-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .flow-box-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .flow-box-desc {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .flow-arrow {
+    color: var(--primary-light);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  /* Two-column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    flex: 1;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Before/After comparison bar */
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .bar-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    width: 130px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    background: rgba(30, 41, 59, 0.6);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    transition: width 0.6s ease;
+  }
+
+  .bar-fill.before {
+    background: linear-gradient(90deg, #475569, #64748b);
+  }
+
+  .bar-fill.after {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+  }
+
+  .bar-fill.target {
+    background: linear-gradient(90deg, var(--emerald), #34d399);
+  }
+
+  /* Progress timeline */
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin: 20px 0;
+  }
+
+  .timeline-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    right: -50%;
+    height: 2px;
+    background: var(--border);
+  }
+
+  .timeline-item:last-child::before { display: none; }
+
+  .timeline-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-dot.done {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+  }
+
+  .timeline-dot.current {
+    background: linear-gradient(135deg, var(--emerald), var(--cyan));
+    color: #fff;
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+  }
+
+  .timeline-dot.future {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    color: var(--text-dim);
+  }
+
+  .timeline-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* Navigation */
+  .nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 14, 26, 0.9);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    z-index: 100;
+  }
+
+  .nav-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .nav-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .nav-progress {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* Title slide special */
+  .title-slide {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+  }
+
+  .title-slide .slide-title {
+    font-size: 3rem;
+    margin-bottom: 16px;
+  }
+
+  .title-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    padding: 6px 18px;
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 24px;
+    box-shadow: 0 0 24px var(--glow);
+  }
+
+  .team-grid {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .team-member {
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin: 0 auto 8px;
+  }
+
+  .team-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .team-role {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+  }
+
+  .team-roll {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    font-family: 'Fira Code', monospace;
+  }
+
+  .guide-info {
+    margin-top: 28px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .guide-info strong {
+    color: var(--text);
+  }
+
+  /* Scrollable content area */
+  .scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    padding-bottom: 60px;
+  }
+
+  /* Highlight text */
+  .hl { color: var(--primary-light); font-weight: 600; }
+  .hl-cyan { color: var(--cyan); font-weight: 600; }
+  .hl-green { color: var(--emerald); font-weight: 600; }
+  .hl-amber { color: var(--amber); font-weight: 600; }
+
+  .section-gap { margin-top: 20px; }
+
+  /* Code block */
+  .code-block {
+    background: #030712;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: #e2e8f0;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  .code-comment { color: #4a5568; }
+  .code-keyword { color: #c084fc; }
+  .code-string { color: #34d399; }
+  .code-func { color: #60a5fa; }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- ===== SLIDE 1: TITLE & OVERVIEW ===== -->
+<div class="slide title-slide active" data-slide="1">
+  <div class="title-badge">🎓 1st Project Review — Department of CSE (AI & ML)</div>
+  <div class="slide-title">MoodleBot</div>
+  <p class="slide-subtitle" style="text-align:center; max-width:750px;">
+    An Intelligent Multi-Subject Educational Chatbot Powered by<br>
+    <span class="hl">Retrieval-Augmented Generation (RAG)</span> Integrated into <span class="hl-cyan">Moodle LMS</span>
+  </p>
+  <div style="margin-top:8px;">
+    <span class="tag tag-purple">Natural Language Processing</span>
+    <span class="tag tag-blue">Vector Embeddings</span>
+    <span class="tag tag-cyan">LLM Inference</span>
+    <span class="tag tag-green">Moodle LMS</span>
+    <span class="tag tag-amber">FastAPI</span>
+  </div>
+  <div class="team-grid">
+    <div class="team-member">
+      <div class="team-avatar">MS</div>
+      <div class="team-name">M. Sumanth</div>
+      <div class="team-role">RAG Pipeline & Backend</div>
+      <div class="team-roll">23091A3351</div>
+    </div>
+    <div class="team-member">
+      <div class="team-avatar">PU</div>
+      <div class="team-name">P. Umesh</div>
+      <div class="team-role">Moodle LMS Integration</div>
+      <div class="team-roll">23091A3359</div>
+    </div>
+    <div class="team-member">
+      <div class="team-avatar">PA</div>
+      <div class="team-name">P. Afroz Ali Khan</div>
+      <div class="team-role">Data Eng. & Evaluation</div>
+      <div class="team-roll">24095A3301</div>
+    </div>
+  </div>
+  <div class="guide-info">
+    <strong>Project Guide:</strong> Dr. G. Kishor Kumar, Professor, Dept. of CSE (AI & ML), RGMCET (Autonomous), Nandyal
+  </div>
+</div>
+
+<!-- ===== SLIDE 2: ABSTRACT ===== -->
+<div class="slide" data-slide="2">
+  <div class="slide-header">
+    <span class="slide-number">Slide 2 — Abstract</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:2rem;">Abstract</div>
+  <div class="scroll-content">
+    <p class="slide-subtitle">
+      Modern engineering students across RGMCET face a persistent challenge: <strong>accessing precise, contextually relevant academic guidance</strong> outside of classroom hours. Traditional chatbots rely on generic internet knowledge and frequently <span class="hl">hallucinate</span> inaccurate information, undermining trust in AI-assisted learning.
+    </p>
+    <p class="slide-subtitle">
+      <strong>MoodleBot</strong> addresses this by implementing a <span class="hl">Retrieval-Augmented Generation (RAG)</span> architecture that grounds every response exclusively in the institution's own course materials — lecture slides, syllabus PDFs, and faculty notes — thereby guaranteeing <span class="hl-green">factually accurate, citation-backed academic explanations</span>.
+    </p>
+    <p class="slide-subtitle">
+      The system integrates a <span class="hl-cyan">ChromaDB vector store</span> (2,527 embedded knowledge chunks from 93 course files across 18 academic subjects), a <span class="hl">Sentence-BERT embedding model</span> (all-MiniLM-L6-v2) for semantic retrieval, and a cloud-hosted <span class="hl">Large Language Model</span> (Qwen 2.5 27B via Groq) for grounded generation — all served through a <span class="hl-amber">FastAPI</span> REST backend with a rich interactive web interface and a planned <span class="hl-cyan">Moodle LMS plugin</span> for seamless in-platform embedding.
+    </p>
+    <div class="metrics" style="margin-top:24px;">
+      <div class="metric-box">
+        <div class="metric-value">93.1%</div>
+        <div class="metric-label">Strict Accuracy</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">96.6%</div>
+        <div class="metric-label">Lenient Accuracy</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">0%</div>
+        <div class="metric-label">Hallucination Rate</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">18</div>
+        <div class="metric-label">Academic Subjects</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 3: LITERATURE SURVEY ===== -->
+<div class="slide" data-slide="3">
+  <div class="slide-header">
+    <span class="slide-number">Slide 3 — Literature Survey</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Literature Survey</div>
+  <div class="scroll-content">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:22%">Study / System</th>
+          <th style="width:20%">Approach</th>
+          <th style="width:28%">Key Findings</th>
+          <th style="width:30%">Limitations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Lewis et al. (2020)</strong><br><span class="tag tag-blue">RAG</span></td>
+          <td>Retrieval-Augmented Generation; combining BERT retriever with BART generator</td>
+          <td>Demonstrated that augmenting LLMs with external knowledge reduces hallucination by 40-60% vs. vanilla generation</td>
+          <td>Evaluated on open-domain QA; not adapted for curriculum-specific educational contexts</td>
+        </tr>
+        <tr>
+          <td><strong>Gao et al. (2024)</strong><br><span class="tag tag-purple">Survey</span></td>
+          <td>Comprehensive RAG survey covering Naive, Advanced, and Modular paradigms</td>
+          <td>Identified chunking strategy and retrieval precision as critical factors for domain-specific accuracy</td>
+          <td>Recommends but does not implement institutional-grade grounding with real syllabi</td>
+        </tr>
+        <tr>
+          <td><strong>Khandelwal et al. (2020)</strong><br><span class="tag tag-cyan">kNN-LM</span></td>
+          <td>k-Nearest Neighbor Language Model augmenting neural LMs with retrieval at inference</td>
+          <td>Significant perplexity reduction by interpolating LM predictions with retrieved n-grams</td>
+          <td>High memory overhead; requires token-level datastore impractical for real-time chat</td>
+        </tr>
+        <tr>
+          <td><strong>Moodle LMS Plugins</strong><br><span class="tag tag-green">EdTech</span></td>
+          <td>Existing Moodle chatbot plugins (e.g., block_chatbot, mod_dialogue)</td>
+          <td>Provide basic rule-based FAQ matching or keyword search within course forums</td>
+          <td>No semantic understanding; cannot synthesize multi-document explanations or handle conceptual queries</td>
+        </tr>
+        <tr>
+          <td><strong>Sentence-BERT (Reimers, 2019)</strong><br><span class="tag tag-amber">Embeddings</span></td>
+          <td>Siamese BERT networks producing semantically meaningful sentence embeddings</td>
+          <td>Enabled fast cosine-similarity search over large corpora with strong semantic matching</td>
+          <td>all-MiniLM-L6-v2 trades depth for speed; may under-retrieve highly technical domain-specific content</td>
+        </tr>
+        <tr>
+          <td><strong>ChromaDB (2023)</strong><br><span class="tag tag-purple">Vector DB</span></td>
+          <td>Open-source, embedded vector store with metadata filtering and persistent storage</td>
+          <td>Lightweight, zero-config, supports metadata-scoped queries ideal for topic-based retrieval</td>
+          <td>Single-node; not designed for distributed or multi-tenant deployments at institutional scale</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== SLIDE 4: RESEARCH GAPS ===== -->
+<div class="slide" data-slide="4">
+  <div class="slide-header">
+    <span class="slide-number">Slide 4 — Research Gaps</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Research Gaps Identified</div>
+  <div class="scroll-content">
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Gap 1: No Curriculum-Grounded Educational RAG</div>
+        <div class="card-desc">Existing RAG systems (Lewis et al., Gao et al.) target open-domain question answering using Wikipedia or web corpora. <strong>No published system</strong> implements RAG grounded exclusively in an institution's own lecture slides, syllabi, and faculty-authored course notes — the exact materials students are assessed on.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <div class="card-title">Gap 2: Single-Subject Limitation</div>
+        <div class="card-desc">Prior educational chatbot prototypes are typically designed for a <strong>single course or topic</strong>. Students pursuing multi-disciplinary engineering degrees (e.g., CSE AI&ML at RGMCET) need cross-curricular support across 18+ subjects simultaneously, with dynamic subject scoping.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">Gap 3: LMS Integration Absent</div>
+        <div class="card-desc">General-purpose AI assistants (ChatGPT, Gemini) operate <strong>outside the student's learning environment</strong>. There is no published work embedding a RAG-based academic assistant directly inside Moodle LMS course pages with automatic course-context awareness and student session tracking.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Gap 4: Hallucination in Educational AI</div>
+        <div class="card-desc">Generic LLMs hallucinate 15-30% of factual claims (Ji et al., 2023). In educational contexts, a single hallucinated definition can cause <strong>cascading misunderstanding</strong> in student learning. No existing Moodle chatbot enforces strict context-only generation with source citation.</div>
+      </div>
+    </div>
+    <div class="section-gap">
+      <h3>Our Contribution: MoodleBot fills these gaps by:</h3>
+      <ul class="content-list">
+        <li><strong>Grounding exclusively in RGMCET's own institutional course materials</strong> (93 files, 2,527 chunks)</li>
+        <li><strong>Supporting 18 academic subjects simultaneously</strong> with dynamic metadata-scoped retrieval</li>
+        <li><strong>Integrating directly into Moodle LMS</strong> as an embedded course-page widget</li>
+        <li><strong>Achieving 0% hallucination rate</strong> through strict system prompt engineering and context-only generation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 5: PROBLEM STATEMENT ===== -->
+<div class="slide" data-slide="5">
+  <div class="slide-header">
+    <span class="slide-number">Slide 5 — Problem Statement</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Problem Statement</div>
+  <div class="scroll-content">
+    <div class="card" style="margin-bottom:24px; border-left: 4px solid var(--rose);">
+      <div class="card-desc" style="font-size: 1rem; line-height: 1.75; color: var(--text);">
+        Engineering students at RGMCET lack access to an <span class="hl">intelligent, always-available academic assistant</span> that can provide accurate, curriculum-specific explanations grounded in their actual course materials. Existing solutions — generic AI chatbots, search engines, or peer forums — suffer from <span style="color: var(--rose);">hallucinated content, lack of source traceability, absence of multi-subject support</span>, and <span style="color: var(--rose);">zero integration with the institutional Learning Management System (Moodle)</span>.
+      </div>
+    </div>
+    <h3>Core Challenges Being Addressed:</h3>
+    <div class="cards cards-3" style="margin-top: 12px;">
+      <div class="card">
+        <div class="card-icon">⏰</div>
+        <div class="card-title">Limited Faculty Availability</div>
+        <div class="card-desc">Students can only interact with faculty during office hours. Doubts arising during self-study (evenings, weekends, exam prep) go unanswered for hours or days.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤥</div>
+        <div class="card-title">AI Hallucination Risk</div>
+        <div class="card-desc">Generic LLMs (ChatGPT, Gemini) produce plausible but factually incorrect explanations that students cannot verify, leading to learning damage during exam preparation.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">No Source Traceability</div>
+        <div class="card-desc">Students need to know which lecture note, slide, or unit a concept originates from — both for trust in the answer and for deeper study. Generic AI provides no citations.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 6: OBJECTIVES ===== -->
+<div class="slide" data-slide="6">
+  <div class="slide-header">
+    <span class="slide-number">Slide 6 — Objectives</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Project Objectives</div>
+  <div class="scroll-content">
+    <div class="cards cards-2">
+      <div class="card" style="border-left: 3px solid var(--primary);">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">O1. Build a Curriculum-Grounded RAG Pipeline</div>
+        <div class="card-desc">Design and implement a Retrieval-Augmented Generation pipeline that retrieves semantically relevant chunks from the institution's own course materials and generates accurate, grounded answers using a Large Language Model — targeting ≥ 88% accuracy on a ground-truth evaluation benchmark.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--cyan);">
+        <div class="card-icon">📚</div>
+        <div class="card-title">O2. Universal Multi-Subject Support</div>
+        <div class="card-desc">Enable the system to support the complete RGMCET CSE (AI&ML) curriculum across 18+ academic subjects, with dynamic subject-scoped retrieval, so students can get assistance on any topic from Python to Quantum Computing.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--emerald);">
+        <div class="card-icon">🔗</div>
+        <div class="card-title">O3. Moodle LMS Integration</div>
+        <div class="card-desc">Embed MoodleBot as a native plugin/widget inside Moodle course pages, automatically inheriting course context and student session identity — providing an in-platform AI TA experience without context switching.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--amber);">
+        <div class="card-icon">📊</div>
+        <div class="card-title">O4. Rigorous Empirical Evaluation</div>
+        <div class="card-desc">Validate the system through a structured evaluation framework: automated batch testing (evaluate.py), human-graded accuracy scoring (score.py), and iterative hyperparameter tuning — with documented before/after performance evidence.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--rose);">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">O5. Zero Hallucination Guarantee</div>
+        <div class="card-desc">Enforce strict context-only generation through system prompt engineering, ensuring every response is traceable to a specific source document. Target: 0% hallucination rate across the benchmark test suite.</div>
+      </div>
+      <div class="card" style="border-left: 3px solid var(--accent);">
+        <div class="card-icon">📈</div>
+        <div class="card-title">O6. Student Adoption Research (TAM)</div>
+        <div class="card-desc">Assess student satisfaction and adoption likelihood using the Technology Acceptance Model (TAM) framework — measuring perceived usefulness, ease of use, and behavioral intention to use.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 7: PROPOSED MODULES ===== -->
+<div class="slide" data-slide="7">
+  <div class="slide-header">
+    <span class="slide-number">Slide 7 — Proposed Modules</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Proposed System Modules</div>
+  <div class="scroll-content">
+    <div class="cards cards-3">
+      <div class="card">
+        <div class="card-icon">📄</div>
+        <div class="card-title">M1. Data Preprocessing Module</div>
+        <div class="card-desc">
+          <strong>File:</strong> <code>prepare_data.py</code><br>
+          Extracts text from raw PDFs, PPTX, and DOCX files. Applies OCR fallback, Unicode cleanup, and topic-slug auto-tagging. Outputs clean .txt files under <code>data/processed/</code>.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧬</div>
+        <div class="card-title">M2. Embedding & Ingestion Module</div>
+        <div class="card-desc">
+          <strong>File:</strong> <code>ingest.py</code><br>
+          Chunks processed text (200-word window, 40-word overlap), embeds with all-MiniLM-L6-v2, stores 2,527 vectors + metadata in ChromaDB persistent store.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">M3. RAG Pipeline Module</div>
+        <div class="card-desc">
+          <strong>File:</strong> <code>rag_chain.py</code><br>
+          Semantic retrieval (TOP_K=4) with optional subject metadata filtering → context assembly → grounded LLM generation with strict system prompt. Handles model fallback and rate-limit backoff.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">M4. API Backend Module</div>
+        <div class="card-desc">
+          <strong>File:</strong> <code>main.py</code><br>
+          FastAPI server with endpoints: <code>POST /chat</code> (Q&A), <code>GET /subjects</code> (18-subject catalog), <code>GET /health</code> (diagnostics), <code>GET /</code> (web UI). Serves interactive frontend.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <div class="card-title">M5. Interactive Web Interface</div>
+        <div class="card-desc">
+          <strong>File:</strong> <code>static/index.html</code><br>
+          Dark-mode responsive chat UI with subject scope selector, categorized sidebar browser, prompt chips for 7 subjects, markdown rendering, and source citation badges.
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <div class="card-title">M6. Evaluation & Benchmarking Module</div>
+        <div class="card-desc">
+          <strong>Files:</strong> <code>evaluate.py</code>, <code>score.py</code>, <code>compare_runs.py</code><br>
+          Automated batch evaluation with rate-limiting, human verdict scoring (correct/partial/incorrect), and side-by-side before/after accuracy comparison.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 8: PIPELINE OVERVIEW ===== -->
+<div class="slide" data-slide="8">
+  <div class="slide-header">
+    <span class="slide-number">Slide 8 — Pipeline Overview</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">RAG Pipeline Overview</div>
+  <div class="scroll-content">
+    <h3>Offline Ingestion Pipeline (One-time / On Content Update)</h3>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color: var(--amber);">
+        <div class="card-icon" style="font-size:1.2rem;">📄</div>
+        <div class="flow-box-title">Raw Course Files</div>
+        <div class="flow-box-desc">93 PDFs, PPTX, DOCX</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--cyan);">
+        <div class="card-icon" style="font-size:1.2rem;">🔧</div>
+        <div class="flow-box-title">prepare_data.py</div>
+        <div class="flow-box-desc">Text Extraction + Cleanup</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--primary);">
+        <div class="card-icon" style="font-size:1.2rem;">✂️</div>
+        <div class="flow-box-title">ingest.py</div>
+        <div class="flow-box-desc">Chunk (200w/40w overlap)</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--accent);">
+        <div class="card-icon" style="font-size:1.2rem;">🧬</div>
+        <div class="flow-box-title">Sentence-BERT</div>
+        <div class="flow-box-desc">all-MiniLM-L6-v2</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--emerald);">
+        <div class="card-icon" style="font-size:1.2rem;">🗄️</div>
+        <div class="flow-box-title">ChromaDB</div>
+        <div class="flow-box-desc">2,527 vectors + metadata</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;">Online Query Pipeline (Real-time, per Student Query)</h3>
+    <div class="flow-row">
+      <div class="flow-box" style="border-color: var(--primary);">
+        <div class="card-icon" style="font-size:1.2rem;">💬</div>
+        <div class="flow-box-title">Student Query</div>
+        <div class="flow-box-desc">"What is 3NF?"</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--accent);">
+        <div class="card-icon" style="font-size:1.2rem;">🧬</div>
+        <div class="flow-box-title">Embed Query</div>
+        <div class="flow-box-desc">MiniLM-L6-v2</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--emerald);">
+        <div class="card-icon" style="font-size:1.2rem;">🔍</div>
+        <div class="flow-box-title">Semantic Search</div>
+        <div class="flow-box-desc">ChromaDB (TOP_K=4)</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--cyan);">
+        <div class="card-icon" style="font-size:1.2rem;">📋</div>
+        <div class="flow-box-title">Context Assembly</div>
+        <div class="flow-box-desc">Ranked Chunks + Metadata</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--amber);">
+        <div class="card-icon" style="font-size:1.2rem;">🤖</div>
+        <div class="flow-box-title">LLM Generation</div>
+        <div class="flow-box-desc">Qwen 2.5 27B (Groq)</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color: var(--rose);">
+        <div class="card-icon" style="font-size:1.2rem;">✅</div>
+        <div class="flow-box-title">Grounded Answer</div>
+        <div class="flow-box-desc">+ Source Citations</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:28px;">Key Design Decisions</h3>
+    <ul class="content-list">
+      <li><strong>Chunking Strategy:</strong> 200-word sliding window with 40-word overlap — ensures no definition or concept is split at boundary edges</li>
+      <li><strong>Subject-Scoped Retrieval:</strong> Optional <code>where={"topic": subject}</code> ChromaDB metadata filter prevents cross-course contamination</li>
+      <li><strong>System Prompt Engineering:</strong> Enforces strict "context-only" generation, structured Markdown output, and transparent "not found" responses</li>
+      <li><strong>Fallback Handling:</strong> Automatic 413 payload truncation, rate-limit exponential backoff, and model failover</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== SLIDE 9: SYSTEM ARCHITECTURE & DATA FLOW ===== -->
+<div class="slide" data-slide="9">
+  <div class="slide-header">
+    <span class="slide-number">Slide 9 — System Architecture & Data Flow</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">System Architecture & Data Flow</div>
+  <div class="scroll-content">
+    <div class="two-col">
+      <div class="col">
+        <h3>Three-Tier Architecture</h3>
+        <div class="card" style="border-left: 3px solid var(--primary);">
+          <div class="card-title">🖥️ Presentation Layer</div>
+          <div class="card-desc">
+            Interactive Web Chat UI (<code>index.html</code>)<br>
+            Moodle LMS Plugin Widget (planned)<br>
+            Subject Scope Dropdown + Source Citation Badges<br>
+            REST API (Swagger at <code>/docs</code>)
+          </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--emerald);">
+          <div class="card-title">⚙️ Application / Logic Layer</div>
+          <div class="card-desc">
+            FastAPI Backend (<code>main.py</code>)<br>
+            RAG Pipeline (<code>rag_chain.py</code>)<br>
+            Data Preprocessing (<code>prepare_data.py</code>)<br>
+            Ingestion Engine (<code>ingest.py</code>)
+          </div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--amber);">
+          <div class="card-title">🗄️ Data / Storage Layer</div>
+          <div class="card-desc">
+            ChromaDB Vector Store (2,527 chunks)<br>
+            Processed Text Corpus (<code>data/processed/</code>)<br>
+            Moodle LMS (Docker: MariaDB + Moodle 4.4)<br>
+            Evaluation Results (<code>backend/results/</code>)
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h3>External Service Integrations</h3>
+        <div class="card">
+          <div class="card-title">☁️ Groq Cloud Inference</div>
+          <div class="card-desc">Qwen 2.5 27B hosted on Groq — provides high-speed LLM inference (~1.2s avg latency) via OpenAI-compatible API. No local GPU required.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">🐋 Docker Compose Stack</div>
+          <div class="card-desc">
+            <strong>Moodle 4.4</strong> (Bitnami) on port 8080<br>
+            <strong>MariaDB 10.11</strong> with health checks<br>
+            Persistent volumes for course data and DB
+          </div>
+        </div>
+        <h3 style="margin-top: 12px;">Data Flow Summary</h3>
+        <div class="card">
+          <div class="card-desc" style="font-size: 0.8rem;">
+            <strong>1.</strong> Student sends query via Web UI or Moodle plugin<br>
+            <strong>2.</strong> FastAPI receives request, extracts question + optional subject scope<br>
+            <strong>3.</strong> Query is embedded via Sentence-BERT (local model)<br>
+            <strong>4.</strong> ChromaDB returns TOP_K=4 most similar chunks (with optional subject filter)<br>
+            <strong>5.</strong> Chunks are assembled into a context prompt with system instructions<br>
+            <strong>6.</strong> Groq LLM generates a grounded, structured answer<br>
+            <strong>7.</strong> Response + source file citations returned to student
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 10: TECH STACK & TOOLS ===== -->
+<div class="slide" data-slide="10">
+  <div class="slide-header">
+    <span class="slide-number">Slide 10 — Tech Stack & Tools</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Technology Stack & Tools</div>
+  <div class="scroll-content">
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Technology</th>
+          <th>Purpose</th>
+          <th>Version / Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Language</strong></td>
+          <td><span class="tag tag-blue">Python 3.11</span></td>
+          <td>Core backend, data processing, RAG pipeline</td>
+          <td>With venv isolation</td>
+        </tr>
+        <tr>
+          <td><strong>Web Framework</strong></td>
+          <td><span class="tag tag-green">FastAPI</span></td>
+          <td>REST API backend, auto-generated Swagger docs</td>
+          <td>Async ASGI with Uvicorn</td>
+        </tr>
+        <tr>
+          <td><strong>Vector Database</strong></td>
+          <td><span class="tag tag-purple">ChromaDB</span></td>
+          <td>Persistent vector store with metadata filtering</td>
+          <td>PersistentClient, 2,527 vectors</td>
+        </tr>
+        <tr>
+          <td><strong>Embedding Model</strong></td>
+          <td><span class="tag tag-cyan">all-MiniLM-L6-v2</span></td>
+          <td>Sentence-BERT for semantic similarity</td>
+          <td>384-dim, ~90MB, local inference</td>
+        </tr>
+        <tr>
+          <td><strong>LLM Inference</strong></td>
+          <td><span class="tag tag-amber">Groq (Qwen 2.5 27B)</span></td>
+          <td>Cloud-hosted large language model for generation</td>
+          <td>OpenAI-compatible API, ~1.2s latency</td>
+        </tr>
+        <tr>
+          <td><strong>LMS Platform</strong></td>
+          <td><span class="tag tag-rose">Moodle 4.4</span></td>
+          <td>Learning Management System (Bitnami Docker)</td>
+          <td>Port 8080, MariaDB backend</td>
+        </tr>
+        <tr>
+          <td><strong>Containerization</strong></td>
+          <td><span class="tag tag-blue">Docker Compose</span></td>
+          <td>Moodle + MariaDB dev environment</td>
+          <td>Health checks, persistent volumes</td>
+        </tr>
+        <tr>
+          <td><strong>Data Processing</strong></td>
+          <td><span class="tag tag-green">PyMuPDF, python-pptx, python-docx</span></td>
+          <td>Extract text from PDF, PPTX, DOCX files</td>
+          <td>With OCR fallback</td>
+        </tr>
+        <tr>
+          <td><strong>Frontend</strong></td>
+          <td><span class="tag tag-purple">HTML/CSS/JS + marked.js</span></td>
+          <td>Responsive chat interface with Markdown rendering</td>
+          <td>Dark-mode glassmorphism UI</td>
+        </tr>
+        <tr>
+          <td><strong>Version Control</strong></td>
+          <td><span class="tag tag-cyan">Git + GitHub</span></td>
+          <td>Source control and collaboration</td>
+          <td>github.com/Afroz-ali17/MoodleBot</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== SLIDE 11: PARTIAL IMPLEMENTATION & RESULTS ===== -->
+<div class="slide" data-slide="11">
+  <div class="slide-header">
+    <span class="slide-number">Slide 11 — Partial Implementation & Experimental Results</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.6rem;">Partial Implementation & Experimental Results</div>
+  <div class="scroll-content">
+    <div class="metrics">
+      <div class="metric-box">
+        <div class="metric-value">2,527</div>
+        <div class="metric-label">Vector Chunks Indexed</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">93</div>
+        <div class="metric-label">Course Files Processed</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">18</div>
+        <div class="metric-label">Academic Subjects</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-value">29</div>
+        <div class="metric-label">Ground-Truth Test Queries</div>
+      </div>
+    </div>
+
+    <h3>Accuracy Progression: Before vs After Tuning</h3>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Abstract Target</div>
+        <div class="bar-track"><div class="bar-fill target" style="width:88%;">88.0%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Baseline (Pre-Tune)</div>
+        <div class="bar-track"><div class="bar-fill before" style="width:89.7%;">89.7%</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label" style="color:var(--text);">Final (Post-Tune)</div>
+        <div class="bar-track"><div class="bar-fill after" style="width:93.1%;">93.1%</div></div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 20px;">
+      <div class="col">
+        <h3>Key Tuning Actions Taken</h3>
+        <ul class="content-list">
+          <li><strong>Chunk size reduced</strong> from 250 → 200 words with 40-word overlap to prevent definition truncation</li>
+          <li><strong>System prompt strengthened</strong> to enforce structured Markdown, comparison tables, and strict "context-only" generation</li>
+          <li><strong>Subject-scoped retrieval</strong> added to prevent cross-course vector contamination (e.g., EDA slides polluting DBMS queries)</li>
+          <li><strong>LLM upgraded</strong> from groq/compound → Qwen 2.5 27B for higher-quality synthesis</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Per-Topic Accuracy (Post-Tuning)</h3>
+        <table>
+          <thead><tr><th>Topic</th><th>Count</th><th>Accuracy</th></tr></thead>
+          <tbody>
+            <tr><td>Introduction DBMS</td><td>4</td><td><span class="hl-green">100%</span></td></tr>
+            <tr><td>ER Diagrams</td><td>5</td><td><span class="hl-green">100%</span></td></tr>
+            <tr><td>Relational Algebra</td><td>5</td><td><span class="hl-green">100%</span></td></tr>
+            <tr><td>Normalization</td><td>6</td><td><span class="hl-amber">83.3%</span></td></tr>
+            <tr><td>Transactions</td><td>7</td><td><span class="hl-amber">85.7%</span></td></tr>
+            <tr><td>General DBMS</td><td>2</td><td><span class="hl-green">100%</span></td></tr>
+            <tr><td colspan="2"><strong>OVERALL</strong></td><td><strong class="hl">93.1%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 12: EVALUATION STRATEGY & ROADMAP ===== -->
+<div class="slide" data-slide="12">
+  <div class="slide-header">
+    <span class="slide-number">Slide 12 — Evaluation Strategy & Roadmap</span>
+    <span class="slide-logo">MoodleBot</span>
+  </div>
+  <div class="slide-title" style="font-size:1.8rem;">Evaluation Strategy & Project Roadmap</div>
+  <div class="scroll-content">
+    <div class="two-col">
+      <div class="col">
+        <h3>Evaluation Strategy</h3>
+        <div class="card">
+          <div class="card-title">📋 Ground-Truth Benchmark</div>
+          <div class="card-desc">29-question syllabus-aligned test suite across all 5 DBMS units with standardized grading rubric (correct / partial / incorrect). Expanding to cover all 18 subjects.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">⚙️ Automated Evaluation Pipeline</div>
+          <div class="card-desc"><code>evaluate.py</code> runs all test queries through the live RAG pipeline with rate-limiting and latency logging. <code>score.py</code> computes strict/lenient accuracy and per-topic breakdown.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">📊 TAM Survey (Planned)</div>
+          <div class="card-desc">Technology Acceptance Model questionnaire measuring Perceived Usefulness, Perceived Ease of Use, and Behavioral Intention to Use — administered to 50+ RGMCET students.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">🔄 Iterative Tuning Protocol</div>
+          <div class="card-desc">Each tuning cycle (chunk size, prompt, TOP_K) produces a dated CSV. <code>compare_runs.py</code> generates side-by-side before/after reports for evidence-based improvement tracking.</div>
+        </div>
+      </div>
+      <div class="col">
+        <h3>10-Week Project Roadmap</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot done">1</div>
+            <div class="timeline-label">Moodle<br>Docker Setup</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot done">2</div>
+            <div class="timeline-label">Data<br>Preprocessing</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot done">3</div>
+            <div class="timeline-label">RAG Pipeline<br>& API</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot done">4</div>
+            <div class="timeline-label">Evaluation<br>& Tuning</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot current">5</div>
+            <div class="timeline-label">Moodle<br>Plugin</div>
+          </div>
+        </div>
+        <div class="timeline" style="margin-top: 4px;">
+          <div class="timeline-item">
+            <div class="timeline-dot future">6</div>
+            <div class="timeline-label">User Testing<br>& TAM</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot future">7</div>
+            <div class="timeline-label">Multi-Subject<br>Expansion QA</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot future">8</div>
+            <div class="timeline-label">Analytics &<br>Dashboards</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot future">9</div>
+            <div class="timeline-label">Final Report<br>& Paper</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot future">10</div>
+            <div class="timeline-label">Final<br>Defense</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 20px;">Immediate Next Steps (Weeks 5-6)</h3>
+        <ul class="content-list">
+          <li><strong>Develop Moodle block plugin</strong> (<code>moodle-plugin/</code>) — PHP + JS widget embedded in course pages</li>
+          <li><strong>Auto-pass course context</strong> from Moodle session to <code>/chat</code> endpoint</li>
+          <li><strong>Expand evaluation</strong> to cover NLP, Java, Python, and Quantum subjects</li>
+          <li><strong>Deploy TAM survey</strong> to 50+ students for adoption metrics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<!-- Navigation Bar -->
+<div class="nav-bar">
+  <button class="nav-btn" id="prev-btn" onclick="navigate(-1)" disabled>← Previous</button>
+  <span class="nav-progress" id="nav-progress">Slide 1 of 12</span>
+  <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next →</button>
+</div>
+
+<script>
+  let current = 1;
+  const total = 12;
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next < 1 || next > total) return;
+    document.querySelector(`.slide[data-slide="${current}"]`).classList.remove('active');
+    current = next;
+    document.querySelector(`.slide[data-slide="${current}"]`).classList.add('active');
+    updateNav();
+  }
+
+  function updateNav() {
+    document.getElementById('prev-btn').disabled = current === 1;
+    document.getElementById('next-btn').disabled = current === total;
+    document.getElementById('nav-progress').textContent = `Slide ${current} of ${total}`;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault();
+      navigate(1);
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      navigate(-1);
+    }
+  });
+</script>
+</body>
+</html>

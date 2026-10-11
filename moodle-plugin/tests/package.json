@@ -1,0 +1,7 @@
+{
+  "name": "moodlebot-widget-tests",
+  "private": true,
+  "description": "jsdom tests for the MoodleBot block's chat.js",
+  "scripts": { "test": "node chat.test.js" },
+  "devDependencies": { "jsdom": "^24.0.0" }
+}

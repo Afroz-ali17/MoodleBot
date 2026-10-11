@@ -15,12 +15,10 @@ import pathlib
 # Disable ChromaDB telemetry before importing chromadb to prevent signature warnings
 os.environ["ANONYMIZED_TELEMETRY"] = "False"
 
-import logging
-logging.getLogger("chromadb.telemetry").setLevel(logging.CRITICAL)
-
 import dotenv
 # pyrefly: ignore [missing-import]
 import chromadb
+# pyrefly: ignore [missing-import]
 from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
 from openai import OpenAI
@@ -47,12 +45,37 @@ Guidelines:
 """
 
 
+MAX_HISTORY_TURNS = 3
+
+
 class RagPipeline:
     def __init__(self):
         self._embed_model = None
         self._collection = None
         self._llm_client = None
         self.model_name = "qwen/qwen3.8-27b"
+
+    def warmup(self):
+        """Warm up embedding model and vector collection caches."""
+        _ = self.embed_model
+        _ = self.collection
+
+    @staticmethod
+    def _retrieval_query(question: str, history: list[dict] | None = None) -> str:
+        """
+        If a followup question is very short, borrow context from previous question
+        to improve vector retrieval precision.
+        """
+        if not history:
+            return question
+        words = question.strip().split()
+        if len(words) <= 6:
+            for m in reversed(history):
+                if m.get("role") == "user":
+                    prev_q = m.get("content", "").strip()
+                    if prev_q:
+                        return f"{prev_q} {question.strip()}"
+        return question
 
     @property
     def embed_model(self):
@@ -126,20 +149,24 @@ class RagPipeline:
                 })
         return chunks
 
-    def generate(self, question: str, retrieved_chunks: list[dict]) -> str:
+    def generate(self, question: str, retrieved_chunks: list[dict], history: list[dict] | None = None) -> str:
         context = "\n\n---\n\n".join(
             f"[{c['topic']} / {c['source_file']}]\n{c['text']}" for c in retrieved_chunks
         )
         user_message = f"Context:\n{context}\n\nStudent question: {question}"
 
+        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        if history:
+            capped_history = history[-(MAX_HISTORY_TURNS * 2):]
+            for m in capped_history:
+                messages.append({"role": m["role"], "content": m["content"]})
+        messages.append({"role": "user", "content": user_message})
+
         try:
             response = self.llm_client.chat.completions.create(
                 model=self.model_name,
                 max_tokens=350,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": user_message},
-                ],
+                messages=messages,
             )
             return response.choices[0].message.content
         except Exception as e:
@@ -148,20 +175,25 @@ class RagPipeline:
                     f"[{c['topic']} / {c['source_file']}]\n{c['text'][:800]}" for c in retrieved_chunks[:2]
                 )
                 user_msg_short = f"Context:\n{short_context}\n\nStudent question: {question}"
+                short_messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+                if history:
+                    capped_history = history[-(MAX_HISTORY_TURNS * 2):]
+                    for m in capped_history:
+                        short_messages.append({"role": m["role"], "content": m["content"]})
+                short_messages.append({"role": "user", "content": user_msg_short})
+
                 response = self.llm_client.chat.completions.create(
                     model=self.model_name,
                     max_tokens=250,
-                    messages=[
-                        {"role": "system", "content": SYSTEM_PROMPT},
-                        {"role": "user", "content": user_msg_short},
-                    ],
+                    messages=short_messages,
                 )
                 return response.choices[0].message.content
             raise
 
-    def answer(self, question: str, subject: str | None = None) -> dict:
-        """Full pipeline: retrieve + generate across all subjects or a specific course."""
-        chunks = self.retrieve(question, subject=subject)
+    def answer(self, question: str, history: list[dict] | None = None, subject: str | None = None) -> dict:
+        """Full pipeline: retrieve + generate across all subjects or a specific course with history."""
+        retrieval_query = self._retrieval_query(question, history)
+        chunks = self.retrieve(retrieval_query, subject=subject)
         if not chunks:
             subj_desc = f" for subject '{subject}'" if subject else ""
             return {
@@ -169,7 +201,7 @@ class RagPipeline:
                           "Please verify the subject or check back once additional materials are loaded.",
                 "sources": [],
             }
-        answer_text = self.generate(question, chunks)
+        answer_text = self.generate(question, chunks, history=history)
         sources = sorted({f"{c['topic']}/{c['source_file']}" for c in chunks})
         return {"answer": answer_text, "sources": sources}
 

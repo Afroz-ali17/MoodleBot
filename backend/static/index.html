@@ -617,6 +617,42 @@
       font-size: 0.72rem;
     }
 
+    /* Feedback buttons */
+    .feedback-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+
+    .feedback-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .feedback-btn {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 3px 10px;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      font-size: 0.76rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .feedback-btn:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: var(--primary);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
     /* Typing indicator */
     .typing-indicator {
       display: inline-flex;
@@ -1047,10 +1083,18 @@
       const typingEl = appendTypingIndicator();
       messagesArea.scrollTop = messagesArea.scrollHeight;
 
+      // Session management
+      let currentSessionId = sessionStorage.getItem('moodlebot_session_id');
+      if (!currentSessionId) {
+        currentSessionId = 'sess_' + Math.random().toString(36).substring(2, 12);
+        sessionStorage.setItem('moodlebot_session_id', currentSessionId);
+      }
+
       try {
         const payload = {
           student_id: 'student_ui_session',
-          question: question
+          question: question,
+          session_id: currentSessionId
         };
         if (currentSubject && currentSubject !== 'all') {
           payload.subject = currentSubject;
@@ -1066,7 +1110,10 @@
         typingEl.remove();
 
         if (response.ok) {
-          appendBotMessage(data.answer, data.sources || [], data.subject);
+          if (data.session_id) {
+            sessionStorage.setItem('moodlebot_session_id', data.session_id);
+          }
+          appendBotMessage(data.answer, data.sources || [], data.subject, data.interaction_id);
         } else {
           appendBotMessage('⚠️ **Error**: ' + (data.detail || 'Could not process request.'), []);
         }
@@ -1093,7 +1140,7 @@
       messagesArea.scrollTop = messagesArea.scrollHeight;
     }
 
-    function appendBotMessage(answerMarkdown, sources, subject) {
+    function appendBotMessage(answerMarkdown, sources, subject, interactionId) {
       const msg = document.createElement('div');
       msg.className = 'message bot';
 
@@ -1122,17 +1169,49 @@
         `;
       }
 
+      let feedbackHtml = '';
+      if (interactionId) {
+        feedbackHtml = `
+          <div class="feedback-actions" data-iid="${interactionId}">
+            <span class="feedback-label">Was this helpful?</span>
+            <button class="feedback-btn" onclick="submitFeedback(${interactionId}, 1, this)">👍 Helpful</button>
+            <button class="feedback-btn" onclick="submitFeedback(${interactionId}, -1, this)">👎 Not helpful</button>
+          </div>
+        `;
+      }
+
       msg.innerHTML = `
         <div class="avatar bot">MB</div>
         <div class="message-content">
           ${metaBarHtml}
           <div class="message-bubble">${parsedHtml}</div>
           ${sourcesHtml}
+          ${feedbackHtml}
         </div>
       `;
       messagesArea.appendChild(msg);
       messagesArea.scrollTop = messagesArea.scrollHeight;
     }
+
+    window.submitFeedback = async function(interactionId, rating, btn) {
+      const container = btn.closest('.feedback-actions');
+      try {
+        const res = await fetch('/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            student_id: 'student_ui_session',
+            interaction_id: interactionId,
+            rating: rating
+          })
+        });
+        if (res.ok) {
+          container.innerHTML = '<span class="feedback-label" style="color: var(--success);">✓ Feedback saved. Thank you!</span>';
+        }
+      } catch (e) {
+        console.error('Feedback submit failed', e);
+      }
+    };
 
     function appendTypingIndicator() {
       const typing = document.createElement('div');

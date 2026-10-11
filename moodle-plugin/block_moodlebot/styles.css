@@ -1,0 +1,192 @@
+/* MoodleBot block — scoped to .block_moodlebot_chat so it cannot leak into the theme.
+   Moodle loads a block's styles.css automatically. Designed for the narrow
+   (~300px) block drawer in Boost, but scales to wider regions. */
+
+.block_moodlebot_chat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-height: 22rem;
+    min-height: 8rem;
+    overflow-y: auto;
+    padding: 0.25rem;
+    scroll-behavior: smooth;
+}
+
+.block_moodlebot_chat .block_moodlebot_msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 92%;
+}
+
+.block_moodlebot_chat .block_moodlebot_user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.block_moodlebot_chat .block_moodlebot_bot {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble {
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.75rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.block_moodlebot_chat .block_moodlebot_user .block_moodlebot_bubble {
+    background: #0f6cbf;
+    color: #fff;
+    border-bottom-right-radius: 0.2rem;
+    white-space: pre-wrap;
+}
+
+.block_moodlebot_chat .block_moodlebot_bot .block_moodlebot_bubble {
+    background: #eef1f4;
+    color: #1d2125;
+    border-bottom-left-radius: 0.2rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble.block_moodlebot_error {
+    background: #fdecea;
+    color: #8a1c14;
+    border: 1px solid #f5c2bd;
+}
+
+/* Formatting produced by renderRich() */
+.block_moodlebot_chat .block_moodlebot_bubble p {
+    margin: 0 0 0.4rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble > :last-child {
+    margin-bottom: 0;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble ul,
+.block_moodlebot_chat .block_moodlebot_bubble ol {
+    margin: 0 0 0.4rem;
+    padding-left: 1.2rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble pre {
+    margin: 0.3rem 0;
+    padding: 0.5rem;
+    background: #1d2125;
+    color: #e8eaed;
+    border-radius: 0.4rem;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 0.82rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+.block_moodlebot_chat .block_moodlebot_bubble code {
+    font-size: 0.85em;
+    padding: 0.05rem 0.25rem;
+    background: rgba(0, 0, 0, 0.07);
+    border-radius: 0.2rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_sources {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #6a737b;
+    overflow-wrap: anywhere;
+}
+
+.block_moodlebot_chat .block_moodlebot_sources_label {
+    font-weight: 600;
+}
+
+.block_moodlebot_chat .block_moodlebot_feedback {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.2rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_feedback .btn {
+    min-width: 2rem;
+    padding: 0.1rem 0.4rem;
+    line-height: 1.4;
+}
+
+.block_moodlebot_chat .block_moodlebot_thanks {
+    font-size: 0.75rem;
+    color: #6a737b;
+    margin-left: 0.25rem;
+}
+
+/* Animated "thinking" dots */
+.block_moodlebot_chat .block_moodlebot_thinking .block_moodlebot_bubble::after {
+    content: '';
+    display: inline-block;
+    width: 1.2em;
+    text-align: left;
+    animation: block_moodlebot_dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes block_moodlebot_dots {
+    0%   { content: ''; }
+    25%  { content: '.'; }
+    50%  { content: '..'; }
+    75%  { content: '...'; }
+}
+
+.block_moodlebot_chat .block_moodlebot_composer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_input {
+    resize: vertical;
+    min-height: 2.8rem;
+    max-height: 8rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.block_moodlebot_chat .block_moodlebot_footer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.block_moodlebot_chat .block_moodlebot_disclaimer {
+    color: #6a737b;
+    line-height: 1.3;
+}
+
+.block_moodlebot_chat .block_moodlebot_new {
+    white-space: nowrap;
+    padding-right: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .block_moodlebot_chat .block_moodlebot_log {
+        scroll-behavior: auto;
+    }
+    .block_moodlebot_chat .block_moodlebot_thinking .block_moodlebot_bubble::after {
+        animation: none;
+        content: '...';
+    }
+}
