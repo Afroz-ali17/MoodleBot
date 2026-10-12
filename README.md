@@ -17,20 +17,24 @@ Guide: Dr. G. Kishor Kumar, Professor, Dept. of CSE (AI & ML), RGMCET
 
 ```
 moodlebot/
-├── docker-compose.yml       # Moodle + MySQL, runs locally
+├── docker-compose.yml       # Moodle + MariaDB with host gateway mapping
 ├── backend/
-│   ├── main.py               # FastAPI app (chat endpoint, health check)
+│   ├── main.py               # FastAPI app (/chat, /history, /feedback, /health)
+│   ├── db.py                 # Week 5: SQLite persistence layer, privacy hashing & ratings
 │   ├── prepare_data.py       # Week 2: converts raw course materials -> clean text
 │   ├── ingest.py              # Week 3: chunks processed text -> embeddings -> vector store
-│   ├── rag_chain.py           # Week 3: retrieval + grounded LLM generation
+│   ├── rag_chain.py           # Week 3-5: retrieval + multi-turn history + grounded LLM generation
+│   ├── export_logs.py        # Week 5: exports live chat logs into gradable evaluation CSVs
+│   ├── tests/                # Week 5: automated test suite (23 unit & integration tests)
 │   ├── vector_store/          # Created by ingest.py — gitignored, rebuild locally
 │   ├── .env.example
 │   └── requirements.txt
 ├── data/
 │   ├── raw/                  # Drop PDFs/PPTX/DOCX course materials here
 │   └── processed/            # Cleaned .txt output + manifest.csv
-├── moodle-plugin/            # Moodle chat widget/plugin (Week 5+)
-└── docs/                     # Diagrams, reports, planning docs
+├── moodle-plugin/            # Moodle LMS block plugin (Week 5)
+│   └── block_moodlebot/      # Moodle 4.x block plugin (PHP/JS/CSS, secure AJAX proxy)
+└── docs/                     # Diagrams, reports, presentations, planning docs
 ```
 
 ## Week 2 setup — do this today
@@ -231,6 +235,111 @@ useful evidence for your final report.
 **Target for end of Week 4:** a documented accuracy score (aim for 88%+ to
 match your abstract's benchmark) across a real, multi-topic test set, with
 at least one tuning iteration showing before/after improvement.
+
+## Week 5 — LMS integration, persistence & evaluation
+
+In Week 5, MoodleBot transitions from a standalone RAG service into a production-grade,
+fully integrated Moodle LMS block plugin backed by SQLite persistence, conversational
+memory, student privacy hashing, and automated test coverage.
+
+### 1. Environment & persistence configuration
+
+Update your `backend/.env` with the new Week 5 keys:
+```bash
+# Required for RAG generation
+GROK_API_KEY=your_groq_api_key
+
+# Week 5 security & privacy
+MOODLEBOT_API_KEY=generate_a_random_secure_key
+ANON_SALT=generate_a_random_salt_for_hmac
+```
+
+- `MOODLEBOT_API_KEY`: Protects the backend `/chat`, `/history`, and `/feedback` endpoints against unauthorized access.
+- `ANON_SALT`: Generates salted HMAC-SHA256 hashes of student identifiers (`student_id`). Student usernames or real names are **never stored in plaintext** (GDPR / Institutional NFR-6 compliance).
+- Interactions, session continuity, latency, and student ratings are stored in an ACID-compliant SQLite database (`backend/moodlebot.db`).
+
+### 2. Run the automated test suite
+
+Before deploying the LMS integration, verify that all backend modules, persistence,
+privacy protections, and conversational RAG features pass:
+
+```bash
+cd backend
+pytest -v
+```
+
+Expected result: **23 passed tests** across:
+- `test_api.py`: Endpoint health, session isolation, privacy hashing, rate limiting, and feedback thumbs up/down flow.
+- `test_logs_and_startup.py`: Gradable anonymous log export, smoke test filtering, and pipeline warmup.
+- `test_rag_history.py`: Follow-up query rewriting, history cap limits, and multi-turn context passing.
+
+### 3. Start the FastAPI backend
+
+Run the backend on `0.0.0.0` so Docker containers can reach it:
+
+```bash
+cd backend
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Verify that the server is healthy:
+```bash
+curl http://localhost:8000/health
+```
+
+### 4. Deploy Moodle with Docker & plugin volume mount
+
+Ensure your `docker-compose.yml` mounts the custom Moodle block and maps `host.docker.internal`:
+
+```yaml
+services:
+  moodle:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./moodle-plugin/block_moodlebot:/bitnami/moodle/blocks/moodlebot
+```
+
+Restart Moodle to apply the mount and network settings:
+```bash
+docker compose up -d
+```
+
+### 5. Configure the MoodleBot block in Moodle
+
+1. Log in to Moodle as administrator at **http://localhost:8080** (`admin` / `ChangeMe123!`).
+2. Complete any pending database upgrade notifications (Site administration → Notifications).
+3. Navigate to **Site administration → Plugins → Blocks → MoodleBot**:
+   - **Backend URL:** `http://host.docker.internal:8000`
+   - **API Key:** Paste your `MOODLEBOT_API_KEY` exactly as set in `backend/.env`.
+   - **Timeout:** `45` seconds.
+4. Click **Save changes**.
+
+### 6. Add the block to a course & test as a student
+
+1. Open your target course (e.g. *Database Systems & Information Management*).
+2. Enable editing (**Edit mode** toggle in top-right corner).
+3. Click **Add a block** and select **MoodleBot** (appears in the right-hand block drawer in Moodle Boost theme).
+4. Create a test student under **Site administration → Users → Add a new user** (e.g. `student1` / `Student123!`).
+5. Enrol the student in the course (**Participants → Enrol users**).
+6. Log in as the test student in an incognito window, open the course, and test the chat widget:
+   - Ask: `"What are the ACID properties in database transactions?"`
+   - Verify that the answer cites course lecture slides and provides 👍 / 👎 rating buttons.
+
+### 7. Export live chat logs for grading & evaluation
+
+Bridge live classroom interactions back to the Week 4 evaluation pipeline:
+
+```bash
+cd backend
+python export_logs.py --output results/live_pilot_eval.csv --sample 30
+```
+
+This exports an anonymized, reproducible CSV compatible with `score.py` containing:
+- `question`, `generated_answer`, `retrieved_sources`, `latency_seconds`, and student feedback.
+- Run `python score.py results/live_pilot_eval.csv` to calculate ongoing live accuracy metrics.
+
+**Target for end of Week 5:** `block_moodlebot` active in Moodle course pages, 23/23 passing automated pytest tests, secure SQLite interaction persistence, and verified student chat queries and ratings.
 
 ## Roadmap
 
