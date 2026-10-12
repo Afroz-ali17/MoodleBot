@@ -21,4 +21,13 @@ vector_store/
 .DS_Store
 Thumbs.db
 
+# Local SQLite database & state
+*.db
+*.sqlite3
+
+# Archives & temporary extractions
+*.zip
+/moodlebot/
+
 # Docker volumes are managed by Docker, not git
+

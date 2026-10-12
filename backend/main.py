@@ -75,8 +75,9 @@ async def lifespan(app: FastAPI):
     if not os.environ.get("MOODLEBOT_SKIP_WARMUP"):
         try:
             _get_pipeline().warmup()
-        except Exception:
-            pass
+            print("INFO:     RAG pipeline warmed up")
+        except Exception as e:
+            print(f"WARN:     Warmup failed: {e}")
     yield
 
 
